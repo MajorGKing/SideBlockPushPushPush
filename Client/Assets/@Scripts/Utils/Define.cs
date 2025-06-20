@@ -12,6 +12,8 @@ public class Define
     {
         Unknown,
         TitleScene,
+        LoadingScene,
+        LobbyScene,
         GameScene,
     }
 

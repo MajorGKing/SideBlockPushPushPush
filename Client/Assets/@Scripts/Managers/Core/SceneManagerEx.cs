@@ -1,35 +1,22 @@
 ﻿using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 
 public class SceneManagerEx
 {
-    public BaseScene CurrentScene { get { return GameObject.FindObjectOfType<BaseScene>(); } }
+    public BaseScene CurrentScene { get { return GameObject.FindFirstObjectByType<BaseScene>(); } }
+    public Define.EScene NextSceneType;
 
     public void LoadScene(Define.EScene type, Transform parents = null)
     {
+        NextSceneType = type;
         Managers.Clear();
-        SceneManager.LoadScene(GetSceneName(type));
-        //switch (CurrentScene.SceneType)
-        //{
-        //    case Define.Scene.TitleScene:
-        //        Managers.Clear();
-        //        SceneManager.LoadScene(GetSceneName(type));
-        //        break;
-        //    case Define.Scene.GameScene:
-        //        Managers.Resource.Destroy(Managers.UI.SceneUI.gameObject);
-        //        Managers.Clear();
-        //        SceneManager.LoadScene(GetSceneName(type));
-        //        break;
-        //    case Define.Scene.LobbyScene:
-        //        Managers.Resource.Destroy(Managers.UI.SceneUI.gameObject);
-        //        Managers.Clear();
-        //        SceneManager.LoadScene(GetSceneName(type));
-        //        break;
-        //}
-
+        AsyncOperationHandle<SceneInstance> handle = Addressables.LoadSceneAsync(GetSceneName(Define.EScene.LoadingScene), LoadSceneMode.Single, true);
     }
 
-    private string GetSceneName(Define.EScene type)
+    public string GetSceneName(Define.EScene type)
     {
         string name = System.Enum.GetName(typeof(Define.EScene), type);
         return name;

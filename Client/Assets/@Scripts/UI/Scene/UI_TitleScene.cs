@@ -4,20 +4,21 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
-using static Define;
+using UnityEngine.EventSystems;
 using Object = UnityEngine.Object;
 
 public class UI_TitleScene : UI_Scene
 {
 	private enum GameObjects
 	{
-		StartButton,
+        Background,
 	}
 
 	private enum Texts
 	{
-		StatusText,
-	}
+        StartText,
+        StatusText,
+    }
 
 	private enum TitleSceneState
 	{
@@ -66,14 +67,9 @@ public class UI_TitleScene : UI_Scene
 		BindObjects(typeof(GameObjects));
 		BindTexts(typeof(Texts));
 
-		GetObject((int)GameObjects.StartButton).BindEvent((evt) =>
-		{
-			Debug.Log("OnClick");
-			Managers.Scene.LoadScene(EScene.GameScene);
-		});
-
-		GetObject((int)GameObjects.StartButton).gameObject.SetActive(false);
-	}
+        GetText(((int)Texts.StartText)).gameObject.BindEvent(OnClickNextButton);
+        GetText(((int)Texts.StartText)).gameObject.SetActive(false);
+    }
 
 	protected override void Start()
 	{
@@ -97,40 +93,48 @@ public class UI_TitleScene : UI_Scene
 	{
 		State = TitleSceneState.AssetLoaded;
 		Managers.Data.Init();
+        GetText(((int)Texts.StartText)).gameObject.SetActive(true);
 
-		Debug.Log("Connecting To Server");
-		State = TitleSceneState.ConnectingToServer;
 
-		IPAddress ipAddr = IPAddress.Parse("127.0.0.1");
-		IPEndPoint endPoint = new IPEndPoint(ipAddr, 7777);
-		Managers.Network.GameServer.Connect(endPoint, OnConnectionSuccess, OnConnectionFailed);
-	}
+        // TODO ILHAK
+        //Debug.Log("Connecting To Server");
+        //State = TitleSceneState.ConnectingToServer;
 
-	private void OnConnectionSuccess()
+        //IPAddress ipAddr = IPAddress.Parse("127.0.0.1");
+        //IPEndPoint endPoint = new IPEndPoint(ipAddr, 7777);
+        //Managers.Network.GameServer.Connect(endPoint, OnConnectionSuccess, OnConnectionFailed);
+    }
+
+    //private void OnConnectionSuccess()
+    //{
+    //	Debug.Log("Connected To Server");
+    //	State = TitleSceneState.ConnectedToServer;
+
+    //	GetObject((int)GameObjects.StartButton).gameObject.SetActive(true);
+
+    //	StartCoroutine(CoSendTestPackets());
+    //}
+
+    //private void OnConnectionFailed()
+    //{
+    //	Debug.Log("Failed To Connect To Server");
+    //	State = TitleSceneState.FailedToConnectToServer;
+    //}
+
+    //IEnumerator CoSendTestPackets()
+    //{
+    //	while (true)
+    //	{
+    //		yield return new WaitForSeconds(1);
+
+    //		C_Test pkt = new C_Test();
+    //		pkt.Temp = 1;
+    //		Managers.Network.Send(pkt);
+    //	}
+    //}
+
+    private void OnClickNextButton(PointerEventData evt)
 	{
-		Debug.Log("Connected To Server");
-		State = TitleSceneState.ConnectedToServer;
-
-		GetObject((int)GameObjects.StartButton).gameObject.SetActive(true);
-
-		StartCoroutine(CoSendTestPackets());
-	}
-
-	private void OnConnectionFailed()
-	{
-		Debug.Log("Failed To Connect To Server");
-		State = TitleSceneState.FailedToConnectToServer;
-	}
-
-	IEnumerator CoSendTestPackets()
-	{
-		while (true)
-		{
-			yield return new WaitForSeconds(1);
-
-			C_Test pkt = new C_Test();
-			pkt.Temp = 1;
-			Managers.Network.Send(pkt);
-		}
-	}
+        Managers.Scene.LoadScene(Define.EScene.LobbyScene);
+    }
 }
