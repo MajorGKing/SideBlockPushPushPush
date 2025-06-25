@@ -15,6 +15,18 @@ MonoBehaviour:
   m_GroupName: UI
   m_GUID: bdf0684c0f42c9f43a11a6b597ad0e5c
   m_SerializeEntries:
+  - m_GUID: 3a61db4633f5aec4eb0668d048bc1228
+    m_Address: UI_BattlePopup
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 58e4729c3266da34097679439d382e4c
+    m_Address: UI_LobbyScene
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9ec1eb9b895e2204f9e5e0a3dba72569
     m_Address: UI_LoadingPopup
     m_ReadOnly: 0

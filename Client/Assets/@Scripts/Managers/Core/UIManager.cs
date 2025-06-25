@@ -195,6 +195,8 @@ public class UIManager
     public void Clear()
     {
         CloseAllPopupUI();
+        _popups.Clear();
+        Root.gameObject.DestroyChildren();
         Time.timeScale = 1;
         _sceneUI = null;
     }

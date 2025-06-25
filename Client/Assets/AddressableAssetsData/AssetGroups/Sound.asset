@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Sound
+  m_EditorClassIdentifier: 
+  m_GroupName: Sound
+  m_GUID: 3f3b421a7b70fe6478e610ea1fe9b36b
+  m_SerializeEntries:
+  - m_GUID: 11a447ea767f57b45a6920d26ca05060
+    m_Address: PopupOpen_SkillSelect
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1c18933e19c9bd945a1f96c2402f2d98
+    m_Address: PopupClose_Common
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 558c680adecbac7448d5ef675627f00b
+    m_Address: PopupOpen_GameResult
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6ee4bdcf67e7b1e4a9b0e8bc08593266
+    m_Address: PopupOpen_Gameover
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5067e03090f4b542b7f844108bebe94
+    m_Address: PopupOpen_SoulShop
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5a20da5dffa8f04998ea6ef609043b1
+    m_Address: Click_CommonButton
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f3f6d5a2be874724bad64c5c65888524
+    m_Address: PopupOpen_Reward
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 9094f0f0595c6e147aa68a6f81e2dcaf, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 2cb810ce557a30946bcc551c57b5b3b1, type: 2}
+    - {fileID: 11400000, guid: ed62993bd1c262c409337edff7ad5ae8, type: 2}
