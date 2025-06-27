@@ -1,0 +1,611 @@
+fileFormatVersion: 2
+guid: 7969ad70f3a6a66428a09db754a7cd4c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8531457591059017972
+    second: spi_buddy_ellie_0
+  - first:
+      213: -2285636286885037130
+    second: spi_buddy_ellie_1
+  - first:
+      213: -2196005511498541881
+    second: spi_buddy_ellie_2
+  - first:
+      213: -7939833884767814090
+    second: spi_buddy_ellie_3
+  - first:
+      213: -2258239260449558916
+    second: spi_buddy_ellie_4
+  - first:
+      213: -7723876834985326077
+    second: spi_buddy_ellie_5
+  - first:
+      213: 293663669969256895
+    second: spi_buddy_ellie_6
+  - first:
+      213: 9052017898174827503
+    second: spi_buddy_ellie_7
+  - first:
+      213: 1310020814520273458
+    second: spi_buddy_ellie_8
+  - first:
+      213: 4194393133021228523
+    second: spi_buddy_ellie_9
+  - first:
+      213: 4863303963104927204
+    second: spi_buddy_ellie_10
+  - first:
+      213: -6033980259351396268
+    second: spi_buddy_ellie_11
+  - first:
+      213: 4695541744876793189
+    second: spi_buddy_ellie_12
+  - first:
+      213: 7982753247228605010
+    second: spi_buddy_ellie_13
+  - first:
+      213: -7090793321952388536
+    second: spi_buddy_ellie_14
+  - first:
+      213: -8895874338717031302
+    second: spi_buddy_ellie_15
+  - first:
+      213: 3921792740456409266
+    second: spi_buddy_ellie_16
+  - first:
+      213: -4781984427222563457
+    second: spi_buddy_ellie_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spi_buddy_ellie_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 67
+        width: 114
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0f0e94c58c2a9980800000000000000
+      internalID: -8531457591059017972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ellie_1
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 74
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bb797a28e9c740e0800000000000000
+      internalID: -2285636286885037130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ellie_2
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 107
+        width: 39
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c4545a4f983681e0800000000000000
+      internalID: -2196005511498541881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ellie_3
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 68
+        width: 26
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63efdca162b00d190800000000000000
+      internalID: -7939833884767814090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ellie_4
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 1
+        width: 93
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7e20177b5f19a0e0800000000000000
+      internalID: -2258239260449558916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ellie_5
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 74
+        width: 44
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30ac4d101f64fc490800000000000000
+      internalID: -7723876834985326077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ellie_6
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 49
+        width: 40
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb184fb4d8d431400800000000000000
+      internalID: 293663669969256895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ellie_7
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 130
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: feb4039915a3f9d70800000000000000
+      internalID: 9052017898174827503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ellie_8
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 2
+        width: 64
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23a49d17df02e2210800000000000000
+      internalID: 1310020814520273458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ellie_9
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 43
+        width: 68
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bed6116e45a753a30800000000000000
+      internalID: 4194393133021228523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ellie_10
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 42
+        width: 25
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ed5e93003ded7340800000000000000
+      internalID: 4863303963104927204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ellie_11
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 49
+        width: 43
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45004ab6ceef24ca0800000000000000
+      internalID: -6033980259351396268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ellie_12
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 23
+        width: 29
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56d2663c65ae92140800000000000000
+      internalID: 4695541744876793189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ellie_13
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 45
+        width: 29
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25238aea8cf68ce60800000000000000
+      internalID: 7982753247228605010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ellie_14
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 1
+        width: 95
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84ad055da01789d90800000000000000
+      internalID: -7090793321952388536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ellie_15
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 24
+        width: 66
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a74224adb618b8480800000000000000
+      internalID: -8895874338717031302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ellie_16
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 1
+        width: 27
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b82c9908b10d6630800000000000000
+      internalID: 3921792740456409266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ellie_17
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 1
+        width: 99
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7503fddf7af2adb0800000000000000
+      internalID: -4781984427222563457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spi_buddy_ellie_0: -8531457591059017972
+      spi_buddy_ellie_1: -2285636286885037130
+      spi_buddy_ellie_10: 4863303963104927204
+      spi_buddy_ellie_11: -6033980259351396268
+      spi_buddy_ellie_12: 4695541744876793189
+      spi_buddy_ellie_13: 7982753247228605010
+      spi_buddy_ellie_14: -7090793321952388536
+      spi_buddy_ellie_15: -8895874338717031302
+      spi_buddy_ellie_16: 3921792740456409266
+      spi_buddy_ellie_17: -4781984427222563457
+      spi_buddy_ellie_2: -2196005511498541881
+      spi_buddy_ellie_3: -7939833884767814090
+      spi_buddy_ellie_4: -2258239260449558916
+      spi_buddy_ellie_5: -7723876834985326077
+      spi_buddy_ellie_6: 293663669969256895
+      spi_buddy_ellie_7: 9052017898174827503
+      spi_buddy_ellie_8: 1310020814520273458
+      spi_buddy_ellie_9: 4194393133021228523
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

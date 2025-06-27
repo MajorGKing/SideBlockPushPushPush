@@ -15,6 +15,24 @@ MonoBehaviour:
   m_GroupName: SkeletonData
   m_GUID: 1f4b70ba79ae960418f1f30b233bb19d
   m_SerializeEntries:
+  - m_GUID: 1f92d3f823cad3e43a8f6350dbe03d85
+    m_Address: spi_hero_f_knight_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2dec25b14d8ea774faa0a6e81166269c
+    m_Address: spi_buddy_ellie_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3045e28113d9a164489d8cfe733f13df
+    m_Address: spi_buddy_mari_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8ae6bc2ede1eac24485d384633d66392
     m_Address: spider_rare_SkeletonData
     m_ReadOnly: 0
@@ -35,6 +53,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b00ef04fedced014197dfae0416df6db
     m_Address: spi_buddy_duck_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b384b533188ec2243962d5c72e5dfd4c
+    m_Address: spi_hero_m_knight_SkeletonData
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload

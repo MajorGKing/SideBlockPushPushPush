@@ -1,0 +1,923 @@
+fileFormatVersion: 2
+guid: c9158ab3070cc5543a8ec036fa165d17
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 727155241898838140
+    second: spi_hero_m_knight_0
+  - first:
+      213: -8288409712828669869
+    second: spi_hero_m_knight_1
+  - first:
+      213: -3176160907996757856
+    second: spi_hero_m_knight_2
+  - first:
+      213: -1636300771494688061
+    second: spi_hero_m_knight_3
+  - first:
+      213: 5262424579789918611
+    second: spi_hero_m_knight_4
+  - first:
+      213: 5641147680440346111
+    second: spi_hero_m_knight_5
+  - first:
+      213: 3020106957906805534
+    second: spi_hero_m_knight_6
+  - first:
+      213: 3941073575785164956
+    second: spi_hero_m_knight_7
+  - first:
+      213: 4865955657575565431
+    second: spi_hero_m_knight_8
+  - first:
+      213: -7861988952531925237
+    second: spi_hero_m_knight_9
+  - first:
+      213: -4884293066822191183
+    second: spi_hero_m_knight_10
+  - first:
+      213: 8203823532982558369
+    second: spi_hero_m_knight_11
+  - first:
+      213: 1658643637637374094
+    second: spi_hero_m_knight_12
+  - first:
+      213: 8201742003844859602
+    second: spi_hero_m_knight_13
+  - first:
+      213: -3326869881104940855
+    second: spi_hero_m_knight_14
+  - first:
+      213: 8730732683608668858
+    second: spi_hero_m_knight_15
+  - first:
+      213: -7793326898835246520
+    second: spi_hero_m_knight_16
+  - first:
+      213: 8006657672755930028
+    second: spi_hero_m_knight_17
+  - first:
+      213: 6254794735701558146
+    second: spi_hero_m_knight_18
+  - first:
+      213: -116286561014239396
+    second: spi_hero_m_knight_19
+  - first:
+      213: -8642510411144373929
+    second: spi_hero_m_knight_20
+  - first:
+      213: 2130783705462513108
+    second: spi_hero_m_knight_21
+  - first:
+      213: 5952083438325739860
+    second: spi_hero_m_knight_22
+  - first:
+      213: -7455453204038780123
+    second: spi_hero_m_knight_23
+  - first:
+      213: 4239335730260495228
+    second: spi_hero_m_knight_24
+  - first:
+      213: 5292708291503094148
+    second: spi_hero_m_knight_25
+  - first:
+      213: 2116730400003309520
+    second: spi_hero_m_knight_26
+  - first:
+      213: -1230138890957841898
+    second: spi_hero_m_knight_27
+  - first:
+      213: -1077888138047379510
+    second: spi_hero_m_knight_28
+  - first:
+      213: -5066829997565012462
+    second: spi_hero_m_knight_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spi_hero_m_knight_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 16
+        width: 234
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7881f107df571a00800000000000000
+      internalID: 727155241898838140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_1
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 243
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35023f1b747a9fc80800000000000000
+      internalID: -8288409712828669869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_2
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 182
+        width: 219
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a00f517b720ce3d0800000000000000
+      internalID: -3176160907996757856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_3
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 228
+        width: 29
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ca8c592e11ba49e0800000000000000
+      internalID: -1636300771494688061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_4
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 183
+        width: 115
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39199a71643e70940800000000000000
+      internalID: 5262424579789918611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_5
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 182
+        width: 44
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff56a226de1694e40800000000000000
+      internalID: 5641147680440346111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_6
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 182
+        width: 40
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1388b9e64399e920800000000000000
+      internalID: 3020106957906805534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_7
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 187
+        width: 27
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c907a56598181b630800000000000000
+      internalID: 3941073575785164956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_8
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 31
+        width: 131
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 778089eb3e8578340800000000000000
+      internalID: 4865955657575565431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_9
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 19
+        width: 99
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b070a48c3ba94e290800000000000000
+      internalID: -7861988952531925237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_10
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 150
+        width: 45
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b7f8257551873cb0800000000000000
+      internalID: -4884293066822191183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_11
+      rect:
+        serializedVersion: 2
+        x: 1186
+        y: 150
+        width: 38
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ae5a6b9906d9d170800000000000000
+      internalID: 8203823532982558369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_12
+      rect:
+        serializedVersion: 2
+        x: 1226
+        y: 150
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e80665eb99fa40710800000000000000
+      internalID: 1658643637637374094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_13
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 84
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d6c296d5e072d170800000000000000
+      internalID: 8201742003844859602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_14
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 45
+        width: 79
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c04bca387594d1d0800000000000000
+      internalID: -3326869881104940855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_15
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 47
+        width: 105
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aba336b4e1bc92970800000000000000
+      internalID: 8730732683608668858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_16
+      rect:
+        serializedVersion: 2
+        x: 1162
+        y: 38
+        width: 96
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 842bd60f97a88d390800000000000000
+      internalID: -7793326898835246520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_17
+      rect:
+        serializedVersion: 2
+        x: 1275
+        y: 84
+        width: 70
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca3e5c67bbc5d1f60800000000000000
+      internalID: 8006657672755930028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_18
+      rect:
+        serializedVersion: 2
+        x: 1348
+        y: 85
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 283897c3cae7dc650800000000000000
+      internalID: 6254794735701558146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_19
+      rect:
+        serializedVersion: 2
+        x: 1374
+        y: 84
+        width: 21
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5f28962dfdd26ef0800000000000000
+      internalID: -116286561014239396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_20
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 26
+        width: 21
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 759df103292af0880800000000000000
+      internalID: -8642510411144373929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_21
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 30
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dd9841ad70129d10800000000000000
+      internalID: 2130783705462513108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_22
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 30
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45134e60a5c0a9250800000000000000
+      internalID: 5952083438325739860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_23
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 28
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52b78b5cfc8e88890800000000000000
+      internalID: -7455453204038780123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_24
+      rect:
+        serializedVersion: 2
+        x: 1276
+        y: 17
+        width: 94
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7b4ccdb26525da30800000000000000
+      internalID: 4239335730260495228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_25
+      rect:
+        serializedVersion: 2
+        x: 1374
+        y: 17
+        width: 76
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4897ece262a737940800000000000000
+      internalID: 5292708291503094148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_26
+      rect:
+        serializedVersion: 2
+        x: 1454
+        y: 17
+        width: 76
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dfb7797513206d10800000000000000
+      internalID: 2116730400003309520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_27
+      rect:
+        serializedVersion: 2
+        x: 1534
+        y: 17
+        width: 91
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61a901c323badeee0800000000000000
+      internalID: -1230138890957841898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_28
+      rect:
+        serializedVersion: 2
+        x: 1634
+        y: 18
+        width: 46
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac7241803729a01f0800000000000000
+      internalID: -1077888138047379510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_hero_m_knight_29
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 17
+        width: 25
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21618d166f00fa9b0800000000000000
+      internalID: -5066829997565012462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spi_hero_m_knight_0: 727155241898838140
+      spi_hero_m_knight_1: -8288409712828669869
+      spi_hero_m_knight_10: -4884293066822191183
+      spi_hero_m_knight_11: 8203823532982558369
+      spi_hero_m_knight_12: 1658643637637374094
+      spi_hero_m_knight_13: 8201742003844859602
+      spi_hero_m_knight_14: -3326869881104940855
+      spi_hero_m_knight_15: 8730732683608668858
+      spi_hero_m_knight_16: -7793326898835246520
+      spi_hero_m_knight_17: 8006657672755930028
+      spi_hero_m_knight_18: 6254794735701558146
+      spi_hero_m_knight_19: -116286561014239396
+      spi_hero_m_knight_2: -3176160907996757856
+      spi_hero_m_knight_20: -8642510411144373929
+      spi_hero_m_knight_21: 2130783705462513108
+      spi_hero_m_knight_22: 5952083438325739860
+      spi_hero_m_knight_23: -7455453204038780123
+      spi_hero_m_knight_24: 4239335730260495228
+      spi_hero_m_knight_25: 5292708291503094148
+      spi_hero_m_knight_26: 2116730400003309520
+      spi_hero_m_knight_27: -1230138890957841898
+      spi_hero_m_knight_28: -1077888138047379510
+      spi_hero_m_knight_29: -5066829997565012462
+      spi_hero_m_knight_3: -1636300771494688061
+      spi_hero_m_knight_4: 5262424579789918611
+      spi_hero_m_knight_5: 5641147680440346111
+      spi_hero_m_knight_6: 3020106957906805534
+      spi_hero_m_knight_7: 3941073575785164956
+      spi_hero_m_knight_8: 4865955657575565431
+      spi_hero_m_knight_9: -7861988952531925237
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

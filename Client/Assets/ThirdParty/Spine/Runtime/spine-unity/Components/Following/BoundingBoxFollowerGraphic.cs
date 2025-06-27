@@ -57,7 +57,7 @@ namespace Spine.Unity {
 		BoundingBoxAttachment currentAttachment;
 		string currentAttachmentName;
 		PolygonCollider2D currentCollider;
-
+		bool skinBoneEnabled = true;
 		public readonly Dictionary<BoundingBoxAttachment, PolygonCollider2D> colliderTable = new Dictionary<BoundingBoxAttachment, PolygonCollider2D>();
 		public readonly Dictionary<BoundingBoxAttachment, string> nameTable = new Dictionary<BoundingBoxAttachment, string>();
 
@@ -133,6 +133,7 @@ namespace Spine.Unity {
 					AddCollidersForSkin(skeleton.Skin, slotIndex, colliders, scale, ref requiredCollidersCount);
 			}
 			DisposeExcessCollidersAfter(requiredCollidersCount);
+			skinBoneEnabled = slot.Bone.Active;
 
 			if (BoundingBoxFollowerGraphic.DebugMessages) {
 				bool valid = colliderTable.Count != 0;
@@ -211,8 +212,10 @@ namespace Spine.Unity {
 		}
 
 		void LateUpdate () {
-			if (slot != null && slot.Attachment != currentAttachment)
+			if (slot != null && (slot.Attachment != currentAttachment || skinBoneEnabled != slot.Bone.Active)) {
+				skinBoneEnabled = slot.Bone.Active;
 				MatchAttachment(slot.Attachment);
+			}
 		}
 
 		/// <summary>Sets the current collider to match attachment.</summary>

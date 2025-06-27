@@ -27,6 +27,16 @@
  * SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
+//#define SPINE_ALLOW_UNSAFE // note: this define can be set via Edit - Preferences - Spine.
+
+#if UNITY_2021_2_OR_NEWER
+#define TEXT_ASSET_HAS_GET_DATA_BYTES
+#endif
+
+#if SPINE_ALLOW_UNSAFE && TEXT_ASSET_HAS_GET_DATA_BYTES
+#define UNSAFE_DIRECT_ACCESS_TEXT_ASSET_DATA
+#endif
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -41,8 +51,8 @@ namespace Spine.Unity {
 	public static class SkeletonDataCompatibility {
 
 #if UNITY_EDITOR
-		static readonly int[][] compatibleBinaryVersions = { new[] { 4, 1, 0 } };
-		static readonly int[][] compatibleJsonVersions = { new[] { 4, 1, 0 } };
+		static readonly int[][] compatibleBinaryVersions = { new[] { 4, 2, 0 } };
+		static readonly int[][] compatibleJsonVersions = { new[] { 4, 2, 0 } };
 
 		static bool wasVersionDialogShown = false;
 		static readonly Regex jsonVersionRegex = new Regex(@"""spine""\s*:\s*""([^""]+)""", RegexOptions.CultureInvariant);
@@ -106,8 +116,12 @@ namespace Spine.Unity {
 
 			if (fileVersion.sourceType == SourceType.Binary) {
 				try {
-					using (MemoryStream memStream = new MemoryStream(asset.bytes)) {
-						fileVersion.rawVersion = SkeletonBinary.GetVersionString(memStream);
+#if UNSAFE_DIRECT_ACCESS_TEXT_ASSET_DATA
+					using (Stream stream = asset.GetStreamUnsafe()) {
+#else
+					using (MemoryStream stream = new MemoryStream(asset.bytes)) {
+#endif
+						fileVersion.rawVersion = SkeletonBinary.GetVersionString(stream);
 					}
 				} catch (System.Exception e) {
 					problemDescription = string.Format("Failed to read '{0}'. It is likely not a binary Spine SkeletonData file.\n{1}", asset.name, e);
@@ -162,8 +176,11 @@ namespace Spine.Unity {
 		}
 
 		public static bool IsJsonFile (TextAsset file) {
+#if TEXT_ASSET_HAS_GET_DATA_BYTES
+			var content = file.GetData<byte>();
+#else
 			byte[] content = file.bytes;
-
+#endif
 			// check for binary skeleton version number string, starts after 8 byte hash
 			char majorVersionChar = compatibleBinaryVersions[0][0].ToString()[0];
 			if (content.Length > 10 && content[9] == majorVersionChar && content[10] == '.')
@@ -219,5 +236,5 @@ namespace Spine.Unity {
 				spineJson.name, descriptionString), spineJson);
 		}
 #endif // UNITY_EDITOR
-	}
-}
+		}
+		}
