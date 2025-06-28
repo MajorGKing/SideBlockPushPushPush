@@ -6,6 +6,8 @@ using static Define;
 
 public class GameScene : BaseScene
 {
+    public Sprite sprite_sheet;
+
     protected override void Awake()
     {
         base.Awake();
@@ -16,7 +18,6 @@ public class GameScene : BaseScene
 
         Debug.Log("@>> GameScene Init()");
         SceneType = EScene.GameScene;
-
     }
     
     public override void Clear()

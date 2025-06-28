@@ -82,6 +82,8 @@ public class UI_TitleScene : UI_Scene
 		{
 			GetText((int)Texts.StatusText).text = $"TODO 로딩중 : {key} {count}/{totalCount}";
 
+			Debug.Log($"TODO 로딩중 : {key} {count}/{totalCount}");
+
 			if (count == totalCount)
 			{
 				OnAssetLoaded();

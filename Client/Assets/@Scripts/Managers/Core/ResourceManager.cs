@@ -121,6 +121,17 @@ public class ResourceManager
                         callback?.Invoke(result.PrimaryKey, loadCount, totalCount);
                     });
                 }
+                else if(result.ResourceType == typeof(List<Sprite>))
+                {
+                    foreach(Sprite sp in result as List<Sprite>)
+                    {
+                        LoadAsync<Sprite>(result.PrimaryKey);
+                    }
+
+                    loadCount++;
+
+                    callback?.Invoke(result.PrimaryKey, loadCount, totalCount);
+                }
                 else
                 { 
                     LoadAsync<T>(result.PrimaryKey, (obj) =>

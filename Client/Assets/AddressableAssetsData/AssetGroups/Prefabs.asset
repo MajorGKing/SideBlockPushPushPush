@@ -13,10 +13,26 @@ MonoBehaviour:
   m_Name: Prefabs
   m_EditorClassIdentifier: 
   m_GroupName: Prefabs
-  m_Data:
-    m_SerializedData: []
   m_GUID: 6855a303d91ea534cad059887528a9c1
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 4c01372a69baf8c47a0590073721cca0
+    m_Address: Hero
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d2ea4147c2ff7f14b86c011c1c949ccc
+    m_Address: Buddy
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e6e19491e2c42be45a0ee661283f29d2
+    m_Address: Monster
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9094f0f0595c6e147aa68a6f81e2dcaf, type: 2}
   m_SchemaSet:
