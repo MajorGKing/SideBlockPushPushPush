@@ -135,7 +135,7 @@ MonoBehaviour:
   skeletonDataAsset: {fileID: 11400000, guid: d49309b5b1158ad4385f1a5d89b87039, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
-  initialFlipX: 0
+  initialFlipX: 1
   initialFlipY: 0
   updateWhenInvisible: 3
   separatorSlotNames: []
@@ -173,11 +173,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 19885186223853947, guid: af7006d2c331e924da8e3501336d32eb, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19885186223853947, guid: af7006d2c331e924da8e3501336d32eb, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4257155920130143337, guid: af7006d2c331e924da8e3501336d32eb, type: 3}
       propertyPath: m_Pivot.x

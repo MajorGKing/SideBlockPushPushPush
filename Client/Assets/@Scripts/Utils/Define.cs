@@ -77,4 +77,24 @@ public class Define
 		//
 		Projectile = 20,
 	}
+
+    #region Object
+    public enum EGameObjectType
+    {
+        None,
+        Map,
+        Hero,
+        Buddy,
+        Monster,
+        SkillEffect,
+        SkillCube,
+        Projectile,
+    }
+    #endregion
+
+
+    #region Tag
+    public static string HEROTAG = "Hero";
+    public static string BUDDYTAG = "Buddy";
+    #endregion
 }

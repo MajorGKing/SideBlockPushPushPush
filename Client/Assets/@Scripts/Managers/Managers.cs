@@ -96,6 +96,7 @@ public class Managers : MonoBehaviour
 	public void Update()
 	{
 		_network?.Update();
+        _game?.Update();
 	}
 
 	public static void Clear()

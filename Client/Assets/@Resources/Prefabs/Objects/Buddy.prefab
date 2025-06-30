@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1439813059894823996}
+  - component: {fileID: 2082870378672456544}
   m_Layer: 0
   m_Name: Buddy
-  m_TagString: Untagged
+  m_TagString: Buddy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,6 +33,24 @@ Transform:
   - {fileID: 7326953523444658125}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2082870378672456544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4175842467918982608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a25b3856d99724baa7f39dc03cad64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coolTime: 1
+  _currentCoolTime: 0
+  _reloadTime: 3
+  _currentReloadTime: 0
+  blockImages: []
+  _currentBuddyState: 0
 --- !u!1 &6682777525618047786
 GameObject:
   m_ObjectHideFlags: 0
