@@ -17,6 +17,10 @@ public class GameScene : BaseScene
 
     private List<List<SpriteRenderer>> blockImages;
 
+    public List<Transform> monsterPosition;
+
+    private List<MonsterController> _monsterControllers;
+
     protected override void Awake()
     {
         base.Awake();
@@ -58,6 +62,14 @@ public class GameScene : BaseScene
         }
 
         _heroController.SetInfo(0, stockImages, this);
+
+        _monsterControllers = new List<MonsterController>();
+
+        var monster = Managers.Resource.Instantiate("Monster", monsterPosition[0]);
+        monster.transform.position = monsterPosition[0].position;
+        var mc = monster.transform.GetComponent<MonsterController>();
+        _monsterControllers.Add(mc);
+        _monsterControllers[0].SetInfo(this);
     }
 
     protected override void Start()
@@ -79,6 +91,12 @@ public class GameScene : BaseScene
     public void BuddyAttack(Sprite block)
     {
         _heroController.AddBlock(block);
+        _monsterControllers[0].OnDamage(0, 10);
+    }
+
+    public void HeroAttack()
+    {
+        _monsterControllers[0].OnDamage(1, 30);
     }
     
     public override void Clear()

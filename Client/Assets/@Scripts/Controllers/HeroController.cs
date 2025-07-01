@@ -138,7 +138,9 @@ public class HeroController : CreatureController
 
     private void Attack()
     {
-        foreach(var block in _myBlocks)
+        _gameScene.HeroAttack();
+
+        foreach (var block in _myBlocks)
         {
             block.sprite = null;
         }

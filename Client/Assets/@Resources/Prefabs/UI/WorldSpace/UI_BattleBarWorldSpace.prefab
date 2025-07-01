@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 7592274436891774989}
   - component: {fileID: 2458617971814580631}
   m_Layer: 5
-  m_Name: Text _HP
+  m_Name: Text_Hp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -409,6 +409,7 @@ GameObject:
   - component: {fileID: 2885233516135638835}
   - component: {fileID: 732046248946666836}
   - component: {fileID: 2123619145799435348}
+  - component: {fileID: 798555330425758236}
   m_Layer: 5
   m_Name: UI_BattleBarWorldSpace
   m_TagString: Untagged
@@ -482,7 +483,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &2123619145799435348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,6 +501,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &798555330425758236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177116580407558400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b51a4a9d74a3a49a608624060fb154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6568624767221019534
 GameObject:
   m_ObjectHideFlags: 0

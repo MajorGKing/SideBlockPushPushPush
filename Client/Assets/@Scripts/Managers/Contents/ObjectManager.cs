@@ -24,6 +24,8 @@ public class ObjectManager
     public Transform ItemHolderRoot { get { return GetRootTransform("@ItemHolders"); } }
     #endregion
 
+    public List<SkillEffect> SkillEffects { get; private set; } = new List<SkillEffect>();
+
     public ObjectManager()
     {
     }
@@ -44,6 +46,29 @@ public class ObjectManager
     public void DespawnGameObject<T>(T obj) where T : BaseController
     {
 
+    }
+
+    public SkillEffect SpawnSkillEffect(Vector3 position, string prefabName, float lifeTime)
+    {
+        SkillEffect skillEffect = Managers.Resource.Instantiate(prefabName).GetOrAddComponent<SkillEffect>();
+        if (skillEffect != null)
+        {
+            skillEffect.SetInfo(lifeTime);
+            skillEffect.transform.position = position;
+            SkillEffects.Add(skillEffect);
+            return skillEffect;
+        }
+
+        return null;
+    }
+
+    public void RemoveSkillEffect(SkillEffect skillEffect)
+    {
+        if (SkillEffects.Contains(skillEffect))
+        {
+            Managers.Resource.Destroy(skillEffect.gameObject);
+            SkillEffects.Remove(skillEffect);
+        }
     }
 
 

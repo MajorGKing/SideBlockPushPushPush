@@ -1,0 +1,709 @@
+fileFormatVersion: 2
+guid: 2ee4ae087f4e8cc4a847352c23bca9e5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4007588789812252723
+    second: sp_skill_spear_007_0
+  - first:
+      213: -917688016131431818
+    second: sp_skill_spear_007_1
+  - first:
+      213: -4165231195176589769
+    second: sp_skill_spear_007_2
+  - first:
+      213: -1993445095856910122
+    second: sp_skill_spear_007_3
+  - first:
+      213: 6495649302644204183
+    second: sp_skill_spear_007_4
+  - first:
+      213: -2203160523774934457
+    second: sp_skill_spear_007_5
+  - first:
+      213: 236573167813473719
+    second: sp_skill_spear_007_6
+  - first:
+      213: 7092780397578644658
+    second: sp_skill_spear_007_7
+  - first:
+      213: 4532741695794233746
+    second: sp_skill_spear_007_8
+  - first:
+      213: -6488125885061224433
+    second: sp_skill_spear_007_9
+  - first:
+      213: 1190891569455312007
+    second: sp_skill_spear_007_10
+  - first:
+      213: -6259866733830462889
+    second: sp_skill_spear_007_11
+  - first:
+      213: 5518486944052673068
+    second: sp_skill_spear_007_12
+  - first:
+      213: 9170473003494542622
+    second: sp_skill_spear_007_13
+  - first:
+      213: -5180716457498048775
+    second: sp_skill_spear_007_14
+  - first:
+      213: 7892072024406811633
+    second: sp_skill_spear_007_15
+  - first:
+      213: 8781174474913336172
+    second: sp_skill_spear_007_16
+  - first:
+      213: 7654630118680942456
+    second: sp_skill_spear_007_17
+  - first:
+      213: -6460745029234302679
+    second: sp_skill_spear_007_18
+  - first:
+      213: 7793565300730290492
+    second: sp_skill_spear_007_19
+  - first:
+      213: -5307607920318083605
+    second: sp_skill_spear_007_20
+  - first:
+      213: -1022128582049038290
+    second: sp_skill_spear_007_21
+  - first:
+      213: 5692770795632198542
+    second: sp_skill_spear_007_22
+  - first:
+      213: 336834439257280846
+    second: sp_skill_spear_007_23
+  - first:
+      213: -5422242484119789649
+    second: sp_skill_spear_007_24
+  - first:
+      213: 8282896257510217832
+    second: sp_skill_spear_007_25
+  - first:
+      213: 6675800449586232874
+    second: sp_skill_spear_007_26
+  - first:
+      213: 4920655724195541030
+    second: sp_skill_spear_007_27
+  - first:
+      213: 3966506846412978816
+    second: sp_skill_spear_007_28
+  - first:
+      213: 5234844980365741248
+    second: sp_skill_spear_007_29
+  - first:
+      213: 3445448490826933335
+    second: sp_skill_spear_007_30
+  - first:
+      213: -211643729870206772
+    second: sp_skill_spear_007_31
+  - first:
+      213: 4913854923016181930
+    second: sp_skill_spear_007_32
+  - first:
+      213: -1970087699807373181
+    second: sp_skill_spear_007_33
+  - first:
+      213: -4168657564697842786
+    second: sp_skill_spear_007_34
+  - first:
+      213: -6353537142449150196
+    second: sp_skill_spear_007_35
+  - first:
+      213: 8460059612170229064
+    second: sp_skill_spear_007_36
+  - first:
+      213: 8589365523784701294
+    second: sp_skill_spear_007_37
+  - first:
+      213: -5135669991960922174
+    second: sp_skill_spear_007_38
+  - first:
+      213: -5998257467510879629
+    second: sp_skill_spear_007_39
+  - first:
+      213: -6716590656875755867
+    second: sp_skill_spear_007_40
+  - first:
+      213: -363837753215028477
+    second: sp_skill_spear_007_41
+  - first:
+      213: 641254187281215395
+    second: sp_skill_spear_007_42
+  - first:
+      213: -2923322185684947457
+    second: sp_skill_spear_007_43
+  - first:
+      213: 7834156291433827935
+    second: sp_skill_spear_007_44
+  - first:
+      213: 3761572460119865409
+    second: sp_skill_spear_007_45
+  - first:
+      213: 6467912185564742984
+    second: sp_skill_spear_007_46
+  - first:
+      213: -6818331332542780154
+    second: sp_skill_spear_007_47
+  - first:
+      213: -7228520932456336255
+    second: sp_skill_spear_007_48
+  - first:
+      213: 4587463086118200537
+    second: sp_skill_spear_007_49
+  - first:
+      213: -1938873725975452432
+    second: sp_skill_spear_007_50
+  - first:
+      213: -4138818727697298837
+    second: sp_skill_spear_007_51
+  - first:
+      213: -8136362114168339639
+    second: sp_skill_spear_007_52
+  - first:
+      213: 9056699257936582127
+    second: sp_skill_spear_007_53
+  - first:
+      213: -3396710637577641061
+    second: sp_skill_spear_007_54
+  - first:
+      213: -7083736248599790552
+    second: sp_skill_spear_007_55
+  - first:
+      213: -7789776420862359321
+    second: sp_skill_spear_007_56
+  - first:
+      213: -8376565090433569129
+    second: sp_skill_spear_007_57
+  - first:
+      213: 8727565233668577913
+    second: sp_skill_spear_007_58
+  - first:
+      213: -5379766733187647086
+    second: sp_skill_spear_007_59
+  - first:
+      213: 3180630117744774542
+    second: sp_skill_spear_007_60
+  - first:
+      213: -4113543737103673974
+    second: sp_skill_spear_007_61
+  - first:
+      213: -6516683100693397231
+    second: sp_skill_spear_007_62
+  - first:
+      213: 2805420326448801452
+    second: sp_skill_spear_007_63
+  - first:
+      213: 5080157444139181473
+    second: sp_skill_spear_007_64
+  - first:
+      213: -8096340281803116045
+    second: sp_skill_spear_007_65
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sp_skill_sword_006_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92184467957f79546a42c6a93887ab07
+      internalID: -437391823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_sword_006_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 576
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e018c5edbf2ff4f448ebbc1788be7371
+      internalID: 1965211393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_sword_006_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 576
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be384d0950d628c44928b68c8fdfa331
+      internalID: -1927669626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_sword_006_3
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 576
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf40db1190b1b7740ae992813ccccedb
+      internalID: 1205365061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_sword_006_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 928952829849e5843b99147e6da4e920
+      internalID: -796900859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_sword_006_5
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2c9b611650690e489fc47ac6cdbf195
+      internalID: 1932525428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_sword_006_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4833bc75acac3c74c836dd717eb3d993
+      internalID: -978464251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_sword_006_7
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59973f20db2fcf14793a456817fd0e64
+      internalID: -532764962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_sword_006_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0403fac7df2fd314ba06ec7e8b08c732
+      internalID: 1919688370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_sword_006_9
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59ae907031e41f24294efc44c8e107d6
+      internalID: 234773092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_sword_006_10
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5db14c215b9c42547843ec5758af83c4
+      internalID: 2016802034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_sword_006_11
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d174b0f6a738f74ba6b664c9bd6110e
+      internalID: -2131540700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_sword_006_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fe282b742bda094182fc583fb9c3739
+      internalID: 589429317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_sword_006_13
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7341002017874d54f8923bb5a1e4c81c
+      internalID: -1526633789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_sword_006_14
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb14d99b3be56404f8b6b1b91107266b
+      internalID: -1335530158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_sword_006_15
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 719bc62b149e91743bd0242fc3ee21b4
+      internalID: 518840737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f10e66d8544d29347a796c85144ed48d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sp_skill_sword_006_0: -437391823
+      sp_skill_sword_006_1: 1965211393
+      sp_skill_sword_006_10: 2016802034
+      sp_skill_sword_006_11: -2131540700
+      sp_skill_sword_006_12: 589429317
+      sp_skill_sword_006_13: -1526633789
+      sp_skill_sword_006_14: -1335530158
+      sp_skill_sword_006_15: 518840737
+      sp_skill_sword_006_2: -1927669626
+      sp_skill_sword_006_3: 1205365061
+      sp_skill_sword_006_4: -796900859
+      sp_skill_sword_006_5: 1932525428
+      sp_skill_sword_006_6: -978464251
+      sp_skill_sword_006_7: -532764962
+      sp_skill_sword_006_8: 1919688370
+      sp_skill_sword_006_9: 234773092
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

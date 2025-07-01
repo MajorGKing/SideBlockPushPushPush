@@ -1,0 +1,674 @@
+fileFormatVersion: 2
+guid: efcba4d8205d3a7439412f42af90deaf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8032028001417615043
+    second: sp_skill_common_attack_hit_003_0
+  - first:
+      213: 8801918931029563018
+    second: sp_skill_common_attack_hit_003_1
+  - first:
+      213: 3769826709870356818
+    second: sp_skill_common_attack_hit_003_2
+  - first:
+      213: 5801877735040751936
+    second: sp_skill_common_attack_hit_003_3
+  - first:
+      213: -5495974547246930088
+    second: sp_skill_common_attack_hit_003_4
+  - first:
+      213: 2339145521307745927
+    second: sp_skill_common_attack_hit_003_5
+  - first:
+      213: 1037229801778099419
+    second: sp_skill_common_attack_hit_003_6
+  - first:
+      213: 2211059851999910748
+    second: sp_skill_common_attack_hit_003_7
+  - first:
+      213: 4273094437679523560
+    second: sp_skill_common_attack_hit_003_8
+  - first:
+      213: 8872536424820805295
+    second: sp_skill_common_attack_hit_003_9
+  - first:
+      213: 3441236140205034362
+    second: sp_skill_common_attack_hit_003_10
+  - first:
+      213: -13176597995188386
+    second: sp_skill_common_attack_hit_003_11
+  - first:
+      213: 3265768328646418338
+    second: sp_skill_common_attack_hit_003_12
+  - first:
+      213: 9222532837856488793
+    second: sp_skill_common_attack_hit_003_13
+  - first:
+      213: 4059901650071075778
+    second: sp_skill_common_attack_hit_003_14
+  - first:
+      213: -4699870479304341296
+    second: sp_skill_common_attack_hit_003_15
+  - first:
+      213: 8184269535364510748
+    second: sp_skill_common_attack_hit_003_16
+  - first:
+      213: -8878950489808138847
+    second: sp_skill_common_attack_hit_003_17
+  - first:
+      213: -1145223245372426992
+    second: sp_skill_common_attack_hit_003_18
+  - first:
+      213: 703761383899426906
+    second: sp_skill_common_attack_hit_003_19
+  - first:
+      213: -2946946202280145854
+    second: sp_skill_common_attack_hit_003_20
+  - first:
+      213: 4044686656255724808
+    second: sp_skill_common_attack_hit_003_21
+  - first:
+      213: -8519614320673280769
+    second: sp_skill_common_attack_hit_003_22
+  - first:
+      213: -3959909931738744470
+    second: sp_skill_common_attack_hit_003_23
+  - first:
+      213: -4508735568010707070
+    second: sp_skill_common_attack_hit_003_24
+  - first:
+      213: 2614293503766003853
+    second: sp_skill_common_attack_hit_003_25
+  - first:
+      213: -9033794339638136974
+    second: sp_skill_common_attack_hit_003_26
+  - first:
+      213: 2037319812095070060
+    second: sp_skill_common_attack_hit_003_27
+  - first:
+      213: -7234696353082986697
+    second: sp_skill_common_attack_hit_003_28
+  - first:
+      213: 8307902832181361522
+    second: sp_skill_common_attack_hit_003_29
+  - first:
+      213: -327543398960203969
+    second: sp_skill_common_attack_hit_003_30
+  - first:
+      213: 5431499294248915714
+    second: sp_skill_common_attack_hit_003_31
+  - first:
+      213: 6580048807435905418
+    second: sp_skill_common_attack_hit_003_32
+  - first:
+      213: 6355149579862588345
+    second: sp_skill_common_attack_hit_003_33
+  - first:
+      213: -5614633103631699161
+    second: sp_skill_common_attack_hit_003_34
+  - first:
+      213: 2500623439345654063
+    second: sp_skill_common_attack_hit_003_35
+  - first:
+      213: 6674782451410512854
+    second: sp_skill_common_attack_hit_003_36
+  - first:
+      213: 848420357914870176
+    second: sp_skill_common_attack_hit_003_37
+  - first:
+      213: 5016828241917282364
+    second: sp_skill_common_attack_hit_003_38
+  - first:
+      213: -6248687877487618842
+    second: sp_skill_common_attack_hit_003_39
+  - first:
+      213: -9201203613198032577
+    second: sp_skill_common_attack_hit_003_40
+  - first:
+      213: 4126304700552386479
+    second: sp_skill_common_attack_hit_003_41
+  - first:
+      213: 2840924475723693854
+    second: sp_skill_common_attack_hit_003_42
+  - first:
+      213: 7578483472721698579
+    second: sp_skill_common_attack_hit_003_43
+  - first:
+      213: -5604262366524671558
+    second: sp_skill_common_attack_hit_003_44
+  - first:
+      213: 67303052567698851
+    second: sp_skill_common_attack_hit_003_45
+  - first:
+      213: 421202258803766513
+    second: sp_skill_common_attack_hit_003_46
+  - first:
+      213: -2186339511397174528
+    second: sp_skill_common_attack_hit_003_47
+  - first:
+      213: 2569962669414834445
+    second: sp_skill_common_attack_hit_003_48
+  - first:
+      213: -144793873881780563
+    second: sp_skill_common_attack_hit_003_49
+  - first:
+      213: 4008063012080691298
+    second: sp_skill_common_attack_hit_003_50
+  - first:
+      213: -4401126529999082408
+    second: sp_skill_common_attack_hit_003_51
+  - first:
+      213: 1595915263886216309
+    second: sp_skill_common_attack_hit_003_52
+  - first:
+      213: -8564942955695450688
+    second: sp_skill_common_attack_hit_003_53
+  - first:
+      213: -4788532496417092511
+    second: sp_skill_common_attack_hit_003_54
+  - first:
+      213: -6122338105836242068
+    second: sp_skill_common_attack_hit_003_55
+  - first:
+      213: -5669402923269337043
+    second: sp_skill_common_attack_hit_003_56
+  - first:
+      213: 6394293962441213937
+    second: sp_skill_common_attack_hit_003_57
+  - first:
+      213: 7776927619766542541
+    second: sp_skill_common_attack_hit_003_58
+  - first:
+      213: -359125663294431289
+    second: sp_skill_common_attack_hit_003_59
+  - first:
+      213: 8354038004132612216
+    second: sp_skill_common_attack_hit_003_60
+  - first:
+      213: 5444484977503207499
+    second: sp_skill_common_attack_hit_003_61
+  - first:
+      213: -6498895424809319894
+    second: sp_skill_common_attack_hit_003_62
+  - first:
+      213: -2388174902798583163
+    second: sp_skill_common_attack_hit_003_63
+  - first:
+      213: 9014390435794186481
+    second: sp_skill_common_attack_hit_003_64
+  - first:
+      213: -8496730947176530406
+    second: sp_skill_common_attack_hit_003_65
+  - first:
+      213: -6861132158921116984
+    second: sp_skill_common_attack_hit_003_66
+  - first:
+      213: 4094899338938685976
+    second: sp_skill_common_attack_hit_003_67
+  - first:
+      213: -8157204331618891640
+    second: sp_skill_common_attack_hit_003_68
+  - first:
+      213: 4112167987605431614
+    second: sp_skill_common_attack_hit_003_69
+  - first:
+      213: 5256213273236195681
+    second: sp_skill_common_attack_hit_003_70
+  - first:
+      213: 5398263978772857152
+    second: sp_skill_common_attack_hit_003_71
+  - first:
+      213: -584058819908439373
+    second: sp_skill_common_attack_hit_003_72
+  - first:
+      213: 6212186113547917922
+    second: sp_skill_common_attack_hit_003_73
+  - first:
+      213: -7684994963079494056
+    second: sp_skill_common_attack_hit_003_74
+  - first:
+      213: -6513612570571182790
+    second: sp_skill_common_attack_hit_003_75
+  - first:
+      213: -5594726484781347112
+    second: sp_skill_common_attack_hit_003_76
+  - first:
+      213: 4457615892604500685
+    second: sp_skill_common_attack_hit_003_77
+  - first:
+      213: -8177274573912087499
+    second: sp_skill_common_attack_hit_003_78
+  - first:
+      213: 7391592812818467989
+    second: sp_skill_common_attack_hit_003_79
+  - first:
+      213: -816295720556170324
+    second: sp_skill_common_attack_hit_003_80
+  - first:
+      213: -3161993140756135689
+    second: sp_skill_common_attack_hit_003_81
+  - first:
+      213: 1680289457754639474
+    second: sp_skill_common_attack_hit_003_82
+  - first:
+      213: 4344474560546700377
+    second: sp_skill_common_attack_hit_003_83
+  - first:
+      213: 6958760372660294706
+    second: sp_skill_common_attack_hit_003_84
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sp_skill_common_attack_hit_003_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d4e8b14f33eb1d47b5f5ab623100fcc
+      internalID: 1730341134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_common_attack_hit_003_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05a007fa83446424e80f54877e496c6b
+      internalID: -408773847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_common_attack_hit_003_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d91fcf98a071744eb739bc2682183f5
+      internalID: 2033713862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_common_attack_hit_003_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac5e48126e4794a4e874dd2f71f7b4ce
+      internalID: 1388164613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_common_attack_hit_003_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b5e7e710fbbd2b44895c9634baade25
+      internalID: 153260030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_common_attack_hit_003_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad75a1193e7249e4eb704d6aedddf384
+      internalID: -1715005063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_common_attack_hit_003_6
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69279de201a99494e98848bc9221a19d
+      internalID: 809734817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_common_attack_hit_003_7
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5cc28df6600c6749b8feea3c99c841d
+      internalID: 1233876517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_common_attack_hit_003_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb140794ddb94bd4ba3758bd73b814c3
+      internalID: 1733291401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_common_attack_hit_003_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a740a6615dfc5c74cb8c8aeeb0b88fcd
+      internalID: 377278032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_common_attack_hit_003_10
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dafa7fe571e8a4243b15f6426063b626
+      internalID: -416174473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_common_attack_hit_003_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1267a2decfa68a4cb9d7b67ee5ffb52
+      internalID: 1247545391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 45eb4340f51d5d542a03ea86a242c67d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sp_skill_common_attack_hit_003_0: 1730341134
+      sp_skill_common_attack_hit_003_1: -408773847
+      sp_skill_common_attack_hit_003_10: -416174473
+      sp_skill_common_attack_hit_003_11: 1247545391
+      sp_skill_common_attack_hit_003_2: 2033713862
+      sp_skill_common_attack_hit_003_3: 1388164613
+      sp_skill_common_attack_hit_003_4: 153260030
+      sp_skill_common_attack_hit_003_5: -1715005063
+      sp_skill_common_attack_hit_003_6: 809734817
+      sp_skill_common_attack_hit_003_7: 1233876517
+      sp_skill_common_attack_hit_003_8: 1733291401
+      sp_skill_common_attack_hit_003_9: 377278032
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

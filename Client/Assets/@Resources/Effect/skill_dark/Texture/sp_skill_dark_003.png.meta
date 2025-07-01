@@ -1,0 +1,850 @@
+fileFormatVersion: 2
+guid: 47efbde70e6c24f419dffe6bd62fdae9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2166886602714077240
+    second: sp_skill_dark_003_0
+  - first:
+      213: 5498363304167533627
+    second: sp_skill_dark_003_1
+  - first:
+      213: 5216287553591339659
+    second: sp_skill_dark_003_2
+  - first:
+      213: 3200007672337056226
+    second: sp_skill_dark_003_3
+  - first:
+      213: -1685154438811893707
+    second: sp_skill_dark_003_4
+  - first:
+      213: 3973213549342558231
+    second: sp_skill_dark_003_5
+  - first:
+      213: -8342473850694540321
+    second: sp_skill_dark_003_6
+  - first:
+      213: -2587913972170973112
+    second: sp_skill_dark_003_7
+  - first:
+      213: -2917647060535001595
+    second: sp_skill_dark_003_8
+  - first:
+      213: 1689417272340270027
+    second: sp_skill_dark_003_9
+  - first:
+      213: 5615968061467791338
+    second: sp_skill_dark_003_10
+  - first:
+      213: -9067446400644457890
+    second: sp_skill_dark_003_11
+  - first:
+      213: -1624758804818504585
+    second: sp_skill_dark_003_12
+  - first:
+      213: -7980344469955904101
+    second: sp_skill_dark_003_13
+  - first:
+      213: 7459934289274224446
+    second: sp_skill_dark_003_14
+  - first:
+      213: -2416005457102407686
+    second: sp_skill_dark_003_15
+  - first:
+      213: -2578503733290202538
+    second: sp_skill_dark_003_16
+  - first:
+      213: -6720236827865093342
+    second: sp_skill_dark_003_17
+  - first:
+      213: 2705449677986973421
+    second: sp_skill_dark_003_18
+  - first:
+      213: 4051415593488301412
+    second: sp_skill_dark_003_19
+  - first:
+      213: -3638207288397421406
+    second: sp_skill_dark_003_20
+  - first:
+      213: -4745844426195483575
+    second: sp_skill_dark_003_21
+  - first:
+      213: 5105697583583310296
+    second: sp_skill_dark_003_22
+  - first:
+      213: 5462015169493391103
+    second: sp_skill_dark_003_23
+  - first:
+      213: 8544581407315582172
+    second: sp_skill_dark_003_24
+  - first:
+      213: 9084493458330542955
+    second: sp_skill_dark_003_25
+  - first:
+      213: -3844504877656542615
+    second: sp_skill_dark_003_26
+  - first:
+      213: -9160523589910452944
+    second: sp_skill_dark_003_27
+  - first:
+      213: 3052185009680448153
+    second: sp_skill_dark_003_28
+  - first:
+      213: 2722925438547870255
+    second: sp_skill_dark_003_29
+  - first:
+      213: 2166975636694203712
+    second: sp_skill_dark_003_30
+  - first:
+      213: 6794176503447538126
+    second: sp_skill_dark_003_31
+  - first:
+      213: 3069199232225274696
+    second: sp_skill_dark_003_32
+  - first:
+      213: -1614748151234066662
+    second: sp_skill_dark_003_33
+  - first:
+      213: -4447106524294294140
+    second: sp_skill_dark_003_34
+  - first:
+      213: 435830295448555999
+    second: sp_skill_dark_003_35
+  - first:
+      213: -6385572779572104826
+    second: sp_skill_dark_003_36
+  - first:
+      213: -5030684051588495487
+    second: sp_skill_dark_003_37
+  - first:
+      213: -6828040653382754696
+    second: sp_skill_dark_003_38
+  - first:
+      213: -2125409500321828957
+    second: sp_skill_dark_003_39
+  - first:
+      213: 5207105068915974409
+    second: sp_skill_dark_003_40
+  - first:
+      213: 5044830122567434996
+    second: sp_skill_dark_003_41
+  - first:
+      213: -2663439231601822123
+    second: sp_skill_dark_003_42
+  - first:
+      213: -4665530034664728161
+    second: sp_skill_dark_003_43
+  - first:
+      213: 7429806325377869884
+    second: sp_skill_dark_003_44
+  - first:
+      213: -5946071701736136881
+    second: sp_skill_dark_003_45
+  - first:
+      213: -5451248682101675604
+    second: sp_skill_dark_003_46
+  - first:
+      213: -6977855230209795651
+    second: sp_skill_dark_003_47
+  - first:
+      213: 2722959250355456921
+    second: sp_skill_dark_003_48
+  - first:
+      213: -5010514558420765123
+    second: sp_skill_dark_003_49
+  - first:
+      213: 4598456219701143796
+    second: sp_skill_dark_003_50
+  - first:
+      213: -4165831936696394233
+    second: sp_skill_dark_003_51
+  - first:
+      213: -6387189318429668239
+    second: sp_skill_dark_003_52
+  - first:
+      213: -996314334573367457
+    second: sp_skill_dark_003_53
+  - first:
+      213: -2936699574632576998
+    second: sp_skill_dark_003_54
+  - first:
+      213: -8378304258726784517
+    second: sp_skill_dark_003_55
+  - first:
+      213: -210078924603326194
+    second: sp_skill_dark_003_56
+  - first:
+      213: -6924490323525543022
+    second: sp_skill_dark_003_57
+  - first:
+      213: -7610788847490665803
+    second: sp_skill_dark_003_58
+  - first:
+      213: 5350713702414476369
+    second: sp_skill_dark_003_59
+  - first:
+      213: 3621006133955159635
+    second: sp_skill_dark_003_60
+  - first:
+      213: -9031721981016476044
+    second: sp_skill_dark_003_61
+  - first:
+      213: -7128558793814004805
+    second: sp_skill_dark_003_62
+  - first:
+      213: 4278564747714832626
+    second: sp_skill_dark_003_63
+  - first:
+      213: 2868700327722359387
+    second: sp_skill_dark_003_64
+  - first:
+      213: 483032428423157241
+    second: sp_skill_dark_003_65
+  - first:
+      213: 8757651201299183260
+    second: sp_skill_dark_003_66
+  - first:
+      213: 5270987570672335440
+    second: sp_skill_dark_003_67
+  - first:
+      213: 4380908046889294847
+    second: sp_skill_dark_003_68
+  - first:
+      213: -7404469314622658449
+    second: sp_skill_dark_003_69
+  - first:
+      213: 6290588286128056328
+    second: sp_skill_dark_003_70
+  - first:
+      213: -1310682535120463954
+    second: sp_skill_dark_003_71
+  - first:
+      213: -2621252332346172336
+    second: sp_skill_dark_003_72
+  - first:
+      213: 7507866824835309387
+    second: sp_skill_dark_003_73
+  - first:
+      213: -8352181688026227564
+    second: sp_skill_dark_003_74
+  - first:
+      213: 7360195306902621998
+    second: sp_skill_dark_003_75
+  - first:
+      213: 5507725578109233723
+    second: sp_skill_dark_003_76
+  - first:
+      213: -2084284113946176714
+    second: sp_skill_dark_003_77
+  - first:
+      213: -3789351216716158422
+    second: sp_skill_dark_003_78
+  - first:
+      213: -2668213148382332936
+    second: sp_skill_dark_003_79
+  - first:
+      213: 4834722969036317799
+    second: sp_skill_dark_003_80
+  - first:
+      213: 4432049837101898157
+    second: sp_skill_dark_003_81
+  - first:
+      213: 1508336985220169822
+    second: sp_skill_dark_003_82
+  - first:
+      213: 3304338886467982407
+    second: sp_skill_dark_003_83
+  - first:
+      213: 3888463695887105485
+    second: sp_skill_dark_003_84
+  - first:
+      213: 8598850528812053381
+    second: sp_skill_dark_003_85
+  - first:
+      213: -4127463363954690450
+    second: sp_skill_dark_003_86
+  - first:
+      213: 7365133379387751363
+    second: sp_skill_dark_003_87
+  - first:
+      213: 3816831666456611279
+    second: sp_skill_dark_003_88
+  - first:
+      213: -6472633475514610964
+    second: sp_skill_dark_003_89
+  - first:
+      213: -477813303788055261
+    second: sp_skill_dark_003_90
+  - first:
+      213: 8786570714331024043
+    second: sp_skill_dark_003_91
+  - first:
+      213: 8721510998240891318
+    second: sp_skill_dark_003_92
+  - first:
+      213: 4763379538112825807
+    second: sp_skill_dark_003_93
+  - first:
+      213: -4666205462634860948
+    second: sp_skill_dark_003_94
+  - first:
+      213: 1841491670214415984
+    second: sp_skill_dark_003_95
+  - first:
+      213: -559046692034634207
+    second: sp_skill_dark_003_96
+  - first:
+      213: 8887140565523072592
+    second: sp_skill_dark_003_97
+  - first:
+      213: 4811826559194134330
+    second: sp_skill_dark_003_98
+  - first:
+      213: -1675651008009952418
+    second: sp_skill_dark_003_99
+  - first:
+      213: 8912042052895428784
+    second: sp_skill_dark_003_100
+  - first:
+      213: -8136244976690445541
+    second: sp_skill_dark_003_101
+  - first:
+      213: 3428179165408013859
+    second: sp_skill_dark_003_102
+  - first:
+      213: 3037539803781326888
+    second: sp_skill_dark_003_103
+  - first:
+      213: -6157206374392057477
+    second: sp_skill_dark_003_104
+  - first:
+      213: 8140841845278883830
+    second: sp_skill_dark_003_105
+  - first:
+      213: 2555002545393238612
+    second: sp_skill_dark_003_106
+  - first:
+      213: 7110799203393271819
+    second: sp_skill_dark_003_107
+  - first:
+      213: 826736743220269928
+    second: sp_skill_dark_003_108
+  - first:
+      213: 1739823341461901820
+    second: sp_skill_dark_003_109
+  - first:
+      213: -6925086464371088302
+    second: sp_skill_dark_003_110
+  - first:
+      213: -5976636639564263366
+    second: sp_skill_dark_003_111
+  - first:
+      213: -7716496055464201371
+    second: sp_skill_dark_003_112
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sp_skill_dark_003_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2518b37d310bff4683e3f41ae6347a7
+      internalID: 1522464298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_dark_003_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd4b0605a63a34749813cd80ce0ed75c
+      internalID: 1029345524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_dark_003_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 384
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89678e94a4b561a46902af430dfb5178
+      internalID: -1931559428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_dark_003_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eb3b9e60b1a7f648942432a0763f2fc
+      internalID: -94801701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_dark_003_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2f2b97f1fdd7c9499d067c5f32a0ac5
+      internalID: -388201073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_dark_003_5
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57649f9dd947c2449826f5591fa9af82
+      internalID: -1629266560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_dark_003_6
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c681bd576555f54c95c08a9bf43b06d
+      internalID: 98224733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_dark_003_7
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adf75a66f1ee8e442abefbe17a9b5a58
+      internalID: 851043880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_dark_003_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c151efe6c9599784dbbed0151c9481ae
+      internalID: -270787224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_dark_003_9
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad0db383e3140f1478f18dd93db90503
+      internalID: 2099494444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_dark_003_10
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 128
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38a2960c2f938e348974ff54fa05ec38
+      internalID: 1421556762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_dark_003_11
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 128
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78b8ade8b15f275479298c40f09098bd
+      internalID: 2128212580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_dark_003_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ccb200415ce63a41af06fdbda1103c6
+      internalID: -1766870047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_dark_003_13
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea0fec6cdcbb53442ade402bf0d3521a
+      internalID: 1319317206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_dark_003_14
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96901ed916dcfe545b904919cf065901
+      internalID: -38248415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sp_skill_dark_003_15
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3536abdc5527274449ae001eca7d14d5
+      internalID: 401016250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 51fff8a3b983c764a853ec4b1871122e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sp_skill_dark_003_0: 1522464298
+      sp_skill_dark_003_1: 1029345524
+      sp_skill_dark_003_10: 1421556762
+      sp_skill_dark_003_11: 2128212580
+      sp_skill_dark_003_12: -1766870047
+      sp_skill_dark_003_13: 1319317206
+      sp_skill_dark_003_14: -38248415
+      sp_skill_dark_003_15: 401016250
+      sp_skill_dark_003_2: -1931559428
+      sp_skill_dark_003_3: -94801701
+      sp_skill_dark_003_4: -388201073
+      sp_skill_dark_003_5: -1629266560
+      sp_skill_dark_003_6: 98224733
+      sp_skill_dark_003_7: 851043880
+      sp_skill_dark_003_8: -270787224
+      sp_skill_dark_003_9: 2099494444
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

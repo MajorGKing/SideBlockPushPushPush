@@ -1,0 +1,566 @@
+fileFormatVersion: 2
+guid: fab41bd94df75734e87be7d7bc68a823
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2426356345431336715
+    second: Boss_shaman_Skill_A_Hit_003_0
+  - first:
+      213: 4846611242623715183
+    second: Boss_shaman_Skill_A_Hit_003_1
+  - first:
+      213: 3580734210215757514
+    second: Boss_shaman_Skill_A_Hit_003_2
+  - first:
+      213: 9219414422893641974
+    second: Boss_shaman_Skill_A_Hit_003_3
+  - first:
+      213: -3261111922447333217
+    second: Boss_shaman_Skill_A_Hit_003_4
+  - first:
+      213: 6251744426856052659
+    second: Boss_shaman_Skill_A_Hit_003_5
+  - first:
+      213: -6991665067442011759
+    second: Boss_shaman_Skill_A_Hit_003_6
+  - first:
+      213: -6947587902825679215
+    second: Boss_shaman_Skill_A_Hit_003_7
+  - first:
+      213: -5197017587804789954
+    second: Boss_shaman_Skill_A_Hit_003_8
+  - first:
+      213: 4028199476811871868
+    second: Boss_shaman_Skill_A_Hit_003_9
+  - first:
+      213: 1368161908862309161
+    second: Boss_shaman_Skill_A_Hit_003_10
+  - first:
+      213: 2183459383782664003
+    second: Boss_shaman_Skill_A_Hit_003_11
+  - first:
+      213: -1184943727901470647
+    second: Boss_shaman_Skill_A_Hit_003_12
+  - first:
+      213: 2368099546186765191
+    second: Boss_shaman_Skill_A_Hit_003_13
+  - first:
+      213: 6778529483219153045
+    second: Boss_shaman_Skill_A_Hit_003_14
+  - first:
+      213: -5082769408032302953
+    second: Boss_shaman_Skill_A_Hit_003_15
+  - first:
+      213: -914046046384066871
+    second: Boss_shaman_Skill_A_Hit_003_16
+  - first:
+      213: 5184829654050235954
+    second: Boss_shaman_Skill_A_Hit_003_17
+  - first:
+      213: 1329691942825709525
+    second: Boss_shaman_Skill_A_Hit_003_18
+  - first:
+      213: -1271053046455907200
+    second: Boss_shaman_Skill_A_Hit_003_19
+  - first:
+      213: 1734555090321280985
+    second: Boss_shaman_Skill_A_Hit_003_20
+  - first:
+      213: 8513130227807468861
+    second: Boss_shaman_Skill_A_Hit_003_21
+  - first:
+      213: 4035271900940643524
+    second: Boss_shaman_Skill_A_Hit_003_22
+  - first:
+      213: 5070640570115489653
+    second: Boss_shaman_Skill_A_Hit_003_23
+  - first:
+      213: 8774587547985029571
+    second: Boss_shaman_Skill_A_Hit_003_24
+  - first:
+      213: -2341797152448034979
+    second: Boss_shaman_Skill_A_Hit_003_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Boss_shaman_Skill_A_Hit_003_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f89bbfa5b87b47a4ebd127134c8ba30c
+      internalID: 1397998554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_shaman_Skill_A_Hit_003_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 576
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f361169ff63ffa44b830d3ab9f7ba0b
+      internalID: 1863683351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_shaman_Skill_A_Hit_003_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 576
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e27314beef252042901c402f3a86964
+      internalID: 1126608036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_shaman_Skill_A_Hit_003_3
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 576
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44424686f3292254c913e61355d3ce7f
+      internalID: -1277638558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_shaman_Skill_A_Hit_003_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd3f978794b0aa04e839a50c8507d5c9
+      internalID: -257061701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_shaman_Skill_A_Hit_003_5
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f8115fc09c26fe43827c0e9d2b5de1a
+      internalID: -1252213438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_shaman_Skill_A_Hit_003_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d369c4100f2142d4f9b43fab93f4c785
+      internalID: -1504770309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_shaman_Skill_A_Hit_003_7
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9415bd27468c83340a059b38bb44d4a8
+      internalID: -44975838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_shaman_Skill_A_Hit_003_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bfea186ce760c24dba5690d0c88eb91
+      internalID: 180976567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_shaman_Skill_A_Hit_003_9
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed4c3369723794348aebab57ec848ab0
+      internalID: 871986255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_shaman_Skill_A_Hit_003_10
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fed0ad6d3bca9c4daebe9d3a6b8dee4
+      internalID: -143746890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_shaman_Skill_A_Hit_003_11
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d7618ad8bce6004987a2ba262f22a5e
+      internalID: 111038867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_shaman_Skill_A_Hit_003_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81d6732846c7bb44cab9d78c1dabece4
+      internalID: -236454447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_shaman_Skill_A_Hit_003_13
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 343699c24a5b9f748b0be606b8c3b0b7
+      internalID: 1317629400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_shaman_Skill_A_Hit_003_14
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33e0811f14567c843b1c6ec203585e22
+      internalID: -1356970311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 09d173f9a7e2e0b4782afd38db8d3a31
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Boss_shaman_Skill_A_Hit_003_0: 1397998554
+      Boss_shaman_Skill_A_Hit_003_1: 1863683351
+      Boss_shaman_Skill_A_Hit_003_10: -143746890
+      Boss_shaman_Skill_A_Hit_003_11: 111038867
+      Boss_shaman_Skill_A_Hit_003_12: -236454447
+      Boss_shaman_Skill_A_Hit_003_13: 1317629400
+      Boss_shaman_Skill_A_Hit_003_14: -1356970311
+      Boss_shaman_Skill_A_Hit_003_2: 1126608036
+      Boss_shaman_Skill_A_Hit_003_3: -1277638558
+      Boss_shaman_Skill_A_Hit_003_4: -257061701
+      Boss_shaman_Skill_A_Hit_003_5: -1252213438
+      Boss_shaman_Skill_A_Hit_003_6: -1504770309
+      Boss_shaman_Skill_A_Hit_003_7: -44975838
+      Boss_shaman_Skill_A_Hit_003_8: 180976567
+      Boss_shaman_Skill_A_Hit_003_9: 871986255
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
