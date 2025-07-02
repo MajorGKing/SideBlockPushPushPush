@@ -120,6 +120,13 @@ public class HeroController : CreatureController
         }
     }
 
+    public override void DoAttack()
+    {
+        if(currentState == EHeroState.Idle)
+        {
+            currentState = EHeroState.Attack;
+        }
+    }
 
     public override void OnAnimEventHandler(TrackEntry trackEntry, Spine.Event e)
     {

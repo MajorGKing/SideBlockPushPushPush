@@ -48,4 +48,9 @@ public class CreatureController : BaseController
         //    PlayAnimation(0, ANIMATION_IDLE, true);
         //}
     }
+
+    public virtual void DoAttack()
+    {
+
+    }
 }

@@ -127,6 +127,14 @@ public class BuddyController : CreatureController
         currentBuddyState = EBuddyState.Idle;
     }
 
+    public override void DoAttack()
+    {
+        if(currentBuddyState == EBuddyState.Idle && _currentCoolTime <= 0)
+        {
+            currentBuddyState = EBuddyState.Attack;
+        }
+    }
+
     public override void OnAnimEventHandler(TrackEntry trackEntry, Spine.Event e)
     {
         Attack();

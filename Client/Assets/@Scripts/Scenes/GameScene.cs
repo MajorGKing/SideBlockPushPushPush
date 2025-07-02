@@ -86,6 +86,15 @@ public class GameScene : BaseScene
     public void LineTouched(int lineNumber)
     {
         Debug.Log($"Line Number {lineNumber}");
+
+        if(lineNumber == Define.HEROLINENUMBHER)
+        {
+            _heroController.DoAttack();
+        }
+        else
+        {
+            _buddyControllers[lineNumber].DoAttack();
+        }
     }
 
     public void BuddyAttack(Sprite block)

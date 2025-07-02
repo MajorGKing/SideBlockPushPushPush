@@ -97,4 +97,8 @@ public class Define
     public static string HEROTAG = "Hero";
     public static string BUDDYTAG = "Buddy";
     #endregion
+
+    #region HardCoding
+    public const int HEROLINENUMBHER = 100;
+    #endregion
 }
