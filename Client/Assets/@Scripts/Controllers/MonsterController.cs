@@ -80,6 +80,7 @@ public class MonsterController : CreatureController
 
     private void OnDead()
     {
+        currentState = EMonsterState.Dead;
         PlayAnimation(0, Define.ANIMATIONDIE, false);
     }
 
