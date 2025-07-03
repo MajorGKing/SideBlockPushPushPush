@@ -94,8 +94,15 @@ public class Define
 
 
     #region Tag
-    public static string HEROTAG = "Hero";
-    public static string BUDDYTAG = "Buddy";
+    public const string HEROTAG = "Hero";
+    public const string BUDDYTAG = "Buddy";
+    #endregion
+
+    #region Animation
+    public const string ANIMATIONIDLE = "idle";
+    public const string ANIMATIONATTACK = "attack";
+    public const string ANIMATIONMOVE = "move";
+    public const string ANIMATIONDIE = "die";
     #endregion
 
     #region HardCoding

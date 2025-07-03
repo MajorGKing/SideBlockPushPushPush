@@ -2,7 +2,7 @@ using Spine;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuddyController : CreatureController
+public class BuddyController : AllyController
 {
     public enum EBuddyState
     {
@@ -16,8 +16,7 @@ public class BuddyController : CreatureController
     private int _buddyNumber;
     private GameScene _gameScene;
 
-    private bool _doWork;
-    private bool _auto = true;
+
 
     [SerializeField]
     private float _coolTime;
@@ -43,8 +42,6 @@ public class BuddyController : CreatureController
     protected override void Init()
     {
         base.Init();
-
-
     }
 
     // TODO 이름 변경 필요
@@ -58,14 +55,17 @@ public class BuddyController : CreatureController
         // TODO 데이터 불러와서 스프라이트 세트 가저오기
     }
 
-    public void SetStartAI(bool start)
+    public override void SetStartAI(bool start)
     {
         _doWork = start;
         currentBuddyState = EBuddyState.Idle;
         _currentCoolTime = _coolTime;
+        _isWaitingAttack = false;
 
         ReloadBlocks();
     }
+
+
 
     private void Update()
     {
@@ -90,7 +90,7 @@ public class BuddyController : CreatureController
 
     private void UpdateIdle()
     {
-        if (_currentCoolTime >= 0)
+        if (_currentCoolTime > 0)
         {
             _currentCoolTime -= Time.deltaTime;
             return;
@@ -105,13 +105,13 @@ public class BuddyController : CreatureController
     private void UpdateAttack()
     {
         if (_currentCoolTime > 0)
-        {
             return;
-        }
 
-        PlayAnimation(0, "attack", false);
+        if (_isWaitingAttack == true)
+            return;
 
-        _currentCoolTime = _coolTime;
+        PlayAnimation(0, Define.ANIMATIONATTACK, false);
+        _isWaitingAttack = true;
     }
 
     private void UpdateReload()
@@ -125,6 +125,7 @@ public class BuddyController : CreatureController
         ReloadBlocks();
 
         currentBuddyState = EBuddyState.Idle;
+
     }
 
     public override void DoAttack()
@@ -144,15 +145,20 @@ public class BuddyController : CreatureController
     {
         if(currentBuddyState == EBuddyState.Attack)
         {
+            if (trackEntry.Animation.Name != Define.ANIMATIONATTACK)
+                return;
+
+            _isWaitingAttack = false;
             if (_myBlocks[0].sprite == null)
             {
-                PlayAnimation(0, "move", true);
+                PlayAnimation(0, Define.ANIMATIONMOVE, true);
                 currentBuddyState = EBuddyState.Reload;
                 _currentReloadTime = _reloadTime;
+                //_currentCoolTime = 0;
             }
             else
             {
-                PlayAnimation(0, "idle", true);
+                PlayAnimation(0, Define.ANIMATIONIDLE, true);
                 currentBuddyState = EBuddyState.Idle;
                 _currentCoolTime = _coolTime;
             }
@@ -179,6 +185,7 @@ public class BuddyController : CreatureController
                 block.transform.localScale = scale;
             }
         }
+        PlayAnimation(0, Define.ANIMATIONIDLE, true);
     }
 
     private void Attack()

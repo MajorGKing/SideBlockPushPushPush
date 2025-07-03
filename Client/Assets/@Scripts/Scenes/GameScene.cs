@@ -21,6 +21,9 @@ public class GameScene : BaseScene
 
     private List<MonsterController> _monsterControllers;
 
+    private UI_GameScene _gameSceneUI;
+    private bool _isAuto;
+
     protected override void Awake()
     {
         base.Awake();
@@ -70,6 +73,9 @@ public class GameScene : BaseScene
         var mc = monster.transform.GetComponent<MonsterController>();
         _monsterControllers.Add(mc);
         _monsterControllers[0].SetInfo(this);
+
+        _gameSceneUI = Managers.UI.ShowSceneUI<UI_GameScene>();
+        _gameSceneUI.SetInfo(_isAuto, this);
     }
 
     protected override void Start()
@@ -79,8 +85,10 @@ public class GameScene : BaseScene
         foreach (var buddy in _buddyControllers)
         {
             buddy.SetStartAI(true);
+            buddy.SetAuto(_isAuto);
         }
-        _heroController.SetStartAI(true) ;
+        _heroController.SetStartAI(true);
+        _heroController.SetAuto(_isAuto);
     }
 
     public void LineTouched(int lineNumber)
@@ -106,6 +114,20 @@ public class GameScene : BaseScene
     public void HeroAttack()
     {
         _monsterControllers[0].OnDamage(1, 30);
+    }
+
+    public void SetAuto()
+    {
+        _isAuto = !_isAuto;
+
+        foreach (var buddy in _buddyControllers)
+        {
+            buddy.SetAuto(_isAuto);
+        }
+
+        _heroController.SetAuto(_isAuto);
+
+        _gameSceneUI.SetAutoUI(_isAuto);
     }
     
     public override void Clear()

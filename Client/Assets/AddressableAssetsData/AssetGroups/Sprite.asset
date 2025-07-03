@@ -14,7 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Sprite
   m_GUID: e838eaf0fdd6b2c45ab065dfc4950a7d
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 02c7d7a23ff7b6841b97077d5d4ec288
+    m_Address: Next_Icon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 43b9633578b18ee419b632773a6771a7
+    m_Address: Pause_Icon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9094f0f0595c6e147aa68a6f81e2dcaf, type: 2}
   m_SchemaSet:

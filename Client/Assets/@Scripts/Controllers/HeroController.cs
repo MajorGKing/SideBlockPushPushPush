@@ -1,9 +1,8 @@
 using Spine;
 using System.Collections.Generic;
 using UnityEngine;
-using static BuddyController;
 
-public class HeroController : CreatureController
+public class HeroController : AllyController
 {
     public enum EHeroState
     {
@@ -15,11 +14,6 @@ public class HeroController : CreatureController
 
     private List<SpriteRenderer> _myBlocks;
     private GameScene _gameScene;
-
-    private bool _doWork;
-    private bool _auto = true;
-
-    private bool _isWaitingAttack;
 
     [SerializeField]
     private EHeroState _currentState;
@@ -42,10 +36,10 @@ public class HeroController : CreatureController
         // TODO 데이터 불러와서 스프라이트 세트 가저오기
     }
 
-    public void SetStartAI(bool start)
+    public override void SetStartAI(bool start)
     {
         _doWork = start;
-        PlayAnimation(0, "idle", true);
+        PlayAnimation(0, Define.ANIMATIONIDLE, true);
         currentState = EHeroState.Idle;
         _isWaitingAttack = false;
     }
@@ -89,7 +83,7 @@ public class HeroController : CreatureController
             return;
 
         _isWaitingAttack = true;
-        PlayAnimation(0, "attack", false);
+        PlayAnimation(0, Define.ANIMATIONATTACK, false);
     }
 
     //private void UpdateReload()
@@ -138,7 +132,7 @@ public class HeroController : CreatureController
         if(currentState == EHeroState.Attack)
         {
             currentState = EHeroState.Idle;
-            PlayAnimation(0, "idle", true);
+            PlayAnimation(0, Define.ANIMATIONIDLE, true);
             _isWaitingAttack = false;
         }
     }
