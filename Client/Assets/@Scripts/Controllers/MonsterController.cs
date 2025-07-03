@@ -2,11 +2,27 @@ using UnityEngine;
 
 public class MonsterController : CreatureController
 {
+    public enum EMonsterState
+    {
+        None,
+        Idle,
+        Attack,
+        Reload,
+        Dead,
+    }
+
     public int MaxHP { get; protected set; }
     public int HP { get; protected set; }
 
     private GameScene _gameScene;
     private UI_BattleBarWorldSpace _battleBarUI;
+
+    private EMonsterState _currentState;
+    public EMonsterState currentState
+    {
+        get { return _currentState; }
+        set { _currentState = value; }
+    }
 
 
     protected override void Init()
@@ -14,6 +30,9 @@ public class MonsterController : CreatureController
         base.Init();
 
         _battleBarUI = GetComponentInChildren<UI_BattleBarWorldSpace>();
+
+        currentState = EMonsterState.Idle;
+        PlayAnimation(0, Define.ANIMATIONIDLE, true);
     }
 
     public void SetInfo(GameScene gameScene)
@@ -46,6 +65,9 @@ public class MonsterController : CreatureController
 
     private void TakeDamage(int damage)
     {
+        if (currentState == EMonsterState.Dead)
+            return;
+
         HP -= damage;
         if (HP <= 0)
         {
@@ -58,7 +80,7 @@ public class MonsterController : CreatureController
 
     private void OnDead()
     {
-        PlayAnimation(0, "dead", true);
+        PlayAnimation(0, Define.ANIMATIONDIE, false);
     }
 
     protected void UpdateHpText()

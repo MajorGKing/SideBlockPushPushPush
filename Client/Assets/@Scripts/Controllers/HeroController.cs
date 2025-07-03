@@ -139,12 +139,18 @@ public class HeroController : AllyController
 
     private void Attack()
     {
-        _gameScene.HeroAttack();
+        int damage = 0;
 
         foreach (var block in _myBlocks)
         {
-            block.sprite = null;
+            if(block.sprite != null)
+            {
+                damage += 5;
+                block.sprite = null;
+            }
         }
+
+        _gameScene.HeroAttack(damage);
     }
 
 

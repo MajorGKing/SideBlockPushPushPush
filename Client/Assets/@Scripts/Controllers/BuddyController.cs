@@ -220,7 +220,7 @@ public class BuddyController : AllyController
         lastBlock.sprite = null;
         lastBlock.transform.localScale = Vector3.one; // Reset scale just in case
 
-        _gameScene.BuddyAttack(firstBlock);
+        _gameScene.BuddyAttack(firstBlock, 10);
     }
 
 }

@@ -102,7 +102,7 @@ public class Define
     public const string ANIMATIONIDLE = "idle";
     public const string ANIMATIONATTACK = "attack";
     public const string ANIMATIONMOVE = "move";
-    public const string ANIMATIONDIE = "die";
+    public const string ANIMATIONDIE = "dead";
     #endregion
 
     #region HardCoding

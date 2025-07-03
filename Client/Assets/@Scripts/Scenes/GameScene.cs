@@ -105,15 +105,15 @@ public class GameScene : BaseScene
         }
     }
 
-    public void BuddyAttack(Sprite block)
+    public void BuddyAttack(Sprite block, int damage)
     {
         _heroController.AddBlock(block);
-        _monsterControllers[0].OnDamage(0, 10);
+        _monsterControllers[0].OnDamage(0, damage);
     }
 
-    public void HeroAttack()
+    public void HeroAttack(int damgae)
     {
-        _monsterControllers[0].OnDamage(1, 30);
+        _monsterControllers[0].OnDamage(1, damgae);
     }
 
     public void SetAuto()
