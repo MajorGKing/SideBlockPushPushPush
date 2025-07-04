@@ -92,6 +92,25 @@ public class Define
     }
     #endregion
 
+    public enum ESkillType
+    {
+        Active,
+        Passive,
+    }
+
+    public enum EUseSkillTargetType
+    {
+        Other,
+        Self,
+    }
+
+    public enum ETargetFriendType
+    {
+        Enemy,
+        Company,
+        Hero,
+    }
+
 
     #region Tag
     public const string HEROTAG = "Hero";

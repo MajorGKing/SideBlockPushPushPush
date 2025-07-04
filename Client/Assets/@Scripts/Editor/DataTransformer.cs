@@ -18,6 +18,7 @@ public class DataTransformer : EditorWindow
     [MenuItem("Tools/ParseExcel _F4")]  // 추가 단축키: Control + K
     public static void ParseExcelDataToJson()
     {
+        ParseExcelDataToJson<BuddySkillDataLoader, BuddySkillData>("BuddySkill");
         Debug.Log("Complete DataTransformer");
     }
 

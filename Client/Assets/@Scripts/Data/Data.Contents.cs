@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static Define;
 
 namespace Data
 {
@@ -44,6 +43,49 @@ namespace Data
             Dictionary<int, CreatureData> dict = new Dictionary<int, CreatureData>();
             foreach (CreatureData creature in creatures)
                 dict.Add(creature.TemplateId, creature);
+            return dict;
+        }
+
+        public bool Validate()
+        {
+            return true;
+        }
+    }
+    #endregion
+
+    #region BuddySkillData
+    [Serializable]
+    public class BuddySkillData
+    {
+        public int TemplateId;
+        public string Name;
+        public string NameTextId;
+        public string DescriptionTextId;
+        public string IconImageKey;
+        public Define.ESkillType SkillType;
+        public string SkillEffectPrefabKey;
+        public string HitEffectPrefabKey;
+        public string StartSoundKey;
+        public string HitSoundKey;
+        public float Cooltime;
+        public string AnimName;
+        public float AnimSpeed;
+        public Define.EUseSkillTargetType UseSkillTargetType;
+        public int GatherTargetCounts;
+        public int GatherTargetType;
+        public Define.ETargetFriendType TargetFriendType;
+        public int EffectDataId;
+        public int NextLevelSkillId;
+    }
+
+    public class BuddySkillDataLoader : ILoader<int, BuddySkillData>
+    {
+        public List<BuddySkillData> buddySkills = new List<BuddySkillData>();
+        public Dictionary<int, BuddySkillData> MakeDict()
+        {
+            Dictionary<int, BuddySkillData> dict = new Dictionary<int, BuddySkillData>();
+            foreach (BuddySkillData skill in buddySkills)
+                dict.Add(skill.TemplateId, skill);
             return dict;
         }
 
