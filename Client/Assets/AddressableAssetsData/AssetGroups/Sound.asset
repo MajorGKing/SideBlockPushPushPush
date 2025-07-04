@@ -15,8 +15,56 @@ MonoBehaviour:
   m_GroupName: Sound
   m_GUID: 3f3b421a7b70fe6478e610ea1fe9b36b
   m_SerializeEntries:
+  - m_GUID: 00a6631ec263e6048908f0a61b73c88b
+    m_Address: SFX_skill_lightexplo
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 02160d6716fdb5444b711b7170e3d37f
+    m_Address: SFX_hit
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 03fe9bb81aa8c0548a604b1816433084
+    m_Address: SFX_skill_flamestrike
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 076a1eaf30f60a7409f628edaa3659b1
+    m_Address: SFX_skill_lighting
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 09ed56bbec47f2a4cbd06dde12c08e94
+    m_Address: SFX_skill_lightbomb
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0c06d3b393e978a4e82a99188f3803d9
+    m_Address: SFX_heal
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0c9b0b27d6713ba4db3e8ce051bb1341
+    m_Address: SFX_skill_slicedice
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 11a447ea767f57b45a6920d26ca05060
     m_Address: PopupOpen_SkillSelect
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 15b93c2189113d744b623e85d07e1f24
+    m_Address: SFX_melee
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
@@ -27,14 +75,86 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1de9fb37851c3484386cdd2c798e06fa
+    m_Address: SFX_skill_arrow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2307e55a2af6b544baa2e89c270dc193
+    m_Address: SFX_arrow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 55789e7a9ac312f43a6db6c2b9dfd3d6
+    m_Address: SFX_skill_bomb
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 558c680adecbac7448d5ef675627f00b
     m_Address: PopupOpen_GameResult
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 55cf88775044b9a4d838002a778eb402
+    m_Address: SFX_skill_sword_swoosh
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5c96f5dd7ca34f340b9403b238cc7178
+    m_Address: SFX_skill_flamebomb
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 62df9e58aee4dd043847f790edc3bd82
+    m_Address: SFX_skill_holysword
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 667a45e3e6986a84091937cd70cfac8f
+    m_Address: SFX_melee_twice
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6ee4bdcf67e7b1e4a9b0e8bc08593266
     m_Address: PopupOpen_Gameover
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 91cc90b868641cc459acbb9613045239
+    m_Address: SFX_skill_blackhole
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 92794472b3c419341be823f20104a1bd
+    m_Address: SFX_skill_bang
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 99ae187109a701e4ebbcd5a76305aa06
+    m_Address: SFX_skill_poison
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9fa8ac1857631aa41813d437f5a41347
+    m_Address: SFX_skill_fireball
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a176d243df9d5c348bce040527cff529
+    m_Address: SFX_skill_twinkle
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
@@ -51,8 +171,80 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab84d81c0aa548a4dbc8ef8a989cd27c
+    m_Address: SFX_fireball
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aee4ce50018bf564da526bc2d1a43c23
+    m_Address: SFX_skill_darkattack
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: af6d7a96ee17d354bbf1b59de1150234
+    m_Address: SFX_skill_darkbomb
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b257d459143074a4a80eabde78a0e554
+    m_Address: SFX_critical
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b71da0f5a44008b4e8bb422a81259663
+    m_Address: SFX_skill_casting
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b851e6f79ddc5b346b1a549b3be616a7
+    m_Address: SFX_skill_blizzard
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c2288d0efcd85a747a23c6da838bdbd5
+    m_Address: SFX_skill_holyarrow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c60d4acf340b6a14facc02ed3716af02
+    m_Address: SFX_skill_sound
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ccacaf3557086f84cac548d64abf5fe9
+    m_Address: SFX_skill_windblade
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d95053a09d6047245a313f9e9ca35bff
+    m_Address: SFX_skill_ice
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f3f6d5a2be874724bad64c5c65888524
     m_Address: PopupOpen_Reward
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f434b408165f0824eb3cdb2fbd99d338
+    m_Address: SFX_skill_thunderbolt
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f44ce88202cf52048975b78e144817d1
+    m_Address: SFX_skill_stickinsword
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
