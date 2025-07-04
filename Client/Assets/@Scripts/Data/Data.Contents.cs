@@ -96,4 +96,43 @@ namespace Data
     }
     #endregion
 
+    #region EffectData
+    [Serializable]
+    public class EffectData
+    {
+        public int TemplateId;
+        public string Name;
+        public string NameText;
+        public string DescriptionText;
+        public string IconImage;
+        public Define.EEffectType EffectType;
+        public Define.EDurationPolicy EDurationPolicy;
+        public float Duration;
+        public float DamageValue;
+        public int StatType;
+        public float AddValue;
+        public int LifeStealValue;
+        public int StunValue;
+    }
+
+    public class EffectDataLoader : ILoader<int, EffectData>
+    {
+        public List<EffectData> effects = new List<EffectData>();
+
+        public Dictionary<int, EffectData> MakeDict()
+        {
+            Dictionary<int, EffectData> dict = new Dictionary<int, EffectData>();
+            foreach (EffectData effect in effects)
+                dict.Add(effect.TemplateId, effect);
+            return dict;
+        }
+
+        public bool Validate()
+        {
+            return true;
+        }
+    }
+
+    #endregion
+
 }

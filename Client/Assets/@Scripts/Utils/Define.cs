@@ -111,6 +111,25 @@ public class Define
         Hero,
     }
 
+    public enum EEffectType
+    {
+        Damage,
+        MagicDamage,
+        MagicDamageLight,
+        MagicDamageDark,
+        MagicDamageFire,
+        MagicDamageWater,
+        MagicDamageEarth,
+        MagicDamageWind,
+    }
+
+    public enum EDurationPolicy
+    {
+        Instant,
+        Duration,
+        All
+    }
+
 
     #region Tag
     public const string HEROTAG = "Hero";

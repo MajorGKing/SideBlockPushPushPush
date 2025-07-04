@@ -19,6 +19,7 @@ public class DataTransformer : EditorWindow
     public static void ParseExcelDataToJson()
     {
         ParseExcelDataToJson<BuddySkillDataLoader, BuddySkillData>("BuddySkill");
+        ParseExcelDataToJson<EffectDataLoader, EffectData>("Effect");
         Debug.Log("Complete DataTransformer");
     }
 

@@ -18,11 +18,14 @@ public class DataManager
     private HashSet<IValidate> _loaders = new HashSet<IValidate>();
 
     public Dictionary<int, Data.BuddySkillData> BuddySkillDataDic { get; set; } = new Dictionary<int, BuddySkillData>();
+    public Dictionary<int, Data.EffectData> EffectDataDic { get; set; } = new Dictionary<int, EffectData>();
 
     public void Init()
     {
         BuddySkillDataDic = LoadJson<Data.BuddySkillDataLoader, int, Data.BuddySkillData>("BuddySkillData").MakeDict();
+        EffectDataDic = LoadJson<Data.EffectDataLoader, int, Data.EffectData>("EffectData").MakeDict();
 
+        
         Validate();
     }
 
