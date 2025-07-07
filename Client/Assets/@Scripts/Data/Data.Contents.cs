@@ -53,9 +53,14 @@ namespace Data
     }
     #endregion
 
+    public class SkillData
+    {
+
+    }
+
     #region BuddySkillData
     [Serializable]
-    public class BuddySkillData
+    public class BuddySkillData : SkillData
     {
         public int TemplateId;
         public string Name;

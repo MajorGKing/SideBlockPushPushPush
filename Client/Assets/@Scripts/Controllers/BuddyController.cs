@@ -13,9 +13,12 @@ public class BuddyController : AllyController
     }
 
     private List<SpriteRenderer> _myBlocks;
-    private int _buddyNumber;
     private GameScene _gameScene;
 
+    public int _buddyNumber;
+
+    private List<BuddySkill> _skillList;
+    private List<int> _nowBlockList;
 
 
     [SerializeField]
@@ -52,7 +55,34 @@ public class BuddyController : AllyController
         _myBlocks = blockSet;
         _gameScene = game;
 
+        _skillList = new List<BuddySkill> { };
+        _nowBlockList = new List<int>();
+
         // TODO 데이터 불러와서 스프라이트 세트 가저오기
+        // TODO Buddy Data 만들기
+        if (_buddyNumber == 0)
+        {
+            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[5]));
+            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[5]));
+            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[6]));
+        }
+        else if (_buddyNumber == 1)
+        {
+            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[7]));
+        }
+        else if (_buddyNumber == 2)
+        {
+            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[3]));
+            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[3]));
+            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[3]));
+            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[3]));
+            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[4]));
+        }
+        else if (_buddyNumber == 3)
+        {
+            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[1]));
+            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[2]));
+        }
     }
 
     public override void SetStartAI(bool start)
@@ -169,8 +199,10 @@ public class BuddyController : AllyController
     {
         foreach (var block in _myBlocks)
         {
-            int randomIndex = Random.Range(0, blockImages.Count);
-            Sprite selectedSprite = blockImages[randomIndex];
+            //int randomIndex = Random.Range(0, blockImages.Count);
+            //Sprite selectedSprite = blockImages[randomIndex];
+            int randomIndex = Random.Range(0, _skillList.Count);
+            Sprite selectedSprite = Managers.Resource.Load<Sprite>(_skillList[randomIndex].skillData.IconImageKey);
             block.sprite = selectedSprite;
 
             // Resize to fit 1x1 world units
