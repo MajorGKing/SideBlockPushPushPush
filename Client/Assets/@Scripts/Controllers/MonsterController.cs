@@ -1,3 +1,4 @@
+using Data;
 using UnityEngine;
 
 public class MonsterController : CreatureController
@@ -52,20 +53,22 @@ public class MonsterController : CreatureController
         UpdateHpText();
     }
 
-    public void OnDamage(Define.EGameObjectType type, int damage)
+    public void OnDamage(Define.EGameObjectType type, BuddySkillData skillData, int damage)
     {
         TakeDamage(damage);
 
         if (type == Define.EGameObjectType.Hero)
         {
-            Managers.Object.SpawnSkillEffect(transform.position + Vector3.up, "VFX_buddy_common_skill_hit", 1.0f);
+            Managers.Object.SpawnSkillEffect(transform.position + Vector3.up, skillData.HitEffectPrefabKey, 1.0f);
             UI_DamageText damageText = Managers.UI.MakeSubItem<UI_DamageText>(transform, "UI_CriticalDamageText");
+            Managers.Sound.Play(Define.ESound.Effect, skillData.HitSoundKey);
             damageText.SetInfo(damage);
         }
         else if (type == Define.EGameObjectType.Buddy)
         {
-            Managers.Object.SpawnSkillEffect(transform.position + Vector3.up, "VFX_hero_skill_common_attack_hit", 1.0f);
+            Managers.Object.SpawnSkillEffect(transform.position + Vector3.up, skillData.HitEffectPrefabKey, 1.0f);
             UI_DamageText damageText = Managers.UI.MakeSubItem<UI_DamageText>(transform, "UI_DamageText");
+            Managers.Sound.Play(Define.ESound.Effect, skillData.HitSoundKey);
             damageText.SetInfo(damage);
         }
     }

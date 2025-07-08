@@ -1,3 +1,4 @@
+using Data;
 using Spine;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,11 +24,14 @@ public class HeroController : AllyController
         set { _currentState = value; }
     }
 
+    public List<BuddySkillData> buddySkillDatas;
+
     protected override void Init()
     {
         base.Init();
 
         GameObjectType = Define.EGameObjectType.Hero;
+        buddySkillDatas = new List<BuddySkillData>();
     }
 
     public void SetInfo(int num)//, List<SpriteRenderer> blockSet, GameScene game)
@@ -92,16 +96,18 @@ public class HeroController : AllyController
     //{
     //}
 
-    public void AddBlock(Sprite blockSprite)
+    public void AddBlock(BuddySkillData skillData)
     {
         foreach (var block in _myBlocks)
         {
             if(block.sprite == null)
             {
-                block.sprite = blockSprite;
+                var blockSprite = Managers.Resource.Load<Sprite>(skillData.IconImageKey);
                 // Scale it to fit 1x1 world units
                 if (blockSprite != null)
                 {
+                    block.sprite = blockSprite;
+
                     Vector2 spriteSize = blockSprite.bounds.size;
                     if (spriteSize.x != 0 && spriteSize.y != 0)
                     {

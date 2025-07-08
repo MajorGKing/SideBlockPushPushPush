@@ -40,9 +40,7 @@ public class GameScene : BaseScene
         Managers.Game.GameSceneStart(this);
 
         // Hero, Buddy 추가
-        //_heroController = GameObject.FindGameObjectWithTag(Define.HEROTAG).GetComponent<HeroController>();
         _heroController = Managers.Object.SpawnCreatureObject<HeroController>(heroPosition, 0);
-        //_heroController.SetInfo(0);//, stockImages, this);
         _heroController.SetBlocks(stockImages);
 
 
@@ -53,20 +51,6 @@ public class GameScene : BaseScene
             _buddyControllers.Add(buddy);
         }
         
-        
-        //var buddies = GameObject.FindGameObjectsWithTag(Define.BUDDYTAG);
-
-        //_buddyControllers = Enumerable.Repeat<BuddyController>(null, 4).ToList();
-        //foreach (var buddy in buddies)
-        //{
-        //    string name = buddy.transform.parent.name;
-        //    char lastChar = name[name.Length - 1];
-        //    if (char.IsDigit(lastChar))
-        //    {
-        //        int index = (int)char.GetNumericValue(lastChar);
-        //        _buddyControllers[index - 1] = buddy.GetComponent<BuddyController>();
-        //    }
-        //}
 
         // 라인블록, 스톡블록 추가 TODO
         // 나중에 코드로 자동으로 할 수 있도록
@@ -74,7 +58,6 @@ public class GameScene : BaseScene
 
         for(int i = 0; i < _buddyControllers.Count; i++)
         {
-            //_buddyControllers[i].SetInfo(i);//, blockImages[i], this);
             _buddyControllers[i].SetBlocks(blockImages[i]);
         }
 
@@ -84,8 +67,6 @@ public class GameScene : BaseScene
         var monster = Managers.Object.SpawnCreatureObject<MonsterController>(monsterPosition[0], 0);
         monster.transform.position = monsterPosition[0].position;
         _monsterControllers.Add(monster);
-        //_monsterControllers[0].SetInfo(this);
-        //_monsterControllers[0].SetInfo(0);
 
         _gameSceneUI = Managers.UI.ShowSceneUI<UI_GameScene>();
         _gameSceneUI.SetInfo(_isAuto, this);
@@ -116,12 +97,6 @@ public class GameScene : BaseScene
         {
             _buddyControllers[lineNumber].DoAttack();
         }
-    }
-
-    public void BuddyAttack(Sprite block, int damage)
-    {
-        _heroController.AddBlock(block);
-        _monsterControllers[0].OnDamage(0, damage);
     }
 
     public void HeroAttack(int damgae)

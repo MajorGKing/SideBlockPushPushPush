@@ -65,8 +65,11 @@ public class BuddySkill : Skill
 
         foreach(MonsterController target in SkillTargetList)
         {
-            target.OnDamage(_owner.GameObjectType, roundedDamage);
+            target.OnDamage(_owner.GameObjectType, skillData, roundedDamage);
         }
+
+        // Hero에 던져주기
+        Managers.Object.Hero.AddBlock(skillData);
     }
     #endregion
 }
