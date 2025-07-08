@@ -123,7 +123,7 @@
       "GatherTargetCounts": 1,
       "GatherTargetType": 0,
       "TargetFriendType": 0,
-      "EffectDataId": 0,
+      "EffectDataId": 110,
       "NextLevelSkillId": 0
     },
     {
@@ -144,7 +144,7 @@
       "GatherTargetCounts": 1,
       "GatherTargetType": 0,
       "TargetFriendType": 0,
-      "EffectDataId": 10,
+      "EffectDataId": 110,
       "NextLevelSkillId": 0
     },
     {
@@ -165,7 +165,7 @@
       "GatherTargetCounts": 1,
       "GatherTargetType": 0,
       "TargetFriendType": 0,
-      "EffectDataId": 0,
+      "EffectDataId": 120,
       "NextLevelSkillId": 0
     }
   ]

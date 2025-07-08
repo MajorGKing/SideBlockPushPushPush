@@ -4,33 +4,37 @@ using UnityEngine;
 
 public class CreatureController : BaseController
 {
-    private const string ANIMATION_IDLE = "idle";
-    private const string ANIMATION_MOVE = "move";
-    private const string ANIMATION_HIT = "damage";
-    private const string ANIMATION_DEAD = "dead";
+    protected const string ANIMATION_IDLE = "idle";
+    protected const string ANIMATION_ATTACK = "attack";
+    protected const string ANIMATION_MOVE = "move";
+    protected const string ANIMATION_DIE = "dead";
 
-    public SkeletonAnimation SkeletonAnimation { get; private set; }
+    public SkeletonAnimation skeletonAnimation { get; private set; }
 
     protected override void Init()
     {
-        SkeletonAnimation = GetComponentInChildren<SkeletonAnimation>();
+        skeletonAnimation = GetComponentInChildren<SkeletonAnimation>();
+        AnimationBindEventInit();
+    }
 
+    protected void AnimationBindEventInit()
+    {
         // Bind Event
-        SkeletonAnimation.AnimationState.Event -= OnAnimEventHandler;
-        SkeletonAnimation.AnimationState.Event += OnAnimEventHandler;
-        SkeletonAnimation.AnimationState.Complete -= OnAnimCompleteHandler;
-        SkeletonAnimation.AnimationState.Complete += OnAnimCompleteHandler;
+        skeletonAnimation.AnimationState.Event -= OnAnimEventHandler;
+        skeletonAnimation.AnimationState.Event += OnAnimEventHandler;
+        skeletonAnimation.AnimationState.Complete -= OnAnimCompleteHandler;
+        skeletonAnimation.AnimationState.Complete += OnAnimCompleteHandler;
     }
 
 
     public void PlayAnimation(int trackIndex, string animName, bool loop)
     {
-        if (SkeletonAnimation == null)
+        if (skeletonAnimation == null)
         {
             return;
         }
 
-        SkeletonAnimation.AnimationState.SetAnimation(trackIndex, animName, loop);
+        skeletonAnimation.AnimationState.SetAnimation(trackIndex, animName, loop);
     }
 
     public virtual void OnAnimEventHandler(TrackEntry trackEntry, Spine.Event e)

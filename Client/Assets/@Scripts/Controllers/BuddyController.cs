@@ -1,4 +1,5 @@
 using Spine;
+using Spine.Unity;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,15 +13,13 @@ public class BuddyController : AllyController
         Reload,
     }
 
-    private List<SpriteRenderer> _myBlocks;
-    private GameScene _gameScene;
+    private List<int> _nowBlockList;
+    //private GameScene _gameScene;
 
     public int _buddyNumber;
 
     private List<BuddySkill> _skillList;
-    private List<int> _nowBlockList;
-
-
+    
     [SerializeField]
     private float _coolTime;
     [SerializeField]
@@ -31,7 +30,7 @@ public class BuddyController : AllyController
     [SerializeField]
     private float _currentReloadTime;
 
-    public List<Sprite> blockImages;
+    //public List<Sprite> blockImages;
 
     [SerializeField]
     private EBuddyState _currentBuddyState = EBuddyState.None;
@@ -45,15 +44,17 @@ public class BuddyController : AllyController
     protected override void Init()
     {
         base.Init();
+
+        GameObjectType = Define.EGameObjectType.Buddy;
     }
 
     // TODO 이름 변경 필요
     // TODO 이후 번호 받아 갱신하는거 필요
-    public void SetInfo(int num, List<SpriteRenderer> blockSet, GameScene game)
+    public void SetInfo(int num)//, List<SpriteRenderer> blockSet)//, GameScene game)
     {
         _buddyNumber = num;
-        _myBlocks = blockSet;
-        _gameScene = game;
+        //_myBlocks = blockSet;
+        //_gameScene = game;
 
         _skillList = new List<BuddySkill> { };
         _nowBlockList = new List<int>();
@@ -62,28 +63,50 @@ public class BuddyController : AllyController
         // TODO Buddy Data 만들기
         if (_buddyNumber == 0)
         {
+            skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>("spi_buddy_tom_SkeletonData");
+            skeletonAnimation.Initialize(true);
+
             _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[5]));
             _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[5]));
             _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[6]));
+
+            AnimationBindEventInit();
         }
         else if (_buddyNumber == 1)
         {
+            skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>("spi_buddy_mari_SkeletonData");
+            skeletonAnimation.Initialize(true);
+
             _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[7]));
+
+            AnimationBindEventInit();
         }
         else if (_buddyNumber == 2)
         {
+            skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>("spi_buddy_ellie_SkeletonData");
+            skeletonAnimation.Initialize(true);
+
             _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[3]));
             _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[3]));
             _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[3]));
             _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[3]));
             _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[4]));
+
+            AnimationBindEventInit();
         }
         else if (_buddyNumber == 3)
         {
+            skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>("spi_buddy_duck_SkeletonData");
+            skeletonAnimation.Initialize(true);
+
             _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[1]));
             _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[2]));
+
+            AnimationBindEventInit();
         }
     }
+
+
 
     public override void SetStartAI(bool start)
     {
@@ -94,8 +117,6 @@ public class BuddyController : AllyController
 
         ReloadBlocks();
     }
-
-
 
     private void Update()
     {
@@ -140,7 +161,7 @@ public class BuddyController : AllyController
         if (_isWaitingAttack == true)
             return;
 
-        PlayAnimation(0, Define.ANIMATIONATTACK, false);
+        PlayAnimation(0, _skillList[_nowBlockList[0]].skillData.AnimName, false);
         _isWaitingAttack = true;
     }
 
@@ -175,28 +196,32 @@ public class BuddyController : AllyController
     {
         if(currentBuddyState == EBuddyState.Attack)
         {
-            if (trackEntry.Animation.Name != Define.ANIMATIONATTACK)
+            if (trackEntry.Animation.Name != ANIMATION_ATTACK)
                 return;
 
             _isWaitingAttack = false;
             if (_myBlocks[0].sprite == null)
             {
-                PlayAnimation(0, Define.ANIMATIONMOVE, true);
+                PlayAnimation(0, ANIMATION_MOVE, true);
                 currentBuddyState = EBuddyState.Reload;
                 _currentReloadTime = _reloadTime;
                 //_currentCoolTime = 0;
             }
             else
             {
-                PlayAnimation(0, Define.ANIMATIONIDLE, true);
+                PlayAnimation(0, ANIMATION_IDLE, true);
                 currentBuddyState = EBuddyState.Idle;
-                _currentCoolTime = _coolTime;
+                //_currentCoolTime = _coolTime;
+                _currentCoolTime = _skillList[_nowBlockList[0]].skillData.Cooltime;
+                _nowBlockList.RemoveAt(0);
             }
         }
     }
 
     private void ReloadBlocks()
     {
+        _nowBlockList.Clear();
+
         foreach (var block in _myBlocks)
         {
             //int randomIndex = Random.Range(0, blockImages.Count);
@@ -204,6 +229,8 @@ public class BuddyController : AllyController
             int randomIndex = Random.Range(0, _skillList.Count);
             Sprite selectedSprite = Managers.Resource.Load<Sprite>(_skillList[randomIndex].skillData.IconImageKey);
             block.sprite = selectedSprite;
+
+            _nowBlockList.Add(randomIndex);
 
             // Resize to fit 1x1 world units
             Vector2 spriteSize = selectedSprite.bounds.size; // World units size of sprite
@@ -217,7 +244,7 @@ public class BuddyController : AllyController
                 block.transform.localScale = scale;
             }
         }
-        PlayAnimation(0, Define.ANIMATIONIDLE, true);
+        PlayAnimation(0, ANIMATION_IDLE, true);
     }
 
     private void Attack()
@@ -226,6 +253,8 @@ public class BuddyController : AllyController
             return;
 
         Sprite firstBlock = _myBlocks[0].sprite;
+        int blockId = _nowBlockList[0];
+        //_nowBlockList.RemoveAt(0);
 
         // Shift sprites forward
         for (int i = 1; i < _myBlocks.Count; i++)
@@ -252,7 +281,9 @@ public class BuddyController : AllyController
         lastBlock.sprite = null;
         lastBlock.transform.localScale = Vector3.one; // Reset scale just in case
 
-        _gameScene.BuddyAttack(firstBlock, 10);
+        _skillList[blockId].UseSkill();
+
+        //_gameScene.BuddyAttack(firstBlock, 10);
     }
 
 }

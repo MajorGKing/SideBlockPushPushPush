@@ -1,4 +1,5 @@
 using Data;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Skill
@@ -10,4 +11,6 @@ public class Skill
     //    _owner = owner;
     //    SkillData = skillData;
     //}
+
+
 }

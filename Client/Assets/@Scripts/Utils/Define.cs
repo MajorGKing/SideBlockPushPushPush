@@ -136,13 +136,6 @@ public class Define
     public const string BUDDYTAG = "Buddy";
     #endregion
 
-    #region Animation
-    public const string ANIMATIONIDLE = "idle";
-    public const string ANIMATIONATTACK = "attack";
-    public const string ANIMATIONMOVE = "move";
-    public const string ANIMATIONDIE = "dead";
-    #endregion
-
     #region HardCoding
     public const int HEROLINENUMBHER = 100;
     #endregion

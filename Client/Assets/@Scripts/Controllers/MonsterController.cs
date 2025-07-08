@@ -14,7 +14,7 @@ public class MonsterController : CreatureController
     public int MaxHP { get; protected set; }
     public int HP { get; protected set; }
 
-    private GameScene _gameScene;
+    //private GameScene _gameScene;
     private UI_BattleBarWorldSpace _battleBarUI;
 
     private EMonsterState _currentState;
@@ -22,6 +22,11 @@ public class MonsterController : CreatureController
     {
         get { return _currentState; }
         set { _currentState = value; }
+    }
+
+    public bool IsAlive
+    {
+        get { return currentState != EMonsterState.Dead; }
     }
 
 
@@ -32,12 +37,14 @@ public class MonsterController : CreatureController
         _battleBarUI = GetComponentInChildren<UI_BattleBarWorldSpace>();
 
         currentState = EMonsterState.Idle;
-        PlayAnimation(0, Define.ANIMATIONIDLE, true);
+        PlayAnimation(0, ANIMATION_IDLE, true);
+
+        GameObjectType = Define.EGameObjectType.Monster;
     }
 
-    public void SetInfo(GameScene gameScene)
+    public void SetInfo(int templateID)
     {
-        _gameScene = gameScene;
+        //_gameScene = gameScene;
 
         MaxHP = 1000;
         HP = MaxHP;
@@ -45,17 +52,17 @@ public class MonsterController : CreatureController
         UpdateHpText();
     }
 
-    public void OnDamage(int type, int damage)
+    public void OnDamage(Define.EGameObjectType type, int damage)
     {
         TakeDamage(damage);
 
-        if (type == 0)
+        if (type == Define.EGameObjectType.Hero)
         {
             Managers.Object.SpawnSkillEffect(transform.position + Vector3.up, "VFX_buddy_common_skill_hit", 1.0f);
-            UI_DamageText damageText = Managers.UI.MakeSubItem<UI_DamageText>(transform, "UI_DamageText");
+            UI_DamageText damageText = Managers.UI.MakeSubItem<UI_DamageText>(transform, "UI_CriticalDamageText");
             damageText.SetInfo(damage);
         }
-        else if(type == 1)
+        else if (type == Define.EGameObjectType.Buddy)
         {
             Managers.Object.SpawnSkillEffect(transform.position + Vector3.up, "VFX_hero_skill_common_attack_hit", 1.0f);
             UI_DamageText damageText = Managers.UI.MakeSubItem<UI_DamageText>(transform, "UI_DamageText");
@@ -81,7 +88,7 @@ public class MonsterController : CreatureController
     private void OnDead()
     {
         currentState = EMonsterState.Dead;
-        PlayAnimation(0, Define.ANIMATIONDIE, false);
+        PlayAnimation(0, ANIMATION_DIE, false);
     }
 
     protected void UpdateHpText()

@@ -12,8 +12,8 @@ public class HeroController : AllyController
         Reload,
     }
 
-    private List<SpriteRenderer> _myBlocks;
-    private GameScene _gameScene;
+    //private List<SpriteRenderer> _myBlocks;
+    //private GameScene _gameScene;
 
     [SerializeField]
     private EHeroState _currentState;
@@ -26,12 +26,14 @@ public class HeroController : AllyController
     protected override void Init()
     {
         base.Init();
+
+        GameObjectType = Define.EGameObjectType.Hero;
     }
 
-    public void SetInfo(int num, List<SpriteRenderer> blockSet, GameScene game)
+    public void SetInfo(int num)//, List<SpriteRenderer> blockSet, GameScene game)
     {
-        _myBlocks = blockSet;
-        _gameScene = game;
+        //_myBlocks = blockSet;
+        //_gameScene = game;
 
         // TODO 데이터 불러와서 스프라이트 세트 가저오기
     }
@@ -39,7 +41,7 @@ public class HeroController : AllyController
     public override void SetStartAI(bool start)
     {
         _doWork = start;
-        PlayAnimation(0, Define.ANIMATIONIDLE, true);
+        PlayAnimation(0, ANIMATION_IDLE, true);
         currentState = EHeroState.Idle;
         _isWaitingAttack = false;
     }
@@ -83,7 +85,7 @@ public class HeroController : AllyController
             return;
 
         _isWaitingAttack = true;
-        PlayAnimation(0, Define.ANIMATIONATTACK, false);
+        PlayAnimation(0, ANIMATION_ATTACK, false);
     }
 
     //private void UpdateReload()
@@ -132,7 +134,7 @@ public class HeroController : AllyController
         if(currentState == EHeroState.Attack)
         {
             currentState = EHeroState.Idle;
-            PlayAnimation(0, Define.ANIMATIONIDLE, true);
+            PlayAnimation(0, ANIMATION_IDLE, true);
             _isWaitingAttack = false;
         }
     }
@@ -150,7 +152,7 @@ public class HeroController : AllyController
             }
         }
 
-        _gameScene.HeroAttack(damage);
+        //_gameScene.HeroAttack(damage);
     }
 
 
