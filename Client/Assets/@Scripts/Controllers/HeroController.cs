@@ -1,6 +1,7 @@
 using Data;
 using Spine;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class HeroController : AllyController
@@ -24,22 +25,32 @@ public class HeroController : AllyController
         set { _currentState = value; }
     }
 
-    public List<BuddySkillData> buddySkillDatas;
+    //public List<BuddySkillData> buddySkillDatas;
+    public List<HeroSkill> skillData;
+    private HeroSkill normalSkill;
 
     protected override void Init()
     {
         base.Init();
 
         GameObjectType = Define.EGameObjectType.Hero;
-        buddySkillDatas = new List<BuddySkillData>();
+        //buddySkillDatas = new List<BuddySkillData>();
+        skillData = new List<HeroSkill>();
     }
 
-    public void SetInfo(int num)//, List<SpriteRenderer> blockSet, GameScene game)
+    public void SetInfo(int templateID)//, List<SpriteRenderer> blockSet, GameScene game)
     {
         //_myBlocks = blockSet;
         //_gameScene = game;
 
         // TODO 데이터 불러와서 스프라이트 세트 가저오기
+        skillData.Add(new HeroSkill(this, 1));
+        skillData.Add(new HeroSkill(this, 2));
+        skillData.Add(new HeroSkill(this, 3));
+
+        normalSkill = skillData
+            .Where(skill => skill.skillData.IconImageKey != null && skill.skillData.IconImageKey.Count == 0)
+            .First();
     }
 
     public override void SetStartAI(bool start)
@@ -145,21 +156,70 @@ public class HeroController : AllyController
         }
     }
 
+    // TODO 불럭 숫자에 따른 차이 필요
     private void Attack()
     {
-        int damage = 0;
+        // 1. 블록의 스프라이트 이름 저장하기
+        List<string> spriteNames = _myBlocks
+                                        .Where(block => block.sprite != null)
+                                        .Select(block => block.sprite.name)
+                                        .ToList();
 
+        // 2. 비교할 스킬 리스트 업
+        var activeSkills = skillData
+            .Where(skill => skill.skillData.IconImageKey != null && skill.skillData.IconImageKey.Count > 0)
+            .ToList();
+
+        // 3. 가장 강한 스킬 찾기(가장 매치가 긴 스킬을 찾기)
+        HeroSkill bestSkill = null;
+        int longestMatch = 0;
+
+        foreach (var skill in activeSkills)
+        {
+            if (IsSubsequence(skill.skillData.IconImageKey, spriteNames))
+            {
+                if (skill.skillData.IconImageKey.Count > longestMatch)
+                {
+                    bestSkill = skill;
+                    longestMatch = skill.skillData.IconImageKey.Count;
+                }
+            }
+        }
+
+        // 4. longestMatch == 0 이면 노멀스킬을 아니면 bestSkill작동
+        if(longestMatch == 0 && normalSkill != null)
+        {
+            normalSkill.UseSkill();
+        }
+        else
+        {
+            bestSkill.UseSkill();
+        }    
+
+        // 블록 이미지 정리
         foreach (var block in _myBlocks)
         {
             if(block.sprite != null)
             {
-                damage += 5;
                 block.sprite = null;
             }
         }
-
-        //_gameScene.HeroAttack(damage);
     }
 
+    #region Helper
+    private bool IsSubsequence(List<string> pattern, List<string> sequence)
+    {
+        int patternIndex = 0;
+        int sequenceIndex = 0;
 
+        while (patternIndex < pattern.Count && sequenceIndex < sequence.Count)
+        {
+            if (pattern[patternIndex] == sequence[sequenceIndex])
+                patternIndex++;
+            sequenceIndex++;
+        }
+
+        return patternIndex == pattern.Count;
+    }
+    #endregion
 }

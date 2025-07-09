@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Data;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -17,11 +16,13 @@ public class DataManager
 {
     private HashSet<IValidate> _loaders = new HashSet<IValidate>();
 
-    public Dictionary<int, Data.BuddySkillData> BuddySkillDataDic { get; set; } = new Dictionary<int, BuddySkillData>();
-    public Dictionary<int, Data.EffectData> EffectDataDic { get; set; } = new Dictionary<int, EffectData>();
+    public Dictionary<int, Data.HeroSkillData> HeroSkillDataDic { get; set; } = new Dictionary<int, Data.HeroSkillData>();
+    public Dictionary<int, Data.BuddySkillData> BuddySkillDataDic { get; set; } = new Dictionary<int, Data.BuddySkillData>();
+    public Dictionary<int, Data.EffectData> EffectDataDic { get; set; } = new Dictionary<int, Data.EffectData>();
 
     public void Init()
     {
+        HeroSkillDataDic = LoadJson<Data.HeroSkillDataLoader, int, Data.HeroSkillData>("HeroSkillData").MakeDict();
         BuddySkillDataDic = LoadJson<Data.BuddySkillDataLoader, int, Data.BuddySkillData>("BuddySkillData").MakeDict();
         EffectDataDic = LoadJson<Data.EffectDataLoader, int, Data.EffectData>("EffectData").MakeDict();
 

@@ -3,23 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-
-// TODO 스킬별로 상속 관계 다루기
-public class BuddySkill : Skill
+public class HeroSkill : Skill
 {
-    public BuddySkillData skillData;
+    public HeroSkillData skillData;
 
-    //public BuddySkill(BuddyController owner, BuddySkillData skillInfo) : base(owner,  skillInfo)
-
-    public BuddySkill(BuddyController owner, int templateId)
+    public HeroSkill(HeroController owner, int templateId)
     {
         SetInfo(owner, templateId);
     }
 
-    private void SetInfo(BuddyController owner, int templateId)
+    private void SetInfo(HeroController owner, int templateId)
     {
         _owner = owner;
-        skillData = Managers.Data.BuddySkillDataDic[templateId];
+        skillData = Managers.Data.HeroSkillDataDic[templateId];
     }
 
     public override void Reset()
@@ -28,7 +24,6 @@ public class BuddySkill : Skill
         skillData = null;
     }
 
-    #region Battle
     public override void UseSkill()
     {
         // TODO Owner의 데이터가 필요
@@ -39,13 +34,9 @@ public class BuddySkill : Skill
         float damage = damageBase * Managers.Data.EffectDataDic[effectNumber].DamageValue;
         int roundedDamage = (int)(damage + 0.5f);
 
-        foreach(MonsterController target in SkillTargetList)
+        foreach (MonsterController target in SkillTargetList)
         {
             target.OnDamage(_owner.GameObjectType, skillData, roundedDamage);
         }
-
-        // Hero에 던져주기
-        Managers.Object.Hero.AddBlock(skillData);
     }
-    #endregion
 }

@@ -53,22 +53,26 @@ public class MonsterController : CreatureController
         UpdateHpText();
     }
 
-    public void OnDamage(Define.EGameObjectType type, BuddySkillData skillData, int damage)
+    public void OnDamage(Define.EGameObjectType type, SkillData skillData, int damage)
     {
         TakeDamage(damage);
 
         if (type == Define.EGameObjectType.Hero)
         {
-            Managers.Object.SpawnSkillEffect(transform.position + Vector3.up, skillData.HitEffectPrefabKey, 1.0f);
+            var heroSKill = skillData as HeroSkillData;
+
+            Managers.Object.SpawnSkillEffect(transform.position + Vector3.up, heroSKill.HitEffectPrefabKey, 1.0f);
             UI_DamageText damageText = Managers.UI.MakeSubItem<UI_DamageText>(transform, "UI_CriticalDamageText");
-            Managers.Sound.Play(Define.ESound.Effect, skillData.HitSoundKey);
+            Managers.Sound.Play(Define.ESound.Effect, heroSKill.HitSoundKey);
             damageText.SetInfo(damage);
         }
         else if (type == Define.EGameObjectType.Buddy)
         {
-            Managers.Object.SpawnSkillEffect(transform.position + Vector3.up, skillData.HitEffectPrefabKey, 1.0f);
+            var buddySKill = skillData as BuddySkillData;
+
+            Managers.Object.SpawnSkillEffect(transform.position + Vector3.up, buddySKill.HitEffectPrefabKey, 1.0f);
             UI_DamageText damageText = Managers.UI.MakeSubItem<UI_DamageText>(transform, "UI_DamageText");
-            Managers.Sound.Play(Define.ESound.Effect, skillData.HitSoundKey);
+            Managers.Sound.Play(Define.ESound.Effect, buddySKill.HitSoundKey);
             damageText.SetInfo(damage);
         }
     }

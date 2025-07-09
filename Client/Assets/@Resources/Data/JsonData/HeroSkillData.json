@@ -1,0 +1,74 @@
+{
+  "heroSkills": [
+    {
+      "TemplateId": 1,
+      "Name": "근접 평타",
+      "NameTextId": "근접 평타",
+      "DescriptionTextId": "근접 평타1",
+      "IconImageKey": [],
+      "SkillType": 0,
+      "SkillEffectPrefabKey": null,
+      "HitEffectPrefabKey": "VFX_buddy_common_skill_hit",
+      "StartSoundKey": null,
+      "HitSoundKey": "SFX_hit",
+      "Cooltime": 0.5,
+      "AnimName": "attack",
+      "AnimSpeed": 1.0,
+      "UseSkillTargetType": 0,
+      "GatherTargetCounts": 1,
+      "GatherTargetType": 0,
+      "TargetFriendType": 0,
+      "EffectDataId": 10,
+      "NextLevelSkillId": 0
+    },
+    {
+      "TemplateId": 2,
+      "Name": "근접 평타 중",
+      "NameTextId": "근접 평타",
+      "DescriptionTextId": "근접 평타2",
+      "IconImageKey": [
+        "sp_ui_ic_skill_rare_sword",
+        "sp_ui_ic_skill_rare_sword"
+      ],
+      "SkillType": 0,
+      "SkillEffectPrefabKey": null,
+      "HitEffectPrefabKey": "VFX_buddy_common_skill_hit",
+      "StartSoundKey": null,
+      "HitSoundKey": "SFX_hit",
+      "Cooltime": 0.5,
+      "AnimName": "attack",
+      "AnimSpeed": 1.0,
+      "UseSkillTargetType": 0,
+      "GatherTargetCounts": 1,
+      "GatherTargetType": 0,
+      "TargetFriendType": 0,
+      "EffectDataId": 15,
+      "NextLevelSkillId": 0
+    },
+    {
+      "TemplateId": 3,
+      "Name": "근접 평타 상",
+      "NameTextId": "근접 평타",
+      "DescriptionTextId": "근접 평타3",
+      "IconImageKey": [
+        "sp_ui_ic_skill_rare_sword",
+        "sp_ui_ic_skill_rare_sword",
+        "sp_ui_ic_skill_rare_sword"
+      ],
+      "SkillType": 0,
+      "SkillEffectPrefabKey": null,
+      "HitEffectPrefabKey": "VFX_buddy_common_skill_hit",
+      "StartSoundKey": null,
+      "HitSoundKey": "SFX_hit",
+      "Cooltime": 0.5,
+      "AnimName": "attack",
+      "AnimSpeed": 1.0,
+      "UseSkillTargetType": 0,
+      "GatherTargetCounts": 1,
+      "GatherTargetType": 0,
+      "TargetFriendType": 0,
+      "EffectDataId": 17,
+      "NextLevelSkillId": 0
+    }
+  ]
+}

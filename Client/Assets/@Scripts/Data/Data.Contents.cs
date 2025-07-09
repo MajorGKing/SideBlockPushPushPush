@@ -58,6 +58,49 @@ namespace Data
 
     }
 
+    #region HeroSkillData
+    [Serializable]
+    public class HeroSkillData : SkillData
+    {
+        public int TemplateId;
+        public string Name;
+        public string NameTextId;
+        public string DescriptionTextId;
+        public List<string> IconImageKey;
+        public Define.ESkillType SkillType;
+        public string SkillEffectPrefabKey;
+        public string HitEffectPrefabKey;
+        public string StartSoundKey;
+        public string HitSoundKey;
+        public float Cooltime;
+        public string AnimName;
+        public float AnimSpeed;
+        public Define.EUseSkillTargetType UseSkillTargetType;
+        public int GatherTargetCounts;
+        public int GatherTargetType;
+        public Define.ETargetFriendType TargetFriendType;
+        public int EffectDataId;
+        public int NextLevelSkillId;
+    }
+
+    public class HeroSkillDataLoader : ILoader<int, HeroSkillData>
+    {
+        public List<HeroSkillData> heroSkills = new List<HeroSkillData>();
+        public Dictionary<int, HeroSkillData> MakeDict()
+        {
+            Dictionary<int, HeroSkillData> dict = new Dictionary<int, HeroSkillData>();
+            foreach (HeroSkillData skill in heroSkills)
+                dict.Add(skill.TemplateId, skill);
+            return dict;
+        }
+
+        public bool Validate()
+        {
+            return true;
+        }
+    }
+    #endregion
+
     #region BuddySkillData
     [Serializable]
     public class BuddySkillData : SkillData

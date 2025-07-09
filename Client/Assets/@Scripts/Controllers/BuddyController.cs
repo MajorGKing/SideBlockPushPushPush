@@ -66,9 +66,9 @@ public class BuddyController : AllyController
             skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>("spi_buddy_tom_SkeletonData");
             skeletonAnimation.Initialize(true);
 
-            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[5]));
-            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[5]));
-            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[6]));
+            _skillList.Add(new BuddySkill(this, 5));
+            _skillList.Add(new BuddySkill(this, 5));
+            _skillList.Add(new BuddySkill(this, 6));
 
             AnimationBindEventInit();
         }
@@ -77,7 +77,7 @@ public class BuddyController : AllyController
             skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>("spi_buddy_mari_SkeletonData");
             skeletonAnimation.Initialize(true);
 
-            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[7]));
+            _skillList.Add(new BuddySkill(this, 7));
 
             AnimationBindEventInit();
         }
@@ -86,11 +86,11 @@ public class BuddyController : AllyController
             skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>("spi_buddy_ellie_SkeletonData");
             skeletonAnimation.Initialize(true);
 
-            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[3]));
-            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[3]));
-            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[3]));
-            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[3]));
-            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[4]));
+            _skillList.Add(new BuddySkill(this, 3));
+            _skillList.Add(new BuddySkill(this, 3));
+            _skillList.Add(new BuddySkill(this, 3));
+            _skillList.Add(new BuddySkill(this, 3));
+            _skillList.Add(new BuddySkill(this, 4));
 
             AnimationBindEventInit();
         }
@@ -99,8 +99,8 @@ public class BuddyController : AllyController
             skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>("spi_buddy_duck_SkeletonData");
             skeletonAnimation.Initialize(true);
 
-            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[1]));
-            _skillList.Add(new BuddySkill(this, Managers.Data.BuddySkillDataDic[2]));
+            _skillList.Add(new BuddySkill(this, 1));
+            _skillList.Add(new BuddySkill(this, 2));
 
             AnimationBindEventInit();
         }
