@@ -176,7 +176,7 @@ public class HeroController : AllyController
 
         foreach (var skill in activeSkills)
         {
-            if (IsSubsequence(skill.skillData.IconImageKey, spriteNames))
+            if (IsExactSequenceMatch(skill.skillData.IconImageKey, spriteNames))
             {
                 if (skill.skillData.IconImageKey.Count > longestMatch)
                 {
@@ -207,19 +207,43 @@ public class HeroController : AllyController
     }
 
     #region Helper
-    private bool IsSubsequence(List<string> pattern, List<string> sequence)
-    {
-        int patternIndex = 0;
-        int sequenceIndex = 0;
+    //private bool IsSubsequence(List<string> pattern, List<string> sequence)
+    //{
+    //    int patternIndex = 0;
+    //    int sequenceIndex = 0;
 
-        while (patternIndex < pattern.Count && sequenceIndex < sequence.Count)
+    //    while (patternIndex < pattern.Count && sequenceIndex < sequence.Count)
+    //    {
+    //        if (pattern[patternIndex] == sequence[sequenceIndex])
+    //            patternIndex++;
+    //        sequenceIndex++;
+    //    }
+
+    //    return patternIndex == pattern.Count;
+    //}
+    private bool IsExactSequenceMatch(List<string> pattern, List<string> sequence)
+    {
+        if (pattern.Count == 0 || pattern.Count > sequence.Count)
+            return false;
+
+        for (int i = 0; i <= sequence.Count - pattern.Count; i++)
         {
-            if (pattern[patternIndex] == sequence[sequenceIndex])
-                patternIndex++;
-            sequenceIndex++;
+            bool match = true;
+
+            for (int j = 0; j < pattern.Count; j++)
+            {
+                if (sequence[i + j] != pattern[j])
+                {
+                    match = false;
+                    break;
+                }
+            }
+
+            if (match)
+                return true;
         }
 
-        return patternIndex == pattern.Count;
+        return false;
     }
     #endregion
 }
