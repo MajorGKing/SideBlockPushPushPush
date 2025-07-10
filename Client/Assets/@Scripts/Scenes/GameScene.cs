@@ -121,5 +121,6 @@ public class GameScene : BaseScene
     public override void Clear()
     {
         Managers.Game.GameSceneEnd();
+        Managers.Object.Clear();
     }
 }

@@ -75,6 +75,9 @@ public class UI_GameScene : UI_Scene
 
     public void SetInfo(bool doAuto, GameScene scene)
     {
+        transform.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
+        transform.GetComponent<Canvas>().worldCamera = Camera.main;
+
         _isAuto = doAuto;
 
         _scene = scene;
@@ -84,7 +87,8 @@ public class UI_GameScene : UI_Scene
 
     public void RefreshUI()
     {
-        if(_isAuto == true)
+        GetButton((int)Buttons.Button_Auto).transform.GetComponent<Image>().sprite = null;
+        if (_isAuto == true)
         {
             var pause = Managers.Resource.Load<Sprite>("Pause_Icon");
             GetButton((int)Buttons.Button_Auto).transform.GetComponent<Image>().sprite = pause;

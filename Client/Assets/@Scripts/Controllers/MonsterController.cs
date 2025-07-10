@@ -45,8 +45,6 @@ public class MonsterController : CreatureController
 
     public void SetInfo(int templateID)
     {
-        //_gameScene = gameScene;
-
         MaxHP = 1000;
         HP = MaxHP;
 

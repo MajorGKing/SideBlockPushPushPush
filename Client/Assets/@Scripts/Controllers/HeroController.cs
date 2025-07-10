@@ -14,9 +14,6 @@ public class HeroController : AllyController
         Reload,
     }
 
-    //private List<SpriteRenderer> _myBlocks;
-    //private GameScene _gameScene;
-
     [SerializeField]
     private EHeroState _currentState;
     public EHeroState currentState
@@ -25,7 +22,6 @@ public class HeroController : AllyController
         set { _currentState = value; }
     }
 
-    //public List<BuddySkillData> buddySkillDatas;
     public List<HeroSkill> skillData;
     private HeroSkill normalSkill;
 
@@ -34,15 +30,11 @@ public class HeroController : AllyController
         base.Init();
 
         GameObjectType = Define.EGameObjectType.Hero;
-        //buddySkillDatas = new List<BuddySkillData>();
         skillData = new List<HeroSkill>();
     }
 
     public void SetInfo(int templateID)//, List<SpriteRenderer> blockSet, GameScene game)
     {
-        //_myBlocks = blockSet;
-        //_gameScene = game;
-
         // TODO 데이터 불러와서 스프라이트 세트 가저오기
         skillData.Add(new HeroSkill(this, 1));
         skillData.Add(new HeroSkill(this, 2));
@@ -150,6 +142,9 @@ public class HeroController : AllyController
     {
         if(currentState == EHeroState.Attack)
         {
+            if (trackEntry.Animation.Name != ANIMATION_ATTACK)
+                return;
+
             currentState = EHeroState.Idle;
             PlayAnimation(0, ANIMATION_IDLE, true);
             _isWaitingAttack = false;

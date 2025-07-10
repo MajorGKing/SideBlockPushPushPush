@@ -32,6 +32,8 @@ public class BuddyController : AllyController
 
     //public List<Sprite> blockImages;
 
+    private UI_BattleBarWorldSpace _battleBarUI;
+
     [SerializeField]
     private EBuddyState _currentBuddyState = EBuddyState.None;
     public EBuddyState currentBuddyState
@@ -45,6 +47,8 @@ public class BuddyController : AllyController
     {
         base.Init();
 
+        _battleBarUI = GetComponentInChildren<UI_BattleBarWorldSpace>();
+
         GameObjectType = Define.EGameObjectType.Buddy;
     }
 
@@ -53,8 +57,6 @@ public class BuddyController : AllyController
     public void SetInfo(int num)//, List<SpriteRenderer> blockSet)//, GameScene game)
     {
         _buddyNumber = num;
-        //_myBlocks = blockSet;
-        //_gameScene = game;
 
         _skillList = new List<BuddySkill> { };
         _nowBlockList = new List<int>();
@@ -106,8 +108,6 @@ public class BuddyController : AllyController
         }
     }
 
-
-
     public override void SetStartAI(bool start)
     {
         _doWork = start;
@@ -144,8 +144,11 @@ public class BuddyController : AllyController
         if (_currentCoolTime > 0)
         {
             _currentCoolTime -= Time.deltaTime;
+            _battleBarUI.SetInfo(_coolTime - _currentCoolTime, _coolTime);
             return;
         }
+
+        _battleBarUI.SetInfo(1f, 1f);
 
         if (_auto == true)
         {
@@ -170,9 +173,14 @@ public class BuddyController : AllyController
         if(_currentReloadTime > 0)
         {
             _currentReloadTime -= Time.deltaTime;
+
+            _battleBarUI.SetInfo(_reloadTime - _currentReloadTime, _reloadTime);
+
             return;
         }
 
+
+        _battleBarUI.SetInfo(1f, 1f);
         ReloadBlocks();
 
         currentBuddyState = EBuddyState.Idle;
@@ -205,14 +213,13 @@ public class BuddyController : AllyController
                 PlayAnimation(0, ANIMATION_MOVE, true);
                 currentBuddyState = EBuddyState.Reload;
                 _currentReloadTime = _reloadTime;
-                //_currentCoolTime = 0;
             }
             else
             {
                 PlayAnimation(0, ANIMATION_IDLE, true);
                 currentBuddyState = EBuddyState.Idle;
-                //_currentCoolTime = _coolTime;
                 _currentCoolTime = _skillList[_nowBlockList[0]].skillData.Cooltime;
+                _coolTime = _skillList[_nowBlockList[0]].skillData.Cooltime;
                 _nowBlockList.RemoveAt(0);
             }
         }
@@ -224,8 +231,6 @@ public class BuddyController : AllyController
 
         foreach (var block in _myBlocks)
         {
-            //int randomIndex = Random.Range(0, blockImages.Count);
-            //Sprite selectedSprite = blockImages[randomIndex];
             int randomIndex = Random.Range(0, _skillList.Count);
             Sprite selectedSprite = Managers.Resource.Load<Sprite>(_skillList[randomIndex].skillData.IconImageKey);
             block.sprite = selectedSprite;
@@ -254,7 +259,6 @@ public class BuddyController : AllyController
 
         Sprite firstBlock = _myBlocks[0].sprite;
         int blockId = _nowBlockList[0];
-        //_nowBlockList.RemoveAt(0);
 
         // Shift sprites forward
         for (int i = 1; i < _myBlocks.Count; i++)
@@ -282,8 +286,5 @@ public class BuddyController : AllyController
         lastBlock.transform.localScale = Vector3.one; // Reset scale just in case
 
         _skillList[blockId].UseSkill();
-
-        //_gameScene.BuddyAttack(firstBlock, 10);
     }
-
 }
