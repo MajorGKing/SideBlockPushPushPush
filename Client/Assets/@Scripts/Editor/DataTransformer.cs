@@ -22,6 +22,8 @@ public class DataTransformer : EditorWindow
         ParseExcelDataToJson<BuddySkillDataLoader, BuddySkillData>("BuddySkill");
         ParseExcelDataToJson<EffectDataLoader, EffectData>("Effect");
         ParseExcelDataToJson<StageDataLoader, StageData>("Stage");
+        ParseExcelDataToJson<MonsterDataLoader, MonsterData>("Monster");
+        ParseExcelDataToJson<ProgressionTypeDataLoader, ProgressionTypeData>("ProgressionType");
         Debug.Log("Complete DataTransformer");
     }
 

@@ -15,6 +15,18 @@ MonoBehaviour:
   m_GroupName: Data
   m_GUID: 9a3b2525873b55c458754d88c665857e
   m_SerializeEntries:
+  - m_GUID: 05a577737f1ce414294c966ba467a0f0
+    m_Address: MonsterData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 07cd55ee26c54004887694f5b59df2a0
+    m_Address: ProgressionTypeData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 31b22a4b19ab814428e387765123fb6f
     m_Address: TextData
     m_ReadOnly: 0

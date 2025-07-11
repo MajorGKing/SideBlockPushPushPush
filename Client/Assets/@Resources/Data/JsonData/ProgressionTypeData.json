@@ -1,0 +1,32 @@
+{
+  "ProgressionTypes": [
+    {
+      "TemplateId": 1,
+      "Name": "슬라임 일반",
+      "MaxHp": 10,
+      "NormalDefence": 0,
+      "MagicDefence": 0
+    },
+    {
+      "TemplateId": 2,
+      "Name": "슬라임 레어",
+      "MaxHp": 10,
+      "NormalDefence": 1,
+      "MagicDefence": 0
+    },
+    {
+      "TemplateId": 3,
+      "Name": "거미 일반",
+      "MaxHp": 10,
+      "NormalDefence": 0,
+      "MagicDefence": 0
+    },
+    {
+      "TemplateId": 4,
+      "Name": "거미 레어",
+      "MaxHp": 10,
+      "NormalDefence": 0,
+      "MagicDefence": 2
+    }
+  ]
+}

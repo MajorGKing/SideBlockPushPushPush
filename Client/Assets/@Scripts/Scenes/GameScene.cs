@@ -89,7 +89,7 @@ public class GameScene : BaseScene
         _monsterControllers = new List<MonsterController>();
 
         //var monster = Managers.Resource.Instantiate("Monster", monsterPosition[0]);
-        var monster = Managers.Object.SpawnCreatureObject<MonsterController>(monsterPosition[0], 0);
+        var monster = Managers.Object.SpawnCreatureObject<MonsterController>(monsterPosition[0], 1, 1);
         monster.transform.position = monsterPosition[0].position;
         _monsterControllers.Add(monster);
 
@@ -149,13 +149,13 @@ public class GameScene : BaseScene
         switch (waveIndex)
         {
             case 1:
-                SpawnMonsters(_stageData.FirstWaveMonsterList, _stageData.FirstWaveMonsterLevelList);
+                SpawnMonsters(StageData.FirstWaveMonsterList, StageData.FirstWaveMonsterLevelList);
                 break;
             case 2:
-                SpawnMonsters(_stageData.SecondWaveMonsterList, _stageData.SecondWaveMonsterLevelList);
+                SpawnMonsters(StageData.SecondWaveMonsterList, StageData.SecondWaveMonsterLevelList);
                 break;
             case 3:
-                SpawnMonsters(_stageData.BossWaveMonsterList, _stageData.BossWaveMonsterLevelList);
+                SpawnMonsters(StageData.BossWaveMonsterList, StageData.BossWaveMonsterLevelList);
                 break;
             default:
                 break;
@@ -165,5 +165,23 @@ public class GameScene : BaseScene
     protected void SpawnMonsters(List<int> monsterList, List<int> monsterLevel)
     {
         int spawnIndex = 0;
+        switch (monsterList.Count)
+        {
+            case 1:
+                Managers.Object.SpawnCreatureObject<MonsterController>(monsterPosition[0], monsterList[0], monsterLevel[0]);
+                break;
+            case 2:
+            case 3:
+            case 4:
+                foreach (int monsterIndex in monsterList)
+                {
+                    Managers.Object.SpawnCreatureObject<MonsterController>(monsterPosition[spawnIndex + 1], monsterList[spawnIndex], monsterLevel[spawnIndex]);
+                    spawnIndex++;
+                }
+                break;
+
+            default:
+                break;
+        }
     }
 }

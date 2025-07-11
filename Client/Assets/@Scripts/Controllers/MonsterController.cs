@@ -12,8 +12,34 @@ public class MonsterController : CreatureController
         Dead,
     }
 
-    public int MaxHP { get; protected set; }
-    public int HP { get; protected set; }
+    private class CurrentMonsterData : MonsterData
+    {
+        public int currentHp;
+        public int currentNormalDefence;
+        public int currentMagicDefence;
+
+        public CurrentMonsterData(MonsterData data)
+        {
+            TemplateId = data.TemplateId;
+            Name = data.Name;
+            NameTextId = data.NameTextId;
+            DescriptionTextId = data.DescriptionTextId;
+            StageInfoImageKey = data.SpineNameKey;
+            SpineNameKey = data.SpineNameKey;
+            MaxHp = data.MaxHp;
+            NormalDefence = data.NormalDefence;
+            MagicDefence = data.MagicDefence;
+            ProgressionTypeId = data.ProgressionTypeId;
+
+            currentHp = data.MaxHp;
+            currentNormalDefence = data.NormalDefence;
+            currentMagicDefence = data.MagicDefence;
+        }
+    }
+
+
+    private MonsterData _monsterData;
+    private CurrentMonsterData _currentMonsterData;
 
     //private GameScene _gameScene;
     private UI_BattleBarWorldSpace _battleBarUI;
@@ -43,10 +69,18 @@ public class MonsterController : CreatureController
         GameObjectType = Define.EGameObjectType.Monster;
     }
 
-    public void SetInfo(int templateID)
+    public void SetInfo(int templateID, int level)
     {
-        MaxHP = 1000;
-        HP = MaxHP;
+        MonsterData data = Managers.Data.MonsterDataDic[templateID];
+        ProgressionTypeData type = Managers.Data.ProgressionTypeDataDic[data.ProgressionTypeId];
+
+        _monsterData = data;
+
+        _monsterData.MaxHp = data.MaxHp + (type.MaxHp * (level - 1));
+        _monsterData.NormalDefence = data.NormalDefence + (type.NormalDefence * (level - 1));
+        _monsterData.MagicDefence = data.MagicDefence + (type.MagicDefence * (level - 1));
+
+        _currentMonsterData = new CurrentMonsterData(_monsterData);
 
         UpdateHpText();
     }
@@ -80,10 +114,10 @@ public class MonsterController : CreatureController
         if (currentState == EMonsterState.Dead)
             return;
 
-        HP -= damage;
-        if (HP <= 0)
+        _currentMonsterData.currentHp -= damage;
+        if (_currentMonsterData.currentHp <= 0)
         {
-            HP = 0;
+            _currentMonsterData.currentHp = 0;
             OnDead();
         }
 
@@ -98,6 +132,6 @@ public class MonsterController : CreatureController
 
     protected void UpdateHpText()
     {
-        _battleBarUI.SetInfo(HP, MaxHP);
+        _battleBarUI.SetInfo(_currentMonsterData.currentHp, _currentMonsterData.MaxHp);
     }
 }

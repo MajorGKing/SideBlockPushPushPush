@@ -65,7 +65,7 @@ public class ObjectManager
         return go;
     }
 
-    public T SpawnCreatureObject<T>(Transform parent, int templateID) where T : CreatureController
+    public T SpawnCreatureObject<T>(Transform parent, int templateID, int level = 1) where T : CreatureController
     {
         T creatureObject = null;
 
@@ -79,7 +79,7 @@ public class ObjectManager
         }
         else if (typeof(T) == typeof(MonsterController))
         {
-            creatureObject = SpawnMonster(parent, templateID) as T;
+            creatureObject = SpawnMonster(parent, templateID, level) as T;
         }
 
         if(creatureObject != null)
@@ -116,12 +116,12 @@ public class ObjectManager
     }
 
     // TODO Set Level
-    private MonsterController SpawnMonster(Transform parent, int templateID)
+    private MonsterController SpawnMonster(Transform parent, int templateID, int level = 1)
     {
         MonsterController normalMonster = Managers.Resource.Instantiate(MONSTER_PREFAB_NAME, parent).GetComponent<MonsterController>();
         if (normalMonster != null)
         {
-            normalMonster.SetInfo(templateID);
+            normalMonster.SetInfo(templateID, level);
             Monsters.Add(normalMonster);
             return normalMonster;
         }

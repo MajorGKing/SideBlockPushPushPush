@@ -20,6 +20,9 @@ public class DataManager
     public Dictionary<int, Data.BuddySkillData> BuddySkillDataDic { get; set; } = new Dictionary<int, Data.BuddySkillData>();
     public Dictionary<int, Data.EffectData> EffectDataDic { get; set; } = new Dictionary<int, Data.EffectData>();
     public Dictionary<int, Data.StageData> StageDataDic { get; set; } = new Dictionary<int, Data.StageData>();
+    public Dictionary<int, Data.MonsterData> MonsterDataDic { get; set; } = new Dictionary<int, Data.MonsterData>();
+    public Dictionary<int, Data.ProgressionTypeData> ProgressionTypeDataDic { get; set; } = new Dictionary<int, Data.ProgressionTypeData>();
+
 
     public void Init()
     {
@@ -27,6 +30,8 @@ public class DataManager
         BuddySkillDataDic = LoadJson<Data.BuddySkillDataLoader, int, Data.BuddySkillData>("BuddySkillData").MakeDict();
         EffectDataDic = LoadJson<Data.EffectDataLoader, int, Data.EffectData>("EffectData").MakeDict();
         StageDataDic = LoadJson<Data.StageDataLoader, int, Data.StageData>("StageData").MakeDict();
+        MonsterDataDic = LoadJson<Data.MonsterDataLoader, int, Data.MonsterData>("MonsterData").MakeDict();
+        ProgressionTypeDataDic = LoadJson<Data.ProgressionTypeDataLoader, int, Data.ProgressionTypeData>("ProgressionTypeData").MakeDict();
 
         Validate();
     }

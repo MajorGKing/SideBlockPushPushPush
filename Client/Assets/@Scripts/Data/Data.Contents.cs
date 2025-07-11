@@ -88,6 +88,69 @@ namespace Data
     }
     #endregion
 
+    #region MonsterData
+    public class MonsterData
+    {
+        public int TemplateId;
+        public string Name;
+        public string NameTextId;
+        public string DescriptionTextId;
+        public string StageInfoImageKey;
+        public string SpineNameKey;
+        public int MaxHp;
+        public int NormalDefence;
+        public int MagicDefence;
+        public int ProgressionTypeId;
+    }
+
+    public class MonsterDataLoader : ILoader<int, MonsterData>
+    {
+        public List<MonsterData> Monsters = new List<MonsterData>();
+
+        public Dictionary<int, MonsterData> MakeDict()
+        {
+            Dictionary<int, MonsterData> dict = new Dictionary<int, MonsterData>();
+            foreach (MonsterData monster in Monsters)
+                dict.Add(monster.TemplateId, monster);
+            return dict;
+        }
+
+        public bool Validate()
+        {
+            return true;
+        }
+    }
+    #endregion
+
+    #region ProgressionTypeData
+    public class ProgressionTypeData
+    {
+        public int TemplateId;
+        public string Name;
+        public int MaxHp;
+        public int NormalDefence;
+        public int MagicDefence;
+    }
+
+    public class ProgressionTypeDataLoader : ILoader<int, ProgressionTypeData>
+    {
+        public List<ProgressionTypeData> ProgressionTypes = new List<ProgressionTypeData>();
+
+        public Dictionary<int, ProgressionTypeData> MakeDict()
+        {
+            Dictionary<int, ProgressionTypeData> dict = new Dictionary<int, ProgressionTypeData>();
+            foreach (ProgressionTypeData ProgressionType in ProgressionTypes)
+                dict.Add(ProgressionType.TemplateId, ProgressionType);
+            return dict;
+        }
+
+        public bool Validate()
+        {
+            return true;
+        }
+    }
+    #endregion
+
     public class SkillData
     {
 

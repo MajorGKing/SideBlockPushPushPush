@@ -58,7 +58,10 @@ public class Define
 		StatChanged,
 		QuestUpdated,
 		CollectionUpdated,
-	}
+
+        // Stage
+        OnStageWaveIndexChanged,
+    }
 
 	public enum ELayer
 	{
