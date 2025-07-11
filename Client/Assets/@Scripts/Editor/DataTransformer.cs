@@ -21,6 +21,7 @@ public class DataTransformer : EditorWindow
         ParseExcelDataToJson<HeroSkillDataLoader, HeroSkillData>("HeroSkill");
         ParseExcelDataToJson<BuddySkillDataLoader, BuddySkillData>("BuddySkill");
         ParseExcelDataToJson<EffectDataLoader, EffectData>("Effect");
+        ParseExcelDataToJson<StageDataLoader, StageData>("Stage");
         Debug.Log("Complete DataTransformer");
     }
 

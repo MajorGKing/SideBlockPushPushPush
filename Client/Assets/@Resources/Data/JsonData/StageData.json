@@ -1,0 +1,90 @@
+{
+  "stages": [
+    {
+      "TemplateId": 1,
+      "WorldNumber": 1,
+      "StageNumber": 1,
+      "DifficultyLevel": 1,
+      "FirstWaveMonsterList": [
+        1
+      ],
+      "FirstWaveMonsterLevelList": [
+        1
+      ],
+      "SecondWaveMonsterList": [
+        1,
+        2
+      ],
+      "SecondWaveMonsterLevelList": [
+        1,
+        1
+      ],
+      "BossWaveMonsterList": [
+        3
+      ],
+      "BossWaveMonsterLevelList": [
+        1
+      ]
+    },
+    {
+      "TemplateId": 2,
+      "WorldNumber": 1,
+      "StageNumber": 2,
+      "DifficultyLevel": 1,
+      "FirstWaveMonsterList": [
+        1,
+        1
+      ],
+      "FirstWaveMonsterLevelList": [
+        1,
+        1
+      ],
+      "SecondWaveMonsterList": [
+        2,
+        2
+      ],
+      "SecondWaveMonsterLevelList": [
+        2,
+        2
+      ],
+      "BossWaveMonsterList": [
+        3
+      ],
+      "BossWaveMonsterLevelList": [
+        2
+      ]
+    },
+    {
+      "TemplateId": 3,
+      "WorldNumber": 1,
+      "StageNumber": 3,
+      "DifficultyLevel": 1,
+      "FirstWaveMonsterList": [
+        1,
+        2,
+        3
+      ],
+      "FirstWaveMonsterLevelList": [
+        1,
+        1,
+        1
+      ],
+      "SecondWaveMonsterList": [
+        1,
+        2,
+        3
+      ],
+      "SecondWaveMonsterLevelList": [
+        2,
+        2,
+        1
+      ],
+      "BossWaveMonsterList": [
+        3
+      ],
+      "BossWaveMonsterLevelList": [
+        3
+      ]
+    }
+  ]
+}

@@ -92,6 +92,7 @@ public class Define
     }
     #endregion
 
+    #region Data
     public enum ESkillType
     {
         Active,
@@ -129,6 +130,15 @@ public class Define
         Duration,
         All
     }
+
+    public enum EDifficultyLevel
+    {
+        None,
+        Normal,
+        Hard,
+    }
+
+    #endregion
 
 
     #region Tag

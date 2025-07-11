@@ -53,6 +53,41 @@ namespace Data
     }
     #endregion
 
+    #region StageData
+    [Serializable]
+    public class StageData
+    {
+        public int TemplateId;
+        public int WorldNumber;
+        public int StageNumber;
+        public Define.EDifficultyLevel DifficultyLevel;
+        public List<int> FirstWaveMonsterList;
+        public List<int> FirstWaveMonsterLevelList;
+        public List<int> SecondWaveMonsterList;
+        public List<int> SecondWaveMonsterLevelList;
+        public List<int> BossWaveMonsterList;
+        public List<int> BossWaveMonsterLevelList;
+    }
+
+    public class StageDataLoader : ILoader<int, StageData>
+    {
+        public List<StageData> stages = new List<StageData>();
+
+        public Dictionary<int, StageData> MakeDict()
+        {
+            Dictionary<int, StageData> dict = new Dictionary<int, StageData>();
+            foreach (StageData stage in stages)
+                dict.Add(stage.TemplateId, stage);
+            return dict;
+        }
+
+        public bool Validate()
+        {
+            return true;
+        }
+    }
+    #endregion
+
     public class SkillData
     {
 

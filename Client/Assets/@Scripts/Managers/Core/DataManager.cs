@@ -19,14 +19,15 @@ public class DataManager
     public Dictionary<int, Data.HeroSkillData> HeroSkillDataDic { get; set; } = new Dictionary<int, Data.HeroSkillData>();
     public Dictionary<int, Data.BuddySkillData> BuddySkillDataDic { get; set; } = new Dictionary<int, Data.BuddySkillData>();
     public Dictionary<int, Data.EffectData> EffectDataDic { get; set; } = new Dictionary<int, Data.EffectData>();
+    public Dictionary<int, Data.StageData> StageDataDic { get; set; } = new Dictionary<int, Data.StageData>();
 
     public void Init()
     {
         HeroSkillDataDic = LoadJson<Data.HeroSkillDataLoader, int, Data.HeroSkillData>("HeroSkillData").MakeDict();
         BuddySkillDataDic = LoadJson<Data.BuddySkillDataLoader, int, Data.BuddySkillData>("BuddySkillData").MakeDict();
         EffectDataDic = LoadJson<Data.EffectDataLoader, int, Data.EffectData>("EffectData").MakeDict();
+        StageDataDic = LoadJson<Data.StageDataLoader, int, Data.StageData>("StageData").MakeDict();
 
-        
         Validate();
     }
 

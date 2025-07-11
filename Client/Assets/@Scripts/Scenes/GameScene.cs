@@ -1,6 +1,8 @@
+using Data;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static Define;
 
 public class GameScene : BaseScene
 {
@@ -24,6 +26,29 @@ public class GameScene : BaseScene
 
     private UI_GameScene _gameSceneUI;
     private bool _isAuto;
+
+    private StageData _stageData;
+    public StageData StageData => _stageData;
+    private int _stageWaveIndex = 0;
+    public int StageWaveIndex
+    {
+        get { return _stageWaveIndex; }
+        set
+        {
+            if (_stageWaveIndex == value)
+            {
+                return;
+            }
+
+            _stageWaveIndex = value;
+
+            Managers.Object.RemoveAllMonsters();
+            SpawnMonsterByWaveIndex(_stageWaveIndex);
+
+            Managers.Event.TriggerEvent(EEventType.OnStageWaveIndexChanged);
+        }
+    }
+
 
     protected override void Awake()
     {
@@ -99,11 +124,6 @@ public class GameScene : BaseScene
         }
     }
 
-    public void HeroAttack(int damgae)
-    {
-        //_monsterControllers[0].OnDamage(1, damgae);
-    }
-
     public void SetAuto()
     {
         _isAuto = !_isAuto;
@@ -122,5 +142,28 @@ public class GameScene : BaseScene
     {
         Managers.Game.GameSceneEnd();
         Managers.Object.Clear();
+    }
+
+    protected virtual void SpawnMonsterByWaveIndex(int waveIndex)
+    {
+        switch (waveIndex)
+        {
+            case 1:
+                SpawnMonsters(_stageData.FirstWaveMonsterList, _stageData.FirstWaveMonsterLevelList);
+                break;
+            case 2:
+                SpawnMonsters(_stageData.SecondWaveMonsterList, _stageData.SecondWaveMonsterLevelList);
+                break;
+            case 3:
+                SpawnMonsters(_stageData.BossWaveMonsterList, _stageData.BossWaveMonsterLevelList);
+                break;
+            default:
+                break;
+        }
+    }
+
+    protected void SpawnMonsters(List<int> monsterList, List<int> monsterLevel)
+    {
+        int spawnIndex = 0;
     }
 }

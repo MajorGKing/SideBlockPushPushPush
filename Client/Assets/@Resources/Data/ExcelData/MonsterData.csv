@@ -1,0 +1,5 @@
+﻿TemplateId,Name,NameTextId,DescriptionTextId,StageInfoImageKey,SpineNameKey,MaxHP,NormalDefence,MagicDefence,ProgressionTypeId
+1,슬라임 일반,슬라임 일반,평범한 슬라임,,slime_common_SkeletonData,200,0,0,1
+2,슬라임 레어,슬라임 레어,좀 안 평범한 슬라임,,slime_rare_SkeletonData,300,1,1,1
+3,거미 일반,거미 일반,평범한 거미,,spider_common_SkeletonData,500,0,0,1
+4,거미 레어,거미 레어,좀 안 평범한 거미,,spider_rare_SkeletonData,700,0,10,1
