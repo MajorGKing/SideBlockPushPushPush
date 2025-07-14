@@ -1,18 +1,56 @@
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Data;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using static Define;
-using Object = UnityEngine.Object;
-using Random = UnityEngine.Random;
 
 public class GameManager
 {
     private GameScene _scene;
     private bool _nowGameScene = false;
+
+    private HeroController _hero;
+    public HeroController hero
+    {
+        get { return _hero; }
+    }
+    private List<BuddyController> _buddies;
+    public List<BuddyController> buddies
+    {
+        get { return _buddies; }
+    }
+
+    private int _stageTemplateId;
+    public int stageTemplateId
+    {
+        get { return _stageTemplateId; }
+        protected set { _stageTemplateId = value; }
+    }
+
+    //private int _world;
+    //public int world
+    //{
+    //    get { return _world; }
+    //    private set { _world = value; }
+    //}
+    //private int _stage;
+    //public int stage
+    //{
+    //    get { return _stage; }
+    //    private set { _stage = value; }
+    //}
+    //private Define.EDifficultyLevel _difficultyLevel;
+    //public Define.EDifficultyLevel difficultyLevel
+    //{
+    //    get { return _difficultyLevel; }
+    //    private set { _difficultyLevel = value; }
+    //}
+
+    public void Init()
+    {
+        //world = 1;
+        //stage = 1;
+        //difficultyLevel = Define.EDifficultyLevel.Normal;
+        stageTemplateId = 1;
+    }
 
     public void Update()
     {

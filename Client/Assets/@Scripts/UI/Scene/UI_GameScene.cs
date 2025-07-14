@@ -28,7 +28,8 @@ public class UI_GameScene : UI_Scene
     {
         Text_Exit, 
         Text_Replay, 
-        Text_Auto
+        Text_Auto,
+        Text_Time,
     }
 
     enum Sliders
@@ -40,6 +41,8 @@ public class UI_GameScene : UI_Scene
 
     private bool _isAuto;
     private GameScene _scene;
+
+    private float _time;
 
     protected override void Awake()
     {
@@ -85,6 +88,12 @@ public class UI_GameScene : UI_Scene
         RefreshUI();
     }
 
+    public void UpdateTime(float time)
+    {
+        _time = time;
+        RefreshUI();
+    }
+
     public void RefreshUI()
     {
         GetButton((int)Buttons.Button_Auto).transform.GetComponent<Image>().sprite = null;
@@ -100,6 +109,8 @@ public class UI_GameScene : UI_Scene
         }
 
         //LayoutRebuilder.ForceRebuildLayoutImmediate(GetButton((int)Buttons.Button_Auto).GetComponent<RectTransform>());
+
+        GetText((int)Texts.Text_Time).text = "Time : " + _time.ToString("F2");
     }
 
     private void OnClickExitButton(PointerEventData data)

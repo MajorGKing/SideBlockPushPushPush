@@ -1,4 +1,5 @@
 using Data;
+using Spine.Unity;
 using UnityEngine;
 
 public class MonsterController : CreatureController
@@ -81,6 +82,11 @@ public class MonsterController : CreatureController
         _monsterData.MagicDefence = data.MagicDefence + (type.MagicDefence * (level - 1));
 
         _currentMonsterData = new CurrentMonsterData(_monsterData);
+
+        skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>(Managers.Data.MonsterDataDic[templateID].SpineNameKey);
+        skeletonAnimation.Initialize(true);
+
+        AnimationBindEventInit();
 
         UpdateHpText();
     }

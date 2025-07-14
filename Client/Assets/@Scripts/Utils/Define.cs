@@ -143,6 +143,20 @@ public class Define
 
     #endregion
 
+    #region Stage
+
+    public enum EStageState
+    {
+        None,
+        Start,
+        Battle,
+        Move,
+        Over,
+        Clear,
+    }
+
+    #endregion
+
 
     #region Tag
     public const string HEROTAG = "Hero";

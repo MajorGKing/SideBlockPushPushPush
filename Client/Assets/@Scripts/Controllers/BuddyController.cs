@@ -11,6 +11,7 @@ public class BuddyController : AllyController
         Idle,
         Attack,
         Reload,
+        Wait,
     }
 
     private List<int> _nowBlockList;
@@ -24,11 +25,47 @@ public class BuddyController : AllyController
     private float _coolTime;
     [SerializeField]
     private float _currentCoolTime;
+    public float currentCoolTime
+    {
+        get { return _currentCoolTime; }
+        set
+        {
+            if( _currentCoolTime == value )
+                return;
+
+            _currentCoolTime = value;
+
+            if( _coolTime <= 0 )
+            {
+                _coolTime = 0;
+            }
+
+            _battleBarUI.SetInfo(_coolTime - currentCoolTime, _coolTime);
+        }
+    }
 
     [SerializeField]
     private float _reloadTime;
     [SerializeField]
     private float _currentReloadTime;
+    public float currentReloadTime
+    {
+        get { return _currentReloadTime; }
+        set
+        {
+            if(_currentReloadTime == value )
+                return;
+            
+            _currentReloadTime = value;
+
+            if(_currentReloadTime <= 0 )
+            {
+                _currentReloadTime = 0;
+            }
+
+            _battleBarUI.SetInfo(_reloadTime - currentReloadTime, _reloadTime);
+        }
+    }
 
     //public List<Sprite> blockImages;
 
@@ -39,9 +76,18 @@ public class BuddyController : AllyController
     public EBuddyState currentBuddyState
     {
         get { return _currentBuddyState; }
-        set { _currentBuddyState = value; }
+        set 
+        {
+            _currentBuddyState = value;
+
+            //OnChangedState();
+        }
     }
-    
+
+    //private void OnChangedState()
+    //{
+    //    UpdateAnimation();
+    //}
 
     protected override void Init()
     {
@@ -112,7 +158,7 @@ public class BuddyController : AllyController
     {
         _doWork = start;
         currentBuddyState = EBuddyState.Idle;
-        _currentCoolTime = _coolTime;
+        currentCoolTime = _coolTime;
         _isWaitingAttack = false;
 
         ReloadBlocks();
@@ -134,6 +180,9 @@ public class BuddyController : AllyController
             case EBuddyState.Reload:
                 UpdateReload();
                 break;
+            case EBuddyState.Wait:
+                UpdateWait();
+                break;
             default:
                 break;
         }
@@ -141,14 +190,11 @@ public class BuddyController : AllyController
 
     private void UpdateIdle()
     {
-        if (_currentCoolTime > 0)
+        if (currentCoolTime > 0)
         {
-            _currentCoolTime -= Time.deltaTime;
-            _battleBarUI.SetInfo(_coolTime - _currentCoolTime, _coolTime);
+            currentCoolTime -= Time.deltaTime;
             return;
         }
-
-        _battleBarUI.SetInfo(1f, 1f);
 
         if (_auto == true)
         {
@@ -158,7 +204,7 @@ public class BuddyController : AllyController
 
     private void UpdateAttack()
     {
-        if (_currentCoolTime > 0)
+        if (currentCoolTime > 0)
             return;
 
         if (_isWaitingAttack == true)
@@ -170,11 +216,9 @@ public class BuddyController : AllyController
 
     private void UpdateReload()
     {
-        if(_currentReloadTime > 0)
+        if(currentReloadTime > 0)
         {
-            _currentReloadTime -= Time.deltaTime;
-
-            _battleBarUI.SetInfo(_reloadTime - _currentReloadTime, _reloadTime);
+            currentReloadTime -= Time.deltaTime;
 
             return;
         }
@@ -184,12 +228,22 @@ public class BuddyController : AllyController
         ReloadBlocks();
 
         currentBuddyState = EBuddyState.Idle;
+    }
 
+    private void UpdateWait()
+    {
+        currentCoolTime = 0;
+
+        if (skeletonAnimation.AnimationState.GetCurrent(0).Animation.Name == ANIMATION_IDLE)
+            return;
+
+        PlayAnimation(0, ANIMATION_IDLE, true);
+        _isWaitingAttack = false;
     }
 
     public override void DoAttack()
     {
-        if(currentBuddyState == EBuddyState.Idle && _currentCoolTime <= 0)
+        if(currentBuddyState == EBuddyState.Idle && currentCoolTime <= 0)
         {
             currentBuddyState = EBuddyState.Attack;
         }
@@ -212,13 +266,13 @@ public class BuddyController : AllyController
             {
                 PlayAnimation(0, ANIMATION_MOVE, true);
                 currentBuddyState = EBuddyState.Reload;
-                _currentReloadTime = _reloadTime;
+                currentReloadTime = _reloadTime;
             }
             else
             {
                 PlayAnimation(0, ANIMATION_IDLE, true);
                 currentBuddyState = EBuddyState.Idle;
-                _currentCoolTime = _skillList[_nowBlockList[0]].skillData.Cooltime;
+                currentCoolTime = _skillList[_nowBlockList[0]].skillData.Cooltime;
                 _coolTime = _skillList[_nowBlockList[0]].skillData.Cooltime;
                 _nowBlockList.RemoveAt(0);
             }
@@ -287,4 +341,23 @@ public class BuddyController : AllyController
 
         _skillList[blockId].UseSkill();
     }
+
+    //private void UpdateAnimation()
+    //{
+    //    switch(currentBuddyState)
+    //    {
+    //        case EBuddyState.Idle:
+    //            PlayAnimation(0, ANIMATION_IDLE, true);
+    //            break;
+    //        case EBuddyState.Attack:
+    //            PlayAnimation(0, ANIMATION_ATTACK, false);
+    //            break;
+    //        case EBuddyState.Reload:
+    //            PlayAnimation(0, ANIMATION_MOVE, true);
+    //            break;
+
+    //        default:
+    //            break;
+    //    }
+    //}
 }

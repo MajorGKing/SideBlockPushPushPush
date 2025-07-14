@@ -219,4 +219,13 @@ public class ObjectManager
     }
     #endregion
 
+    #region Util
+    public void SetAllBuddyState(BuddyController.EBuddyState buddyState)
+    {
+        foreach (BuddyController buddy in Buddies)
+        {
+            buddy.currentBuddyState = buddyState;
+        }
+    }
+    #endregion
 }
