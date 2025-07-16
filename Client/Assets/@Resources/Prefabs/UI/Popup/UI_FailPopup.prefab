@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1497486495998363680
 RectTransform:
   m_ObjectHideFlags: 0
@@ -102,10 +102,10 @@ GameObject:
   - component: {fileID: 7481854884117228931}
   - component: {fileID: 6160642157031916646}
   - component: {fileID: 9124362252728511810}
-  - component: {fileID: 3872691954265477803}
+  - component: {fileID: 7901299491726061529}
   - component: {fileID: 3630665690107519292}
   m_Layer: 5
-  m_Name: UI_RewardPopup
+  m_Name: UI_FailPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3872691954265477803
+--- !u!114 &7901299491726061529
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1488006601519993160}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 808ac8504a2687640ab0d0766481a5dc, type: 3}
+  m_Script: {fileID: 11500000, guid: d54aa1d3bd2630a408fead228ce51242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UICanvas: {fileID: 0}
@@ -1217,7 +1217,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBCF4\uC0C1"
+  m_text: "\uC2E4\uD328"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8739592404c872442bf3eec93effc13c, type: 2}
   m_sharedMaterial: {fileID: 6327707706146042653, guid: 8739592404c872442bf3eec93effc13c, type: 2}

@@ -347,8 +347,6 @@ public class GameScene : BaseScene
     // 게임 클리어
     protected virtual IEnumerator CoClearState()
     {
-        Debug.Log("Clear!");
-
         var clear = Managers.UI.ShowPopupUI<UI_RewardPopup>();
 
         // TODO 추후 웹서버를 통해 받는다
@@ -361,7 +359,15 @@ public class GameScene : BaseScene
     // 게임 클리어 실패
     protected virtual IEnumerator CoOverState()
     {
-        Debug.Log("Fail");
+        var clear = Managers.UI.ShowPopupUI<UI_FailPopup>();
+
+        yield return new WaitForSeconds(5f);
+
+        Managers.Scene.LoadScene(Define.EScene.LobbyScene);
+
+        Managers.UI.ClosePopupUI(clear);
+
+
         yield return null;
     }
 }
