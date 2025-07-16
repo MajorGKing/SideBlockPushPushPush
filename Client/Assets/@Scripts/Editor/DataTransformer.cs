@@ -24,6 +24,8 @@ public class DataTransformer : EditorWindow
         ParseExcelDataToJson<StageDataLoader, StageData>("Stage");
         ParseExcelDataToJson<MonsterDataLoader, MonsterData>("Monster");
         ParseExcelDataToJson<ProgressionTypeDataLoader, ProgressionTypeData>("ProgressionType");
+        ParseExcelDataToJson<CurrencyTypeDataLoader, CurrencyTypeData>("CurrencyType");
+
         Debug.Log("Complete DataTransformer");
     }
 

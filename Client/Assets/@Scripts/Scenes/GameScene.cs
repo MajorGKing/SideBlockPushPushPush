@@ -2,7 +2,6 @@ using Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Define;
 
 
 public class GameScene : BaseScene
@@ -333,7 +332,7 @@ public class GameScene : BaseScene
 
         if (StageWaveIndex >= 4)
         {
-            StageState = EStageState.Clear;
+            StageState = Define.EStageState.Clear;
             yield return null;
         }
 
@@ -349,6 +348,13 @@ public class GameScene : BaseScene
     protected virtual IEnumerator CoClearState()
     {
         Debug.Log("Clear!");
+
+        var clear = Managers.UI.ShowPopupUI<UI_RewardPopup>();
+
+        // TODO 추후 웹서버를 통해 받는다
+        // TODO 추후 개인 => 웹서버에 리워드를 저장한다
+        clear.SetInfo(Define.ERewardType.StageClear, Managers.Game.GetRewards(true));
+
         yield return null;
     }
 

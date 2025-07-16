@@ -157,6 +157,35 @@ public class Define
 
     #endregion
 
+    #region Reward
+    public enum ERewardType
+    {
+        None,
+        StageClear,
+    }
+
+    public enum ECurrencyType
+    {
+        Gold,
+        BlueGem,
+        GreenGem,
+        SmallGreenGem,
+        YellowGem,
+        StoneArmor,
+        StoneBelt,
+        StoneBoots,
+        StoneGloves,
+        StoneRing,
+        StoneWeapon,
+        Exp,
+        ScrollArmor,
+        ScrollBelt,
+        ScrollBoots,
+        ScrollGloves,
+        ScrollRing,
+        ScrollWeapon,
+    }
+    #endregion
 
     #region Tag
     public const string HEROTAG = "Hero";

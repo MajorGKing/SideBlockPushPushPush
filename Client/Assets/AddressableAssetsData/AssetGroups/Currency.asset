@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Currency
+  m_EditorClassIdentifier: 
+  m_GroupName: Currency
+  m_GUID: 499b8664f5d79ea4a9dbb9c64798a133
+  m_SerializeEntries:
+  - m_GUID: 0e2d5589f1b6a2241bfb85ed325c8c94
+    m_Address: Exp_Icon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 164f412a6f9641341acb99f8a5114db2
+    m_Address: EnchantStoneBelt_Icon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 17fb3a176a3ad674aad3e26016eb27bc
+    m_Address: Scroll_Weapon_Icon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 197e8f67d19304649848ec9a92e5bc83
+    m_Address: EnchantStoneWeapon_Icon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1efb21ecc3e676c418306d8fed3065e7
+    m_Address: GreenGem
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 28910816cb514024d9ee6c2b03564560
+    m_Address: BlueGem
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 34b9e2b2a9956e049a96486165e7f623
+    m_Address: Scroll_Boots_Icon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 624de92374b3ea74b90c83bea32381f8
+    m_Address: Scroll_Armor_Icon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6656ca71f8b9e43418dfc5b66f94cdb3
+    m_Address: Gold_Icon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 730e51d03dcf6bd42954e985faedcfe8
+    m_Address: EnchantStoneBoots_Icon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7c5139fd680a35b498eff67254358a59
+    m_Address: Scroll_Gloves_Icon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7f7215c89cea4c34f8b7af0044cfd972
+    m_Address: SmallGem
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8909945f1d8834a4b824d209b9231d92
+    m_Address: YellowGem
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9620ad1a2d60f8b4aaf4d1e97c7f2b6d
+    m_Address: EnchantStoneRing_Icon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a3da23aa8ea5b6f4da6090cbec285187
+    m_Address: Scroll_Belt_Icon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a443d729198eb474083eb676394ab805
+    m_Address: Scroll_Random_Icon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: be6301842301e3846b7c884411b8f120
+    m_Address: EnchantStoneGloves_Icon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf60ddaf80d8a7540990adc274b6add0
+    m_Address: EnchantStoneArmor_Icon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f34cd131d794fe84d9e85ed78caac7f2
+    m_Address: Scroll_Ring_Icon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 9094f0f0595c6e147aa68a6f81e2dcaf, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: ba7ac61fd9e31664d9dbfe822eabdf32, type: 2}
+    - {fileID: 11400000, guid: 4b3c28d902f4ad148b411d4f68b61a9f, type: 2}

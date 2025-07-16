@@ -1,8 +1,8 @@
-﻿TemplateId,WorldNumber,StageNumber,DifficultyLevel,FirstWaveMonsterList,FirstWaveMonsterLevelList,SecondWaveMonsterList,SecondWaveMonsterLevelList,BossWaveMonsterList,BossWaveMonsterLevelList
-1,1,1,Normal,1,1,1,1,3,1
-,,,,,,2,1,,
-2,1,2,Normal,1,1,2,2,3,2
-,,,,1,1,2,2,,
-3,1,3,Normal,1,1,1,2,3,3
-,,,,2,1,2,2,,
-,,,,3,1,3,1,,
+﻿TemplateId,WorldNumber,StageNumber,DifficultyLevel,FirstWaveMonsterList,FirstWaveMonsterLevelList,SecondWaveMonsterList,SecondWaveMonsterLevelList,BossWaveMonsterList,BossWaveMonsterLevelList,RewardTimes,RewardType,RewardCount,RewardPercent,RewardFirstType,RewardFirstCount
+1,1,1,Normal,1,1,1,1,3,1,1,Gold,50,50,Gold,100
+,,,,,,2,1,,,,Exp,10,50,Exp,100
+2,1,2,Normal,1,1,2,2,3,2,2,Gold,50,50,,
+,,,,1,1,2,2,,,,Exp,10,50,,
+3,1,3,Normal,1,1,1,2,3,3,,,,,,
+,,,,2,1,2,2,,,,,,,,
+,,,,3,1,3,1,,,,,,,,

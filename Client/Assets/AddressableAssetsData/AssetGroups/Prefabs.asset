@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: Prefabs
   m_GUID: 6855a303d91ea534cad059887528a9c1
   m_SerializeEntries:
+  - m_GUID: 150c86de87ddc964b95a88731abe9e7c
+    m_Address: UI_RewardPopup
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4c01372a69baf8c47a0590073721cca0
     m_Address: Hero
     m_ReadOnly: 0

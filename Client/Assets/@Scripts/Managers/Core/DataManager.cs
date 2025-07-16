@@ -22,6 +22,8 @@ public class DataManager
     public Dictionary<int, Data.StageData> StageDataDic { get; set; } = new Dictionary<int, Data.StageData>();
     public Dictionary<int, Data.MonsterData> MonsterDataDic { get; set; } = new Dictionary<int, Data.MonsterData>();
     public Dictionary<int, Data.ProgressionTypeData> ProgressionTypeDataDic { get; set; } = new Dictionary<int, Data.ProgressionTypeData>();
+    public Dictionary<Define.ECurrencyType, Data.CurrencyTypeData> CurrencyTypeDataDic { get; set; } = new Dictionary<Define.ECurrencyType, Data.CurrencyTypeData>();
+    
 
 
     public void Init()
@@ -32,7 +34,7 @@ public class DataManager
         StageDataDic = LoadJson<Data.StageDataLoader, int, Data.StageData>("StageData").MakeDict();
         MonsterDataDic = LoadJson<Data.MonsterDataLoader, int, Data.MonsterData>("MonsterData").MakeDict();
         ProgressionTypeDataDic = LoadJson<Data.ProgressionTypeDataLoader, int, Data.ProgressionTypeData>("ProgressionTypeData").MakeDict();
-
+        CurrencyTypeDataDic = LoadJson<Data.CurrencyTypeDataLoader, Define.ECurrencyType, Data.CurrencyTypeData>("CurrencyTypeData").MakeDict();
         Validate();
     }
 

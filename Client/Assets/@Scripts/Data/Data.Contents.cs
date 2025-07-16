@@ -67,6 +67,12 @@ namespace Data
         public List<int> SecondWaveMonsterLevelList;
         public List<int> BossWaveMonsterList;
         public List<int> BossWaveMonsterLevelList;
+        public int RewardTimes;
+        public List<Define.ECurrencyType> RewardType;
+        public List<int> RewardCount;
+        public List<int> RewardPercent;
+        public List<Define.ECurrencyType> RewardFirstType;
+        public List<int> RewardFirstCount;
     }
 
     public class StageDataLoader : ILoader<int, StageData>
@@ -279,6 +285,33 @@ namespace Data
         }
     }
 
+    #endregion
+
+    #region CurrencyData
+    [Serializable]
+    public class CurrencyTypeData
+    {
+        public Define.ECurrencyType CurrencyType;
+        public string IconImage;
+    }
+
+    public class CurrencyTypeDataLoader : ILoader<Define.ECurrencyType, CurrencyTypeData>
+    {
+        public List<CurrencyTypeData> currencies = new List<CurrencyTypeData>();
+
+        public Dictionary<Define.ECurrencyType, CurrencyTypeData> MakeDict()
+        {
+            Dictionary<Define.ECurrencyType, CurrencyTypeData> dict = new Dictionary<Define.ECurrencyType, CurrencyTypeData>();
+            foreach (CurrencyTypeData currency in currencies)
+                dict.Add(currency.CurrencyType, currency);
+            return dict;
+        }
+
+        public bool Validate()
+        {
+            return true;
+        }
+    }
     #endregion
 
 }

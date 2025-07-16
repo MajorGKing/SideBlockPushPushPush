@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -113,5 +114,58 @@ public class GameManager
 
         return results.Count > 0;
     }
+
+    #region Reward
+    public List<Reward> GetRewards(bool isFirst = false)
+    {
+        List<Reward> rewards = new List<Reward>();
+        var stageData = Managers.Data.StageDataDic[stageTemplateId];
+
+        int enumCount = Enum.GetNames(typeof(Define.ECurrencyType)).Length;
+        List<int> currencyCounts = new List<int>(new int[enumCount]);
+
+        System.Random _random = new System.Random();
+
+        for(int i = 0; i < stageData.RewardTimes; i++)
+        {
+            int totalWeight = 0;
+            foreach (int weight in stageData.RewardPercent)
+                totalWeight += weight;
+
+            int rand = _random.Next(0, totalWeight);
+            int cumulative = 0;
+
+            for (int j = 0; j < stageData.RewardPercent.Count; j++)
+            {
+                cumulative += stageData.RewardPercent[j];
+                if (rand < cumulative)
+                {
+                    Define.ECurrencyType currencyType = stageData.RewardType[j];
+                    int rewardCount = stageData.RewardCount[j];
+                    currencyCounts[(int)currencyType] += rewardCount;
+                    break;
+                }
+            }
+        }
+
+        for(int i = 0; i < currencyCounts.Count; i++)
+        {
+            if(currencyCounts[i] == 0)
+                continue;
+
+            rewards.Add(new Reward((Define.ECurrencyType)i, currencyCounts[i]));
+        }
+
+        if(isFirst == true)
+        {
+            for(int i = 0; i < stageData.RewardFirstType.Count; i++)
+            {
+                rewards.Add(new Reward(stageData.RewardFirstType[i], stageData.RewardFirstCount[i], true));
+            }
+        }
+
+        return rewards;
+    }
+    #endregion
 
 }

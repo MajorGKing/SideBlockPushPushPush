@@ -24,6 +24,27 @@
       ],
       "BossWaveMonsterLevelList": [
         1
+      ],
+      "RewardTimes": 1,
+      "RewardType": [
+        0,
+        11
+      ],
+      "RewardCount": [
+        50,
+        10
+      ],
+      "RewardPercent": [
+        50,
+        50
+      ],
+      "RewardFirstType": [
+        0,
+        11
+      ],
+      "RewardFirstCount": [
+        100,
+        100
       ]
     },
     {
@@ -52,7 +73,22 @@
       ],
       "BossWaveMonsterLevelList": [
         2
-      ]
+      ],
+      "RewardTimes": 2,
+      "RewardType": [
+        0,
+        11
+      ],
+      "RewardCount": [
+        50,
+        10
+      ],
+      "RewardPercent": [
+        50,
+        50
+      ],
+      "RewardFirstType": [],
+      "RewardFirstCount": []
     },
     {
       "TemplateId": 3,
@@ -84,7 +120,13 @@
       ],
       "BossWaveMonsterLevelList": [
         3
-      ]
+      ],
+      "RewardTimes": 0,
+      "RewardType": [],
+      "RewardCount": [],
+      "RewardPercent": [],
+      "RewardFirstType": [],
+      "RewardFirstCount": []
     }
   ]
 }

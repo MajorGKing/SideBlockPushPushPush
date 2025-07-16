@@ -1,0 +1,76 @@
+{
+  "currencies": [
+    {
+      "CurrencyType": 0,
+      "IconImage": "Gold_Icon"
+    },
+    {
+      "CurrencyType": 1,
+      "IconImage": "BlueGem"
+    },
+    {
+      "CurrencyType": 2,
+      "IconImage": "GreenGem"
+    },
+    {
+      "CurrencyType": 3,
+      "IconImage": "SmallGem"
+    },
+    {
+      "CurrencyType": 4,
+      "IconImage": "YellowGem"
+    },
+    {
+      "CurrencyType": 5,
+      "IconImage": "EnchantStoneArmor_Icon"
+    },
+    {
+      "CurrencyType": 6,
+      "IconImage": "EnchantStoneBelt_Icon"
+    },
+    {
+      "CurrencyType": 7,
+      "IconImage": "EnchantStoneBoots_Icon"
+    },
+    {
+      "CurrencyType": 8,
+      "IconImage": "EnchantStoneGloves_Icon"
+    },
+    {
+      "CurrencyType": 9,
+      "IconImage": "EnchantStoneRing_Icon"
+    },
+    {
+      "CurrencyType": 10,
+      "IconImage": "EnchantStoneWeapon_Icon"
+    },
+    {
+      "CurrencyType": 11,
+      "IconImage": "Exp_Icon"
+    },
+    {
+      "CurrencyType": 12,
+      "IconImage": "Scroll_Armor_Icon"
+    },
+    {
+      "CurrencyType": 13,
+      "IconImage": "Scroll_Belt_Icon"
+    },
+    {
+      "CurrencyType": 14,
+      "IconImage": "Scroll_Boots_Icon"
+    },
+    {
+      "CurrencyType": 15,
+      "IconImage": "Scroll_Gloves_Icon"
+    },
+    {
+      "CurrencyType": 16,
+      "IconImage": "Scroll_Ring_Icon"
+    },
+    {
+      "CurrencyType": 17,
+      "IconImage": "Scroll_Weapon_Icon"
+    }
+  ]
+}
