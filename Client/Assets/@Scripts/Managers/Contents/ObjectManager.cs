@@ -115,7 +115,6 @@ public class ObjectManager
         return null;
     }
 
-    // TODO Set Level
     private MonsterController SpawnMonster(Transform parent, int templateID, int level = 1)
     {
         MonsterController normalMonster = Managers.Resource.Instantiate(MONSTER_PREFAB_NAME, parent).GetComponent<MonsterController>();
@@ -145,7 +144,7 @@ public class ObjectManager
 
     #endregion
 
-    public void DespawnGameObject<T>(T obj) where T : BaseController
+    public void DespawnGameObject<T>(T obj) where T : BaseObject
     {
 
     }

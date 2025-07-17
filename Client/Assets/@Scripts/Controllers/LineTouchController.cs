@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LineTouchController : BaseController
+public class LineTouchController : BaseObject
 {
     public int _lineNumber;
 

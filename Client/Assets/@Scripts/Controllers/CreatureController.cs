@@ -2,7 +2,7 @@ using Spine;
 using Spine.Unity;
 using UnityEngine;
 
-public class CreatureController : BaseController
+public class CreatureController : BaseObject
 {
     protected const string ANIMATION_IDLE = "idle";
     protected const string ANIMATION_ATTACK = "attack";
