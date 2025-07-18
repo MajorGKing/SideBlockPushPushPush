@@ -14,6 +14,15 @@ using System.Reflection;
 public class DataTransformer : EditorWindow
 {
 #if UNITY_EDITOR
+    [MenuItem("Tools/DeleteGameData ")]
+    public static void DeleteGameData()
+    {
+        PlayerPrefs.DeleteAll();
+        string path = Application.persistentDataPath + "/SaveData.json";
+        if (File.Exists(path))
+            File.Delete(path);
+    }
+
     // [MenuItem("Tools/ParseExcel %#K")]
     [MenuItem("Tools/ParseExcel _F4")]  // 추가 단축키: Control + K
     public static void ParseExcelDataToJson()

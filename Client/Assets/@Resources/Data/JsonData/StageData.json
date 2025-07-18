@@ -45,7 +45,10 @@
       "RewardFirstCount": [
         100,
         100
-      ]
+      ],
+      "PreviewStageId": 0,
+      "NextaStageId": 2,
+      "OtherStageId": 11
     },
     {
       "TemplateId": 2,
@@ -88,7 +91,10 @@
         50
       ],
       "RewardFirstType": [],
-      "RewardFirstCount": []
+      "RewardFirstCount": [],
+      "PreviewStageId": 1,
+      "NextaStageId": 3,
+      "OtherStageId": 12
     },
     {
       "TemplateId": 3,
@@ -121,12 +127,153 @@
       "BossWaveMonsterLevelList": [
         3
       ],
-      "RewardTimes": 0,
-      "RewardType": [],
-      "RewardCount": [],
-      "RewardPercent": [],
+      "RewardTimes": 3,
+      "RewardType": [
+        0,
+        11
+      ],
+      "RewardCount": [
+        50,
+        10
+      ],
+      "RewardPercent": [
+        50,
+        50
+      ],
       "RewardFirstType": [],
-      "RewardFirstCount": []
+      "RewardFirstCount": [],
+      "PreviewStageId": 2,
+      "NextaStageId": 11,
+      "OtherStageId": 13
+    },
+    {
+      "TemplateId": 11,
+      "WorldNumber": 1,
+      "StageNumber": 1,
+      "DifficultyLevel": 2,
+      "FirstWaveMonsterList": [
+        1
+      ],
+      "FirstWaveMonsterLevelList": [
+        5
+      ],
+      "SecondWaveMonsterList": [
+        2
+      ],
+      "SecondWaveMonsterLevelList": [
+        6
+      ],
+      "BossWaveMonsterList": [
+        3
+      ],
+      "BossWaveMonsterLevelList": [
+        7
+      ],
+      "RewardTimes": 1,
+      "RewardType": [
+        0
+      ],
+      "RewardCount": [
+        100
+      ],
+      "RewardPercent": [
+        50
+      ],
+      "RewardFirstType": [
+        11
+      ],
+      "RewardFirstCount": [
+        200
+      ],
+      "PreviewStageId": 0,
+      "NextaStageId": 12,
+      "OtherStageId": 1
+    },
+    {
+      "TemplateId": 12,
+      "WorldNumber": 1,
+      "StageNumber": 2,
+      "DifficultyLevel": 2,
+      "FirstWaveMonsterList": [
+        2
+      ],
+      "FirstWaveMonsterLevelList": [
+        5
+      ],
+      "SecondWaveMonsterList": [
+        3
+      ],
+      "SecondWaveMonsterLevelList": [
+        6
+      ],
+      "BossWaveMonsterList": [
+        4
+      ],
+      "BossWaveMonsterLevelList": [
+        7
+      ],
+      "RewardTimes": 1,
+      "RewardType": [
+        0
+      ],
+      "RewardCount": [
+        150
+      ],
+      "RewardPercent": [
+        50
+      ],
+      "RewardFirstType": [
+        11
+      ],
+      "RewardFirstCount": [
+        200
+      ],
+      "PreviewStageId": 11,
+      "NextaStageId": 13,
+      "OtherStageId": 2
+    },
+    {
+      "TemplateId": 13,
+      "WorldNumber": 1,
+      "StageNumber": 3,
+      "DifficultyLevel": 2,
+      "FirstWaveMonsterList": [
+        1
+      ],
+      "FirstWaveMonsterLevelList": [
+        10
+      ],
+      "SecondWaveMonsterList": [
+        2
+      ],
+      "SecondWaveMonsterLevelList": [
+        10
+      ],
+      "BossWaveMonsterList": [
+        3
+      ],
+      "BossWaveMonsterLevelList": [
+        10
+      ],
+      "RewardTimes": 1,
+      "RewardType": [
+        0
+      ],
+      "RewardCount": [
+        200
+      ],
+      "RewardPercent": [
+        50
+      ],
+      "RewardFirstType": [
+        11
+      ],
+      "RewardFirstCount": [
+        200
+      ],
+      "PreviewStageId": 12,
+      "NextaStageId": 0,
+      "OtherStageId": 3
     }
   ]
 }

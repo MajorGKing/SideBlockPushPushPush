@@ -73,6 +73,9 @@ namespace Data
         public List<int> RewardPercent;
         public List<Define.ECurrencyType> RewardFirstType;
         public List<int> RewardFirstCount;
+        public int PreviewStageId;
+        public int NextaStageId;
+        public int OtherStageId;
     }
 
     public class StageDataLoader : ILoader<int, StageData>

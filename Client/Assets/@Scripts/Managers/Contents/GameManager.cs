@@ -1,10 +1,84 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using Unity.VisualScripting;
+using UnityEditor.Overlays;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+[Serializable]
+public class GameData
+{
+    public int UserLevel = 1;
+    public string UserName = "Player";
+
+    public int[] Currencies = new int[Enum.GetNames(typeof(Define.ECurrencyType)).Length];
+
+    public int Stamina = Define.MAX_STAMINA;
+
+    public List<HeroController> Heroes = new List<HeroController>();
+    public List<BuddyController> Buddies = new List<BuddyController>();
+
+    public int CurrentStageTemplateId = 1;
+    public Dictionary<int, StageClear> StageClears = new Dictionary<int, StageClear>();
+
+    public bool BGMOn = true;
+    public bool EffectSoundOn = true;
+}
+
+[Serializable]
+public class StageClear
+{
+    public int TemplateId;
+    public bool isEnable;
+    public bool isClear;
+}
+
 public class GameManager
 {
+    string _path;
+
+    #region GameData
+    private GameData _gameData = new GameData();
+
+    public int GetCurrency(Define.ECurrencyType currencyType)
+    {
+        return _gameData.Currencies[(int)currencyType];
+    }
+
+    public void SetCurrency(Define.ECurrencyType currencyType, int value)
+    {
+        _gameData.Currencies[(int)currencyType] = value;
+        SaveGame();
+        OnCurrenciesChagned?.Invoke();
+    }
+
+    public void AddCurrency(Define.ECurrencyType currencyType, int value)
+    {
+        _gameData.Currencies[(int)currencyType] += value;
+        SaveGame();
+        OnCurrenciesChagned?.Invoke();
+    }
+
+    public int Stamina
+    {
+        get { return _gameData.Stamina; }
+        set
+        {
+            _gameData.Stamina = value;
+            SaveGame();
+            OnCurrenciesChagned?.Invoke();
+        }
+    }
+
+    #endregion
+
+    #region Action
+    public event Action OnCurrenciesChagned;
+    public event Action OnCurrentStageChanged;
+    #endregion
+
     private GameScene _scene;
     private bool _nowGameScene = false;
 
@@ -23,7 +97,22 @@ public class GameManager
     public int stageTemplateId
     {
         get { return _stageTemplateId; }
-        protected set { _stageTemplateId = value; }
+        set 
+        {
+            if (value == 0)
+                return;
+
+            if (_gameData.StageClears.ContainsKey(value) == false)
+                return;
+
+            if (_gameData.StageClears[value].isEnable == false)
+                return;
+
+            _stageTemplateId = value;
+            _gameData.CurrentStageTemplateId = value;
+            OnCurrentStageChanged?.Invoke();
+            SaveGame();
+        }
     }
 
     //private int _world;
@@ -47,10 +136,26 @@ public class GameManager
 
     public void Init()
     {
+        _path = Application.persistentDataPath + "/SaveData.json";
         //world = 1;
         //stage = 1;
         //difficultyLevel = Define.EDifficultyLevel.Normal;
-        stageTemplateId = 1;
+
+        if (LoadGame())
+            return;
+
+
+        StageClear stage = new StageClear();
+        stage.TemplateId = 1;
+        stage.isEnable = true;
+        stage.isClear = false;
+        _gameData.StageClears.Add(1, stage);
+
+
+        PlayerPrefs.SetInt("ISFIRST", 0);
+        //PlayerPrefs.Save();
+
+        stageTemplateId = _gameData.CurrentStageTemplateId;//GetLastClearedNormalStageTemplateId(defaultValue: 1);
     }
 
     public void Update()
@@ -115,8 +220,28 @@ public class GameManager
         return results.Count > 0;
     }
 
+    //public int GetLastClearedNormalStageTemplateId(int defaultValue = 1)
+    //{
+    //    for (int i = _gameData.StageClears.Count - 1; i >= 0; i--)
+    //    {
+    //        var stageClear = _gameData.StageClears[i];
+    //        if (!stageClear.isClear)
+    //            continue;
+
+    //        if (Managers.Data.StageDataDic.TryGetValue(stageClear.TemplateId, out var stageData))
+    //        {
+    //            if (stageData.DifficultyLevel == Define.EDifficultyLevel.Normal)
+    //            {
+    //                return stageClear.TemplateId;
+    //            }
+    //        }
+    //    }
+
+    //    return defaultValue;
+    //}
+
     #region Reward
-    public List<Reward> GetRewards(bool isFirst = false)
+    public List<Reward> GetRewards()
     {
         List<Reward> rewards = new List<Reward>();
         var stageData = Managers.Data.StageDataDic[stageTemplateId];
@@ -156,7 +281,7 @@ public class GameManager
             rewards.Add(new Reward((Define.ECurrencyType)i, currencyCounts[i]));
         }
 
-        if(isFirst == true)
+        if (_gameData.StageClears[stageTemplateId].isClear == false)
         {
             for(int i = 0; i < stageData.RewardFirstType.Count; i++)
             {
@@ -165,6 +290,61 @@ public class GameManager
         }
 
         return rewards;
+    }
+    #endregion
+
+    public void ClearStage()
+    {
+        _gameData.StageClears[stageTemplateId].isClear = true;
+        if(_gameData.StageClears.ContainsKey(Managers.Data.StageDataDic[stageTemplateId].NextaStageId) == false)
+        {
+            var newStage = new StageClear();
+            newStage.TemplateId = Managers.Data.StageDataDic[stageTemplateId].NextaStageId;
+            newStage.isClear = false;
+            newStage.isEnable = true;
+
+            _gameData.StageClears.Add(newStage.TemplateId, newStage);
+            stageTemplateId = newStage.TemplateId;
+        }
+
+        _gameData.CurrentStageTemplateId = stageTemplateId;
+
+        SaveGame();
+    }
+
+    #region SaveLoad
+    public void SaveGame()
+    {
+        string jsonStr = JsonConvert.SerializeObject(_gameData);
+        File.WriteAllText(_path, jsonStr);
+
+        Debug.Log("Save Sucess");
+    }
+
+    public bool LoadGame()
+    {
+        if (PlayerPrefs.GetInt("ISFIRST", 1) == 1)
+        {
+            string path = Application.persistentDataPath + "/SaveData.json";
+            if (File.Exists(path))
+                File.Delete(path);
+            return false;
+        }
+
+        if (File.Exists(_path) == false)
+            return false;
+
+        string fileStr = File.ReadAllText(_path);
+        GameData data = JsonConvert.DeserializeObject<GameData>(fileStr);
+        if (data != null)
+            _gameData = data;
+
+        //IsLoaded = true;
+
+        stageTemplateId = _gameData.CurrentStageTemplateId;
+
+        Debug.Log("Loading Sucess");
+        return true;
     }
     #endregion
 

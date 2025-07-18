@@ -351,7 +351,10 @@ public class GameScene : BaseScene
 
         // TODO 추후 웹서버를 통해 받는다
         // TODO 추후 개인 => 웹서버에 리워드를 저장한다
-        clear.SetInfo(Define.ERewardType.StageClear, Managers.Game.GetRewards(true));
+        clear.SetInfo(Define.ERewardType.StageClear, Managers.Game.GetRewards());
+
+        // 게임 클리어 세팅
+        Managers.Game.ClearStage();
 
         yield return null;
     }

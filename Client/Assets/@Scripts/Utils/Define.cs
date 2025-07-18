@@ -194,5 +194,8 @@ public class Define
 
     #region HardCoding
     public const int HEROLINENUMBHER = 100;
+    public const int MAX_STAMINA = 50;
+    public const int GAME_PER_STAMINA = 3;
+
     #endregion
 }
