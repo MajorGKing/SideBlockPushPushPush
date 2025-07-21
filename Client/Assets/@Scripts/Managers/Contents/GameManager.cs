@@ -100,11 +100,19 @@ public class GameManager
             if (value == 0)
                 return;
 
-            if (_gameData.StageClears.ContainsKey(value) == false)
-                return;
+            if (_gameData.StageClears.ContainsKey(value) == false || _gameData.StageClears[value].isEnable == false)
+            {
+                if (Managers.Data.StageDataDic[value].PreviewStageId == 0)
+                    return;
 
-            if (_gameData.StageClears[value].isEnable == false)
+                var prevStage = Managers.Data.StageDataDic[Managers.Data.StageDataDic[value].PreviewStageId];
+
+                var message = $"Need to Clear {prevStage.DifficultyLevel} {prevStage.WorldNumber} - {prevStage.StageNumber}";
+
+                Managers.UI.ShowToast(message, 1f, Define.EToastColor.Red, Define.EToastPosition.MiddleCenter);
+
                 return;
+            }
 
             _stageTemplateId = value;
             _gameData.CurrentStageTemplateId = value;
@@ -113,31 +121,9 @@ public class GameManager
         }
     }
 
-    //private int _world;
-    //public int world
-    //{
-    //    get { return _world; }
-    //    private set { _world = value; }
-    //}
-    //private int _stage;
-    //public int stage
-    //{
-    //    get { return _stage; }
-    //    private set { _stage = value; }
-    //}
-    //private Define.EDifficultyLevel _difficultyLevel;
-    //public Define.EDifficultyLevel difficultyLevel
-    //{
-    //    get { return _difficultyLevel; }
-    //    private set { _difficultyLevel = value; }
-    //}
-
     public void Init()
     {
         _path = Application.persistentDataPath + "/SaveData.json";
-        //world = 1;
-        //stage = 1;
-        //difficultyLevel = Define.EDifficultyLevel.Normal;
 
         if (LoadGame())
             return;
@@ -217,26 +203,6 @@ public class GameManager
 
         return results.Count > 0;
     }
-
-    //public int GetLastClearedNormalStageTemplateId(int defaultValue = 1)
-    //{
-    //    for (int i = _gameData.StageClears.Count - 1; i >= 0; i--)
-    //    {
-    //        var stageClear = _gameData.StageClears[i];
-    //        if (!stageClear.isClear)
-    //            continue;
-
-    //        if (Managers.Data.StageDataDic.TryGetValue(stageClear.TemplateId, out var stageData))
-    //        {
-    //            if (stageData.DifficultyLevel == Define.EDifficultyLevel.Normal)
-    //            {
-    //                return stageClear.TemplateId;
-    //            }
-    //        }
-    //    }
-
-    //    return defaultValue;
-    //}
 
     #region Reward
     public List<Reward> GetRewards()

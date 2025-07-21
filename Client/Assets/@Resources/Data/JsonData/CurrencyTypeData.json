@@ -6,15 +6,15 @@
     },
     {
       "CurrencyType": 1,
-      "IconImage": "BlueGem"
+      "IconImage": "Dia_Icon"
     },
     {
       "CurrencyType": 2,
-      "IconImage": "GreenGem"
+      "IconImage": "BlueGem"
     },
     {
       "CurrencyType": 3,
-      "IconImage": "SmallGem"
+      "IconImage": "GreenGem"
     },
     {
       "CurrencyType": 4,

@@ -38,6 +38,8 @@ public class UI_LobbyScene : UI_Scene
 
     bool _isSelectedShop = false;
 
+    private UI_UserInfoItem _userInfoItem;
+
 
     protected override void Awake()
     {
@@ -60,6 +62,11 @@ public class UI_LobbyScene : UI_Scene
 
         GetText((int)Texts.ShopToggleText).gameObject.SetActive(true);
         GetObject((int)GameObjects.CheckShopImageObject).SetActive(true);
+
+        _userInfoItem = Utils.FindChild<UI_UserInfoItem>(gameObject);
+        //_userInfoItem.SetInfo(Define.EUserInfoItem.Stamina, Managers.Game.Stamina);
+        //_userInfoItem.SetInfo(Define.EUserInfoItem.Dia, Managers.Game.GetCurrency(Define.ECurrencyType.Dia));
+        //_userInfoItem.SetInfo(Define.EUserInfoItem.Gold, Managers.Game.GetCurrency(Define.ECurrencyType.Gold));
     }
 
     #region Toggle

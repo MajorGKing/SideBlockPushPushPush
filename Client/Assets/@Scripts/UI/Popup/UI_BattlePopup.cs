@@ -16,6 +16,7 @@ public class UI_BattlePopup : UI_Popup
     enum Texts
     {
         Text_Stage,
+        Text_GameStartButton
     }
 
     protected override void Awake()
@@ -104,6 +105,13 @@ public class UI_BattlePopup : UI_Popup
         if(stageData.DifficultyLevel == Define.EDifficultyLevel.Hard)
         {
             GetText((int)Texts.Text_Stage).text += "\nHard";
+            GetText((int)Texts.Text_GameStartButton).text = "Normal";
+            GetButton((int)Buttons.Button_StageHard).GetComponent<Image>().sprite = Managers.Resource.Load<Sprite>(Define.GREENBUTTON);
+        }
+        else if (stageData.DifficultyLevel == Define.EDifficultyLevel.Normal)
+        {
+            GetText((int)Texts.Text_GameStartButton).text = "Hard";
+            GetButton((int)Buttons.Button_StageHard).GetComponent<Image>().sprite = Managers.Resource.Load<Sprite>(Define.REDBUTTON);
         }
     }
 }

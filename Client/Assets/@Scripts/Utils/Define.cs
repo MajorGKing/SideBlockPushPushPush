@@ -81,6 +81,33 @@ public class Define
 		Projectile = 20,
 	}
 
+    #region Toast
+    public enum EToastColor
+    {
+        Black,
+        Red,
+        Purple,
+        Magenta,
+        Blue,
+        Green,
+        Yellow,
+        Orange
+    }
+
+    public enum EToastPosition
+    {
+        TopLeft,
+        TopCenter,
+        TopRight,
+        MiddleLeft,
+        MiddleCenter,
+        MiddleRight,
+        BottomLeft,
+        BottomCenter,
+        BottomRight
+    }
+    #endregion
+
     #region Object
     public enum EGameObjectType
     {
@@ -167,9 +194,9 @@ public class Define
     public enum ECurrencyType
     {
         Gold,
+        Dia,
         BlueGem,
         GreenGem,
-        SmallGreenGem,
         YellowGem,
         StoneArmor,
         StoneBelt,
@@ -185,7 +212,17 @@ public class Define
         ScrollRing,
         ScrollWeapon,
     }
+
+    public enum EUserInfoItem
+    {
+        Stamina,
+        Dia,
+        Gold,
+    }
+
     #endregion
+
+
 
     #region Tag
     public const string HEROTAG = "Hero";
@@ -197,5 +234,7 @@ public class Define
     public const int MAX_STAMINA = 50;
     public const int GAME_PER_STAMINA = 3;
 
+    public const string GREENBUTTON = "Btn_MainButton_Green";
+    public const string REDBUTTON = "Btn_MainButton_Red";
     #endregion
 }

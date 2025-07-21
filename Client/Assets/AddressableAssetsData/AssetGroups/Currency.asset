@@ -51,6 +51,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 33cabd754ebfa0e44b154c6c80e8c3d0
+    m_Address: Dia_Icon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 34b9e2b2a9956e049a96486165e7f623
     m_Address: Scroll_Boots_Icon
     m_ReadOnly: 0
@@ -77,12 +83,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7c5139fd680a35b498eff67254358a59
     m_Address: Scroll_Gloves_Icon
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7f7215c89cea4c34f8b7af0044cfd972
-    m_Address: SmallGem
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload

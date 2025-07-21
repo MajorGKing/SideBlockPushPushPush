@@ -45,6 +45,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 238777f843276b04084e600da02a3b60
+    m_Address: Btn_MainButton_Green
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 35cddae11fa174142a017e48bd93763e
     m_Address: sp_ui_ic_skill_unique_spear
     m_ReadOnly: 0
@@ -137,6 +143,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6cc578513f86e114384120d282dba6ca
     m_Address: sp_ui_ic_skill_legend_lightingexporsion
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6eaa6424b771b764094ebd02c305f170
+    m_Address: Btn_MainButton_Red
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload

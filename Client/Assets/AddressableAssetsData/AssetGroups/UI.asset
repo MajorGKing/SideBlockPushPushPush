@@ -33,6 +33,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 758502ea53c7dca4b836948fc20fadd4
+    m_Address: ToastUI
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 75c40a69d6eb25743a5049d60c074ffe
     m_Address: UI_GameScene
     m_ReadOnly: 0
