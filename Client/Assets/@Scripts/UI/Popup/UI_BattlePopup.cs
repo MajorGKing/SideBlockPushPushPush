@@ -76,8 +76,6 @@ public class UI_BattlePopup : UI_Popup
 
         var stageData = Managers.Data.StageDataDic[templateId];
 
-        Debug.Log(stageData.PreviewStageId);
-
         Managers.Game.stageTemplateId = stageData.PreviewStageId;
     }
 
@@ -88,8 +86,6 @@ public class UI_BattlePopup : UI_Popup
         var templateId = Managers.Game.stageTemplateId;
 
         var stageData = Managers.Data.StageDataDic[templateId];
-
-        Debug.Log(stageData.OtherStageId);
 
         Managers.Game.stageTemplateId = stageData.OtherStageId;
     }

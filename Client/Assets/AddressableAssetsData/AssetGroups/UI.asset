@@ -21,6 +21,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3c373cc00665da9429d41bf4130b57c8
+    m_Address: UI_BuddySKillSubItem
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 547f505455e891949a2182afd0813dbb
     m_Address: UI_FailPopup
     m_ReadOnly: 0
@@ -33,6 +39,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6408287e3e02b32469e9d961530ea054
+    m_Address: UI_SkillUpSubItem
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 758502ea53c7dca4b836948fc20fadd4
     m_Address: ToastUI
     m_ReadOnly: 0
@@ -41,6 +53,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 75c40a69d6eb25743a5049d60c074ffe
     m_Address: UI_GameScene
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 80ac16d3598065b42b21bcea435da6dc
+    m_Address: UI_BuddyLevelUpPopup
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload

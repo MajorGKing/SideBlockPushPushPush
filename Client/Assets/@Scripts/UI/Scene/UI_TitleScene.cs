@@ -95,6 +95,7 @@ public class UI_TitleScene : UI_Scene
 	{
 		State = TitleSceneState.AssetLoaded;
 		Managers.Data.Init();
+		Managers.Game.Init();
         GetText(((int)Texts.StartText)).gameObject.SetActive(true);
 
 

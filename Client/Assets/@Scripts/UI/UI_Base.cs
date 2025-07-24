@@ -9,9 +9,11 @@ using Object = UnityEngine.Object;
 public abstract class UI_Base : MonoBehaviour
 {
     protected Dictionary<Type, Object[]> _objects = new Dictionary<Type, Object[]>();
+    protected bool isInit = false;
 
     protected virtual void Awake()
     {
+        isInit = true;
     }
 
 	protected virtual void Start()

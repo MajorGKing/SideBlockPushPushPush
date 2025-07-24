@@ -32,6 +32,7 @@ public class UI_LobbyScene : UI_Scene
     }
 
     public UI_BattlePopup BattlePopupUI { get; private set; }
+    public UI_BuddyLevelUpPopup BuddyPopupUI { get; private set; }
     bool _isSelectedBattle = false;
 
     bool _isSelectedLevel = false;
@@ -58,6 +59,8 @@ public class UI_LobbyScene : UI_Scene
         GetToggle((int)Toggles.BattleToggle).gameObject.GetComponent<Toggle>().isOn = true;
         OnClickBattleToggle();
 
+        BuddyPopupUI = Managers.UI.ShowPopupUI<UI_BuddyLevelUpPopup>();
+
         TogglesInit();
 
         GetText((int)Texts.ShopToggleText).gameObject.SetActive(true);
@@ -72,7 +75,14 @@ public class UI_LobbyScene : UI_Scene
     #region Toggle
     private void TogglesInit()
     {
+        if (BattlePopupUI == null)
+            return;
+
+        if (BuddyPopupUI == null)
+            return;
+
         BattlePopupUI.gameObject.SetActive(false);
+        BuddyPopupUI.gameObject.SetActive(false);
 
         // 재 클릭 방지 트리거 초기화
         _isSelectedLevel = false;
@@ -133,6 +143,7 @@ public class UI_LobbyScene : UI_Scene
             return;
 
         TogglesInit();
+        BuddyPopupUI.gameObject.SetActive(true);
         GetText((int)Texts.LevelToggleText).gameObject.SetActive(true);
         GetObject((int)GameObjects.CheckLevelImageObject).SetActive(true);
         _isSelectedLevel = true;

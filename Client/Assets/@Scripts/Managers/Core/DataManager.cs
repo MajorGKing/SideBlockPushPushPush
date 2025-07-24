@@ -23,7 +23,9 @@ public class DataManager
     public Dictionary<int, Data.MonsterData> MonsterDataDic { get; set; } = new Dictionary<int, Data.MonsterData>();
     public Dictionary<int, Data.ProgressionTypeData> ProgressionTypeDataDic { get; set; } = new Dictionary<int, Data.ProgressionTypeData>();
     public Dictionary<Define.ECurrencyType, Data.CurrencyTypeData> CurrencyTypeDataDic { get; set; } = new Dictionary<Define.ECurrencyType, Data.CurrencyTypeData>();
-    
+    public Dictionary<int, Data.BuddyData> BuddyDataDic { get; set; } = new Dictionary<int, Data.BuddyData>();
+
+
 
 
     public void Init()
@@ -35,7 +37,10 @@ public class DataManager
         MonsterDataDic = LoadJson<Data.MonsterDataLoader, int, Data.MonsterData>("MonsterData").MakeDict();
         ProgressionTypeDataDic = LoadJson<Data.ProgressionTypeDataLoader, int, Data.ProgressionTypeData>("ProgressionTypeData").MakeDict();
         CurrencyTypeDataDic = LoadJson<Data.CurrencyTypeDataLoader, Define.ECurrencyType, Data.CurrencyTypeData>("CurrencyTypeData").MakeDict();
+        BuddyDataDic = LoadJson<Data.BuddyDataLoader, int, Data.BuddyData>("BuddyData").MakeDict();
         Validate();
+
+        Debug.Log("Data Load End");
     }
 
     private Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>

@@ -193,6 +193,7 @@ public class Define
 
     public enum ECurrencyType
     {
+        None,
         Gold,
         Dia,
         BlueGem,

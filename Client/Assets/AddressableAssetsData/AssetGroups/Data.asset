@@ -33,6 +33,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 58f5675da0927f943a18639f408dee68
+    m_Address: BuddyData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 64d369f30f3bc4c48bd7c17e30ce3e87
     m_Address: HeroSkillData
     m_ReadOnly: 0

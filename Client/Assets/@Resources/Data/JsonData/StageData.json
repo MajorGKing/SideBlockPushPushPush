@@ -27,8 +27,8 @@
       ],
       "RewardTimes": 1,
       "RewardType": [
-        0,
-        11
+        1,
+        12
       ],
       "RewardCount": [
         50,
@@ -39,8 +39,8 @@
         50
       ],
       "RewardFirstType": [
-        0,
-        11
+        1,
+        12
       ],
       "RewardFirstCount": [
         100,
@@ -79,8 +79,8 @@
       ],
       "RewardTimes": 2,
       "RewardType": [
-        0,
-        11
+        1,
+        12
       ],
       "RewardCount": [
         50,
@@ -129,16 +129,19 @@
       ],
       "RewardTimes": 3,
       "RewardType": [
-        0,
-        11
+        1,
+        12,
+        6
       ],
       "RewardCount": [
         50,
-        10
+        10,
+        1
       ],
       "RewardPercent": [
-        50,
-        50
+        10,
+        10,
+        80
       ],
       "RewardFirstType": [],
       "RewardFirstCount": [],
@@ -171,7 +174,7 @@
       ],
       "RewardTimes": 1,
       "RewardType": [
-        0
+        1
       ],
       "RewardCount": [
         100
@@ -180,7 +183,7 @@
         50
       ],
       "RewardFirstType": [
-        11
+        12
       ],
       "RewardFirstCount": [
         200
@@ -214,7 +217,7 @@
       ],
       "RewardTimes": 1,
       "RewardType": [
-        0
+        1
       ],
       "RewardCount": [
         150
@@ -223,7 +226,7 @@
         50
       ],
       "RewardFirstType": [
-        11
+        12
       ],
       "RewardFirstCount": [
         200
@@ -257,7 +260,7 @@
       ],
       "RewardTimes": 1,
       "RewardType": [
-        0
+        1
       ],
       "RewardCount": [
         200
@@ -266,7 +269,7 @@
         50
       ],
       "RewardFirstType": [
-        11
+        12
       ],
       "RewardFirstCount": [
         200

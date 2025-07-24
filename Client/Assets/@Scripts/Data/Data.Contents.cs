@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -208,7 +209,110 @@ namespace Data
     }
     #endregion
 
+
+
+    #region Buddy
+    [Serializable]
+    public class BuddyData
+    {
+        public int TemplateId;
+        public string Name;
+        public string NameTextId;
+        public string DescriptionTextId;
+        public string SpineNameKey;
+        public int BuddyLevel;
+        public int Attack;
+        public int MagicAttack;
+        public float Reload;
+        public int Skill1Id;
+        public int Skill2Id;
+        public int Skill3Id;
+        public int Skill4Id;
+        public int Skill5Id;
+        public Define.ECurrencyType LevelUpCurrency1;
+        public int LevelUpCurrency1Count;
+        public Define.ECurrencyType LevelUpCurrency2;
+        public int LevelUpCurrency2Count;
+        public Define.ECurrencyType LevelUpCurrency3;
+        public int LevelUpCurrency3Count;
+        public Define.ECurrencyType LevelUpCurrency4;
+        public int LevelUpCurrency4Count;
+        public int OriginalLevelId;
+        public int PreviewLevelId;
+        public int NextLevelId;
+
+        [ExcludeFieldAttribute]
+        public List<int> SKillIds;
+
+        [ExcludeFieldAttribute]
+        public List<LevelUpCurrency> LevelUpCurrencies;
+    }
+
+    public class BuddyDataLoader : ILoader<int, BuddyData>
+    {
+        public List<BuddyData> buddies = new List<BuddyData>();
+        public Dictionary<int, BuddyData> MakeDict()
+        {
+            Dictionary<int, BuddyData> dict = new Dictionary<int, BuddyData>();
+            foreach (BuddyData buddy in buddies)
+                dict.Add(buddy.TemplateId, buddy);
+            return dict;
+        }
+
+        public bool Validate()
+        {
+            foreach (BuddyData buddy in buddies)
+            {
+                buddy.SKillIds = new List<int>();
+                if(buddy.Skill1Id != 0)
+                    buddy.SKillIds.Add(buddy.Skill1Id);
+                if (buddy.Skill2Id != 0)
+                    buddy.SKillIds.Add(buddy.Skill2Id);
+                if(buddy.Skill3Id != 0)
+                    buddy.SKillIds.Add(buddy.Skill3Id);
+                if(buddy.Skill4Id != 0)
+                    buddy.SKillIds.Add(buddy.Skill4Id);
+                if(buddy.Skill5Id != 0)
+                    buddy.SKillIds.Add(buddy.Skill5Id);
+
+                buddy.LevelUpCurrencies = new List<LevelUpCurrency>();
+                if (buddy.LevelUpCurrency1 != Define.ECurrencyType.None)
+                {
+                    buddy.LevelUpCurrencies.Add(new LevelUpCurrency(buddy.LevelUpCurrency1, buddy.LevelUpCurrency1Count));
+                }
+                if (buddy.LevelUpCurrency2 != Define.ECurrencyType.None)
+                {
+                    buddy.LevelUpCurrencies.Add(new LevelUpCurrency(buddy.LevelUpCurrency2, buddy.LevelUpCurrency2Count));
+                }
+                if (buddy.LevelUpCurrency3 != Define.ECurrencyType.None)
+                {
+                    buddy.LevelUpCurrencies.Add(new LevelUpCurrency(buddy.LevelUpCurrency3, buddy.LevelUpCurrency3Count));
+                }
+                if (buddy.LevelUpCurrency4 != Define.ECurrencyType.None)
+                {
+                    buddy.LevelUpCurrencies.Add(new LevelUpCurrency(buddy.LevelUpCurrency4, buddy.LevelUpCurrency4Count));
+                }
+            }
+
+            return true;
+        }
+    }
+    #endregion
+
     #region BuddySkillData
+
+    public class LevelUpCurrency
+    {
+        public Define.ECurrencyType currencyType;
+        public int count;
+
+        public LevelUpCurrency(Define.ECurrencyType currencyType, int count)
+        {
+            this.currencyType = currencyType;
+            this.count = count;
+        }
+    }
+
     [Serializable]
     public class BuddySkillData : SkillData
     {
@@ -216,6 +320,7 @@ namespace Data
         public string Name;
         public string NameTextId;
         public string DescriptionTextId;
+        public int SkillLevel;
         public string IconImageKey;
         public Define.ESkillType SkillType;
         public string SkillEffectPrefabKey;
@@ -230,7 +335,23 @@ namespace Data
         public int GatherTargetType;
         public Define.ETargetFriendType TargetFriendType;
         public int EffectDataId;
-        public int NextLevelSkillId;
+        public Define.ECurrencyType LevelUpCurrency1;
+        public int LevelUpCurrency1Count;
+        public Define.ECurrencyType LevelUpCurrency2;
+        public int LevelUpCurrency2Count;
+        public Define.ECurrencyType LevelUpCurrency3;
+        public int LevelUpCurrency3Count;
+        public Define.ECurrencyType LevelUpCurrency4;
+        public int LevelUpCurrency4Count;
+        public Define.ECurrencyType LevelUpCurrency5;
+        public int LevelUpCurrency5Count;
+        public int OriginalLevelId;
+        public int PreviewLevelId;
+        public int NextLevelId;
+
+        [ExcludeFieldAttribute]
+        public List<LevelUpCurrency> LevelUpCurrencies;
+
     }
 
     public class BuddySkillDataLoader : ILoader<int, BuddySkillData>
@@ -246,6 +367,31 @@ namespace Data
 
         public bool Validate()
         {
+            foreach(BuddySkillData skill in buddySkills)
+            {
+                skill.LevelUpCurrencies = new List<LevelUpCurrency>();
+                if(skill.LevelUpCurrency1 != Define.ECurrencyType.None)
+                {
+                    skill.LevelUpCurrencies.Add(new LevelUpCurrency(skill.LevelUpCurrency1, skill.LevelUpCurrency1Count));
+                }
+                if (skill.LevelUpCurrency2 != Define.ECurrencyType.None)
+                {
+                    skill.LevelUpCurrencies.Add(new LevelUpCurrency(skill.LevelUpCurrency2, skill.LevelUpCurrency2Count));
+                }
+                if (skill.LevelUpCurrency3 != Define.ECurrencyType.None)
+                {
+                    skill.LevelUpCurrencies.Add(new LevelUpCurrency(skill.LevelUpCurrency3, skill.LevelUpCurrency3Count));
+                }
+                if (skill.LevelUpCurrency4 != Define.ECurrencyType.None)
+                {
+                    skill.LevelUpCurrencies.Add(new LevelUpCurrency(skill.LevelUpCurrency4, skill.LevelUpCurrency4Count));
+                }
+                if (skill.LevelUpCurrency5 != Define.ECurrencyType.None)
+                {
+                    skill.LevelUpCurrencies.Add(new LevelUpCurrency(skill.LevelUpCurrency5, skill.LevelUpCurrency5Count));
+                }
+            }
+
             return true;
         }
     }

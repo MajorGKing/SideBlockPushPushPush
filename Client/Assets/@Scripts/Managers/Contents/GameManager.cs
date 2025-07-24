@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -16,8 +17,11 @@ public class GameData
     public int Stamina = Define.MAX_STAMINA;
 
     public List<HeroController> Heroes = new List<HeroController>();
-    public List<BuddyController> Buddies = new List<BuddyController>();
 
+    public Dictionary<int, BuddySaveData> BuddySaves = new Dictionary<int, BuddySaveData>();
+
+    public HeroController SelectedHero;
+    
     public int CurrentStageTemplateId = 1;
     public Dictionary<int, StageClear> StageClears = new Dictionary<int, StageClear>();
 
@@ -31,6 +35,26 @@ public class StageClear
     public int TemplateId;
     public bool isEnable;
     public bool isClear;
+}
+
+[SerializeField]
+public class BuddySaveData
+{
+    public int TemplateId;
+    public List<int> SkillTemplateId;
+    public bool isSelected;
+
+    public BuddySaveData()
+    {
+
+    }
+
+    public BuddySaveData(int templateId, List<int> skillTemplateId, bool isSelected)
+    {
+        TemplateId = templateId;
+        SkillTemplateId = skillTemplateId;
+        this.isSelected = isSelected;
+    }
 }
 
 public class GameManager
@@ -70,26 +94,88 @@ public class GameManager
         }
     }
 
+    private HeroController _nowHero;
+    public HeroController NowHero
+    {
+        get { return _nowHero; }
+        set
+        {
+            if (value == NowHero)
+                return;
+
+            _nowHero = value;
+            OnNowHeroChanged?.Invoke();
+        }
+    }
+
+    //private BuddyController[] _selectedBuddy;
+    //public BuddyController[] SelectedBuddy
+    //{
+    //    get { return _selectedBuddy; }       
+    //}
     #endregion
+
+    private int _nowBuddy;
+    public int NowBuddy
+    {
+        get { return _nowBuddy; }
+        set
+        {
+            if (value == NowBuddy)
+                return;
+
+            _nowBuddy = value;
+            OnNowBuddyChanged?.Invoke();
+        }
+    }
+
+    public List<BuddySaveData> buddies { get; private set; }
+    private int[] _selectedBuddies = new int[4];
+    
+
+    public void SelectedBuddyRemove(int templatedId)
+    {
+        for (int i = 0; i < _selectedBuddies.Length; i++)
+        {
+            if (_selectedBuddies[i] == templatedId)
+            {
+                _selectedBuddies[i] = 0;
+                SetSelectdBuddy(templatedId, false);
+                return;
+            }
+        }
+    }
+
+    public void SelectedBuddySet(int templatedId)
+    {
+        NowBuddy = templatedId;
+
+        for (int i = 0; i < _selectedBuddies.Length; i++)
+        {
+            if (_selectedBuddies[i] != 0)
+            {
+                _selectedBuddies[i] = templatedId;
+                SetSelectdBuddy(templatedId, true);
+                return;
+            }
+        }
+    }
+
+    private void SetSelectdBuddy(int templatedId, bool isSelected)
+    {
+        _gameData.BuddySaves[templatedId].isSelected = false;
+        SaveGame();
+    }
 
     #region Action
     public event Action OnCurrenciesChagned;
     public event Action OnCurrentStageChanged;
+    public event Action OnNowBuddyChanged;
+    public event Action OnNowHeroChanged;
     #endregion
 
     private GameScene _scene;
     private bool _nowGameScene = false;
-
-    private HeroController _hero;
-    public HeroController hero
-    {
-        get { return _hero; }
-    }
-    private List<BuddyController> _buddies;
-    public List<BuddyController> buddies
-    {
-        get { return _buddies; }
-    }
 
     private int _stageTemplateId;
     public int stageTemplateId
@@ -128,6 +214,22 @@ public class GameManager
         if (LoadGame())
             return;
 
+        // 세이브 파일이 없을 때
+        // 기본 동료 4개 넣어두기
+        _gameData.BuddySaves.Add(1, new BuddySaveData(1, Managers.Data.BuddyDataDic[1].SKillIds, true));
+        _gameData.BuddySaves.Add(3, new BuddySaveData(3, Managers.Data.BuddyDataDic[3].SKillIds, true));
+        _gameData.BuddySaves.Add(5, new BuddySaveData(5, Managers.Data.BuddyDataDic[5].SKillIds, true));
+        _gameData.BuddySaves.Add(7, new BuddySaveData(7, Managers.Data.BuddyDataDic[7].SKillIds, true));
+
+        buddies = _gameData.BuddySaves.Values.ToList();
+        int i = 0;
+        foreach (var buddy in buddies)
+        {
+            if (buddy.isSelected == true)
+            {
+                _selectedBuddies[i++] = buddy.TemplateId;
+            }
+        }
 
         StageClear stage = new StageClear();
         stage.TemplateId = 1;
@@ -139,7 +241,7 @@ public class GameManager
         PlayerPrefs.SetInt("ISFIRST", 0);
         //PlayerPrefs.Save();
 
-        stageTemplateId = _gameData.CurrentStageTemplateId;//GetLastClearedNormalStageTemplateId(defaultValue: 1);
+        stageTemplateId = _gameData.CurrentStageTemplateId;
     }
 
     public void Update()
@@ -243,6 +345,8 @@ public class GameManager
                 continue;
 
             rewards.Add(new Reward((Define.ECurrencyType)i, currencyCounts[i]));
+            // 여기서 하는게 맞나?
+            AddCurrency((Define.ECurrencyType)i, currencyCounts[i]);
         }
 
         if (_gameData.StageClears[stageTemplateId].isClear == false)
@@ -250,6 +354,8 @@ public class GameManager
             for(int i = 0; i < stageData.RewardFirstType.Count; i++)
             {
                 rewards.Add(new Reward(stageData.RewardFirstType[i], stageData.RewardFirstCount[i], true));
+                // 여기서 하는게 맞나?
+                AddCurrency(stageData.RewardFirstType[i], stageData.RewardFirstCount[i]);
             }
         }
 
@@ -257,6 +363,7 @@ public class GameManager
     }
     #endregion
 
+    #region StageClear
     public void ClearStage()
     {
         _gameData.StageClears[stageTemplateId].isClear = true;
@@ -275,6 +382,7 @@ public class GameManager
 
         SaveGame();
     }
+    #endregion
 
     #region SaveLoad
     public void SaveGame()
@@ -307,9 +415,21 @@ public class GameManager
 
         stageTemplateId = _gameData.CurrentStageTemplateId;
 
+        // 영웅, 동료 관련 처리
+
+        // 동료 정보 가저오기
+        buddies = _gameData.BuddySaves.Values.ToList();
+        int i = 0;
+        foreach ( var buddy in buddies )
+        {
+            if( buddy.isSelected == true )
+            {
+                _selectedBuddies[i++] = buddy.TemplateId;
+            }
+        }
+
         Debug.Log("Loading Sucess");
         return true;
     }
     #endregion
-
 }
