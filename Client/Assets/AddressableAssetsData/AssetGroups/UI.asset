@@ -40,7 +40,7 @@ MonoBehaviour:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6408287e3e02b32469e9d961530ea054
-    m_Address: UI_SkillUpSubItem
+    m_Address: UI_BuddySkillUpSubItem
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
@@ -65,6 +65,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9ec1eb9b895e2204f9e5e0a3dba72569
     m_Address: UI_LoadingPopup
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c7c9252719239a34b93007ae628a59e4
+    m_Address: UI_BuddySlotSubItem
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload

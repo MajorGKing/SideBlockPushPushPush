@@ -1,10 +1,11 @@
 ﻿TemplateId,Name,NameTextId,DescriptionTextId,SkillLevel,IconImageKey,SkillType,SkillEffectPrefabKey,HitEffectPrefabKey,StartSoundKey,HitSoundKey,Cooltime,AnimName,AnimSpeed,UseSkillTargetType,GatherTargetCounts,GatherTargetType,TargetFriendType,EffectDataId,LevelUpCurrency1,LevelUpCurrency1Count,LevelUpCurrency2,LevelUpCurrency2Count,LevelUpCurrency3,LevelUpCurrency3Count,LevelUpCurrency4,LevelUpCurrency4Count,LevelUpCurrency5,LevelUpCurrency5Count,OriginalLevelId,PreviewLevelId,NextLevelId
-10,근접 평타,근접 평타,근접 평타1,1,sp_ui_ic_skill_rare_sword,Active,,VFX_buddy_common_skill_hit,,SFX_hit,0.5,attack,1,Other,1,,Enemy,10,ScrollWeapon,1,,,,,,,,,10,,11
-11,근접 평타,근접 평타,근접 평타1,2,sp_ui_ic_skill_rare_sword,Active,,VFX_buddy_common_skill_hit,,SFX_hit,0.1,attack,1,Other,1,,Enemy,11,,,,,,,,,,,10,,11
-20,근접 평타,근접 평타,근접 평타2,1,sp_ui_ic_skill_rare_bomb,Active,,VFX_buddy_common_skill_hit,,SFX_hit,1,attack,1,Other,1,,Enemy,13,,,,,,,,,,,20,,
-30,아처 평타,아처 평타,아처 평타1,1,sp_ui_ic_skill_unique_arrow,Active,,VFX_buddy_common_skill_hit,,SFX_arrow,1,attack,1,Other,1,,Enemy,10,,,,,,,,,,,30,,
-40,아처 평타,아처 평타,아처 평타2,1,sp_ui_ic_skill_unique_spear,Active,,VFX_buddy_common_skill_hit,,SFX_arrow,1.5,attack,1,Other,1,,Enemy,15,,,,,,,,,,,40,,
-50,로그 평타,로그 평타,로그 평타,1,sp_ui_ic_skill_rare_sword,Active,,VFX_buddy_common_skill_hit,,SFX_hit,0.5,attack,1,Other,1,,Enemy,10,,,,,,,,,,,50,,
-60,로그 마법,로그 마법,로그 마법,1,sp_ui_ic_skill_rare_thunder,Active,,VFX_buddy_common_skill_hit,,SFX_skill_thunderbolt,3,attack,1,Other,1,,Enemy,110,,,,,,,,,,,60,,
-70,마법사 평타 빛속성,마법사 평타 빛속성,마법사 평타 빛속성,1,sp_ui_ic_common_skill,Active,,VFX_buddy_common_skill_hit,,SFX_skill_lightbomb,2,attack,1,Other,1,,Enemy,110,,,,,,,,,,,70,,
-80,마법사 평타 물속성,마법사 평타 물속성,마법사 평타 물속성,1,sp_ui_ic_advanced_skill,Active,,VFX_buddy_common_skill_hit,,SFX_skill_ice,3,attack,1,Other,1,,Enemy,120,,,,,,,,,,,80,,
+10,근접 평타,NormalSkill1,NormalSkill1Description,1,sp_ui_ic_skill_rare_sword,Active,,VFX_buddy_common_skill_hit,,SFX_hit,0.5,attack,1,Other,1,,Enemy,10,ScrollWeapon,1,,,,,,,,,10,,11
+11,근접 평타,NormalSkill1,NormalSkill1Description,2,sp_ui_ic_skill_rare_sword,Active,,VFX_buddy_common_skill_hit,,SFX_hit,0.1,attack,1,Other,1,,Enemy,11,,,,,,,,,,,10,,11
+20,근접 평타,NormalSkill2,NormalSkill2Description,1,sp_ui_ic_skill_rare_bomb,Active,,VFX_buddy_common_skill_hit,,SFX_hit,1,attack,1,Other,1,,Enemy,13,ScrollWeapon,2,ScrollRing,1,,,,,,,20,,21
+21,근접 평타,NormalSkill2,NormalSkill2Description,2,sp_ui_ic_skill_rare_bomb,Active,,VFX_buddy_common_skill_hit,,SFX_hit,0.95,attack,1,Other,1,,Enemy,13,,,,,,,,,,,20,20,
+30,아처 평타,ArcherNormalSkill1,ArcherNormalSkill1Description,1,sp_ui_ic_skill_unique_arrow,Active,,VFX_buddy_common_skill_hit,,SFX_arrow,1,attack,1,Other,1,,Enemy,10,,,,,,,,,,,30,,
+40,아처 평타,ArcherNormalSkill2,ArcherNormalSkill2Description,1,sp_ui_ic_skill_unique_spear,Active,,VFX_buddy_common_skill_hit,,SFX_arrow,1.5,attack,1,Other,1,,Enemy,15,,,,,,,,,,,40,,
+50,로그 평타,RogueNormalSkill1,RogueNormalSkill1Description,1,sp_ui_ic_skill_rare_sword,Active,,VFX_buddy_common_skill_hit,,SFX_hit,0.5,attack,1,Other,1,,Enemy,10,,,,,,,,,,,50,,
+60,로그 마법,RogueNormalMagicSkill1,RogueNormalMagicSkill1Description,1,sp_ui_ic_skill_rare_thunder,Active,,VFX_buddy_common_skill_hit,,SFX_skill_thunderbolt,3,attack,1,Other,1,,Enemy,110,,,,,,,,,,,60,,
+70,마법사 평타 마법,MagicianNormalMagicSkill1,MagicianNormalMagicSkill1Description,1,sp_ui_ic_common_skill,Active,,VFX_buddy_common_skill_hit,,SFX_skill_lightbomb,2,attack,1,Other,1,,Enemy,110,,,,,,,,,,,70,,
+80,마법사 평타 물속성,MagicianWaterMagicSkill1,MagicianWaterMagicSkill1Description,1,sp_ui_ic_advanced_skill,Active,,VFX_buddy_common_skill_hit,,SFX_skill_ice,3,attack,1,Other,1,,Enemy,120,,,,,,,,,,,80,,

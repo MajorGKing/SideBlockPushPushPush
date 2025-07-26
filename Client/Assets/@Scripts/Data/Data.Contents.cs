@@ -9,6 +9,35 @@ namespace Data
     public class ExcludeFieldAttribute : Attribute
     {
     }
+
+    #region TextData
+    public class TextData
+    {
+        public string TemplateId;
+        public string KOR;
+    }
+
+    [Serializable]
+    public class TextDataLoader : ILoader<string, TextData>
+    {
+        public List<TextData> texts = new List<TextData>();
+
+        public Dictionary<string, TextData> MakeDict()
+        {
+            Dictionary<string, TextData> dict = new Dictionary<string, TextData>();
+            foreach (TextData text in texts)
+                dict.Add(text.TemplateId, text);
+
+            return dict;
+        }
+
+        public bool Validate()
+        {
+            return true;
+        }
+    }
+    #endregion
+
     #region CreatureData
     [Serializable]
     public class CreatureData
@@ -209,8 +238,6 @@ namespace Data
     }
     #endregion
 
-
-
     #region Buddy
     [Serializable]
     public class BuddyData
@@ -403,8 +430,8 @@ namespace Data
     {
         public int TemplateId;
         public string Name;
-        public string NameText;
-        public string DescriptionText;
+        public string NameTextId;
+        public string DescriptionTextId;
         public string IconImage;
         public Define.EEffectType EffectType;
         public Define.EDurationPolicy EDurationPolicy;

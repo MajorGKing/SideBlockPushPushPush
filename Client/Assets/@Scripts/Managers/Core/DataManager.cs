@@ -16,6 +16,7 @@ public class DataManager
 {
     private HashSet<IValidate> _loaders = new HashSet<IValidate>();
 
+    public Dictionary<string, Data.TextData> TextDict { get; private set; } = new Dictionary<string, Data.TextData>();
     public Dictionary<int, Data.HeroSkillData> HeroSkillDataDic { get; set; } = new Dictionary<int, Data.HeroSkillData>();
     public Dictionary<int, Data.BuddySkillData> BuddySkillDataDic { get; set; } = new Dictionary<int, Data.BuddySkillData>();
     public Dictionary<int, Data.EffectData> EffectDataDic { get; set; } = new Dictionary<int, Data.EffectData>();
@@ -30,6 +31,7 @@ public class DataManager
 
     public void Init()
     {
+        TextDict = LoadJson<Data.TextDataLoader, string, Data.TextData>("TextData").MakeDict();
         HeroSkillDataDic = LoadJson<Data.HeroSkillDataLoader, int, Data.HeroSkillData>("HeroSkillData").MakeDict();
         BuddySkillDataDic = LoadJson<Data.BuddySkillDataLoader, int, Data.BuddySkillData>("BuddySkillData").MakeDict();
         EffectDataDic = LoadJson<Data.EffectDataLoader, int, Data.EffectData>("EffectData").MakeDict();

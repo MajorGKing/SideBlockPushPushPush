@@ -238,4 +238,10 @@ public class Define
     public const string GREENBUTTON = "Btn_MainButton_Green";
     public const string REDBUTTON = "Btn_MainButton_Red";
     #endregion
+
+    #region HardCodingText
+    public const string DESCRIPTIONATTACKPERCENT = "DescriptionAttackPercent";
+    public const string DESCRIPTIONATTACKSPEED = "DescriptionAttackSpeed";
+    public const string DESCRIPTIONCOOLTIME = "DescriptionCoolTime";
+    #endregion
 }

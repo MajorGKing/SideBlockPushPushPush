@@ -24,22 +24,32 @@ public class UI_RewardsSubItem : UI_SubItem
 	{
 		base.Awake();
 
-		// Bind
-		BindImages(typeof(Images));
-		BindTexts(typeof(Texts));
-	}
+        // Bind
+        BindImages(typeof(Images));
+        BindTexts(typeof(Texts));
+
+        GetText((int)Texts.Text_ItemFirstTime).gameObject.SetActive(false);
+
+		RefreshUI();
+    }
 
 	public void SetInfo(Define.ECurrencyType currency, int currencyAmount, bool isFirst)
 	{
-		_currencyType = currency;
+        _currencyType = currency;
         _currencyAmount = currencyAmount;
         _isFirst = isFirst;
+
+        if (isInit == false)
+            return;
 
         RefreshUI();
 	}
 
 	private void RefreshUI()
 	{
+		if (_currencyType == Define.ECurrencyType.None)
+			return;
+
 		GetImage((int)Images.Image_Icon).sprite = Managers.Resource.Load<Sprite>(Managers.Data.CurrencyTypeDataDic[_currencyType].IconImage);
 		GetText((int)Texts.Text_ItemCount).text = $"{_currencyAmount:N0}";
 

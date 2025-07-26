@@ -93,7 +93,9 @@ public class GameManager
             OnCurrenciesChagned?.Invoke();
         }
     }
+    #endregion
 
+    #region Hero
     private HeroController _nowHero;
     public HeroController NowHero
     {
@@ -115,6 +117,7 @@ public class GameManager
     //}
     #endregion
 
+    #region Buddy
     private int _nowBuddy;
     public int NowBuddy
     {
@@ -132,8 +135,75 @@ public class GameManager
     public List<BuddySaveData> buddies { get; private set; }
     private int[] _selectedBuddies = new int[4];
     
+    public BuddySaveData GetBuddySaveData(int templateId)
+    {
+        foreach(var buddy in buddies)
+        {
+            if (buddy.TemplateId == templateId)
+                return buddy;
+        }
 
-    public void SelectedBuddyRemove(int templatedId)
+        return null;
+    }
+
+    public int RemoveBuddySaveData(int templatedId)
+    {
+        for(int i = 0; i < buddies.Count; i++)
+        {
+            if (buddies[i].TemplateId == templatedId)
+            {
+                buddies.RemoveAt(i);
+
+                _gameData.BuddySaves.Remove(templatedId);
+                SaveGame();
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    public void AddBuddySaveData(BuddySaveData buddySaveData, int insertIndex = -1)
+    {
+        if(insertIndex < 0)
+        {
+            buddies.Add(buddySaveData);
+        }
+        else
+        {
+            buddies.Insert(insertIndex, buddySaveData);
+        }
+        
+
+        _gameData.BuddySaves.Add(buddySaveData.TemplateId, buddySaveData);
+
+        // 만약 셀렉트된 버디(전 레벨)가 있다면 최신 버디로 갱신 해준다
+        {
+            var previewIndex = Managers.Data.BuddyDataDic[buddySaveData.TemplateId].PreviewLevelId;
+
+            var selectedIndex = Array.IndexOf(_selectedBuddies, previewIndex);
+
+            // 만약 해당하는 내용이 있다면 갱신해준다
+            if (selectedIndex >= 0)
+            {
+                _selectedBuddies[selectedIndex] = buddySaveData.TemplateId;
+                OnSelectedBuddyChanged?.Invoke();
+            }
+        }
+
+
+        SaveGame();
+    }
+
+    public int SelectedBuddyGet(int index)
+    {
+        if (index > _selectedBuddies.Length)
+            return 0;
+
+        return _selectedBuddies[index];
+    }
+
+    public bool SelectedBuddyRemove(int templatedId)
     {
         for (int i = 0; i < _selectedBuddies.Length; i++)
         {
@@ -141,18 +211,40 @@ public class GameManager
             {
                 _selectedBuddies[i] = 0;
                 SetSelectdBuddy(templatedId, false);
-                return;
+
+                int writeIndex = 0;
+                for (int j = 0; j < _selectedBuddies.Length; j++)
+                {
+                    // 0이 아닌 요소만 writeIndex 위치에 복사
+                    if (_selectedBuddies[j] != 0)
+                    {
+                        _selectedBuddies[writeIndex] = _selectedBuddies[j];
+                        writeIndex++;
+                    }
+                }
+                // 남은 공간을 0으로 채움
+                for (int k = writeIndex; k < _selectedBuddies.Length; k++)
+                {
+                    _selectedBuddies[k] = 0;
+                }
+
+                OnSelectedBuddyChanged?.Invoke();
+                return true;
             }
         }
+        return false;
     }
 
     public void SelectedBuddySet(int templatedId)
     {
         NowBuddy = templatedId;
 
+        if (_selectedBuddies.Contains(templatedId))
+            return;
+
         for (int i = 0; i < _selectedBuddies.Length; i++)
         {
-            if (_selectedBuddies[i] != 0)
+            if (_selectedBuddies[i] == 0)
             {
                 _selectedBuddies[i] = templatedId;
                 SetSelectdBuddy(templatedId, true);
@@ -161,18 +253,164 @@ public class GameManager
         }
     }
 
-    private void SetSelectdBuddy(int templatedId, bool isSelected)
+    private void SetSelectdBuddy(int templatedId, bool selected)
     {
-        _gameData.BuddySaves[templatedId].isSelected = false;
+        _gameData.BuddySaves[templatedId].isSelected = selected;
+        OnSelectedBuddyChanged?.Invoke();
         SaveGame();
     }
+    #endregion
+
+    #region BuddyUp
+    public void BuddyLevelUp()
+    {
+        var buddyData = Managers.Data.BuddyDataDic[NowBuddy];
+        // 지금 선택된 버디가 레벨업이 가능한지 체크
+        {
+            // 다음 레벨이 있어 레벨업 가능한지 확인
+            if (buddyData.NextLevelId == 0)
+                return;
+
+            // 자원 가능한지 체크
+            var currencies = buddyData.LevelUpCurrencies;
+
+            foreach (var currency in currencies)
+            {
+                if (currency.currencyType == Define.ECurrencyType.None)
+                    continue;
+
+                if (currency.count > GetCurrency(currency.currencyType))
+                    return;
+            }
+
+            // 자원가능하면 자원 빼고 저장
+            foreach (var currency in currencies)
+            {
+                if (currency.currencyType == Define.ECurrencyType.None)
+                    continue;
+
+                AddCurrency(currency.currencyType, -currency.count);
+            }
+        }
+
+        // 선택된 버디를 레벨업
+        {
+            var buddySavedata = _gameData.BuddySaves[NowBuddy];
+            // 기존 버디 정보를 삭제
+            int removeIndex = RemoveBuddySaveData(NowBuddy);
+
+            // 새로운 버디 정보를 추가
+            {
+                buddySavedata.TemplateId = buddyData.NextLevelId;
+
+                var nextBuddyData = Managers.Data.BuddyDataDic[buddySavedata.TemplateId];
+
+                List<int> orgSkillId = new List<int>();
+
+                foreach(int skillId in buddySavedata.SkillTemplateId)
+                {
+                    orgSkillId.Add(Managers.Data.BuddySkillDataDic[skillId].OriginalLevelId);
+                }
+
+                // 버디의 추가 스킬 정보를 추가
+                foreach(var skillId in nextBuddyData.SKillIds)
+                {
+                    if (orgSkillId.Contains(Managers.Data.BuddySkillDataDic[skillId].OriginalLevelId) == false)
+                    {
+                        buddySavedata.SkillTemplateId.Add(skillId);
+                    }
+                }
+
+                AddBuddySaveData(buddySavedata, removeIndex);
+            }
+        }
+
+        // 레벨업에 따른 정보 갱신
+        NowBuddy = buddyData.NextLevelId;
+
+        // 세이브
+        SaveGame();
+    }
+
+    public void BuddySkillUp(int skillTemplateId)
+    {
+        if (skillTemplateId == 0)
+            return;
+
+        // NowBuddy의 BuddySaveData에 접근 skill의 templateId를 갱신
+
+        BuddySaveData currentData = new BuddySaveData();
+
+        foreach(var buddy in buddies)
+        {
+            if(buddy.TemplateId == NowBuddy)
+            {
+                currentData = buddy;
+                break;
+            }
+        }
+
+        if (currentData.TemplateId == 0)
+            return;
+
+        var skillData = Managers.Data.BuddySkillDataDic[skillTemplateId];
+
+        if (skillData == null)
+            return;
+
+        // 업그레이드 가능한지 체크
+        {
+            // 다음 레벨로 진행 가능한가
+            if (skillData.NextLevelId == 0)
+                return;
+
+            // 자원은 충분한가
+            var currencies = skillData.LevelUpCurrencies;
+
+            foreach (var currency in currencies)
+            {
+                if (currency.currencyType == Define.ECurrencyType.None)
+                    continue;
+
+                if (currency.count > GetCurrency(currency.currencyType))
+                    return;
+            }
+
+            // 자원가능하면 자원 빼고 저장
+            foreach (var currency in currencies)
+            {
+                if (currency.currencyType == Define.ECurrencyType.None)
+                    continue;
+
+                AddCurrency(currency.currencyType, -currency.count);
+            }
+        }
+
+        // 선택된 스킬 레벨업
+        {
+            // 로컬값 수정
+            var nowSkillIndex = currentData.SkillTemplateId.IndexOf(skillTemplateId);
+            currentData.SkillTemplateId[nowSkillIndex] = skillData.NextLevelId;
+
+            // 세이브 될 값 수정 - 위에서 링크로 수정되었기 때문에 gameData값도 자동 수정됨
+            //var nowSKillIndexSave = _gameData.BuddySaves[NowBuddy].SkillTemplateId.IndexOf(skillTemplateId);
+            //_gameData.BuddySaves[NowBuddy].SkillTemplateId[nowSKillIndexSave] = skillData.NextLevelId;
+
+            SaveGame();
+            OnNowBuddyChanged?.Invoke();
+        }
+
+    }
+    #endregion
 
     #region Action
     public event Action OnCurrenciesChagned;
     public event Action OnCurrentStageChanged;
     public event Action OnNowBuddyChanged;
     public event Action OnNowHeroChanged;
+    public event Action OnSelectedBuddyChanged;
     #endregion
+
 
     private GameScene _scene;
     private bool _nowGameScene = false;
@@ -222,13 +460,22 @@ public class GameManager
         _gameData.BuddySaves.Add(7, new BuddySaveData(7, Managers.Data.BuddyDataDic[7].SKillIds, true));
 
         buddies = _gameData.BuddySaves.Values.ToList();
-        int i = 0;
+        int selectedIndex = 0;
         foreach (var buddy in buddies)
         {
             if (buddy.isSelected == true)
             {
-                _selectedBuddies[i++] = buddy.TemplateId;
+                _selectedBuddies[selectedIndex++] = buddy.TemplateId;
             }
+        }
+
+        OnSelectedBuddyChanged?.Invoke();
+
+        var currencyTypes = Enum.GetValues(typeof(Define.ECurrencyType));
+
+        for (int i = 1; i < currencyTypes.Length; i++)
+        {
+            AddCurrency((Define.ECurrencyType)i, 100);
         }
 
         StageClear stage = new StageClear();
@@ -427,6 +674,8 @@ public class GameManager
                 _selectedBuddies[i++] = buddy.TemplateId;
             }
         }
+
+        OnSelectedBuddyChanged?.Invoke();
 
         Debug.Log("Loading Sucess");
         return true;

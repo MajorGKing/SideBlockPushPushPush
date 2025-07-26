@@ -1,3 +1,7 @@
+using NUnit.Framework.Constraints;
+using Spine.Unity;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -17,23 +21,62 @@ public class UI_BuddyLevelUpPopup : UI_Popup
         Text_ArmorScrollCount,
         Text_BeltScrollCount,
         Text_BootsScrollCount,
+        Text_BuddyLevel,
+        Text_BuddyAttack,
+        Text_BuddyMagic,
+        Text_BuddyReload,
     }
 
-    enum Images
+    enum Objects
     {
-        Image_SelectedBuddy1,
-        Image_SelectedBuddy2,
-        Image_SelectedBuddy3,
-        Image_SelectedBuddy4,
+        UI_SelectedBuddySlotSubItem1,
+        UI_SelectedBuddySlotSubItem2,
+        UI_SelectedBuddySlotSubItem3,
+        UI_SelectedBuddySlotSubItem4,
+        UI_LevelUpCurrencySubItem1,
+        UI_LevelUpCurrencySubItem2,
+        UI_LevelUpCurrencySubItem3,
+        UI_LevelUpCurrencySubItem4,
+        UI_NowBuddySubItem,
+        BuddySKillContent,
+        BuddySkillUpContent,
+        BuddiesContent,
     }
+
+    enum Buttons
+    {
+        Button_BuddyLevelUp,
+    }
+
+    private List<UI_RewardsSubItem> buddyLevelUpCurrencies;
+    private UI_BuddySlotSubItem[] selectedBuddies;
 
     protected override void Awake()
     {
         base.Awake();
 
         BindTexts(typeof(Texts));
-        BindImages(typeof(Images));
+        BindObjects(typeof(Objects));
+        BindButtons(typeof(Buttons));
 
+        // Selected Buddy
+        GetButton((int)Buttons.Button_BuddyLevelUp).gameObject.BindEvent(OnClickedBuddyLevelUpButton);
+
+        buddyLevelUpCurrencies = new List<UI_RewardsSubItem>();
+        buddyLevelUpCurrencies.Add(GetObject((int)Objects.UI_LevelUpCurrencySubItem1).GetComponent<UI_RewardsSubItem>());
+        buddyLevelUpCurrencies.Add(GetObject((int)Objects.UI_LevelUpCurrencySubItem2).GetComponent<UI_RewardsSubItem>());
+        buddyLevelUpCurrencies.Add(GetObject((int)Objects.UI_LevelUpCurrencySubItem3).GetComponent<UI_RewardsSubItem>());
+        buddyLevelUpCurrencies.Add(GetObject((int)Objects.UI_LevelUpCurrencySubItem4).GetComponent<UI_RewardsSubItem>());
+
+        selectedBuddies = new UI_BuddySlotSubItem[4];
+        selectedBuddies[0] = GetObject((int)Objects.UI_SelectedBuddySlotSubItem1).GetComponent<UI_BuddySlotSubItem>();
+        selectedBuddies[1] = GetObject((int)Objects.UI_SelectedBuddySlotSubItem2).GetComponent<UI_BuddySlotSubItem>();
+        selectedBuddies[2] = GetObject((int)Objects.UI_SelectedBuddySlotSubItem3).GetComponent<UI_BuddySlotSubItem>();
+        selectedBuddies[3] = GetObject((int)Objects.UI_SelectedBuddySlotSubItem4).GetComponent<UI_BuddySlotSubItem>();
+
+        GetObject((int)Objects.BuddySKillContent).DestroyChildren();
+        GetObject((int)Objects.BuddySkillUpContent).DestroyChildren();
+        GetObject((int)Objects.BuddiesContent).DestroyChildren();
 
 
         RefreshUI();
@@ -51,16 +94,25 @@ public class UI_BuddyLevelUpPopup : UI_Popup
 
         Managers.Game.OnNowBuddyChanged -= SetInfo;
         Managers.Game.OnNowBuddyChanged += SetInfo;
+
+        Managers.Game.OnSelectedBuddyChanged -= SetInfo;
+        Managers.Game.OnSelectedBuddyChanged += SetInfo;
+
+        RefreshUI();
     }
 
     private void OnDisable()
     {
         Managers.Game.OnCurrenciesChagned -= SetInfo;
         Managers.Game.OnNowBuddyChanged -= SetInfo;
+        Managers.Game.OnSelectedBuddyChanged -= SetInfo;
     }
 
     private void RefreshUI()
     {
+        if (isInit == false)
+            return;
+
         // stone
         GetText((int)Texts.Text_WeaponStoneCount).text = Managers.Game.GetCurrency(Define.ECurrencyType.StoneWeapon).ToString();
         GetText((int)Texts.Text_GlovesStoneCount).text = Managers.Game.GetCurrency(Define.ECurrencyType.StoneGloves).ToString();
@@ -75,32 +127,139 @@ public class UI_BuddyLevelUpPopup : UI_Popup
         GetText((int)Texts.Text_RingScrollCount).text = Managers.Game.GetCurrency(Define.ECurrencyType.ScrollRing).ToString();
         GetText((int)Texts.Text_ArmorScrollCount).text = Managers.Game.GetCurrency(Define.ECurrencyType.ScrollArmor).ToString();
         GetText((int)Texts.Text_BeltScrollCount).text = Managers.Game.GetCurrency(Define.ECurrencyType.ScrollBelt).ToString();
-        GetText((int)Texts.Text_BootsScrollCount).text = Managers.Game.GetCurrency(Define.ECurrencyType.ScrollBoots).ToString();
+        GetText((int)Texts.Text_BootsScrollCount).text = Managers.Game.GetCurrency(Define.ECurrencyType.ScrollBoots).ToString();  
 
-        // Selected Buddy
-        GetImage((int)Images.Image_SelectedBuddy1).gameObject.BindEvent(OnClickedSelectedBuddy1);
-        GetImage((int)Images.Image_SelectedBuddy2).gameObject.BindEvent(OnClickedSelectedBuddy2);
-        GetImage((int)Images.Image_SelectedBuddy3).gameObject.BindEvent(OnClickedSelectedBuddy3);
-        GetImage((int)Images.Image_SelectedBuddy4).gameObject.BindEvent(OnClickedSelectedBuddy4);
+        // Buddies 관련
+        {
+            GetObject((int)Objects.BuddiesContent).DestroyChildren();
+
+            var buddies = Managers.Game.buddies;
+            foreach(var buddy in buddies)
+            {
+                if(buddy == null) 
+                    continue;
+
+                if (buddy.TemplateId == 0)
+                    continue;
+
+                var item = Managers.UI.MakeSubItem<UI_BuddySlotSubItem>(GetObject((int)Objects.BuddiesContent).transform);
+                item.SetInfo(buddy.TemplateId, UI_BuddySlotSubItem.EBuddySlotTypte.Buddies);
+            }
+        }
+
+        // Selected
+        {
+            for(int i = 0; i < selectedBuddies.Length; i++)
+            {
+                selectedBuddies[i].SetInfo(Managers.Game.SelectedBuddyGet(i), UI_BuddySlotSubItem.EBuddySlotTypte.BuddySelected);
+            }
+        }
+
+        // Now Buddy 관련
+        int nowBuddyIndex = Managers.Game.NowBuddy;
+        Debug.Log("nowBuddy : " + nowBuddyIndex);
+        if (nowBuddyIndex == 0)
+        {
+            Utils.FindChild<SkeletonGraphic>(GetObject((int)Objects.UI_NowBuddySubItem), null, true).enabled = false;
+
+            foreach (var buddyLevelUpCurrency in buddyLevelUpCurrencies)
+            {
+                buddyLevelUpCurrency.gameObject.SetActive(false);
+            }
+
+            GetButton((int)Buttons.Button_BuddyLevelUp).interactable = false;
+
+            GetObject((int)Objects.BuddySKillContent).DestroyChildren();
+
+            // Stat Update
+            GetText((int)Texts.Text_BuddyLevel).text = $"Level : ";
+            GetText((int)Texts.Text_BuddyAttack).text = $"Attack : ";
+            GetText((int)Texts.Text_BuddyMagic).text = $"Magic : ";
+            GetText((int)Texts.Text_BuddyReload).text = $"Reload : ";
+        }
+        else
+        {
+            var nowBuddySkeletonGraphic = Utils.FindChild<SkeletonGraphic>(GetObject((int)Objects.UI_NowBuddySubItem), null, true);
+            nowBuddySkeletonGraphic.enabled = true;
+            var nowBuddyData = Managers.Data.BuddyDataDic[nowBuddyIndex];
+            nowBuddySkeletonGraphic.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>(nowBuddyData.SpineNameKey);
+            nowBuddySkeletonGraphic.Initialize(true);
+
+            // Stat Update
+            GetText((int)Texts.Text_BuddyLevel).text = $"Level : {nowBuddyData.BuddyLevel}";
+            GetText((int)Texts.Text_BuddyAttack).text = $"Attack : {nowBuddyData.Attack}";
+            GetText((int)Texts.Text_BuddyMagic).text = $"Magic : {nowBuddyData.MagicAttack}";
+            GetText((int)Texts.Text_BuddyReload).text = $"Reload : {nowBuddyData.Reload:F2}";
+
+            foreach (var buddyLevelUpCurrency in buddyLevelUpCurrencies)
+            {
+                buddyLevelUpCurrency.gameObject.SetActive(false);
+            }
+
+            for (int i = 0; i < nowBuddyData.LevelUpCurrencies.Count; i++)
+            {
+                buddyLevelUpCurrencies[i].gameObject.SetActive(true);
+                buddyLevelUpCurrencies[i].SetInfo(nowBuddyData.LevelUpCurrencies[i].currencyType, nowBuddyData.LevelUpCurrencies[i].count, false);
+            }
+
+            GetButton((int)Buttons.Button_BuddyLevelUp).interactable = true;
+
+            var buddySaveData = Managers.Game.GetBuddySaveData(nowBuddyIndex);
+
+            if (buddySaveData == null)
+                return;
+
+            GetObject((int)Objects.BuddySKillContent).DestroyChildren();
+
+            foreach (var templatedId in buddySaveData.SkillTemplateId)
+            {
+                Debug.Log("templatedId " + templatedId);
+
+                if (templatedId == 0)
+                    continue;
+
+                var item = Managers.UI.MakeSubItem<UI_BuddySKillSubItem>(GetObject((int)Objects.BuddySKillContent).transform);
+                item.SetInfo(templatedId);
+            }
+
+        }
+
+        // SKillLevelUp
+        {
+            //if (nowBuddyIndex == 0)
+            //{
+            //    
+            //}
+            //else
+            //{
+            GetObject((int)Objects.BuddySkillUpContent).DestroyChildren();
+
+            var saveData = Managers.Game.GetBuddySaveData(nowBuddyIndex);
+
+            if (saveData == null)
+                return;
+
+            foreach (var tempalteId in saveData.SkillTemplateId)
+            {
+                if (tempalteId == 0)
+                    continue;
+
+                //GetObject((int)Objects.BuddySkillUpContent).DestroyChildren();
+
+                var item = Managers.UI.MakeSubItem<UI_BuddySkillUpSubItem>(GetObject((int)Objects.BuddySkillUpContent).transform);
+                item.SetInfo(tempalteId);
+            }
+            //}
+        }
     }
 
-    private void OnClickedSelectedBuddy1(PointerEventData eventData)
+    private void OnClickedBuddyLevelUpButton(PointerEventData eventData)
     {
-        Debug.Log("Touch One");
-    }
+        if (GetButton((int)Buttons.Button_BuddyLevelUp).interactable == false)
+            return;
 
-    private void OnClickedSelectedBuddy2(PointerEventData eventData)
-    {
-        Debug.Log("Touch 2");
-    }
+        Managers.Game.BuddyLevelUp();
 
-    private void OnClickedSelectedBuddy3(PointerEventData eventData)
-    {
-        Debug.Log("Touch 3");
-    }
-
-    private void OnClickedSelectedBuddy4(PointerEventData eventData)
-    {
-        Debug.Log("Touch 4");
+        Debug.Log("On Button Clicked");
     }
 }
