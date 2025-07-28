@@ -10,11 +10,13 @@ public class UI_LobbyScene : UI_Scene
         ShopToggleRedDotObject, // 알림 상황 시 사용 할 레드닷
         LevelToggleRedDotObject,
         BattleToggleRedDotObject,
+        HeroToggleRedDotObject,
 
         MenuToggleGroup,
         CheckShopImageObject,
         CheckLevelImageObject,
         CheckBattleImageObject,
+        CheckHeroImageObject,
     }
 
     enum Texts
@@ -22,6 +24,7 @@ public class UI_LobbyScene : UI_Scene
         ShopToggleText,
         LevelToggleText,
         BattleToggleText,
+        HeroToggleText,
     }
 
     enum Toggles
@@ -29,15 +32,19 @@ public class UI_LobbyScene : UI_Scene
         ShopToggle,
         LevelToggle,
         BattleToggle,
+        HeroToggle,
     }
 
     public UI_BattlePopup BattlePopupUI { get; private set; }
     public UI_BuddyLevelUpPopup BuddyPopupUI { get; private set; }
+    public UI_HeroLevelUpPopup HeroPopupUI { get; private set; }
+
     bool _isSelectedBattle = false;
 
     bool _isSelectedLevel = false;
 
     bool _isSelectedShop = false;
+    bool _isSelectedHero = false;
 
     private UI_UserInfoItem _userInfoItem;
 
@@ -54,12 +61,15 @@ public class UI_LobbyScene : UI_Scene
         GetToggle((int)Toggles.ShopToggle).gameObject.BindEvent(OnClickShopToggle);
         GetToggle((int)Toggles.LevelToggle).gameObject.BindEvent(OnClickLevelToggle);
         GetToggle((int)Toggles.BattleToggle).gameObject.BindEvent(OnClickBattleToggle);
+        GetToggle((int)Toggles.HeroToggle).gameObject.BindEvent(OnClickHeroToggle);
 
         BattlePopupUI = Managers.UI.ShowPopupUI<UI_BattlePopup>();
         GetToggle((int)Toggles.BattleToggle).gameObject.GetComponent<Toggle>().isOn = true;
         OnClickBattleToggle();
 
         BuddyPopupUI = Managers.UI.ShowPopupUI<UI_BuddyLevelUpPopup>();
+        
+        HeroPopupUI = Managers.UI.ShowPopupUI<UI_HeroLevelUpPopup>();
 
         TogglesInit();
 
@@ -81,28 +91,36 @@ public class UI_LobbyScene : UI_Scene
         if (BuddyPopupUI == null)
             return;
 
+        if (HeroPopupUI == null)
+            return;
+
         BattlePopupUI.gameObject.SetActive(false);
         BuddyPopupUI.gameObject.SetActive(false);
+        HeroPopupUI.gameObject.SetActive(false);
 
         // 재 클릭 방지 트리거 초기화
         _isSelectedLevel = false;
         _isSelectedShop = false;
         _isSelectedBattle = false;
+        _isSelectedHero = false;
 
         // 버튼 레드닷 초기화
         GetObject((int)GameObjects.ShopToggleRedDotObject).SetActive(false);
         GetObject((int)GameObjects.LevelToggleRedDotObject).SetActive(false);
         GetObject((int)GameObjects.BattleToggleRedDotObject).SetActive(false);
+        GetObject((int)GameObjects.HeroToggleRedDotObject).SetActive(false);
 
         // 선택 토글 아이콘 초기화
         GetObject((int)GameObjects.CheckShopImageObject).SetActive(false);
         GetObject((int)GameObjects.CheckLevelImageObject).SetActive(false);
         GetObject((int)GameObjects.CheckBattleImageObject).SetActive(false);
+        GetObject((int)GameObjects.CheckHeroImageObject).SetActive(false);
 
         // 메뉴 텍스트 초기화
         GetText((int)Texts.ShopToggleText).gameObject.SetActive(false);
         GetText((int)Texts.LevelToggleText).gameObject.SetActive(false);
         GetText((int)Texts.BattleToggleText).gameObject.SetActive(false);
+        GetText((int)Texts.HeroToggleText).gameObject.SetActive(false);
     }
 
     private void OnClickBattleToggle(PointerEventData evt)
@@ -147,6 +165,20 @@ public class UI_LobbyScene : UI_Scene
         GetText((int)Texts.LevelToggleText).gameObject.SetActive(true);
         GetObject((int)GameObjects.CheckLevelImageObject).SetActive(true);
         _isSelectedLevel = true;
+    }
+
+    private void OnClickHeroToggle(PointerEventData evt)
+    {
+        Managers.Sound.PlayButtonClick();
+        if (_isSelectedHero == true)
+            return;
+
+        TogglesInit();
+        HeroPopupUI.gameObject.SetActive(true);
+        GetText((int)Texts.HeroToggleText).gameObject.SetActive(true);
+        GetObject((int)GameObjects.CheckHeroImageObject).SetActive(true);
+        _isSelectedHero = true;
+
     }
 
     #endregion

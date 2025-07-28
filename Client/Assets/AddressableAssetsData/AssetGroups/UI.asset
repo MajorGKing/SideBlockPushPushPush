@@ -39,6 +39,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5afd6ef3bcb16cd49a5d8fcc81cada07
+    m_Address: UI_HeroLevelUpPopup
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6408287e3e02b32469e9d961530ea054
     m_Address: UI_BuddySkillUpSubItem
     m_ReadOnly: 0
@@ -59,6 +65,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 80ac16d3598065b42b21bcea435da6dc
     m_Address: UI_BuddyLevelUpPopup
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9e37e30a2d3f2ee4e82d795dcb6e0f79
+    m_Address: UI_HeroSkillUpSubItem
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload

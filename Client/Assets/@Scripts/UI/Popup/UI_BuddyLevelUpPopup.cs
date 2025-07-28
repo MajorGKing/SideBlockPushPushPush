@@ -1,7 +1,5 @@
-using NUnit.Framework.Constraints;
 using Spine.Unity;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -157,7 +155,6 @@ public class UI_BuddyLevelUpPopup : UI_Popup
 
         // Now Buddy ฐüทร
         int nowBuddyIndex = Managers.Game.NowBuddy;
-        Debug.Log("nowBuddy : " + nowBuddyIndex);
         if (nowBuddyIndex == 0)
         {
             Utils.FindChild<SkeletonGraphic>(GetObject((int)Objects.UI_NowBuddySubItem), null, true).enabled = false;

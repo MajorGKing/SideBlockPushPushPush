@@ -1,5 +1,4 @@
 using Spine.Unity;
-using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class UI_BuddySlotSubItem : UI_SubItem
@@ -9,7 +8,8 @@ public class UI_BuddySlotSubItem : UI_SubItem
         None,
         Buddies,
         BuddyInfo,
-        BuddySelected
+        BuddySelected,
+        Heroes,
     }
 
     enum Images
@@ -25,6 +25,7 @@ public class UI_BuddySlotSubItem : UI_SubItem
     public EBuddySlotTypte slotType;
     private SkeletonGraphic skeletonAnimation;
     private Data.BuddyData buddyData;
+    private Data.HeroData heroData;
     private int templateId;
 
     protected override void Awake()
@@ -51,6 +52,12 @@ public class UI_BuddySlotSubItem : UI_SubItem
             buddyData = Managers.Data.BuddyDataDic[templateId];
         }
 
+        if(slotType == EBuddySlotTypte.Heroes)
+        {
+            buddyData = null;
+            heroData = Managers.Data.HeroDataDic[templateId];
+        }
+
         if (isInit == false)
             return;
 
@@ -68,7 +75,7 @@ public class UI_BuddySlotSubItem : UI_SubItem
             return ;
 
         skeletonAnimation.enabled = true;
-        skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>(buddyData.SpineNameKey);
+        skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>(buddyData.SpineNameKey) ?? Managers.Resource.Load<SkeletonDataAsset>(heroData.SpineNameKey);
         skeletonAnimation.Initialize(true);
     }
 
@@ -87,6 +94,10 @@ public class UI_BuddySlotSubItem : UI_SubItem
         else if (slotType == EBuddySlotTypte.Buddies)
         {
             Managers.Game.SelectedBuddySet(buddyData.TemplateId);
+        }
+        else if(slotType == EBuddySlotTypte.Heroes)
+        {
+            Managers.Game.NowHero = heroData.TemplateId;
         }
     }
 }

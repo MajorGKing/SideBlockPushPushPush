@@ -16,12 +16,9 @@ public class GameData
 
     public int Stamina = Define.MAX_STAMINA;
 
-    public List<HeroController> Heroes = new List<HeroController>();
-
     public Dictionary<int, BuddySaveData> BuddySaves = new Dictionary<int, BuddySaveData>();
+    public Dictionary<int, HeroSaveData> HeroSaves = new Dictionary<int, HeroSaveData>();
 
-    public HeroController SelectedHero;
-    
     public int CurrentStageTemplateId = 1;
     public Dictionary<int, StageClear> StageClears = new Dictionary<int, StageClear>();
 
@@ -53,6 +50,27 @@ public class BuddySaveData
     {
         TemplateId = templateId;
         SkillTemplateId = skillTemplateId;
+        this.isSelected = isSelected;
+    }
+}
+
+[SerializeField]
+public class HeroSaveData
+{
+    public int TemplateId;
+    public List<int> SkillTemplatedId;
+    public bool isSelected;
+    public int nowExp;
+    public int maxExp;
+
+    public HeroSaveData() { }
+
+    public HeroSaveData(int templateId, List<int> skillTemplatedId, bool isSelected)
+    {
+        TemplateId = templateId;
+        SkillTemplatedId = skillTemplatedId;
+        this.nowExp = 0;
+        this.maxExp = Managers.Data.HeroDataDic[templateId].LevelUpCurrency1Count;
         this.isSelected = isSelected;
     }
 }
@@ -96,8 +114,8 @@ public class GameManager
     #endregion
 
     #region Hero
-    private HeroController _nowHero;
-    public HeroController NowHero
+    private int _nowHero;
+    public int NowHero
     {
         get { return _nowHero; }
         set
@@ -110,11 +128,20 @@ public class GameManager
         }
     }
 
-    //private BuddyController[] _selectedBuddy;
-    //public BuddyController[] SelectedBuddy
-    //{
-    //    get { return _selectedBuddy; }       
-    //}
+    public List<HeroSaveData> heroes { get; private set; }
+    public HeroSaveData GetHeroSaveData(int tempalteId)
+    {
+        foreach(var hero in heroes)
+        {
+            if (hero.TemplateId == tempalteId)
+                return hero;
+        }
+
+        return null;
+    }
+
+
+
     #endregion
 
     #region Buddy
