@@ -36,6 +36,7 @@ public class DataTransformer : EditorWindow
         ParseExcelDataToJson<ProgressionTypeDataLoader, ProgressionTypeData>("ProgressionType");
         ParseExcelDataToJson<CurrencyTypeDataLoader, CurrencyTypeData>("CurrencyType");
         ParseExcelDataToJson<BuddyDataLoader, BuddyData>("Buddy");
+        ParseExcelDataToJson<HeroDataLoader, HeroData>("Hero");
 
         Debug.Log("Complete DataTransformer");
     }

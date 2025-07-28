@@ -203,7 +203,12 @@ namespace Data
         public string Name;
         public string NameTextId;
         public string DescriptionTextId;
-        public List<string> IconImageKey;
+        public string IconImageKey1;
+        public string IconImageKey2;
+        public string IconImageKey3;
+        public string IconImageKey4;
+        public string IconImageKey5;
+        public string IconImageKey6;
         public Define.ESkillType SkillType;
         public string SkillEffectPrefabKey;
         public string HitEffectPrefabKey;
@@ -217,7 +222,21 @@ namespace Data
         public int GatherTargetType;
         public Define.ETargetFriendType TargetFriendType;
         public int EffectDataId;
-        public int NextLevelSkillId;
+        public Define.ECurrencyType LevelUpCurrency1;
+        public int LevelUpCurrency1Count;
+        public Define.ECurrencyType LevelUpCurrency2;
+        public int LevelUpCurrency2Count;
+        public Define.ECurrencyType LevelUpCurrency3;
+        public int LevelUpCurrency3Count;
+        public int OriginalLevelId;
+        public int PreviewLevelId;
+        public int NextLevelId;
+
+        [ExcludeFieldAttribute]
+        public List<string> IconImageKeys;
+
+        [ExcludeFieldAttribute]
+        public List<LevelUpCurrency> LevelUpCurrencies;
     }
 
     public class HeroSkillDataLoader : ILoader<int, HeroSkillData>
@@ -233,9 +252,123 @@ namespace Data
 
         public bool Validate()
         {
+            foreach(var skill in heroSkills)
+            {
+                skill.IconImageKeys = new List<string>();
+
+                if(string.IsNullOrEmpty(skill.IconImageKey1) == false)
+                    skill.IconImageKeys.Add(skill.IconImageKey1);
+                if (string.IsNullOrEmpty(skill.IconImageKey2) == false)
+                    skill.IconImageKeys.Add(skill.IconImageKey2);
+                if (string.IsNullOrEmpty(skill.IconImageKey3) == false)
+                    skill.IconImageKeys.Add(skill.IconImageKey3);
+                if (string.IsNullOrEmpty(skill.IconImageKey4) == false)
+                    skill.IconImageKeys.Add(skill.IconImageKey4);
+                if (string.IsNullOrEmpty(skill.IconImageKey5) == false)
+                    skill.IconImageKeys.Add(skill.IconImageKey5);
+                if (string.IsNullOrEmpty(skill.IconImageKey6) == false)
+                    skill.IconImageKeys.Add(skill.IconImageKey6);
+
+                skill.LevelUpCurrencies = new List<LevelUpCurrency>();
+                if (skill.LevelUpCurrency1 != Define.ECurrencyType.None)
+                {
+                    skill.LevelUpCurrencies.Add(new LevelUpCurrency(skill.LevelUpCurrency1, skill.LevelUpCurrency1Count));
+                }
+                if (skill.LevelUpCurrency2 != Define.ECurrencyType.None)
+                {
+                    skill.LevelUpCurrencies.Add(new LevelUpCurrency(skill.LevelUpCurrency2, skill.LevelUpCurrency2Count));
+                }
+                if (skill.LevelUpCurrency3 != Define.ECurrencyType.None)
+                {
+                    skill.LevelUpCurrencies.Add(new LevelUpCurrency(skill.LevelUpCurrency3, skill.LevelUpCurrency3Count));
+                }
+            }
+
             return true;
         }
     }
+    #endregion
+
+    #region HeroData
+    [Serializable]
+    public class HeroData
+    {
+        public int TemplateId;
+        public string Name;
+        public string NameTextId;
+        public string DescriptionTextId;
+        public string SpineNameKey;
+        public int Level;
+        public int Attack;
+        public int MagicAttack;
+        public int Skill1Id;
+        public int Skill2Id;
+        public int Skill3Id;
+        public int Skill4Id;
+        public int Skill5Id;
+        public Define.ECurrencyType LevelUpCurrency1;
+        public int LevelUpCurrency1Count;
+        public int OriginalLevelId;
+        public int PreviewLevelId;
+        public int NextLevelId;
+
+        [ExcludeFieldAttribute]
+        public List<int> SKillIds;
+
+        [ExcludeFieldAttribute]
+        public List<LevelUpCurrency> LevelUpCurrencies;
+    }
+
+    public class HeroDataLoader : ILoader<int, HeroData>
+    {
+        public List<HeroData> heroes = new List<HeroData>();
+        public Dictionary<int, HeroData> MakeDict()
+        {
+            Dictionary<int, HeroData> dict = new Dictionary<int, HeroData>();
+            foreach (HeroData hero in heroes)
+                dict.Add(hero.TemplateId, hero);
+            return dict;
+        }
+
+        public bool Validate()
+        {
+            foreach (HeroData hero in heroes)
+            {
+                hero.SKillIds = new List<int>();
+                if (hero.Skill1Id != 0)
+                    hero.SKillIds.Add(hero.Skill1Id);
+                if (hero.Skill2Id != 0)
+                    hero.SKillIds.Add(hero.Skill2Id);
+                if (hero.Skill3Id != 0)
+                    hero.SKillIds.Add(hero.Skill3Id);
+                if (hero.Skill4Id != 0)
+                    hero.SKillIds.Add(hero.Skill4Id);
+                if (hero.Skill5Id != 0)
+                    hero.SKillIds.Add(hero.Skill5Id);
+
+                hero.LevelUpCurrencies = new List<LevelUpCurrency>();
+                if (hero.LevelUpCurrency1 != Define.ECurrencyType.None)
+                {
+                    hero.LevelUpCurrencies.Add(new LevelUpCurrency(hero.LevelUpCurrency1, hero.LevelUpCurrency1Count));
+                }
+                //if (hero.LevelUpCurrency2 != Define.ECurrencyType.None)
+                //{
+                //    hero.LevelUpCurrencies.Add(new LevelUpCurrency(hero.LevelUpCurrency2, hero.LevelUpCurrency2Count));
+                //}
+                //if (hero.LevelUpCurrency3 != Define.ECurrencyType.None)
+                //{
+                //    hero.LevelUpCurrencies.Add(new LevelUpCurrency(hero.LevelUpCurrency3, hero.LevelUpCurrency3Count));
+                //}
+                //if (hero.LevelUpCurrency4 != Define.ECurrencyType.None)
+                //{
+                //    hero.LevelUpCurrencies.Add(new LevelUpCurrency(hero.LevelUpCurrency4, hero.LevelUpCurrency4Count));
+                //}
+            }
+
+            return true;
+        }
+    }
+
     #endregion
 
     #region Buddy
@@ -247,7 +380,7 @@ namespace Data
         public string NameTextId;
         public string DescriptionTextId;
         public string SpineNameKey;
-        public int BuddyLevel;
+        public int Level;
         public int Attack;
         public int MagicAttack;
         public float Reload;

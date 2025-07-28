@@ -1,7 +1,5 @@
-﻿TemplateId,Name,NameTextId,DescriptionTextId,IconImageKey,SkillType,SkillEffectPrefabKey,HitEffectPrefabKey,StartSoundKey,HitSoundKey,Cooltime,AnimName,AnimSpeed,UseSkillTargetType,GatherTargetCounts,GatherTargetType,TargetFriendType,EffectDataId,NextLevelSkillId
-1,근접 평타,근접 평타,근접 평타1,,Active,,VFX_buddy_common_skill_hit,,SFX_hit,0.5,attack,1,Other,1,,Enemy,10,
-2,근접 평타 중,근접 평타,근접 평타2,sp_ui_ic_skill_rare_sword,Active,,VFX_buddy_common_skill_hit,,SFX_hit,0.5,attack,1,Other,1,,Enemy,15,
-,,,,sp_ui_ic_skill_rare_sword,,,,,,,,,,,,,,
-3,근접 평타 상,근접 평타,근접 평타3,sp_ui_ic_skill_rare_sword,Active,,VFX_buddy_common_skill_hit,,SFX_hit,0.5,attack,1,Other,1,,Enemy,17,
-,,,,sp_ui_ic_skill_rare_sword,,,,,,,,,,,,,,
-,,,,sp_ui_ic_skill_rare_sword,,,,,,,,,,,,,,
+﻿TemplateId,Name,NameTextId,DescriptionTextId,IconImageKey1,IconImageKey2,IconImageKey3,IconImageKey4,IconImageKey5,IconImageKey6,SkillType,SkillEffectPrefabKey,HitEffectPrefabKey,StartSoundKey,HitSoundKey,Cooltime,AnimName,AnimSpeed,UseSkillTargetType,GatherTargetCounts,GatherTargetType,TargetFriendType,EffectDataId,LevelUpCurrency1,LevelUpCurrency1Count,LevelUpCurrency2,LevelUpCurrency2Count,LevelUpCurrency3,LevelUpCurrency3Count,OriginalLevelId,PreviewLevelId,NextLevelId
+1,근접 평타,근접 평타,근접 평타1,,,,,,,Active,,VFX_buddy_common_skill_hit,,SFX_hit,0.5,attack,1,Other,1,,Enemy,10,,,,,,,1,,
+10,근접 평타 중,근접 평타,근접 평타2,sp_ui_ic_skill_rare_sword,sp_ui_ic_skill_rare_sword,,,,,Active,,VFX_buddy_common_skill_hit,,SFX_hit,0.5,attack,1,Other,1,,Enemy,15,BlueGem,10,,,,,10,,11
+11,근접 평타 중,근접 평타,근접 평타2,sp_ui_ic_skill_rare_sword,sp_ui_ic_skill_rare_sword,,,,,Active,,VFX_buddy_common_skill_hit,,SFX_hit,0.5,attack,1,Other,1,,Enemy,15,,,,,,,10,10,
+20,근접 평타 상,근접 평타,근접 평타3,sp_ui_ic_skill_rare_sword,sp_ui_ic_skill_rare_sword,sp_ui_ic_skill_rare_sword,,,,Active,,VFX_buddy_common_skill_hit,,SFX_hit,0.5,attack,1,Other,1,,Enemy,17,,,,,,,20,,

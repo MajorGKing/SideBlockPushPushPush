@@ -186,7 +186,7 @@ public class UI_BuddyLevelUpPopup : UI_Popup
             nowBuddySkeletonGraphic.Initialize(true);
 
             // Stat Update
-            GetText((int)Texts.Text_BuddyLevel).text = $"Level : {nowBuddyData.BuddyLevel}";
+            GetText((int)Texts.Text_BuddyLevel).text = $"Level : {nowBuddyData.Level}";
             GetText((int)Texts.Text_BuddyAttack).text = $"Attack : {nowBuddyData.Attack}";
             GetText((int)Texts.Text_BuddyMagic).text = $"Magic : {nowBuddyData.MagicAttack}";
             GetText((int)Texts.Text_BuddyReload).text = $"Reload : {nowBuddyData.Reload:F2}";

@@ -41,7 +41,7 @@ public class HeroController : AllyController
         skillData.Add(new HeroSkill(this, 3));
 
         normalSkill = skillData
-            .Where(skill => skill.skillData.IconImageKey != null && skill.skillData.IconImageKey.Count == 0)
+            .Where(skill => skill.skillData.IconImageKeys != null && skill.skillData.IconImageKeys.Count == 0)
             .First();
     }
 
@@ -162,7 +162,7 @@ public class HeroController : AllyController
 
         // 2. 비교할 스킬 리스트 업
         var activeSkills = skillData
-            .Where(skill => skill.skillData.IconImageKey != null && skill.skillData.IconImageKey.Count > 0)
+            .Where(skill => skill.skillData.IconImageKeys != null && skill.skillData.IconImageKeys.Count > 0)
             .ToList();
 
         // 3. 가장 강한 스킬 찾기(가장 매치가 긴 스킬을 찾기)
@@ -171,12 +171,12 @@ public class HeroController : AllyController
 
         foreach (var skill in activeSkills)
         {
-            if (IsExactSequenceMatch(skill.skillData.IconImageKey, spriteNames))
+            if (IsExactSequenceMatch(skill.skillData.IconImageKeys, spriteNames))
             {
-                if (skill.skillData.IconImageKey.Count > longestMatch)
+                if (skill.skillData.IconImageKeys.Count > longestMatch)
                 {
                     bestSkill = skill;
-                    longestMatch = skill.skillData.IconImageKey.Count;
+                    longestMatch = skill.skillData.IconImageKeys.Count;
                 }
             }
         }
