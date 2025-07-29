@@ -1,4 +1,4 @@
 ﻿TemplateId,Name,NameTextId,DescriptionTextId,SpineNameKey,Level,Attack,MagicAttack,Skill1Id,Skill2Id,Skill3Id,Skill4Id,Skill5Id,LevelUpCurrency1,LevelUpCurrency1Count,OriginalLevelId,PreviewLevelId,NextLevelId
-100,남전사,남전사영웅,평범한 전사,spi_hero_m_knight_SkeletonData,1,10,1,1,10,,,,Exp,20,100,,101
+100,남전사,남전사영웅,평범한 전사,spi_hero_m_knight_SkeletonData,1,10,1,1,10,,,,Exp,20,100,,
 200,여전사,여전사영웅,평범한 전사,spi_hero_f_knight_SkeletonData,1,10,1,1,10,,,,Exp,20,200,,201
 201,여전사,여전사영웅,평범한 전사,spi_hero_f_knight_SkeletonData,2,11,1,1,10,20,,,Exp,30,200,200,

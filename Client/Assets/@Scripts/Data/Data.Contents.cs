@@ -203,6 +203,7 @@ namespace Data
         public string Name;
         public string NameTextId;
         public string DescriptionTextId;
+        public int SkillLevel;
         public string IconImageKey1;
         public string IconImageKey2;
         public string IconImageKey3;
@@ -214,7 +215,6 @@ namespace Data
         public string HitEffectPrefabKey;
         public string StartSoundKey;
         public string HitSoundKey;
-        public float Cooltime;
         public string AnimName;
         public float AnimSpeed;
         public Define.EUseSkillTargetType UseSkillTargetType;

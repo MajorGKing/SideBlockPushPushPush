@@ -47,15 +47,23 @@ public class UI_BuddySlotSubItem : UI_SubItem
         slotType = setSlotType;
         this.templateId = templateId;
 
-        if(templateId != 0)
-        {
-            buddyData = Managers.Data.BuddyDataDic[templateId];
-        }
+        if (templateId == 0)
+            return;
 
-        if(slotType == EBuddySlotTypte.Heroes)
+
+        if(slotType == EBuddySlotTypte.None)
+        {
+            return;
+        }
+        else if(slotType == EBuddySlotTypte.Heroes)
         {
             buddyData = null;
             heroData = Managers.Data.HeroDataDic[templateId];
+        }
+        else
+        {
+            buddyData = Managers.Data.BuddyDataDic[templateId];
+            heroData = null;
         }
 
         if (isInit == false)
@@ -74,9 +82,26 @@ public class UI_BuddySlotSubItem : UI_SubItem
         if (templateId == 0)
             return ;
 
+        if (slotType == EBuddySlotTypte.None)
+            return;
+
         skeletonAnimation.enabled = true;
-        skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>(buddyData.SpineNameKey) ?? Managers.Resource.Load<SkeletonDataAsset>(heroData.SpineNameKey);
-        skeletonAnimation.Initialize(true);
+        if(slotType == EBuddySlotTypte.Heroes)
+        {
+            skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>(heroData.SpineNameKey);
+            skeletonAnimation.Initialize(true);
+            // TO DO need to chage?
+            skeletonAnimation.AnimationState.SetAnimation(0, "idle", true);
+
+        }
+        else
+        {
+            skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>(buddyData.SpineNameKey);
+            skeletonAnimation.Initialize(true);
+        }
+
+        //skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>(buddyData.SpineNameKey) ?? Managers.Resource.Load<SkeletonDataAsset>(heroData.SpineNameKey);
+        
     }
 
     private void BuddySlotClicked(PointerEventData eventdata)

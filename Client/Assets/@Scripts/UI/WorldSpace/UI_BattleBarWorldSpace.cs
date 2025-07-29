@@ -19,6 +19,8 @@ public class UI_BattleBarWorldSpace : UI_WorldSpace
     private float _coolTime;
     private float _maxCoolTime;
 
+    private bool _showMaxHp;
+
     protected override void Awake()
     {
         base.Awake();
@@ -26,21 +28,29 @@ public class UI_BattleBarWorldSpace : UI_WorldSpace
         // Bind
         BindTexts(typeof(Texts));
         BindSliders(typeof(Sliders));
+
+        GetSlider((int)Sliders.Slider_Skill_Guage).gameObject.SetActive(false);
+        GetSlider((int)Sliders.Slider_HP).gameObject.SetActive(false);
     }
 
-    public void SetInfo(int hp, int maxHP)
+    public void SetInfo(int hp, int maxHP, bool showMaxHp = false)
     {
-        GetSlider((int)Sliders.Slider_Skill_Guage).gameObject.SetActive(false);
+        if (isInit == false)
+            return;
+
+        GetSlider((int)Sliders.Slider_HP).gameObject.SetActive(true);
 
         _hp = hp;
         _maxHP = maxHP;
+
+        _showMaxHp = showMaxHp;
 
         RefreshUI();
     }
 
     public void SetInfo(float coolTime, float maxCoolTime)
     {
-        GetSlider((int)Sliders.Slider_HP).gameObject.SetActive(false);
+        GetSlider((int)Sliders.Slider_Skill_Guage).gameObject.SetActive(true);
 
         _coolTime = coolTime;
         _maxCoolTime = maxCoolTime;
@@ -52,6 +62,11 @@ public class UI_BattleBarWorldSpace : UI_WorldSpace
     {
         GetSlider((int)Sliders.Slider_HP).value = (float)_hp / _maxHP;
         GetText((int)Texts.Text_Hp).text = $"{_hp:N0}";
+
+        if(_showMaxHp == true)
+        {
+            GetText((int)Texts.Text_Hp).text = $"{_hp:N0} / {_maxHP:N0}";
+        }
 
         GetSlider((int)Sliders.Slider_Skill_Guage).value = _coolTime / _maxCoolTime;
     }

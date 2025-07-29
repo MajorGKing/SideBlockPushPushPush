@@ -18,3 +18,9 @@ MagicianWaterMagicSkill1Description,마법사의 물속성 마법 공격
 DescriptionAttackPercent,공격력비율
 DescriptionAttackSpeed,공격속도
 DescriptionCoolTime,쿨타임
+HeroNormalSkill1,영웅 근접 평타1
+HeroNormalSkill2,영웅 근접 평타2
+HeroNormalSkill3,영웅 근접 평타3
+HeroNormalSkill1Description,영웅의 평범한 공격
+HeroNormalSkill2Description,영웅의 평범한 공격. 좀 더 강하다.
+HeroNormalSkill3Description,영웅의 평범한 공격. 좀 강하다.

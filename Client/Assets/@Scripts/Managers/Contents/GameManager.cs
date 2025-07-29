@@ -58,17 +58,17 @@ public class BuddySaveData
 public class HeroSaveData
 {
     public int TemplateId;
-    public List<int> SkillTemplatedId;
+    public List<int> SkillTemplateId;
     public bool isSelected;
     public int nowExp;
     public int maxExp;
 
     public HeroSaveData() { }
 
-    public HeroSaveData(int templateId, List<int> skillTemplatedId, bool isSelected)
+    public HeroSaveData(int templateId, List<int> skillTemplateId, bool isSelected)
     {
         TemplateId = templateId;
-        SkillTemplatedId = skillTemplatedId;
+        SkillTemplateId = skillTemplateId;
         this.nowExp = 0;
         this.maxExp = Managers.Data.HeroDataDic[templateId].LevelUpCurrency1Count;
         this.isSelected = isSelected;
@@ -123,8 +123,17 @@ public class GameManager
             if (value == NowHero)
                 return;
 
+            // 기존 선택 영웅 취소
+            if(_gameData.HeroSaves.ContainsKey(NowHero))
+            {
+                _gameData.HeroSaves[NowHero].isSelected = false;
+            }
+            
+            // 새로운 영웅 선택으로
             _nowHero = value;
+            _gameData.HeroSaves[NowHero].isSelected = true;
             OnNowHeroChanged?.Invoke();
+            SaveGame();
         }
     }
 
@@ -140,8 +149,181 @@ public class GameManager
         return null;
     }
 
+    public int RemoveHeroSaveData(int templatedId)
+    {
+        for (int i = 0; i < heroes.Count; i++)
+        {
+            if (heroes[i].TemplateId == templatedId)
+            {
+                heroes.RemoveAt(i);
+
+                _gameData.HeroSaves.Remove(templatedId);
+                SaveGame();
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    public void AddHeroSaveData(HeroSaveData heroSaveData, int insertIndex = -1)
+    {
+        if (insertIndex < 0)
+        {
+            heroes.Add(heroSaveData);
+        }
+        else
+        {
+            heroes.Insert(insertIndex, heroSaveData);
+        }
 
 
+        _gameData.HeroSaves.Add(heroSaveData.TemplateId, heroSaveData);
+
+        SaveGame();
+    }
+    #endregion
+
+    #region HeroUp
+    public void HeroLevelUp()
+    {
+        var heroData = Managers.Data.HeroDataDic[NowHero];
+        // 지금 선택된 허어로가 레벨업 가능한지 체크
+        {
+            // 다음 레벨이 있어 레벨업 가능한지 확인
+            if (heroData.NextLevelId == 0)
+                return;
+
+            // 자원 가능한지 체크
+            var currencies = heroData.LevelUpCurrencies;
+
+            foreach (var currency in currencies)
+            {
+                if (currency.currencyType == Define.ECurrencyType.None)
+                    continue;
+
+                if (currency.count > GetCurrency(currency.currencyType))
+                    return;
+            }
+
+            // 자원가능하면 자원 빼고 저장
+            foreach (var currency in currencies)
+            {
+                if (currency.currencyType == Define.ECurrencyType.None)
+                    continue;
+
+                AddCurrency(currency.currencyType, -currency.count);
+            }
+        }
+
+        // 선택된 영웅을 레벨업
+        {
+            var heroSavedata = _gameData.HeroSaves[NowHero];
+            // 기존 영웅 정보를 삭제
+            int removeIndex = RemoveHeroSaveData(NowHero);
+
+            // 새로운 영웅 정보를 추가
+            {
+                heroSavedata.TemplateId = heroData.NextLevelId;
+
+                var nextHeroData = Managers.Data.HeroDataDic[heroSavedata.TemplateId];
+
+                List<int> orgSkillId = new List<int>();
+
+                foreach (int skillId in heroSavedata.SkillTemplateId)
+                {
+                    orgSkillId.Add(Managers.Data.HeroSkillDataDic[skillId].OriginalLevelId);
+                }
+
+                // 버디의 추가 스킬 정보를 추가
+                foreach (var skillId in nextHeroData.SKillIds)
+                {
+                    if (orgSkillId.Contains(Managers.Data.HeroSkillDataDic[skillId].OriginalLevelId) == false)
+                    {
+                        heroSavedata.SkillTemplateId.Add(skillId);
+                    }
+                }
+
+                AddHeroSaveData(heroSavedata, removeIndex);
+            }
+        }
+
+        // 레벨업에 따른 정보 갱신
+        NowHero = heroData.NextLevelId;
+
+        // 세이브
+        SaveGame();
+    }
+
+    public void HeroSkillUp(int skillTemplateId)
+    {
+        if (skillTemplateId == 0)
+            return;
+
+        // NowHero의 HeroSaveData에 접근 skill의 templateId를 갱신
+
+        HeroSaveData currentData = new HeroSaveData();
+
+        foreach (var hero in heroes)
+        {
+            if (hero.TemplateId == NowHero)
+            {
+                currentData = hero;
+                break;
+            }
+        }
+
+        if (currentData.TemplateId == 0)
+            return;
+
+        var skillData = Managers.Data.HeroSkillDataDic[skillTemplateId];
+
+        if (skillData == null)
+            return;
+
+        // 업그레이드 가능한지 체크
+        {
+            // 다음 레벨로 진행 가능한가
+            if (skillData.NextLevelId == 0)
+                return;
+
+            // 자원은 충분한가
+            var currencies = skillData.LevelUpCurrencies;
+
+            foreach (var currency in currencies)
+            {
+                if (currency.currencyType == Define.ECurrencyType.None)
+                    continue;
+
+                if (currency.count > GetCurrency(currency.currencyType))
+                    return;
+            }
+
+            // 자원가능하면 자원 빼고 저장
+            foreach (var currency in currencies)
+            {
+                if (currency.currencyType == Define.ECurrencyType.None)
+                    continue;
+
+                AddCurrency(currency.currencyType, -currency.count);
+            }
+        }
+
+        // 선택된 스킬 레벨업
+        {
+            // 로컬값 수정
+            var nowSkillIndex = currentData.SkillTemplateId.IndexOf(skillTemplateId);
+            currentData.SkillTemplateId[nowSkillIndex] = skillData.NextLevelId;
+
+            // 세이브 될 값 수정 - 위에서 링크로 수정되었기 때문에 gameData값도 자동 수정됨
+            //var nowSKillIndexSave = _gameData.BuddySaves[NowBuddy].SkillTemplateId.IndexOf(skillTemplateId);
+            //_gameData.BuddySaves[NowBuddy].SkillTemplateId[nowSKillIndexSave] = skillData.NextLevelId;
+
+            SaveGame();
+            OnNowHeroChanged?.Invoke();
+        }
+
+    }
     #endregion
 
     #region Buddy
@@ -486,6 +668,9 @@ public class GameManager
         _gameData.BuddySaves.Add(5, new BuddySaveData(5, Managers.Data.BuddyDataDic[5].SKillIds, true));
         _gameData.BuddySaves.Add(7, new BuddySaveData(7, Managers.Data.BuddyDataDic[7].SKillIds, true));
 
+        _gameData.HeroSaves.Add(100, new HeroSaveData(100, Managers.Data.HeroDataDic[100].SKillIds, true));
+        _gameData.HeroSaves.Add(200, new HeroSaveData(200, Managers.Data.HeroDataDic[200].SKillIds, false));
+
         buddies = _gameData.BuddySaves.Values.ToList();
         int selectedIndex = 0;
         foreach (var buddy in buddies)
@@ -493,6 +678,15 @@ public class GameManager
             if (buddy.isSelected == true)
             {
                 _selectedBuddies[selectedIndex++] = buddy.TemplateId;
+            }
+        }
+
+        heroes = _gameData.HeroSaves.Values.ToList();
+        foreach (var hero in heroes)
+        {
+            if(hero.isSelected == true)
+            {
+                NowHero = hero.TemplateId;
             }
         }
 
@@ -699,6 +893,16 @@ public class GameManager
             if( buddy.isSelected == true )
             {
                 _selectedBuddies[i++] = buddy.TemplateId;
+            }
+        }
+
+        // 영웅 가저오기
+        heroes = _gameData.HeroSaves.Values.ToList();
+        foreach (var hero in heroes)
+        {
+            if (hero.isSelected == true)
+            {
+                NowHero = hero.TemplateId;
             }
         }
 

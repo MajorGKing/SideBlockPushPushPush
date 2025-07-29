@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using Spine.Unity;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -54,6 +55,8 @@ public class UI_HeroLevelUpPopup : UI_Popup
     {
         Managers.Game.OnNowHeroChanged -= SetInfo;
         Managers.Game.OnNowHeroChanged += SetInfo;
+
+        RefreshUI();
     }
 
     private void OnDisable()
@@ -70,6 +73,8 @@ public class UI_HeroLevelUpPopup : UI_Popup
     {
         if (isInit == false)
             return;
+
+        Debug.Log("Hero UI RefreshUI start");
 
         GetText((int)Texts.Text_ExpCount).text = Managers.Game.GetCurrency(Define.ECurrencyType.Exp).ToString();
         GetText((int)Texts.Text_BlueGemCount).text = Managers.Game.GetCurrency(Define.ECurrencyType.BlueGem).ToString();
@@ -95,36 +100,42 @@ public class UI_HeroLevelUpPopup : UI_Popup
         // Now Hero
         {
             var nowHeroIndex = Managers.Game.NowHero;
-            
+
+            if (nowHeroIndex == 0)
+                return;
+
+
             var nowHeroSkeletonGraphic = Utils.FindChild<SkeletonGraphic>(GetObject((int)Objects.UI_NowHeroSubItem), null, true);
             nowHeroSkeletonGraphic.enabled = true;
             var nowHeroData = Managers.Data.HeroDataDic[nowHeroIndex];
             nowHeroSkeletonGraphic.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>(nowHeroData.SpineNameKey);
             nowHeroSkeletonGraphic.Initialize(true);
+            nowHeroSkeletonGraphic.AnimationState.SetAnimation(0, "idle", true);
 
             // Stat Update
             GetText((int)Texts.Text_HeroLevel).text = $"Level : {nowHeroData.Level}";
-            GetText((int)Texts.Text_HeroLevel).text = $"Attack : {nowHeroData.Attack}";
-            GetText((int)Texts.Text_HeroLevel).text = $"Magic : {nowHeroData.MagicAttack}";
+            GetText((int)Texts.Text_HeroAttack).text = $"Attack : {nowHeroData.Attack}";
+            GetText((int)Texts.Text_HeroMagic).text = $"Magic : {nowHeroData.MagicAttack}";
 
             // exp
             var nowHeroSaveData = Managers.Game.GetHeroSaveData(nowHeroIndex);
-            expBar.SetInfo(nowHeroSaveData.nowExp, nowHeroSaveData.maxExp);
+            expBar.SetInfo(nowHeroSaveData.nowExp, nowHeroSaveData.maxExp, true);
 
             // skill
             GetObject((int)Objects.HeroSKillContent).DestroyChildren();
 
-            foreach(var templateId in nowHeroSaveData.SkillTemplatedId)
+            foreach(var templateId in nowHeroSaveData.SkillTemplateId)
             {
                 if (templateId == 0) continue;
 
-                //var item = Managers.UI.MakeSubItem<UI_HeroSkillUpSubItem>(GetObject((int)Objects.HeroSKillContent).transform);
+                var item = Managers.UI.MakeSubItem<UI_HeroSkillUpSubItem>(GetObject((int)Objects.HeroSKillContent).transform);
+                item.SetInfo(templateId);
             }
         }
     }
 
     private void OnClickedHeroLevelUpButton(PointerEventData eventData)
     {
-
+        Managers.Game.HeroLevelUp();
     }
 }

@@ -69,7 +69,7 @@ public class UI_BuddySkillUpSubItem : UI_SubItem
 
         for(int i = 0; i < data.LevelUpCurrencies.Count; i++)
         {
-            Debug.Log($"{data.LevelUpCurrencies[i].currencyType} : {data.LevelUpCurrencies[i].count}");
+           // Debug.Log($"{data.LevelUpCurrencies[i].currencyType} : {data.LevelUpCurrencies[i].count}");
             
             if (data.LevelUpCurrencies[i].currencyType == Define.ECurrencyType.None)
                 continue;
@@ -81,7 +81,6 @@ public class UI_BuddySkillUpSubItem : UI_SubItem
 
     private void OnClickedBuddySkillUpButton(PointerEventData eventData)
     {
-        Debug.Log("Skill Level UP");
         // GameManager에 레벨업 신청
 
         Managers.Game.BuddySkillUp(templateId);
