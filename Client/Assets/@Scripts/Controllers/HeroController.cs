@@ -1,5 +1,6 @@
 using Data;
 using Spine;
+using Spine.Unity;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -33,13 +34,20 @@ public class HeroController : AllyController
         skillData = new List<HeroSkill>();
     }
 
-    public void SetInfo(int templateID)//, List<SpriteRenderer> blockSet, GameScene game)
+    public void SetInfo(HeroSaveData saveData)//, List<SpriteRenderer> blockSet, GameScene game)
     {
-        // TODO 데이터 불러와서 스프라이트 세트 가저오기
-        skillData.Add(new HeroSkill(this, 1));
-        skillData.Add(new HeroSkill(this, 2));
-        skillData.Add(new HeroSkill(this, 3));
+        skillData.Clear();
 
+        foreach(var skillIndex in saveData.SkillTemplateId)
+        {
+            skillData.Add(new HeroSkill(this, skillIndex));
+        }
+
+        skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>(Managers.Data.HeroDataDic[saveData.TemplateId].SpineNameKey);
+        skeletonAnimation.Initialize(true);
+        AnimationBindEventInit();
+
+        // TODO 기본 스킬 세팅 방법을 어떻게 해야 할지 고민 필요
         normalSkill = skillData
             .Where(skill => skill.skillData.IconImageKeys != null && skill.skillData.IconImageKeys.Count == 0)
             .First();

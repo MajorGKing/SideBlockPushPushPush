@@ -90,24 +90,27 @@ public class ObjectManager
         return null;
     }
 
-    private HeroController SpawnHero(Transform parent, int templateID)
+    private HeroController SpawnHero(Transform parent, int heroSaveDataIndex)
     {
+        var heroSaveData = Managers.Game.GetHeroSaveData(heroSaveDataIndex);
         HeroController hero = Managers.Resource.Instantiate(HERO_PREFAB_NAME, parent).GetComponent<HeroController>();
         if(hero != null)
         {
             Hero = hero;
-            hero.SetInfo(templateID);
+            hero.SetInfo(heroSaveData);
             return hero;
         }
         return null;
     }
 
-    private BuddyController SpawnBuddy(Transform parent, int templateID)
+    private BuddyController SpawnBuddy(Transform parent, int buddySaveDataIndex)
     {
+        var buddySaveData = Managers.Game.GetBuddySaveData(buddySaveDataIndex);
+        
         BuddyController buddy = Managers.Resource.Instantiate(BUDDY_PREFAB_NAME, parent).GetComponent<BuddyController>();
         if (buddy != null)
         {
-            buddy.SetInfo(templateID);
+            buddy.SetInfo(buddySaveData);
             Buddies.Add(buddy);
             return buddy;
         }

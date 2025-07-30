@@ -174,7 +174,7 @@ public class GameScene : BaseScene
 
     private void SpawnHero()
     {
-        _heroController = Managers.Object.SpawnCreatureObject<HeroController>(heroPosition, 0);
+        _heroController = Managers.Object.SpawnCreatureObject<HeroController>(heroPosition, Managers.Game.NowHero);
         _heroController.SetBlocks(stockImages);
     }
 
@@ -183,7 +183,7 @@ public class GameScene : BaseScene
         _buddyControllers = new List<BuddyController>();
         for (int i = 0; i < 4; i++)
         {
-            var buddy = Managers.Object.SpawnCreatureObject<BuddyController>(buddyPosition[i], i);
+            var buddy = Managers.Object.SpawnCreatureObject<BuddyController>(buddyPosition[i], Managers.Game.SelectedBuddyGet(i));
             _buddyControllers.Add(buddy);
         }
     }

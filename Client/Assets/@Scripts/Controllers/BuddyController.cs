@@ -1,3 +1,4 @@
+using Data;
 using Spine;
 using Spine.Unity;
 using System.Collections.Generic;
@@ -17,9 +18,9 @@ public class BuddyController : AllyController
     private List<int> _nowBlockList;
     //private GameScene _gameScene;
 
-    public int templateId;
+    //public int templateId;
 
-    private List<BuddySkill> _skillList;
+    private List<BuddySkill> _skillData;
     
     [SerializeField]
     private float _coolTime;
@@ -100,58 +101,71 @@ public class BuddyController : AllyController
 
     // TODO 이름 변경 필요
     // TODO 이후 번호 받아 갱신하는거 필요
-    public void SetInfo(int num)//, List<SpriteRenderer> blockSet)//, GameScene game)
+    public void SetInfo(BuddySaveData saveData)//, List<SpriteRenderer> blockSet)//, GameScene game)
     {
-        templateId = num;
+        if (saveData.TemplateId == 0)
+            return;
 
-        _skillList = new List<BuddySkill> { };
+        _skillData = new List<BuddySkill> { };
         _nowBlockList = new List<int>();
+
+        // 외형 세팅
+        skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>(Managers.Data.BuddyDataDic[saveData.TemplateId].SpineNameKey);
+        skeletonAnimation.Initialize(true);
+
+        AnimationBindEventInit();
+
+        // 스킬 세팅
+        foreach(var skillIndex in saveData.SkillTemplateId)
+        {
+            _skillData.Add(new BuddySkill(this, skillIndex));
+        }
 
         // TODO 데이터 불러와서 스프라이트 세트 가저오기
         // TODO Buddy Data 만들기
-        if (templateId == 0)
-        {
-            skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>("spi_buddy_tom_SkeletonData");
-            skeletonAnimation.Initialize(true);
+        //if (templateId == 0)
+        //{
+        //    skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>("spi_buddy_tom_SkeletonData");
+        //    skeletonAnimation.Initialize(true);
 
-            _skillList.Add(new BuddySkill(this, 5));
-            _skillList.Add(new BuddySkill(this, 5));
-            _skillList.Add(new BuddySkill(this, 6));
+        //    _skillData.Add(new BuddySkill(this, 5));
+        //    _skillData.Add(new BuddySkill(this, 5));
+        //    _skillData.Add(new BuddySkill(this, 6));
 
-            AnimationBindEventInit();
-        }
-        else if (templateId == 1)
-        {
-            skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>("spi_buddy_mari_SkeletonData");
-            skeletonAnimation.Initialize(true);
+        //    AnimationBindEventInit();
+        //}
+        //else if (templateId == 1)
+        //{
+        //    skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>("spi_buddy_mari_SkeletonData");
+        //    skeletonAnimation.Initialize(true);
 
-            _skillList.Add(new BuddySkill(this, 7));
+        //    _skillData.Add(new BuddySkill(this, 7));
 
-            AnimationBindEventInit();
-        }
-        else if (templateId == 2)
-        {
-            skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>("spi_buddy_ellie_SkeletonData");
-            skeletonAnimation.Initialize(true);
+        //    AnimationBindEventInit();
+        //}
+        //else if (templateId == 2)
+        //{
+        //    skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>("spi_buddy_ellie_SkeletonData");
+        //    skeletonAnimation.Initialize(true);
 
-            _skillList.Add(new BuddySkill(this, 3));
-            _skillList.Add(new BuddySkill(this, 3));
-            _skillList.Add(new BuddySkill(this, 3));
-            _skillList.Add(new BuddySkill(this, 3));
-            _skillList.Add(new BuddySkill(this, 4));
+        //    _skillData.Add(new BuddySkill(this, 3));
+        //    _skillData.Add(new BuddySkill(this, 3));
+        //    _skillData.Add(new BuddySkill(this, 3));
+        //    _skillData.Add(new BuddySkill(this, 3));
+        //    _skillData.Add(new BuddySkill(this, 4));
 
-            AnimationBindEventInit();
-        }
-        else if (templateId == 3)
-        {
-            skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>("spi_buddy_duck_SkeletonData");
-            skeletonAnimation.Initialize(true);
+        //    AnimationBindEventInit();
+        //}
+        //else if (templateId == 3)
+        //{
+        //    skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>("spi_buddy_duck_SkeletonData");
+        //    skeletonAnimation.Initialize(true);
 
-            _skillList.Add(new BuddySkill(this, 1));
-            _skillList.Add(new BuddySkill(this, 2));
+        //    _skillData.Add(new BuddySkill(this, 1));
+        //    _skillData.Add(new BuddySkill(this, 2));
 
-            AnimationBindEventInit();
-        }
+        //    AnimationBindEventInit();
+        //}
     }
 
     public override void SetStartAI(bool start)
@@ -210,7 +224,7 @@ public class BuddyController : AllyController
         if (_isWaitingAttack == true)
             return;
 
-        PlayAnimation(0, _skillList[_nowBlockList[0]].skillData.AnimName, false);
+        PlayAnimation(0, _skillData[_nowBlockList[0]].skillData.AnimName, false);
         _isWaitingAttack = true;
     }
 
@@ -272,8 +286,8 @@ public class BuddyController : AllyController
             {
                 PlayAnimation(0, ANIMATION_IDLE, true);
                 currentBuddyState = EBuddyState.Idle;
-                currentCoolTime = _skillList[_nowBlockList[0]].skillData.Cooltime;
-                _coolTime = _skillList[_nowBlockList[0]].skillData.Cooltime;
+                currentCoolTime = _skillData[_nowBlockList[0]].skillData.Cooltime;
+                _coolTime = _skillData[_nowBlockList[0]].skillData.Cooltime;
                 _nowBlockList.RemoveAt(0);
             }
         }
@@ -285,8 +299,8 @@ public class BuddyController : AllyController
 
         foreach (var block in _myBlocks)
         {
-            int randomIndex = Random.Range(0, _skillList.Count);
-            Sprite selectedSprite = Managers.Resource.Load<Sprite>(_skillList[randomIndex].skillData.IconImageKey);
+            int randomIndex = Random.Range(0, _skillData.Count);
+            Sprite selectedSprite = Managers.Resource.Load<Sprite>(_skillData[randomIndex].skillData.IconImageKey);
             block.sprite = selectedSprite;
 
             _nowBlockList.Add(randomIndex);
@@ -339,7 +353,7 @@ public class BuddyController : AllyController
         lastBlock.sprite = null;
         lastBlock.transform.localScale = Vector3.one; // Reset scale just in case
 
-        _skillList[blockId].UseSkill();
+        _skillData[blockId].UseSkill();
     }
 
     //private void UpdateAnimation()
