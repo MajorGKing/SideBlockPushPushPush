@@ -47,8 +47,8 @@ public class UI_BuddySlotSubItem : UI_SubItem
         slotType = setSlotType;
         this.templateId = templateId;
 
-        if (templateId == 0)
-            return;
+        //if (templateId == 0)
+        //    return;
 
 
         if(slotType == EBuddySlotTypte.None)
@@ -57,11 +57,28 @@ public class UI_BuddySlotSubItem : UI_SubItem
         }
         else if(slotType == EBuddySlotTypte.Heroes)
         {
+            if (templateId == 0)
+                return;
+
             buddyData = null;
             heroData = Managers.Data.HeroDataDic[templateId];
         }
+        // 빈칸이 있을 수 있어 특별히 따로 처리
+        else if(slotType == EBuddySlotTypte.BuddySelected)
+        {
+            heroData = null;
+            buddyData = null;
+
+            if (templateId != 0)
+            {
+                buddyData = Managers.Data.BuddyDataDic[templateId];
+            }
+        }
         else
         {
+            if (templateId == 0)
+                return;
+
             buddyData = Managers.Data.BuddyDataDic[templateId];
             heroData = null;
         }
@@ -80,7 +97,7 @@ public class UI_BuddySlotSubItem : UI_SubItem
         skeletonAnimation.enabled = false;
 
         if (templateId == 0)
-            return ;
+            return;
 
         if (slotType == EBuddySlotTypte.None)
             return;

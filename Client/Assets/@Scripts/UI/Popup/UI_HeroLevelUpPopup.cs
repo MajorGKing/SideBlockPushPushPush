@@ -104,7 +104,6 @@ public class UI_HeroLevelUpPopup : UI_Popup
             if (nowHeroIndex == 0)
                 return;
 
-
             var nowHeroSkeletonGraphic = Utils.FindChild<SkeletonGraphic>(GetObject((int)Objects.UI_NowHeroSubItem), null, true);
             nowHeroSkeletonGraphic.enabled = true;
             var nowHeroData = Managers.Data.HeroDataDic[nowHeroIndex];
@@ -119,7 +118,18 @@ public class UI_HeroLevelUpPopup : UI_Popup
 
             // exp
             var nowHeroSaveData = Managers.Game.GetHeroSaveData(nowHeroIndex);
-            expBar.SetInfo(nowHeroSaveData.nowExp, nowHeroSaveData.maxExp, true);
+            if (Managers.Data.HeroDataDic[nowHeroSaveData.TemplateId].LevelUpCurrencies.Count != 0)
+            {
+                expBar.gameObject.SetActive(true);
+                expBar.SetInfo(nowHeroSaveData.nowExp, nowHeroSaveData.maxExp, true);
+                GetButton((int)Buttons.Button_HeroLevelUp).interactable = true;
+            }
+            else
+            {
+                expBar.gameObject.SetActive(false);
+                GetButton((int)Buttons.Button_HeroLevelUp).interactable = false;
+            }
+            
 
             // skill
             GetObject((int)Objects.HeroSKillContent).DestroyChildren();
@@ -136,6 +146,9 @@ public class UI_HeroLevelUpPopup : UI_Popup
 
     private void OnClickedHeroLevelUpButton(PointerEventData eventData)
     {
+        if (GetButton((int)Buttons.Button_HeroLevelUp).interactable == false)
+            return;
+
         Managers.Game.HeroLevelUp();
     }
 }
