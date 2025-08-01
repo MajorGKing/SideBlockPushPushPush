@@ -78,8 +78,8 @@ public class UI_GameScene : UI_Scene
 
     public void SetInfo(bool doAuto, GameScene scene)
     {
-        transform.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
-        transform.GetComponent<Canvas>().worldCamera = Camera.main;
+        UICanvas.renderMode = RenderMode.ScreenSpaceCamera;
+        UICanvas.worldCamera = Camera.main;
 
         _isAuto = doAuto;
 

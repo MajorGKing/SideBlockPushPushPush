@@ -80,6 +80,9 @@ public class UI_LobbyScene : UI_Scene
         //_userInfoItem.SetInfo(Define.EUserInfoItem.Stamina, Managers.Game.Stamina);
         //_userInfoItem.SetInfo(Define.EUserInfoItem.Dia, Managers.Game.GetCurrency(Define.ECurrencyType.Dia));
         //_userInfoItem.SetInfo(Define.EUserInfoItem.Gold, Managers.Game.GetCurrency(Define.ECurrencyType.Gold));
+
+        UICanvas.renderMode = RenderMode.ScreenSpaceCamera;
+        UICanvas.worldCamera = Camera.main;
     }
 
     #region Toggle

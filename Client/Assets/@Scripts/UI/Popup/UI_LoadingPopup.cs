@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class UI_LoadingPopup : UI_Popup
 {
@@ -11,5 +12,8 @@ public class UI_LoadingPopup : UI_Popup
     protected override void Awake()
     {
         base.Awake();
+
+        UICanvas.renderMode = RenderMode.ScreenSpaceCamera;
+        UICanvas.worldCamera = Camera.main;
     }
 }
