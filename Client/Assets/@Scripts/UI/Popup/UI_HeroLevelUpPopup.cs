@@ -74,8 +74,6 @@ public class UI_HeroLevelUpPopup : UI_Popup
         if (isInit == false)
             return;
 
-        Debug.Log("Hero UI RefreshUI start");
-
         GetText((int)Texts.Text_ExpCount).text = Managers.Game.GetCurrency(Define.ECurrencyType.Exp).ToString();
         GetText((int)Texts.Text_BlueGemCount).text = Managers.Game.GetCurrency(Define.ECurrencyType.BlueGem).ToString();
         GetText((int)Texts.Text_GreenGemCount).text = Managers.Game.GetCurrency(Define.ECurrencyType.GreenGem).ToString();

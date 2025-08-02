@@ -38,6 +38,7 @@ public class UI_LobbyScene : UI_Scene
     public UI_BattlePopup BattlePopupUI { get; private set; }
     public UI_BuddyLevelUpPopup BuddyPopupUI { get; private set; }
     public UI_HeroLevelUpPopup HeroPopupUI { get; private set; }
+    public UI_ShopPopup ShopPopupUI { get; private set; }
 
     bool _isSelectedBattle = false;
 
@@ -71,6 +72,8 @@ public class UI_LobbyScene : UI_Scene
         
         HeroPopupUI = Managers.UI.ShowPopupUI<UI_HeroLevelUpPopup>();
 
+        ShopPopupUI = Managers.UI.ShowPopupUI<UI_ShopPopup>();
+
         TogglesInit();
 
         GetText((int)Texts.ShopToggleText).gameObject.SetActive(true);
@@ -96,10 +99,14 @@ public class UI_LobbyScene : UI_Scene
 
         if (HeroPopupUI == null)
             return;
+        
+        if (ShopPopupUI == null)
+            return;
 
         BattlePopupUI.gameObject.SetActive(false);
         BuddyPopupUI.gameObject.SetActive(false);
         HeroPopupUI.gameObject.SetActive(false);
+        ShopPopupUI.gameObject.SetActive(false);
 
         // 재 클릭 방지 트리거 초기화
         _isSelectedLevel = false;
@@ -151,6 +158,7 @@ public class UI_LobbyScene : UI_Scene
             return;
 
         TogglesInit();
+        ShopPopupUI.gameObject.SetActive(true);
         GetText((int)Texts.ShopToggleText).gameObject.SetActive(true);
         GetObject((int)GameObjects.CheckShopImageObject).SetActive(true);
         _isSelectedShop = true;

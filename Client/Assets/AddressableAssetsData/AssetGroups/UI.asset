@@ -39,6 +39,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 59a9d73de7460af47adbcc65cf8b019d
+    m_Address: UI_ShopPopup
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5afd6ef3bcb16cd49a5d8fcc81cada07
     m_Address: UI_HeroLevelUpPopup
     m_ReadOnly: 0
