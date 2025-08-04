@@ -852,6 +852,50 @@ public class GameManager
     }
     #endregion
 
+    #region Gacha
+    public void DoHeroGacha(int count)
+    {
+        // TODO ILHAK price data
+        var needDia = 0;
+
+        if(count == 1)
+        {
+            needDia = 110;
+        }
+        else if(count == 10)
+        {
+            needDia = 1000;
+        }
+
+        if (needDia == 0)
+            return;
+
+        List<Reward> rewards = new List<Reward>();
+        System.Random random = new System.Random();
+
+        for (int i = 0; i <  count; i++)
+        {
+            int randomNumber = random.Next(Managers.Data.HeroGachaDataDic.First().Value.Max);
+
+            foreach (var heroGachaData in Managers.Data.HeroGachaDataDic.Values)
+            {
+                if (heroGachaData.Percent > randomNumber)
+                {
+                    Debug.Log($"{heroGachaData.CurrencyType} : {heroGachaData.CurrencyCount}");
+                    rewards.Add(new Reward(heroGachaData.CurrencyType, heroGachaData.CurrencyCount));
+                    break;
+                }
+            }
+
+            var clear = Managers.UI.ShowPopupUI<UI_RewardPopup>();
+
+            clear.SetInfo(Define.ERewardType.StageClear, rewards);
+        }
+
+        // Gacha Table
+    }
+    #endregion
+
     #region SaveLoad
     public void SaveGame()
     {

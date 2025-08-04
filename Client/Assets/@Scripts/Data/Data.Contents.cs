@@ -557,6 +557,39 @@ namespace Data
     }
     #endregion
 
+    #region HeroGachaData
+    public class HeroGachaData
+    {
+        public string GachaItem;
+        public Define.ECurrencyType CurrencyType;
+        public int CurrencyCount;
+        public int Percent;
+        public int Max;
+    }
+
+    public class HeroGachaDataLoader : ILoader<string, HeroGachaData>
+    {
+        public List<HeroGachaData> HeroGachaList = new List<HeroGachaData>();
+
+        public Dictionary<string, HeroGachaData> MakeDict()
+        {
+            Dictionary<string, HeroGachaData> dict = new Dictionary<string, HeroGachaData>();
+            foreach (var heroGacha in HeroGachaList)
+                dict.Add(heroGacha.GachaItem, heroGacha);
+            return dict;
+        }
+
+        public bool Validate()
+        {
+            for(int i = 1; i < HeroGachaList.Count; i++)
+            {
+                HeroGachaList[i].Percent += HeroGachaList[i - 1].Percent;
+            }
+            return true;
+        }
+    }
+    #endregion
+
     #region EffectData
     [Serializable]
     public class EffectData

@@ -26,6 +26,7 @@ public class DataManager
     public Dictionary<Define.ECurrencyType, Data.CurrencyTypeData> CurrencyTypeDataDic { get; set; } = new Dictionary<Define.ECurrencyType, Data.CurrencyTypeData>();
     public Dictionary<int, Data.BuddyData> BuddyDataDic { get; set; } = new Dictionary<int, Data.BuddyData>();
     public Dictionary<int, Data.HeroData> HeroDataDic { get; set; } = new Dictionary<int, Data.HeroData>();
+    public Dictionary<string, Data.HeroGachaData> HeroGachaDataDic { get; set; } = new Dictionary<string, Data.HeroGachaData>();
 
 
 
@@ -42,6 +43,7 @@ public class DataManager
         CurrencyTypeDataDic = LoadJson<Data.CurrencyTypeDataLoader, Define.ECurrencyType, Data.CurrencyTypeData>("CurrencyTypeData").MakeDict();
         BuddyDataDic = LoadJson<Data.BuddyDataLoader, int, Data.BuddyData>("BuddyData").MakeDict();
         HeroDataDic = LoadJson<Data.HeroDataLoader, int, Data.HeroData>("HeroData").MakeDict();
+        HeroGachaDataDic = LoadJson<Data.HeroGachaDataLoader, string, Data.HeroGachaData>("HeroGachaData").MakeDict();
         Validate();
 
         Debug.Log("Data Load End");

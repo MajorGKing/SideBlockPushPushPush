@@ -83,8 +83,11 @@ public class UI_ShopPopup : UI_Popup
         //Button_Dia100,
         //Button_Gold10000,
         //Button_Gold1000,
-        //GetButton((int)Buttons.Button_HeroGachaCount10).gameObject.BindEvent(OnClickSkillGachaCount10);
+        GetButton((int)Buttons.Button_HeroGachaCount1).gameObject.BindEvent(OnClickHeroGachaCount1, Define.ETouchEvent.PointerUp);
+        GetButton((int)Buttons.Button_HeroGachaCount10).gameObject.BindEvent(OnClickHeroGachaCount10, Define.ETouchEvent.PointerUp);
         //GetButton((int)Buttons.Button_BuddyGachaCount10).gameObject.BindEvent(OnClickBuddyGachaCount10);
+
+        RefreshUI();
     }
 
     public void SetInfo()
@@ -124,6 +127,10 @@ public class UI_ShopPopup : UI_Popup
                 break;
 
             default:
+                GetObject((int)Objects.HeroArea).SetActive(false);
+                GetObject((int)Objects.BuddyArea).SetActive(false);
+                GetObject((int)Objects.CurrenciesArea).SetActive(false);
+                GetObject((int)Objects.GoodsArea).SetActive(false);
                 break;
         }
     }
@@ -150,5 +157,22 @@ public class UI_ShopPopup : UI_Popup
     {
         _shopPopupState = ShopPopupState.Goods;
         RefreshUI();
+    }
+
+    private void OnClickHeroGachaCount(int count)
+    {
+        Managers.Game.DoHeroGacha(count);
+    }
+
+    private void OnClickHeroGachaCount1(PointerEventData data)
+    {
+        Debug.Log("Try Gacha 1");
+        OnClickHeroGachaCount(1);
+    }
+
+    private void OnClickHeroGachaCount10(PointerEventData data)
+    {
+        Debug.Log("Try Gacha 10");
+        OnClickHeroGachaCount(10);
     }
 }
