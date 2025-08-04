@@ -1,0 +1,715 @@
+fileFormatVersion: 2
+guid: 706b33ba0ff714d41bed401d76b1d8b8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7175848400289216226
+    second: spi_buddy_aren_0
+  - first:
+      213: -7393830915068233682
+    second: spi_buddy_aren_1
+  - first:
+      213: 6693991209329402958
+    second: spi_buddy_aren_2
+  - first:
+      213: -3545145439234611471
+    second: spi_buddy_aren_3
+  - first:
+      213: 8262968529174880499
+    second: spi_buddy_aren_4
+  - first:
+      213: -1536523528728904308
+    second: spi_buddy_aren_5
+  - first:
+      213: 16490132812614617
+    second: spi_buddy_aren_6
+  - first:
+      213: -3454896370455588403
+    second: spi_buddy_aren_7
+  - first:
+      213: -5416735529271773112
+    second: spi_buddy_aren_8
+  - first:
+      213: -5235310560287648443
+    second: spi_buddy_aren_9
+  - first:
+      213: -6154969272507907266
+    second: spi_buddy_aren_10
+  - first:
+      213: -6208796382988583537
+    second: spi_buddy_aren_11
+  - first:
+      213: -64597271353198946
+    second: spi_buddy_aren_12
+  - first:
+      213: -1676505913113091161
+    second: spi_buddy_aren_13
+  - first:
+      213: 5049392989261398195
+    second: spi_buddy_aren_14
+  - first:
+      213: 7742576472329318360
+    second: spi_buddy_aren_15
+  - first:
+      213: -5410638299257676426
+    second: spi_buddy_aren_16
+  - first:
+      213: -1768962742041780862
+    second: spi_buddy_aren_17
+  - first:
+      213: -3143929137500830925
+    second: spi_buddy_aren_18
+  - first:
+      213: -2748406041490850323
+    second: spi_buddy_aren_19
+  - first:
+      213: 6563516400291608665
+    second: spi_buddy_aren_20
+  - first:
+      213: 3069938439130099812
+    second: spi_buddy_aren_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spi_buddy_aren_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 76
+        width: 64
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e19c4b236e34a6c90800000000000000
+      internalID: -7175848400289216226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_aren_1
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 77
+        width: 51
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e287e0af4f5d36990800000000000000
+      internalID: -7393830915068233682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_aren_2
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 77
+        width: 43
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e44aaa1e985d5ec50800000000000000
+      internalID: 6693991209329402958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_aren_3
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 76
+        width: 42
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f62359810d1dcec0800000000000000
+      internalID: -3545145439234611471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_aren_4
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 102
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f063b32916fba270800000000000000
+      internalID: 8262968529174880499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_aren_5
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 76
+        width: 40
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8d7511ddfb2daae0800000000000000
+      internalID: -1536523528728904308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_aren_6
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 60
+        width: 53
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9db489c30b59a3000800000000000000
+      internalID: 16490132812614617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_aren_7
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 60
+        width: 27
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc1553f4e0ebd00d0800000000000000
+      internalID: -3454896370455588403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_aren_8
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 96
+        width: 36
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 848b4873cb3e3d4b0800000000000000
+      internalID: -5416735529271773112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_aren_9
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 216
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 545143588c07857b0800000000000000
+      internalID: -5235310560287648443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_aren_10
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 1
+        width: 172
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e33c8bc9e08259aa0800000000000000
+      internalID: -6154969272507907266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_aren_11
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 1
+        width: 130
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8d3c35d59ce5d9a0800000000000000
+      internalID: -6208796382988583537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_aren_12
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 2
+        width: 102
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e96788bbf118a1ff0800000000000000
+      internalID: -64597271353198946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_aren_13
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 2
+        width: 102
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a36d0921cadbb8e0800000000000000
+      internalID: -1676505913113091161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_aren_14
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 59
+        width: 35
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b00640cb2c031640800000000000000
+      internalID: 5049392989261398195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_aren_15
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 59
+        width: 42
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8df6c779748237b60800000000000000
+      internalID: 7742576472329318360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_aren_16
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 59
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67d5f94322d89e4b0800000000000000
+      internalID: -5410638299257676426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_aren_17
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 2
+        width: 71
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28dd2bb22c16377e0800000000000000
+      internalID: -1768962742041780862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_aren_18
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 58
+        width: 44
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33343405b158e54d0800000000000000
+      internalID: -3143929137500830925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_aren_19
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 2
+        width: 88
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ded76665443bbd9d0800000000000000
+      internalID: -2748406041490850323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_aren_20
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 2
+        width: 87
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 958f4dc146b461b50800000000000000
+      internalID: 6563516400291608665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_aren_21
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 2
+        width: 41
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 460baa2cebc9a9a20800000000000000
+      internalID: 3069938439130099812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spi_buddy_aren_0: -7175848400289216226
+      spi_buddy_aren_1: -7393830915068233682
+      spi_buddy_aren_10: -6154969272507907266
+      spi_buddy_aren_11: -6208796382988583537
+      spi_buddy_aren_12: -64597271353198946
+      spi_buddy_aren_13: -1676505913113091161
+      spi_buddy_aren_14: 5049392989261398195
+      spi_buddy_aren_15: 7742576472329318360
+      spi_buddy_aren_16: -5410638299257676426
+      spi_buddy_aren_17: -1768962742041780862
+      spi_buddy_aren_18: -3143929137500830925
+      spi_buddy_aren_19: -2748406041490850323
+      spi_buddy_aren_2: 6693991209329402958
+      spi_buddy_aren_20: 6563516400291608665
+      spi_buddy_aren_21: 3069938439130099812
+      spi_buddy_aren_3: -3545145439234611471
+      spi_buddy_aren_4: 8262968529174880499
+      spi_buddy_aren_5: -1536523528728904308
+      spi_buddy_aren_6: 16490132812614617
+      spi_buddy_aren_7: -3454896370455588403
+      spi_buddy_aren_8: -5416735529271773112
+      spi_buddy_aren_9: -5235310560287648443
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

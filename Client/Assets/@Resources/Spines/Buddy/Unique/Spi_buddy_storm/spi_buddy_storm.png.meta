@@ -1,0 +1,637 @@
+fileFormatVersion: 2
+guid: c1f27c6bfaa836141a6317bfbd3622dd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4050614516777165811
+    second: spi_buddy_storm_0
+  - first:
+      213: 3071865660665230935
+    second: spi_buddy_storm_1
+  - first:
+      213: 791758482835947079
+    second: spi_buddy_storm_2
+  - first:
+      213: 2693815006573502477
+    second: spi_buddy_storm_3
+  - first:
+      213: -3322899446965810469
+    second: spi_buddy_storm_4
+  - first:
+      213: 3654689114435363188
+    second: spi_buddy_storm_5
+  - first:
+      213: -7929987383008133244
+    second: spi_buddy_storm_6
+  - first:
+      213: -8608454312150038745
+    second: spi_buddy_storm_7
+  - first:
+      213: -1898044258924695700
+    second: spi_buddy_storm_8
+  - first:
+      213: -4970809772792013536
+    second: spi_buddy_storm_9
+  - first:
+      213: -2895534927559717919
+    second: spi_buddy_storm_10
+  - first:
+      213: -2522224282469541961
+    second: spi_buddy_storm_11
+  - first:
+      213: -909309434767546720
+    second: spi_buddy_storm_12
+  - first:
+      213: 2117214899307471065
+    second: spi_buddy_storm_13
+  - first:
+      213: 4872715836212753816
+    second: spi_buddy_storm_14
+  - first:
+      213: 1125998508455100582
+    second: spi_buddy_storm_15
+  - first:
+      213: 2814355286724921901
+    second: spi_buddy_storm_16
+  - first:
+      213: -7958775343376278863
+    second: spi_buddy_storm_17
+  - first:
+      213: 5934575769781136027
+    second: spi_buddy_storm_18
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spi_buddy_storm_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 103
+        width: 43
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f32b82217ca63830800000000000000
+      internalID: 4050614516777165811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_storm_1
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 103
+        width: 31
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 756fbadfa8571aa20800000000000000
+      internalID: 3071865660665230935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_storm_2
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 103
+        width: 32
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74eb65d2524ecfa00800000000000000
+      internalID: 791758482835947079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_storm_3
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 13
+        width: 113
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d002e6dd97a526520800000000000000
+      internalID: 2693815006573502477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_storm_4
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 2
+        width: 106
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdac247fe80b2e1d0800000000000000
+      internalID: -3322899446965810469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_storm_5
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 69
+        width: 68
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 471286ed26018b230800000000000000
+      internalID: 3654689114435363188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_storm_6
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 67
+        width: 41
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48f78727d7603f190800000000000000
+      internalID: -7929987383008133244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_storm_7
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 1
+        width: 90
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7270e13a960a88880800000000000000
+      internalID: -8608454312150038745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_storm_8
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 2
+        width: 87
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6fe2d28dcac8a5e0800000000000000
+      internalID: -1898044258924695700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_storm_9
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 48
+        width: 85
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02d11be19d2240bb0800000000000000
+      internalID: -4970809772792013536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_storm_10
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 1
+        width: 130
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1eb0118135ef0d7d0800000000000000
+      internalID: -2895534927559717919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_storm_11
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 1
+        width: 99
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b7d98fd0624ffcd0800000000000000
+      internalID: -2522224282469541961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_storm_12
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 2
+        width: 75
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a6e4c503eb7163f0800000000000000
+      internalID: -909309434767546720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_storm_13
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 2
+        width: 72
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d0e262cbbbd16d10800000000000000
+      internalID: 2117214899307471065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_storm_14
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 1
+        width: 37
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 895b1ec7c3d5f9340800000000000000
+      internalID: 4872715836212753816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_storm_15
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 1
+        width: 26
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a0061a7da950af00800000000000000
+      internalID: 1125998508455100582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_storm_16
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 1
+        width: 26
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2a4bf0e8399e0720800000000000000
+      internalID: 2814355286724921901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_storm_17
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 1
+        width: 26
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ba5bea1effbc8190800000000000000
+      internalID: -7958775343376278863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_storm_18
+      rect:
+        serializedVersion: 2
+        x: 898
+        y: 1
+        width: 26
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9ae17a4839db5250800000000000000
+      internalID: 5934575769781136027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spi_buddy_storm_0: 4050614516777165811
+      spi_buddy_storm_1: 3071865660665230935
+      spi_buddy_storm_10: -2895534927559717919
+      spi_buddy_storm_11: -2522224282469541961
+      spi_buddy_storm_12: -909309434767546720
+      spi_buddy_storm_13: 2117214899307471065
+      spi_buddy_storm_14: 4872715836212753816
+      spi_buddy_storm_15: 1125998508455100582
+      spi_buddy_storm_16: 2814355286724921901
+      spi_buddy_storm_17: -7958775343376278863
+      spi_buddy_storm_18: 5934575769781136027
+      spi_buddy_storm_2: 791758482835947079
+      spi_buddy_storm_3: 2693815006573502477
+      spi_buddy_storm_4: -3322899446965810469
+      spi_buddy_storm_5: 3654689114435363188
+      spi_buddy_storm_6: -7929987383008133244
+      spi_buddy_storm_7: -8608454312150038745
+      spi_buddy_storm_8: -1898044258924695700
+      spi_buddy_storm_9: -4970809772792013536
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

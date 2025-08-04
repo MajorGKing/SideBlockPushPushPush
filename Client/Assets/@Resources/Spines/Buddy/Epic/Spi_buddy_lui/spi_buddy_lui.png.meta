@@ -1,0 +1,611 @@
+fileFormatVersion: 2
+guid: 50829b01a3c614e46b4aa67aa7bc327b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6621920951202743181
+    second: spi_buddy_lui_0
+  - first:
+      213: 4314460403685857520
+    second: spi_buddy_lui_1
+  - first:
+      213: -3833137723321413493
+    second: spi_buddy_lui_2
+  - first:
+      213: -1789282865571382422
+    second: spi_buddy_lui_3
+  - first:
+      213: -653748289788758677
+    second: spi_buddy_lui_4
+  - first:
+      213: -4637461496524491959
+    second: spi_buddy_lui_5
+  - first:
+      213: -5484117314728982231
+    second: spi_buddy_lui_6
+  - first:
+      213: -1702883567864715683
+    second: spi_buddy_lui_7
+  - first:
+      213: 8076206249094448588
+    second: spi_buddy_lui_8
+  - first:
+      213: -4927910461290678982
+    second: spi_buddy_lui_9
+  - first:
+      213: 6954656406685982619
+    second: spi_buddy_lui_10
+  - first:
+      213: -3722082062549801233
+    second: spi_buddy_lui_11
+  - first:
+      213: 2595568230947949521
+    second: spi_buddy_lui_12
+  - first:
+      213: 5546585247196249135
+    second: spi_buddy_lui_13
+  - first:
+      213: -8343918290956166038
+    second: spi_buddy_lui_14
+  - first:
+      213: 4912178886515757089
+    second: spi_buddy_lui_15
+  - first:
+      213: 8893103588263327987
+    second: spi_buddy_lui_16
+  - first:
+      213: 4059738931525715533
+    second: spi_buddy_lui_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spi_buddy_lui_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 67
+        width: 82
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37cf7d4baf53a14a0800000000000000
+      internalID: -6621920951202743181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_lui_1
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 98
+        width: 55
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f81f2fc0ea00eb30800000000000000
+      internalID: 4314460403685857520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_lui_2
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 99
+        width: 48
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b80174aac85fdcac0800000000000000
+      internalID: -3833137723321413493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_lui_3
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 1
+        width: 136
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6bbceab6b03b27e0800000000000000
+      internalID: -1789282865571382422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_lui_4
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 2
+        width: 133
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b653f96e46b6de6f0800000000000000
+      internalID: -653748289788758677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_lui_5
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 101
+        width: 43
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9433b18d65d64afb0800000000000000
+      internalID: -4637461496524491959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_lui_6
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 101
+        width: 40
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 929820dbb5084e3b0800000000000000
+      internalID: -5484117314728982231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_lui_7
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 67
+        width: 64
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d56e293da642e58e0800000000000000
+      internalID: -1702883567864715683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_lui_8
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 67
+        width: 50
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc580124bc2741070800000000000000
+      internalID: 8076206249094448588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_lui_9
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 68
+        width: 65
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3576dd6b8b8c9bb0800000000000000
+      internalID: -4927910461290678982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_lui_10
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 67
+        width: 43
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9f996f8727e38060800000000000000
+      internalID: 6954656406685982619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_lui_11
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 1
+        width: 85
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe6add4a512885cc0800000000000000
+      internalID: -3722082062549801233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_lui_12
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 1
+        width: 85
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1db01fbdd8f450420800000000000000
+      internalID: 2595568230947949521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_lui_13
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 1
+        width: 57
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2cfd8f25ed69fc40800000000000000
+      internalID: 5546585247196249135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_lui_14
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 215
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6c5ca8b582743c80800000000000000
+      internalID: -8343918290956166038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_lui_15
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 1
+        width: 130
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12012f3eba09b2440800000000000000
+      internalID: 4912178886515757089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_lui_16
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 2
+        width: 35
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f8ff298896aa6b70800000000000000
+      internalID: 8893103588263327987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_lui_17
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 1
+        width: 28
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d460a6e7c07175830800000000000000
+      internalID: 4059738931525715533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spi_buddy_lui_0: -6621920951202743181
+      spi_buddy_lui_1: 4314460403685857520
+      spi_buddy_lui_10: 6954656406685982619
+      spi_buddy_lui_11: -3722082062549801233
+      spi_buddy_lui_12: 2595568230947949521
+      spi_buddy_lui_13: 5546585247196249135
+      spi_buddy_lui_14: -8343918290956166038
+      spi_buddy_lui_15: 4912178886515757089
+      spi_buddy_lui_16: 8893103588263327987
+      spi_buddy_lui_17: 4059738931525715533
+      spi_buddy_lui_2: -3833137723321413493
+      spi_buddy_lui_3: -1789282865571382422
+      spi_buddy_lui_4: -653748289788758677
+      spi_buddy_lui_5: -4637461496524491959
+      spi_buddy_lui_6: -5484117314728982231
+      spi_buddy_lui_7: -1702883567864715683
+      spi_buddy_lui_8: 8076206249094448588
+      spi_buddy_lui_9: -4927910461290678982
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

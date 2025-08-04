@@ -1,0 +1,715 @@
+fileFormatVersion: 2
+guid: 04eeb335e7f420240be1912ce68a4cbe
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7305184782077774770
+    second: spi_buddy_andre_0
+  - first:
+      213: 4758056823404931968
+    second: spi_buddy_andre_1
+  - first:
+      213: 2262406888355288056
+    second: spi_buddy_andre_2
+  - first:
+      213: -463835310869481203
+    second: spi_buddy_andre_3
+  - first:
+      213: 1656784407266205739
+    second: spi_buddy_andre_4
+  - first:
+      213: -31517658271973319
+    second: spi_buddy_andre_5
+  - first:
+      213: 3620800966287726510
+    second: spi_buddy_andre_6
+  - first:
+      213: -3326651656122929443
+    second: spi_buddy_andre_7
+  - first:
+      213: -6294641607322530063
+    second: spi_buddy_andre_8
+  - first:
+      213: -596507896636728529
+    second: spi_buddy_andre_9
+  - first:
+      213: 3185778003413632669
+    second: spi_buddy_andre_10
+  - first:
+      213: 5751495533706503188
+    second: spi_buddy_andre_11
+  - first:
+      213: 7418211907309001072
+    second: spi_buddy_andre_12
+  - first:
+      213: -3873671103337373157
+    second: spi_buddy_andre_13
+  - first:
+      213: 4594119351868435028
+    second: spi_buddy_andre_14
+  - first:
+      213: 5837382017160301825
+    second: spi_buddy_andre_15
+  - first:
+      213: -5326290820216846243
+    second: spi_buddy_andre_16
+  - first:
+      213: 9137867615891821215
+    second: spi_buddy_andre_17
+  - first:
+      213: 1970136547929904757
+    second: spi_buddy_andre_18
+  - first:
+      213: -6663663232923433210
+    second: spi_buddy_andre_19
+  - first:
+      213: -4523559108240975545
+    second: spi_buddy_andre_20
+  - first:
+      213: 415165003545771127
+    second: spi_buddy_andre_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spi_buddy_andre_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 229
+        width: 39
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bbc552dada316560800000000000000
+      internalID: 7305184782077774770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_andre_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 229
+        width: 38
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08bac2cb873080240800000000000000
+      internalID: 4758056823404931968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_andre_2
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 229
+        width: 35
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f350d5041fa56f10800000000000000
+      internalID: 2262406888355288056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_andre_3
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 229
+        width: 23
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0977550e302099f0800000000000000
+      internalID: -463835310869481203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_andre_4
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 138
+        width: 138
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b202280f3a41ef610800000000000000
+      internalID: 1656784407266205739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_andre_5
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 137
+        width: 94
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9300c865bd6009ff0800000000000000
+      internalID: -31517658271973319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_andre_6
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 155
+        width: 72
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea798f58b4baf3230800000000000000
+      internalID: 3620800966287726510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_andre_7
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 154
+        width: 22
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddee351b1fb55d1d0800000000000000
+      internalID: -3326651656122929443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_andre_8
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 153
+        width: 24
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fe852ffec0f4a8a0800000000000000
+      internalID: -6294641607322530063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_andre_9
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 154
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2b904b7a37c8b7f0800000000000000
+      internalID: -596507896636728529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_andre_10
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 150
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9609b21738263c20800000000000000
+      internalID: 3185778003413632669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_andre_11
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 6
+        width: 226
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41462d517ba61df40800000000000000
+      internalID: 5751495533706503188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_andre_12
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 67
+        width: 94
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 079d9b32d68c2f660800000000000000
+      internalID: 7418211907309001072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_andre_13
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 67
+        width: 46
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1261e4b7a4fd3ac0800000000000000
+      internalID: -3873671103337373157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_andre_14
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 107
+        width: 27
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45aadd7b53791cf30800000000000000
+      internalID: 4594119351868435028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_andre_15
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 85
+        width: 73
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10dc71f440c820150800000000000000
+      internalID: 5837382017160301825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_andre_16
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 107
+        width: 27
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d580d8a08b63516b0800000000000000
+      internalID: -5326290820216846243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_andre_17
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 107
+        width: 13
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9217c1ae2a30de70800000000000000
+      internalID: 9137867615891821215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_andre_18
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 1
+        width: 130
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 576506a80c4575b10800000000000000
+      internalID: 1970136547929904757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_andre_19
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 1
+        width: 99
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60784c26899e583a0800000000000000
+      internalID: -6663663232923433210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_andre_20
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 48
+        width: 77
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74950d835f61931c0800000000000000
+      internalID: -4523559108240975545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_andre_21
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 2
+        width: 36
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77cf48ffe56f2c500800000000000000
+      internalID: 415165003545771127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spi_buddy_andre_0: 7305184782077774770
+      spi_buddy_andre_1: 4758056823404931968
+      spi_buddy_andre_10: 3185778003413632669
+      spi_buddy_andre_11: 5751495533706503188
+      spi_buddy_andre_12: 7418211907309001072
+      spi_buddy_andre_13: -3873671103337373157
+      spi_buddy_andre_14: 4594119351868435028
+      spi_buddy_andre_15: 5837382017160301825
+      spi_buddy_andre_16: -5326290820216846243
+      spi_buddy_andre_17: 9137867615891821215
+      spi_buddy_andre_18: 1970136547929904757
+      spi_buddy_andre_19: -6663663232923433210
+      spi_buddy_andre_2: 2262406888355288056
+      spi_buddy_andre_20: -4523559108240975545
+      spi_buddy_andre_21: 415165003545771127
+      spi_buddy_andre_3: -463835310869481203
+      spi_buddy_andre_4: 1656784407266205739
+      spi_buddy_andre_5: -31517658271973319
+      spi_buddy_andre_6: 3620800966287726510
+      spi_buddy_andre_7: -3326651656122929443
+      spi_buddy_andre_8: -6294641607322530063
+      spi_buddy_andre_9: -596507896636728529
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

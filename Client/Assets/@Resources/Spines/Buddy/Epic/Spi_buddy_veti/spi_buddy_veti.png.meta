@@ -1,0 +1,793 @@
+fileFormatVersion: 2
+guid: d82c070ef2dd0234abd6c06ffae79883
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2502245199515922498
+    second: spi_buddy_veti_0
+  - first:
+      213: 5368929138878865801
+    second: spi_buddy_veti_1
+  - first:
+      213: 341392254349344349
+    second: spi_buddy_veti_2
+  - first:
+      213: -3532410715989963113
+    second: spi_buddy_veti_3
+  - first:
+      213: 7300745661052886470
+    second: spi_buddy_veti_4
+  - first:
+      213: -4179852890872376204
+    second: spi_buddy_veti_5
+  - first:
+      213: -2689134923586288763
+    second: spi_buddy_veti_6
+  - first:
+      213: 7849083777893392537
+    second: spi_buddy_veti_7
+  - first:
+      213: -8521433044066382669
+    second: spi_buddy_veti_8
+  - first:
+      213: -3508753403814648838
+    second: spi_buddy_veti_9
+  - first:
+      213: 2404480130005233678
+    second: spi_buddy_veti_10
+  - first:
+      213: -4594253887298905903
+    second: spi_buddy_veti_11
+  - first:
+      213: 7291449781157189500
+    second: spi_buddy_veti_12
+  - first:
+      213: 7681555170992672445
+    second: spi_buddy_veti_13
+  - first:
+      213: -9060022066168103024
+    second: spi_buddy_veti_14
+  - first:
+      213: -2874236583215564425
+    second: spi_buddy_veti_15
+  - first:
+      213: -3749958478641618664
+    second: spi_buddy_veti_16
+  - first:
+      213: 6535384884468257479
+    second: spi_buddy_veti_17
+  - first:
+      213: 8872852935186460971
+    second: spi_buddy_veti_18
+  - first:
+      213: 2192020006085362283
+    second: spi_buddy_veti_19
+  - first:
+      213: -451986341772047035
+    second: spi_buddy_veti_20
+  - first:
+      213: 4007342601787373137
+    second: spi_buddy_veti_21
+  - first:
+      213: -8517138180944288086
+    second: spi_buddy_veti_22
+  - first:
+      213: -8567962775014702561
+    second: spi_buddy_veti_23
+  - first:
+      213: 4477269387021174749
+    second: spi_buddy_veti_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spi_buddy_veti_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 221
+        width: 41
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 240b21260c2c9b220800000000000000
+      internalID: 2502245199515922498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_1
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 221
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9816e132b94428a40800000000000000
+      internalID: 5368929138878865801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_2
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 224
+        width: 41
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5eff81527edcb400800000000000000
+      internalID: 341392254349344349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_3
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 232
+        width: 25
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79e82a85b2b5afec0800000000000000
+      internalID: -3532410715989963113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_4
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 203
+        width: 52
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cd188a6f75715560800000000000000
+      internalID: 7300745661052886470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_5
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 193
+        width: 47
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 474992a01fd2ef5c0800000000000000
+      internalID: -4179852890872376204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_6
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 155
+        width: 130
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 583ca8ed8064eaad0800000000000000
+      internalID: -2689134923586288763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_7
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 158
+        width: 48
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 990ed991c1c8dec60800000000000000
+      internalID: 7849083777893392537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_8
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 138
+        width: 47
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bcc52f7bc9cdb980800000000000000
+      internalID: -8521433044066382669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_9
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 135
+        width: 56
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af36f219e576e4fc0800000000000000
+      internalID: -3508753403814648838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_10
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 158
+        width: 36
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e00727250fd6e5120800000000000000
+      internalID: 2404480130005233678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_11
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 4
+        width: 156
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d8579f4e6eed30c0800000000000000
+      internalID: -4594253887298905903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_12
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 8
+        width: 95
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c775977b1fe603560800000000000000
+      internalID: 7291449781157189500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_13
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 108
+        width: 72
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbe4599babd5a9a60800000000000000
+      internalID: 7681555170992672445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_14
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 105
+        width: 35
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09f79d0dee5544280800000000000000
+      internalID: -9060022066168103024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_15
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 4
+        width: 95
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 779f0015e09ac18d0800000000000000
+      internalID: -2874236583215564425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_16
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 4
+        width: 96
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8112a1eb1a875fbc0800000000000000
+      internalID: -3749958478641618664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_17
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 1
+        width: 86
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c2103d2de952ba50800000000000000
+      internalID: 6535384884468257479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_18
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 4
+        width: 80
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b213212fbb4b22b70800000000000000
+      internalID: 8872852935186460971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_19
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 4
+        width: 80
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b62844be49e9b6e10800000000000000
+      internalID: 2192020006085362283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_20
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 4
+        width: 80
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54d495f11d83ab9f0800000000000000
+      internalID: -451986341772047035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_21
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 4
+        width: 64
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15673d05dd0fc9730800000000000000
+      internalID: 4007342601787373137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_22
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 52
+        width: 51
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa626ed33fb0dc980800000000000000
+      internalID: -8517138180944288086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_23
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 52
+        width: 40
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f128a7a404b781980800000000000000
+      internalID: -8567962775014702561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_veti_24
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 4
+        width: 85
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd7c02139c4722e30800000000000000
+      internalID: 4477269387021174749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spi_buddy_veti_0: 2502245199515922498
+      spi_buddy_veti_1: 5368929138878865801
+      spi_buddy_veti_10: 2404480130005233678
+      spi_buddy_veti_11: -4594253887298905903
+      spi_buddy_veti_12: 7291449781157189500
+      spi_buddy_veti_13: 7681555170992672445
+      spi_buddy_veti_14: -9060022066168103024
+      spi_buddy_veti_15: -2874236583215564425
+      spi_buddy_veti_16: -3749958478641618664
+      spi_buddy_veti_17: 6535384884468257479
+      spi_buddy_veti_18: 8872852935186460971
+      spi_buddy_veti_19: 2192020006085362283
+      spi_buddy_veti_2: 341392254349344349
+      spi_buddy_veti_20: -451986341772047035
+      spi_buddy_veti_21: 4007342601787373137
+      spi_buddy_veti_22: -8517138180944288086
+      spi_buddy_veti_23: -8567962775014702561
+      spi_buddy_veti_24: 4477269387021174749
+      spi_buddy_veti_3: -3532410715989963113
+      spi_buddy_veti_4: 7300745661052886470
+      spi_buddy_veti_5: -4179852890872376204
+      spi_buddy_veti_6: -2689134923586288763
+      spi_buddy_veti_7: 7849083777893392537
+      spi_buddy_veti_8: -8521433044066382669
+      spi_buddy_veti_9: -3508753403814648838
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

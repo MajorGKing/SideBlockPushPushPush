@@ -1,0 +1,819 @@
+fileFormatVersion: 2
+guid: 07d9dbb2f9160334083e4c31ddcac298
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2494074502853709857
+    second: spi_buddy_laurel_0
+  - first:
+      213: 7128470385968278344
+    second: spi_buddy_laurel_1
+  - first:
+      213: -594024364474154489
+    second: spi_buddy_laurel_2
+  - first:
+      213: -188875471718494862
+    second: spi_buddy_laurel_3
+  - first:
+      213: -7463147465122399141
+    second: spi_buddy_laurel_4
+  - first:
+      213: 4613533791472065522
+    second: spi_buddy_laurel_5
+  - first:
+      213: 7910508037901272134
+    second: spi_buddy_laurel_6
+  - first:
+      213: 2134851986029152639
+    second: spi_buddy_laurel_7
+  - first:
+      213: 448773642580011972
+    second: spi_buddy_laurel_8
+  - first:
+      213: 1037986189409915812
+    second: spi_buddy_laurel_9
+  - first:
+      213: -6385992261676355487
+    second: spi_buddy_laurel_10
+  - first:
+      213: -4273834110997167352
+    second: spi_buddy_laurel_11
+  - first:
+      213: -6151607471513872185
+    second: spi_buddy_laurel_12
+  - first:
+      213: -7429874491256977016
+    second: spi_buddy_laurel_13
+  - first:
+      213: 8829320699300365758
+    second: spi_buddy_laurel_14
+  - first:
+      213: -4346751532766567555
+    second: spi_buddy_laurel_15
+  - first:
+      213: -6860327825355253496
+    second: spi_buddy_laurel_16
+  - first:
+      213: 2036084128554987817
+    second: spi_buddy_laurel_17
+  - first:
+      213: -4351626101019605377
+    second: spi_buddy_laurel_18
+  - first:
+      213: -1762595684086661925
+    second: spi_buddy_laurel_19
+  - first:
+      213: -4688469879384121495
+    second: spi_buddy_laurel_20
+  - first:
+      213: 8826525804272556171
+    second: spi_buddy_laurel_21
+  - first:
+      213: 281689245806712842
+    second: spi_buddy_laurel_22
+  - first:
+      213: 8828567211768005362
+    second: spi_buddy_laurel_23
+  - first:
+      213: -2078194503367687416
+    second: spi_buddy_laurel_24
+  - first:
+      213: -8177439600776137284
+    second: spi_buddy_laurel_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spi_buddy_laurel_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 101
+        width: 51
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdfab0e2474436dd0800000000000000
+      internalID: -2494074502853709857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_1
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 101
+        width: 40
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84be78b3c0a6de260800000000000000
+      internalID: 7128470385968278344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_2
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 101
+        width: 40
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 702479fdcf991c7f0800000000000000
+      internalID: -594024364474154489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_3
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 59
+        width: 59
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27d4f6952caf06df0800000000000000
+      internalID: -188875471718494862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_4
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 95
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5cb5030ce29d6890800000000000000
+      internalID: -7463147465122399141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_5
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 95
+        width: 11
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fb14ff2a80960040800000000000000
+      internalID: 4613533791472065522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_6
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 131
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6444af71625c7cd60800000000000000
+      internalID: 7910508037901272134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_7
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 68
+        width: 50
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f790e43029480ad10800000000000000
+      internalID: 2134851986029152639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_8
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 67
+        width: 43
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cb2a8e004d5a3600800000000000000
+      internalID: 448773642580011972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_9
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 67
+        width: 27
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a31a8590faa76e00800000000000000
+      internalID: 1037986189409915812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_10
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 2
+        width: 97
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16033685fd56067a0800000000000000
+      internalID: -6385992261676355487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_11
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 2
+        width: 81
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8030111158a40b4c0800000000000000
+      internalID: -4273834110997167352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_12
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 2
+        width: 90
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c8d6c6e89911aaa0800000000000000
+      internalID: -6151607471513872185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_13
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 58
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88944eee388c3e890800000000000000
+      internalID: -7429874491256977016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_14
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 1
+        width: 130
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb54dc1756c088a70800000000000000
+      internalID: 8829320699300365758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_15
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 1
+        width: 96
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d736092d28c3da3c0800000000000000
+      internalID: -4346751532766567555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_16
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 2
+        width: 87
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 809d8feb0383bc0a0800000000000000
+      internalID: -6860327825355253496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_17
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 1
+        width: 61
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 921b45f2abf914c10800000000000000
+      internalID: 2036084128554987817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_18
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1
+        width: 27
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f768865fd1beb93c0800000000000000
+      internalID: -4351626101019605377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_19
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 1
+        width: 25
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdcb06f50900a87e0800000000000000
+      internalID: -1762595684086661925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_20
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 1
+        width: 33
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96fd03b3c753feeb0800000000000000
+      internalID: -4688469879384121495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_21
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 1
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b881c7c347e1e7a70800000000000000
+      internalID: 8826525804272556171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_22
+      rect:
+        serializedVersion: 2
+        x: 898
+        y: 1
+        width: 13
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a085b5960e2c8e300800000000000000
+      internalID: 281689245806712842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_23
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 1
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f2c7157a1f558a70800000000000000
+      internalID: 8828567211768005362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_24
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 1
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80389942c15c823e0800000000000000
+      internalID: -2078194503367687416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_laurel_25
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 1
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb5b68f4206e38e80800000000000000
+      internalID: -8177439600776137284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spi_buddy_laurel_0: -2494074502853709857
+      spi_buddy_laurel_1: 7128470385968278344
+      spi_buddy_laurel_10: -6385992261676355487
+      spi_buddy_laurel_11: -4273834110997167352
+      spi_buddy_laurel_12: -6151607471513872185
+      spi_buddy_laurel_13: -7429874491256977016
+      spi_buddy_laurel_14: 8829320699300365758
+      spi_buddy_laurel_15: -4346751532766567555
+      spi_buddy_laurel_16: -6860327825355253496
+      spi_buddy_laurel_17: 2036084128554987817
+      spi_buddy_laurel_18: -4351626101019605377
+      spi_buddy_laurel_19: -1762595684086661925
+      spi_buddy_laurel_2: -594024364474154489
+      spi_buddy_laurel_20: -4688469879384121495
+      spi_buddy_laurel_21: 8826525804272556171
+      spi_buddy_laurel_22: 281689245806712842
+      spi_buddy_laurel_23: 8828567211768005362
+      spi_buddy_laurel_24: -2078194503367687416
+      spi_buddy_laurel_25: -8177439600776137284
+      spi_buddy_laurel_3: -188875471718494862
+      spi_buddy_laurel_4: -7463147465122399141
+      spi_buddy_laurel_5: 4613533791472065522
+      spi_buddy_laurel_6: 7910508037901272134
+      spi_buddy_laurel_7: 2134851986029152639
+      spi_buddy_laurel_8: 448773642580011972
+      spi_buddy_laurel_9: 1037986189409915812
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

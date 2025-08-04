@@ -1,0 +1,793 @@
+fileFormatVersion: 2
+guid: 7075bfeb05828cb419e499900c68f3e7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5872862291453827958
+    second: spi_buddy_ballack_0
+  - first:
+      213: 98173869111709129
+    second: spi_buddy_ballack_1
+  - first:
+      213: -2335575061465111430
+    second: spi_buddy_ballack_2
+  - first:
+      213: 6242617788335650755
+    second: spi_buddy_ballack_3
+  - first:
+      213: -1774162170564063287
+    second: spi_buddy_ballack_4
+  - first:
+      213: 221208781158118148
+    second: spi_buddy_ballack_5
+  - first:
+      213: 5308573996396151722
+    second: spi_buddy_ballack_6
+  - first:
+      213: -8793209399625535387
+    second: spi_buddy_ballack_7
+  - first:
+      213: -6246055647871670010
+    second: spi_buddy_ballack_8
+  - first:
+      213: 7764068094361937386
+    second: spi_buddy_ballack_9
+  - first:
+      213: -2087900553256326580
+    second: spi_buddy_ballack_10
+  - first:
+      213: -994594372301463920
+    second: spi_buddy_ballack_11
+  - first:
+      213: 70253038006290317
+    second: spi_buddy_ballack_12
+  - first:
+      213: 3867686678981580277
+    second: spi_buddy_ballack_13
+  - first:
+      213: -416014035490531872
+    second: spi_buddy_ballack_14
+  - first:
+      213: 6940754543577691021
+    second: spi_buddy_ballack_15
+  - first:
+      213: -5270682135595228409
+    second: spi_buddy_ballack_16
+  - first:
+      213: 1333758705788643242
+    second: spi_buddy_ballack_17
+  - first:
+      213: -4941426361444106783
+    second: spi_buddy_ballack_18
+  - first:
+      213: 702198391514210455
+    second: spi_buddy_ballack_19
+  - first:
+      213: -6807738445231490437
+    second: spi_buddy_ballack_20
+  - first:
+      213: -3536720519981374817
+    second: spi_buddy_ballack_21
+  - first:
+      213: 2580162012755793353
+    second: spi_buddy_ballack_22
+  - first:
+      213: 5040321482957669111
+    second: spi_buddy_ballack_23
+  - first:
+      213: 8984892895688754241
+    second: spi_buddy_ballack_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spi_buddy_ballack_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 203
+        width: 72
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a84ab179cd66f7ea0800000000000000
+      internalID: -5872862291453827958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_1
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 206
+        width: 48
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cd01a22d98cc5100800000000000000
+      internalID: 98173869111709129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_2
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 198
+        width: 72
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a746c132bde569fd0800000000000000
+      internalID: -2335575061465111430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_3
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 137
+        width: 130
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c7f74ebdcb32a650800000000000000
+      internalID: 6242617788335650755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_4
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 137
+        width: 79
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cfc791e7e8e067e0800000000000000
+      internalID: -1774162170564063287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_5
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 137
+        width: 66
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4037026e634e11300800000000000000
+      internalID: 221208781158118148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_6
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 167
+        width: 43
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa381177ce7dba940800000000000000
+      internalID: 5308573996396151722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_7
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 137
+        width: 70
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 560b1b3b3ae38f580800000000000000
+      internalID: -8793209399625535387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_8
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 137
+        width: 44
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60969453b7d8159a0800000000000000
+      internalID: -6246055647871670010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_9
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 139
+        width: 50
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae52368cbc28fbb60800000000000000
+      internalID: 7764068094361937386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_10
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 140
+        width: 38
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4aa0dc42894603e0800000000000000
+      internalID: -2087900553256326580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_11
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 109
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09e5e5f10bd7232f0800000000000000
+      internalID: -994594372301463920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_12
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 99
+        width: 63
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d87c1ce04c699f000800000000000000
+      internalID: 70253038006290317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_13
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 96
+        width: 32
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f5153bea88cca530800000000000000
+      internalID: 3867686678981580277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_14
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 2
+        width: 115
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e5920950750a3af0800000000000000
+      internalID: -416014035490531872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_15
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 2
+        width: 116
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d837023db73825060800000000000000
+      internalID: 6940754543577691021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_16
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 3
+        width: 122
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70369dfd586cad6b0800000000000000
+      internalID: -5270682135595228409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_17
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 92
+        width: 22
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa7ed92f976728210800000000000000
+      internalID: 1333758705788643242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_18
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 2
+        width: 123
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ed7f52b7e68c6bb0800000000000000
+      internalID: -4941426361444106783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_19
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 1
+        width: 100
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7902e0877b5beb900800000000000000
+      internalID: 702198391514210455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_20
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 1
+        width: 79
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7af438f3fd0681a0800000000000000
+      internalID: -6807738445231490437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_21
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 54
+        width: 50
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f92eca8ec6b0beec0800000000000000
+      internalID: -3536720519981374817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_22
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 4
+        width: 79
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c514492ea39ec320800000000000000
+      internalID: 2580162012755793353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_23
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 30
+        width: 30
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f246791fa1d2f540800000000000000
+      internalID: 5040321482957669111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_ballack_24
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 1
+        width: 79
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14485701c70c0bc70800000000000000
+      internalID: 8984892895688754241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spi_buddy_ballack_0: -5872862291453827958
+      spi_buddy_ballack_1: 98173869111709129
+      spi_buddy_ballack_10: -2087900553256326580
+      spi_buddy_ballack_11: -994594372301463920
+      spi_buddy_ballack_12: 70253038006290317
+      spi_buddy_ballack_13: 3867686678981580277
+      spi_buddy_ballack_14: -416014035490531872
+      spi_buddy_ballack_15: 6940754543577691021
+      spi_buddy_ballack_16: -5270682135595228409
+      spi_buddy_ballack_17: 1333758705788643242
+      spi_buddy_ballack_18: -4941426361444106783
+      spi_buddy_ballack_19: 702198391514210455
+      spi_buddy_ballack_2: -2335575061465111430
+      spi_buddy_ballack_20: -6807738445231490437
+      spi_buddy_ballack_21: -3536720519981374817
+      spi_buddy_ballack_22: 2580162012755793353
+      spi_buddy_ballack_23: 5040321482957669111
+      spi_buddy_ballack_24: 8984892895688754241
+      spi_buddy_ballack_3: 6242617788335650755
+      spi_buddy_ballack_4: -1774162170564063287
+      spi_buddy_ballack_5: 221208781158118148
+      spi_buddy_ballack_6: 5308573996396151722
+      spi_buddy_ballack_7: -8793209399625535387
+      spi_buddy_ballack_8: -6246055647871670010
+      spi_buddy_ballack_9: 7764068094361937386
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

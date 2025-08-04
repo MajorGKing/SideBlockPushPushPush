@@ -1,0 +1,559 @@
+fileFormatVersion: 2
+guid: c4b642da7d4a39149ab90a5a4f402644
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2867815391003879063
+    second: spi_buddy_chloe_0
+  - first:
+      213: -882857045638389885
+    second: spi_buddy_chloe_1
+  - first:
+      213: 8853107185349512348
+    second: spi_buddy_chloe_2
+  - first:
+      213: 1872860387630019251
+    second: spi_buddy_chloe_3
+  - first:
+      213: 2958739890979164382
+    second: spi_buddy_chloe_4
+  - first:
+      213: -3358266786216458470
+    second: spi_buddy_chloe_5
+  - first:
+      213: 5909386141320508818
+    second: spi_buddy_chloe_6
+  - first:
+      213: -5341917430741312121
+    second: spi_buddy_chloe_7
+  - first:
+      213: 8174604495123621917
+    second: spi_buddy_chloe_8
+  - first:
+      213: -5834167383336921062
+    second: spi_buddy_chloe_9
+  - first:
+      213: 5756327703644820596
+    second: spi_buddy_chloe_10
+  - first:
+      213: 3591025631106387477
+    second: spi_buddy_chloe_11
+  - first:
+      213: 1655103213009736383
+    second: spi_buddy_chloe_12
+  - first:
+      213: 3184071544364505421
+    second: spi_buddy_chloe_13
+  - first:
+      213: 8464513452882545367
+    second: spi_buddy_chloe_14
+  - first:
+      213: -7366217855242226845
+    second: spi_buddy_chloe_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spi_buddy_chloe_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 208
+        width: 56
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7962f2e57e68cc720800000000000000
+      internalID: 2867815391003879063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_chloe_1
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 213
+        width: 33
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38fd54fc1367fb3f0800000000000000
+      internalID: -882857045638389885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_chloe_2
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 213
+        width: 26
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9c473d441e8cda70800000000000000
+      internalID: 8853107185349512348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_chloe_3
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 208
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b27696899cbdf910800000000000000
+      internalID: 1872860387630019251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_chloe_4
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 230
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed05798314e8f0920800000000000000
+      internalID: 2958739890979164382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_chloe_5
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 77
+        width: 66
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a17439a962a0561d0800000000000000
+      internalID: -3358266786216458470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_chloe_6
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 77
+        width: 36
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2957602e26b520250800000000000000
+      internalID: 5909386141320508818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_chloe_7
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 159
+        width: 26
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78d52314662bdd5b0800000000000000
+      internalID: -5341917430741312121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_chloe_8
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 158
+        width: 32
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d18a7273a77027170800000000000000
+      internalID: 8174604495123621917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_chloe_9
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 196
+        width: 29
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a185804fcafd80fa0800000000000000
+      internalID: -5834167383336921062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_chloe_10
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 142
+        width: 75
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4745d725c8592ef40800000000000000
+      internalID: 5756327703644820596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_chloe_11
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 78
+        width: 75
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51e4b6119c2e5d130800000000000000
+      internalID: 3591025631106387477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_chloe_12
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 68
+        width: 75
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb29d066a9b18f610800000000000000
+      internalID: 1655103213009736383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_chloe_13
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 118
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d49964d1338103c20800000000000000
+      internalID: 3184071544364505421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_chloe_14
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 1
+        width: 98
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7da4493732ef77570800000000000000
+      internalID: 8464513452882545367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_chloe_15
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 2
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 363b52873efe5c990800000000000000
+      internalID: -7366217855242226845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spi_buddy_chloe_0: 2867815391003879063
+      spi_buddy_chloe_1: -882857045638389885
+      spi_buddy_chloe_10: 5756327703644820596
+      spi_buddy_chloe_11: 3591025631106387477
+      spi_buddy_chloe_12: 1655103213009736383
+      spi_buddy_chloe_13: 3184071544364505421
+      spi_buddy_chloe_14: 8464513452882545367
+      spi_buddy_chloe_15: -7366217855242226845
+      spi_buddy_chloe_2: 8853107185349512348
+      spi_buddy_chloe_3: 1872860387630019251
+      spi_buddy_chloe_4: 2958739890979164382
+      spi_buddy_chloe_5: -3358266786216458470
+      spi_buddy_chloe_6: 5909386141320508818
+      spi_buddy_chloe_7: -5341917430741312121
+      spi_buddy_chloe_8: 8174604495123621917
+      spi_buddy_chloe_9: -5834167383336921062
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

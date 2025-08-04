@@ -1,0 +1,585 @@
+fileFormatVersion: 2
+guid: 4688f38c474b2d54db3419988a592b75
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8972925364635912339
+    second: spi_buddy_walt_0
+  - first:
+      213: 7497747694301705369
+    second: spi_buddy_walt_1
+  - first:
+      213: 6680376215228129656
+    second: spi_buddy_walt_2
+  - first:
+      213: 6684697635961265864
+    second: spi_buddy_walt_3
+  - first:
+      213: -6642568626727526378
+    second: spi_buddy_walt_4
+  - first:
+      213: 304791463687968584
+    second: spi_buddy_walt_5
+  - first:
+      213: -292150125053030031
+    second: spi_buddy_walt_6
+  - first:
+      213: 339849498788331743
+    second: spi_buddy_walt_7
+  - first:
+      213: -7614411086662015110
+    second: spi_buddy_walt_8
+  - first:
+      213: 4227813893052930713
+    second: spi_buddy_walt_9
+  - first:
+      213: -5033187562180708313
+    second: spi_buddy_walt_10
+  - first:
+      213: -346855808872158282
+    second: spi_buddy_walt_11
+  - first:
+      213: -7155490959815632306
+    second: spi_buddy_walt_12
+  - first:
+      213: 3419079661941946688
+    second: spi_buddy_walt_13
+  - first:
+      213: -3051911788787831445
+    second: spi_buddy_walt_14
+  - first:
+      213: -1011768776987659411
+    second: spi_buddy_walt_15
+  - first:
+      213: 9202070323453803260
+    second: spi_buddy_walt_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spi_buddy_walt_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 578
+        width: 56
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 398473b141c368c70800000000000000
+      internalID: 8972925364635912339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_walt_1
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 659
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9947b5e9dc95d0860800000000000000
+      internalID: 7497747694301705369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_walt_2
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 642
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87124aa06c675bc50800000000000000
+      internalID: 6680376215228129656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_walt_3
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 642
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ce5d563511d4cc50800000000000000
+      internalID: 6684697635961265864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_walt_4
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 593
+        width: 51
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61060cf170bd0d3a0800000000000000
+      internalID: -6642568626727526378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_walt_5
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 542
+        width: 57
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84751bba836da3400800000000000000
+      internalID: 304791463687968584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_walt_6
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 532
+        width: 46
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 171d027520312fbf0800000000000000
+      internalID: -292150125053030031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_walt_7
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 493
+        width: 62
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd08f5c815367b400800000000000000
+      internalID: 339849498788331743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_walt_8
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 475
+        width: 46
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a77e6b5a57d245690800000000000000
+      internalID: -7614411086662015110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_walt_9
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 442
+        width: 64
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99a91e7f5563caa30800000000000000
+      internalID: 4227813893052930713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_walt_10
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 416
+        width: 37
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 728fd444496862ab0800000000000000
+      internalID: -5033187562180708313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_walt_11
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 311
+        width: 66
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bbe4e3ca78bf2bf0800000000000000
+      internalID: -346855808872158282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_walt_12
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 366
+        width: 38
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4a9baa22e692bc90800000000000000
+      internalID: -7155490959815632306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_walt_13
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 311
+        width: 43
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 049ffc466d2037f20800000000000000
+      internalID: 3419079661941946688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_walt_14
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 217
+        width: 104
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6d6977d56e65a5d0800000000000000
+      internalID: -3051911788787831445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_walt_15
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 131
+        width: 110
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d63b1dc68a975f1f0800000000000000
+      internalID: -1011768776987659411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_walt_16
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 3
+        width: 111
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfab0ab543254bf70800000000000000
+      internalID: 9202070323453803260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spi_buddy_walt_0: 8972925364635912339
+      spi_buddy_walt_1: 7497747694301705369
+      spi_buddy_walt_10: -5033187562180708313
+      spi_buddy_walt_11: -346855808872158282
+      spi_buddy_walt_12: -7155490959815632306
+      spi_buddy_walt_13: 3419079661941946688
+      spi_buddy_walt_14: -3051911788787831445
+      spi_buddy_walt_15: -1011768776987659411
+      spi_buddy_walt_16: 9202070323453803260
+      spi_buddy_walt_2: 6680376215228129656
+      spi_buddy_walt_3: 6684697635961265864
+      spi_buddy_walt_4: -6642568626727526378
+      spi_buddy_walt_5: 304791463687968584
+      spi_buddy_walt_6: -292150125053030031
+      spi_buddy_walt_7: 339849498788331743
+      spi_buddy_walt_8: -7614411086662015110
+      spi_buddy_walt_9: 4227813893052930713
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

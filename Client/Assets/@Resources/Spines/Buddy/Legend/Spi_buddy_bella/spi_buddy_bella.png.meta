@@ -1,0 +1,1183 @@
+fileFormatVersion: 2
+guid: 39e2d72deff40c04a82538744f2e580c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 9117227645123619711
+    second: spi_buddy_bella_0
+  - first:
+      213: 3234065556043231171
+    second: spi_buddy_bella_1
+  - first:
+      213: 7846705941299153153
+    second: spi_buddy_bella_2
+  - first:
+      213: -341280775324401757
+    second: spi_buddy_bella_3
+  - first:
+      213: 2074705605793215556
+    second: spi_buddy_bella_4
+  - first:
+      213: 6687451382974063084
+    second: spi_buddy_bella_5
+  - first:
+      213: 7702271975036030838
+    second: spi_buddy_bella_6
+  - first:
+      213: 6885811536393186173
+    second: spi_buddy_bella_7
+  - first:
+      213: -319791542971819624
+    second: spi_buddy_bella_8
+  - first:
+      213: -7394549383972417087
+    second: spi_buddy_bella_9
+  - first:
+      213: -913940160785074837
+    second: spi_buddy_bella_10
+  - first:
+      213: 8688327701119839830
+    second: spi_buddy_bella_11
+  - first:
+      213: 3373687193233011227
+    second: spi_buddy_bella_12
+  - first:
+      213: -7663894549767402609
+    second: spi_buddy_bella_13
+  - first:
+      213: -7855895262181984479
+    second: spi_buddy_bella_14
+  - first:
+      213: 2511717549964567553
+    second: spi_buddy_bella_15
+  - first:
+      213: -2383558375372127906
+    second: spi_buddy_bella_16
+  - first:
+      213: 1421454839657823539
+    second: spi_buddy_bella_17
+  - first:
+      213: 5481475267763661515
+    second: spi_buddy_bella_18
+  - first:
+      213: -3817855936069871156
+    second: spi_buddy_bella_19
+  - first:
+      213: -6780249091431047550
+    second: spi_buddy_bella_20
+  - first:
+      213: -3528681772704332975
+    second: spi_buddy_bella_21
+  - first:
+      213: -8488695352181390141
+    second: spi_buddy_bella_22
+  - first:
+      213: 9044006349966371029
+    second: spi_buddy_bella_23
+  - first:
+      213: -1104199804643181763
+    second: spi_buddy_bella_24
+  - first:
+      213: 2837477360626625292
+    second: spi_buddy_bella_25
+  - first:
+      213: -7703271763763139361
+    second: spi_buddy_bella_26
+  - first:
+      213: 5028000973483787679
+    second: spi_buddy_bella_27
+  - first:
+      213: 4734872737606405317
+    second: spi_buddy_bella_28
+  - first:
+      213: 1109400927105003541
+    second: spi_buddy_bella_29
+  - first:
+      213: -3876220485324412894
+    second: spi_buddy_bella_30
+  - first:
+      213: -6394016300465349548
+    second: spi_buddy_bella_31
+  - first:
+      213: 6777046334016751231
+    second: spi_buddy_bella_32
+  - first:
+      213: 1237408898098339155
+    second: spi_buddy_bella_33
+  - first:
+      213: -2736733275822654752
+    second: spi_buddy_bella_34
+  - first:
+      213: 1572376813155639687
+    second: spi_buddy_bella_35
+  - first:
+      213: -5233854332588929085
+    second: spi_buddy_bella_36
+  - first:
+      213: 6552613627633855549
+    second: spi_buddy_bella_37
+  - first:
+      213: 7937649158554398016
+    second: spi_buddy_bella_38
+  - first:
+      213: -7542588841009836162
+    second: spi_buddy_bella_39
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spi_buddy_bella_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 93
+        width: 51
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7be6f3fc36e68e70800000000000000
+      internalID: 9117227645123619711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_1
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 93
+        width: 25
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cf68480d75b1ec20800000000000000
+      internalID: 3234065556043231171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 93
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1094510ea7915ec60800000000000000
+      internalID: 7846705941299153153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_3
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 84
+        width: 43
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3af7e1a61f6834bf0800000000000000
+      internalID: -341280775324401757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_4
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 84
+        width: 40
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 444f0d691c5dacc10800000000000000
+      internalID: 2074705605793215556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_5
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 83
+        width: 33
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce12dd6e9999ecc50800000000000000
+      internalID: 6687451382974063084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_6
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 83
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67f087b8d87f3ea60800000000000000
+      internalID: 7702271975036030838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_7
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 82
+        width: 52
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7ba0091c115f8f50800000000000000
+      internalID: 6885811536393186173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_8
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 81
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8999df6394fdf8bf0800000000000000
+      internalID: -319791542971819624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_9
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 81
+        width: 12
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c19d366388416990800000000000000
+      internalID: -7394549383972417087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_10
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 82
+        width: 52
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b65317a14480153f0800000000000000
+      internalID: -913940160785074837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_11
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 83
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65e2f6de204239870800000000000000
+      internalID: 8688327701119839830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_12
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 78
+        width: 41
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1230ffa0aeb1de20800000000000000
+      internalID: 3373687193233011227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_13
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 78
+        width: 41
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8bcf05138064a590800000000000000
+      internalID: -7663894549767402609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_14
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 91
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 127f7f0a1e04af290800000000000000
+      internalID: -7855895262181984479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_15
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 69
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 104a0c5ddc96bd220800000000000000
+      internalID: 2511717549964567553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_16
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 70
+        width: 31
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5189864946ebeed0800000000000000
+      internalID: -2383558375372127906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_17
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 70
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33d701e35a50ab310800000000000000
+      internalID: 1421454839657823539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_18
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 66
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bca6424c6bc121c40800000000000000
+      internalID: 5481475267763661515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_19
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 66
+        width: 25
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc950f60140440bc0800000000000000
+      internalID: -3817855936069871156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_20
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 59
+        width: 36
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28e5698ef57b7e1a0800000000000000
+      internalID: -6780249091431047550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_21
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 87
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 153009c9f9a970fc0800000000000000
+      internalID: -3528681772704332975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_22
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 87
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c408be5d88123a80800000000000000
+      internalID: -8488695352181390141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_23
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 83
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d86f1cabd3c28d70800000000000000
+      internalID: 9044006349966371029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_24
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 3
+        width: 72
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3bff23c0281da0f0800000000000000
+      internalID: -1104199804643181763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_25
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 3
+        width: 63
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0bec5a30aeb06720800000000000000
+      internalID: 2837477360626625292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_26
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 3
+        width: 182
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdce990052b781590800000000000000
+      internalID: -7703271763763139361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_27
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 78
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f95c1d2fe3c07c540800000000000000
+      internalID: 5028000973483787679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_28
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 48
+        width: 25
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cc06bd1ba5a5b140800000000000000
+      internalID: 4734872737606405317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_29
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 3
+        width: 63
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 510359de342656f00800000000000000
+      internalID: 1109400927105003541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_30
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 69
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22865257106e43ac0800000000000000
+      internalID: -3876220485324412894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_31
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 69
+        width: 21
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45c94ba3d04e347a0800000000000000
+      internalID: -6394016300465349548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_32
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 2
+        width: 130
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f768e650cb7ec0e50800000000000000
+      internalID: 6777046334016751231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_33
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 3
+        width: 18
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35d1f0536d82c2110800000000000000
+      internalID: 1237408898098339155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_34
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 3
+        width: 31
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ea7991e59b250ad0800000000000000
+      internalID: -2736733275822654752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_35
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 49
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 781e339716432d510800000000000000
+      internalID: 1572376813155639687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_36
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 49
+        width: 21
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cfc5e3f63d9d57b0800000000000000
+      internalID: -5233854332588929085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_37
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 3
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3cef79806f8fea50800000000000000
+      internalID: 6552613627633855549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_38
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 3
+        width: 34
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04d205faad1382e60800000000000000
+      internalID: 7937649158554398016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_bella_39
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 3
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7f88c45967535790800000000000000
+      internalID: -7542588841009836162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spi_buddy_bella_0: 9117227645123619711
+      spi_buddy_bella_1: 3234065556043231171
+      spi_buddy_bella_10: -913940160785074837
+      spi_buddy_bella_11: 8688327701119839830
+      spi_buddy_bella_12: 3373687193233011227
+      spi_buddy_bella_13: -7663894549767402609
+      spi_buddy_bella_14: -7855895262181984479
+      spi_buddy_bella_15: 2511717549964567553
+      spi_buddy_bella_16: -2383558375372127906
+      spi_buddy_bella_17: 1421454839657823539
+      spi_buddy_bella_18: 5481475267763661515
+      spi_buddy_bella_19: -3817855936069871156
+      spi_buddy_bella_2: 7846705941299153153
+      spi_buddy_bella_20: -6780249091431047550
+      spi_buddy_bella_21: -3528681772704332975
+      spi_buddy_bella_22: -8488695352181390141
+      spi_buddy_bella_23: 9044006349966371029
+      spi_buddy_bella_24: -1104199804643181763
+      spi_buddy_bella_25: 2837477360626625292
+      spi_buddy_bella_26: -7703271763763139361
+      spi_buddy_bella_27: 5028000973483787679
+      spi_buddy_bella_28: 4734872737606405317
+      spi_buddy_bella_29: 1109400927105003541
+      spi_buddy_bella_3: -341280775324401757
+      spi_buddy_bella_30: -3876220485324412894
+      spi_buddy_bella_31: -6394016300465349548
+      spi_buddy_bella_32: 6777046334016751231
+      spi_buddy_bella_33: 1237408898098339155
+      spi_buddy_bella_34: -2736733275822654752
+      spi_buddy_bella_35: 1572376813155639687
+      spi_buddy_bella_36: -5233854332588929085
+      spi_buddy_bella_37: 6552613627633855549
+      spi_buddy_bella_38: 7937649158554398016
+      spi_buddy_bella_39: -7542588841009836162
+      spi_buddy_bella_4: 2074705605793215556
+      spi_buddy_bella_5: 6687451382974063084
+      spi_buddy_bella_6: 7702271975036030838
+      spi_buddy_bella_7: 6885811536393186173
+      spi_buddy_bella_8: -319791542971819624
+      spi_buddy_bella_9: -7394549383972417087
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

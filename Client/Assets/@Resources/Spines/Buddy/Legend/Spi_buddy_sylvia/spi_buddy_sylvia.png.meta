@@ -1,0 +1,845 @@
+fileFormatVersion: 2
+guid: 102bbbb1690f1b34382c895f4ae0769d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7839674751281477905
+    second: spi_buddy_sylvia_0
+  - first:
+      213: -3178323635176393292
+    second: spi_buddy_sylvia_1
+  - first:
+      213: 7411744362505214591
+    second: spi_buddy_sylvia_2
+  - first:
+      213: 4415592918419406062
+    second: spi_buddy_sylvia_3
+  - first:
+      213: -6592897039616733312
+    second: spi_buddy_sylvia_4
+  - first:
+      213: 2640427422237852639
+    second: spi_buddy_sylvia_5
+  - first:
+      213: 8059459816568866127
+    second: spi_buddy_sylvia_6
+  - first:
+      213: 142009803915530492
+    second: spi_buddy_sylvia_7
+  - first:
+      213: -8751000491913599883
+    second: spi_buddy_sylvia_8
+  - first:
+      213: 8835628011698327763
+    second: spi_buddy_sylvia_9
+  - first:
+      213: -517450867026324673
+    second: spi_buddy_sylvia_10
+  - first:
+      213: -8297404536005924668
+    second: spi_buddy_sylvia_11
+  - first:
+      213: -1352210917670434563
+    second: spi_buddy_sylvia_12
+  - first:
+      213: -70158189097938961
+    second: spi_buddy_sylvia_13
+  - first:
+      213: -2018345697224918122
+    second: spi_buddy_sylvia_14
+  - first:
+      213: 8364985091111255432
+    second: spi_buddy_sylvia_15
+  - first:
+      213: 1964743812025499395
+    second: spi_buddy_sylvia_16
+  - first:
+      213: -8140868388534491555
+    second: spi_buddy_sylvia_17
+  - first:
+      213: 8295104795023027373
+    second: spi_buddy_sylvia_18
+  - first:
+      213: -3479838653982459989
+    second: spi_buddy_sylvia_19
+  - first:
+      213: 773768636701753243
+    second: spi_buddy_sylvia_20
+  - first:
+      213: -7840017196314276444
+    second: spi_buddy_sylvia_21
+  - first:
+      213: 1637107069091956446
+    second: spi_buddy_sylvia_22
+  - first:
+      213: -2525929751931137762
+    second: spi_buddy_sylvia_23
+  - first:
+      213: 9199653078402146838
+    second: spi_buddy_sylvia_24
+  - first:
+      213: 6886878178164053876
+    second: spi_buddy_sylvia_25
+  - first:
+      213: 238949213905677885
+    second: spi_buddy_sylvia_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 93
+        width: 59
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1193bb066ae1ccc60800000000000000
+      internalID: 7839674751281477905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_1
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 93
+        width: 49
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b535184e7354e3d0800000000000000
+      internalID: -3178323635176393292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_2
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 92
+        width: 43
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7a90258a3ecbd660800000000000000
+      internalID: 7411744362505214591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_3
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 2
+        width: 120
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eec7e1f4d56574d30800000000000000
+      internalID: 4415592918419406062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_4
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 67
+        width: 63
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08f8be8b2135184a0800000000000000
+      internalID: -6592897039616733312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_5
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 87
+        width: 25
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd300bd30cea4a420800000000000000
+      internalID: 2640427422237852639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_6
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 87
+        width: 27
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f454f189004f8df60800000000000000
+      internalID: 8059459816568866127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_7
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 117
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf0120d0a2588f100800000000000000
+      internalID: 142009803915530492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_8
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 157
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 574a83ada633e8680800000000000000
+      internalID: -8751000491913599883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_9
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 68
+        width: 57
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d015cc0dd47e9a70800000000000000
+      internalID: 8835628011698327763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_10
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 2
+        width: 90
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f339d229d25a1d8f0800000000000000
+      internalID: -517450867026324673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_11
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 2
+        width: 82
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c8e6a93982b9dc80800000000000000
+      internalID: -8297404536005924668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_12
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 1
+        width: 130
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df849dea55bfb3de0800000000000000
+      internalID: -1352210917670434563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_13
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 2
+        width: 71
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fef8bbcaf7fb60ff0800000000000000
+      internalID: -70158189097938961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_14
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 2
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69b78f238456df3e0800000000000000
+      internalID: -2018345697224918122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_15
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 1
+        width: 27
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88dff1bee95661470800000000000000
+      internalID: 8364985091111255432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_16
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 1
+        width: 25
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30f3d6e561c244b10800000000000000
+      internalID: 1964743812025499395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_17
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 1
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d56e1323553d50f80800000000000000
+      internalID: -8140868388534491555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_18
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 28
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dacacf99cd12e1370800000000000000
+      internalID: 8295104795023027373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_19
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 33
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba7b3b16e2125bfc0800000000000000
+      internalID: -3479838653982459989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_20
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 1
+        width: 27
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9f32f8b97afcba00800000000000000
+      internalID: 773768636701753243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_21
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 28
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4adcbbce5e9a23390800000000000000
+      internalID: -7840017196314276444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_22
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 31
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed6c180a43c28b610800000000000000
+      internalID: 1637107069091956446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_23
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 1
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e11dd88064812fcd0800000000000000
+      internalID: -2525929751931137762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_24
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 1
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6122df2abbbbbaf70800000000000000
+      internalID: 9199653078402146838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_25
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 1
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4779bdcf63b139f50800000000000000
+      internalID: 6886878178164053876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_sylvia_26
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 1
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3ee4364b0be05300800000000000000
+      internalID: 238949213905677885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spi_buddy_sylvia_0: 7839674751281477905
+      spi_buddy_sylvia_1: -3178323635176393292
+      spi_buddy_sylvia_10: -517450867026324673
+      spi_buddy_sylvia_11: -8297404536005924668
+      spi_buddy_sylvia_12: -1352210917670434563
+      spi_buddy_sylvia_13: -70158189097938961
+      spi_buddy_sylvia_14: -2018345697224918122
+      spi_buddy_sylvia_15: 8364985091111255432
+      spi_buddy_sylvia_16: 1964743812025499395
+      spi_buddy_sylvia_17: -8140868388534491555
+      spi_buddy_sylvia_18: 8295104795023027373
+      spi_buddy_sylvia_19: -3479838653982459989
+      spi_buddy_sylvia_2: 7411744362505214591
+      spi_buddy_sylvia_20: 773768636701753243
+      spi_buddy_sylvia_21: -7840017196314276444
+      spi_buddy_sylvia_22: 1637107069091956446
+      spi_buddy_sylvia_23: -2525929751931137762
+      spi_buddy_sylvia_24: 9199653078402146838
+      spi_buddy_sylvia_25: 6886878178164053876
+      spi_buddy_sylvia_26: 238949213905677885
+      spi_buddy_sylvia_3: 4415592918419406062
+      spi_buddy_sylvia_4: -6592897039616733312
+      spi_buddy_sylvia_5: 2640427422237852639
+      spi_buddy_sylvia_6: 8059459816568866127
+      spi_buddy_sylvia_7: 142009803915530492
+      spi_buddy_sylvia_8: -8751000491913599883
+      spi_buddy_sylvia_9: 8835628011698327763
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

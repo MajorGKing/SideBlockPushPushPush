@@ -1,0 +1,741 @@
+fileFormatVersion: 2
+guid: 11cf3b2401fb19c4da1d856a95581915
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -970329360766827623
+    second: spi_buddy_coon_0
+  - first:
+      213: -7324496545600743514
+    second: spi_buddy_coon_1
+  - first:
+      213: 9138635171206048552
+    second: spi_buddy_coon_2
+  - first:
+      213: 323720956295540154
+    second: spi_buddy_coon_3
+  - first:
+      213: -8058290562437166993
+    second: spi_buddy_coon_4
+  - first:
+      213: 3768444564251144956
+    second: spi_buddy_coon_5
+  - first:
+      213: -6423876334849376646
+    second: spi_buddy_coon_6
+  - first:
+      213: 7318008098106771064
+    second: spi_buddy_coon_7
+  - first:
+      213: -5506674897386616769
+    second: spi_buddy_coon_8
+  - first:
+      213: -984217805955110973
+    second: spi_buddy_coon_9
+  - first:
+      213: -433200110332501767
+    second: spi_buddy_coon_10
+  - first:
+      213: 2854654539212577228
+    second: spi_buddy_coon_11
+  - first:
+      213: -1190524781544231028
+    second: spi_buddy_coon_12
+  - first:
+      213: -6082678711686348244
+    second: spi_buddy_coon_13
+  - first:
+      213: 5401731445287753677
+    second: spi_buddy_coon_14
+  - first:
+      213: 2427268618183572215
+    second: spi_buddy_coon_15
+  - first:
+      213: 2743168492133046691
+    second: spi_buddy_coon_16
+  - first:
+      213: -3125238782762702349
+    second: spi_buddy_coon_17
+  - first:
+      213: -9158445039886806282
+    second: spi_buddy_coon_18
+  - first:
+      213: -3406476676569381456
+    second: spi_buddy_coon_19
+  - first:
+      213: -5500414639070054164
+    second: spi_buddy_coon_20
+  - first:
+      213: -8659157529449693100
+    second: spi_buddy_coon_21
+  - first:
+      213: -2567614341374383022
+    second: spi_buddy_coon_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spi_buddy_coon_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 4
+        width: 88
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9938c506692b882f0800000000000000
+      internalID: -970329360766827623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_1
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 4
+        width: 82
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a754e8d2392a5a90800000000000000
+      internalID: -7324496545600743514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_2
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 219
+        width: 49
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82ba0a70544f2de70800000000000000
+      internalID: 9138635171206048552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_3
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 219
+        width: 34
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abd685e9e761e7400800000000000000
+      internalID: 323720956295540154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_4
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 221
+        width: 48
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f68cc099d633b2090800000000000000
+      internalID: -8058290562437166993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_5
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 160
+        width: 37
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf2f0f77d543c4430800000000000000
+      internalID: 3768444564251144956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_6
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 178
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7eb344328ec9d6a0800000000000000
+      internalID: -6423876334849376646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_7
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 178
+        width: 40
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 876061fb799ce8560800000000000000
+      internalID: 7318008098106771064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_8
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 192
+        width: 37
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f38c5bf3b5c5493b0800000000000000
+      internalID: -5506674897386616769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_9
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 198
+        width: 43
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c76e6ebe1b5752f0800000000000000
+      internalID: -984217805955110973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_10
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 116
+        width: 91
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f0a8fa7bc6fcf9f0800000000000000
+      internalID: -433200110332501767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_11
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 115
+        width: 34
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc9d836cd25cd9720800000000000000
+      internalID: 2854654539212577228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_12
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 135
+        width: 82
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8fa1c3d4086a7fe0800000000000000
+      internalID: -1190524781544231028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_13
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 145
+        width: 42
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c22ca1b60fbf59ba0800000000000000
+      internalID: -6082678711686348244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_14
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 155
+        width: 31
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc71f60412ec6fa40800000000000000
+      internalID: 5401731445287753677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_15
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 112
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7faf841b2f36fa120800000000000000
+      internalID: 2427268618183572215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_16
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 68
+        width: 101
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a952aca531b11620800000000000000
+      internalID: 2743168492133046691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_17
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 112
+        width: 57
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f9a723a2ebe0a4d0800000000000000
+      internalID: -3125238782762702349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_18
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 67
+        width: 24
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f2db9e72caa6e080800000000000000
+      internalID: -9158445039886806282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_19
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 91
+        width: 60
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b5cd6dc283c9b0d0800000000000000
+      internalID: -3406476676569381456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_20
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 2
+        width: 132
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce8fed8370a9aa3b0800000000000000
+      internalID: -5500414639070054164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_21
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 1
+        width: 130
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 450800bea1e74d780800000000000000
+      internalID: -8659157529449693100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_coon_22
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 3
+        width: 40
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25c6e2e3c500e5cd0800000000000000
+      internalID: -2567614341374383022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spi_buddy_coon_0: -970329360766827623
+      spi_buddy_coon_1: -7324496545600743514
+      spi_buddy_coon_10: -433200110332501767
+      spi_buddy_coon_11: 2854654539212577228
+      spi_buddy_coon_12: -1190524781544231028
+      spi_buddy_coon_13: -6082678711686348244
+      spi_buddy_coon_14: 5401731445287753677
+      spi_buddy_coon_15: 2427268618183572215
+      spi_buddy_coon_16: 2743168492133046691
+      spi_buddy_coon_17: -3125238782762702349
+      spi_buddy_coon_18: -9158445039886806282
+      spi_buddy_coon_19: -3406476676569381456
+      spi_buddy_coon_2: 9138635171206048552
+      spi_buddy_coon_20: -5500414639070054164
+      spi_buddy_coon_21: -8659157529449693100
+      spi_buddy_coon_22: -2567614341374383022
+      spi_buddy_coon_3: 323720956295540154
+      spi_buddy_coon_4: -8058290562437166993
+      spi_buddy_coon_5: 3768444564251144956
+      spi_buddy_coon_6: -6423876334849376646
+      spi_buddy_coon_7: 7318008098106771064
+      spi_buddy_coon_8: -5506674897386616769
+      spi_buddy_coon_9: -984217805955110973
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,1053 @@
+fileFormatVersion: 2
+guid: db53c4721078335499b83b2ef6446743
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7979644612386350908
+    second: spi_buddy_kyle_0
+  - first:
+      213: 1242195257763607695
+    second: spi_buddy_kyle_1
+  - first:
+      213: -8769114792932060898
+    second: spi_buddy_kyle_2
+  - first:
+      213: -468471333355040863
+    second: spi_buddy_kyle_3
+  - first:
+      213: 7991919261976154263
+    second: spi_buddy_kyle_4
+  - first:
+      213: 7864453293779547355
+    second: spi_buddy_kyle_5
+  - first:
+      213: 1767382618610547900
+    second: spi_buddy_kyle_6
+  - first:
+      213: 4850489794024219745
+    second: spi_buddy_kyle_7
+  - first:
+      213: 6433045311119449223
+    second: spi_buddy_kyle_8
+  - first:
+      213: -1055485495861586089
+    second: spi_buddy_kyle_9
+  - first:
+      213: -6503802569892338066
+    second: spi_buddy_kyle_10
+  - first:
+      213: 7138907037251389346
+    second: spi_buddy_kyle_11
+  - first:
+      213: -6868121543590038056
+    second: spi_buddy_kyle_12
+  - first:
+      213: 934310516169602544
+    second: spi_buddy_kyle_13
+  - first:
+      213: 5965999077443016528
+    second: spi_buddy_kyle_14
+  - first:
+      213: -4848401639300573030
+    second: spi_buddy_kyle_15
+  - first:
+      213: -5620346323487451493
+    second: spi_buddy_kyle_16
+  - first:
+      213: -4306617956423499272
+    second: spi_buddy_kyle_17
+  - first:
+      213: -7146208950872320359
+    second: spi_buddy_kyle_18
+  - first:
+      213: 7096455691931142963
+    second: spi_buddy_kyle_19
+  - first:
+      213: -2194810950753148221
+    second: spi_buddy_kyle_20
+  - first:
+      213: 3486967755175109465
+    second: spi_buddy_kyle_21
+  - first:
+      213: 1053559701987807919
+    second: spi_buddy_kyle_22
+  - first:
+      213: -159683538659517866
+    second: spi_buddy_kyle_23
+  - first:
+      213: -5552289385199725963
+    second: spi_buddy_kyle_24
+  - first:
+      213: -7568560459969044668
+    second: spi_buddy_kyle_25
+  - first:
+      213: 1222952263927201492
+    second: spi_buddy_kyle_26
+  - first:
+      213: 1764589251692500494
+    second: spi_buddy_kyle_27
+  - first:
+      213: 1353640493608969216
+    second: spi_buddy_kyle_28
+  - first:
+      213: 6683800120617992951
+    second: spi_buddy_kyle_29
+  - first:
+      213: 4019900476640137717
+    second: spi_buddy_kyle_30
+  - first:
+      213: -7793933888293299844
+    second: spi_buddy_kyle_31
+  - first:
+      213: -6625211774283352682
+    second: spi_buddy_kyle_32
+  - first:
+      213: 3042792981865272650
+    second: spi_buddy_kyle_33
+  - first:
+      213: 3318882952020737966
+    second: spi_buddy_kyle_34
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spi_buddy_kyle_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 147
+        width: 232
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c37e52b3f746dbe60800000000000000
+      internalID: 7979644612386350908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_1
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 200
+        width: 36
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f84bca8610a2d3110800000000000000
+      internalID: 1242195257763607695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_2
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 147
+        width: 40
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1159ac7e88dd4680800000000000000
+      internalID: -8769114792932060898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_3
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 13
+        width: 245
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1af4bebedc7af79f0800000000000000
+      internalID: -468471333355040863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_4
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 138
+        width: 31
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 790d0bbc93009ee60800000000000000
+      internalID: 7991919261976154263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_5
+      rect:
+        serializedVersion: 2
+        x: 1308
+        y: 12
+        width: 148
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd471606a96242d60800000000000000
+      internalID: 7864453293779547355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_6
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 109
+        width: 73
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbc3b7ca021078810800000000000000
+      internalID: 1767382618610547900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_7
+      rect:
+        serializedVersion: 2
+        x: 1529
+        y: 111
+        width: 72
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 164a877c4c6605340800000000000000
+      internalID: 4850489794024219745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_8
+      rect:
+        serializedVersion: 2
+        x: 1601
+        y: 111
+        width: 46
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78c544170a4c64950800000000000000
+      internalID: 6433045311119449223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_9
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 20
+        width: 179
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 757d791a8892a51f0800000000000000
+      internalID: -1055485495861586089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_10
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 18
+        width: 186
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e666b44750addb5a0800000000000000
+      internalID: -6503802569892338066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_11
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 90
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a7c7e7702e721360800000000000000
+      internalID: 7138907037251389346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_12
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 21
+        width: 196
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d5bb1058d78fa0a0800000000000000
+      internalID: -6868121543590038056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_13
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 92
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f5733ad67657fc00800000000000000
+      internalID: 934310516169602544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_14
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 24
+        width: 175
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0579c4d3d8c7bc250800000000000000
+      internalID: 5965999077443016528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_15
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 89
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a985111a56407bcb0800000000000000
+      internalID: -4848401639300573030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_16
+      rect:
+        serializedVersion: 2
+        x: 1124
+        y: 13
+        width: 181
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b969bd1fbc48002b0800000000000000
+      internalID: -5620346323487451493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_17
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 12
+        width: 101
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f10f0c39c1db34c0800000000000000
+      internalID: -4306617956423499272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_18
+      rect:
+        serializedVersion: 2
+        x: 1557
+        y: 78
+        width: 105
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 996d98842d093dc90800000000000000
+      internalID: -7146208950872320359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_19
+      rect:
+        serializedVersion: 2
+        x: 1687
+        y: 12
+        width: 86
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33bcad96adcab7260800000000000000
+      internalID: 7096455691931142963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_20
+      rect:
+        serializedVersion: 2
+        x: 1859
+        y: 65
+        width: 65
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c2a833a1177a81e0800000000000000
+      internalID: -2194810950753148221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_21
+      rect:
+        serializedVersion: 2
+        x: 1924
+        y: 65
+        width: 52
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9532476d2b2346030800000000000000
+      internalID: 3486967755175109465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_22
+      rect:
+        serializedVersion: 2
+        x: 1976
+        y: 64
+        width: 50
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa256aa87fefe9e00800000000000000
+      internalID: 1053559701987807919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_23
+      rect:
+        serializedVersion: 2
+        x: 2026
+        y: 94
+        width: 21
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65ad8b9eaa0b8cdf0800000000000000
+      internalID: -159683538659517866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_24
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 78
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5729ff0b83e42f2b0800000000000000
+      internalID: -5552289385199725963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_25
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 43
+        width: 25
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44f5a729c5217f690800000000000000
+      internalID: -7568560459969044668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_26
+      rect:
+        serializedVersion: 2
+        x: 1557
+        y: 12
+        width: 130
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4def3a4ca9cc8f010800000000000000
+      internalID: 1222952263927201492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_27
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 12
+        width: 86
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e069a9143941d7810800000000000000
+      internalID: 1764589251692500494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_28
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 52
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 004a5276bd819c210800000000000000
+      internalID: 1353640493608969216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_29
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 60
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f206232cc0a1cc50800000000000000
+      internalID: 6683800120617992951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_30
+      rect:
+        serializedVersion: 2
+        x: 1859
+        y: 12
+        width: 89
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f11f866f2e89c730800000000000000
+      internalID: 4019900476640137717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_31
+      rect:
+        serializedVersion: 2
+        x: 1948
+        y: 12
+        width: 89
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7916613c6266d390800000000000000
+      internalID: -7793933888293299844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_32
+      rect:
+        serializedVersion: 2
+        x: 2026
+        y: 64
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 695fa104ef48e04a0800000000000000
+      internalID: -6625211774283352682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_33
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 39
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a459129781c2a3a20800000000000000
+      internalID: 3042792981865272650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_kyle_34
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 33
+        width: 21
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eafbb4ee57a0f0e20800000000000000
+      internalID: 3318882952020737966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spi_buddy_kyle_0: 7979644612386350908
+      spi_buddy_kyle_1: 1242195257763607695
+      spi_buddy_kyle_10: -6503802569892338066
+      spi_buddy_kyle_11: 7138907037251389346
+      spi_buddy_kyle_12: -6868121543590038056
+      spi_buddy_kyle_13: 934310516169602544
+      spi_buddy_kyle_14: 5965999077443016528
+      spi_buddy_kyle_15: -4848401639300573030
+      spi_buddy_kyle_16: -5620346323487451493
+      spi_buddy_kyle_17: -4306617956423499272
+      spi_buddy_kyle_18: -7146208950872320359
+      spi_buddy_kyle_19: 7096455691931142963
+      spi_buddy_kyle_2: -8769114792932060898
+      spi_buddy_kyle_20: -2194810950753148221
+      spi_buddy_kyle_21: 3486967755175109465
+      spi_buddy_kyle_22: 1053559701987807919
+      spi_buddy_kyle_23: -159683538659517866
+      spi_buddy_kyle_24: -5552289385199725963
+      spi_buddy_kyle_25: -7568560459969044668
+      spi_buddy_kyle_26: 1222952263927201492
+      spi_buddy_kyle_27: 1764589251692500494
+      spi_buddy_kyle_28: 1353640493608969216
+      spi_buddy_kyle_29: 6683800120617992951
+      spi_buddy_kyle_3: -468471333355040863
+      spi_buddy_kyle_30: 4019900476640137717
+      spi_buddy_kyle_31: -7793933888293299844
+      spi_buddy_kyle_32: -6625211774283352682
+      spi_buddy_kyle_33: 3042792981865272650
+      spi_buddy_kyle_34: 3318882952020737966
+      spi_buddy_kyle_4: 7991919261976154263
+      spi_buddy_kyle_5: 7864453293779547355
+      spi_buddy_kyle_6: 1767382618610547900
+      spi_buddy_kyle_7: 4850489794024219745
+      spi_buddy_kyle_8: 6433045311119449223
+      spi_buddy_kyle_9: -1055485495861586089
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

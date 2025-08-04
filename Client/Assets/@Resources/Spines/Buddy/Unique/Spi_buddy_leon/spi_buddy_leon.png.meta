@@ -1,0 +1,1209 @@
+fileFormatVersion: 2
+guid: 2b5de62defaa9874081a91ef4117e7bb
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1951528668477404059
+    second: spi_buddy_leon_0
+  - first:
+      213: -5910930342736711480
+    second: spi_buddy_leon_1
+  - first:
+      213: 8562036108173288591
+    second: spi_buddy_leon_2
+  - first:
+      213: -78282098858650830
+    second: spi_buddy_leon_3
+  - first:
+      213: 3239268564263195486
+    second: spi_buddy_leon_4
+  - first:
+      213: -4847472425504678007
+    second: spi_buddy_leon_5
+  - first:
+      213: 2946179353029840399
+    second: spi_buddy_leon_6
+  - first:
+      213: 7382761791339175027
+    second: spi_buddy_leon_7
+  - first:
+      213: -2768911292309996924
+    second: spi_buddy_leon_8
+  - first:
+      213: 6251914880310554769
+    second: spi_buddy_leon_9
+  - first:
+      213: -1938029328124366537
+    second: spi_buddy_leon_10
+  - first:
+      213: -8383045371454681116
+    second: spi_buddy_leon_11
+  - first:
+      213: 6945987406138040465
+    second: spi_buddy_leon_12
+  - first:
+      213: -4943974876742400168
+    second: spi_buddy_leon_13
+  - first:
+      213: 2028697717387581777
+    second: spi_buddy_leon_14
+  - first:
+      213: -2384801458917260075
+    second: spi_buddy_leon_15
+  - first:
+      213: -9023591021795070682
+    second: spi_buddy_leon_16
+  - first:
+      213: 6263992202730652102
+    second: spi_buddy_leon_17
+  - first:
+      213: 18332432916365825
+    second: spi_buddy_leon_18
+  - first:
+      213: 4048411853603277474
+    second: spi_buddy_leon_19
+  - first:
+      213: -8367776728583020009
+    second: spi_buddy_leon_20
+  - first:
+      213: -1265471655153171783
+    second: spi_buddy_leon_21
+  - first:
+      213: 8588146727432219306
+    second: spi_buddy_leon_22
+  - first:
+      213: 828749888717674466
+    second: spi_buddy_leon_23
+  - first:
+      213: -5353546285000001082
+    second: spi_buddy_leon_24
+  - first:
+      213: -5744252774366567427
+    second: spi_buddy_leon_25
+  - first:
+      213: -7224838089710123284
+    second: spi_buddy_leon_26
+  - first:
+      213: 3157489878339703183
+    second: spi_buddy_leon_27
+  - first:
+      213: -6856148220479498308
+    second: spi_buddy_leon_28
+  - first:
+      213: 2777003387437082464
+    second: spi_buddy_leon_29
+  - first:
+      213: -2217241028566608513
+    second: spi_buddy_leon_30
+  - first:
+      213: -7707797449084689555
+    second: spi_buddy_leon_31
+  - first:
+      213: 7504954727259444755
+    second: spi_buddy_leon_32
+  - first:
+      213: 2771254726267028520
+    second: spi_buddy_leon_33
+  - first:
+      213: 1283115219074690355
+    second: spi_buddy_leon_34
+  - first:
+      213: -2664971546755328920
+    second: spi_buddy_leon_35
+  - first:
+      213: 4710124726110614219
+    second: spi_buddy_leon_36
+  - first:
+      213: 7033515111367964465
+    second: spi_buddy_leon_37
+  - first:
+      213: -7490915425664652549
+    second: spi_buddy_leon_38
+  - first:
+      213: -186706114392491801
+    second: spi_buddy_leon_39
+  - first:
+      213: -8852228927346206200
+    second: spi_buddy_leon_40
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spi_buddy_leon_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 996
+        width: 31
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b93369dfbf8351b10800000000000000
+      internalID: 1951528668477404059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_1
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 976
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c0b915bb2828fda0800000000000000
+      internalID: -5910930342736711480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_2
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 977
+        width: 23
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f84acbd0a7672d670800000000000000
+      internalID: 8562036108173288591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_3
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 895
+        width: 115
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 233124988d2e9eef0800000000000000
+      internalID: -78282098858650830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_4
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 895
+        width: 81
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e535ff8c89134fc20800000000000000
+      internalID: 3239268564263195486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_5
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 896
+        width: 74
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98fda4313815abcb0800000000000000
+      internalID: -4847472425504678007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_6
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 954
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0e0fe5138ee2e820800000000000000
+      internalID: 2946179353029840399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_7
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 895
+        width: 69
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37c1912dbb6d47660800000000000000
+      internalID: 7382761791339175027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_8
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 896
+        width: 62
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48a7b4799d9d299d0800000000000000
+      internalID: -2768911292309996924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_9
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 896
+        width: 54
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 190b3e6a57343c650800000000000000
+      internalID: 6251914880310554769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_10
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 896
+        width: 46
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 731bbdc189cba15e0800000000000000
+      internalID: -1938029328124366537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_11
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 895
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ef067266a079ab80800000000000000
+      internalID: -8383045371454681116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_12
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 884
+        height: 894
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 190e1359eba156060800000000000000
+      internalID: 6945987406138040465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_13
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 635
+        width: 38
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 857405d3b09736bb0800000000000000
+      internalID: -4943974876742400168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_14
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 578
+        width: 39
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 159588153d1672c10800000000000000
+      internalID: 2028697717387581777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_15
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 502
+        width: 43
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d4476555bb77eed0800000000000000
+      internalID: -2384801458917260075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_16
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 501
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62d208356c3c5c280800000000000000
+      internalID: -9023591021795070682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_17
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 440
+        width: 74
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c1c39768bb2ee650800000000000000
+      internalID: 6263992202730652102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_18
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 367
+        width: 89
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10249d72041214000800000000000000
+      internalID: 18332432916365825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_19
+      rect:
+        serializedVersion: 2
+        x: 975
+        y: 368
+        width: 36
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2aa0186a129de2830800000000000000
+      internalID: 4048411853603277474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_20
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 301
+        width: 130
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7126705566fafdb80800000000000000
+      internalID: -8367776728583020009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_21
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 151
+        width: 146
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b205410c34207ee0800000000000000
+      internalID: -1265471655153171783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_22
+      rect:
+        serializedVersion: 2
+        x: 1015
+        y: 301
+        width: 22
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaae78752f93f2770800000000000000
+      internalID: 8588146727432219306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_23
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 279
+        width: 29
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e759a402af408b00800000000000000
+      internalID: 828749888717674466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_24
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 230
+        width: 46
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c976f1a40264b5b0800000000000000
+      internalID: -5353546285000001082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_25
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 197
+        width: 63
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df324db39805840b0800000000000000
+      internalID: -5744252774366567427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_26
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 1
+        width: 146
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce6cd1749083cbb90800000000000000
+      internalID: -7224838089710123284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_27
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 151
+        width: 61
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f815454b058a1db20800000000000000
+      internalID: 3157489878339703183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_28
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 134
+        width: 61
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb794e6d4811ad0a0800000000000000
+      internalID: -6856148220479498308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_29
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 101
+        width: 72
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0676e302ed5e98620800000000000000
+      internalID: 2777003387437082464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_30
+      rect:
+        serializedVersion: 2
+        x: 1111
+        y: 101
+        width: 40
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f759dde2807ca31e0800000000000000
+      internalID: -2217241028566608513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_31
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 54
+        width: 46
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6325a6ce07680590800000000000000
+      internalID: -7707797449084689555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_32
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 1
+        width: 115
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31610bdbf84f62860800000000000000
+      internalID: 7504954727259444755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_33
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 1
+        width: 71
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 824c445ad79757620800000000000000
+      internalID: 2771254726267028520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_34
+      rect:
+        serializedVersion: 2
+        x: 1226
+        y: 69
+        width: 66
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33d28d65e7a8ec110800000000000000
+      internalID: 1283115219074690355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_35
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 1
+        width: 81
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86410237f7e140bd0800000000000000
+      internalID: -2664971546755328920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_36
+      rect:
+        serializedVersion: 2
+        x: 1306
+        y: 1
+        width: 64
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc27b9bab79bd5140800000000000000
+      internalID: 4710124726110614219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_37
+      rect:
+        serializedVersion: 2
+        x: 1370
+        y: 1
+        width: 65
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 137fd678ab01c9160800000000000000
+      internalID: 7033515111367964465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_38
+      rect:
+        serializedVersion: 2
+        x: 1435
+        y: 1
+        width: 53
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfaa3c2eb1cea0890800000000000000
+      internalID: -7490915425664652549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_39
+      rect:
+        serializedVersion: 2
+        x: 1489
+        y: 2
+        width: 44
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e8fd3637cfa86df0800000000000000
+      internalID: -186706114392491801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_leon_40
+      rect:
+        serializedVersion: 2
+        x: 1534
+        y: 1
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80a971311b0962580800000000000000
+      internalID: -8852228927346206200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spi_buddy_leon_0: 1951528668477404059
+      spi_buddy_leon_1: -5910930342736711480
+      spi_buddy_leon_10: -1938029328124366537
+      spi_buddy_leon_11: -8383045371454681116
+      spi_buddy_leon_12: 6945987406138040465
+      spi_buddy_leon_13: -4943974876742400168
+      spi_buddy_leon_14: 2028697717387581777
+      spi_buddy_leon_15: -2384801458917260075
+      spi_buddy_leon_16: -9023591021795070682
+      spi_buddy_leon_17: 6263992202730652102
+      spi_buddy_leon_18: 18332432916365825
+      spi_buddy_leon_19: 4048411853603277474
+      spi_buddy_leon_2: 8562036108173288591
+      spi_buddy_leon_20: -8367776728583020009
+      spi_buddy_leon_21: -1265471655153171783
+      spi_buddy_leon_22: 8588146727432219306
+      spi_buddy_leon_23: 828749888717674466
+      spi_buddy_leon_24: -5353546285000001082
+      spi_buddy_leon_25: -5744252774366567427
+      spi_buddy_leon_26: -7224838089710123284
+      spi_buddy_leon_27: 3157489878339703183
+      spi_buddy_leon_28: -6856148220479498308
+      spi_buddy_leon_29: 2777003387437082464
+      spi_buddy_leon_3: -78282098858650830
+      spi_buddy_leon_30: -2217241028566608513
+      spi_buddy_leon_31: -7707797449084689555
+      spi_buddy_leon_32: 7504954727259444755
+      spi_buddy_leon_33: 2771254726267028520
+      spi_buddy_leon_34: 1283115219074690355
+      spi_buddy_leon_35: -2664971546755328920
+      spi_buddy_leon_36: 4710124726110614219
+      spi_buddy_leon_37: 7033515111367964465
+      spi_buddy_leon_38: -7490915425664652549
+      spi_buddy_leon_39: -186706114392491801
+      spi_buddy_leon_4: 3239268564263195486
+      spi_buddy_leon_40: -8852228927346206200
+      spi_buddy_leon_5: -4847472425504678007
+      spi_buddy_leon_6: 2946179353029840399
+      spi_buddy_leon_7: 7382761791339175027
+      spi_buddy_leon_8: -2768911292309996924
+      spi_buddy_leon_9: 6251914880310554769
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

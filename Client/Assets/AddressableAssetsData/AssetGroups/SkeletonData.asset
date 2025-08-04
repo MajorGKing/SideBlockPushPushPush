@@ -21,18 +21,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2dec25b14d8ea774faa0a6e81166269c
-    m_Address: spi_buddy_ellie_SkeletonData
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3045e28113d9a164489d8cfe733f13df
-    m_Address: spi_buddy_mari_SkeletonData
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8ae6bc2ede1eac24485d384633d66392
     m_Address: spider_rare_SkeletonData
     m_ReadOnly: 0
@@ -41,18 +29,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 94f7be4b7b3efbf4abada33969c9b41a
     m_Address: spider_common_SkeletonData
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 96b4b7907e5b9ce4bbe9219672862913
-    m_Address: spi_buddy_tom_SkeletonData
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b00ef04fedced014197dfae0416df6db
-    m_Address: spi_buddy_duck_SkeletonData
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload

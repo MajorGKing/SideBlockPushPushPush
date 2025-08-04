@@ -1,0 +1,689 @@
+fileFormatVersion: 2
+guid: 74f5eb3ac1c19ac4aa996b63959bf137
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1694557846648797589
+    second: spi_buddy_michelle_0
+  - first:
+      213: -691389702164906986
+    second: spi_buddy_michelle_1
+  - first:
+      213: -2521045931571653567
+    second: spi_buddy_michelle_2
+  - first:
+      213: 7252852068173061497
+    second: spi_buddy_michelle_3
+  - first:
+      213: 6138516152261409425
+    second: spi_buddy_michelle_4
+  - first:
+      213: 3842750026860282455
+    second: spi_buddy_michelle_5
+  - first:
+      213: -2410812941886770303
+    second: spi_buddy_michelle_6
+  - first:
+      213: -7994155180764209876
+    second: spi_buddy_michelle_7
+  - first:
+      213: 1445925247380178065
+    second: spi_buddy_michelle_8
+  - first:
+      213: 3648523880893759839
+    second: spi_buddy_michelle_9
+  - first:
+      213: 345409395540175679
+    second: spi_buddy_michelle_10
+  - first:
+      213: -639425506475921771
+    second: spi_buddy_michelle_11
+  - first:
+      213: -3160519363241450241
+    second: spi_buddy_michelle_12
+  - first:
+      213: 8985445306410193789
+    second: spi_buddy_michelle_13
+  - first:
+      213: -7528988534236645928
+    second: spi_buddy_michelle_14
+  - first:
+      213: 4117244768428154703
+    second: spi_buddy_michelle_15
+  - first:
+      213: -5862381774166147243
+    second: spi_buddy_michelle_16
+  - first:
+      213: -3819230103860504863
+    second: spi_buddy_michelle_17
+  - first:
+      213: -6415313609278754580
+    second: spi_buddy_michelle_18
+  - first:
+      213: 8556528793759721316
+    second: spi_buddy_michelle_19
+  - first:
+      213: -1242115140280405344
+    second: spi_buddy_michelle_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spi_buddy_michelle_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 331
+        width: 43
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b66c52bdd98bb78e0800000000000000
+      internalID: -1694557846648797589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_michelle_1
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 359
+        width: 30
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61cf811aab0b766f0800000000000000
+      internalID: -691389702164906986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_michelle_2
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 356
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1445a321512730dd0800000000000000
+      internalID: -2521045931571653567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_michelle_3
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 356
+        width: 27
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97d99eb578e47a460800000000000000
+      internalID: 7252852068173061497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_michelle_4
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 307
+        width: 46
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19af98fcae3603550800000000000000
+      internalID: 6138516152261409425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_michelle_5
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 314
+        width: 31
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75241a72ac0345530800000000000000
+      internalID: 3842750026860282455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_michelle_6
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 320
+        width: 38
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 183bce207621b8ed0800000000000000
+      internalID: -2410812941886770303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_michelle_7
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 319
+        width: 18
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2d533bc73e0f0190800000000000000
+      internalID: -7994155180764209876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_michelle_8
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 286
+        width: 54
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1944dd50a55f01410800000000000000
+      internalID: 1445925247380178065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_michelle_9
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 286
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f51c333932922a230800000000000000
+      internalID: 3648523880893759839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_michelle_10
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 246
+        width: 57
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3b2143e3042bc400800000000000000
+      internalID: 345409395540175679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_michelle_11
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 222
+        width: 80
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59ead22c3ed4027f0800000000000000
+      internalID: -639425506475921771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_michelle_12
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 221
+        width: 30
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff4ef3062649324d0800000000000000
+      internalID: -3160519363241450241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_michelle_13
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 211
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d73d74536e6b2bc70800000000000000
+      internalID: 8985445306410193789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_michelle_14
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 116
+        width: 113
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d5f5d281d8a38790800000000000000
+      internalID: -7528988534236645928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_michelle_15
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 172
+        width: 26
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4fde738d44632930800000000000000
+      internalID: 4117244768428154703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_michelle_16
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 129
+        width: 26
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55f3a1d26d2a4aea0800000000000000
+      internalID: -5862381774166147243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_michelle_17
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 72
+        width: 117
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e69ae7a47e5ffac0800000000000000
+      internalID: -3819230103860504863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_michelle_18
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 102
+        width: 21
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce0f53c134a38f6a0800000000000000
+      internalID: -6415313609278754580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_michelle_19
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 72
+        width: 22
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 467237e7a95eeb670800000000000000
+      internalID: 8556528793759721316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_michelle_20
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 5
+        width: 130
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a2b3756cde13cee0800000000000000
+      internalID: -1242115140280405344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spi_buddy_michelle_0: -1694557846648797589
+      spi_buddy_michelle_1: -691389702164906986
+      spi_buddy_michelle_10: 345409395540175679
+      spi_buddy_michelle_11: -639425506475921771
+      spi_buddy_michelle_12: -3160519363241450241
+      spi_buddy_michelle_13: 8985445306410193789
+      spi_buddy_michelle_14: -7528988534236645928
+      spi_buddy_michelle_15: 4117244768428154703
+      spi_buddy_michelle_16: -5862381774166147243
+      spi_buddy_michelle_17: -3819230103860504863
+      spi_buddy_michelle_18: -6415313609278754580
+      spi_buddy_michelle_19: 8556528793759721316
+      spi_buddy_michelle_2: -2521045931571653567
+      spi_buddy_michelle_20: -1242115140280405344
+      spi_buddy_michelle_3: 7252852068173061497
+      spi_buddy_michelle_4: 6138516152261409425
+      spi_buddy_michelle_5: 3842750026860282455
+      spi_buddy_michelle_6: -2410812941886770303
+      spi_buddy_michelle_7: -7994155180764209876
+      spi_buddy_michelle_8: 1445925247380178065
+      spi_buddy_michelle_9: 3648523880893759839
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

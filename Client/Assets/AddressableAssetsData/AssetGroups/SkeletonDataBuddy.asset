@@ -1,0 +1,203 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: SkeletonDataBuddy
+  m_EditorClassIdentifier: 
+  m_GroupName: SkeletonDataBuddy
+  m_GUID: 6d7fd081d9bb61a42bd142476c4cc027
+  m_SerializeEntries:
+  - m_GUID: 03b97c3b26340064bb15e57c214c72f3
+    m_Address: spi_buddy_walt_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 24f2b7bac598c084a9f2c34a378b8ec0
+    m_Address: spi_buddy_sylvia_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2dec25b14d8ea774faa0a6e81166269c
+    m_Address: spi_buddy_ellie_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3045e28113d9a164489d8cfe733f13df
+    m_Address: spi_buddy_mari_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3353d0e92cfbfa04aa06158cf583ffc5
+    m_Address: spi_buddy_owen_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3c77b11413cb0334f9c5e68ae515758a
+    m_Address: spi_buddy_chloe_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 43721185543a2e04dbca8b66dd1f8fde
+    m_Address: spi_buddy_lui_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 471911868c9f46d48ad7a79e6ff7f3e3
+    m_Address: spi_buddy_michelle_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4bb1d482021748943abb7b8bd9904e52
+    m_Address: spi_buddy_sam_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 68f8eee23c7208c4ea8f30bee4b430bb
+    m_Address: spi_buddy_andre_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6b0a41b19d077bb42b26a2a182602a25
+    m_Address: spi_buddy_yuli_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 755952f3a995c45449fce3104c45e437
+    m_Address: spi_buddy_storm_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 77393f12326586248bebdaf5d6921b99
+    m_Address: spi_buddy_lucy_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 774aedeb96966d94b9fe44a81e8a5899
+    m_Address: spi_buddy_luke_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7911aa2a71329f644829e1822bc425ee
+    m_Address: spi_buddy_veti_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 891a7bd3a2ca32941a06c10c523c648f
+    m_Address: spi_buddy_laurel_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8bcab1c75ee8a3c49a0f73afadcd46b2
+    m_Address: spi_buddy_vanessa_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 94ab41716efcad64a9b5805f345674be
+    m_Address: spi_buddy_alex_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 96b4b7907e5b9ce4bbe9219672862913
+    m_Address: spi_buddy_tom_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9770186a0b0421b46ad11762a31bf49b
+    m_Address: spi_buddy_rooki_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a1acf7ff0f226364188b83c0df7093a9
+    m_Address: spi_buddy_kyle_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a67b63ec2c8b4c147851cbe1e90e775f
+    m_Address: spi_buddy_ballack_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ad607bc599dadf84b85b4273f9175d55
+    m_Address: spi_buddy_bella_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b00ef04fedced014197dfae0416df6db
+    m_Address: spi_buddy_duck_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5f39c0db58621b449ebf06b5f397115
+    m_Address: spi_buddy_aren_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc331b12cd6859644a78c42196dab714
+    m_Address: spi_buddy_hadi_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d59552562be1b254c9fce0df21b501f9
+    m_Address: spi_buddy_coon_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ed6f72a46554127418d586796949ca0b
+    m_Address: spi_buddy_zion_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fbd520868fbb6264c8af7b782f65741f
+    m_Address: spi_buddy_leon_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fced0f07b6fd2bc4e8ae774606da5193
+    m_Address: spi_buddy_lala_SkeletonData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 9094f0f0595c6e147aa68a6f81e2dcaf, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 021178b0881c4fe499b6ef26ce4d1ade, type: 2}
+    - {fileID: 11400000, guid: 2dbc1b41573f5164fa498162ac455469, type: 2}

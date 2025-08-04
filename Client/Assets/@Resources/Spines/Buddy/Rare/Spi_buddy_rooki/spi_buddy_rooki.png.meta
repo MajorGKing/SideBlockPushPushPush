@@ -1,0 +1,715 @@
+fileFormatVersion: 2
+guid: 31d40411d6c1f544098a13db3ad21819
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2209837426849649833
+    second: spi_buddy_rooki_0
+  - first:
+      213: -619105645974107179
+    second: spi_buddy_rooki_1
+  - first:
+      213: -5734074692592254531
+    second: spi_buddy_rooki_2
+  - first:
+      213: 7643694982212435712
+    second: spi_buddy_rooki_3
+  - first:
+      213: -4731056555956393741
+    second: spi_buddy_rooki_4
+  - first:
+      213: 7932806213464692315
+    second: spi_buddy_rooki_5
+  - first:
+      213: 2076989131161790852
+    second: spi_buddy_rooki_6
+  - first:
+      213: 1269201888434642018
+    second: spi_buddy_rooki_7
+  - first:
+      213: 4677161205289141785
+    second: spi_buddy_rooki_8
+  - first:
+      213: 5488701941615757643
+    second: spi_buddy_rooki_9
+  - first:
+      213: 5694400837999542610
+    second: spi_buddy_rooki_10
+  - first:
+      213: 6753796472539540396
+    second: spi_buddy_rooki_11
+  - first:
+      213: -620394522492250301
+    second: spi_buddy_rooki_12
+  - first:
+      213: 3432727298524192379
+    second: spi_buddy_rooki_13
+  - first:
+      213: -6847160796772108060
+    second: spi_buddy_rooki_14
+  - first:
+      213: 7020113870355859037
+    second: spi_buddy_rooki_15
+  - first:
+      213: -2497068677469640395
+    second: spi_buddy_rooki_16
+  - first:
+      213: 5926087899814448073
+    second: spi_buddy_rooki_17
+  - first:
+      213: -8924172282560328635
+    second: spi_buddy_rooki_18
+  - first:
+      213: -1024867483593526322
+    second: spi_buddy_rooki_19
+  - first:
+      213: -2614961584835158032
+    second: spi_buddy_rooki_20
+  - first:
+      213: -7654720015919421775
+    second: spi_buddy_rooki_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spi_buddy_rooki_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 93
+        width: 44
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a49cb67e6beaae10800000000000000
+      internalID: 2209837426849649833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_rooki_1
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 99
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5db4645f1be7867f0800000000000000
+      internalID: -619105645974107179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_rooki_2
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 93
+        width: 26
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db14b7092797c60b0800000000000000
+      internalID: -5734074692592254531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_rooki_3
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 107
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00f353a961cd31a60800000000000000
+      internalID: 7643694982212435712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_rooki_4
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 103
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f8afe9e029e75eb0800000000000000
+      internalID: -4731056555956393741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_rooki_5
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 93
+        width: 40
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b561399a83df61e60800000000000000
+      internalID: 7932806213464692315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_rooki_6
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 194
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 489ee354c92f2dc10800000000000000
+      internalID: 2076989131161790852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_rooki_7
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 67
+        width: 72
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26cd66c946c1d9110800000000000000
+      internalID: 1269201888434642018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_rooki_8
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 1
+        width: 130
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9164f76e55d98e040800000000000000
+      internalID: 4677161205289141785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_rooki_9
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 67
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b490104e559cb2c40800000000000000
+      internalID: 5488701941615757643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_rooki_10
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 1
+        width: 106
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25146a55463960f40800000000000000
+      internalID: 5694400837999542610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_rooki_11
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 58
+        width: 45
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cab610fcb1e4abd50800000000000000
+      internalID: 6753796472539540396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_rooki_12
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 1
+        width: 70
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3475042087ae367f0800000000000000
+      internalID: -620394522492250301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_rooki_13
+      rect:
+        serializedVersion: 2
+        x: 761
+        y: 1
+        width: 70
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7e12576a4f73af20800000000000000
+      internalID: 3432727298524192379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_rooki_14
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 2
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e8fa6c788ff9f0a0800000000000000
+      internalID: -6847160796772108060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_rooki_15
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 42
+        width: 40
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d568a55fe547c6160800000000000000
+      internalID: 7020113870355859037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_rooki_16
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 1
+        width: 95
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 539eaa39441a85dd0800000000000000
+      internalID: -2497068677469640395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_rooki_17
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 1
+        width: 72
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cb4e201c81bd3250800000000000000
+      internalID: 5926087899814448073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_rooki_18
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 34
+        width: 50
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54cca9f5798f62480800000000000000
+      internalID: -8924172282560328635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_rooki_19
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 1
+        width: 61
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec33f822470f6c1f0800000000000000
+      internalID: -1024867483593526322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_rooki_20
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 2
+        width: 48
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ff9b921b4ac5bbd0800000000000000
+      internalID: -2614961584835158032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spi_buddy_rooki_21
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 1
+        width: 42
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b6ec04b3b8f4c590800000000000000
+      internalID: -7654720015919421775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spi_buddy_rooki_0: 2209837426849649833
+      spi_buddy_rooki_1: -619105645974107179
+      spi_buddy_rooki_10: 5694400837999542610
+      spi_buddy_rooki_11: 6753796472539540396
+      spi_buddy_rooki_12: -620394522492250301
+      spi_buddy_rooki_13: 3432727298524192379
+      spi_buddy_rooki_14: -6847160796772108060
+      spi_buddy_rooki_15: 7020113870355859037
+      spi_buddy_rooki_16: -2497068677469640395
+      spi_buddy_rooki_17: 5926087899814448073
+      spi_buddy_rooki_18: -8924172282560328635
+      spi_buddy_rooki_19: -1024867483593526322
+      spi_buddy_rooki_2: -5734074692592254531
+      spi_buddy_rooki_20: -2614961584835158032
+      spi_buddy_rooki_21: -7654720015919421775
+      spi_buddy_rooki_3: 7643694982212435712
+      spi_buddy_rooki_4: -4731056555956393741
+      spi_buddy_rooki_5: 7932806213464692315
+      spi_buddy_rooki_6: 2076989131161790852
+      spi_buddy_rooki_7: 1269201888434642018
+      spi_buddy_rooki_8: 4677161205289141785
+      spi_buddy_rooki_9: 5488701941615757643
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
