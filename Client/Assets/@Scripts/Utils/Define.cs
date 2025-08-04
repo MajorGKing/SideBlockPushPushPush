@@ -189,6 +189,8 @@ public class Define
     {
         None,
         StageClear,
+        HeroGacha,
+        CurrencyGacha,
     }
 
     public enum ECurrencyType

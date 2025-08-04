@@ -87,6 +87,10 @@ public class UI_ShopPopup : UI_Popup
         GetButton((int)Buttons.Button_HeroGachaCount10).gameObject.BindEvent(OnClickHeroGachaCount10, Define.ETouchEvent.PointerUp);
         //GetButton((int)Buttons.Button_BuddyGachaCount10).gameObject.BindEvent(OnClickBuddyGachaCount10);
 
+        GetButton((int)Buttons.Button_CurrenciesGachaCount1).gameObject.BindEvent(OnClickCurrencyGachaCount1, Define.ETouchEvent.PointerUp);
+        GetButton((int)Buttons.Button_CurrenciesGachaCount10).gameObject.BindEvent(OnClickCurrencyGachaCount10, Define.ETouchEvent.PointerUp);
+        GetButton((int)Buttons.Button_CurrenciesGachaCount100).gameObject.BindEvent(OnClickCurrencyGachaCount100, Define.ETouchEvent.PointerUp);
+
         RefreshUI();
     }
 
@@ -174,5 +178,25 @@ public class UI_ShopPopup : UI_Popup
     {
         Debug.Log("Try Gacha 10");
         OnClickHeroGachaCount(10);
+    }
+
+    private void OnClickCurrencyGachaCount(int count)
+    {
+        Managers.Game.DoCurrencyGacha(count);
+    }
+
+    private void OnClickCurrencyGachaCount1(PointerEventData data)
+    {
+        OnClickCurrencyGachaCount(1);
+    }
+
+    private void OnClickCurrencyGachaCount10(PointerEventData data)
+    {
+        OnClickCurrencyGachaCount(10);
+    }
+
+    private void OnClickCurrencyGachaCount100(PointerEventData data)
+    {
+        OnClickCurrencyGachaCount(100);
     }
 }

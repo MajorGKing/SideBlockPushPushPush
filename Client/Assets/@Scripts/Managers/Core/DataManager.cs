@@ -27,6 +27,7 @@ public class DataManager
     public Dictionary<int, Data.BuddyData> BuddyDataDic { get; set; } = new Dictionary<int, Data.BuddyData>();
     public Dictionary<int, Data.HeroData> HeroDataDic { get; set; } = new Dictionary<int, Data.HeroData>();
     public Dictionary<string, Data.HeroGachaData> HeroGachaDataDic { get; set; } = new Dictionary<string, Data.HeroGachaData>();
+    public Dictionary<string, Data.CurrencyGachaData> CurrencyGachaDataDic { get; set; } = new Dictionary<string, Data.CurrencyGachaData>();
 
 
 
@@ -44,6 +45,7 @@ public class DataManager
         BuddyDataDic = LoadJson<Data.BuddyDataLoader, int, Data.BuddyData>("BuddyData").MakeDict();
         HeroDataDic = LoadJson<Data.HeroDataLoader, int, Data.HeroData>("HeroData").MakeDict();
         HeroGachaDataDic = LoadJson<Data.HeroGachaDataLoader, string, Data.HeroGachaData>("HeroGachaData").MakeDict();
+        CurrencyGachaDataDic = LoadJson<Data.CurrencyGachaDataLoader, string, Data.CurrencyGachaData>("CurrencyGachaData").MakeDict();
         Validate();
 
         Debug.Log("Data Load End");

@@ -1,0 +1,347 @@
+{
+  "CurrencyGachaList": [
+    {
+      "GachaItem": "STONEARMOR10",
+      "CurrencyType": 6,
+      "CurrencyCount": 10,
+      "Percent": 500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONEARMOR5",
+      "CurrencyType": 6,
+      "CurrencyCount": 5,
+      "Percent": 1000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONEARMOR3",
+      "CurrencyType": 6,
+      "CurrencyCount": 3,
+      "Percent": 2500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONEARMOR1",
+      "CurrencyType": 6,
+      "CurrencyCount": 1,
+      "Percent": 4000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONEBELT10",
+      "CurrencyType": 7,
+      "CurrencyCount": 10,
+      "Percent": 500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONEBELT5",
+      "CurrencyType": 7,
+      "CurrencyCount": 5,
+      "Percent": 1000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONEBELT3",
+      "CurrencyType": 7,
+      "CurrencyCount": 3,
+      "Percent": 2500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONEBELT1",
+      "CurrencyType": 7,
+      "CurrencyCount": 1,
+      "Percent": 4000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONEBOOTS10",
+      "CurrencyType": 8,
+      "CurrencyCount": 10,
+      "Percent": 500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONEBOOTS5",
+      "CurrencyType": 8,
+      "CurrencyCount": 5,
+      "Percent": 1000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONEBOOTS3",
+      "CurrencyType": 8,
+      "CurrencyCount": 3,
+      "Percent": 2500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONEBOOTS1",
+      "CurrencyType": 8,
+      "CurrencyCount": 1,
+      "Percent": 4000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONEGLOVES10",
+      "CurrencyType": 9,
+      "CurrencyCount": 10,
+      "Percent": 500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONEGLOVES5",
+      "CurrencyType": 9,
+      "CurrencyCount": 5,
+      "Percent": 1000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONEGLOVES3",
+      "CurrencyType": 9,
+      "CurrencyCount": 3,
+      "Percent": 2500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONEGLOVES1",
+      "CurrencyType": 9,
+      "CurrencyCount": 1,
+      "Percent": 4000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONERING10",
+      "CurrencyType": 10,
+      "CurrencyCount": 10,
+      "Percent": 500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONERING5",
+      "CurrencyType": 10,
+      "CurrencyCount": 5,
+      "Percent": 1000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONERING3",
+      "CurrencyType": 10,
+      "CurrencyCount": 3,
+      "Percent": 2500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONERING1",
+      "CurrencyType": 10,
+      "CurrencyCount": 1,
+      "Percent": 4000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONEWEAPON10",
+      "CurrencyType": 11,
+      "CurrencyCount": 10,
+      "Percent": 500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONEWEAPON5",
+      "CurrencyType": 11,
+      "CurrencyCount": 5,
+      "Percent": 1000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONEWEAPON3",
+      "CurrencyType": 11,
+      "CurrencyCount": 3,
+      "Percent": 2500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "STONEWEAPON1",
+      "CurrencyType": 11,
+      "CurrencyCount": 1,
+      "Percent": 4000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLARMOR10",
+      "CurrencyType": 13,
+      "CurrencyCount": 10,
+      "Percent": 500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLARMOR5",
+      "CurrencyType": 13,
+      "CurrencyCount": 5,
+      "Percent": 1000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLARMOR3",
+      "CurrencyType": 13,
+      "CurrencyCount": 3,
+      "Percent": 2500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLARMOR1",
+      "CurrencyType": 13,
+      "CurrencyCount": 1,
+      "Percent": 4000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLBELT10",
+      "CurrencyType": 14,
+      "CurrencyCount": 10,
+      "Percent": 500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLBELT5",
+      "CurrencyType": 14,
+      "CurrencyCount": 5,
+      "Percent": 1000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLBELT3",
+      "CurrencyType": 14,
+      "CurrencyCount": 3,
+      "Percent": 2500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLBELT1",
+      "CurrencyType": 14,
+      "CurrencyCount": 1,
+      "Percent": 4000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLBOOTS10",
+      "CurrencyType": 15,
+      "CurrencyCount": 10,
+      "Percent": 500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLBOOTS5",
+      "CurrencyType": 15,
+      "CurrencyCount": 5,
+      "Percent": 1000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLBOOTS3",
+      "CurrencyType": 15,
+      "CurrencyCount": 3,
+      "Percent": 2500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLBOOTS1",
+      "CurrencyType": 15,
+      "CurrencyCount": 1,
+      "Percent": 4000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLGLOVES10",
+      "CurrencyType": 16,
+      "CurrencyCount": 10,
+      "Percent": 500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLGLOVES5",
+      "CurrencyType": 16,
+      "CurrencyCount": 5,
+      "Percent": 1000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLGLOVES3",
+      "CurrencyType": 16,
+      "CurrencyCount": 3,
+      "Percent": 2500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLGLOVES1",
+      "CurrencyType": 16,
+      "CurrencyCount": 1,
+      "Percent": 4000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLRING10",
+      "CurrencyType": 17,
+      "CurrencyCount": 10,
+      "Percent": 500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLRING5",
+      "CurrencyType": 17,
+      "CurrencyCount": 5,
+      "Percent": 1000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLRING3",
+      "CurrencyType": 17,
+      "CurrencyCount": 3,
+      "Percent": 2500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLRING1",
+      "CurrencyType": 17,
+      "CurrencyCount": 1,
+      "Percent": 4000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLWEAPON10",
+      "CurrencyType": 18,
+      "CurrencyCount": 10,
+      "Percent": 500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLWEAPON5",
+      "CurrencyType": 18,
+      "CurrencyCount": 5,
+      "Percent": 1000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLWEAPON3",
+      "CurrencyType": 18,
+      "CurrencyCount": 3,
+      "Percent": 2500,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "SCROLLWEAPON1",
+      "CurrencyType": 18,
+      "CurrencyCount": 1,
+      "Percent": 4000,
+      "Max": 100000
+    },
+    {
+      "GachaItem": "GOLD100",
+      "CurrencyType": 1,
+      "CurrencyCount": 100,
+      "Percent": 4000,
+      "Max": 100000
+    }
+  ]
+}

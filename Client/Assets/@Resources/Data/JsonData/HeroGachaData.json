@@ -4,113 +4,113 @@
       "GachaItem": "EXP1000",
       "CurrencyType": 12,
       "CurrencyCount": 1000,
-      "Percent": 10,
-      "Max": 40000
+      "Percent": 25,
+      "Max": 100000
     },
     {
       "GachaItem": "EXP100",
       "CurrencyType": 12,
       "CurrencyCount": 100,
-      "Percent": 200,
-      "Max": 40000
+      "Percent": 500,
+      "Max": 100000
     },
     {
       "GachaItem": "EXP10",
       "CurrencyType": 12,
       "CurrencyCount": 10,
-      "Percent": 3000,
-      "Max": 40000
+      "Percent": 7500,
+      "Max": 100000
     },
     {
       "GachaItem": "EXP1",
       "CurrencyType": 12,
       "CurrencyCount": 1,
-      "Percent": 6790,
-      "Max": 40000
+      "Percent": 16975,
+      "Max": 100000
     },
     {
       "GachaItem": "BLUEGEM50",
       "CurrencyType": 3,
       "CurrencyCount": 50,
-      "Percent": 10,
-      "Max": 40000
+      "Percent": 25,
+      "Max": 100000
     },
     {
       "GachaItem": "BLUEGEM15",
       "CurrencyType": 3,
       "CurrencyCount": 15,
-      "Percent": 200,
-      "Max": 40000
+      "Percent": 500,
+      "Max": 100000
     },
     {
       "GachaItem": "BLUEGEM10",
       "CurrencyType": 3,
       "CurrencyCount": 10,
-      "Percent": 3000,
-      "Max": 40000
+      "Percent": 7500,
+      "Max": 100000
     },
     {
       "GachaItem": "BLUEGEM1",
       "CurrencyType": 3,
       "CurrencyCount": 1,
-      "Percent": 6790,
-      "Max": 40000
+      "Percent": 16975,
+      "Max": 100000
     },
     {
       "GachaItem": "GREENGEM50",
       "CurrencyType": 4,
       "CurrencyCount": 50,
-      "Percent": 10,
-      "Max": 40000
+      "Percent": 25,
+      "Max": 100000
     },
     {
       "GachaItem": "GREENGEM15",
       "CurrencyType": 4,
       "CurrencyCount": 15,
-      "Percent": 200,
-      "Max": 40000
+      "Percent": 500,
+      "Max": 100000
     },
     {
       "GachaItem": "GREENGEM10",
       "CurrencyType": 4,
       "CurrencyCount": 10,
-      "Percent": 3000,
-      "Max": 40000
+      "Percent": 7500,
+      "Max": 100000
     },
     {
       "GachaItem": "GREENGEM1",
       "CurrencyType": 4,
       "CurrencyCount": 1,
-      "Percent": 6790,
-      "Max": 40000
+      "Percent": 16975,
+      "Max": 100000
     },
     {
       "GachaItem": "YELLOWGEM50",
       "CurrencyType": 5,
       "CurrencyCount": 50,
-      "Percent": 10,
-      "Max": 40000
+      "Percent": 25,
+      "Max": 100000
     },
     {
       "GachaItem": "YELLOWGEM15",
       "CurrencyType": 5,
       "CurrencyCount": 15,
-      "Percent": 200,
-      "Max": 40000
+      "Percent": 500,
+      "Max": 100000
     },
     {
       "GachaItem": "YELLOWGEM10",
       "CurrencyType": 5,
       "CurrencyCount": 10,
-      "Percent": 3000,
-      "Max": 40000
+      "Percent": 7500,
+      "Max": 100000
     },
     {
       "GachaItem": "YELLOWGEM1",
       "CurrencyType": 5,
       "CurrencyCount": 1,
-      "Percent": 6790,
-      "Max": 40000
+      "Percent": 16975,
+      "Max": 100000
     }
   ]
 }

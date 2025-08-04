@@ -883,17 +883,62 @@ public class GameManager
                 {
                     Debug.Log($"{heroGachaData.CurrencyType} : {heroGachaData.CurrencyCount}");
                     rewards.Add(new Reward(heroGachaData.CurrencyType, heroGachaData.CurrencyCount));
+                    AddCurrency(heroGachaData.CurrencyType, heroGachaData.CurrencyCount);
                     break;
                 }
             }
 
             var clear = Managers.UI.ShowPopupUI<UI_RewardPopup>();
 
-            clear.SetInfo(Define.ERewardType.StageClear, rewards);
+            clear.SetInfo(Define.ERewardType.HeroGacha, rewards);
+        }
+    }
+
+    public void DoCurrencyGacha(int count)
+    {
+        // TODO ILHAK price data
+        var needGold = 0;
+
+        if (count == 1)
+        {
+            needGold = 100;
+        }
+        else if (count == 10)
+        {
+            needGold = 1000;
+        }
+        else if(count == 100)
+        {
+            needGold = 10000;
         }
 
-        // Gacha Table
+        if (needGold == 0)
+            return;
+
+        List<Reward> rewards = new List<Reward>();
+        System.Random random = new System.Random();
+
+        for (int i = 0; i < count; i++)
+        {
+            int randomNumber = random.Next(Managers.Data.CurrencyGachaDataDic.First().Value.Max);
+
+            foreach (var currencyGachaData in Managers.Data.CurrencyGachaDataDic.Values)
+            {
+                if (currencyGachaData.Percent > randomNumber)
+                {
+                    Debug.Log($"{currencyGachaData.CurrencyType} : {currencyGachaData.CurrencyCount}");
+                    rewards.Add(new Reward(currencyGachaData.CurrencyType, currencyGachaData.CurrencyCount));
+                    AddCurrency(currencyGachaData.CurrencyType, currencyGachaData.CurrencyCount);
+                    break;
+                }
+            }
+
+            var clear = Managers.UI.ShowPopupUI<UI_RewardPopup>();
+
+            clear.SetInfo(Define.ERewardType.CurrencyGacha, rewards);
+        }
     }
+
     #endregion
 
     #region SaveLoad

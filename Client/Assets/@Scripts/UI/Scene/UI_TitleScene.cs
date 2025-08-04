@@ -69,6 +69,9 @@ public class UI_TitleScene : UI_Scene
 
         GetText(((int)Texts.StartText)).gameObject.BindEvent(OnClickNextButton);
         GetText(((int)Texts.StartText)).gameObject.SetActive(false);
+
+        UICanvas.renderMode = RenderMode.ScreenSpaceCamera;
+        UICanvas.worldCamera = Camera.main;
     }
 
 	protected override void Start()

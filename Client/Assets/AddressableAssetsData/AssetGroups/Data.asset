@@ -63,6 +63,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: afddb24eb056aa1469e9ec896f25d1f2
+    m_Address: CurrencyGachaData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b3270a0e8c81e544dbfd51187f73f639
     m_Address: CurrencyTypeData
     m_ReadOnly: 0

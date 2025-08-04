@@ -590,6 +590,40 @@ namespace Data
     }
     #endregion
 
+    #region CurrencyGacha
+    public class CurrencyGachaData
+    {
+        public string GachaItem;
+        public Define.ECurrencyType CurrencyType;
+        public int CurrencyCount;
+        public int Percent;
+        public int Max;
+    }
+
+    public class CurrencyGachaDataLoader : ILoader<string, CurrencyGachaData>
+    {
+        public List<CurrencyGachaData> CurrencyGachaList = new List<CurrencyGachaData>();
+
+        public Dictionary<string, CurrencyGachaData> MakeDict()
+        {
+            Dictionary<string, CurrencyGachaData> dict = new Dictionary<string, CurrencyGachaData>();
+            foreach (var currencyGacha in CurrencyGachaList)
+                dict.Add(currencyGacha.GachaItem, currencyGacha);
+            return dict;
+        }
+
+        public bool Validate()
+        {
+            for (int i = 1; i < CurrencyGachaList.Count; i++)
+            {
+                CurrencyGachaList[i].Percent += CurrencyGachaList[i - 1].Percent;
+            }
+            return true;
+        }
+    }
+    #endregion
+
+
     #region EffectData
     [Serializable]
     public class EffectData
