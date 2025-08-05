@@ -33,6 +33,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4420be55f7280f94db3dac11324d09ce
+    m_Address: BuddyGachaRarityData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 58f5675da0927f943a18639f408dee68
     m_Address: BuddyData
     m_ReadOnly: 0
@@ -53,6 +59,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 84739da0f437c5d45a663ee2511e9456
     m_Address: HeroGachaData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9fbb3388546dee045894aa8750ec24e5
+    m_Address: BuddyGachaData
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload

@@ -1,9 +1,35 @@
 ﻿TemplateId,Name,NameTextId,DescriptionTextId,SpineNameKey,BuddyLevel,Attack,MagicAttack,Reload,Skill1Id,Skill2Id,Skill3Id,Skill4Id,Skill5Id,LevelUpCurrency1,LevelUpCurrency1Count,LevelUpCurrency2,LevelUpCurrency2Count,LevelUpCurrency3,LevelUpCurrency3Count,LevelUpCurrency4,LevelUpCurrency4Count,OriginalLevelId,PreviewLevelId,NextLevelId
-1,전사,전사,평범한 전사,spi_buddy_duck_SkeletonData,1,10,1,3,10,,,,,StoneWeapon,1,,,,,,,1,,2
-2,전사,전사,평범한 전사,spi_buddy_duck_SkeletonData,2,11,1,2.9,10,20,,,,,,,,,,,,1,1,
-3,궁수,궁수,평범한 궁수,spi_buddy_ellie_SkeletonData,1,10,1,3,30,,,,,StoneGloves,1,,,,,,,3,,4
-4,궁수,궁수,평범한 궁수,spi_buddy_ellie_SkeletonData,2,11,1,2.9,30,40,,,,,,,,,,,,3,3,
-5,마법사,마법사,평범한 마법사,spi_buddy_mari_SkeletonData,1,1,10,3,70,,,,,StoneRing,1,,,,,,,5,,6
-6,마법사,마법사,평범한 마법사,spi_buddy_mari_SkeletonData,2,1,11,2.9,80,,,,,,,,,,,,,5,5,
-7,도둑,도둑,평범한 도둑,spi_buddy_tom_SkeletonData,1,10,5,3,50,,,,,StoneBelt,1,,,,,,,7,,8
-8,도둑,도둑,평범한 도둑,spi_buddy_tom_SkeletonData,2,11,5,2.9,50,60,,,,,,,,,,,,7,7,
+100000100,Duck,Duck,DuckDescription,spi_buddy_duck_SkeletonData,1,10,1,3,10,,,,,StoneWeapon,1,,,,,,,100000100,,100000101
+100000101,Duck,Duck,DuckDescription,spi_buddy_duck_SkeletonData,2,11,1,2.9,10,20,,,,,,,,,,,,100000100,100000100,
+300000100,Ellie,Ellie,EllieDescription,spi_buddy_ellie_SkeletonData,1,10,1,3,30,,,,,StoneGloves,1,,,,,,,300000100,,300000101
+300000101,Ellie,Ellie,EllieDescription,spi_buddy_ellie_SkeletonData,2,11,1,2.9,30,40,,,,,,,,,,,,300000100,300000100,
+100000300,Mari,Mari,MariDescription,spi_buddy_mari_SkeletonData,1,1,10,3,70,,,,,StoneRing,1,,,,,,,100000300,,100000301
+100000301,Mari,Mari,MariDescription,spi_buddy_mari_SkeletonData,2,1,11,2.9,70,80,,,,,,,,,,,,100000300,100000300,
+100000500,Tom,Tom,TomDescription,spi_buddy_tom_SkeletonData,1,10,5,3,50,,,,,StoneBelt,1,,,,,,,100000500,,100000501
+100000501,Tom,Tom,TomDescription,spi_buddy_tom_SkeletonData,2,11,5,2.9,50,60,,,,,,,,,,,,100000500,100000500,
+300000300,Lala,Lala,LalaDescription,spi_buddy_lala_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+300000500,Luke,Luke,LukeDescription,spi_buddy_luke_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+300000700,Rooki,Rooki,RookiDescription,spi_buddy_rooki_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+300000900,Sam,Sam,SamDescription,spi_buddy_sam_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+500000100,Aren,Aren,ArenDescription,spi_buddy_aren_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+500000300,Ballack,Ballack,BallackDescription,spi_buddy_ballack_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+500000500,Coon,Coon,CoonDescription,spi_buddy_coon_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+500000700,Hadi,Hadi,HadiDescription,spi_buddy_hadi_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+500000900,Lucy,Lucy,LucyDescription,spi_buddy_lucy_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+500001100,Lui,Lui,LuiDescription,spi_buddy_lui_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+500001300,Owen,Owen,OwenDescription,spi_buddy_owen_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+500001500,Vanessa,Vanessa,VanessaDescription,spi_buddy_vanessa_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+500001700,Veti,Veti,VetiDescription,spi_buddy_veti_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+500001900,Walt,Walt,WaltDescription,spi_buddy_walt_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+700000100,Andre,Andre,AndreDescription,spi_buddy_andre_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+700000300,Chloe,Chloe,ChloeDescription,spi_buddy_chloe_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+700000500,Laurel,Laurel,LaurelDescription,spi_buddy_laurel_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+700000700,Leon,Leon,LeonDescription,spi_buddy_leon_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+700000900,Michelle,Michelle,MichelleDescription,spi_buddy_michelle_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+700001100,Storm,Storm,StormDescription,spi_buddy_storm_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+700001300,Yuli,Yuli,YuliDescription,spi_buddy_yuli_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+900000100,Alex,Alex,AlexDescription,spi_buddy_alex_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+900000300,Bella,Bella,BellaDescription,spi_buddy_bella_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+900000500,Kyle,Kyle,KyleDescription,spi_buddy_kyle_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+900000700,Sylvia,Sylvia,SylviaDescription,spi_buddy_sylvia_SkeletonData,1,,,,,,,,,,,,,,,,,,,
+900000900,Zion,Zion,ZionDescription,spi_buddy_zion_SkeletonData,1,,,,,,,,,,,,,,,,,,,

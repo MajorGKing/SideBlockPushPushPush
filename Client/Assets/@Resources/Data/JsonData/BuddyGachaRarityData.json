@@ -1,0 +1,29 @@
+{
+  "rarityList": [
+    {
+      "RarityType": 1,
+      "Percent": 500,
+      "Max": 1000
+    },
+    {
+      "RarityType": 2,
+      "Percent": 300,
+      "Max": 1000
+    },
+    {
+      "RarityType": 3,
+      "Percent": 140,
+      "Max": 1000
+    },
+    {
+      "RarityType": 4,
+      "Percent": 50,
+      "Max": 1000
+    },
+    {
+      "RarityType": 5,
+      "Percent": 10,
+      "Max": 1000
+    }
+  ]
+}

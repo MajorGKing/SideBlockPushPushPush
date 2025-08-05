@@ -225,6 +225,18 @@ public class Define
 
     #endregion
 
+    #region Gacha
+    public enum ERarityType
+    {
+        None,
+        Common,
+        Rare,
+        Epic,
+        Unique,
+        Legend,
+    }
+    #endregion
+
 
 
     #region Tag

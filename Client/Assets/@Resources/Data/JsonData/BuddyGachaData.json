@@ -1,0 +1,244 @@
+{
+  "buddyGachaList": [
+    {
+      "GachaItem": "Duck",
+      "SpineNameKey": "spi_buddy_duck_SkeletonData",
+      "Rarity": 1,
+      "CurrencyType": 2,
+      "CurrencyCount": 10,
+      "BuddyTemplateId": 100000100
+    },
+    {
+      "GachaItem": "Mari",
+      "SpineNameKey": "spi_buddy_mari_SkeletonData",
+      "Rarity": 1,
+      "CurrencyType": 2,
+      "CurrencyCount": 10,
+      "BuddyTemplateId": 100000300
+    },
+    {
+      "GachaItem": "Tom",
+      "SpineNameKey": "spi_buddy_tom_SkeletonData",
+      "Rarity": 1,
+      "CurrencyType": 2,
+      "CurrencyCount": 10,
+      "BuddyTemplateId": 100000500
+    },
+    {
+      "GachaItem": "Ellie",
+      "SpineNameKey": "spi_buddy_ellie_SkeletonData",
+      "Rarity": 2,
+      "CurrencyType": 2,
+      "CurrencyCount": 100,
+      "BuddyTemplateId": 300000100
+    },
+    {
+      "GachaItem": "Lala",
+      "SpineNameKey": "spi_buddy_lala_SkeletonData",
+      "Rarity": 2,
+      "CurrencyType": 2,
+      "CurrencyCount": 100,
+      "BuddyTemplateId": 300000300
+    },
+    {
+      "GachaItem": "Luke",
+      "SpineNameKey": "spi_buddy_luke_SkeletonData",
+      "Rarity": 2,
+      "CurrencyType": 2,
+      "CurrencyCount": 100,
+      "BuddyTemplateId": 300000500
+    },
+    {
+      "GachaItem": "Rooki",
+      "SpineNameKey": "spi_buddy_rooki_SkeletonData",
+      "Rarity": 2,
+      "CurrencyType": 2,
+      "CurrencyCount": 100,
+      "BuddyTemplateId": 300000700
+    },
+    {
+      "GachaItem": "Sam",
+      "SpineNameKey": "spi_buddy_sam_SkeletonData",
+      "Rarity": 2,
+      "CurrencyType": 2,
+      "CurrencyCount": 100,
+      "BuddyTemplateId": 300000900
+    },
+    {
+      "GachaItem": "Aren",
+      "SpineNameKey": "spi_buddy_aren_SkeletonData",
+      "Rarity": 3,
+      "CurrencyType": 2,
+      "CurrencyCount": 500,
+      "BuddyTemplateId": 500000100
+    },
+    {
+      "GachaItem": "Ballack",
+      "SpineNameKey": "spi_buddy_ballack_SkeletonData",
+      "Rarity": 3,
+      "CurrencyType": 2,
+      "CurrencyCount": 500,
+      "BuddyTemplateId": 500000300
+    },
+    {
+      "GachaItem": "Coon",
+      "SpineNameKey": "spi_buddy_coon_SkeletonData",
+      "Rarity": 3,
+      "CurrencyType": 2,
+      "CurrencyCount": 500,
+      "BuddyTemplateId": 500000500
+    },
+    {
+      "GachaItem": "Hadi",
+      "SpineNameKey": "spi_buddy_hadi_SkeletonData",
+      "Rarity": 3,
+      "CurrencyType": 2,
+      "CurrencyCount": 500,
+      "BuddyTemplateId": 500000700
+    },
+    {
+      "GachaItem": "Lucy",
+      "SpineNameKey": "spi_buddy_lucy_SkeletonData",
+      "Rarity": 3,
+      "CurrencyType": 2,
+      "CurrencyCount": 500,
+      "BuddyTemplateId": 500000900
+    },
+    {
+      "GachaItem": "Lui",
+      "SpineNameKey": "spi_buddy_lui_SkeletonData",
+      "Rarity": 3,
+      "CurrencyType": 2,
+      "CurrencyCount": 500,
+      "BuddyTemplateId": 500001100
+    },
+    {
+      "GachaItem": "Owen",
+      "SpineNameKey": "spi_buddy_owen_SkeletonData",
+      "Rarity": 3,
+      "CurrencyType": 2,
+      "CurrencyCount": 500,
+      "BuddyTemplateId": 500001300
+    },
+    {
+      "GachaItem": "Vanessa",
+      "SpineNameKey": "spi_buddy_vanessa_SkeletonData",
+      "Rarity": 3,
+      "CurrencyType": 2,
+      "CurrencyCount": 500,
+      "BuddyTemplateId": 500001500
+    },
+    {
+      "GachaItem": "Veti",
+      "SpineNameKey": "spi_buddy_veti_SkeletonData",
+      "Rarity": 3,
+      "CurrencyType": 2,
+      "CurrencyCount": 500,
+      "BuddyTemplateId": 500001700
+    },
+    {
+      "GachaItem": "Walt",
+      "SpineNameKey": "spi_buddy_walt_SkeletonData",
+      "Rarity": 3,
+      "CurrencyType": 2,
+      "CurrencyCount": 500,
+      "BuddyTemplateId": 500001900
+    },
+    {
+      "GachaItem": "Andre",
+      "SpineNameKey": "spi_buddy_andre_SkeletonData",
+      "Rarity": 4,
+      "CurrencyType": 2,
+      "CurrencyCount": 1000,
+      "BuddyTemplateId": 700000100
+    },
+    {
+      "GachaItem": "Chloe",
+      "SpineNameKey": "spi_buddy_chloe_SkeletonData",
+      "Rarity": 4,
+      "CurrencyType": 2,
+      "CurrencyCount": 1000,
+      "BuddyTemplateId": 700000300
+    },
+    {
+      "GachaItem": "Laurel",
+      "SpineNameKey": "spi_buddy_laurel_SkeletonData",
+      "Rarity": 4,
+      "CurrencyType": 2,
+      "CurrencyCount": 1000,
+      "BuddyTemplateId": 700000500
+    },
+    {
+      "GachaItem": "Leon",
+      "SpineNameKey": "spi_buddy_leon_SkeletonData",
+      "Rarity": 4,
+      "CurrencyType": 2,
+      "CurrencyCount": 1000,
+      "BuddyTemplateId": 700000700
+    },
+    {
+      "GachaItem": "Michelle",
+      "SpineNameKey": "spi_buddy_michelle_SkeletonData",
+      "Rarity": 4,
+      "CurrencyType": 2,
+      "CurrencyCount": 1000,
+      "BuddyTemplateId": 700000900
+    },
+    {
+      "GachaItem": "Storm",
+      "SpineNameKey": "spi_buddy_storm_SkeletonData",
+      "Rarity": 4,
+      "CurrencyType": 2,
+      "CurrencyCount": 1000,
+      "BuddyTemplateId": 700001100
+    },
+    {
+      "GachaItem": "Yuli",
+      "SpineNameKey": "spi_buddy_yuli_SkeletonData",
+      "Rarity": 4,
+      "CurrencyType": 2,
+      "CurrencyCount": 1000,
+      "BuddyTemplateId": 700001300
+    },
+    {
+      "GachaItem": "Alex",
+      "SpineNameKey": "spi_buddy_alex_SkeletonData",
+      "Rarity": 5,
+      "CurrencyType": 2,
+      "CurrencyCount": 3000,
+      "BuddyTemplateId": 900000100
+    },
+    {
+      "GachaItem": "Bella",
+      "SpineNameKey": "spi_buddy_bella_SkeletonData",
+      "Rarity": 5,
+      "CurrencyType": 2,
+      "CurrencyCount": 3000,
+      "BuddyTemplateId": 900000300
+    },
+    {
+      "GachaItem": "Kyle",
+      "SpineNameKey": "spi_buddy_kyle_SkeletonData",
+      "Rarity": 5,
+      "CurrencyType": 2,
+      "CurrencyCount": 3000,
+      "BuddyTemplateId": 900000500
+    },
+    {
+      "GachaItem": "Sylvia",
+      "SpineNameKey": "spi_buddy_sylvia_SkeletonData",
+      "Rarity": 5,
+      "CurrencyType": 2,
+      "CurrencyCount": 3000,
+      "BuddyTemplateId": 900000700
+    },
+    {
+      "GachaItem": "Zion",
+      "SpineNameKey": "spi_buddy_zion_SkeletonData",
+      "Rarity": 5,
+      "CurrencyType": 2,
+      "CurrencyCount": 3000,
+      "BuddyTemplateId": 900000900
+    }
+  ]
+}

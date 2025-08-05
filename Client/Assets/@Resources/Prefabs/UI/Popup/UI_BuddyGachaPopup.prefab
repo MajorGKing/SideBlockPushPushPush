@@ -313,6 +313,7 @@ GameObject:
   - component: {fileID: 2348246793826318569}
   - component: {fileID: 4055254828424717073}
   - component: {fileID: 8377363454565646652}
+  - component: {fileID: 1551491334756963852}
   m_Layer: 5
   m_Name: SafeArea
   m_TagString: Untagged
@@ -379,6 +380,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1551491334756963852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872055505802808317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c97afc556caea1c44969477eb7ddec74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3329272271756002497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,6 +1636,14 @@ PrefabInstance:
       propertyPath: skeletonDataAsset
       value: 
       objectReference: {fileID: 11400000, guid: b00ef04fedced014197dfae0416df6db, type: 2}
+    - target: {fileID: 1310707872026373662, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
+      propertyPath: referenceSize.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1310707872026373662, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
+      propertyPath: referenceSize.y
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 2079251381091177906, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
       propertyPath: m_Name
       value: UI_GachaSubItem
@@ -1733,6 +1754,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8661580408485733533}
     m_Modifications:
+    - target: {fileID: 1310707872026373662, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
+      propertyPath: referenceSize.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1310707872026373662, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
+      propertyPath: referenceSize.y
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 2079251381091177906, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
       propertyPath: m_Name
       value: UI_GachaSubItem (6)
@@ -1839,6 +1868,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8661580408485733533}
     m_Modifications:
+    - target: {fileID: 1310707872026373662, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
+      propertyPath: referenceSize.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1310707872026373662, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
+      propertyPath: referenceSize.y
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 2079251381091177906, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
       propertyPath: m_Name
       value: UI_GachaSubItem (7)
@@ -1945,6 +1982,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8661580408485733533}
     m_Modifications:
+    - target: {fileID: 1310707872026373662, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
+      propertyPath: referenceSize.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1310707872026373662, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
+      propertyPath: referenceSize.y
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 2079251381091177906, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
       propertyPath: m_Name
       value: UI_GachaSubItem (1)
@@ -2051,6 +2096,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8661580408485733533}
     m_Modifications:
+    - target: {fileID: 1310707872026373662, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
+      propertyPath: referenceSize.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1310707872026373662, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
+      propertyPath: referenceSize.y
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 2079251381091177906, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
       propertyPath: m_Name
       value: UI_GachaSubItem (5)
@@ -2157,6 +2210,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8661580408485733533}
     m_Modifications:
+    - target: {fileID: 1310707872026373662, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
+      propertyPath: referenceSize.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1310707872026373662, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
+      propertyPath: referenceSize.y
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 2079251381091177906, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
       propertyPath: m_Name
       value: UI_GachaSubItem (2)
@@ -2263,6 +2324,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8661580408485733533}
     m_Modifications:
+    - target: {fileID: 1310707872026373662, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
+      propertyPath: referenceSize.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1310707872026373662, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
+      propertyPath: referenceSize.y
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 2079251381091177906, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
       propertyPath: m_Name
       value: UI_GachaSubItem (4)
@@ -2369,6 +2438,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8661580408485733533}
     m_Modifications:
+    - target: {fileID: 1310707872026373662, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
+      propertyPath: referenceSize.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1310707872026373662, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
+      propertyPath: referenceSize.y
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 2079251381091177906, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
       propertyPath: m_Name
       value: UI_GachaSubItem (9)
@@ -2475,6 +2552,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8661580408485733533}
     m_Modifications:
+    - target: {fileID: 1310707872026373662, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
+      propertyPath: referenceSize.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1310707872026373662, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
+      propertyPath: referenceSize.y
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 2079251381091177906, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
       propertyPath: m_Name
       value: UI_GachaSubItem (3)
@@ -2581,6 +2666,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8661580408485733533}
     m_Modifications:
+    - target: {fileID: 1310707872026373662, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
+      propertyPath: referenceSize.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1310707872026373662, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
+      propertyPath: referenceSize.y
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 2079251381091177906, guid: 1ded0177d7141b94bb5d53006e62e4b3, type: 3}
       propertyPath: m_Name
       value: UI_GachaSubItem (8)

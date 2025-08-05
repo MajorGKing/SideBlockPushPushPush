@@ -28,8 +28,15 @@ public class DataManager
     public Dictionary<int, Data.HeroData> HeroDataDic { get; set; } = new Dictionary<int, Data.HeroData>();
     public Dictionary<string, Data.HeroGachaData> HeroGachaDataDic { get; set; } = new Dictionary<string, Data.HeroGachaData>();
     public Dictionary<string, Data.CurrencyGachaData> CurrencyGachaDataDic { get; set; } = new Dictionary<string, Data.CurrencyGachaData>();
+    public Dictionary<Define.ERarityType, Data.BuddyGachaRarityData> BuddyGachaRarityDataDic { get; set; } = new Dictionary<Define.ERarityType, Data.BuddyGachaRarityData>();
+    public Dictionary<string, Data.BuddyGachaData> BuddyGachaDataDic { get; set; } = new Dictionary<string, Data.BuddyGachaData>();
 
-
+    // BuddyList
+    public List<string> commonBuddies;
+    public List<string> rareBuddies;
+    public List<string> epicBuddies;
+    public List<string> uniqueBuddies;
+    public List<string> legendBuddies;
 
 
     public void Init()
@@ -46,6 +53,8 @@ public class DataManager
         HeroDataDic = LoadJson<Data.HeroDataLoader, int, Data.HeroData>("HeroData").MakeDict();
         HeroGachaDataDic = LoadJson<Data.HeroGachaDataLoader, string, Data.HeroGachaData>("HeroGachaData").MakeDict();
         CurrencyGachaDataDic = LoadJson<Data.CurrencyGachaDataLoader, string, Data.CurrencyGachaData>("CurrencyGachaData").MakeDict();
+        BuddyGachaRarityDataDic = LoadJson<Data.BuddyGachaRarityDataLoader, Define.ERarityType, Data.BuddyGachaRarityData>("BuddyGachaRarityData").MakeDict();
+        BuddyGachaDataDic = LoadJson<Data.BuddyGachaDataLoader, string, Data.BuddyGachaData>("BuddyGachaData").MakeDict();
         Validate();
 
         Debug.Log("Data Load End");

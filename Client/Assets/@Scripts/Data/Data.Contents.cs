@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Data
 {
@@ -558,6 +556,7 @@ namespace Data
     #endregion
 
     #region HeroGachaData
+    [Serializable]
     public class HeroGachaData
     {
         public string GachaItem;
@@ -591,6 +590,7 @@ namespace Data
     #endregion
 
     #region CurrencyGacha
+    [Serializable]
     public class CurrencyGachaData
     {
         public string GachaItem;
@@ -602,27 +602,119 @@ namespace Data
 
     public class CurrencyGachaDataLoader : ILoader<string, CurrencyGachaData>
     {
-        public List<CurrencyGachaData> CurrencyGachaList = new List<CurrencyGachaData>();
+        public List<CurrencyGachaData> currencyGachaList = new List<CurrencyGachaData>();
 
         public Dictionary<string, CurrencyGachaData> MakeDict()
         {
             Dictionary<string, CurrencyGachaData> dict = new Dictionary<string, CurrencyGachaData>();
-            foreach (var currencyGacha in CurrencyGachaList)
+            foreach (var currencyGacha in currencyGachaList)
                 dict.Add(currencyGacha.GachaItem, currencyGacha);
             return dict;
         }
 
         public bool Validate()
         {
-            for (int i = 1; i < CurrencyGachaList.Count; i++)
+            for (int i = 1; i < currencyGachaList.Count; i++)
             {
-                CurrencyGachaList[i].Percent += CurrencyGachaList[i - 1].Percent;
+                currencyGachaList[i].Percent += currencyGachaList[i - 1].Percent;
             }
             return true;
         }
     }
     #endregion
 
+    #region BuddyGachaRarityData
+    [Serializable]
+    public class BuddyGachaRarityData
+    {
+        public Define.ERarityType RarityType;
+        public int Percent;
+        public int Max;
+    }
+
+    public class BuddyGachaRarityDataLoader : ILoader<Define.ERarityType, BuddyGachaRarityData>
+    {
+        public List<BuddyGachaRarityData> rarityList = new List<BuddyGachaRarityData>();
+
+        public Dictionary<Define.ERarityType, BuddyGachaRarityData> MakeDict()
+        {
+            Dictionary<Define.ERarityType, BuddyGachaRarityData> dict = new Dictionary<Define.ERarityType, BuddyGachaRarityData>();
+            foreach (var rarity in rarityList)
+                dict.Add(rarity.RarityType, rarity);
+            return dict;
+        }
+
+        public bool Validate()
+        {
+            for (int i = 1; i < rarityList.Count; i++)
+            {
+                rarityList[i].Percent += rarityList[i - 1].Percent;
+            }
+            return true;
+        }
+    }
+    #endregion
+
+    #region BuddyGachaData
+    [Serializable]
+    public class BuddyGachaData
+    {
+        public string GachaItem;
+        public string SpineNameKey;
+        public Define.ERarityType Rarity;
+        public Define.ECurrencyType CurrencyType;
+        public int CurrencyCount;
+        public int BuddyTemplateId;
+    }
+
+    public class BuddyGachaDataLoader : ILoader<string, BuddyGachaData>
+    {
+        public List<BuddyGachaData> buddyGachaList = new List<BuddyGachaData>();
+
+        public Dictionary<string, BuddyGachaData> MakeDict()
+        {
+            Dictionary<string, BuddyGachaData> dict = new Dictionary<string, BuddyGachaData>();
+            foreach (var buddy in buddyGachaList)
+                dict.Add(buddy.GachaItem, buddy);
+            return dict;
+        }
+
+        public bool Validate()
+        {
+            Managers.Data.commonBuddies = new List<string>();
+            Managers.Data.rareBuddies = new List<string>();
+            Managers.Data.epicBuddies = new List<string>();
+            Managers.Data.uniqueBuddies = new List<string>();
+            Managers.Data.legendBuddies = new List<string>();
+
+            foreach(var buddy in buddyGachaList)
+            {
+                if(buddy.Rarity == Define.ERarityType.Common)
+                { 
+                    Managers.Data.commonBuddies.Add(buddy.GachaItem);
+                }
+                else if (buddy.Rarity == Define.ERarityType.Rare)
+                {
+                    Managers.Data.rareBuddies.Add(buddy.GachaItem);
+                }
+                else if (buddy.Rarity == Define.ERarityType.Epic)
+                {
+                    Managers.Data.epicBuddies.Add(buddy.GachaItem);
+                }
+                else if (buddy.Rarity == Define.ERarityType.Unique)
+                {
+                    Managers.Data.uniqueBuddies.Add(buddy.GachaItem);
+                }
+                else if (buddy.Rarity == Define.ERarityType.Legend)
+                {
+                    Managers.Data.legendBuddies.Add(buddy.GachaItem);
+                }
+            }
+
+            return true;
+        }
+    }
+    #endregion
 
     #region EffectData
     [Serializable]

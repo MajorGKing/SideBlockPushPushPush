@@ -1,3 +1,4 @@
+using Data;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,11 +16,24 @@ using UnityEngine;
 //    }
 //}
 
+public class BuddyGacha
+{
+    public string buddyName;
+    public bool duplication;
+
+    public BuddyGacha() { }
+    public BuddyGacha(string buddyName, bool duplication)
+    {
+        this.buddyName = buddyName;
+        this.duplication = duplication;
+    }
+}
+
 public class UI_BuddyGachaPopup : UI_Popup
 {
     private enum GameObjects
     {
-        Content_Reward,
+        Content_Gacha,
     }
 
     private enum Buttons
@@ -27,11 +41,11 @@ public class UI_BuddyGachaPopup : UI_Popup
         Button_Config,
     }
 
-    private List<UI_RewardsSubItem> _slotList = new List<UI_RewardsSubItem>();
+    private List<UI_GachaSubItem> _slotList = new List<UI_GachaSubItem>();
 
-    private List<Reward> _rewardList = new List<Reward>();
+    private List<BuddyGacha> _gachaList = new List<BuddyGacha>();
 
-    private Define.ERewardType _type;
+    //private Define.ERewardType _type;
 
     protected override void Awake()
     {
@@ -42,9 +56,9 @@ public class UI_BuddyGachaPopup : UI_Popup
         BindButtons(typeof(Buttons));
 
         // Init
-        foreach (Transform child in GetObject((int)GameObjects.Content_Reward).transform)
+        foreach (Transform child in GetObject((int)GameObjects.Content_Gacha).transform)
         {
-            UI_RewardsSubItem slot = child.GetComponent<UI_RewardsSubItem>();
+            var slot = child.GetComponent<UI_GachaSubItem>();
             _slotList.Add(slot);
         }
 
@@ -52,10 +66,9 @@ public class UI_BuddyGachaPopup : UI_Popup
         GetButton((int)Buttons.Button_Config).onClick.AddListener(OnClickConfig);
     }
 
-    public void SetInfo(Define.ERewardType type, List<Reward> rewardList)
+    public void SetInfo(List<BuddyGacha> gachaList)
     {
-        _type = type;
-        _rewardList = rewardList;
+        _gachaList = gachaList;
 
         RefreshUI();
     }
@@ -64,10 +77,10 @@ public class UI_BuddyGachaPopup : UI_Popup
     {
         for (int index = 0; index < _slotList.Count; index++)
         {
-            if (index < _rewardList.Count)
+            if (index < _gachaList.Count)
             {
-                _slotList[index].SetInfo(_rewardList[index].CurrencyType, _rewardList[index].RewardAmount, _rewardList[index].IsFirst);
                 _slotList[index].gameObject.SetActive(true);
+                _slotList[index].SetInfo(_gachaList[index].buddyName, _gachaList[index].duplication);
             }
             else
             {
@@ -82,10 +95,10 @@ public class UI_BuddyGachaPopup : UI_Popup
     {
         ClosePopupUI();
 
-        if(_type == Define.ERewardType.StageClear)
-        {
-            Managers.Scene.LoadScene(Define.EScene.LobbyScene);
-        }
+        //if(_type == Define.ERewardType.StageClear)
+        //{
+        //    Managers.Scene.LoadScene(Define.EScene.LobbyScene);
+        //}
     }
 
     #endregion

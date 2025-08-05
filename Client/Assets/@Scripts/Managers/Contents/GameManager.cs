@@ -663,15 +663,21 @@ public class GameManager
 
         // 세이브 파일이 없을 때
         // 기본 동료 4개 넣어두기
-        _gameData.BuddySaves.Add(1, new BuddySaveData(1, Managers.Data.BuddyDataDic[1].SKillIds, true));
-        _gameData.BuddySaves.Add(3, new BuddySaveData(3, Managers.Data.BuddyDataDic[3].SKillIds, true));
-        _gameData.BuddySaves.Add(5, new BuddySaveData(5, Managers.Data.BuddyDataDic[5].SKillIds, true));
-        _gameData.BuddySaves.Add(7, new BuddySaveData(7, Managers.Data.BuddyDataDic[7].SKillIds, true));
+        buddies = new List<BuddySaveData>();
+        AddBuddySaveData(new BuddySaveData(100000100, Managers.Data.BuddyDataDic[100000100].SKillIds, true));
+        AddBuddySaveData(new BuddySaveData(300000100, Managers.Data.BuddyDataDic[300000100].SKillIds, true));
+        AddBuddySaveData(new BuddySaveData(100000300, Managers.Data.BuddyDataDic[100000300].SKillIds, true));
+        AddBuddySaveData(new BuddySaveData(100000500, Managers.Data.BuddyDataDic[100000500].SKillIds, true));
+
+        //_gameData.BuddySaves.Add(1, new BuddySaveData(1, Managers.Data.BuddyDataDic[1].SKillIds, true));
+        //_gameData.BuddySaves.Add(3, new BuddySaveData(3, Managers.Data.BuddyDataDic[3].SKillIds, true));
+        //_gameData.BuddySaves.Add(5, new BuddySaveData(5, Managers.Data.BuddyDataDic[5].SKillIds, true));
+        //_gameData.BuddySaves.Add(7, new BuddySaveData(7, Managers.Data.BuddyDataDic[7].SKillIds, true));
 
         _gameData.HeroSaves.Add(100, new HeroSaveData(100, Managers.Data.HeroDataDic[100].SKillIds, true));
         _gameData.HeroSaves.Add(200, new HeroSaveData(200, Managers.Data.HeroDataDic[200].SKillIds, false));
 
-        buddies = _gameData.BuddySaves.Values.ToList();
+        //buddies = _gameData.BuddySaves.Values.ToList();
         int selectedIndex = 0;
         foreach (var buddy in buddies)
         {
@@ -937,6 +943,93 @@ public class GameManager
 
             clear.SetInfo(Define.ERewardType.CurrencyGacha, rewards);
         }
+    }
+
+    public void DoBuddyGacha(int count)
+    {
+        Debug.Log("Start Buddy Gacha");
+        // TODO ILHAK price data
+        var needDia = 0;
+
+        if (count == 1)
+        {
+            needDia = 110;
+        }
+        else if (count == 10)
+        {
+            needDia = 1000;
+        }
+
+        if (needDia == 0)
+            return;
+
+        List<BuddyGacha> gachaResult = new List<BuddyGacha>();
+        List<string> buddyNames = new List<string>();
+        System.Random random = new System.Random();
+
+        for (int i = 0; i < count; i++)
+        {
+            int randomNumber = random.Next(Managers.Data.BuddyGachaRarityDataDic.First().Value.Max);
+
+            Define.ERarityType rarity = Define.ERarityType.None;
+
+            foreach (var buddyRarity in Managers.Data.BuddyGachaRarityDataDic.Values)
+            {
+                if (buddyRarity.Percent > randomNumber)
+                {
+                    // 레어리티 결정됨
+                    Debug.Log($"{buddyRarity.RarityType} : {buddyRarity.Percent}");
+                    rarity = buddyRarity.RarityType;
+                    break;
+                }
+            }
+
+            // 버디 뽑기
+            if(rarity == Define.ERarityType.Common)
+            {
+                int randomBuddyPercent = random.Next(Managers.Data.commonBuddies.Count);
+                buddyNames.Add(Managers.Data.BuddyGachaDataDic[Managers.Data.commonBuddies[randomBuddyPercent]].GachaItem);
+            }
+            else if (rarity == Define.ERarityType.Rare)
+            {
+                int randomBuddyPercent = random.Next(Managers.Data.rareBuddies.Count);
+                buddyNames.Add(Managers.Data.BuddyGachaDataDic[Managers.Data.rareBuddies[randomBuddyPercent]].GachaItem);
+            }
+            else if (rarity == Define.ERarityType.Epic)
+            {
+                int randomBuddyPercent = random.Next(Managers.Data.epicBuddies.Count);
+                buddyNames.Add(Managers.Data.BuddyGachaDataDic[Managers.Data.epicBuddies[randomBuddyPercent]].GachaItem);
+            }
+            else if (rarity == Define.ERarityType.Unique)
+            {
+                int randomBuddyPercent = random.Next(Managers.Data.uniqueBuddies.Count);
+                buddyNames.Add(Managers.Data.BuddyGachaDataDic[Managers.Data.uniqueBuddies[randomBuddyPercent]].GachaItem);
+            }
+            else if (rarity == Define.ERarityType.Legend)
+            {
+                int randomBuddyPercent = random.Next(Managers.Data.legendBuddies.Count);
+                buddyNames.Add(Managers.Data.BuddyGachaDataDic[Managers.Data.legendBuddies[randomBuddyPercent]].GachaItem);
+            }
+        }
+
+        // 버디 중복 체크
+        foreach (var buddyName in buddyNames)
+        {
+            var buddyData = Managers.Data.BuddyDataDic[Managers.Data.BuddyGachaDataDic[buddyName].BuddyTemplateId];
+            if (GetBuddySaveData(buddyData.TemplateId) == null)
+            {
+                gachaResult.Add(new BuddyGacha(buddyName, false));
+                AddBuddySaveData(new BuddySaveData(buddyData.TemplateId, null, false));
+            }
+            else
+            {
+                gachaResult.Add(new BuddyGacha(buddyName, true));
+                AddCurrency(Managers.Data.BuddyGachaDataDic[buddyName].CurrencyType, Managers.Data.BuddyGachaDataDic[buddyName].CurrencyCount);
+            }
+        }
+
+        var result = Managers.UI.ShowPopupUI<UI_BuddyGachaPopup>();
+        result.SetInfo(gachaResult);
     }
 
     #endregion
