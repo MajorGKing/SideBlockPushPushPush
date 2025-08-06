@@ -48,15 +48,6 @@ public class UI_GachaSubItem : UI_SubItem
         RefreshUI();
     }
 
-    private void OnDisable()
-    {
-        //if (showCurrencyCoroutine != null)
-        //{
-        //    StopAllCoroutines();
-        //    showCurrencyCoroutine = null;
-        //}
-    }
-
     public void SetInfo(string buddyName, bool duplication = false)
     {
         gachaData = Managers.Data.BuddyGachaDataDic[buddyName];
@@ -92,12 +83,6 @@ public class UI_GachaSubItem : UI_SubItem
 
         if(isDuplication == true)
         {
-            //if (showCurrencyCoroutine != null)
-            //{
-            //    StopCoroutine(showCurrencyCoroutine);
-            //    showCurrencyCoroutine = null;
-            //}
-
             showCurrencyCoroutine = ShowCurrency();
             StartCoroutine(showCurrencyCoroutine);
         }

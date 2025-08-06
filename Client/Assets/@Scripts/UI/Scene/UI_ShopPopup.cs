@@ -173,13 +173,11 @@ public class UI_ShopPopup : UI_Popup
 
     private void OnClickHeroGachaCount1(PointerEventData data)
     {
-        Debug.Log("Try Gacha 1");
         OnClickHeroGachaCount(1);
     }
 
     private void OnClickHeroGachaCount10(PointerEventData data)
     {
-        Debug.Log("Try Gacha 10");
         OnClickHeroGachaCount(10);
     }
 
@@ -210,13 +208,11 @@ public class UI_ShopPopup : UI_Popup
 
     private void OnClickBuddyGachaCount10(PointerEventData data)
     {
-        Debug.Log("Do Gacha 10");
         OnClickBuddyGachaCount(10);
     }
 
     private void OnClickBuddyGachaCount1(PointerEventData data)
     {
-        Debug.Log("Do Gacha 1");
         OnClickBuddyGachaCount(1);
     }
 }
