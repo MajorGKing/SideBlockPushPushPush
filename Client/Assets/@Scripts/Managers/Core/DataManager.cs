@@ -30,6 +30,7 @@ public class DataManager
     public Dictionary<string, Data.CurrencyGachaData> CurrencyGachaDataDic { get; set; } = new Dictionary<string, Data.CurrencyGachaData>();
     public Dictionary<Define.ERarityType, Data.BuddyGachaRarityData> BuddyGachaRarityDataDic { get; set; } = new Dictionary<Define.ERarityType, Data.BuddyGachaRarityData>();
     public Dictionary<string, Data.BuddyGachaData> BuddyGachaDataDic { get; set; } = new Dictionary<string, Data.BuddyGachaData>();
+    public Dictionary<int, Data.MissionData> MissionDataDic { get; set; } = new Dictionary<int, Data.MissionData>();
 
     // BuddyList
     public List<string> commonBuddies;
@@ -55,6 +56,7 @@ public class DataManager
         CurrencyGachaDataDic = LoadJson<Data.CurrencyGachaDataLoader, string, Data.CurrencyGachaData>("CurrencyGachaData").MakeDict();
         BuddyGachaRarityDataDic = LoadJson<Data.BuddyGachaRarityDataLoader, Define.ERarityType, Data.BuddyGachaRarityData>("BuddyGachaRarityData").MakeDict();
         BuddyGachaDataDic = LoadJson<Data.BuddyGachaDataLoader, string, Data.BuddyGachaData>("BuddyGachaData").MakeDict();
+        MissionDataDic = LoadJson<Data.MissionDataLoader, int, Data.MissionData>("MissionData").MakeDict();
         Validate();
 
         Debug.Log("Data Load End");

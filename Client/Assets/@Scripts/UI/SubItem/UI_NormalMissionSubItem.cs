@@ -1,16 +1,26 @@
 using UnityEngine;
 
-public class UI_NormalMissionSubItem : MonoBehaviour
+public class UI_NormalMissionSubItem : UI_SubItem
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private enum Texts
     {
-        
+        Text_NormalMissionListIcon,
+        Text_MissonTitle,
+        Text_NormalMissionCount,
     }
 
-    // Update is called once per frame
-    void Update()
+    private enum Buttons
     {
-        
+        Button_Take,
+    }
+
+    private enum Sliders
+    {
+        Slider_NormalMission,
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
     }
 }

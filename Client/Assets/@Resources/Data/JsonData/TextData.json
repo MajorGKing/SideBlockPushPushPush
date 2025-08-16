@@ -131,6 +131,46 @@
     {
       "TemplateId": "TomDescription",
       "KOR": "평범한 도적"
+    },
+    {
+      "TemplateId": "MissionMonsterKill",
+      "KOR": "몬스터 킬"
+    },
+    {
+      "TemplateId": "MissionConsumGold",
+      "KOR": "골드 사용"
+    },
+    {
+      "TemplateId": "MissionStageClear",
+      "KOR": "스테이지 클리어"
+    },
+    {
+      "TemplateId": "MissionCurrencyGacha",
+      "KOR": "자원 가챠"
+    },
+    {
+      "TemplateId": "MissionBuddySkillUp",
+      "KOR": "동료 스킬 레벨 업"
+    },
+    {
+      "TemplateId": "MissionBuddyLevelUp",
+      "KOR": "동료 레벨 업"
+    },
+    {
+      "TemplateId": "MissionHeroSkillUp",
+      "KOR": "영웅 스킬 레벨 업"
+    },
+    {
+      "TemplateId": "MissionHeroLevelUp",
+      "KOR": "영웅 레벨 업"
+    },
+    {
+      "TemplateId": "MissionDay",
+      "KOR": "일일 미션"
+    },
+    {
+      "TemplateId": "MissionWeek",
+      "KOR": "주간 미션"
     }
   ]
 }

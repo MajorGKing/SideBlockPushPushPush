@@ -782,4 +782,69 @@ namespace Data
     }
     #endregion
 
+    #region MissionData
+    public class RewardCurrency
+    {
+        int point;
+        public Define.ECurrencyType currencyType;
+        public int count;
+
+        public RewardCurrency(int point, Define.ECurrencyType currencyType, int count)
+        {
+            this.point = point;
+            this.currencyType = currencyType;
+            this.count = count;
+        }
+    }
+
+    [Serializable]
+    public class MissionData
+    {
+        public int TemplateId;
+        public string Name;
+        public string NameTextId;
+        public Define.EMissionType MissionType;
+        public Define.EMissionGoal MissionGoal;
+        public int MissionCount;
+        public int MaxPoint;
+        public int Point;
+        public List<int> PointStep;
+        public List<Define.ECurrencyType> RewardType;
+        public List<int> RewardCount;
+
+        [ExcludeFieldAttribute]
+        public List<RewardCurrency> RewardCurrencies;
+    }
+
+    public class MissionDataLoader : ILoader<int, MissionData>
+    {
+        public List<MissionData> missions = new List<MissionData>();
+        public Dictionary<int, MissionData> MakeDict()
+        {
+            Dictionary<int, MissionData> dict = new Dictionary<int, MissionData>();
+            foreach (var mission in missions)
+                dict.Add(mission.TemplateId, mission);
+            return dict;
+        }
+
+        public bool Validate()
+        {
+            foreach (var mission in missions)
+            {
+                mission.RewardCurrencies = new List<RewardCurrency>();
+
+                for(int i = 0; i < mission.PointStep.Count; i++)
+                {
+                    if(mission.RewardCount[i] == 0)
+                        continue;
+
+                    mission.RewardCurrencies.Add(new RewardCurrency(mission.PointStep[i], mission.RewardType[i], mission.RewardCount[i]));
+                }
+            }
+
+            return true;
+        }
+    }
+    #endregion
+
 }

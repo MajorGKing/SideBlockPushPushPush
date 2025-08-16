@@ -32,3 +32,13 @@ Mari,Mari
 MariDescription,평범한 마법사
 Tom,Tom
 TomDescription,평범한 도적
+MissionMonsterKill,몬스터 킬
+MissionConsumGold,골드 사용
+MissionStageClear,스테이지 클리어
+MissionCurrencyGacha,자원 가챠
+MissionBuddySkillUp,동료 스킬 레벨 업
+MissionBuddyLevelUp,동료 레벨 업
+MissionHeroSkillUp,영웅 스킬 레벨 업
+MissionHeroLevelUp,영웅 레벨 업
+MissionDay,일일 미션
+MissionWeek,주간 미션

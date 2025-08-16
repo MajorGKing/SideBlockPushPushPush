@@ -1,16 +1,9 @@
 using UnityEngine;
 
-public class UI_MissionPopup : MonoBehaviour
+public class UI_MissionPopup : UI_Popup
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.Awake();
     }
 }

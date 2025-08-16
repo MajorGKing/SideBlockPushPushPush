@@ -237,6 +237,30 @@ public class Define
     }
     #endregion
 
+    #region Mission_Achievement
+    public enum EMissionType
+    {
+        None,
+        Normal,
+        Day,
+        Week,
+    }
+
+    public enum EMissionGoal
+    {
+        None,
+        MonsterKill,
+        ConsumGold,
+        StageClear,
+        CurrencyGacha,
+        BuddySkillUp,
+        BuddyLevelUp,
+        HeroSkillUp,
+        HeroLevelUp,
+    }
+
+    #endregion
+
 
 
     #region Tag

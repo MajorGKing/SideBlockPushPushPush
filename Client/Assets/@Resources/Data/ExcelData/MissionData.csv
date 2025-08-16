@@ -1,0 +1,19 @@
+﻿TemplateId,Name,NameTextId,MissionType,MissionGoal,MissionCount,MaxPoint,Point,PointStep,RewardType,RewardCount
+100001,몬스터킬,MissionMonsterKill,Normal,MonsterKill,10,,20,,,
+100002,골드사용,MissionConsumGold,Normal,ConsumGold,1000,,20,,,
+100003,스테이지클리어,MissionStageClear,Normal,StageClear,1,,20,,,
+100004,자원가챠,MissionCurrencyGacha,Normal,CurrencyGacha,1,,20,,,
+100005,동료스킬레벨업,MissionBuddySkillUp,Normal,BuddySkillUp,1,,20,,,
+100006,동료레벨업,MissionBuddyLevelUp,Normal,BuddyLevelUp,1,,20,,,
+100007,영웅스킬레벨업,MissionHeroSkillUp,Normal,HeroSkillUp,1,,20,,,
+100008,영웅레벨업,MissionHeroLevelUp,Normal,HeroLevelUp,1,,20,,,
+200001,일일 미션,MissionDay,Day,None,,100,,20,Exp,100
+,,,,,,,,40,Gold,100
+,,,,,,,,60,Exp,500
+,,,,,,,,80,Gold,500
+,,,,,,,,100,Dia,100
+300001,주간 미션,MissionWeek,Week,None,,700,,140,Gold,1000
+,,,,,,,,280,BlueGem,500
+,,,,,,,,420,GreenGem,500
+,,,,,,,,540,YellowGem,500
+,,,,,,,,700,Dia,500
