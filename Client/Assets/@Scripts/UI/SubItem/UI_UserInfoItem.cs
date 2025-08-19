@@ -28,7 +28,7 @@ public class UI_UserInfoItem : UI_SubItem
     {
         base.Awake();
 
-        BindObjects(typeof(GameObjects));
+        BindGameObjects(typeof(GameObjects));
         BindButtons(typeof(Buttons));
         BindTexts(typeof(Texts));
 

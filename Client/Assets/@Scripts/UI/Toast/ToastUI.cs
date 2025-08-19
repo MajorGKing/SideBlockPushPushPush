@@ -35,12 +35,12 @@ public class ToastUI : UI_Base
     {
         base.Awake();
 
-        BindObjects(typeof(GameObjects));
+        BindGameObjects(typeof(GameObjects));
         BindTexts(typeof(Texts));
 
-        _uiCanvasGroup = GetObject((int)GameObjects.Canvas).GetComponent<CanvasGroup>();
-        _container = GetObject((int)GameObjects.Container).GetComponent<VerticalLayoutGroup>();
-        _uiImage = GetObject((int)GameObjects.Toast).GetComponent<Image>();
+        _uiCanvasGroup = GetGameObject((int)GameObjects.Canvas).GetComponent<CanvasGroup>();
+        _container = GetGameObject((int)GameObjects.Container).GetComponent<VerticalLayoutGroup>();
+        _uiImage = GetGameObject((int)GameObjects.Toast).GetComponent<Image>();
         _uiText = GetText((int)Texts.MsgText);
 
         _uiCanvasGroup.alpha = 0f;

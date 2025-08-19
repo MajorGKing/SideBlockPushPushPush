@@ -54,27 +54,27 @@ public class UI_BuddyLevelUpPopup : UI_Popup
         base.Awake();
 
         BindTexts(typeof(Texts));
-        BindObjects(typeof(Objects));
+        BindGameObjects(typeof(Objects));
         BindButtons(typeof(Buttons));
 
         // Selected Buddy
         GetButton((int)Buttons.Button_BuddyLevelUp).gameObject.BindEvent(OnClickedBuddyLevelUpButton);
 
         buddyLevelUpCurrencies = new List<UI_RewardsSubItem>();
-        buddyLevelUpCurrencies.Add(GetObject((int)Objects.UI_LevelUpCurrencySubItem1).GetComponent<UI_RewardsSubItem>());
-        buddyLevelUpCurrencies.Add(GetObject((int)Objects.UI_LevelUpCurrencySubItem2).GetComponent<UI_RewardsSubItem>());
-        buddyLevelUpCurrencies.Add(GetObject((int)Objects.UI_LevelUpCurrencySubItem3).GetComponent<UI_RewardsSubItem>());
-        buddyLevelUpCurrencies.Add(GetObject((int)Objects.UI_LevelUpCurrencySubItem4).GetComponent<UI_RewardsSubItem>());
+        buddyLevelUpCurrencies.Add(GetGameObject((int)Objects.UI_LevelUpCurrencySubItem1).GetComponent<UI_RewardsSubItem>());
+        buddyLevelUpCurrencies.Add(GetGameObject((int)Objects.UI_LevelUpCurrencySubItem2).GetComponent<UI_RewardsSubItem>());
+        buddyLevelUpCurrencies.Add(GetGameObject((int)Objects.UI_LevelUpCurrencySubItem3).GetComponent<UI_RewardsSubItem>());
+        buddyLevelUpCurrencies.Add(GetGameObject((int)Objects.UI_LevelUpCurrencySubItem4).GetComponent<UI_RewardsSubItem>());
 
         selectedBuddies = new UI_BuddySlotSubItem[4];
-        selectedBuddies[0] = GetObject((int)Objects.UI_SelectedBuddySlotSubItem1).GetComponent<UI_BuddySlotSubItem>();
-        selectedBuddies[1] = GetObject((int)Objects.UI_SelectedBuddySlotSubItem2).GetComponent<UI_BuddySlotSubItem>();
-        selectedBuddies[2] = GetObject((int)Objects.UI_SelectedBuddySlotSubItem3).GetComponent<UI_BuddySlotSubItem>();
-        selectedBuddies[3] = GetObject((int)Objects.UI_SelectedBuddySlotSubItem4).GetComponent<UI_BuddySlotSubItem>();
+        selectedBuddies[0] = GetGameObject((int)Objects.UI_SelectedBuddySlotSubItem1).GetComponent<UI_BuddySlotSubItem>();
+        selectedBuddies[1] = GetGameObject((int)Objects.UI_SelectedBuddySlotSubItem2).GetComponent<UI_BuddySlotSubItem>();
+        selectedBuddies[2] = GetGameObject((int)Objects.UI_SelectedBuddySlotSubItem3).GetComponent<UI_BuddySlotSubItem>();
+        selectedBuddies[3] = GetGameObject((int)Objects.UI_SelectedBuddySlotSubItem4).GetComponent<UI_BuddySlotSubItem>();
 
-        GetObject((int)Objects.BuddySKillContent).DestroyChildren();
-        GetObject((int)Objects.BuddySkillUpContent).DestroyChildren();
-        GetObject((int)Objects.BuddiesContent).DestroyChildren();
+        GetGameObject((int)Objects.BuddySKillContent).DestroyChildren();
+        GetGameObject((int)Objects.BuddySkillUpContent).DestroyChildren();
+        GetGameObject((int)Objects.BuddiesContent).DestroyChildren();
 
 
         RefreshUI();
@@ -129,7 +129,7 @@ public class UI_BuddyLevelUpPopup : UI_Popup
 
         // Buddies ฐüทร
         {
-            GetObject((int)Objects.BuddiesContent).DestroyChildren();
+            GetGameObject((int)Objects.BuddiesContent).DestroyChildren();
 
             var buddies = Managers.Game.buddies;
             foreach(var buddy in buddies)
@@ -140,7 +140,7 @@ public class UI_BuddyLevelUpPopup : UI_Popup
                 if (buddy.TemplateId == 0)
                     continue;
 
-                var item = Managers.UI.MakeSubItem<UI_BuddySlotSubItem>(GetObject((int)Objects.BuddiesContent).transform);
+                var item = Managers.UI.MakeSubItem<UI_BuddySlotSubItem>(GetGameObject((int)Objects.BuddiesContent).transform);
                 item.SetInfo(buddy.TemplateId, UI_BuddySlotSubItem.EBuddySlotTypte.Buddies);
             }
         }
@@ -157,7 +157,7 @@ public class UI_BuddyLevelUpPopup : UI_Popup
         int nowBuddyIndex = Managers.Game.NowBuddy;
         if (nowBuddyIndex == 0)
         {
-            Utils.FindChild<SkeletonGraphic>(GetObject((int)Objects.UI_NowBuddySubItem), null, true).enabled = false;
+            Utils.FindChild<SkeletonGraphic>(GetGameObject((int)Objects.UI_NowBuddySubItem), null, true).enabled = false;
 
             foreach (var buddyLevelUpCurrency in buddyLevelUpCurrencies)
             {
@@ -166,7 +166,7 @@ public class UI_BuddyLevelUpPopup : UI_Popup
 
             GetButton((int)Buttons.Button_BuddyLevelUp).interactable = false;
 
-            GetObject((int)Objects.BuddySKillContent).DestroyChildren();
+            GetGameObject((int)Objects.BuddySKillContent).DestroyChildren();
 
             // Stat Update
             GetText((int)Texts.Text_BuddyLevel).text = $"Level : ";
@@ -176,7 +176,7 @@ public class UI_BuddyLevelUpPopup : UI_Popup
         }
         else
         {
-            var nowBuddySkeletonGraphic = Utils.FindChild<SkeletonGraphic>(GetObject((int)Objects.UI_NowBuddySubItem), null, true);
+            var nowBuddySkeletonGraphic = Utils.FindChild<SkeletonGraphic>(GetGameObject((int)Objects.UI_NowBuddySubItem), null, true);
             nowBuddySkeletonGraphic.enabled = true;
             var nowBuddyData = Managers.Data.BuddyDataDic[nowBuddyIndex];
             nowBuddySkeletonGraphic.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>(nowBuddyData.SpineNameKey);
@@ -206,7 +206,7 @@ public class UI_BuddyLevelUpPopup : UI_Popup
             if (buddySaveData == null)
                 return;
 
-            GetObject((int)Objects.BuddySKillContent).DestroyChildren();
+            GetGameObject((int)Objects.BuddySKillContent).DestroyChildren();
 
             foreach (var templatedId in buddySaveData.SkillTemplateId)
             {
@@ -215,7 +215,7 @@ public class UI_BuddyLevelUpPopup : UI_Popup
                 if (templatedId == 0)
                     continue;
 
-                var item = Managers.UI.MakeSubItem<UI_BuddySKillSubItem>(GetObject((int)Objects.BuddySKillContent).transform);
+                var item = Managers.UI.MakeSubItem<UI_BuddySKillSubItem>(GetGameObject((int)Objects.BuddySKillContent).transform);
                 item.SetInfo(templatedId);
             }
 
@@ -229,7 +229,7 @@ public class UI_BuddyLevelUpPopup : UI_Popup
             //}
             //else
             //{
-            GetObject((int)Objects.BuddySkillUpContent).DestroyChildren();
+            GetGameObject((int)Objects.BuddySkillUpContent).DestroyChildren();
 
             var saveData = Managers.Game.GetBuddySaveData(nowBuddyIndex);
 
@@ -243,7 +243,7 @@ public class UI_BuddyLevelUpPopup : UI_Popup
 
                 //GetObject((int)Objects.BuddySkillUpContent).DestroyChildren();
 
-                var item = Managers.UI.MakeSubItem<UI_BuddySkillUpSubItem>(GetObject((int)Objects.BuddySkillUpContent).transform);
+                var item = Managers.UI.MakeSubItem<UI_BuddySkillUpSubItem>(GetGameObject((int)Objects.BuddySkillUpContent).transform);
                 item.SetInfo(tempalteId);
             }
             //}

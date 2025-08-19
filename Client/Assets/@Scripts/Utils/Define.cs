@@ -259,6 +259,14 @@ public class Define
         HeroLevelUp,
     }
 
+    public enum EMissionState
+    {
+        None,
+        Progress,
+        Rewardable,
+        Finish,
+    }
+
     #endregion
 
 

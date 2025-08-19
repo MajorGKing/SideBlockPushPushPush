@@ -38,15 +38,15 @@ public class UI_HeroLevelUpPopup : UI_Popup
         base.Awake();
 
         BindTexts(typeof(Texts));
-        BindObjects(typeof(Objects));
+        BindGameObjects(typeof(Objects));
         BindButtons(typeof(Buttons));
 
         GetButton((int)Buttons.Button_HeroLevelUp).gameObject.BindEvent(OnClickedHeroLevelUpButton);
 
-        GetObject((int)Objects.HeroContent).DestroyChildren();
-        GetObject((int)Objects.HeroSKillContent).DestroyChildren();
+        GetGameObject((int)Objects.HeroContent).DestroyChildren();
+        GetGameObject((int)Objects.HeroSKillContent).DestroyChildren();
 
-        expBar = GetObject((int)Objects.UI_HeroExpBar).GetComponent<UI_BattleBarWorldSpace>();
+        expBar = GetGameObject((int)Objects.UI_HeroExpBar).GetComponent<UI_BattleBarWorldSpace>();
 
         RefreshUI();
     }
@@ -81,7 +81,7 @@ public class UI_HeroLevelUpPopup : UI_Popup
 
         // Hero List
         {
-            GetObject((int)Objects.HeroContent).DestroyChildren();
+            GetGameObject((int)Objects.HeroContent).DestroyChildren();
 
             var heroes = Managers.Game.heroes;
             foreach( var hero in heroes )
@@ -90,7 +90,7 @@ public class UI_HeroLevelUpPopup : UI_Popup
 
                 if (hero.TemplateId == 0) continue;
 
-                var item = Managers.UI.MakeSubItem<UI_BuddySlotSubItem>(GetObject((int)Objects.HeroContent).transform);
+                var item = Managers.UI.MakeSubItem<UI_BuddySlotSubItem>(GetGameObject((int)Objects.HeroContent).transform);
                 item.SetInfo(hero.TemplateId, UI_BuddySlotSubItem.EBuddySlotTypte.Heroes);
             }
         }
@@ -102,7 +102,7 @@ public class UI_HeroLevelUpPopup : UI_Popup
             if (nowHeroIndex == 0)
                 return;
 
-            var nowHeroSkeletonGraphic = Utils.FindChild<SkeletonGraphic>(GetObject((int)Objects.UI_NowHeroSubItem), null, true);
+            var nowHeroSkeletonGraphic = Utils.FindChild<SkeletonGraphic>(GetGameObject((int)Objects.UI_NowHeroSubItem), null, true);
             nowHeroSkeletonGraphic.enabled = true;
             var nowHeroData = Managers.Data.HeroDataDic[nowHeroIndex];
             nowHeroSkeletonGraphic.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>(nowHeroData.SpineNameKey);
@@ -130,13 +130,13 @@ public class UI_HeroLevelUpPopup : UI_Popup
             
 
             // skill
-            GetObject((int)Objects.HeroSKillContent).DestroyChildren();
+            GetGameObject((int)Objects.HeroSKillContent).DestroyChildren();
 
             foreach(var templateId in nowHeroSaveData.SkillTemplateId)
             {
                 if (templateId == 0) continue;
 
-                var item = Managers.UI.MakeSubItem<UI_HeroSkillUpSubItem>(GetObject((int)Objects.HeroSKillContent).transform);
+                var item = Managers.UI.MakeSubItem<UI_HeroSkillUpSubItem>(GetGameObject((int)Objects.HeroSKillContent).transform);
                 item.SetInfo(templateId);
             }
         }

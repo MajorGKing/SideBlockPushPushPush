@@ -41,7 +41,7 @@ public class UI_HeroSkillUpSubItem : UI_SubItem
     {
         base.Awake();
 
-        BindObjects(typeof(Objects));
+        BindGameObjects(typeof(Objects));
         BindImages(typeof(Images));
         BindButtons(typeof(Buttons));
         BindTexts(typeof(Texts));
@@ -55,9 +55,9 @@ public class UI_HeroSkillUpSubItem : UI_SubItem
         heroSkillImages.Add(GetImage((int)Images.Image_HeroSKill6));
 
         heroSkillUpCurrencies = new List<UI_RewardsSubItem>();
-        heroSkillUpCurrencies.Add(GetObject((int)Objects.UI_RewardSubItem1).GetComponent<UI_RewardsSubItem>());
-        heroSkillUpCurrencies.Add(GetObject((int)Objects.UI_RewardSubItem2).GetComponent<UI_RewardsSubItem>());
-        heroSkillUpCurrencies.Add(GetObject((int)Objects.UI_RewardSubItem3).GetComponent<UI_RewardsSubItem>());
+        heroSkillUpCurrencies.Add(GetGameObject((int)Objects.UI_RewardSubItem1).GetComponent<UI_RewardsSubItem>());
+        heroSkillUpCurrencies.Add(GetGameObject((int)Objects.UI_RewardSubItem2).GetComponent<UI_RewardsSubItem>());
+        heroSkillUpCurrencies.Add(GetGameObject((int)Objects.UI_RewardSubItem3).GetComponent<UI_RewardsSubItem>());
 
         GetButton((int)Buttons.Button_SkillUp).gameObject.BindEvent(OnClickedSkillUpButton);
 

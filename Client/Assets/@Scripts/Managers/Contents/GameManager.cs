@@ -1,3 +1,4 @@
+using Data;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,8 @@ public class GameData
 
     public int CurrentStageTemplateId = 1;
     public Dictionary<int, StageClear> StageClears = new Dictionary<int, StageClear>();
+
+    public Dictionary<int, MissionSaveData> MissionSaves = new Dictionary<int, MissionSaveData>();
 
     public bool BGMOn = true;
     public bool EffectSoundOn = true;
@@ -73,6 +76,15 @@ public class HeroSaveData
         this.maxExp = Managers.Data.HeroDataDic[templateId].LevelUpCurrency1Count;
         this.isSelected = isSelected;
     }
+}
+
+[SerializeField]
+public class MissionSaveData
+{
+    public int TemplateId;
+    public int StackedPoint;
+    public Define.EMissionState MissionState;
+    public List<Define.EMissionState> PointStepMissionState;
 }
 
 public class GameManager
@@ -610,6 +622,32 @@ public class GameManager
         }
 
     }
+    #endregion
+
+    #region Mission
+    public List<MissionSaveData> missions { get; private set; }
+    //public List<MissionData> normalMoissionList => Managers.Data.MissionDataDic.Where(mission => mission.Value.MissionType == Define.EMissionType.Normal).Select(mission => mission.Value).ToList();
+    //public List<MissionData> dayMoissionList => Managers.Data.MissionDataDic.Where(mission => mission.Value.MissionType == Define.EMissionType.Day).Select(mission => mission.Value).ToList();
+    //public List<MissionData> weekMoissionList => Managers.Data.MissionDataDic.Where(mission => mission.Value.MissionType == Define.EMissionType.Week).Select(mission => mission.Value).ToList();
+
+    public MissionSaveData GetMissionSaveData(int templateId)
+    {
+        return missions.FirstOrDefault(m => m.TemplateId == templateId);
+    }
+
+    public void GetMissionSubItemReward(int templateId)
+    {
+
+    }
+
+    public void GetDayMissionReward()
+    {
+
+    }
+
+
+
+
     #endregion
 
     #region Action

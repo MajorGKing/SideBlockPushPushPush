@@ -33,15 +33,15 @@ public class UI_BuddySkillUpSubItem : UI_SubItem
 
         // Bind
         BindButtons(typeof(Buttons));
-        BindObjects(typeof(Objects));
+        BindGameObjects(typeof(Objects));
         BindImages(typeof(Images));
 
         buddySKillUpCurrencies = new List<UI_RewardsSubItem>();
-        buddySKillUpCurrencies.Add(GetObject((int)Objects.UI_RewardSubItem1).GetComponent<UI_RewardsSubItem>());
-        buddySKillUpCurrencies.Add(GetObject((int)Objects.UI_RewardSubItem2).GetComponent<UI_RewardsSubItem>());
-        buddySKillUpCurrencies.Add(GetObject((int)Objects.UI_RewardSubItem3).GetComponent<UI_RewardsSubItem>());
-        buddySKillUpCurrencies.Add(GetObject((int)Objects.UI_RewardSubItem4).GetComponent<UI_RewardsSubItem>());
-        buddySKillUpCurrencies.Add(GetObject((int)Objects.UI_RewardSubItem5).GetComponent<UI_RewardsSubItem>());
+        buddySKillUpCurrencies.Add(GetGameObject((int)Objects.UI_RewardSubItem1).GetComponent<UI_RewardsSubItem>());
+        buddySKillUpCurrencies.Add(GetGameObject((int)Objects.UI_RewardSubItem2).GetComponent<UI_RewardsSubItem>());
+        buddySKillUpCurrencies.Add(GetGameObject((int)Objects.UI_RewardSubItem3).GetComponent<UI_RewardsSubItem>());
+        buddySKillUpCurrencies.Add(GetGameObject((int)Objects.UI_RewardSubItem4).GetComponent<UI_RewardsSubItem>());
+        buddySKillUpCurrencies.Add(GetGameObject((int)Objects.UI_RewardSubItem5).GetComponent<UI_RewardsSubItem>());
 
         GetButton((int)Buttons.Button_SkillUp).gameObject.BindEvent(OnClickedBuddySkillUpButton);
 

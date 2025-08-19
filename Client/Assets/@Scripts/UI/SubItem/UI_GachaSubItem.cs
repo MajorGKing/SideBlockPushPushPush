@@ -33,10 +33,10 @@ public class UI_GachaSubItem : UI_SubItem
         base.Awake();
 
         BindImages(typeof(Images));
-        BindObjects(typeof(Objects));
+        BindGameObjects(typeof(Objects));
         BindTexts(typeof(Texts));
 
-        skeletonAnimation = GetObject((int)Objects.Spine_Buddy).GetComponent<SkeletonGraphic>();
+        skeletonAnimation = GetGameObject((int)Objects.Spine_Buddy).GetComponent<SkeletonGraphic>();
         skeletonAnimation.gameObject.SetActive(false);
 
         GetImage((int)Images.Image_BuddyCurrency).gameObject.SetActive(false);

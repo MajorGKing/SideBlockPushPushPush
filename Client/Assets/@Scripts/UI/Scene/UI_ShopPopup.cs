@@ -56,7 +56,7 @@ public class UI_ShopPopup : UI_Popup
         base.Awake();
 
         // Bind
-        BindObjects(typeof(Objects));
+        BindGameObjects(typeof(Objects));
         BindButtons(typeof(Buttons));
         BindToggles(typeof(Toggles));
 
@@ -109,35 +109,35 @@ public class UI_ShopPopup : UI_Popup
         switch (_shopPopupState)
         {
             case ShopPopupState.HeroGacha:
-                GetObject((int)Objects.HeroArea).SetActive(true);
-                GetObject((int)Objects.BuddyArea).SetActive(false);
-                GetObject((int)Objects.CurrenciesArea).SetActive(false);
-                GetObject((int)Objects.GoodsArea).SetActive(false);
+                GetGameObject((int)Objects.HeroArea).SetActive(true);
+                GetGameObject((int)Objects.BuddyArea).SetActive(false);
+                GetGameObject((int)Objects.CurrenciesArea).SetActive(false);
+                GetGameObject((int)Objects.GoodsArea).SetActive(false);
                 break;
             case ShopPopupState.BuddyGacha:
-                GetObject((int)Objects.HeroArea).SetActive(false);
-                GetObject((int)Objects.BuddyArea).SetActive(true);
-                GetObject((int)Objects.CurrenciesArea).SetActive(false);
-                GetObject((int)Objects.GoodsArea).SetActive(false);
+                GetGameObject((int)Objects.HeroArea).SetActive(false);
+                GetGameObject((int)Objects.BuddyArea).SetActive(true);
+                GetGameObject((int)Objects.CurrenciesArea).SetActive(false);
+                GetGameObject((int)Objects.GoodsArea).SetActive(false);
                 break;
             case ShopPopupState.Currencies:
-                GetObject((int)Objects.HeroArea).SetActive(false);
-                GetObject((int)Objects.BuddyArea).SetActive(false);
-                GetObject((int)Objects.CurrenciesArea).SetActive(true);
-                GetObject((int)Objects.GoodsArea).SetActive(false);
+                GetGameObject((int)Objects.HeroArea).SetActive(false);
+                GetGameObject((int)Objects.BuddyArea).SetActive(false);
+                GetGameObject((int)Objects.CurrenciesArea).SetActive(true);
+                GetGameObject((int)Objects.GoodsArea).SetActive(false);
                 break;
             case ShopPopupState.Goods:
-                GetObject((int)Objects.HeroArea).SetActive(false);
-                GetObject((int)Objects.BuddyArea).SetActive(false);
-                GetObject((int)Objects.CurrenciesArea).SetActive(false);
-                GetObject((int)Objects.GoodsArea).SetActive(true);
+                GetGameObject((int)Objects.HeroArea).SetActive(false);
+                GetGameObject((int)Objects.BuddyArea).SetActive(false);
+                GetGameObject((int)Objects.CurrenciesArea).SetActive(false);
+                GetGameObject((int)Objects.GoodsArea).SetActive(true);
                 break;
 
             default:
-                GetObject((int)Objects.HeroArea).SetActive(false);
-                GetObject((int)Objects.BuddyArea).SetActive(false);
-                GetObject((int)Objects.CurrenciesArea).SetActive(false);
-                GetObject((int)Objects.GoodsArea).SetActive(false);
+                GetGameObject((int)Objects.HeroArea).SetActive(false);
+                GetGameObject((int)Objects.BuddyArea).SetActive(false);
+                GetGameObject((int)Objects.CurrenciesArea).SetActive(false);
+                GetGameObject((int)Objects.GoodsArea).SetActive(false);
                 break;
         }
     }

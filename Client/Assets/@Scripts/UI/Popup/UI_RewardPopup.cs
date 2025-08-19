@@ -38,11 +38,11 @@ public class UI_RewardPopup : UI_Popup
         base.Awake();
 
         // Bind
-        BindObjects(typeof(GameObjects));
+        BindGameObjects(typeof(GameObjects));
         BindButtons(typeof(Buttons));
 
         // Init
-        foreach (Transform child in GetObject((int)GameObjects.Content_Reward).transform)
+        foreach (Transform child in GetGameObject((int)GameObjects.Content_Reward).transform)
         {
             UI_RewardsSubItem slot = child.GetComponent<UI_RewardsSubItem>();
             _slotList.Add(slot);

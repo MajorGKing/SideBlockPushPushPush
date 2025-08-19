@@ -33,9 +33,9 @@ public class UI_BuddySlotSubItem : UI_SubItem
         base.Awake();
 
         BindImages(typeof(Images));
-        BindObjects(typeof(Objects));
+        BindGameObjects(typeof(Objects));
 
-        skeletonAnimation = GetObject((int)Objects.BuddySlotObject).GetComponent<SkeletonGraphic>();
+        skeletonAnimation = GetGameObject((int)Objects.BuddySlotObject).GetComponent<SkeletonGraphic>();
 
         GetImage((int)Images.Image_BuddySlotSubItem).gameObject.BindEvent(BuddySlotClicked);
 

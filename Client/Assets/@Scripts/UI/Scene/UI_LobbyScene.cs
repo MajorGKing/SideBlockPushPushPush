@@ -54,7 +54,7 @@ public class UI_LobbyScene : UI_Scene
     {
         base.Awake();
 
-        BindObjects(typeof(GameObjects));
+        BindGameObjects(typeof(GameObjects));
         BindTexts(typeof(Texts));
         BindToggles(typeof(Toggles));
 
@@ -77,7 +77,7 @@ public class UI_LobbyScene : UI_Scene
         TogglesInit();
 
         GetText((int)Texts.ShopToggleText).gameObject.SetActive(true);
-        GetObject((int)GameObjects.CheckShopImageObject).SetActive(true);
+        GetGameObject((int)GameObjects.CheckShopImageObject).SetActive(true);
 
         _userInfoItem = Utils.FindChild<UI_UserInfoItem>(gameObject);
         //_userInfoItem.SetInfo(Define.EUserInfoItem.Stamina, Managers.Game.Stamina);
@@ -115,16 +115,16 @@ public class UI_LobbyScene : UI_Scene
         _isSelectedHero = false;
 
         // 버튼 레드닷 초기화
-        GetObject((int)GameObjects.ShopToggleRedDotObject).SetActive(false);
-        GetObject((int)GameObjects.LevelToggleRedDotObject).SetActive(false);
-        GetObject((int)GameObjects.BattleToggleRedDotObject).SetActive(false);
-        GetObject((int)GameObjects.HeroToggleRedDotObject).SetActive(false);
+        GetGameObject((int)GameObjects.ShopToggleRedDotObject).SetActive(false);
+        GetGameObject((int)GameObjects.LevelToggleRedDotObject).SetActive(false);
+        GetGameObject((int)GameObjects.BattleToggleRedDotObject).SetActive(false);
+        GetGameObject((int)GameObjects.HeroToggleRedDotObject).SetActive(false);
 
         // 선택 토글 아이콘 초기화
-        GetObject((int)GameObjects.CheckShopImageObject).SetActive(false);
-        GetObject((int)GameObjects.CheckLevelImageObject).SetActive(false);
-        GetObject((int)GameObjects.CheckBattleImageObject).SetActive(false);
-        GetObject((int)GameObjects.CheckHeroImageObject).SetActive(false);
+        GetGameObject((int)GameObjects.CheckShopImageObject).SetActive(false);
+        GetGameObject((int)GameObjects.CheckLevelImageObject).SetActive(false);
+        GetGameObject((int)GameObjects.CheckBattleImageObject).SetActive(false);
+        GetGameObject((int)GameObjects.CheckHeroImageObject).SetActive(false);
 
         // 메뉴 텍스트 초기화
         GetText((int)Texts.ShopToggleText).gameObject.SetActive(false);
@@ -147,7 +147,7 @@ public class UI_LobbyScene : UI_Scene
         TogglesInit();
         BattlePopupUI.gameObject.SetActive(true);
         GetText((int)Texts.BattleToggleText).gameObject.SetActive(true);
-        GetObject((int)GameObjects.CheckBattleImageObject).SetActive(true);
+        GetGameObject((int)GameObjects.CheckBattleImageObject).SetActive(true);
         _isSelectedBattle = true;
     }
 
@@ -160,7 +160,7 @@ public class UI_LobbyScene : UI_Scene
         TogglesInit();
         ShopPopupUI.gameObject.SetActive(true);
         GetText((int)Texts.ShopToggleText).gameObject.SetActive(true);
-        GetObject((int)GameObjects.CheckShopImageObject).SetActive(true);
+        GetGameObject((int)GameObjects.CheckShopImageObject).SetActive(true);
         _isSelectedShop = true;
 
     }
@@ -174,7 +174,7 @@ public class UI_LobbyScene : UI_Scene
         TogglesInit();
         BuddyPopupUI.gameObject.SetActive(true);
         GetText((int)Texts.LevelToggleText).gameObject.SetActive(true);
-        GetObject((int)GameObjects.CheckLevelImageObject).SetActive(true);
+        GetGameObject((int)GameObjects.CheckLevelImageObject).SetActive(true);
         _isSelectedLevel = true;
     }
 
@@ -187,7 +187,7 @@ public class UI_LobbyScene : UI_Scene
         TogglesInit();
         HeroPopupUI.gameObject.SetActive(true);
         GetText((int)Texts.HeroToggleText).gameObject.SetActive(true);
-        GetObject((int)GameObjects.CheckHeroImageObject).SetActive(true);
+        GetGameObject((int)GameObjects.CheckHeroImageObject).SetActive(true);
         _isSelectedHero = true;
 
     }

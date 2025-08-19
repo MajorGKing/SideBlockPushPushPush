@@ -52,11 +52,11 @@ public class UI_BuddyGachaPopup : UI_Popup
         base.Awake();
 
         // Bind
-        BindObjects(typeof(GameObjects));
+        BindGameObjects(typeof(GameObjects));
         BindButtons(typeof(Buttons));
 
         // Init
-        foreach (Transform child in GetObject((int)GameObjects.Content_Gacha).transform)
+        foreach (Transform child in GetGameObject((int)GameObjects.Content_Gacha).transform)
         {
             var slot = child.GetComponent<UI_GachaSubItem>();
             _slotList.Add(slot);

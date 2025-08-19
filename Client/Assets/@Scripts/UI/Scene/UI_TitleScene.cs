@@ -64,7 +64,7 @@ public class UI_TitleScene : UI_Scene
 	{
 		base.Awake();
 
-		BindObjects(typeof(GameObjects));
+		BindGameObjects(typeof(GameObjects));
 		BindTexts(typeof(Texts));
 
         GetText(((int)Texts.StartText)).gameObject.BindEvent(OnClickNextButton);
