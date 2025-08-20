@@ -85,6 +85,18 @@ public class MissionSaveData
     public int StackedPoint;
     public Define.EMissionState MissionState;
     public List<Define.EMissionState> PointStepMissionState;
+
+    public MissionSaveData(int templateId)
+    {
+        TemplateId = templateId;
+        StackedPoint = 0;
+        MissionState = Define.EMissionState.None;
+        PointStepMissionState = new List<Define.EMissionState>();
+        for (int i = 0; i < Managers.Data.MissionDataDic[templateId].RewardCurrencies.Count; i++)
+        {
+            PointStepMissionState.Add(Define.EMissionState.None);
+        }
+    }
 }
 
 public class GameManager
@@ -625,14 +637,14 @@ public class GameManager
     #endregion
 
     #region Mission
-    public List<MissionSaveData> missions { get; private set; }
-    //public List<MissionData> normalMoissionList => Managers.Data.MissionDataDic.Where(mission => mission.Value.MissionType == Define.EMissionType.Normal).Select(mission => mission.Value).ToList();
-    //public List<MissionData> dayMoissionList => Managers.Data.MissionDataDic.Where(mission => mission.Value.MissionType == Define.EMissionType.Day).Select(mission => mission.Value).ToList();
-    //public List<MissionData> weekMoissionList => Managers.Data.MissionDataDic.Where(mission => mission.Value.MissionType == Define.EMissionType.Week).Select(mission => mission.Value).ToList();
+    public List<MissionSaveData> MissionSaveDatas { get; private set; }
+    public List<MissionData> NormalMissionList => Managers.Data.MissionDataDic.Where(mission => mission.Value.MissionType == Define.EMissionType.Normal).Select(mission => mission.Value).ToList();
+    public List<MissionData> DayMissionList => Managers.Data.MissionDataDic.Where(mission => mission.Value.MissionType == Define.EMissionType.Day).Select(mission => mission.Value).ToList();
+    public List<MissionData> WeekMissionList => Managers.Data.MissionDataDic.Where(mission => mission.Value.MissionType == Define.EMissionType.Week).Select(mission => mission.Value).ToList();
 
     public MissionSaveData GetMissionSaveData(int templateId)
     {
-        return missions.FirstOrDefault(m => m.TemplateId == templateId);
+        return MissionSaveDatas.FirstOrDefault(m => m.TemplateId == templateId);
     }
 
     public void GetMissionSubItemReward(int templateId)
@@ -641,6 +653,11 @@ public class GameManager
     }
 
     public void GetDayMissionReward()
+    {
+
+    }
+
+    public void GetWeekMissionReward()
     {
 
     }
@@ -742,6 +759,15 @@ public class GameManager
         {
             AddCurrency((Define.ECurrencyType)i, 100);
         }
+
+        // Mission
+        _gameData.MissionSaves.Clear();
+        foreach (var mission in Managers.Data.MissionDataDic)
+        {
+            _gameData.MissionSaves.Add(mission.Value.TemplateId, new MissionSaveData(mission.Value.TemplateId));
+        }
+
+        MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
 
         StageClear stage = new StageClear();
         stage.TemplateId = 1;
@@ -1127,6 +1153,9 @@ public class GameManager
         }
 
         OnSelectedBuddyChanged?.Invoke();
+
+        // 미션 가져오기
+        MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
 
         Debug.Log("Loading Sucess");
         return true;

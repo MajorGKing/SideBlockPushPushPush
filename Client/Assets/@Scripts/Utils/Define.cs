@@ -61,6 +61,9 @@ public class Define
 
         // Stage
         OnStageWaveIndexChanged,
+
+        // Mission
+        OnMissionChanged,
     }
 
 	public enum ELayer

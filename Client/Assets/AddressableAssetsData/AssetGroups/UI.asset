@@ -57,6 +57,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 627c83b68af2cad4495bb8508bb12062
+    m_Address: UI_RewardSubItem
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6408287e3e02b32469e9d961530ea054
     m_Address: UI_BuddySkillUpSubItem
     m_ReadOnly: 0
@@ -81,6 +87,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 905132248d7dbf444a5e42585fd10442
+    m_Address: UI_MissionPopup
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9e37e30a2d3f2ee4e82d795dcb6e0f79
     m_Address: UI_HeroSkillUpSubItem
     m_ReadOnly: 0
@@ -99,8 +111,20 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c90614d2298d44441ab6f5645f7c55f2
+    m_Address: UI_DayMissionSlot
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: df98c995035c64e48b661cd2ed2ff2f9
     m_Address: UI_DamageText
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eaa51404938486b4180c35f0ad21f7a5
+    m_Address: UI_NormalMissionSubItem
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload

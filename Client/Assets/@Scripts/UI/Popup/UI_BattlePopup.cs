@@ -11,6 +11,8 @@ public class UI_BattlePopup : UI_Popup
         Button_Next,
         Button_Preview,
         Button_StageHard,
+        Button_Mission,
+        Button_Achievement,
     }
 
     enum Texts
@@ -34,6 +36,9 @@ public class UI_BattlePopup : UI_Popup
         GetButton((int)Buttons.Button_Preview).GetOrAddComponent<UI_ButtonAnimation>();
         GetButton((int)Buttons.Button_StageHard).gameObject.BindEvent(OnClickStageHardButton);
         GetButton((int)Buttons.Button_StageHard).GetOrAddComponent<UI_ButtonAnimation>();
+
+        GetButton((int)Buttons.Button_Mission).gameObject.BindEvent(OnClickMissionButton);
+        GetButton((int)Buttons.Button_Mission).GetOrAddComponent<UI_ButtonAnimation>();
 
         RefreshUI();
     }
@@ -88,6 +93,14 @@ public class UI_BattlePopup : UI_Popup
         var stageData = Managers.Data.StageDataDic[templateId];
 
         Managers.Game.stageTemplateId = stageData.OtherStageId;
+    }
+
+    private void OnClickMissionButton(PointerEventData evt)
+    {
+        Managers.Sound.PlayButtonClick();
+
+        var mission = Managers.UI.ShowPopupUI<UI_MissionPopup>();
+        mission.SetInfo();
     }
 
     private void RefreshUI()

@@ -58,11 +58,11 @@ public class UI_NormalMissionSubItem : UI_SubItem
 
         GetText((int)Texts.Text_NormalMissionListIcon).text = $"+{missionData.Point:N0}";
         GetText((int)Texts.Text_MissonTitle).text = $"{Managers.GetText(missionData.NameTextId)}";
-        GetText((int)Texts.Text_NormalMissionCount).text = $"{missionSaveData.StackedPoint:N0}/{missionData.MaxPoint:N0}";
+        GetText((int)Texts.Text_NormalMissionCount).text = $"{missionSaveData.StackedPoint:N0}/{missionData.MissionCount:N0}";
 
-        GetButton((int)Buttons.Button_Take).interactable = missionSaveData.MissionState == Define.EMissionState.Rewardable && missionSaveData.StackedPoint >= missionData.MaxPoint;
+        GetButton((int)Buttons.Button_Take).interactable = missionSaveData.MissionState == Define.EMissionState.Rewardable && missionSaveData.StackedPoint >= missionData.MissionCount;
 
-        GetSlider((int)Sliders.Slider_NormalMission).value = (float)missionSaveData.StackedPoint / missionData.MaxPoint;
+        GetSlider((int)Sliders.Slider_NormalMission).value = (float)missionSaveData.StackedPoint / missionData.MissionCount;
     }
 
     private void OnTakeButtonClick(PointerEventData data)
