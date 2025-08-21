@@ -194,6 +194,7 @@ public class Define
         StageClear,
         HeroGacha,
         CurrencyGacha,
+        Mission,
     }
 
     public enum ECurrencyType
@@ -270,6 +271,25 @@ public class Define
         Finish,
     }
 
+    public enum EBroadcastEventType
+    {
+        None,
+        ChangeGold,
+        GetGold,
+        UseGold,
+        ChangeDia,
+        ChangeCurrency,
+        KillMonster,
+        StageClear,
+        BuddySkillUp,
+        BuddyLevelUp,
+        HeroSkillUp,
+        HeroLevelUp,
+        DoCurrencyGacha,
+        DoHeroGacha,
+        DoBuddyGacha,
+    }
+
     #endregion
 
 
@@ -292,5 +312,9 @@ public class Define
     public const string DESCRIPTIONATTACKPERCENT = "DescriptionAttackPercent";
     public const string DESCRIPTIONATTACKSPEED = "DescriptionAttackSpeed";
     public const string DESCRIPTIONCOOLTIME = "DescriptionCoolTime";
+    #endregion
+
+    #region HardCodingSprite
+    public const string CHECKICON = "Check_Icon";
     #endregion
 }

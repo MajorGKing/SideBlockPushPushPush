@@ -785,7 +785,7 @@ namespace Data
     #region MissionData
     public class RewardCurrency
     {
-        int point;
+        public int point;
         public Define.ECurrencyType currencyType;
         public int count;
 

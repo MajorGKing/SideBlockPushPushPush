@@ -86,6 +86,8 @@ public class UI_DayMissionSubItem : UI_SubItem
         int rewardCount = 0;
         for (int index = 0; index < _missionRewardSubItemList.Count; index++)
         {
+            _missionRewardSubItemList[index].SetInfo(missionData.RewardCurrencies[index].currencyType, missionData.RewardCurrencies[index].count, false);
+
             bool isActive = true;
             if (missionSaveData.StackedPoint < missionData.PointStep[index])
             {
@@ -95,14 +97,13 @@ public class UI_DayMissionSubItem : UI_SubItem
             if (missionSaveData.PointStepMissionState[index] == Define.EMissionState.Finish)
             {
                 isActive = false;
+                _missionRewardSubItemList[index].SetInfo(missionData.RewardCurrencies[index].currencyType, missionData.RewardCurrencies[index].count, false, false);
             }
 
             if (isActive)
             {
                 rewardCount++;
             }
-
-            _missionRewardSubItemList[index].SetInfo(missionData.RewardCurrencies[index].currencyType, missionData.RewardCurrencies[index].count, false);
         }
 
         GetButton((int)Buttons.Button_AllTake).interactable = missionSaveData.MissionState == Define.EMissionState.Rewardable && rewardCount > 0;
@@ -114,7 +115,7 @@ public class UI_DayMissionSubItem : UI_SubItem
     {
         if (GetButton((int)Buttons.Button_AllTake).interactable)
         {
-            Managers.Game.GetDayMissionReward();
+            Managers.Game.GetDayMissionReward(missionData.TemplateId);
         }
     }
 }

@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static Define;
 
 [Serializable]
 public class GameData
@@ -90,11 +91,75 @@ public class MissionSaveData
     {
         TemplateId = templateId;
         StackedPoint = 0;
-        MissionState = Define.EMissionState.None;
+        MissionState = Define.EMissionState.Progress;
         PointStepMissionState = new List<Define.EMissionState>();
         for (int i = 0; i < Managers.Data.MissionDataDic[templateId].RewardCurrencies.Count; i++)
         {
-            PointStepMissionState.Add(Define.EMissionState.None);
+            PointStepMissionState.Add(Define.EMissionState.Progress);
+        }
+    }
+
+    public void OnHandleBroadcastMissionEvent(Define.EBroadcastEventType eventType, int value)
+    {
+        if (MissionState != Define.EMissionState.Progress)
+            return;
+
+        switch(Managers.Data.MissionDataDic[TemplateId].MissionGoal)
+        {
+            case Define.EMissionGoal.MonsterKill:
+                if(eventType == Define.EBroadcastEventType.KillMonster)
+                {
+                    StackedPoint += value;
+                    Managers.Game.SaveMission(TemplateId);
+                }
+                break;
+            case Define.EMissionGoal.ConsumGold:
+                if (eventType == Define.EBroadcastEventType.UseGold)
+                {
+                    StackedPoint += value;
+                }
+                break;
+            case Define.EMissionGoal.StageClear:
+                if (eventType == Define.EBroadcastEventType.StageClear)
+                {
+                    StackedPoint += value;
+                }
+                break;
+            case Define.EMissionGoal.CurrencyGacha:
+                if (eventType == Define.EBroadcastEventType.DoCurrencyGacha)
+                {
+                    StackedPoint += value;
+                }
+                break;
+            case Define.EMissionGoal.BuddySkillUp:
+                if (eventType == Define.EBroadcastEventType.BuddySkillUp)
+                {
+                    StackedPoint += value;
+                }
+                break;
+            case Define.EMissionGoal.BuddyLevelUp:
+                if (eventType == Define.EBroadcastEventType.BuddyLevelUp)
+                {
+                    StackedPoint += value;
+                }
+                break;
+            case Define.EMissionGoal.HeroSkillUp:
+                if (eventType == Define.EBroadcastEventType.HeroSkillUp)
+                {
+                    StackedPoint += value;
+                }
+                break;
+            case Define.EMissionGoal.HeroLevelUp:
+                if (eventType == Define.EBroadcastEventType.HeroLevelUp)
+                {
+                    StackedPoint += value;
+                }
+                break;
+        }
+
+        if(StackedPoint >= Managers.Data.MissionDataDic[TemplateId].MissionCount)
+        {
+            MissionState = Define.EMissionState.Rewardable;
         }
     }
 }
@@ -123,6 +188,17 @@ public class GameManager
         _gameData.Currencies[(int)currencyType] += value;
         SaveGame();
         OnCurrenciesChagned?.Invoke();
+
+        if(currencyType == Define.ECurrencyType.Gold && value < 0)
+        {
+            Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.UseGold, value);
+            Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.ChangeGold, value);
+        }
+        else if (currencyType == Define.ECurrencyType.Gold && value > 0)
+        {
+            Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.GetGold, value);
+            Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.ChangeGold, value);
+        }
     }
 
     public int Stamina
@@ -277,6 +353,8 @@ public class GameManager
 
         // 세이브
         SaveGame();
+
+        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.HeroLevelUp, 1);
     }
 
     public void HeroSkillUp(int skillTemplateId)
@@ -345,6 +423,8 @@ public class GameManager
 
             SaveGame();
             OnNowHeroChanged?.Invoke();
+
+            Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.HeroSkillUp, 1);
         }
 
     }
@@ -563,6 +643,8 @@ public class GameManager
 
         // 세이브
         SaveGame();
+
+        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.BuddyLevelUp, 1);
     }
 
     public void BuddySkillUp(int skillTemplateId)
@@ -631,6 +713,8 @@ public class GameManager
 
             SaveGame();
             OnNowBuddyChanged?.Invoke();
+
+            Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.BuddySkillUp, 1);
         }
 
     }
@@ -647,20 +731,92 @@ public class GameManager
         return MissionSaveDatas.FirstOrDefault(m => m.TemplateId == templateId);
     }
 
+
     public void GetMissionSubItemReward(int templateId)
     {
+        var missionSavewData = GetMissionSaveData(templateId);
+        
+        if(missionSavewData == null)
+            return;
 
+        if (missionSavewData.MissionState != Define.EMissionState.Rewardable)
+            return;
+
+        int point = Managers.Data.MissionDataDic[templateId].Point;
+        
+        int dayIndex = Managers.Data.MissionDataDic.Values.FirstOrDefault(m => m.MissionType == Define.EMissionType.Day).TemplateId;
+        var dayMissionSaveData = GetMissionSaveData(dayIndex);
+        dayMissionSaveData.StackedPoint += point;
+
+        if(dayMissionSaveData.StackedPoint > Managers.Data.MissionDataDic[dayIndex].MaxPoint)
+        {
+            dayMissionSaveData.StackedPoint = Managers.Data.MissionDataDic[dayIndex].MaxPoint;
+        }
+
+        int weekIndex = Managers.Data.MissionDataDic.Values.FirstOrDefault(m => m.MissionType == Define.EMissionType.Week).TemplateId;
+        var weekMissionSaveData = GetMissionSaveData(weekIndex);
+        weekMissionSaveData.StackedPoint += point;
+
+        if (weekMissionSaveData.StackedPoint > Managers.Data.MissionDataDic[weekIndex].MaxPoint)
+        {
+            weekMissionSaveData.StackedPoint = Managers.Data.MissionDataDic[weekIndex].MaxPoint;
+        }
+
+        missionSavewData.MissionState = Define.EMissionState.Finish;
+
+        Managers.Event.TriggerEvent(Define.EEventType.OnMissionChanged);
+
+        SaveGame();
     }
 
-    public void GetDayMissionReward()
+    public void GetDayMissionReward(int templateId)
     {
+        var missionSavewData = GetMissionSaveData(templateId);
+        var missionData = Managers.Data.MissionDataDic[templateId];
 
+        if (missionSavewData == null)
+            return;
+
+        List<Reward> rewardList = new List<Reward>();
+        for(int index = 0; index < missionSavewData.PointStepMissionState.Count; index++)
+        {
+            if (missionSavewData.StackedPoint >= missionData.RewardCurrencies[index].point && missionSavewData.PointStepMissionState[index] == Define.EMissionState.Progress)
+            {
+                missionSavewData.PointStepMissionState[index] = Define.EMissionState.Finish;
+                rewardList.Add(new Reward(missionData.RewardCurrencies[index].currencyType, missionData.RewardCurrencies[index].count));
+            }
+        }
+
+        if (rewardList.Count == 0)
+            return;
+
+        UI_RewardPopup rewardPopup = Managers.UI.ShowPopupUI<UI_RewardPopup>();
+        rewardPopup.SetInfo(Define.ERewardType.Mission, rewardList);
+
+        SaveGame();
+        Managers.Event.TriggerEvent(EEventType.OnMissionChanged);
     }
 
     public void GetWeekMissionReward()
     {
 
     }
+
+    public void SaveMission(int templateId)
+    {
+        SaveGame();
+    }
+
+    //public void OnHandleMissionEvent(Define.EBroadcastEventType eventType, int value)
+    //{
+    //    foreach(MissionSaveData missionSaveData in MissionSaveDatas)
+    //    {
+    //        if(missionSaveData.MissionState == EMissionState.Progress)
+    //        {
+    //            missionSaveData.OnHandleBroadcastEvent(eventType, value);
+    //        }
+    //    }
+    //}
 
 
 
@@ -711,12 +867,22 @@ public class GameManager
 
     public void Init()
     {
-        _path = Application.persistentDataPath + "/SaveData.json";
+        _path = Application.persistentDataPath + "/SaveData.json";    
 
         if (LoadGame())
             return;
 
         // 세이브 파일이 없을 때
+
+        // Mission
+        _gameData.MissionSaves.Clear();
+        foreach (var mission in Managers.Data.MissionDataDic)
+        {
+            _gameData.MissionSaves.Add(mission.Value.TemplateId, new MissionSaveData(mission.Value.TemplateId));
+        }
+
+        MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
+
         // 기본 동료 4개 넣어두기
         buddies = new List<BuddySaveData>();
         AddBuddySaveData(new BuddySaveData(100000100, Managers.Data.BuddyDataDic[100000100].SKillIds, true));
@@ -759,15 +925,6 @@ public class GameManager
         {
             AddCurrency((Define.ECurrencyType)i, 100);
         }
-
-        // Mission
-        _gameData.MissionSaves.Clear();
-        foreach (var mission in Managers.Data.MissionDataDic)
-        {
-            _gameData.MissionSaves.Add(mission.Value.TemplateId, new MissionSaveData(mission.Value.TemplateId));
-        }
-
-        MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
 
         StageClear stage = new StageClear();
         stage.TemplateId = 1;
@@ -918,6 +1075,8 @@ public class GameManager
 
         _gameData.CurrentStageTemplateId = stageTemplateId;
 
+        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.StageClear, 1);
+
         SaveGame();
     }
     #endregion
@@ -1006,6 +1165,8 @@ public class GameManager
             var clear = Managers.UI.ShowPopupUI<UI_RewardPopup>();
 
             clear.SetInfo(Define.ERewardType.CurrencyGacha, rewards);
+
+            Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoCurrencyGacha, count);
         }
     }
 

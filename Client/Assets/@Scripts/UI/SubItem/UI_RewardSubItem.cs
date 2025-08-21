@@ -19,6 +19,7 @@ public class UI_RewardsSubItem : UI_SubItem
 	private Define.ECurrencyType _currencyType;
 	private int _currencyAmount;
 	private bool _isFirst;
+	private bool _isShow;
 
 	protected override void Awake()
 	{
@@ -33,11 +34,12 @@ public class UI_RewardsSubItem : UI_SubItem
 		RefreshUI();
     }
 
-	public void SetInfo(Define.ECurrencyType currency, int currencyAmount, bool isFirst)
+	public void SetInfo(Define.ECurrencyType currency, int currencyAmount, bool isFirst = false, bool isShow = true)
 	{
         _currencyType = currency;
         _currencyAmount = currencyAmount;
         _isFirst = isFirst;
+        _isShow = isShow;
 
         if (isInit == false)
             return;
@@ -53,6 +55,14 @@ public class UI_RewardsSubItem : UI_SubItem
 		GetImage((int)Images.Image_Icon).sprite = Managers.Resource.Load<Sprite>(Managers.Data.CurrencyTypeDataDic[_currencyType].IconImage);
 		GetText((int)Texts.Text_ItemCount).text = $"{_currencyAmount:N0}";
 
-		GetText((int)Texts.Text_ItemFirstTime).gameObject.SetActive(_isFirst);
+        if (_isShow == false)
+        {
+			GetImage((int)Images.Image_Icon).sprite = Managers.Resource.Load<Sprite>(Define.CHECKICON);
+            GetText((int)Texts.Text_ItemCount).text = "";
+        }
+
+        GetText((int)Texts.Text_ItemFirstTime).gameObject.SetActive(_isFirst);
+
+		
 	}
 }
