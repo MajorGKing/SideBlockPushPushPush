@@ -28,6 +28,8 @@ public class GameData
 
     public bool BGMOn = true;
     public bool EffectSoundOn = true;
+
+    public DateTime LastMissionTime;
 }
 
 [Serializable]
@@ -223,13 +225,13 @@ public class GameManager
             if (value == NowHero)
                 return;
 
-            // ±âÁ¸ ¼±ÅÃ ¿µ¿õ Ãë¼Ò
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             if(_gameData.HeroSaves.ContainsKey(NowHero))
             {
                 _gameData.HeroSaves[NowHero].isSelected = false;
             }
             
-            // »õ·Î¿î ¿µ¿õ ¼±ÅÃÀ¸·Î
+            // ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             _nowHero = value;
             _gameData.HeroSaves[NowHero].isSelected = true;
             OnNowHeroChanged?.Invoke();
@@ -288,13 +290,13 @@ public class GameManager
     public void HeroLevelUp()
     {
         var heroData = Managers.Data.HeroDataDic[NowHero];
-        // Áö±Ý ¼±ÅÃµÈ Çã¾î·Î°¡ ·¹º§¾÷ °¡´ÉÇÑÁö Ã¼Å©
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©
         {
-            // ´ÙÀ½ ·¹º§ÀÌ ÀÖ¾î ·¹º§¾÷ °¡´ÉÇÑÁö È®ÀÎ
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
             if (heroData.NextLevelId == 0)
                 return;
 
-            // ÀÚ¿ø °¡´ÉÇÑÁö Ã¼Å©
+            // ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©
             var currencies = heroData.LevelUpCurrencies;
 
             foreach (var currency in currencies)
@@ -306,7 +308,7 @@ public class GameManager
                     return;
             }
 
-            // ÀÚ¿ø°¡´ÉÇÏ¸é ÀÚ¿ø »©°í ÀúÀå
+            // ï¿½Ú¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             foreach (var currency in currencies)
             {
                 if (currency.currencyType == Define.ECurrencyType.None)
@@ -316,13 +318,13 @@ public class GameManager
             }
         }
 
-        // ¼±ÅÃµÈ ¿µ¿õÀ» ·¹º§¾÷
+        // ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
             var heroSavedata = _gameData.HeroSaves[NowHero];
-            // ±âÁ¸ ¿µ¿õ Á¤º¸¸¦ »èÁ¦
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             int removeIndex = RemoveHeroSaveData(NowHero);
 
-            // »õ·Î¿î ¿µ¿õ Á¤º¸¸¦ Ãß°¡
+            // ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
             {
                 heroSavedata.TemplateId = heroData.NextLevelId;
 
@@ -335,7 +337,7 @@ public class GameManager
                     orgSkillId.Add(Managers.Data.HeroSkillDataDic[skillId].OriginalLevelId);
                 }
 
-                // ¹öµðÀÇ Ãß°¡ ½ºÅ³ Á¤º¸¸¦ Ãß°¡
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
                 foreach (var skillId in nextHeroData.SKillIds)
                 {
                     if (orgSkillId.Contains(Managers.Data.HeroSkillDataDic[skillId].OriginalLevelId) == false)
@@ -348,10 +350,10 @@ public class GameManager
             }
         }
 
-        // ·¹º§¾÷¿¡ µû¸¥ Á¤º¸ °»½Å
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         NowHero = heroData.NextLevelId;
 
-        // ¼¼ÀÌºê
+        // ï¿½ï¿½ï¿½Ìºï¿½
         SaveGame();
 
         Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.HeroLevelUp, 1);
@@ -362,7 +364,7 @@ public class GameManager
         if (skillTemplateId == 0)
             return;
 
-        // NowHeroÀÇ HeroSaveData¿¡ Á¢±Ù skillÀÇ templateId¸¦ °»½Å
+        // NowHeroï¿½ï¿½ HeroSaveDataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ skillï¿½ï¿½ templateIdï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         HeroSaveData currentData = new HeroSaveData();
 
@@ -383,13 +385,13 @@ public class GameManager
         if (skillData == null)
             return;
 
-        // ¾÷±×·¹ÀÌµå °¡´ÉÇÑÁö Ã¼Å©
+        // ï¿½ï¿½ï¿½×·ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©
         {
-            // ´ÙÀ½ ·¹º§·Î ÁøÇà °¡´ÉÇÑ°¡
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ°ï¿½
             if (skillData.NextLevelId == 0)
                 return;
 
-            // ÀÚ¿øÀº ÃæºÐÇÑ°¡
+            // ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ°ï¿½
             var currencies = skillData.LevelUpCurrencies;
 
             foreach (var currency in currencies)
@@ -401,7 +403,7 @@ public class GameManager
                     return;
             }
 
-            // ÀÚ¿ø°¡´ÉÇÏ¸é ÀÚ¿ø »©°í ÀúÀå
+            // ï¿½Ú¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             foreach (var currency in currencies)
             {
                 if (currency.currencyType == Define.ECurrencyType.None)
@@ -411,13 +413,13 @@ public class GameManager
             }
         }
 
-        // ¼±ÅÃµÈ ½ºÅ³ ·¹º§¾÷
+        // ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
-            // ·ÎÄÃ°ª ¼öÁ¤
+            // ï¿½ï¿½ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½
             var nowSkillIndex = currentData.SkillTemplateId.IndexOf(skillTemplateId);
             currentData.SkillTemplateId[nowSkillIndex] = skillData.NextLevelId;
 
-            // ¼¼ÀÌºê µÉ °ª ¼öÁ¤ - À§¿¡¼­ ¸µÅ©·Î ¼öÁ¤µÇ¾ú±â ¶§¹®¿¡ gameData°ªµµ ÀÚµ¿ ¼öÁ¤µÊ
+            // ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ gameDataï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             //var nowSKillIndexSave = _gameData.BuddySaves[NowBuddy].SkillTemplateId.IndexOf(skillTemplateId);
             //_gameData.BuddySaves[NowBuddy].SkillTemplateId[nowSKillIndexSave] = skillData.NextLevelId;
 
@@ -490,13 +492,13 @@ public class GameManager
 
         _gameData.BuddySaves.Add(buddySaveData.TemplateId, buddySaveData);
 
-        // ¸¸¾à ¼¿·ºÆ®µÈ ¹öµð(Àü ·¹º§)°¡ ÀÖ´Ù¸é ÃÖ½Å ¹öµð·Î °»½Å ÇØÁØ´Ù
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½ ï¿½Ö½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø´ï¿½
         {
             var previewIndex = Managers.Data.BuddyDataDic[buddySaveData.TemplateId].PreviewLevelId;
 
             var selectedIndex = Array.IndexOf(_selectedBuddies, previewIndex);
 
-            // ¸¸¾à ÇØ´çÇÏ´Â ³»¿ëÀÌ ÀÖ´Ù¸é °»½ÅÇØÁØ´Ù
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½
             if (selectedIndex >= 0)
             {
                 _selectedBuddies[selectedIndex] = buddySaveData.TemplateId;
@@ -528,14 +530,14 @@ public class GameManager
                 int writeIndex = 0;
                 for (int j = 0; j < _selectedBuddies.Length; j++)
                 {
-                    // 0ÀÌ ¾Æ´Ñ ¿ä¼Ò¸¸ writeIndex À§Ä¡¿¡ º¹»ç
+                    // 0ï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½Ò¸ï¿½ writeIndex ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                     if (_selectedBuddies[j] != 0)
                     {
                         _selectedBuddies[writeIndex] = _selectedBuddies[j];
                         writeIndex++;
                     }
                 }
-                // ³²Àº °ø°£À» 0À¸·Î Ã¤¿ò
+                // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½
                 for (int k = writeIndex; k < _selectedBuddies.Length; k++)
                 {
                     _selectedBuddies[k] = 0;
@@ -578,13 +580,13 @@ public class GameManager
     public void BuddyLevelUp()
     {
         var buddyData = Managers.Data.BuddyDataDic[NowBuddy];
-        // Áö±Ý ¼±ÅÃµÈ ¹öµð°¡ ·¹º§¾÷ÀÌ °¡´ÉÇÑÁö Ã¼Å©
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©
         {
-            // ´ÙÀ½ ·¹º§ÀÌ ÀÖ¾î ·¹º§¾÷ °¡´ÉÇÑÁö È®ÀÎ
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
             if (buddyData.NextLevelId == 0)
                 return;
 
-            // ÀÚ¿ø °¡´ÉÇÑÁö Ã¼Å©
+            // ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©
             var currencies = buddyData.LevelUpCurrencies;
 
             foreach (var currency in currencies)
@@ -596,7 +598,7 @@ public class GameManager
                     return;
             }
 
-            // ÀÚ¿ø°¡´ÉÇÏ¸é ÀÚ¿ø »©°í ÀúÀå
+            // ï¿½Ú¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             foreach (var currency in currencies)
             {
                 if (currency.currencyType == Define.ECurrencyType.None)
@@ -606,13 +608,13 @@ public class GameManager
             }
         }
 
-        // ¼±ÅÃµÈ ¹öµð¸¦ ·¹º§¾÷
+        // ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
             var buddySavedata = _gameData.BuddySaves[NowBuddy];
-            // ±âÁ¸ ¹öµð Á¤º¸¸¦ »èÁ¦
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             int removeIndex = RemoveBuddySaveData(NowBuddy);
 
-            // »õ·Î¿î ¹öµð Á¤º¸¸¦ Ãß°¡
+            // ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
             {
                 buddySavedata.TemplateId = buddyData.NextLevelId;
 
@@ -625,7 +627,7 @@ public class GameManager
                     orgSkillId.Add(Managers.Data.BuddySkillDataDic[skillId].OriginalLevelId);
                 }
 
-                // ¹öµðÀÇ Ãß°¡ ½ºÅ³ Á¤º¸¸¦ Ãß°¡
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
                 foreach(var skillId in nextBuddyData.SKillIds)
                 {
                     if (orgSkillId.Contains(Managers.Data.BuddySkillDataDic[skillId].OriginalLevelId) == false)
@@ -638,10 +640,10 @@ public class GameManager
             }
         }
 
-        // ·¹º§¾÷¿¡ µû¸¥ Á¤º¸ °»½Å
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         NowBuddy = buddyData.NextLevelId;
 
-        // ¼¼ÀÌºê
+        // ï¿½ï¿½ï¿½Ìºï¿½
         SaveGame();
 
         Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.BuddyLevelUp, 1);
@@ -652,7 +654,7 @@ public class GameManager
         if (skillTemplateId == 0)
             return;
 
-        // NowBuddyÀÇ BuddySaveData¿¡ Á¢±Ù skillÀÇ templateId¸¦ °»½Å
+        // NowBuddyï¿½ï¿½ BuddySaveDataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ skillï¿½ï¿½ templateIdï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         BuddySaveData currentData = new BuddySaveData();
 
@@ -673,13 +675,13 @@ public class GameManager
         if (skillData == null)
             return;
 
-        // ¾÷±×·¹ÀÌµå °¡´ÉÇÑÁö Ã¼Å©
+        // ï¿½ï¿½ï¿½×·ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©
         {
-            // ´ÙÀ½ ·¹º§·Î ÁøÇà °¡´ÉÇÑ°¡
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ°ï¿½
             if (skillData.NextLevelId == 0)
                 return;
 
-            // ÀÚ¿øÀº ÃæºÐÇÑ°¡
+            // ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ°ï¿½
             var currencies = skillData.LevelUpCurrencies;
 
             foreach (var currency in currencies)
@@ -691,7 +693,7 @@ public class GameManager
                     return;
             }
 
-            // ÀÚ¿ø°¡´ÉÇÏ¸é ÀÚ¿ø »©°í ÀúÀå
+            // ï¿½Ú¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             foreach (var currency in currencies)
             {
                 if (currency.currencyType == Define.ECurrencyType.None)
@@ -701,13 +703,13 @@ public class GameManager
             }
         }
 
-        // ¼±ÅÃµÈ ½ºÅ³ ·¹º§¾÷
+        // ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
-            // ·ÎÄÃ°ª ¼öÁ¤
+            // ï¿½ï¿½ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½
             var nowSkillIndex = currentData.SkillTemplateId.IndexOf(skillTemplateId);
             currentData.SkillTemplateId[nowSkillIndex] = skillData.NextLevelId;
 
-            // ¼¼ÀÌºê µÉ °ª ¼öÁ¤ - À§¿¡¼­ ¸µÅ©·Î ¼öÁ¤µÇ¾ú±â ¶§¹®¿¡ gameData°ªµµ ÀÚµ¿ ¼öÁ¤µÊ
+            // ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ gameDataï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             //var nowSKillIndexSave = _gameData.BuddySaves[NowBuddy].SkillTemplateId.IndexOf(skillTemplateId);
             //_gameData.BuddySaves[NowBuddy].SkillTemplateId[nowSKillIndexSave] = skillData.NextLevelId;
 
@@ -831,6 +833,20 @@ public class GameManager
     public event Action OnSelectedBuddyChanged;
     #endregion
 
+    #region Time
+    private DateTime _missionTime;
+    public DateTime MissionTime
+    {
+        get { return _missionTime; }
+        set
+        {
+            _missionTime = value;
+            _gameData.LastMissionTime = MissionTime;
+            SaveGame();
+        }
+    }
+    #endregion
+
 
     private GameScene _scene;
     private bool _nowGameScene = false;
@@ -872,7 +888,7 @@ public class GameManager
         if (LoadGame())
             return;
 
-        // ¼¼ÀÌºê ÆÄÀÏÀÌ ¾øÀ» ¶§
+        // ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 
         // Mission
         _gameData.MissionSaves.Clear();
@@ -883,7 +899,7 @@ public class GameManager
 
         MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
 
-        // ±âº» µ¿·á 4°³ ³Ö¾îµÎ±â
+        // ï¿½âº» ï¿½ï¿½ï¿½ï¿½ 4ï¿½ï¿½ ï¿½Ö¾ï¿½Î±ï¿½
         buddies = new List<BuddySaveData>();
         AddBuddySaveData(new BuddySaveData(100000100, Managers.Data.BuddyDataDic[100000100].SKillIds, true));
         AddBuddySaveData(new BuddySaveData(300000100, Managers.Data.BuddyDataDic[300000100].SKillIds, true));
@@ -932,6 +948,7 @@ public class GameManager
         stage.isClear = false;
         _gameData.StageClears.Add(1, stage);
 
+        MissionTime = DateTime.Now;
 
         PlayerPrefs.SetInt("ISFIRST", 0);
         //PlayerPrefs.Save();
@@ -947,7 +964,7 @@ public class GameManager
         if (_nowGameScene == false)
             return;
 
-        // ÀÔ·Â Ã³¸®
+        // ï¿½Ô·ï¿½ Ã³ï¿½ï¿½
         UpdateInput();
     }
 
@@ -1040,7 +1057,7 @@ public class GameManager
                 continue;
 
             rewards.Add(new Reward((Define.ECurrencyType)i, currencyCounts[i]));
-            // ¿©±â¼­ ÇÏ´Â°Ô ¸Â³ª?
+            // ï¿½ï¿½ï¿½â¼­ ï¿½Ï´Â°ï¿½ ï¿½Â³ï¿½?
             AddCurrency((Define.ECurrencyType)i, currencyCounts[i]);
         }
 
@@ -1049,7 +1066,7 @@ public class GameManager
             for(int i = 0; i < stageData.RewardFirstType.Count; i++)
             {
                 rewards.Add(new Reward(stageData.RewardFirstType[i], stageData.RewardFirstCount[i], true));
-                // ¿©±â¼­ ÇÏ´Â°Ô ¸Â³ª?
+                // ï¿½ï¿½ï¿½â¼­ ï¿½Ï´Â°ï¿½ ï¿½Â³ï¿½?
                 AddCurrency(stageData.RewardFirstType[i], stageData.RewardFirstCount[i]);
             }
         }
@@ -1202,14 +1219,14 @@ public class GameManager
             {
                 if (buddyRarity.Percent > randomNumber)
                 {
-                    // ·¹¾î¸®Æ¼ °áÁ¤µÊ
+                    // ï¿½ï¿½ï¿½î¸®Æ¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     Debug.Log($"{buddyRarity.RarityType} : {buddyRarity.Percent}");
                     rarity = buddyRarity.RarityType;
                     break;
                 }
             }
 
-            // ¹öµð »Ì±â
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½Ì±ï¿½
             if(rarity == Define.ERarityType.Common)
             {
                 int randomBuddyPercent = random.Next(Managers.Data.commonBuddies.Count);
@@ -1237,7 +1254,7 @@ public class GameManager
             }
         }
 
-        // ¹öµð Áßº¹ Ã¼Å©
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ßºï¿½ Ã¼Å©
         foreach (var buddyName in buddyNames)
         {
             var buddyData = Managers.Data.BuddyDataDic[Managers.Data.BuddyGachaDataDic[buddyName].BuddyTemplateId];
@@ -1290,9 +1307,9 @@ public class GameManager
 
         stageTemplateId = _gameData.CurrentStageTemplateId;
 
-        // ¿µ¿õ, µ¿·á °ü·Ã Ã³¸®
+        // ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 
-        // µ¿·á Á¤º¸ °¡Àú¿À±â
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         buddies = _gameData.BuddySaves.Values.ToList();
         int i = 0;
         foreach ( var buddy in buddies )
@@ -1303,7 +1320,7 @@ public class GameManager
             }
         }
 
-        // ¿µ¿õ °¡Àú¿À±â
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         heroes = _gameData.HeroSaves.Values.ToList();
         foreach (var hero in heroes)
         {
@@ -1315,8 +1332,10 @@ public class GameManager
 
         OnSelectedBuddyChanged?.Invoke();
 
-        // ¹Ì¼Ç °¡Á®¿À±â
+        // ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
+
+        MissionTime = _gameData.LastMissionTime;
 
         Debug.Log("Loading Sucess");
         return true;

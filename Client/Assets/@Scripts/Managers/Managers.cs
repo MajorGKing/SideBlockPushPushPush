@@ -13,11 +13,13 @@ public class Managers : MonoBehaviour
     private GameManager _game = new GameManager();
     private ObjectManager _object = new ObjectManager();
     private MapManager _map = new MapManager();
+    private TimeManager _time = new TimeManager();
 
     public static EventManager Event { get { return Instance?._event; } }
     public static GameManager Game { get { return Instance?._game; } }
     public static ObjectManager Object { get { return Instance?._object; } }
     public static MapManager Map { get { return Instance?._map; } }
+    public static TimeManager Time { get { return Instance?._time;}}
     
     #endregion
 
@@ -92,6 +94,7 @@ public class Managers : MonoBehaviour
             s_instance._sound.Init();
             //s_instance._game.Init();
             s_instance._event.Init();
+            s_instance._time.Init();
         }		
 	}
 
