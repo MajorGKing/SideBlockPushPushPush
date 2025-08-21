@@ -106,10 +106,10 @@ public class MissionSaveData
         if (MissionState != Define.EMissionState.Progress)
             return;
 
-        switch(Managers.Data.MissionDataDic[TemplateId].MissionGoal)
+        switch (Managers.Data.MissionDataDic[TemplateId].MissionGoal)
         {
             case Define.EMissionGoal.MonsterKill:
-                if(eventType == Define.EBroadcastEventType.KillMonster)
+                if (eventType == Define.EBroadcastEventType.KillMonster)
                 {
                     StackedPoint += value;
                     Managers.Game.SaveMission(TemplateId);
@@ -159,7 +159,7 @@ public class MissionSaveData
                 break;
         }
 
-        if(StackedPoint >= Managers.Data.MissionDataDic[TemplateId].MissionCount)
+        if (StackedPoint >= Managers.Data.MissionDataDic[TemplateId].MissionCount)
         {
             MissionState = Define.EMissionState.Rewardable;
         }
@@ -191,7 +191,7 @@ public class GameManager
         SaveGame();
         OnCurrenciesChagned?.Invoke();
 
-        if(currencyType == Define.ECurrencyType.Gold && value < 0)
+        if (currencyType == Define.ECurrencyType.Gold && value < 0)
         {
             Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.UseGold, value);
             Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.ChangeGold, value);
@@ -225,13 +225,13 @@ public class GameManager
             if (value == NowHero)
                 return;
 
-            // ���� ���� ���� ���
-            if(_gameData.HeroSaves.ContainsKey(NowHero))
+            // 기존 선택 영웅 취소
+            if (_gameData.HeroSaves.ContainsKey(NowHero))
             {
                 _gameData.HeroSaves[NowHero].isSelected = false;
             }
-            
-            // ���ο� ���� ��������
+
+            // 새로운 영웅 선택으로
             _nowHero = value;
             _gameData.HeroSaves[NowHero].isSelected = true;
             OnNowHeroChanged?.Invoke();
@@ -242,7 +242,7 @@ public class GameManager
     public List<HeroSaveData> heroes { get; private set; }
     public HeroSaveData GetHeroSaveData(int tempalteId)
     {
-        foreach(var hero in heroes)
+        foreach (var hero in heroes)
         {
             if (hero.TemplateId == tempalteId)
                 return hero;
@@ -290,13 +290,13 @@ public class GameManager
     public void HeroLevelUp()
     {
         var heroData = Managers.Data.HeroDataDic[NowHero];
-        // ���� ���õ� ���ΰ� ������ �������� üũ
+        // 지금 선택된 허어로가 레벨업 가능한지 체크
         {
-            // ���� ������ �־� ������ �������� Ȯ��
+            // 다음 레벨이 있어 레벨업 가능한지 확인
             if (heroData.NextLevelId == 0)
                 return;
 
-            // �ڿ� �������� üũ
+            // 자원 가능한지 체크
             var currencies = heroData.LevelUpCurrencies;
 
             foreach (var currency in currencies)
@@ -308,7 +308,7 @@ public class GameManager
                     return;
             }
 
-            // �ڿ������ϸ� �ڿ� ���� ����
+            // 자원가능하면 자원 빼고 저장
             foreach (var currency in currencies)
             {
                 if (currency.currencyType == Define.ECurrencyType.None)
@@ -318,13 +318,13 @@ public class GameManager
             }
         }
 
-        // ���õ� ������ ������
+        // 선택된 영웅을 레벨업
         {
             var heroSavedata = _gameData.HeroSaves[NowHero];
-            // ���� ���� ������ ����
+            // 기존 영웅 정보를 삭제
             int removeIndex = RemoveHeroSaveData(NowHero);
 
-            // ���ο� ���� ������ �߰�
+            // 새로운 영웅 정보를 추가
             {
                 heroSavedata.TemplateId = heroData.NextLevelId;
 
@@ -337,7 +337,7 @@ public class GameManager
                     orgSkillId.Add(Managers.Data.HeroSkillDataDic[skillId].OriginalLevelId);
                 }
 
-                // ������ �߰� ��ų ������ �߰�
+                // 버디의 추가 스킬 정보를 추가
                 foreach (var skillId in nextHeroData.SKillIds)
                 {
                     if (orgSkillId.Contains(Managers.Data.HeroSkillDataDic[skillId].OriginalLevelId) == false)
@@ -350,10 +350,10 @@ public class GameManager
             }
         }
 
-        // �������� ���� ���� ����
+        // 레벨업에 따른 정보 갱신
         NowHero = heroData.NextLevelId;
 
-        // ���̺�
+        // 세이브
         SaveGame();
 
         Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.HeroLevelUp, 1);
@@ -364,7 +364,7 @@ public class GameManager
         if (skillTemplateId == 0)
             return;
 
-        // NowHero�� HeroSaveData�� ���� skill�� templateId�� ����
+        // NowHero의 HeroSaveData에 접근 skill의 templateId를 갱신
 
         HeroSaveData currentData = new HeroSaveData();
 
@@ -385,13 +385,13 @@ public class GameManager
         if (skillData == null)
             return;
 
-        // ���׷��̵� �������� üũ
+        // 업그레이드 가능한지 체크
         {
-            // ���� ������ ���� �����Ѱ�
+            // 다음 레벨로 진행 가능한가
             if (skillData.NextLevelId == 0)
                 return;
 
-            // �ڿ��� ����Ѱ�
+            // 자원은 충분한가
             var currencies = skillData.LevelUpCurrencies;
 
             foreach (var currency in currencies)
@@ -403,7 +403,7 @@ public class GameManager
                     return;
             }
 
-            // �ڿ������ϸ� �ڿ� ���� ����
+            // 자원가능하면 자원 빼고 저장
             foreach (var currency in currencies)
             {
                 if (currency.currencyType == Define.ECurrencyType.None)
@@ -413,13 +413,13 @@ public class GameManager
             }
         }
 
-        // ���õ� ��ų ������
+        // 선택된 스킬 레벨업
         {
-            // ���ð� ����
+            // 로컬값 수정
             var nowSkillIndex = currentData.SkillTemplateId.IndexOf(skillTemplateId);
             currentData.SkillTemplateId[nowSkillIndex] = skillData.NextLevelId;
 
-            // ���̺� �� �� ���� - ������ ��ũ�� �����Ǿ��� ������ gameData���� �ڵ� ������
+            // 세이브 될 값 수정 - 위에서 링크로 수정되었기 때문에 gameData값도 자동 수정됨
             //var nowSKillIndexSave = _gameData.BuddySaves[NowBuddy].SkillTemplateId.IndexOf(skillTemplateId);
             //_gameData.BuddySaves[NowBuddy].SkillTemplateId[nowSKillIndexSave] = skillData.NextLevelId;
 
@@ -449,10 +449,10 @@ public class GameManager
 
     public List<BuddySaveData> buddies { get; private set; }
     private int[] _selectedBuddies = new int[4];
-    
+
     public BuddySaveData GetBuddySaveData(int templateId)
     {
-        foreach(var buddy in buddies)
+        foreach (var buddy in buddies)
         {
             if (buddy.TemplateId == templateId)
                 return buddy;
@@ -463,7 +463,7 @@ public class GameManager
 
     public int RemoveBuddySaveData(int templatedId)
     {
-        for(int i = 0; i < buddies.Count; i++)
+        for (int i = 0; i < buddies.Count; i++)
         {
             if (buddies[i].TemplateId == templatedId)
             {
@@ -480,7 +480,7 @@ public class GameManager
 
     public void AddBuddySaveData(BuddySaveData buddySaveData, int insertIndex = -1)
     {
-        if(insertIndex < 0)
+        if (insertIndex < 0)
         {
             buddies.Add(buddySaveData);
         }
@@ -488,17 +488,17 @@ public class GameManager
         {
             buddies.Insert(insertIndex, buddySaveData);
         }
-        
+
 
         _gameData.BuddySaves.Add(buddySaveData.TemplateId, buddySaveData);
 
-        // ���� ����Ʈ�� ����(�� ����)�� �ִٸ� �ֽ� ����� ���� ���ش�
+        // 만약 셀렉트된 버디(전 레벨)가 있다면 최신 버디로 갱신 해준다
         {
             var previewIndex = Managers.Data.BuddyDataDic[buddySaveData.TemplateId].PreviewLevelId;
 
             var selectedIndex = Array.IndexOf(_selectedBuddies, previewIndex);
 
-            // ���� �ش��ϴ� ������ �ִٸ� �������ش�
+            // 만약 해당하는 내용이 있다면 갱신해준다
             if (selectedIndex >= 0)
             {
                 _selectedBuddies[selectedIndex] = buddySaveData.TemplateId;
@@ -530,14 +530,14 @@ public class GameManager
                 int writeIndex = 0;
                 for (int j = 0; j < _selectedBuddies.Length; j++)
                 {
-                    // 0�� �ƴ� ��Ҹ� writeIndex ��ġ�� ����
+                    // 0이 아닌 요소만 writeIndex 위치에 복사
                     if (_selectedBuddies[j] != 0)
                     {
                         _selectedBuddies[writeIndex] = _selectedBuddies[j];
                         writeIndex++;
                     }
                 }
-                // ���� ������ 0���� ä��
+                // 남은 공간을 0으로 채움
                 for (int k = writeIndex; k < _selectedBuddies.Length; k++)
                 {
                     _selectedBuddies[k] = 0;
@@ -580,13 +580,13 @@ public class GameManager
     public void BuddyLevelUp()
     {
         var buddyData = Managers.Data.BuddyDataDic[NowBuddy];
-        // ���� ���õ� ���� �������� �������� üũ
+        // 지금 선택된 버디가 레벨업이 가능한지 체크
         {
-            // ���� ������ �־� ������ �������� Ȯ��
+            // 다음 레벨이 있어 레벨업 가능한지 확인
             if (buddyData.NextLevelId == 0)
                 return;
 
-            // �ڿ� �������� üũ
+            // 자원 가능한지 체크
             var currencies = buddyData.LevelUpCurrencies;
 
             foreach (var currency in currencies)
@@ -598,7 +598,7 @@ public class GameManager
                     return;
             }
 
-            // �ڿ������ϸ� �ڿ� ���� ����
+            // 자원가능하면 자원 빼고 저장
             foreach (var currency in currencies)
             {
                 if (currency.currencyType == Define.ECurrencyType.None)
@@ -608,13 +608,13 @@ public class GameManager
             }
         }
 
-        // ���õ� ���� ������
+        // 선택된 버디를 레벨업
         {
             var buddySavedata = _gameData.BuddySaves[NowBuddy];
-            // ���� ���� ������ ����
+            // 기존 버디 정보를 삭제
             int removeIndex = RemoveBuddySaveData(NowBuddy);
 
-            // ���ο� ���� ������ �߰�
+            // 새로운 버디 정보를 추가
             {
                 buddySavedata.TemplateId = buddyData.NextLevelId;
 
@@ -622,13 +622,13 @@ public class GameManager
 
                 List<int> orgSkillId = new List<int>();
 
-                foreach(int skillId in buddySavedata.SkillTemplateId)
+                foreach (int skillId in buddySavedata.SkillTemplateId)
                 {
                     orgSkillId.Add(Managers.Data.BuddySkillDataDic[skillId].OriginalLevelId);
                 }
 
-                // ������ �߰� ��ų ������ �߰�
-                foreach(var skillId in nextBuddyData.SKillIds)
+                // 버디의 추가 스킬 정보를 추가
+                foreach (var skillId in nextBuddyData.SKillIds)
                 {
                     if (orgSkillId.Contains(Managers.Data.BuddySkillDataDic[skillId].OriginalLevelId) == false)
                     {
@@ -640,10 +640,10 @@ public class GameManager
             }
         }
 
-        // �������� ���� ���� ����
+        // 레벨업에 따른 정보 갱신
         NowBuddy = buddyData.NextLevelId;
 
-        // ���̺�
+        // 세이브
         SaveGame();
 
         Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.BuddyLevelUp, 1);
@@ -654,13 +654,13 @@ public class GameManager
         if (skillTemplateId == 0)
             return;
 
-        // NowBuddy�� BuddySaveData�� ���� skill�� templateId�� ����
+        // NowBuddy의 BuddySaveData에 접근 skill의 templateId를 갱신
 
         BuddySaveData currentData = new BuddySaveData();
 
-        foreach(var buddy in buddies)
+        foreach (var buddy in buddies)
         {
-            if(buddy.TemplateId == NowBuddy)
+            if (buddy.TemplateId == NowBuddy)
             {
                 currentData = buddy;
                 break;
@@ -675,13 +675,13 @@ public class GameManager
         if (skillData == null)
             return;
 
-        // ���׷��̵� �������� üũ
+        // 업그레이드 가능한지 체크
         {
-            // ���� ������ ���� �����Ѱ�
+            // 다음 레벨로 진행 가능한가
             if (skillData.NextLevelId == 0)
                 return;
 
-            // �ڿ��� ����Ѱ�
+            // 자원은 충분한가
             var currencies = skillData.LevelUpCurrencies;
 
             foreach (var currency in currencies)
@@ -693,7 +693,7 @@ public class GameManager
                     return;
             }
 
-            // �ڿ������ϸ� �ڿ� ���� ����
+            // 자원가능하면 자원 빼고 저장
             foreach (var currency in currencies)
             {
                 if (currency.currencyType == Define.ECurrencyType.None)
@@ -703,13 +703,13 @@ public class GameManager
             }
         }
 
-        // ���õ� ��ų ������
+        // 선택된 스킬 레벨업
         {
-            // ���ð� ����
+            // 로컬값 수정
             var nowSkillIndex = currentData.SkillTemplateId.IndexOf(skillTemplateId);
             currentData.SkillTemplateId[nowSkillIndex] = skillData.NextLevelId;
 
-            // ���̺� �� �� ���� - ������ ��ũ�� �����Ǿ��� ������ gameData���� �ڵ� ������
+            // 세이브 될 값 수정 - 위에서 링크로 수정되었기 때문에 gameData값도 자동 수정됨
             //var nowSKillIndexSave = _gameData.BuddySaves[NowBuddy].SkillTemplateId.IndexOf(skillTemplateId);
             //_gameData.BuddySaves[NowBuddy].SkillTemplateId[nowSKillIndexSave] = skillData.NextLevelId;
 
@@ -737,20 +737,20 @@ public class GameManager
     public void GetMissionSubItemReward(int templateId)
     {
         var missionSavewData = GetMissionSaveData(templateId);
-        
-        if(missionSavewData == null)
+
+        if (missionSavewData == null)
             return;
 
         if (missionSavewData.MissionState != Define.EMissionState.Rewardable)
             return;
 
         int point = Managers.Data.MissionDataDic[templateId].Point;
-        
+
         int dayIndex = Managers.Data.MissionDataDic.Values.FirstOrDefault(m => m.MissionType == Define.EMissionType.Day).TemplateId;
         var dayMissionSaveData = GetMissionSaveData(dayIndex);
         dayMissionSaveData.StackedPoint += point;
 
-        if(dayMissionSaveData.StackedPoint > Managers.Data.MissionDataDic[dayIndex].MaxPoint)
+        if (dayMissionSaveData.StackedPoint > Managers.Data.MissionDataDic[dayIndex].MaxPoint)
         {
             dayMissionSaveData.StackedPoint = Managers.Data.MissionDataDic[dayIndex].MaxPoint;
         }
@@ -780,7 +780,7 @@ public class GameManager
             return;
 
         List<Reward> rewardList = new List<Reward>();
-        for(int index = 0; index < missionSavewData.PointStepMissionState.Count; index++)
+        for (int index = 0; index < missionSavewData.PointStepMissionState.Count; index++)
         {
             if (missionSavewData.StackedPoint >= missionData.RewardCurrencies[index].point && missionSavewData.PointStepMissionState[index] == Define.EMissionState.Progress)
             {
@@ -833,20 +833,6 @@ public class GameManager
     public event Action OnSelectedBuddyChanged;
     #endregion
 
-    #region Time
-    private DateTime _missionTime;
-    public DateTime MissionTime
-    {
-        get { return _missionTime; }
-        set
-        {
-            _missionTime = value;
-            _gameData.LastMissionTime = MissionTime;
-            SaveGame();
-        }
-    }
-    #endregion
-
 
     private GameScene _scene;
     private bool _nowGameScene = false;
@@ -855,7 +841,7 @@ public class GameManager
     public int stageTemplateId
     {
         get { return _stageTemplateId; }
-        set 
+        set
         {
             if (value == 0)
                 return;
@@ -883,12 +869,13 @@ public class GameManager
 
     public void Init()
     {
-        _path = Application.persistentDataPath + "/SaveData.json";    
+        _path = Application.persistentDataPath + "/SaveData.json";
 
         if (LoadGame())
             return;
 
-        // ���̺� ������ ���� ��
+        // 세이브 파일이 없을 때
+
 
         // Mission
         _gameData.MissionSaves.Clear();
@@ -899,7 +886,10 @@ public class GameManager
 
         MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
 
-        // �⺻ ���� 4�� �־�α�
+        _gameData.LastMissionTime = DateTime.Now;
+        Managers.Time.lastMissionTime = _gameData.LastMissionTime;
+
+        // 기본 동료 4개 넣어두기
         buddies = new List<BuddySaveData>();
         AddBuddySaveData(new BuddySaveData(100000100, Managers.Data.BuddyDataDic[100000100].SKillIds, true));
         AddBuddySaveData(new BuddySaveData(300000100, Managers.Data.BuddyDataDic[300000100].SKillIds, true));
@@ -927,7 +917,7 @@ public class GameManager
         heroes = _gameData.HeroSaves.Values.ToList();
         foreach (var hero in heroes)
         {
-            if(hero.isSelected == true)
+            if (hero.isSelected == true)
             {
                 NowHero = hero.TemplateId;
             }
@@ -948,7 +938,6 @@ public class GameManager
         stage.isClear = false;
         _gameData.StageClears.Add(1, stage);
 
-        MissionTime = DateTime.Now;
 
         PlayerPrefs.SetInt("ISFIRST", 0);
         //PlayerPrefs.Save();
@@ -964,7 +953,7 @@ public class GameManager
         if (_nowGameScene == false)
             return;
 
-        // �Է� ó��
+        // 입력 처리
         UpdateInput();
     }
 
@@ -987,7 +976,7 @@ public class GameManager
 
         if (Input.GetMouseButtonDown(0))
         {
-            
+
         }
         else if (Input.GetMouseButtonUp(0))
         {
@@ -1018,6 +1007,14 @@ public class GameManager
         return results.Count > 0;
     }
 
+    #region Time
+    public void SaveMissionTime(DateTime time)
+    {
+        _gameData.LastMissionTime = time;
+        SaveGame();
+    }
+    #endregion
+
     #region Reward
     public List<Reward> GetRewards()
     {
@@ -1029,7 +1026,7 @@ public class GameManager
 
         System.Random _random = new System.Random();
 
-        for(int i = 0; i < stageData.RewardTimes; i++)
+        for (int i = 0; i < stageData.RewardTimes; i++)
         {
             int totalWeight = 0;
             foreach (int weight in stageData.RewardPercent)
@@ -1051,22 +1048,22 @@ public class GameManager
             }
         }
 
-        for(int i = 0; i < currencyCounts.Count; i++)
+        for (int i = 0; i < currencyCounts.Count; i++)
         {
-            if(currencyCounts[i] == 0)
+            if (currencyCounts[i] == 0)
                 continue;
 
             rewards.Add(new Reward((Define.ECurrencyType)i, currencyCounts[i]));
-            // ���⼭ �ϴ°� �³�?
+            // 여기서 하는게 맞나?
             AddCurrency((Define.ECurrencyType)i, currencyCounts[i]);
         }
 
         if (_gameData.StageClears[stageTemplateId].isClear == false)
         {
-            for(int i = 0; i < stageData.RewardFirstType.Count; i++)
+            for (int i = 0; i < stageData.RewardFirstType.Count; i++)
             {
                 rewards.Add(new Reward(stageData.RewardFirstType[i], stageData.RewardFirstCount[i], true));
-                // ���⼭ �ϴ°� �³�?
+                // 여기서 하는게 맞나?
                 AddCurrency(stageData.RewardFirstType[i], stageData.RewardFirstCount[i]);
             }
         }
@@ -1079,7 +1076,7 @@ public class GameManager
     public void ClearStage()
     {
         _gameData.StageClears[stageTemplateId].isClear = true;
-        if(_gameData.StageClears.ContainsKey(Managers.Data.StageDataDic[stageTemplateId].NextaStageId) == false)
+        if (_gameData.StageClears.ContainsKey(Managers.Data.StageDataDic[stageTemplateId].NextaStageId) == false)
         {
             var newStage = new StageClear();
             newStage.TemplateId = Managers.Data.StageDataDic[stageTemplateId].NextaStageId;
@@ -1104,11 +1101,11 @@ public class GameManager
         // TODO ILHAK price data
         var needDia = 0;
 
-        if(count == 1)
+        if (count == 1)
         {
             needDia = 110;
         }
-        else if(count == 10)
+        else if (count == 10)
         {
             needDia = 1000;
         }
@@ -1119,7 +1116,7 @@ public class GameManager
         List<Reward> rewards = new List<Reward>();
         System.Random random = new System.Random();
 
-        for (int i = 0; i <  count; i++)
+        for (int i = 0; i < count; i++)
         {
             int randomNumber = random.Next(Managers.Data.HeroGachaDataDic.First().Value.Max);
 
@@ -1153,7 +1150,7 @@ public class GameManager
         {
             needGold = 1000;
         }
-        else if(count == 100)
+        else if (count == 100)
         {
             needGold = 10000;
         }
@@ -1219,15 +1216,15 @@ public class GameManager
             {
                 if (buddyRarity.Percent > randomNumber)
                 {
-                    // ���Ƽ ������
+                    // 레어리티 결정됨
                     Debug.Log($"{buddyRarity.RarityType} : {buddyRarity.Percent}");
                     rarity = buddyRarity.RarityType;
                     break;
                 }
             }
 
-            // ���� �̱�
-            if(rarity == Define.ERarityType.Common)
+            // 버디 뽑기
+            if (rarity == Define.ERarityType.Common)
             {
                 int randomBuddyPercent = random.Next(Managers.Data.commonBuddies.Count);
                 buddyNames.Add(Managers.Data.BuddyGachaDataDic[Managers.Data.commonBuddies[randomBuddyPercent]].GachaItem);
@@ -1254,7 +1251,7 @@ public class GameManager
             }
         }
 
-        // ���� �ߺ� üũ
+        // 버디 중복 체크
         foreach (var buddyName in buddyNames)
         {
             var buddyData = Managers.Data.BuddyDataDic[Managers.Data.BuddyGachaDataDic[buddyName].BuddyTemplateId];
@@ -1307,20 +1304,20 @@ public class GameManager
 
         stageTemplateId = _gameData.CurrentStageTemplateId;
 
-        // ����, ���� ���� ó��
+        // 영웅, 동료 관련 처리
 
-        // ���� ���� ��������
+        // 동료 정보 가저오기
         buddies = _gameData.BuddySaves.Values.ToList();
         int i = 0;
-        foreach ( var buddy in buddies )
+        foreach (var buddy in buddies)
         {
-            if( buddy.isSelected == true )
+            if (buddy.isSelected == true)
             {
                 _selectedBuddies[i++] = buddy.TemplateId;
             }
         }
 
-        // ���� ��������
+        // 영웅 가저오기
         heroes = _gameData.HeroSaves.Values.ToList();
         foreach (var hero in heroes)
         {
@@ -1332,10 +1329,10 @@ public class GameManager
 
         OnSelectedBuddyChanged?.Invoke();
 
-        // �̼� ��������
+        // 미션 가져오기
         MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
 
-        MissionTime = _gameData.LastMissionTime;
+        Managers.Time.lastMissionTime = _gameData.LastMissionTime;
 
         Debug.Log("Loading Sucess");
         return true;

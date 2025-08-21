@@ -12,9 +12,10 @@ public class TimeManager
         get { return _lastMissionTime; }
         set
         {
-            CheckAttendance(lastMissionTime);
+            CheckDailyReset(lastMissionTime);
             CheckWeeklyReset(lastMissionTime);
             _lastMissionTime = value;
+            Managers.Game.SaveMissionTime(lastMissionTime);
         }
     }
 
@@ -44,8 +45,11 @@ public class TimeManager
         }
     }
 
-    private void CheckAttendance(DateTime lastTime)
+    private void CheckDailyReset(DateTime lastTime)
     {
+        if (lastTime == default(DateTime))
+            return;
+
         DateTime now = DateTime.Now;
 
         // 날짜가 다르면 오늘 오전 9시를 넘겼는지 확인
@@ -78,6 +82,9 @@ public class TimeManager
 
     private void CheckWeeklyReset(DateTime lastTime)
     {
+        if (lastTime == default(DateTime))
+            return;
+
         DateTime now = DateTime.Now;
 
         // 이번 주 월요일의 오전 9시 계산
