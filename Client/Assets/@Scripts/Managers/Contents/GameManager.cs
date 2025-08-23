@@ -6,165 +6,6 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using static Define;
-
-[Serializable]
-public class GameData
-{
-    public int UserLevel = 1;
-    public string UserName = "Player";
-
-    public int[] Currencies = new int[Enum.GetNames(typeof(Define.ECurrencyType)).Length];
-
-    public int Stamina = Define.MAX_STAMINA;
-
-    public Dictionary<int, BuddySaveData> BuddySaves = new Dictionary<int, BuddySaveData>();
-    public Dictionary<int, HeroSaveData> HeroSaves = new Dictionary<int, HeroSaveData>();
-
-    public int CurrentStageTemplateId = 1;
-    public Dictionary<int, StageClear> StageClears = new Dictionary<int, StageClear>();
-
-    public Dictionary<int, MissionSaveData> MissionSaves = new Dictionary<int, MissionSaveData>();
-
-    public bool BGMOn = true;
-    public bool EffectSoundOn = true;
-
-    public DateTime LastMissionTime;
-}
-
-[Serializable]
-public class StageClear
-{
-    public int TemplateId;
-    public bool isEnable;
-    public bool isClear;
-}
-
-[SerializeField]
-public class BuddySaveData
-{
-    public int TemplateId;
-    public List<int> SkillTemplateId;
-    public bool isSelected;
-
-    public BuddySaveData()
-    {
-
-    }
-
-    public BuddySaveData(int templateId, List<int> skillTemplateId, bool isSelected)
-    {
-        TemplateId = templateId;
-        SkillTemplateId = skillTemplateId;
-        this.isSelected = isSelected;
-    }
-}
-
-[SerializeField]
-public class HeroSaveData
-{
-    public int TemplateId;
-    public List<int> SkillTemplateId;
-    public bool isSelected;
-    public int nowExp;
-    public int maxExp;
-
-    public HeroSaveData() { }
-
-    public HeroSaveData(int templateId, List<int> skillTemplateId, bool isSelected)
-    {
-        TemplateId = templateId;
-        SkillTemplateId = skillTemplateId;
-        this.nowExp = 0;
-        this.maxExp = Managers.Data.HeroDataDic[templateId].LevelUpCurrency1Count;
-        this.isSelected = isSelected;
-    }
-}
-
-[SerializeField]
-public class MissionSaveData
-{
-    public int TemplateId;
-    public int StackedPoint;
-    public Define.EMissionState MissionState;
-    public List<Define.EMissionState> PointStepMissionState;
-
-    public MissionSaveData(int templateId)
-    {
-        TemplateId = templateId;
-        StackedPoint = 0;
-        MissionState = Define.EMissionState.Progress;
-        PointStepMissionState = new List<Define.EMissionState>();
-        for (int i = 0; i < Managers.Data.MissionDataDic[templateId].RewardCurrencies.Count; i++)
-        {
-            PointStepMissionState.Add(Define.EMissionState.Progress);
-        }
-    }
-
-    public void OnHandleBroadcastMissionEvent(Define.EBroadcastEventType eventType, int value)
-    {
-        if (MissionState != Define.EMissionState.Progress)
-            return;
-
-        switch (Managers.Data.MissionDataDic[TemplateId].MissionGoal)
-        {
-            case Define.EMissionGoal.MonsterKill:
-                if (eventType == Define.EBroadcastEventType.KillMonster)
-                {
-                    StackedPoint += value;
-                    Managers.Game.SaveMission(TemplateId);
-                }
-                break;
-            case Define.EMissionGoal.ConsumGold:
-                if (eventType == Define.EBroadcastEventType.UseGold)
-                {
-                    StackedPoint += value;
-                }
-                break;
-            case Define.EMissionGoal.StageClear:
-                if (eventType == Define.EBroadcastEventType.StageClear)
-                {
-                    StackedPoint += value;
-                }
-                break;
-            case Define.EMissionGoal.CurrencyGacha:
-                if (eventType == Define.EBroadcastEventType.DoCurrencyGacha)
-                {
-                    StackedPoint += value;
-                }
-                break;
-            case Define.EMissionGoal.BuddySkillUp:
-                if (eventType == Define.EBroadcastEventType.BuddySkillUp)
-                {
-                    StackedPoint += value;
-                }
-                break;
-            case Define.EMissionGoal.BuddyLevelUp:
-                if (eventType == Define.EBroadcastEventType.BuddyLevelUp)
-                {
-                    StackedPoint += value;
-                }
-                break;
-            case Define.EMissionGoal.HeroSkillUp:
-                if (eventType == Define.EBroadcastEventType.HeroSkillUp)
-                {
-                    StackedPoint += value;
-                }
-                break;
-            case Define.EMissionGoal.HeroLevelUp:
-                if (eventType == Define.EBroadcastEventType.HeroLevelUp)
-                {
-                    StackedPoint += value;
-                }
-                break;
-        }
-
-        if (StackedPoint >= Managers.Data.MissionDataDic[TemplateId].MissionCount)
-        {
-            MissionState = Define.EMissionState.Rewardable;
-        }
-    }
-}
 
 public class GameManager
 {
@@ -722,6 +563,10 @@ public class GameManager
     }
     #endregion
 
+    #region Achievement
+    List<int> EventValues;
+    #endregion
+
     #region Mission
     public List<MissionSaveData> MissionSaveDatas { get; private set; }
     public List<MissionData> NormalMissionList => Managers.Data.MissionDataDic.Where(mission => mission.Value.MissionType == Define.EMissionType.Normal).Select(mission => mission.Value).ToList();
@@ -796,7 +641,7 @@ public class GameManager
         rewardPopup.SetInfo(Define.ERewardType.Mission, rewardList);
 
         SaveGame();
-        Managers.Event.TriggerEvent(EEventType.OnMissionChanged);
+        Managers.Event.TriggerEvent(Define.EEventType.OnMissionChanged);
     }
 
     public void GetWeekMissionReward()
@@ -809,203 +654,7 @@ public class GameManager
         SaveGame();
     }
 
-    //public void OnHandleMissionEvent(Define.EBroadcastEventType eventType, int value)
-    //{
-    //    foreach(MissionSaveData missionSaveData in MissionSaveDatas)
-    //    {
-    //        if(missionSaveData.MissionState == EMissionState.Progress)
-    //        {
-    //            missionSaveData.OnHandleBroadcastEvent(eventType, value);
-    //        }
-    //    }
-    //}
-
-
-
-
     #endregion
-
-    #region Action
-    public event Action OnCurrenciesChagned;
-    public event Action OnCurrentStageChanged;
-    public event Action OnNowBuddyChanged;
-    public event Action OnNowHeroChanged;
-    public event Action OnSelectedBuddyChanged;
-    #endregion
-
-
-    private GameScene _scene;
-    private bool _nowGameScene = false;
-
-    private int _stageTemplateId;
-    public int stageTemplateId
-    {
-        get { return _stageTemplateId; }
-        set
-        {
-            if (value == 0)
-                return;
-
-            if (_gameData.StageClears.ContainsKey(value) == false || _gameData.StageClears[value].isEnable == false)
-            {
-                if (Managers.Data.StageDataDic[value].PreviewStageId == 0)
-                    return;
-
-                var prevStage = Managers.Data.StageDataDic[Managers.Data.StageDataDic[value].PreviewStageId];
-
-                var message = $"Need to Clear {prevStage.DifficultyLevel} {prevStage.WorldNumber} - {prevStage.StageNumber}";
-
-                Managers.UI.ShowToast(message, 1f, Define.EToastColor.Red, Define.EToastPosition.MiddleCenter);
-
-                return;
-            }
-
-            _stageTemplateId = value;
-            _gameData.CurrentStageTemplateId = value;
-            OnCurrentStageChanged?.Invoke();
-            SaveGame();
-        }
-    }
-
-    public void Init()
-    {
-        _path = Application.persistentDataPath + "/SaveData.json";
-
-        if (LoadGame())
-            return;
-
-        // 세이브 파일이 없을 때
-
-
-        // Mission
-        _gameData.MissionSaves.Clear();
-        foreach (var mission in Managers.Data.MissionDataDic)
-        {
-            _gameData.MissionSaves.Add(mission.Value.TemplateId, new MissionSaveData(mission.Value.TemplateId));
-        }
-
-        MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
-
-        _gameData.LastMissionTime = DateTime.Now;
-        Managers.Time.lastMissionTime = _gameData.LastMissionTime;
-
-        // 기본 동료 4개 넣어두기
-        buddies = new List<BuddySaveData>();
-        AddBuddySaveData(new BuddySaveData(100000100, Managers.Data.BuddyDataDic[100000100].SKillIds, true));
-        AddBuddySaveData(new BuddySaveData(300000100, Managers.Data.BuddyDataDic[300000100].SKillIds, true));
-        AddBuddySaveData(new BuddySaveData(100000300, Managers.Data.BuddyDataDic[100000300].SKillIds, true));
-        AddBuddySaveData(new BuddySaveData(100000500, Managers.Data.BuddyDataDic[100000500].SKillIds, true));
-
-        //_gameData.BuddySaves.Add(1, new BuddySaveData(1, Managers.Data.BuddyDataDic[1].SKillIds, true));
-        //_gameData.BuddySaves.Add(3, new BuddySaveData(3, Managers.Data.BuddyDataDic[3].SKillIds, true));
-        //_gameData.BuddySaves.Add(5, new BuddySaveData(5, Managers.Data.BuddyDataDic[5].SKillIds, true));
-        //_gameData.BuddySaves.Add(7, new BuddySaveData(7, Managers.Data.BuddyDataDic[7].SKillIds, true));
-
-        _gameData.HeroSaves.Add(100, new HeroSaveData(100, Managers.Data.HeroDataDic[100].SKillIds, true));
-        _gameData.HeroSaves.Add(200, new HeroSaveData(200, Managers.Data.HeroDataDic[200].SKillIds, false));
-
-        //buddies = _gameData.BuddySaves.Values.ToList();
-        int selectedIndex = 0;
-        foreach (var buddy in buddies)
-        {
-            if (buddy.isSelected == true)
-            {
-                _selectedBuddies[selectedIndex++] = buddy.TemplateId;
-            }
-        }
-
-        heroes = _gameData.HeroSaves.Values.ToList();
-        foreach (var hero in heroes)
-        {
-            if (hero.isSelected == true)
-            {
-                NowHero = hero.TemplateId;
-            }
-        }
-
-        OnSelectedBuddyChanged?.Invoke();
-
-        var currencyTypes = Enum.GetValues(typeof(Define.ECurrencyType));
-
-        for (int i = 1; i < currencyTypes.Length; i++)
-        {
-            AddCurrency((Define.ECurrencyType)i, 100);
-        }
-
-        StageClear stage = new StageClear();
-        stage.TemplateId = 1;
-        stage.isEnable = true;
-        stage.isClear = false;
-        _gameData.StageClears.Add(1, stage);
-
-
-        PlayerPrefs.SetInt("ISFIRST", 0);
-        //PlayerPrefs.Save();
-
-        stageTemplateId = _gameData.CurrentStageTemplateId;
-    }
-
-    public void Update()
-    {
-        if (_scene == null)
-            return;
-
-        if (_nowGameScene == false)
-            return;
-
-        // 입력 처리
-        UpdateInput();
-    }
-
-    public void GameSceneStart(GameScene scene)
-    {
-        _scene = scene;
-        _nowGameScene = true;
-    }
-
-    public void GameSceneEnd()
-    {
-        _scene = null;
-        _nowGameScene = false;
-    }
-
-    private void UpdateInput()
-    {
-        if (IsPointerOverUIObject(Input.mousePosition))
-            return;
-
-        if (Input.GetMouseButtonDown(0))
-        {
-
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            //Debug.Log("Touch Position: " + Input.mousePosition);
-
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
-
-            if (hit.collider != null)
-            {
-                if (hit.transform.TryGetComponent<LineTouchController>(out LineTouchController lineTouch))
-                {
-                    var lineNum = lineTouch.LineTouched();
-                    _scene.LineTouched(lineNum);
-                }
-            }
-        }
-    }
-
-    public bool IsPointerOverUIObject(Vector2 touchPos)
-    {
-        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-        eventDataCurrentPosition.position = touchPos;
-        List<RaycastResult> results = new List<RaycastResult>();
-
-        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-
-        return results.Count > 0;
-    }
 
     #region Time
     public void SaveMissionTime(DateTime time)
@@ -1069,6 +718,38 @@ public class GameManager
         }
 
         return rewards;
+    }
+    #endregion
+
+    #region Stage
+    private int _stageTemplateId;
+    public int stageTemplateId
+    {
+        get { return _stageTemplateId; }
+        set
+        {
+            if (value == 0)
+                return;
+
+            if (_gameData.StageClears.ContainsKey(value) == false || _gameData.StageClears[value].isEnable == false)
+            {
+                if (Managers.Data.StageDataDic[value].PreviewStageId == 0)
+                    return;
+
+                var prevStage = Managers.Data.StageDataDic[Managers.Data.StageDataDic[value].PreviewStageId];
+
+                var message = $"Need to Clear {prevStage.DifficultyLevel} {prevStage.WorldNumber} - {prevStage.StageNumber}";
+
+                Managers.UI.ShowToast(message, 1f, Define.EToastColor.Red, Define.EToastPosition.MiddleCenter);
+
+                return;
+            }
+
+            _stageTemplateId = value;
+            _gameData.CurrentStageTemplateId = value;
+            OnCurrentStageChanged?.Invoke();
+            SaveGame();
+        }
     }
     #endregion
 
@@ -1273,6 +954,156 @@ public class GameManager
 
     #endregion
 
+    #region Action
+    public event Action OnCurrenciesChagned;
+    public event Action OnCurrentStageChanged;
+    public event Action OnNowBuddyChanged;
+    public event Action OnNowHeroChanged;
+    public event Action OnSelectedBuddyChanged;
+    #endregion
+
+
+    private GameScene _scene;
+    private bool _nowGameScene = false;
+
+    public void GameSceneStart(GameScene scene)
+    {
+        _scene = scene;
+        _nowGameScene = true;
+    }
+
+    public void GameSceneEnd()
+    {
+        _scene = null;
+        _nowGameScene = false;
+    }
+
+    private void UpdateInput()
+    {
+        if (IsPointerOverUIObject(Input.mousePosition))
+            return;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            //Debug.Log("Touch Position: " + Input.mousePosition);
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
+
+            if (hit.collider != null)
+            {
+                if (hit.transform.TryGetComponent<LineTouchController>(out LineTouchController lineTouch))
+                {
+                    var lineNum = lineTouch.LineTouched();
+                    _scene.LineTouched(lineNum);
+                }
+            }
+        }
+    }
+
+    public bool IsPointerOverUIObject(Vector2 touchPos)
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = touchPos;
+        List<RaycastResult> results = new List<RaycastResult>();
+
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+
+        return results.Count > 0;
+    }
+
+    public void Init()
+    {
+        _path = Application.persistentDataPath + "/SaveData.json";
+
+        if (LoadGame())
+            return;
+
+        // 세이브 파일이 없을 때
+
+
+        // Mission
+        _gameData.MissionSaves.Clear();
+        foreach (var mission in Managers.Data.MissionDataDic)
+        {
+            _gameData.MissionSaves.Add(mission.Value.TemplateId, new MissionSaveData(mission.Value.TemplateId));
+        }
+
+        MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
+
+        _gameData.LastMissionTime = DateTime.Now;
+        Managers.Time.lastMissionTime = _gameData.LastMissionTime;
+
+        _gameData.EventValues = Enumerable.Repeat(0, Enum.GetValues(typeof(Define.EBroadcastEventType)).Length).ToList();
+        EventValues = _gameData.EventValues;
+
+        // 기본 동료 4개 넣어두기
+        buddies = new List<BuddySaveData>();
+        AddBuddySaveData(new BuddySaveData(100000100, Managers.Data.BuddyDataDic[100000100].SKillIds, true));
+        AddBuddySaveData(new BuddySaveData(300000100, Managers.Data.BuddyDataDic[300000100].SKillIds, true));
+        AddBuddySaveData(new BuddySaveData(100000300, Managers.Data.BuddyDataDic[100000300].SKillIds, true));
+        AddBuddySaveData(new BuddySaveData(100000500, Managers.Data.BuddyDataDic[100000500].SKillIds, true));
+
+        _gameData.HeroSaves.Add(100, new HeroSaveData(100, Managers.Data.HeroDataDic[100].SKillIds, true));
+        _gameData.HeroSaves.Add(200, new HeroSaveData(200, Managers.Data.HeroDataDic[200].SKillIds, false));
+
+        //buddies = _gameData.BuddySaves.Values.ToList();
+        int selectedIndex = 0;
+        foreach (var buddy in buddies)
+        {
+            if (buddy.isSelected == true)
+            {
+                _selectedBuddies[selectedIndex++] = buddy.TemplateId;
+            }
+        }
+
+        heroes = _gameData.HeroSaves.Values.ToList();
+        foreach (var hero in heroes)
+        {
+            if (hero.isSelected == true)
+            {
+                NowHero = hero.TemplateId;
+            }
+        }
+
+        OnSelectedBuddyChanged?.Invoke();
+
+        var currencyTypes = Enum.GetValues(typeof(Define.ECurrencyType));
+
+        for (int i = 1; i < currencyTypes.Length; i++)
+        {
+            AddCurrency((Define.ECurrencyType)i, 100);
+        }
+
+        StageClear stage = new StageClear();
+        stage.TemplateId = 1;
+        stage.isEnable = true;
+        stage.isClear = false;
+        _gameData.StageClears.Add(1, stage);
+
+
+        PlayerPrefs.SetInt("ISFIRST", 0);
+        //PlayerPrefs.Save();
+
+        stageTemplateId = _gameData.CurrentStageTemplateId;
+    }
+
+    public void Update()
+    {
+        if (_scene == null)
+            return;
+
+        if (_nowGameScene == false)
+            return;
+
+        // 입력 처리
+        UpdateInput();
+    }
+
     #region SaveLoad
     public void SaveGame()
     {
@@ -1331,6 +1162,8 @@ public class GameManager
 
         // 미션 가져오기
         MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
+
+        EventValues = _gameData.EventValues;
 
         Managers.Time.lastMissionTime = _gameData.LastMissionTime;
 

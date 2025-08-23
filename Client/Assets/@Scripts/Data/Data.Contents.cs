@@ -847,4 +847,39 @@ namespace Data
     }
     #endregion
 
+    #region Achievement
+    [Serializable]
+    public class AchievementData
+    {
+        public int TemplateId;
+        public string Name;
+        public string NameTextId;
+        public Define.EAchievementType AchievementType;
+        public Define.EMissionGoal MissionGoal;
+        public int MissionCount;
+        public Define.ECurrencyType RewardType;
+        public int RewardCount;
+        public int OriginalAchievementId;
+        public int PreviewAchievementId;
+        public int NextAchievementId;
+    }
+
+    public class AchievementDataLoader : ILoader<int, AchievementData>
+    {
+        public List<AchievementData> achievements = new List<AchievementData>();
+        public Dictionary<int, AchievementData> MakeDict()
+        {
+            Dictionary<int, AchievementData> dict = new Dictionary<int, AchievementData>();
+            foreach (var achievement in achievements)
+                dict.Add(achievement.TemplateId, achievement);
+            return dict;
+        }
+
+        public bool Validate()
+        {
+            return true;
+        }
+    }
+    #endregion
+
 }

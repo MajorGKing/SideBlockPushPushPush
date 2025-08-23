@@ -42,6 +42,7 @@ public class DataTransformer : EditorWindow
         ParseExcelDataToJson<BuddyGachaRarityDataLoader, BuddyGachaRarityData>("BuddyGachaRarity");
         ParseExcelDataToJson<BuddyGachaDataLoader, BuddyGachaData>("BuddyGacha");
         ParseExcelDataToJson<MissionDataLoader, MissionData>("Mission");
+        ParseExcelDataToJson<AchievementDataLoader, AchievementData>("Achievement");
 
         Debug.Log("Complete DataTransformer");
     }

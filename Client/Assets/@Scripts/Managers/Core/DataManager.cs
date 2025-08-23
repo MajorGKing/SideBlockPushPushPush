@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Data;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -31,6 +32,7 @@ public class DataManager
     public Dictionary<Define.ERarityType, Data.BuddyGachaRarityData> BuddyGachaRarityDataDic { get; set; } = new Dictionary<Define.ERarityType, Data.BuddyGachaRarityData>();
     public Dictionary<string, Data.BuddyGachaData> BuddyGachaDataDic { get; set; } = new Dictionary<string, Data.BuddyGachaData>();
     public Dictionary<int, Data.MissionData> MissionDataDic { get; set; } = new Dictionary<int, Data.MissionData>();
+    public Dictionary<int, Data.AchievementData> AchievementDataDic { get; set; } = new Dictionary<int, Data.AchievementData>();
 
     // BuddyList
     public List<string> commonBuddies;
@@ -57,6 +59,7 @@ public class DataManager
         BuddyGachaRarityDataDic = LoadJson<Data.BuddyGachaRarityDataLoader, Define.ERarityType, Data.BuddyGachaRarityData>("BuddyGachaRarityData").MakeDict();
         BuddyGachaDataDic = LoadJson<Data.BuddyGachaDataLoader, string, Data.BuddyGachaData>("BuddyGachaData").MakeDict();
         MissionDataDic = LoadJson<Data.MissionDataLoader, int, Data.MissionData>("MissionData").MakeDict();
+        AchievementDataDic = LoadJson<Data.AchievementDataLoader, int, Data.AchievementData>("AchievementData").MakeDict();
         Validate();
 
         Debug.Log("Data Load End");

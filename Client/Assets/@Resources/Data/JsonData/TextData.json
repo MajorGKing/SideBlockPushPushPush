@@ -171,6 +171,790 @@
     {
       "TemplateId": "MissionWeek",
       "KOR": "주간 미션"
+    },
+    {
+      "TemplateId": "AchievementMonsterKill10",
+      "KOR": "몬스터 킬 10"
+    },
+    {
+      "TemplateId": "AchievementMonsterKill20",
+      "KOR": "몬스터 킬 20"
+    },
+    {
+      "TemplateId": "AchievementMonsterKill30",
+      "KOR": "몬스터 킬 30"
+    },
+    {
+      "TemplateId": "AchievementMonsterKill40",
+      "KOR": "몬스터 킬 40"
+    },
+    {
+      "TemplateId": "AchievementMonsterKill50",
+      "KOR": "몬스터 킬 50"
+    },
+    {
+      "TemplateId": "AchievementMonsterKill60",
+      "KOR": "몬스터 킬 60"
+    },
+    {
+      "TemplateId": "AchievementMonsterKill70",
+      "KOR": "몬스터 킬 70"
+    },
+    {
+      "TemplateId": "AchievementMonsterKill80",
+      "KOR": "몬스터 킬 80"
+    },
+    {
+      "TemplateId": "AchievementMonsterKill90",
+      "KOR": "몬스터 킬 90"
+    },
+    {
+      "TemplateId": "AchievementMonsterKill100",
+      "KOR": "몬스터 킬 100"
+    },
+    {
+      "TemplateId": "AchievementMonsterKill110",
+      "KOR": "몬스터 킬 110"
+    },
+    {
+      "TemplateId": "AchievementMonsterKill120",
+      "KOR": "몬스터 킬 120"
+    },
+    {
+      "TemplateId": "AchievementMonsterKill130",
+      "KOR": "몬스터 킬 130"
+    },
+    {
+      "TemplateId": "AchievementMonsterKill140",
+      "KOR": "몬스터 킬 140"
+    },
+    {
+      "TemplateId": "AchievementMonsterKill150",
+      "KOR": "몬스터 킬 150"
+    },
+    {
+      "TemplateId": "AchievementMonsterKill160",
+      "KOR": "몬스터 킬 160"
+    },
+    {
+      "TemplateId": "AchievementMonsterKill170",
+      "KOR": "몬스터 킬 170"
+    },
+    {
+      "TemplateId": "AchievementMonsterKill180",
+      "KOR": "몬스터 킬 180"
+    },
+    {
+      "TemplateId": "AchievementMonsterKill190",
+      "KOR": "몬스터 킬 190"
+    },
+    {
+      "TemplateId": "AchievementMonsterKill200",
+      "KOR": "몬스터 킬 200"
+    },
+    {
+      "TemplateId": "AchievementConsumGold1k",
+      "KOR": "골드 소비 1k"
+    },
+    {
+      "TemplateId": "AchievementConsumGold2k",
+      "KOR": "골드 소비 2k"
+    },
+    {
+      "TemplateId": "AchievementConsumGold3k",
+      "KOR": "골드 소비 3k"
+    },
+    {
+      "TemplateId": "AchievementConsumGold4k",
+      "KOR": "골드 소비 4k"
+    },
+    {
+      "TemplateId": "AchievementConsumGold5k",
+      "KOR": "골드 소비 5k"
+    },
+    {
+      "TemplateId": "AchievementConsumGold6k",
+      "KOR": "골드 소비 6k"
+    },
+    {
+      "TemplateId": "AchievementConsumGold7k",
+      "KOR": "골드 소비 7k"
+    },
+    {
+      "TemplateId": "AchievementConsumGold8k",
+      "KOR": "골드 소비 8k"
+    },
+    {
+      "TemplateId": "AchievementConsumGold9k",
+      "KOR": "골드 소비 9k"
+    },
+    {
+      "TemplateId": "AchievementConsumGold10k",
+      "KOR": "골드 소비 10k"
+    },
+    {
+      "TemplateId": "AchievementConsumGold11k",
+      "KOR": "골드 소비 11k"
+    },
+    {
+      "TemplateId": "AchievementConsumGold12k",
+      "KOR": "골드 소비 12k"
+    },
+    {
+      "TemplateId": "AchievementConsumGold13k",
+      "KOR": "골드 소비 13k"
+    },
+    {
+      "TemplateId": "AchievementConsumGold14k",
+      "KOR": "골드 소비 14k"
+    },
+    {
+      "TemplateId": "AchievementConsumGold15k",
+      "KOR": "골드 소비 15k"
+    },
+    {
+      "TemplateId": "AchievementConsumGold16k",
+      "KOR": "골드 소비 16k"
+    },
+    {
+      "TemplateId": "AchievementConsumGold17k",
+      "KOR": "골드 소비 17k"
+    },
+    {
+      "TemplateId": "AchievementConsumGold18k",
+      "KOR": "골드 소비 18k"
+    },
+    {
+      "TemplateId": "AchievementConsumGold19k",
+      "KOR": "골드 소비 19k"
+    },
+    {
+      "TemplateId": "AchievementConsumGold20k",
+      "KOR": "골드 소비 20k"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes5",
+      "KOR": "스테이지 클리어 5번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes10",
+      "KOR": "스테이지 클리어 10번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes15",
+      "KOR": "스테이지 클리어 15번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes20",
+      "KOR": "스테이지 클리어 20번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes25",
+      "KOR": "스테이지 클리어 25번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes30",
+      "KOR": "스테이지 클리어 30번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes35",
+      "KOR": "스테이지 클리어 35번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes40",
+      "KOR": "스테이지 클리어 40번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes45",
+      "KOR": "스테이지 클리어 45번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes50",
+      "KOR": "스테이지 클리어 50번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes55",
+      "KOR": "스테이지 클리어 55번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes60",
+      "KOR": "스테이지 클리어 60번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes65",
+      "KOR": "스테이지 클리어 65번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes70",
+      "KOR": "스테이지 클리어 70번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes75",
+      "KOR": "스테이지 클리어 75번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes80",
+      "KOR": "스테이지 클리어 80번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes85",
+      "KOR": "스테이지 클리어 85번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes90",
+      "KOR": "스테이지 클리어 90번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes95",
+      "KOR": "스테이지 클리어 95번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes100",
+      "KOR": "스테이지 클리어 100번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes105",
+      "KOR": "스테이지 클리어 105번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes110",
+      "KOR": "스테이지 클리어 110번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes115",
+      "KOR": "스테이지 클리어 115번"
+    },
+    {
+      "TemplateId": "AchievementStageClearTimes120",
+      "KOR": "스테이지 클리어 120번"
+    },
+    {
+      "TemplateId": "AchievementStageClearAtNormal1_1",
+      "KOR": "노멀 1-1 클리어"
+    },
+    {
+      "TemplateId": "AchievementStageClearAtNormal1_2",
+      "KOR": "노멀 1-2 클리어"
+    },
+    {
+      "TemplateId": "AchievementStageClearAtNormal1_3",
+      "KOR": "노멀 1-3 클리어"
+    },
+    {
+      "TemplateId": "AchievementStageClearAtHard1_1",
+      "KOR": "하드 1-1 클리어"
+    },
+    {
+      "TemplateId": "AchievementStageClearAtHard1_2",
+      "KOR": "하드 1-2 클리어"
+    },
+    {
+      "TemplateId": "AchievementStageClearAtHard1_3",
+      "KOR": "하드 1-3 클리어"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha10",
+      "KOR": "자원 뽑기 10회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha20",
+      "KOR": "자원 뽑기 20회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha30",
+      "KOR": "자원 뽑기 30회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha40",
+      "KOR": "자원 뽑기 40회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha50",
+      "KOR": "자원 뽑기 50회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha60",
+      "KOR": "자원 뽑기 60회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha70",
+      "KOR": "자원 뽑기 70회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha80",
+      "KOR": "자원 뽑기 80회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha90",
+      "KOR": "자원 뽑기 90회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha100",
+      "KOR": "자원 뽑기 100회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha110",
+      "KOR": "자원 뽑기 110회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha120",
+      "KOR": "자원 뽑기 120회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha130",
+      "KOR": "자원 뽑기 130회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha140",
+      "KOR": "자원 뽑기 140회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha150",
+      "KOR": "자원 뽑기 150회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha160",
+      "KOR": "자원 뽑기 160회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha170",
+      "KOR": "자원 뽑기 170회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha180",
+      "KOR": "자원 뽑기 180회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha190",
+      "KOR": "자원 뽑기 190회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha200",
+      "KOR": "자원 뽑기 200회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha210",
+      "KOR": "자원 뽑기 210회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha220",
+      "KOR": "자원 뽑기 220회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha230",
+      "KOR": "자원 뽑기 230회"
+    },
+    {
+      "TemplateId": "AchievementCurrencyGacha240",
+      "KOR": "자원 뽑기 240회"
+    },
+    {
+      "TemplateId": "AchievementHeroGacha10",
+      "KOR": "영웅 뽑기 10회"
+    },
+    {
+      "TemplateId": "AchievementHeroGacha20",
+      "KOR": "영웅 뽑기 20회"
+    },
+    {
+      "TemplateId": "AchievementHeroGacha30",
+      "KOR": "영웅 뽑기 30회"
+    },
+    {
+      "TemplateId": "AchievementHeroGacha40",
+      "KOR": "영웅 뽑기 40회"
+    },
+    {
+      "TemplateId": "AchievementHeroGacha50",
+      "KOR": "영웅 뽑기 50회"
+    },
+    {
+      "TemplateId": "AchievementHeroGacha60",
+      "KOR": "영웅 뽑기 60회"
+    },
+    {
+      "TemplateId": "AchievementHeroGacha70",
+      "KOR": "영웅 뽑기 70회"
+    },
+    {
+      "TemplateId": "AchievementHeroGacha80",
+      "KOR": "영웅 뽑기 80회"
+    },
+    {
+      "TemplateId": "AchievementHeroGacha90",
+      "KOR": "영웅 뽑기 90회"
+    },
+    {
+      "TemplateId": "AchievementHeroGacha100",
+      "KOR": "영웅 뽑기 100회"
+    },
+    {
+      "TemplateId": "AchievementHeroGacha110",
+      "KOR": "영웅 뽑기 110회"
+    },
+    {
+      "TemplateId": "AchievementHeroGacha120",
+      "KOR": "영웅 뽑기 120회"
+    },
+    {
+      "TemplateId": "AchievementHeroGacha130",
+      "KOR": "영웅 뽑기 130회"
+    },
+    {
+      "TemplateId": "AchievementHeroGacha140",
+      "KOR": "영웅 뽑기 140회"
+    },
+    {
+      "TemplateId": "AchievementHeroGacha150",
+      "KOR": "영웅 뽑기 150회"
+    },
+    {
+      "TemplateId": "AchievementHeroGacha160",
+      "KOR": "영웅 뽑기 160회"
+    },
+    {
+      "TemplateId": "AchievementHeroGacha170",
+      "KOR": "영웅 뽑기 170회"
+    },
+    {
+      "TemplateId": "AchievementHeroGacha180",
+      "KOR": "영웅 뽑기 180회"
+    },
+    {
+      "TemplateId": "AchievementHeroGacha190",
+      "KOR": "영웅 뽑기 190회"
+    },
+    {
+      "TemplateId": "AchievementHeroGacha200",
+      "KOR": "영웅 뽑기 200회"
+    },
+    {
+      "TemplateId": "AchievementHeroGacha210",
+      "KOR": "영웅 뽑기 210회"
+    },
+    {
+      "TemplateId": "AchievementBuddyGacha10",
+      "KOR": "동료 뽑기 10회"
+    },
+    {
+      "TemplateId": "AchievementBuddyGacha20",
+      "KOR": "동료 뽑기 20회"
+    },
+    {
+      "TemplateId": "AchievementBuddyGacha30",
+      "KOR": "동료 뽑기 30회"
+    },
+    {
+      "TemplateId": "AchievementBuddyGacha40",
+      "KOR": "동료 뽑기 40회"
+    },
+    {
+      "TemplateId": "AchievementBuddyGacha50",
+      "KOR": "동료 뽑기 50회"
+    },
+    {
+      "TemplateId": "AchievementBuddyGacha60",
+      "KOR": "동료 뽑기 60회"
+    },
+    {
+      "TemplateId": "AchievementBuddyGacha70",
+      "KOR": "동료 뽑기 70회"
+    },
+    {
+      "TemplateId": "AchievementBuddyGacha80",
+      "KOR": "동료 뽑기 80회"
+    },
+    {
+      "TemplateId": "AchievementBuddyGacha90",
+      "KOR": "동료 뽑기 90회"
+    },
+    {
+      "TemplateId": "AchievementBuddyGacha100",
+      "KOR": "동료 뽑기 100회"
+    },
+    {
+      "TemplateId": "AchievementBuddyGacha110",
+      "KOR": "동료 뽑기 110회"
+    },
+    {
+      "TemplateId": "AchievementBuddyGacha120",
+      "KOR": "동료 뽑기 120회"
+    },
+    {
+      "TemplateId": "AchievementBuddyGacha130",
+      "KOR": "동료 뽑기 130회"
+    },
+    {
+      "TemplateId": "AchievementBuddyGacha140",
+      "KOR": "동료 뽑기 140회"
+    },
+    {
+      "TemplateId": "AchievementBuddyGacha150",
+      "KOR": "동료 뽑기 150회"
+    },
+    {
+      "TemplateId": "AchievementBuddyGacha160",
+      "KOR": "동료 뽑기 160회"
+    },
+    {
+      "TemplateId": "AchievementBuddyGacha170",
+      "KOR": "동료 뽑기 170회"
+    },
+    {
+      "TemplateId": "AchievementBuddyGacha180",
+      "KOR": "동료 뽑기 180회"
+    },
+    {
+      "TemplateId": "AchievementBuddyGacha190",
+      "KOR": "동료 뽑기 190회"
+    },
+    {
+      "TemplateId": "AchievementBuddyGacha200",
+      "KOR": "동료 뽑기 200회"
+    },
+    {
+      "TemplateId": "AchievementHeroSkillUp10",
+      "KOR": "영웅 스킬 레벨 업 10회"
+    },
+    {
+      "TemplateId": "AchievementHeroSkillUp20",
+      "KOR": "영웅 스킬 레벨 업 20회"
+    },
+    {
+      "TemplateId": "AchievementHeroSkillUp30",
+      "KOR": "영웅 스킬 레벨 업 30회"
+    },
+    {
+      "TemplateId": "AchievementHeroSkillUp40",
+      "KOR": "영웅 스킬 레벨 업 40회"
+    },
+    {
+      "TemplateId": "AchievementHeroSkillUp50",
+      "KOR": "영웅 스킬 레벨 업 50회"
+    },
+    {
+      "TemplateId": "AchievementHeroSkillUp60",
+      "KOR": "영웅 스킬 레벨 업 60회"
+    },
+    {
+      "TemplateId": "AchievementHeroSkillUp70",
+      "KOR": "영웅 스킬 레벨 업 70회"
+    },
+    {
+      "TemplateId": "AchievementHeroSkillUp80",
+      "KOR": "영웅 스킬 레벨 업 80회"
+    },
+    {
+      "TemplateId": "AchievementHeroSkillUp90",
+      "KOR": "영웅 스킬 레벨 업 90회"
+    },
+    {
+      "TemplateId": "AchievementHeroSkillUp100",
+      "KOR": "영웅 스킬 레벨 업 100회"
+    },
+    {
+      "TemplateId": "AchievementHeroSkillUp110",
+      "KOR": "영웅 스킬 레벨 업 110회"
+    },
+    {
+      "TemplateId": "AchievementHeroSkillUp120",
+      "KOR": "영웅 스킬 레벨 업 120회"
+    },
+    {
+      "TemplateId": "AchievementHeroSkillUp130",
+      "KOR": "영웅 스킬 레벨 업 130회"
+    },
+    {
+      "TemplateId": "AchievementHeroSkillUp140",
+      "KOR": "영웅 스킬 레벨 업 140회"
+    },
+    {
+      "TemplateId": "AchievementHeroSkillUp150",
+      "KOR": "영웅 스킬 레벨 업 150회"
+    },
+    {
+      "TemplateId": "AchievementHeroSkillUp160",
+      "KOR": "영웅 스킬 레벨 업 160회"
+    },
+    {
+      "TemplateId": "AchievementHeroSkillUp170",
+      "KOR": "영웅 스킬 레벨 업 170회"
+    },
+    {
+      "TemplateId": "AchievementHeroSkillUp180",
+      "KOR": "영웅 스킬 레벨 업 180회"
+    },
+    {
+      "TemplateId": "AchievementHeroSkillUp190",
+      "KOR": "영웅 스킬 레벨 업 190회"
+    },
+    {
+      "TemplateId": "AchievementHeroSkillUp200",
+      "KOR": "영웅 스킬 레벨 업 200회"
+    },
+    {
+      "TemplateId": "AchievementHeroSkillUp210",
+      "KOR": "영웅 스킬 레벨 업 210회"
+    },
+    {
+      "TemplateId": "AchievementHeroLevelUp10",
+      "KOR": "영웅 레벨 업 10회"
+    },
+    {
+      "TemplateId": "AchievementHeroLevelUp20",
+      "KOR": "영웅 레벨 업 20회"
+    },
+    {
+      "TemplateId": "AchievementHeroLevelUp30",
+      "KOR": "영웅 레벨 업 30회"
+    },
+    {
+      "TemplateId": "AchievementHeroLevelUp40",
+      "KOR": "영웅 레벨 업 40회"
+    },
+    {
+      "TemplateId": "AchievementHeroLevelUp50",
+      "KOR": "영웅 레벨 업 50회"
+    },
+    {
+      "TemplateId": "AchievementHeroLevelUp60",
+      "KOR": "영웅 레벨 업 60회"
+    },
+    {
+      "TemplateId": "AchievementHeroLevelUp70",
+      "KOR": "영웅 레벨 업 70회"
+    },
+    {
+      "TemplateId": "AchievementHeroLevelUp80",
+      "KOR": "영웅 레벨 업 80회"
+    },
+    {
+      "TemplateId": "AchievementHeroLevelUp90",
+      "KOR": "영웅 레벨 업 90회"
+    },
+    {
+      "TemplateId": "AchievementHeroLevelUp100",
+      "KOR": "영웅 레벨 업 100회"
+    },
+    {
+      "TemplateId": "AchievementHeroLevelUp110",
+      "KOR": "영웅 레벨 업 110회"
+    },
+    {
+      "TemplateId": "AchievementHeroLevelUp120",
+      "KOR": "영웅 레벨 업 120회"
+    },
+    {
+      "TemplateId": "AchievementHeroLevelUp130",
+      "KOR": "영웅 레벨 업 130회"
+    },
+    {
+      "TemplateId": "AchievementHeroLevelUp140",
+      "KOR": "영웅 레벨 업 140회"
+    },
+    {
+      "TemplateId": "AchievementHeroLevelUp150",
+      "KOR": "영웅 레벨 업 150회"
+    },
+    {
+      "TemplateId": "AchievementHeroLevelUp160",
+      "KOR": "영웅 레벨 업 160회"
+    },
+    {
+      "TemplateId": "AchievementHeroLevelUp170",
+      "KOR": "영웅 레벨 업 170회"
+    },
+    {
+      "TemplateId": "AchievementHeroLevelUp180",
+      "KOR": "영웅 레벨 업 180회"
+    },
+    {
+      "TemplateId": "AchievementHeroLevelUp190",
+      "KOR": "영웅 레벨 업 190회"
+    },
+    {
+      "TemplateId": "AchievementHeroLevelUp200",
+      "KOR": "영웅 레벨 업 200회"
+    },
+    {
+      "TemplateId": "AchievementBuddyLevelUp1",
+      "KOR": "동료 레벨 업 1회"
+    },
+    {
+      "TemplateId": "AchievementBuddyLevelUp2",
+      "KOR": "동료 레벨 업 2회"
+    },
+    {
+      "TemplateId": "AchievementBuddyLevelUp3",
+      "KOR": "동료 레벨 업 3회"
+    },
+    {
+      "TemplateId": "AchievementBuddyLevelUp4",
+      "KOR": "동료 레벨 업 4회"
+    },
+    {
+      "TemplateId": "AchievementBuddyLevelUp5",
+      "KOR": "동료 레벨 업 5회"
+    },
+    {
+      "TemplateId": "AchievementBuddyLevelUp6",
+      "KOR": "동료 레벨 업 6회"
+    },
+    {
+      "TemplateId": "AchievementBuddyLevelUp7",
+      "KOR": "동료 레벨 업 7회"
+    },
+    {
+      "TemplateId": "AchievementBuddyLevelUp8",
+      "KOR": "동료 레벨 업 8회"
+    },
+    {
+      "TemplateId": "AchievementBuddyLevelUp9",
+      "KOR": "동료 레벨 업 9회"
+    },
+    {
+      "TemplateId": "AchievementBuddyLevelUp10",
+      "KOR": "동료 레벨 업 10회"
+    },
+    {
+      "TemplateId": "AchievementBuddySkillUp1",
+      "KOR": "동료 스킬 레벨 업 1회"
+    },
+    {
+      "TemplateId": "AchievementBuddySkillUp2",
+      "KOR": "동료 스킬 레벨 업 2회"
+    },
+    {
+      "TemplateId": "AchievementBuddySkillUp3",
+      "KOR": "동료 스킬 레벨 업 3회"
+    },
+    {
+      "TemplateId": "AchievementBuddySkillUp4",
+      "KOR": "동료 스킬 레벨 업 4회"
+    },
+    {
+      "TemplateId": "AchievementBuddySkillUp5",
+      "KOR": "동료 스킬 레벨 업 5회"
+    },
+    {
+      "TemplateId": "AchievementBuddySkillUp6",
+      "KOR": "동료 스킬 레벨 업 6회"
+    },
+    {
+      "TemplateId": "AchievementBuddySkillUp7",
+      "KOR": "동료 스킬 레벨 업 7회"
+    },
+    {
+      "TemplateId": "AchievementBuddySkillUp8",
+      "KOR": "동료 스킬 레벨 업 8회"
+    },
+    {
+      "TemplateId": "AchievementBuddySkillUp9",
+      "KOR": "동료 스킬 레벨 업 9회"
+    },
+    {
+      "TemplateId": "AchievementBuddySkillUp10",
+      "KOR": "동료 스킬 레벨 업 10회"
     }
   ]
 }

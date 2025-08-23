@@ -27,6 +27,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 202ccf162d77b034bbd01efa6b85e7c6
+    m_Address: AchievementData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 31b22a4b19ab814428e387765123fb6f
     m_Address: TextData
     m_ReadOnly: 0

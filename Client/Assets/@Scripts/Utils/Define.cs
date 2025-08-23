@@ -261,6 +261,10 @@ public class Define
         BuddyLevelUp,
         HeroSkillUp,
         HeroLevelUp,
+        StageClearAt,
+        HeroGacha,
+        BuddyGacha,
+
     }
 
     public enum EMissionState
@@ -288,6 +292,13 @@ public class Define
         DoCurrencyGacha,
         DoHeroGacha,
         DoBuddyGacha,
+    }
+
+    public enum EAchievementType
+    {
+        None,
+        Normal,
+        Repeat,
     }
 
     #endregion
