@@ -22,7 +22,7 @@ public class UI_NormalArchievementSubItem : UI_SubItem
         Slider_NormalMission,
     }
 
-    private AchievmentSaveData achievmentSaveData;
+    private AchievementSaveData achievmentSaveData;
     private Data.AchievementData achievementData;
 
     private UI_RewardsSubItem rewardsSubItem;

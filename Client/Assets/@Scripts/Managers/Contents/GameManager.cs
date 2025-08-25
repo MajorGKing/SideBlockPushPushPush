@@ -566,11 +566,30 @@ public class GameManager
 
     #region Achievement
     List<int> EventValues;
-    public List<int> AchievmentClearList;
-    public List<AchievmentSaveData> AchiementSaveDats;
-    public AchievmentSaveData GetAchievmentSaveData(int templateId)
+    public HashSet<int> AchievementClearList;
+    private List<AchievementSaveData> _AchievementSaveDats;
+    public List<AchievementSaveData> AchievementSaveDats
     {
-        return AchiementSaveDats.FirstOrDefault(m => m.TemplateId == templateId);
+        get
+        {
+            foreach(var achievement in _AchievementSaveDats)
+            {
+                achievement.CheckRewardAble();
+            }
+
+            return _AchievementSaveDats
+            .OrderByDescending(data => data.MissionState == EMissionState.Rewardable)
+            //.ThenBy(data => data.TemplateId) // 필요 시 TemplateId 기준 2차 정렬
+            .ToList();
+        }
+        set
+        {
+            _AchievementSaveDats = value;
+        }
+    }
+    public AchievementSaveData GetAchievmentSaveData(int templateId)
+    {
+        return AchievementSaveDats.FirstOrDefault(m => m.TemplateId == templateId);
     }
 
     public int GetAcievemntValue(int templateId)
@@ -657,6 +676,11 @@ public class GameManager
 
         UI_RewardPopup rewardPopup = Managers.UI.ShowPopupUI<UI_RewardPopup>();
         rewardPopup.SetInfo(Define.ERewardType.Mission, rewardList);
+
+        // 클리어한 업적에 추가
+        AchievementClearList.Add(templateId);
+
+        // 업적 다음단계로
         achievmentSaveData.SetNextAchievment();
 
         SaveGame();
@@ -920,6 +944,8 @@ public class GameManager
 
             clear.SetInfo(Define.ERewardType.HeroGacha, rewards);
         }
+
+        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoHeroGacha, count);
     }
 
     public void DoCurrencyGacha(int count)
@@ -964,9 +990,9 @@ public class GameManager
             var clear = Managers.UI.ShowPopupUI<UI_RewardPopup>();
 
             clear.SetInfo(Define.ERewardType.CurrencyGacha, rewards);
-
-            Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoCurrencyGacha, count);
         }
+
+        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoCurrencyGacha, count);
     }
 
     public void DoBuddyGacha(int count)
@@ -1054,6 +1080,8 @@ public class GameManager
 
         var result = Managers.UI.ShowPopupUI<UI_BuddyGachaPopup>();
         result.SetInfo(gachaResult);
+
+        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoBuddyGacha, count);
     }
 
     #endregion
@@ -1144,8 +1172,8 @@ public class GameManager
 
         // Achievement
         _gameData.EventValues = Enumerable.Repeat(0, Enum.GetValues(typeof(Define.EBroadcastEventType)).Length).ToList();
-        _gameData.AchievmentClearList = new List<int>();
-        _gameData.AchievmentSaveDatas = new List<AchievmentSaveData>();
+        _gameData.AchievementClearList = new HashSet<int>();
+        _gameData.AchievementSaveDatas = new List<AchievementSaveData>();
 
         var sameOriginalAndTemplateIdList = Managers.Data.AchievementDataDic.Values
             .Where(data => data.OriginalAchievementId == data.TemplateId)
@@ -1157,11 +1185,12 @@ public class GameManager
 
         foreach(var previewId in previewIdZeroList)
         {
-            _gameData.AchievmentSaveDatas.Add(new AchievmentSaveData(previewId.TemplateId));
+            _gameData.AchievementSaveDatas.Add(new AchievementSaveData(previewId.TemplateId));
         }
 
         EventValues = _gameData.EventValues;
-        AchievmentClearList = _gameData.AchievmentClearList;
+        AchievementClearList = _gameData.AchievementClearList;
+        AchievementSaveDats = _gameData.AchievementSaveDatas;
 
         // 기본 동료 4개 넣어두기
         buddies = new List<BuddySaveData>();
@@ -1285,11 +1314,36 @@ public class GameManager
         // 미션 가져오기
         MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
 
+        // 업적 가져오기
         EventValues = _gameData.EventValues;
-        AchievmentClearList = _gameData.AchievmentClearList;
-        AchiementSaveDats = _gameData.AchievmentSaveDatas;
+        AchievementClearList = _gameData.AchievementClearList;
+        AchievementSaveDats = _gameData.AchievementSaveDatas;
 
-    Managers.Time.lastMissionTime = _gameData.LastMissionTime;
+        // 신규 업적 추가
+        {
+            var filteredList = Managers.Data.AchievementDataDic.Values
+                .Where(data => data.OriginalAchievementId == data.TemplateId && data.PreviewAchievementId == 0)
+                .ToList();
+
+            var unclearedList = filteredList
+                .Where(data => AchievementClearList.Contains(data.TemplateId) == false)
+                .ToList();
+
+            foreach( var uncleared in unclearedList)
+            {
+                // 이미 있다면 추가할 필요가 없으니 체크
+                bool alreadyExists = AchievementSaveDats.Any(save => save.TemplateId == uncleared.TemplateId);
+                if (alreadyExists == false)
+                {
+                    AchievementSaveDats.Add(new AchievementSaveData(uncleared.TemplateId));
+                }
+            }
+
+            SaveGame();
+        }
+
+
+        Managers.Time.lastMissionTime = _gameData.LastMissionTime;
 
         Debug.Log("Loading Sucess");
         return true;

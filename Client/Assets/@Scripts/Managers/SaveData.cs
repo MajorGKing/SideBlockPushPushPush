@@ -27,8 +27,8 @@ public class GameData
     public DateTime LastMissionTime;
     public List<int> EventValues = new List<int>();
 
-    public List<AchievmentSaveData> AchievmentSaveDatas;
-    public List<int> AchievmentClearList;
+    public List<AchievementSaveData> AchievementSaveDatas;
+    public HashSet<int> AchievementClearList;
     
 }
 
@@ -82,13 +82,13 @@ public class HeroSaveData
 }
 
 [SerializeField]
-public class AchievmentSaveData
+public class AchievementSaveData
 {
     public int TemplateId;
     public Define.EMissionState MissionState;
     public int OriginalTemplateId;
 
-    public AchievmentSaveData(int templateId)
+    public AchievementSaveData(int templateId)
     {
         TemplateId = templateId;
         MissionState = Define.EMissionState.Progress;
