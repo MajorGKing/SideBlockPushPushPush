@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static Define;
 
 public class GameManager
 {
@@ -565,6 +566,104 @@ public class GameManager
 
     #region Achievement
     List<int> EventValues;
+    public List<int> AchievmentClearList;
+    public List<AchievmentSaveData> AchiementSaveDats;
+    public AchievmentSaveData GetAchievmentSaveData(int templateId)
+    {
+        return AchiementSaveDats.FirstOrDefault(m => m.TemplateId == templateId);
+    }
+
+    public int GetAcievemntValue(int templateId)
+    {
+        var missionGoal = Managers.Data.AchievementDataDic[templateId].MissionGoal;
+
+        if(missionGoal == Define.EMissionGoal.MonsterKill)
+        {
+            return EventValues[(int)Define.EBroadcastEventType.KillMonster];
+        }
+        else if (missionGoal == Define.EMissionGoal.ConsumGold)
+        {
+            return EventValues[(int)Define.EBroadcastEventType.UseGold];
+        }
+        else if (missionGoal == Define.EMissionGoal.StageClear)
+        {
+            return EventValues[(int)Define.EBroadcastEventType.StageClear];
+        }        
+        else if (missionGoal == Define.EMissionGoal.CurrencyGacha)
+        {
+            return EventValues[(int)Define.EBroadcastEventType.DoCurrencyGacha];
+        }
+        else if (missionGoal == Define.EMissionGoal.BuddySkillUp)
+        {
+            return EventValues[(int)Define.EBroadcastEventType.BuddySkillUp];
+        }
+        else if (missionGoal == Define.EMissionGoal.BuddyLevelUp)
+        {
+            return EventValues[(int)Define.EBroadcastEventType.BuddyLevelUp];
+        }
+        else if (missionGoal == Define.EMissionGoal.HeroSkillUp)
+        {
+            return EventValues[(int)Define.EBroadcastEventType.HeroSkillUp];
+        }
+        else if (missionGoal == Define.EMissionGoal.HeroLevelUp)
+        {
+            return EventValues[(int)Define.EBroadcastEventType.HeroLevelUp];
+        }
+        else if (missionGoal == Define.EMissionGoal.StageClearAt)
+        {
+            var stageIndex = Managers.Data.AchievementDataDic[templateId].MissionCount;
+
+            if (IsStageClearedAt(stageIndex) == true)
+                return 1;
+            
+            return 0;
+        }
+        else if (missionGoal == Define.EMissionGoal.HeroGacha)
+        {
+            return EventValues[(int)Define.EBroadcastEventType.DoHeroGacha];
+        }
+        else if (missionGoal == Define.EMissionGoal.BuddyGacha)
+        {
+            return EventValues[(int)Define.EBroadcastEventType.DoBuddyGacha];
+        }
+
+        return 0;
+    }
+
+    public void OnHandleBroadcastEventValue(Define.EBroadcastEventType eventType, int value)
+    {
+        EventValues[(int)eventType] += value;
+    }
+
+    public void GetAchievmentReward(int templateId)
+    {
+        var achievmentSaveData = GetAchievmentSaveData(templateId);
+        var achievmentData = Managers.Data.AchievementDataDic[templateId];
+
+        if (achievmentSaveData == null)
+            return;
+
+        if (achievmentSaveData.MissionState != Define.EMissionState.Rewardable)
+            return;
+
+        if (achievmentData == null)
+            return;
+
+        List<Reward> rewardList = new List<Reward>();
+        rewardList.Add(new Reward(achievmentData.RewardType, achievmentData.RewardCount));
+
+        if (rewardList.Count == 0)
+            return;
+
+        UI_RewardPopup rewardPopup = Managers.UI.ShowPopupUI<UI_RewardPopup>();
+        rewardPopup.SetInfo(Define.ERewardType.Mission, rewardList);
+        achievmentSaveData.SetNextAchievment();
+
+        SaveGame();
+        Managers.Event.TriggerEvent(Define.EEventType.OnMissionChanged);
+    }
+
+
     #endregion
 
     #region Mission
@@ -616,7 +715,7 @@ public class GameManager
         SaveGame();
     }
 
-    public void GetDayMissionReward(int templateId)
+    public void GetMissionReward(int templateId)
     {
         var missionSavewData = GetMissionSaveData(templateId);
         var missionData = Managers.Data.MissionDataDic[templateId];
@@ -642,11 +741,6 @@ public class GameManager
 
         SaveGame();
         Managers.Event.TriggerEvent(Define.EEventType.OnMissionChanged);
-    }
-
-    public void GetWeekMissionReward()
-    {
-
     }
 
     public void SaveMission(int templateId)
@@ -751,6 +845,8 @@ public class GameManager
             SaveGame();
         }
     }
+
+
     #endregion
 
     #region StageClear
@@ -773,6 +869,14 @@ public class GameManager
         Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.StageClear, 1);
 
         SaveGame();
+    }
+
+    public bool IsStageClearedAt(int templateId)
+    {
+        if (_gameData.StageClears.ContainsKey(templateId) == false)
+            return false;
+
+        return _gameData.StageClears[templateId].isClear;
     }
     #endregion
 
@@ -1038,8 +1142,26 @@ public class GameManager
         _gameData.LastMissionTime = DateTime.Now;
         Managers.Time.lastMissionTime = _gameData.LastMissionTime;
 
+        // Achievement
         _gameData.EventValues = Enumerable.Repeat(0, Enum.GetValues(typeof(Define.EBroadcastEventType)).Length).ToList();
+        _gameData.AchievmentClearList = new List<int>();
+        _gameData.AchievmentSaveDatas = new List<AchievmentSaveData>();
+
+        var sameOriginalAndTemplateIdList = Managers.Data.AchievementDataDic.Values
+            .Where(data => data.OriginalAchievementId == data.TemplateId)
+            .ToList();
+
+        var previewIdZeroList = sameOriginalAndTemplateIdList
+            .Where(data => data.PreviewAchievementId == 0)
+            .ToList();
+
+        foreach(var previewId in previewIdZeroList)
+        {
+            _gameData.AchievmentSaveDatas.Add(new AchievmentSaveData(previewId.TemplateId));
+        }
+
         EventValues = _gameData.EventValues;
+        AchievmentClearList = _gameData.AchievmentClearList;
 
         // 기본 동료 4개 넣어두기
         buddies = new List<BuddySaveData>();
@@ -1164,8 +1286,10 @@ public class GameManager
         MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
 
         EventValues = _gameData.EventValues;
+        AchievmentClearList = _gameData.AchievmentClearList;
+        AchiementSaveDats = _gameData.AchievmentSaveDatas;
 
-        Managers.Time.lastMissionTime = _gameData.LastMissionTime;
+    Managers.Time.lastMissionTime = _gameData.LastMissionTime;
 
         Debug.Log("Loading Sucess");
         return true;

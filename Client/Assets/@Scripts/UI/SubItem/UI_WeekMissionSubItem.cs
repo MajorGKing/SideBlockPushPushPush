@@ -110,7 +110,7 @@ public class UI_WeekMissionSubItem : UI_SubItem
     {
         if (GetButton((int)Buttons.Button_AllTake).interactable)
         {
-            Managers.Game.GetWeekMissionReward();
+            Managers.Game.GetMissionReward(missionData.TemplateId);
         }
     }
 

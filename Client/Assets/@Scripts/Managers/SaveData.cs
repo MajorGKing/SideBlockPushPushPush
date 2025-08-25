@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using Data;
 
 [Serializable]
 public class GameData
@@ -25,6 +26,10 @@ public class GameData
 
     public DateTime LastMissionTime;
     public List<int> EventValues = new List<int>();
+
+    public List<AchievmentSaveData> AchievmentSaveDatas;
+    public List<int> AchievmentClearList;
+    
 }
 
 [Serializable]
@@ -77,13 +82,13 @@ public class HeroSaveData
 }
 
 [SerializeField]
-public class CurrentAchievmentSaveData
+public class AchievmentSaveData
 {
     public int TemplateId;
     public Define.EMissionState MissionState;
     public int OriginalTemplateId;
 
-    public CurrentAchievmentSaveData(int templateId)
+    public AchievmentSaveData(int templateId)
     {
         TemplateId = templateId;
         MissionState = Define.EMissionState.Progress;
@@ -101,12 +106,26 @@ public class CurrentAchievmentSaveData
             MissionState = Define.EMissionState.Progress;
         }
     }
-}
 
-public class AchievmentSaveData
-{
-    public List<int> ClearedAchievmentList;
-    public List<CurrentAchievmentSaveData> CurrentAchivements;
+    public bool CheckRewardAble()
+    {
+        if (MissionState == Define.EMissionState.Finish)
+            return false;
+
+        int stackPoint = Managers.Game.GetAcievemntValue(TemplateId);
+
+        var achievementData = Managers.Data.AchievementDataDic[TemplateId];
+
+        if (stackPoint >= achievementData.MissionCount)
+        {
+            MissionState = Define.EMissionState.Rewardable;
+        }
+
+        if (MissionState == Define.EMissionState.Rewardable)
+            return true;
+
+        return false;
+    }
 }
 
 [SerializeField]

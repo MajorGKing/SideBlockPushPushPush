@@ -39,6 +39,8 @@ public class UI_BattlePopup : UI_Popup
 
         GetButton((int)Buttons.Button_Mission).gameObject.BindEvent(OnClickMissionButton);
         GetButton((int)Buttons.Button_Mission).GetOrAddComponent<UI_ButtonAnimation>();
+        GetButton((int)Buttons.Button_Achievement).gameObject.BindEvent(OnClickAchievementButton);
+        GetButton((int)Buttons.Button_Achievement).GetOrAddComponent<UI_ButtonAnimation>();
 
         RefreshUI();
     }
@@ -101,6 +103,14 @@ public class UI_BattlePopup : UI_Popup
 
         var mission = Managers.UI.ShowPopupUI<UI_MissionPopup>();
         mission.SetInfo();
+    }
+
+    private void OnClickAchievementButton(PointerEventData evt)
+    {
+        Managers.Sound.PlayButtonClick();
+
+        var achievment = Managers.UI.ShowPopupUI<UI_AchievementPopup>();
+        achievment.SetInfo();
     }
 
     private void RefreshUI()

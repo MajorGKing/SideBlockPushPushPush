@@ -51,6 +51,8 @@ public class EventManager
             if (mission.MissionState == Define.EMissionState.Progress)
                 mission.OnHandleBroadcastMissionEvent(eventType, value);
         }
+
+		Managers.Game.OnHandleBroadcastEventValue(eventType, value);
     }
 
 }

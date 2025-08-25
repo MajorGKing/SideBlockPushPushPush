@@ -12,9 +12,7 @@ public class UI_AchievementPopup : UI_Popup
         NormalMissonListArea,
     }
 
-    private List<UI_NormalMissionSubItem> _normalMissionSlotUIList = new List<UI_NormalMissionSubItem>();
-    private UI_DayMissionSubItem _dayMissionSlotUI;
-    private UI_WeekMissionSubItem _weekMissionSlotUI;
+    private List<UI_NormalArchievementSubItem> _normalArchievementSlotUIList = new List<UI_NormalArchievementSubItem>();
 
     protected override void Awake()
     {
@@ -22,12 +20,12 @@ public class UI_AchievementPopup : UI_Popup
 
         BindGameObjects(typeof(GameObjects));
 
-        _normalMissionSlotUIList.Clear();
+        _normalArchievementSlotUIList.Clear();
         GetGameObject((int)GameObjects.NormalMissonListArea).transform.DestroyChildren();
-        for (int index = 0; index < Managers.Game.NormalMissionList.Count; index++)
+        for (int index = 0; index < Managers.Game.AchiementSaveDats.Count; index++)
         {
-            UI_NormalMissionSubItem slotUI = Managers.UI.MakeSubItem<UI_NormalMissionSubItem>(GetGameObject((int)GameObjects.NormalMissonListArea).transform);
-            _normalMissionSlotUIList.Add(slotUI);
+            UI_NormalArchievementSubItem slotUI = Managers.UI.MakeSubItem<UI_NormalArchievementSubItem>(GetGameObject((int)GameObjects.NormalMissonListArea).transform);
+            _normalArchievementSlotUIList.Add(slotUI);
         }
 
         GetGameObject((int)GameObjects.CloseArea).BindEvent(OnCloseAreaClick);
@@ -51,14 +49,11 @@ public class UI_AchievementPopup : UI_Popup
     private void RefreshUI()
     {
         int index = 0;
-        foreach (var normallMission in Managers.Game.NormalMissionList)
+        foreach (var normallMission in Managers.Game.AchiementSaveDats)
         {
-            _normalMissionSlotUIList[index].SetInfo(normallMission.TemplateId);
+            _normalArchievementSlotUIList[index].SetInfo(normallMission.TemplateId);
             index++;
         }
-
-        _dayMissionSlotUI.SetInfo(Managers.Game.DayMissionList[0].TemplateId);
-        _weekMissionSlotUI.SetInfo(Managers.Game.WeekMissionList[0].TemplateId);
     }
 
 

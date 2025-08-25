@@ -115,7 +115,7 @@ public class UI_DayMissionSubItem : UI_SubItem
     {
         if (GetButton((int)Buttons.Button_AllTake).interactable)
         {
-            Managers.Game.GetDayMissionReward(missionData.TemplateId);
+            Managers.Game.GetMissionReward(missionData.TemplateId);
         }
     }
 }
