@@ -12,15 +12,31 @@ public class TimeManager
         get { return _lastMissionTime; }
         set
         {
+            Debug.Log("Tiee : " + value);
             CheckDailyReset(lastMissionTime);
             CheckWeeklyReset(lastMissionTime);
+
+            bool isFIrst = false;
+
+            if(lastMissionTime == default(DateTime))
+            {
+                isFIrst = true;
+            }
+
             _lastMissionTime = value;
             Managers.Game.SaveMissionTime(lastMissionTime);
+
+            if(isFIrst == true)
+            {
+                lastMissionTime = DateTime.Now;
+            }
         }
     }
 
     public void Init()
     {
+        Debug.Log(lastMissionTime);
+
         TimeStart();
     }
 
