@@ -5,7 +5,7 @@ namespace GameDB
 {
 	public class GameDbContext : DbContext
 	{
-		public DbSet<TestDb> Tests { get; set; }
+		public DbSet<PlayerDb> PlayerDb { get; set; }
 
 		static readonly ILoggerFactory _logger = LoggerFactory.Create(builder => { builder.AddConsole(); });
 		public static string ConnectionString = "Data Source=localhost,1433;Initial Catalog=GameDB;User ID=sa;Password=YourPassword123;Encrypt=False;Trust Server Certificate=True";
@@ -37,8 +37,8 @@ namespace GameDB
 
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
-			builder.Entity<TestDb>()
-				.HasIndex(t => t.Name)
+			builder.Entity<PlayerDb>()
+				.HasIndex(t => t.PlayerDbId)
 				.IsUnique();
 		}
 	}
