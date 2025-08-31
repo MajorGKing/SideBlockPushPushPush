@@ -12,7 +12,6 @@ public class TimeManager
         get { return _lastMissionTime; }
         set
         {
-            Debug.Log("Tiee : " + value);
             CheckDailyReset(lastMissionTime);
             CheckWeeklyReset(lastMissionTime);
 

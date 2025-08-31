@@ -567,29 +567,29 @@ public class GameManager
     #region Achievement
     List<int> EventValues;
     public HashSet<int> AchievementClearList;
-    private List<AchievementSaveData> _AchievementSaveDats;
-    public List<AchievementSaveData> AchievementSaveDats
+    private List<AchievementSaveData> _AchievementSaveDatas;
+    public List<AchievementSaveData> AchievementSaveDatas
     {
         get
         {
-            foreach(var achievement in _AchievementSaveDats)
+            foreach(var achievement in _AchievementSaveDatas)
             {
                 achievement.CheckRewardAble();
             }
 
-            return _AchievementSaveDats
+            return _AchievementSaveDatas
             .OrderByDescending(data => data.MissionState == EMissionState.Rewardable)
             //.ThenBy(data => data.TemplateId) // 필요 시 TemplateId 기준 2차 정렬
             .ToList();
         }
         set
         {
-            _AchievementSaveDats = value;
+            _AchievementSaveDatas = value;
         }
     }
     public AchievementSaveData GetAchievmentSaveData(int templateId)
     {
-        return AchievementSaveDats.FirstOrDefault(m => m.TemplateId == templateId);
+        return AchievementSaveDatas.FirstOrDefault(m => m.TemplateId == templateId);
     }
 
     public int GetAcievemntValue(int templateId)
@@ -1190,7 +1190,7 @@ public class GameManager
 
         EventValues = _gameData.EventValues;
         AchievementClearList = _gameData.AchievementClearList;
-        AchievementSaveDats = _gameData.AchievementSaveDatas;
+        AchievementSaveDatas = _gameData.AchievementSaveDatas;
 
         // 기본 동료 4개 넣어두기
         buddies = new List<BuddySaveData>();
@@ -1317,7 +1317,18 @@ public class GameManager
         // 업적 가져오기
         EventValues = _gameData.EventValues;
         AchievementClearList = _gameData.AchievementClearList;
-        AchievementSaveDats = _gameData.AchievementSaveDatas;
+        AchievementSaveDatas = _gameData.AchievementSaveDatas;
+
+        // 끝까지 간 업적 중 추가된 것 있으면 갱신
+        {
+            foreach(var achievement in AchievementSaveDatas)
+            {
+                if(achievement.MissionState == EMissionState.Finish)
+                {
+                    achievement.SetNextAchievment();
+                }
+            }
+        }
 
         // 신규 업적 추가
         {
@@ -1332,10 +1343,10 @@ public class GameManager
             foreach( var uncleared in unclearedList)
             {
                 // 이미 있다면 추가할 필요가 없으니 체크
-                bool alreadyExists = AchievementSaveDats.Any(save => save.TemplateId == uncleared.TemplateId);
+                bool alreadyExists = AchievementSaveDatas.Any(save => save.TemplateId == uncleared.TemplateId);
                 if (alreadyExists == false)
                 {
-                    AchievementSaveDats.Add(new AchievementSaveData(uncleared.TemplateId));
+                    AchievementSaveDatas.Add(new AchievementSaveData(uncleared.TemplateId));
                 }
             }
 

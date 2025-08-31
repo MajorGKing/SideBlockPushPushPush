@@ -22,7 +22,7 @@ public class UI_AchievementPopup : UI_Popup
 
         _normalArchievementSlotUIList.Clear();
         GetGameObject((int)GameObjects.NormalMissonListArea).transform.DestroyChildren();
-        for (int index = 0; index < Managers.Game.AchievementSaveDats.Count; index++)
+        for (int index = 0; index < Managers.Game.AchievementSaveDatas.Count; index++)
         {
             UI_NormalArchievementSubItem slotUI = Managers.UI.MakeSubItem<UI_NormalArchievementSubItem>(GetGameObject((int)GameObjects.NormalMissonListArea).transform);
             _normalArchievementSlotUIList.Add(slotUI);
@@ -49,7 +49,7 @@ public class UI_AchievementPopup : UI_Popup
     private void RefreshUI()
     {
         int index = 0;
-        foreach (var normallMission in Managers.Game.AchievementSaveDats)
+        foreach (var normallMission in Managers.Game.AchievementSaveDatas)
         {
             _normalArchievementSlotUIList[index].SetInfo(normallMission.TemplateId);
             index++;
