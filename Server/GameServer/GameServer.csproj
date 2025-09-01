@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <RunPostBuildEvent>Always</RunPostBuildEvent>
@@ -33,6 +33,7 @@
     <None Include="..\..\Common\Protocol\Protocol.proto" Link="Packet\Schema\Protocol.proto" />
     <None Include="..\..\Common\Protocol\Struct.proto" Link="Packet\Schema\Struct.proto" />
     <None Include="..\GenProto.bat" Link="GenProto.bat" />
+    <None Include="..\GenProto.sh" Link="GenProto.sh" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,11 +46,20 @@
     </None>
   </ItemGroup>
 
+  <!-- PreBuildEvent -->
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="call $(SolutionDir)GenProto.bat $(SolutionDir) \Server\GameServer\Packet\Generated\ 1" />
+    <Exec Condition="'$(OS)' == 'Windows_NT'" 
+          Command="echo PreBuildEvent started on Windows &amp;&amp; call $(ProjectDir)..\GenProto.bat $(ProjectDir)..\ Server/GameServer/Packet/Generated/ 1" />
+    <Exec Condition="'$(OS)' != 'Windows_NT'" 
+          Command="echo PreBuildEvent started on macOS/Linux &amp;&amp; chmod +x $(ProjectDir)../GenProto.sh &amp;&amp; $(ProjectDir)../GenProto.sh $(ProjectDir)../../ Server/GameServer/Packet/Generated/ 1" />
   </Target>
 
+  <!-- PostBuildEvent -->
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="call $(SolutionDir)GenProto.bat $(SolutionDir) \Client\Assets\@Scripts\Packet\Generated\ 0" />
+    <Exec Condition="'$(OS)' == 'Windows_NT'" 
+          Command="echo PostBuildEvent started on Windows &amp;&amp; call $(ProjectDir)..\GenProto.bat $(ProjectDir)..\ Client/Assets/@Scripts/Packet/Generated/ 0" />
+    <Exec Condition="'$(OS)' != 'Windows_NT'" 
+          Command="echo PostBuildEvent started on macOS/Linux &amp;&amp; chmod +x $(ProjectDir)../GenProto.sh &amp;&amp; $(ProjectDir)../GenProto.sh $(ProjectDir)../../ Client/Assets/@Scripts/Packet/Generated/ 0" />
   </Target>
+
 </Project>
