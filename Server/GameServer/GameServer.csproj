@@ -48,16 +48,16 @@
 
   <!-- PreBuildEvent -->
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Condition="'$(OS)' == 'Windows_NT'" 
-          Command="echo PreBuildEvent started on Windows &amp;&amp; call $(ProjectDir)..\GenProto.bat $(ProjectDir)..\ Server/GameServer/Packet/Generated/ 1" />
+    <Exec Condition="'$(OS)' == 'Windows_NT'"
+        Command="call &quot;$(SolutionDir)GenProto.bat&quot; &quot;$(SolutionDir)&quot; GameServer\Packet\Generated\ 1" />
     <Exec Condition="'$(OS)' != 'Windows_NT'" 
           Command="echo PreBuildEvent started on macOS/Linux &amp;&amp; chmod +x $(ProjectDir)../GenProto.sh &amp;&amp; $(ProjectDir)../GenProto.sh $(ProjectDir)../../ Server/GameServer/Packet/Generated/ 1" />
   </Target>
 
   <!-- PostBuildEvent -->
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Condition="'$(OS)' == 'Windows_NT'" 
-          Command="echo PostBuildEvent started on Windows &amp;&amp; call $(ProjectDir)..\GenProto.bat $(ProjectDir)..\ Client/Assets/@Scripts/Packet/Generated/ 0" />
+    <Exec Condition="'$(OS)' == 'Windows_NT'"
+        Command="call &quot;$(SolutionDir)GenProto.bat&quot; &quot;$(SolutionDir)&quot; ..\Client\Assets\@Scripts\Packet\Generated\ 0" />
     <Exec Condition="'$(OS)' != 'Windows_NT'" 
           Command="echo PostBuildEvent started on macOS/Linux &amp;&amp; chmod +x $(ProjectDir)../GenProto.sh &amp;&amp; $(ProjectDir)../GenProto.sh $(ProjectDir)../../ Client/Assets/@Scripts/Packet/Generated/ 0" />
   </Target>
