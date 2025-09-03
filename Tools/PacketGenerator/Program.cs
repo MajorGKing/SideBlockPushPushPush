@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
-using CommandLine;
+using System.Runtime.InteropServices;
 
 namespace PacketGenerator
 {
@@ -8,19 +9,7 @@ namespace PacketGenerator
     {
         None = -1,
         Client = 0,
-        GameServer = 1,
-    }
-
-    public class Options
-    {
-        [Option('o', "outputPath", Required = true, HelpText = "Output path for generated files.")]
-        public string OutputPath { get; set; }
-
-        [Option('t', "programType", Required = true, HelpText = "0=Client, 1=GameServer")]
-        public int ProgramType { get; set; }
-
-        [Option('p', "protoPath", Required = true, HelpText = "Path to Protocol.proto file.")]
-        public string ProtoPath { get; set; }
+        GameServer = 1
     }
 
     class Program
@@ -33,68 +22,103 @@ namespace PacketGenerator
         static string s_outPath = "";
         static ProgramType s_type = ProgramType.None;
 
-        static void RunOptions(Options opts)
-        {
-            s_outPath = opts.OutputPath;
-            s_type = (ProgramType)opts.ProgramType;
-        }
-
         static void Main(string[] args)
         {
-            CommandLine.Parser.Default
-                .ParseArguments<Options>(args)
-                .WithParsed(opts =>
+            string outputPath;
+            int programType;
+            string protoPath;
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                // 윈도우에서는 무조건 6개로 들어옴
+                if (args.Length < 6)
                 {
-                    RunOptions(opts);
+                    Console.WriteLine("Usage: -o <outputPath> -t <programType> -p <protoPath>");
+                    Environment.Exit(1);
+                }
 
-                    string protoPath = Path.GetFullPath(opts.ProtoPath); // OS 상관없이 절대 경로
-                    if (!File.Exists(protoPath))
-                    {
-                        Console.WriteLine($"Error: Protocol file not found at {protoPath}");
-                        return;
-                    }
+                outputPath = args[1];
+                programType = int.Parse(args[3]);
+                protoPath = args[5];
+            }
+            else
+            {
+                // 맥/리눅스는 셸에서 이미 잘라줌
+                var argDict = ParseArgsUnixStyle(args);
 
-                    // Protocol.proto 파일 읽어서 패킷 파싱
-                    foreach (string line in File.ReadAllLines(protoPath))
-                    {
-                        string[] names = line.Split(" ");
-                        if (names.Length == 0 || !names[0].StartsWith("message"))
-                            continue;
+                if (!argDict.ContainsKey("-o") || !argDict.ContainsKey("-t") || !argDict.ContainsKey("-p"))
+                {
+                    Console.WriteLine("Usage: -o <outputPath> -t <programType> -p <protoPath>");
+                    Environment.Exit(1);
+                }
 
-                        ParsePacket(names[1]);
-                    }
+                outputPath = argDict["-o"];
+                programType = int.Parse(argDict["-t"]);
+                protoPath = argDict["-p"];
+            }
 
-                    // 출력 폴더 생성
-                    string outDir = Path.GetFullPath(s_outPath);
-                    Directory.CreateDirectory(outDir);
+            s_outPath = Path.GetFullPath(outputPath);
+            s_type = (ProgramType)programType;
 
-                    if (s_type == ProgramType.Client)
-                    {
-                        string clientManagerText = string.Format(PacketFormat.managerFormat, clientMsgIdList, clientPacketManager);
-                        File.WriteAllText(Path.Combine(outDir, "ClientPacketManager.cs"), clientManagerText);
-                    }
-                    else if (s_type == ProgramType.GameServer)
-                    {
-                        string serverManagerText = string.Format(PacketFormat.managerFormat, gameServerMsgIdList, gameServerPacketManager);
-                        File.WriteAllText(Path.Combine(outDir, "GameServerPacketManager.cs"), serverManagerText);
-                    }
-                });
+            Console.WriteLine($"[INFO] OutputPath: {s_outPath}");
+            Console.WriteLine($"[INFO] ProgramType: {s_type}");
+            Console.WriteLine($"[INFO] ProtoPath: {Path.GetFullPath(protoPath)}");
+
+            if (!Directory.Exists(s_outPath))
+                Directory.CreateDirectory(s_outPath);
+
+            if (!File.Exists(protoPath))
+            {
+                Console.WriteLine($"Error: Protocol file not found at {protoPath}");
+                Environment.Exit(1);
+            }
+
+            foreach (string line in File.ReadAllLines(protoPath))
+            {
+                if (!line.StartsWith("message ")) continue;
+                string name = line.Split(' ')[1];
+                ParsePacket(name);
+            }
+
+            if (s_type == ProgramType.Client)
+            {
+                File.WriteAllText(Path.Combine(s_outPath, "ClientPacketManager.cs"),
+                    string.Format(PacketFormat.managerFormat, clientMsgIdList, clientPacketManager));
+            }
+            else if (s_type == ProgramType.GameServer)
+            {
+                File.WriteAllText(Path.Combine(s_outPath, "GameServerPacketManager.cs"),
+                    string.Format(PacketFormat.managerFormat, gameServerMsgIdList, gameServerPacketManager));
+            }
+
+            Console.WriteLine("Packet generation completed.");
         }
 
-        public static void ParsePacket(string name)
+        static Dictionary<string, string> ParseArgsUnixStyle(string[] args)
         {
-            if (name.StartsWith("S_")) // GameServer -> Client
+            var dict = new Dictionary<string, string>();
+            for (int i = 0; i < args.Length - 1; i++)
+            {
+                if (args[i].StartsWith("-"))
+                    dict[args[i]] = args[i + 1];
+            }
+            return dict;
+        }
+
+        static void ParsePacket(string name)
+        {
+            if (name.StartsWith("S_"))
             {
                 clientPacketManager += string.Format(PacketFormat.managerRegisterFormat, name);
-                gameServerMsgIdList += string.Format(PacketFormat.msgIdRegisterFormat, name, s_protocolId);
                 clientMsgIdList += string.Format(PacketFormat.msgIdRegisterFormat, name, s_protocolId);
+                gameServerMsgIdList += string.Format(PacketFormat.msgIdRegisterFormat, name, s_protocolId);
                 s_protocolId++;
             }
-            else if (name.StartsWith("C_")) // Client -> GameServer
+            else if (name.StartsWith("C_"))
             {
                 gameServerPacketManager += string.Format(PacketFormat.managerRegisterFormat, name);
-                clientMsgIdList += string.Format(PacketFormat.msgIdRegisterFormat, name, s_protocolId);
                 gameServerMsgIdList += string.Format(PacketFormat.msgIdRegisterFormat, name, s_protocolId);
+                clientMsgIdList += string.Format(PacketFormat.msgIdRegisterFormat, name, s_protocolId);
                 s_protocolId++;
             }
         }
