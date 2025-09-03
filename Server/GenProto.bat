@@ -63,7 +63,9 @@ IF NOT EXIST "%packetGenPath%" (
     EXIT /B 1
 )
 echo Starting PacketGenerator.exe with output path: %outputPath% and type: %3...
-START "" "%packetGenPath%" -o "%outputPath%" -t %3
+IF "%outputPath:~-1%"=="\" SET outputPath=%outputPath:~0,-1%
+CALL "%packetGenPath%" -o "%outputPath%" -t %3 -p "%protoPath%\Protocol.proto"
+
 
 REM Return to original directory
 CD "%curPath%"
