@@ -1,6 +1,8 @@
 
 using AccountDB;
 using AccountServer.Services;
+using Microsoft.EntityFrameworkCore;
+using GameDB;
 
 namespace AccountServer
 {
@@ -17,13 +19,20 @@ namespace AccountServer
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
 
-			builder.Services.AddDbContext<AccountDbContext>();
+            // GameDbContext를 등록합니다.
+            var connectionString = builder.Configuration.GetConnectionString("GameDBConnection");
+            builder.Services.AddDbContext<GameDbContext>(options =>
+            {
+                options.UseSqlServer(connectionString);
+            });
 
-			builder.Services.AddSingleton<FacebookService>();
-			builder.Services.AddSingleton<JwtTokenService>();
-			builder.Services.AddScoped<AccountService>();
+            //builder.Services.AddDbContext<AccountDbContext>();
 
-			var app = builder.Build();
+            //builder.Services.AddSingleton<FacebookService>();
+            //builder.Services.AddSingleton<JwtTokenService>();
+            //builder.Services.AddScoped<AccountService>();
+
+            var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
 			if (app.Environment.IsDevelopment())
