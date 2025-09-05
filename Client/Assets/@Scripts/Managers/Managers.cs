@@ -14,13 +14,15 @@ public class Managers : MonoBehaviour
     private ObjectManager _object = new ObjectManager();
     private MapManager _map = new MapManager();
     private TimeManager _time = new TimeManager();
+    private WebManager _web = new WebManager();
 
     public static EventManager Event { get { return Instance?._event; } }
     public static GameManager Game { get { return Instance?._game; } }
     public static ObjectManager Object { get { return Instance?._object; } }
     public static MapManager Map { get { return Instance?._map; } }
     public static TimeManager Time { get { return Instance?._time;}}
-    
+    public static WebManager Web { get { return Instance?._web; } }
+
     #endregion
 
     #region Core

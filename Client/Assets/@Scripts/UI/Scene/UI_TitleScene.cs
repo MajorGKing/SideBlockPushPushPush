@@ -99,12 +99,16 @@ public class UI_TitleScene : UI_Scene
 		State = TitleSceneState.AssetLoaded;
 		Managers.Data.Init();
 		Managers.Game.Init();
-        GetText(((int)Texts.StartText)).gameObject.SetActive(true);
+        //GetText(((int)Texts.StartText)).gameObject.SetActive(true);
 
 
-        // TODO ILHAK
-        //Debug.Log("Connecting To Server");
-        //State = TitleSceneState.ConnectingToServer;
+		// TODO ILHAK
+		Debug.Log("Connecting To Server");
+		State = TitleSceneState.ConnectingToServer;
+
+        string uniqueId = SystemInfo.deviceUniqueIdentifier;
+
+        Debug.Log($"Device Unique ID: {uniqueId}");
 
         //IPAddress ipAddr = IPAddress.Parse("127.0.0.1");
         //IPEndPoint endPoint = new IPEndPoint(ipAddr, 7777);
