@@ -130,6 +130,7 @@ public class UI_TitleScene : UI_Scene
                 if (res.success)
                 {
                     Debug.Log($"Guest Login Success! AccountDbId: {res.accountDbId}");
+                    Debug.Log($"Guest Login Success! JWT: {res.jwt}");
                 }
                 else
                 {
