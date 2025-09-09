@@ -22,14 +22,8 @@ namespace GameDB
         /// 플레이어의 고유 ID. 이 테이블의 기본 키(Primary Key)입니다.
         /// </summary>
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int PlayerDbId { get; set; }
-
-        /// <summary>
-        /// 로그인 또는 기기 식별을 위한 고유 ID.
-        /// </summary>
-        [Required]
-        [MaxLength(256)]
-        public string UniqueId { get; set; }
 
         /// <summary>
         /// 플레이어의 레벨입니다.

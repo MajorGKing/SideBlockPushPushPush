@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GameDB.Migrations
 {
     [DbContext(typeof(GameDbContext))]
-    [Migration("20250904123103_init")]
+    [Migration("20250909153630_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace GameDB.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.3")
+                .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -227,10 +227,7 @@ namespace GameDB.Migrations
             modelBuilder.Entity("GameDB.PlayerDb", b =>
                 {
                     b.Property<int>("PlayerDbId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PlayerDbId"));
 
                     b.Property<bool>("BGMOn")
                         .HasColumnType("bit");
@@ -244,11 +241,6 @@ namespace GameDB.Migrations
                     b.Property<int>("Stamina")
                         .HasColumnType("int");
 
-                    b.Property<string>("UniqueId")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
                     b.Property<int>("UserLevel")
                         .HasColumnType("int");
 
@@ -257,9 +249,6 @@ namespace GameDB.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PlayerDbId");
-
-                    b.HasIndex("UniqueId")
-                        .IsUnique();
 
                     b.ToTable("Player");
                 });

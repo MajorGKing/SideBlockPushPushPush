@@ -16,6 +16,8 @@ public class CertificateWhore : CertificateHandler
 
 public class WebManager
 {
+    public string jwt;
+
     public string BaseUrl { get; set; }
     public string ip = "127.0.0.1";
     public int port = 7777;

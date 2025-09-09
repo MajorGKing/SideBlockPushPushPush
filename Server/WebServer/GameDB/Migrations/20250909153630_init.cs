@@ -15,9 +15,7 @@ namespace GameDB.Migrations
                 name: "Player",
                 columns: table => new
                 {
-                    PlayerDbId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UniqueId = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
+                    PlayerDbId = table.Column<int>(type: "int", nullable: false),
                     UserLevel = table.Column<int>(type: "int", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Stamina = table.Column<int>(type: "int", nullable: false),
@@ -221,12 +219,6 @@ namespace GameDB.Migrations
                 name: "IX_MissionSaveData_PlayerDbId",
                 table: "MissionSaveData",
                 column: "PlayerDbId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Player_UniqueId",
-                table: "Player",
-                column: "UniqueId",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_StageClear_PlayerDbId",

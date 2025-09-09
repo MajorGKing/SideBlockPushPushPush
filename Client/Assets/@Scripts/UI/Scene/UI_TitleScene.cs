@@ -1,8 +1,3 @@
-using Google.Protobuf.Protocol;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using WebPacket;
@@ -131,6 +126,10 @@ public class UI_TitleScene : UI_Scene
                 {
                     Debug.Log($"Guest Login Success! AccountDbId: {res.accountDbId}");
                     Debug.Log($"Guest Login Success! JWT: {res.jwt}");
+
+					Managers.Web.jwt = res.jwt;
+
+					OnConnectionSuccess();
                 }
                 else
                 {
@@ -147,35 +146,53 @@ public class UI_TitleScene : UI_Scene
         //Managers.Network.GameServer.Connect(endPoint, OnConnectionSuccess, OnConnectionFailed);
     }
 
-    //private void OnConnectionSuccess()
-    //{
-    //	Debug.Log("Connected To Server");
-    //	State = TitleSceneState.ConnectedToServer;
+	private void OnConnectionSuccess()
+	{
+		var req = new PlayerPacketReq()
+		{
+			jwt = Managers.Web.jwt,
+		};
 
-    //	GetObject((int)GameObjects.StartButton).gameObject.SetActive(true);
+        Managers.Web.SendPostRequest<PlayerPacketRes>("api/game/player", req, (res) =>
+        {
+            // 4. 서버 응답을 처리하는 콜백 함수입니다.
+            if (res.Success)
+            {
+				Debug.Log($"Player Data : {res.PlayerData}");
+            }
+            else
+            {
+                Debug.LogError($"Get Player Failed.");
+            }
+        });
 
-    //	StartCoroutine(CoSendTestPackets());
-    //}
+        //Debug.Log("Connected To Server");
+        //State = TitleSceneState.ConnectedToServer;
 
-    //private void OnConnectionFailed()
-    //{
-    //	Debug.Log("Failed To Connect To Server");
-    //	State = TitleSceneState.FailedToConnectToServer;
-    //}
+        //GetObject((int)GameObjects.StartButton).gameObject.SetActive(true);
 
-    //IEnumerator CoSendTestPackets()
-    //{
-    //	while (true)
-    //	{
-    //		yield return new WaitForSeconds(1);
+        //StartCoroutine(CoSendTestPackets());
+    }
 
-    //		C_Test pkt = new C_Test();
-    //		pkt.Temp = 1;
-    //		Managers.Network.Send(pkt);
-    //	}
-    //}
+	//private void OnConnectionFailed()
+	//{
+	//	Debug.Log("Failed To Connect To Server");
+	//	State = TitleSceneState.FailedToConnectToServer;
+	//}
 
-    private void OnClickNextButton(PointerEventData evt)
+	//IEnumerator CoSendTestPackets()
+	//{
+	//	while (true)
+	//	{
+	//		yield return new WaitForSeconds(1);
+
+	//		C_Test pkt = new C_Test();
+	//		pkt.Temp = 1;
+	//		Managers.Network.Send(pkt);
+	//	}
+	//}
+
+	private void OnClickNextButton(PointerEventData evt)
 	{
         Managers.Scene.LoadScene(Define.EScene.LobbyScene);
     }

@@ -44,6 +44,7 @@ namespace AccountServer.Services
 			// TEST
 			{
 				var test1 = DecipherJwtAccessToken(token);
+                Console.WriteLine(test1);
 				var test2 = ValidateJwtAccessToken(token, SECRET_KEY);
 				var test3 = ValidateJwtAccessToken(token, "abcdabcdabcdab12");
 			}

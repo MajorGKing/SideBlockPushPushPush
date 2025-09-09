@@ -29,12 +29,12 @@ namespace GameDB
             // Conditionally set the connection string based on the operating system.
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=AccountDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+                ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=GameDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
             }
             else // Assume macOS/Linux if not Windows
             {
                 // Docker container connection string for macOS/Linux
-                ConnectionString = @"Server=localhost,1433;Database=AccountDB;User Id=sa;Password=YourStrongPassword1@#;Encrypt=False;TrustServerCertificate=True";
+                ConnectionString = @"Server=localhost,1433;Database=GameDB;User Id=sa;Password=YourStrongPassword1@#;Encrypt=False;TrustServerCertificate=True";
             }
 
             options
@@ -44,11 +44,6 @@ namespace GameDB
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            // PlayerDb의 UniqueId에 고유 인덱스 설정
-            builder.Entity<PlayerDb>()
-                .HasIndex(p => p.UniqueId)
-                .IsUnique();
-
             // PlayerDb와 CurrencyDb의 1:1 관계 설정
             builder.Entity<PlayerDb>()
                 .HasOne(p => p.Currency)
