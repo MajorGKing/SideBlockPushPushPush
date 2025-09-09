@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AccountDB;
+using AccountServer.Controllers;
 
 namespace AccountServer.Services
 {
@@ -50,7 +51,8 @@ namespace AccountServer.Services
 
 		public async Task<LoginAccountPacketRes> LoginGuestAccount(string userID)
 		{
-			LoginAccountPacketRes res = new LoginAccountPacketRes();
+
+            LoginAccountPacketRes res = new LoginAccountPacketRes();
 
 			AccountDb? accountDb = _dbContext.Accounts.FirstOrDefault(a => a.LoginProviderUserId == userID && a.LoginProviderType == ProviderType.Guest);
 			if (accountDb == null)

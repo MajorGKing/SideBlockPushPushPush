@@ -65,6 +65,8 @@ public class WebManager
             uwr.certificateHandler = new CertificateWhore();
             uwr.SetRequestHeader("Content-Type", "application/json");
 
+            Debug.Log($"sendUrl : {sendUrl}");
+
             yield return uwr.SendWebRequest();
 
             if (uwr.result == UnityWebRequest.Result.ConnectionError)
@@ -73,8 +75,7 @@ public class WebManager
             }
             else
             {
-                Debug.Log($"CoSendWebRequest Failed : {uwr.error}");
-                T resObj = JsonUtility.FromJson<T>(uwr.downloadHandler.text);
+                T resObj = JsonConvert.DeserializeObject<T>(uwr.downloadHandler.text);
                 res.Invoke(resObj);
             }
         }

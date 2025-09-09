@@ -10,7 +10,7 @@ namespace AccountServer.Controllers
 	{
 		AccountService _account;
 
-		public AccountController(AccountService account)
+        public AccountController(AccountService account)
 		{
 			_account = account;
 		}
@@ -27,7 +27,10 @@ namespace AccountServer.Controllers
 		[Route("login/guest")]
 		public async Task<LoginAccountPacketRes> LoginGuest([FromBody] LoginAccountPacketReq req)
 		{
-			LoginAccountPacketRes res = await _account.LoginGuestAccount(req.userId);
+            // 클라이언트에서 전달받은 userId를 서버 콘솔에 출력
+            Console.WriteLine($"Guest login request for User ID: {req.userId}");
+
+            LoginAccountPacketRes res = await _account.LoginGuestAccount(req.userId);
 			return res;
 		}
 	}

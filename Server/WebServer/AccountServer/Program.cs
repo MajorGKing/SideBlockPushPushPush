@@ -26,11 +26,11 @@ namespace AccountServer
                 options.UseSqlServer(connectionString);
             });
 
-            //builder.Services.AddDbContext<AccountDbContext>();
+            builder.Services.AddDbContext<AccountDbContext>();
 
-            //builder.Services.AddSingleton<FacebookService>();
-            //builder.Services.AddSingleton<JwtTokenService>();
-            //builder.Services.AddScoped<AccountService>();
+            builder.Services.AddSingleton<FacebookService>();
+            builder.Services.AddSingleton<JwtTokenService>();
+            builder.Services.AddScoped<AccountService>();
 
             var app = builder.Build();
 

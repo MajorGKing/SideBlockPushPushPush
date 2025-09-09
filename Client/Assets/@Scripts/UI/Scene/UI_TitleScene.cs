@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using WebPacket;
 using Object = UnityEngine.Object;
 
 public class UI_TitleScene : UI_Scene
@@ -106,9 +107,39 @@ public class UI_TitleScene : UI_Scene
 		Debug.Log("Connecting To Server");
 		State = TitleSceneState.ConnectingToServer;
 
-        string uniqueId = SystemInfo.deviceUniqueIdentifier;
+        
 
-        Debug.Log($"Device Unique ID: {uniqueId}");
+		// Guest로그인 수행
+		{
+            // 1. 디바이스의 고유 ID를 가져옵니다.
+            string uniqueId = SystemInfo.deviceUniqueIdentifier;
+            Debug.Log($"Device Unique ID: {uniqueId}");
+
+            // 2. 요청 패킷을 만듭니다.
+            var req = new LoginAccountPacketReq
+            {
+                userId = uniqueId,
+                token = "" // 게스트 로그인이므로 토큰은 비워둡니다.
+            };
+
+
+            // 3. WebManager를 통해 POST 요청을 보냅니다. "api/account/login/guestt"
+            Managers.Web.SendPostRequest<LoginAccountPacketRes>("api/account/login/guest", req, (res) =>
+            {
+                // 4. 서버 응답을 처리하는 콜백 함수입니다.
+                if (res.success)
+                {
+                    Debug.Log($"Guest Login Success! AccountDbId: {res.accountDbId}");
+                }
+                else
+                {
+                    Debug.LogError($"Guest Login Failed.");
+                }
+            });
+
+        }
+
+
 
         //IPAddress ipAddr = IPAddress.Parse("127.0.0.1");
         //IPEndPoint endPoint = new IPEndPoint(ipAddr, 7777);
