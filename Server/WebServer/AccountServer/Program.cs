@@ -32,6 +32,7 @@ namespace AccountServer
             builder.Services.AddSingleton<JwtTokenService>();
             builder.Services.AddScoped<AccountService>();
             builder.Services.AddScoped<PlayerService>();
+            builder.Services.AddScoped<CurrencyService>();
 
             var app = builder.Build();
 

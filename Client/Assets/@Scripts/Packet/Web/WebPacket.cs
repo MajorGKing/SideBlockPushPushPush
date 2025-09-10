@@ -5,6 +5,7 @@ using UnityEngine;
 namespace WebPacket
 {
 	using System;
+    using System.Diagnostics.CodeAnalysis;
 
     public enum EProviderType
     {
@@ -68,5 +69,69 @@ namespace WebPacket
 
         // 플레이어의 핵심 데이터를 담는 클래스
         public PlayerData PlayerData { get; set; }
+    }
+
+    public enum CurrencyType
+    {
+        Gold,
+        Dia,
+        BlueGem,
+        GreenGem,
+        YellowGem,
+        StoneArmor,
+        StoneBelt,
+        StoneBoots,
+        StoneGloves,
+        StoneRing,
+        StoneWeapon,
+        Exp,
+        ScrollArmor,
+        ScrollBelt,
+        ScrollBoots,
+        ScrollGloves,
+        ScrollRing,
+        ScrollWeapon,
+    }
+
+    public class CurrencyData
+    {
+        public int PlayerDbId { get; set; }
+        public int Gold { get; set; }
+        public int Dia { get; set; }
+        public int BlueGem { get; set; }
+        public int GreenGem { get; set; }
+        public int YellowGem { get; set; }
+        public int StoneArmor { get; set; }
+        public int StoneBelt { get; set; }
+        public int StoneBoots { get; set; }
+        public int StoneGloves { get; set; }
+        public int StoneRing { get; set; }
+        public int StoneWeapon { get; set; }
+        public int Exp { get; set; }
+        public int ScrollArmor { get; set; }
+        public int ScrollBelt { get; set; }
+        public int ScrollBoots { get; set; }
+        public int ScrollGloves { get; set; }
+        public int ScrollRing { get; set; }
+        public int ScrollWeapon { get; set; }
+    }
+
+    public class CurrenyAllReq
+    {
+        public string jwt { get; set; } = string.Empty;
+    }
+
+    public class CurrenyAllRes
+    {
+        // 요청 성공 여부
+        public bool Success { get; set; }
+        [AllowNull]
+        public CurrencyData currencyData { get; set; }
+    }
+
+    public class UpdateCurrencyReq
+    {
+        public CurrencyType CurrencyType { get; set; }
+        public int Amount { get; set; }
     }
 }

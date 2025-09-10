@@ -46,6 +46,29 @@ namespace AccountServer.Services
                     BGMOn = true,
                     EffectSoundOn = true,
                     LastMissionTime = DateTime.Now,
+
+                    // 새로운 플레이어를 만들 때 CurrencyDb도 함께 추가합니다.
+                    Currency = new CurrencyDb()
+                    {
+                        Gold = 50,
+                        Dia = 50,
+                        BlueGem = 50,
+                        GreenGem = 50,
+                        YellowGem = 50,
+                        StoneArmor = 50,
+                        StoneBelt = 50,
+                        StoneBoots = 50,
+                        StoneGloves = 50,
+                        StoneRing = 50,
+                        StoneWeapon = 50,
+                        Exp = 50,
+                        ScrollArmor = 50,
+                        ScrollBelt = 50,
+                        ScrollBoots = 50,
+                        ScrollGloves = 50,
+                        ScrollRing = 50,
+                        ScrollWeapon = 50,
+                    }
                 };
 
                 _dbContext.Players.Add(playerDb);

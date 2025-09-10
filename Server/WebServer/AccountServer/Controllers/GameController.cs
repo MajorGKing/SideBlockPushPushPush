@@ -10,10 +10,12 @@ namespace AccountServer.Controllers
     public class GameController : ControllerBase
     {
         PlayerService _player;
+        CurrencyService _currency;
 
-        public GameController(PlayerService player)
+        public GameController(PlayerService player, CurrencyService currency)
         {
             _player = player;
+            _currency = currency;
         }
 
         [HttpPost]
@@ -21,6 +23,13 @@ namespace AccountServer.Controllers
         public async Task<PlayerPacketRes> PlayerData([FromBody] PlayerPacketReq req)
         {
             return await _player.LoadOrCreatePlayerAsync(req.jwt);
+        }
+
+        [HttpPost]
+        [Route("currency")]
+        public async Task<CurrenyAllRes> CurrencyData([FromBody] CurrenyAllReq req)
+        {
+            return await _currency.GetPlayerCurrenciesAsync(req.jwt);
         }
     }
 }

@@ -158,7 +158,9 @@ public class UI_TitleScene : UI_Scene
             // 4. 서버 응답을 처리하는 콜백 함수입니다.
             if (res.Success)
             {
-				Debug.Log($"Player Data : {res.PlayerData}");
+				Debug.Log($"Player Data : {res.PlayerData.UserName}");
+
+                GetText(((int)Texts.StartText)).gameObject.SetActive(true);
             }
             else
             {
