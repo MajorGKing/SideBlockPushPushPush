@@ -91,12 +91,12 @@ public class CurrencyData
     public int ScrollWeapon { get; set; }
 }
 
-public class CurrenyAllReq
+public class CurrencyAllReq
 {
     public string jwt { get; set; } = string.Empty;
 }
 
-public class CurrenyAllRes
+public class CurrencyAllRes
 {
     // 요청 성공 여부
     public bool Success { get; set; }
@@ -104,8 +104,9 @@ public class CurrenyAllRes
     public CurrencyData currencyData { get; set; }
 }
 
-public class UpdateCurrencyReq
+public class CurrencyAddReq
 {
+    public string jwt { get; set; } = string.Empty;
     public CurrencyType CurrencyType { get; set; }
     public int Amount { get; set; }
 }

@@ -27,9 +27,16 @@ namespace AccountServer.Controllers
 
         [HttpPost]
         [Route("currency")]
-        public async Task<CurrenyAllRes> CurrencyData([FromBody] CurrenyAllReq req)
+        public async Task<CurrencyAllRes> CurrencyData([FromBody] CurrencyAllReq req)
         {
             return await _currency.GetPlayerCurrenciesAsync(req.jwt);
+        }
+
+        [HttpPost]
+        [Route("currency/add")]
+        public async Task<CurrencyAllRes> CurrencyAdd([FromBody] CurrencyAddReq req)
+        {
+            return await _currency.UpdatePlayerCurrencyAsync(req);
         }
     }
 }

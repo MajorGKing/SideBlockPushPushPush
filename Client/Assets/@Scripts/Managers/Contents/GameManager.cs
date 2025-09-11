@@ -6,10 +6,64 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using WebPacket;
 using static Define;
 
 public class GameManager
 {
+    #region PlayerData
+    private PlayerData _playerData = new PlayerData();
+    public PlayerData PlayerData => _playerData;
+
+    public void UpdatePlayerData(PlayerData newData)
+    {
+        _playerData.PlayerDbId = newData.PlayerDbId;
+        _playerData.UserLevel = newData.UserLevel;
+        _playerData.UserName = newData.UserName;
+        _playerData.Stamina = newData.Stamina;
+        _playerData.BGMOn = newData.BGMOn;
+        _playerData.EffectSoundOn = newData.EffectSoundOn;
+        _playerData.LastMissionTime = newData.LastMissionTime;
+    }
+
+    private int[] _currency = new int[Enum.GetValues(typeof(CurrencyType)).Length];
+
+    public int[] Currency => _currency;
+    public void UpdateCurrency(CurrencyData data)
+    {
+        _currency[(int)CurrencyType.Gold] = data.Gold;
+        _currency[(int)CurrencyType.Dia] = data.Dia;
+        _currency[(int)CurrencyType.BlueGem] = data.BlueGem;
+        _currency[(int)CurrencyType.GreenGem] = data.GreenGem;
+        _currency[(int)CurrencyType.YellowGem] = data.YellowGem;
+
+        _currency[(int)CurrencyType.StoneArmor] = data.StoneArmor;
+        _currency[(int)CurrencyType.StoneBelt] = data.StoneBelt;
+        _currency[(int)CurrencyType.StoneBoots] = data.StoneBoots;
+        _currency[(int)CurrencyType.StoneGloves] = data.StoneGloves;
+        _currency[(int)CurrencyType.StoneRing] = data.StoneRing;
+        _currency[(int)CurrencyType.StoneWeapon] = data.StoneWeapon;
+
+        _currency[(int)CurrencyType.Exp] = data.Exp;
+
+        _currency[(int)CurrencyType.ScrollArmor] = data.ScrollArmor;
+        _currency[(int)CurrencyType.ScrollBelt] = data.ScrollBelt;
+        _currency[(int)CurrencyType.ScrollBoots] = data.ScrollBoots;
+        _currency[(int)CurrencyType.ScrollGloves] = data.ScrollGloves;
+        _currency[(int)CurrencyType.ScrollRing] = data.ScrollRing;
+        _currency[(int)CurrencyType.ScrollWeapon] = data.ScrollWeapon;
+    }
+
+    public int GetCurrency(CurrencyType type)
+    {
+        return _currency[(int)type];
+    }
+
+
+
+    #endregion
+
+
     string _path;
 
     #region GameData
@@ -17,7 +71,13 @@ public class GameManager
 
     public int GetCurrency(Define.ECurrencyType currencyType)
     {
-        return _gameData.Currencies[(int)currencyType];
+        // None은 처리하지 않음
+        if (currencyType == Define.ECurrencyType.None)
+            return 0;
+
+        // Define.ECurrencyType은 CurrencyType보다 1 큰 인덱스라고 가정
+        CurrencyType type = (CurrencyType)((int)currencyType - 1);
+        return GetCurrency(type);
     }
 
     public void SetCurrency(Define.ECurrencyType currencyType, int value)

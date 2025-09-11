@@ -148,25 +148,7 @@ public class UI_TitleScene : UI_Scene
 
 	private void OnConnectionSuccess()
 	{
-		var req = new PlayerPacketReq()
-		{
-			jwt = Managers.Web.jwt,
-		};
-
-        Managers.Web.SendPostRequest<PlayerPacketRes>("api/game/player", req, (res) =>
-        {
-            // 4. 서버 응답을 처리하는 콜백 함수입니다.
-            if (res.Success)
-            {
-				Debug.Log($"Player Data : {res.PlayerData.UserName}");
-
-                GetText(((int)Texts.StartText)).gameObject.SetActive(true);
-            }
-            else
-            {
-                Debug.LogError($"Get Player Failed.");
-            }
-        });
+        GetText(((int)Texts.StartText)).gameObject.SetActive(true);
 
         //Debug.Log("Connected To Server");
         //State = TitleSceneState.ConnectedToServer;
