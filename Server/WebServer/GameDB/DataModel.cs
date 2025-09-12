@@ -154,6 +154,11 @@ namespace GameDB
         public int TemplateId { get; set; }
 
         /// <summary>
+        /// 영웅이 가진 스킬 리스트를 직렬화 해서 저장합니다.
+        /// </summary>
+        public string SkillTemplateIdString { get; set; } = string.Empty;
+
+        /// <summary>
         /// 이 영웅이 선택되었는지 여부입니다.
         /// </summary>
         public bool IsSelected { get; set; }
@@ -177,7 +182,19 @@ namespace GameDB
         /// 이 영웅을 소유한 PlayerDb 객체에 접근할 수 있습니다.
         /// </summary>
         public PlayerDb Player { get; set; }
+
+
+        [NotMapped]
+        public List<int> SkillTemplateId
+        {
+            get => string.IsNullOrEmpty(SkillTemplateIdString)
+                ? new List<int>()
+                : SkillTemplateIdString.Split(',').Select(int.Parse).ToList();
+
+            set => SkillTemplateIdString = string.Join(",", value);
+        }
     }
+
 
     /// <summary>
     /// 플레이어가 소유한 버디의 데이터를 저장하는 테이블입니다.

@@ -41,13 +41,12 @@ namespace AccountServer.Services
 			var jwt = new JwtSecurityToken(claims: claims, signingCredentials: credentials);
 			string token = new JwtSecurityTokenHandler().WriteToken(jwt);
 
-			// TEST
-			{
-				var test1 = DecipherJwtAccessToken(token);
-                Console.WriteLine(test1);
-				var test2 = ValidateJwtAccessToken(token, SECRET_KEY);
-				var test3 = ValidateJwtAccessToken(token, "abcdabcdabcdab12");
-			}
+			//// TEST
+			//{
+			//	var test1 = DecipherJwtAccessToken(token);
+			//	var test2 = ValidateJwtAccessToken(token, SECRET_KEY);
+			//	var test3 = ValidateJwtAccessToken(token, "abcdabcdabcdab12");
+			//}
 
 			return token;
 		}

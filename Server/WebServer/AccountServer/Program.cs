@@ -1,8 +1,8 @@
-
 using AccountDB;
 using AccountServer.Services;
 using Microsoft.EntityFrameworkCore;
 using GameDB;
+using Server.Data;
 
 namespace AccountServer
 {
@@ -10,6 +10,9 @@ namespace AccountServer
 	{
 		public static void Main(string[] args)
 		{
+            ConfigManager.LoadConfig();
+            DataManager.LoadData();
+
             var builder = WebApplication.CreateBuilder(args);
 
 			// Add services to the container.

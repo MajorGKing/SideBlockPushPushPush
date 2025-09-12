@@ -24,6 +24,8 @@ public class GameManager
         _playerData.BGMOn = newData.BGMOn;
         _playerData.EffectSoundOn = newData.EffectSoundOn;
         _playerData.LastMissionTime = newData.LastMissionTime;
+
+        // TODO ILHAK UI정보 갱신하기
     }
 
     private int[] _currency = new int[Enum.GetValues(typeof(CurrencyType)).Length];
@@ -52,6 +54,8 @@ public class GameManager
         _currency[(int)CurrencyType.ScrollGloves] = data.ScrollGloves;
         _currency[(int)CurrencyType.ScrollRing] = data.ScrollRing;
         _currency[(int)CurrencyType.ScrollWeapon] = data.ScrollWeapon;
+
+        OnCurrenciesChagned?.Invoke();
     }
 
     public int GetCurrency(CurrencyType type)
