@@ -135,4 +135,26 @@ namespace WebPacket
         public CurrencyType CurrencyType { get; set; }
         public int Amount { get; set; }
     }
+
+    public class HeroDTO
+    {
+        public int HeroSaveDataDbId { get; set; }
+        public int TemplateId { get; set; }
+        public List<int> SkillTemplateIds { get; set; } = new List<int>();
+        public bool IsSelected { get; set; }
+        public int NowExp { get; set; }
+        public int MaxExp { get; set; }
+    }
+
+    public class HeroListReq
+    {
+        public string jwt { get; set; } = string.Empty;
+    }
+
+    public class HeroListRes
+    {
+        public bool Success { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public List<HeroDTO> Heroes { get; set; } = new List<HeroDTO>();
+    }
 }

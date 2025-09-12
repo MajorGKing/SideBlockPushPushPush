@@ -11,18 +11,20 @@ namespace AccountServer.Controllers
     {
         PlayerService _player;
         CurrencyService _currency;
+        HeroService _heroService;
 
-        public GameController(PlayerService player, CurrencyService currency)
+        public GameController(PlayerService player, CurrencyService currency, HeroService heroService)
         {
             _player = player;
             _currency = currency;
+            _heroService = heroService;
         }
 
         [HttpPost]
         [Route("player")]
         public async Task<PlayerPacketRes> PlayerData([FromBody] PlayerPacketReq req)
         {
-            return await _player.LoadOrCreatePlayerAsync(req.jwt);
+            return await _player.LoadOrCreatePlayerAsync(req);
         }
 
         [HttpPost]
@@ -37,6 +39,13 @@ namespace AccountServer.Controllers
         public async Task<CurrencyAllRes> CurrencyAdd([FromBody] CurrencyAddReq req)
         {
             return await _currency.UpdatePlayerCurrencyAsync(req);
+        }
+
+        [HttpPost]
+        [Route("hero")]
+        public async Task<HeroListRes> HeroData([FromBody] HeroListReq req)
+        {
+            return await _heroService.GetHeroListAsync(req);
         }
     }
 }

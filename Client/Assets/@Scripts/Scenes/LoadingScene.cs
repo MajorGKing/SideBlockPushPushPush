@@ -69,6 +69,32 @@ public class LoadingScene : BaseScene
 
                 Managers.Game.UpdateCurrency(res.currencyData);
 
+                LoadHeroData();
+            }
+            else
+            {
+                Debug.LogError($"Get Currency Failed.");
+            }
+        });
+    }
+
+    private void LoadHeroData()
+    {
+        var req = new HeroListReq()
+        {
+            jwt = Managers.Web.jwt,
+        };
+
+        Managers.Web.SendPostRequest<HeroListRes>("api/game/hero", req, (res) =>
+        {
+            // 4. 서버 응답을 처리하는 콜백 함수입니다.
+            if (res.Success)
+            {
+                Debug.Log($"Hero templatedID 1 : {res.Heroes[0].TemplateId}");
+
+                //Managers.Game.UpdateCurrency(res.currencyData);
+
+
                 //var reqa = new CurrencyAddReq()
                 //{
                 //    jwt = Managers.Web.jwt,

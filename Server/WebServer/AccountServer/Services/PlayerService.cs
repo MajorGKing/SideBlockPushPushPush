@@ -1,5 +1,6 @@
 ﻿using GameDB;
 using Microsoft.EntityFrameworkCore;
+using Server.Data;
 
 namespace AccountServer.Services
 {
@@ -7,17 +8,19 @@ namespace AccountServer.Services
     {
         GameDbContext _dbContext;
         JwtTokenService _jwt;
+        HeroService _heroService;
 
-        public PlayerService(GameDbContext context, JwtTokenService jwt)
+        public PlayerService(GameDbContext context, JwtTokenService jwt, HeroService heroService)
         {
             _dbContext = context;
             _jwt = jwt;
+            _heroService = heroService;
         }
 
         // '로드 또는 생성' 로직을 구현하는 핵심 메서드
-        public async Task<PlayerPacketRes> LoadOrCreatePlayerAsync(string jwt)
+        public async Task<PlayerPacketRes> LoadOrCreatePlayerAsync(PlayerPacketReq request)
         {
-            var token = _jwt.DecipherJwtAccessToken(jwt);
+            var token = _jwt.DecipherJwtAccessToken(request.jwt);
             var subClaim = token.Claims.FirstOrDefault(c => c.Type == "sub");
 
             if (subClaim == null)
@@ -73,6 +76,10 @@ namespace AccountServer.Services
 
                 _dbContext.Players.Add(playerDb);
                 await _dbContext.SaveChangesAsync(); // 새 PlayerDb를 GameDB에 저장합니다.
+
+                // 2. 기본 영웅 두 개 지급 (HeroService 호출)
+                await _heroService.CreateHero(request.jwt, 100, true);   // 첫 번째 영웅
+                await _heroService.CreateHero(request.jwt, 200, false);  // 두 번째 영웅
             }
 
             // 4. PlayerDb 객체를 PlayerData DTO로 변환하여 반환합니다.
