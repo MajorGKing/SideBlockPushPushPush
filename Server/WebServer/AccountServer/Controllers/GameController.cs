@@ -54,5 +54,12 @@ namespace AccountServer.Controllers
         {
             return await _heroService.ChangeSelectedHeroAsync(req);
         }
+
+        [HttpPost]
+        [Route("hero/HeroLevelUp")]
+        public async Task<HeroListRes> HeroLevelUp([FromBody] HeroLevelUpReq req)
+        {
+            return await _heroService.LevelUpHeroAsync(req);
+        }
     }
 }

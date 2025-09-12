@@ -47,6 +47,8 @@ public class WebManager
 
     IEnumerator CoSendWebRequest<T>(string url, string method, object obj, Action<T> res)
     {
+        Debug.Log($"Call {url}");
+
         if (string.IsNullOrEmpty(BaseUrl))
             Init();
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Azure.Core;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -81,5 +82,19 @@ namespace AccountServer.Services
 				return false;
 			}
 		}
+
+		public int GetAccountDbIdInJwt(string jwt)
+		{
+            var token = DecipherJwtAccessToken(jwt);
+            var subClaim = token.Claims.FirstOrDefault(c => c.Type == "sub");
+
+            if (subClaim == null)
+                throw new UnauthorizedAccessException("JWT 토큰에 'sub' 클레임이 존재하지 않습니다.");
+
+            if (!int.TryParse(subClaim.Value, out int accountDbId))
+                throw new FormatException("'sub' 클레임 값이 정수로 변환되지 않았습니다.");
+
+			return accountDbId;
+        }
 	}
 }

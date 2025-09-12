@@ -65,6 +65,27 @@ public class GameManager
     {
         return _currency[(int)type];
     }
+
+    public void UpdateCurrency()
+    {
+        var req = new CurrencyAllReq()
+        {
+            jwt = Managers.Web.jwt,
+        };
+
+        Managers.Web.SendPostRequest<CurrencyAllRes>("api/game/currency", req, (res) =>
+        {
+            // 4. 서버 응답을 처리하는 콜백 함수입니다.
+            if (res.Success)
+            {
+                UpdateCurrency(res.currencyData);
+            }
+            else
+            {
+                Debug.LogError($"Get Currency Failed.");
+            }
+        });
+    }
     #endregion
 
     #region WebHero
@@ -94,6 +115,7 @@ public class GameManager
 
             if (copy.IsSelected)
             {
+                Debug.Log($"Now Hero Id {copy.TemplateId}");
                 NowHero = copy.TemplateId;
             }
         }
@@ -174,7 +196,7 @@ public class GameManager
     private int _nowHero;
     public int NowHero
     {
-        get { return _nowHero; }
+        get => _nowHero;
         set
         {
             if (value == NowHero)
@@ -186,11 +208,7 @@ public class GameManager
                 return;
             }
 
-            // 기존 선택 영웅 취소
-            //if (_gameData.HeroSaves.ContainsKey(NowHero))
-            //{
-            //    _gameData.HeroSaves[NowHero].isSelected = false;
-            //}
+            Debug.Log($"Now Hero Changed {_nowHero} to {value}");
 
             // 새로운 영웅 선택으로
             // Web통신으로 변경
@@ -201,17 +219,13 @@ public class GameManager
                 {
                     _nowHero = value;
                     OnNowHeroChanged?.Invoke();
-                    
+                    Debug.Log($"Now Hero Changed Finish {_nowHero}");
                 }
                 else
                 {
                     Debug.LogError($"error.");
                 }
             });
-            //_nowHero = value;
-            //_gameData.HeroSaves[NowHero].isSelected = true;
-            //OnNowHeroChanged?.Invoke();
-            //SaveGame();
         }
     }
 
@@ -265,73 +279,90 @@ public class GameManager
     #region HeroUp
     public void HeroLevelUp()
     {
-        var heroData = Managers.Data.HeroDataDic[NowHero];
-        // 지금 선택된 허어로가 레벨업 가능한지 체크
+        Debug.Log("Try Hero Level Up");
+        // Web통신으로 변경
+        var req = new HeroLevelUpReq { Jwt = Managers.Web.jwt, TemplateId = NowHero };
+        Managers.Web.SendPostRequest<HeroListRes>("api/game/hero/HeroLevelUp", req, (res) =>
         {
-            // 다음 레벨이 있어 레벨업 가능한지 확인
-            if (heroData.NextLevelId == 0)
-                return;
-
-            // 자원 가능한지 체크
-            var currencies = heroData.LevelUpCurrencies;
-
-            foreach (var currency in currencies)
+            if (res.Success)
             {
-                if (currency.currencyType == Define.ECurrencyType.None)
-                    continue;
-
-                if (currency.count > GetCurrency(currency.currencyType))
-                    return;
+                Debug.Log("Success Hero Level Up");
+                UpdateHeroData(res.Heroes);
             }
-
-            // 자원가능하면 자원 빼고 저장
-            foreach (var currency in currencies)
+            else
             {
-                if (currency.currencyType == Define.ECurrencyType.None)
-                    continue;
-
-                AddCurrency(currency.currencyType, -currency.count);
+                Debug.LogError($"error.");
             }
-        }
+        });
 
-        // 선택된 영웅을 레벨업
-        {
-            var heroSavedata = _gameData.HeroSaves[NowHero];
-            // 기존 영웅 정보를 삭제
-            int removeIndex = RemoveHeroSaveData(NowHero);
+        //var heroData = Managers.Data.HeroDataDic[NowHero];
+        //// 지금 선택된 허어로가 레벨업 가능한지 체크
+        //{
+        //    // 다음 레벨이 있어 레벨업 가능한지 확인
+        //    if (heroData.NextLevelId == 0)
+        //        return;
 
-            // 새로운 영웅 정보를 추가
-            {
-                heroSavedata.TemplateId = heroData.NextLevelId;
+        //    // 자원 가능한지 체크
+        //    var currencies = heroData.LevelUpCurrencies;
 
-                var nextHeroData = Managers.Data.HeroDataDic[heroSavedata.TemplateId];
+        //    foreach (var currency in currencies)
+        //    {
+        //        if (currency.currencyType == Define.ECurrencyType.None)
+        //            continue;
 
-                List<int> orgSkillId = new List<int>();
+        //        if (currency.count > GetCurrency(currency.currencyType))
+        //            return;
+        //    }
 
-                foreach (int skillId in heroSavedata.SkillTemplateId)
-                {
-                    orgSkillId.Add(Managers.Data.HeroSkillDataDic[skillId].OriginalLevelId);
-                }
+        //    // 자원가능하면 자원 빼고 저장
+        //    foreach (var currency in currencies)
+        //    {
+        //        if (currency.currencyType == Define.ECurrencyType.None)
+        //            continue;
 
-                // 버디의 추가 스킬 정보를 추가
-                foreach (var skillId in nextHeroData.SKillIds)
-                {
-                    if (orgSkillId.Contains(Managers.Data.HeroSkillDataDic[skillId].OriginalLevelId) == false)
-                    {
-                        heroSavedata.SkillTemplateId.Add(skillId);
-                    }
-                }
+        //        AddCurrency(currency.currencyType, -currency.count);
+        //    }
+        //}
 
-                AddHeroSaveData(heroSavedata, removeIndex);
-            }
-        }
+        //// 선택된 영웅을 레벨업
+        //{
+        //    var heroSavedata = _gameData.HeroSaves[NowHero];
+        //    // 기존 영웅 정보를 삭제
+        //    int removeIndex = RemoveHeroSaveData(NowHero);
 
-        // 레벨업에 따른 정보 갱신
-        NowHero = heroData.NextLevelId;
+        //    // 새로운 영웅 정보를 추가
+        //    {
+        //        heroSavedata.TemplateId = heroData.NextLevelId;
 
-        // 세이브
-        SaveGame();
+        //        var nextHeroData = Managers.Data.HeroDataDic[heroSavedata.TemplateId];
 
+        //        List<int> orgSkillId = new List<int>();
+
+        //        foreach (int skillId in heroSavedata.SkillTemplateId)
+        //        {
+        //            orgSkillId.Add(Managers.Data.HeroSkillDataDic[skillId].OriginalLevelId);
+        //        }
+
+        //        // 버디의 추가 스킬 정보를 추가
+        //        foreach (var skillId in nextHeroData.SKillIds)
+        //        {
+        //            if (orgSkillId.Contains(Managers.Data.HeroSkillDataDic[skillId].OriginalLevelId) == false)
+        //            {
+        //                heroSavedata.SkillTemplateId.Add(skillId);
+        //            }
+        //        }
+
+        //        AddHeroSaveData(heroSavedata, removeIndex);
+        //    }
+        //}
+
+        //// 레벨업에 따른 정보 갱신
+        //NowHero = heroData.NextLevelId;
+
+        //// 세이브
+        //SaveGame();
+
+        // TODO ILHAK WebMission
         Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.HeroLevelUp, 1);
     }
 
@@ -1282,8 +1313,16 @@ public class GameManager
         return results.Count > 0;
     }
 
+    public void Clear()
+    {
+        OnNowHeroChanged -= UpdateCurrency;
+    }
+
     public void Init()
     {
+        OnNowHeroChanged -= UpdateCurrency;
+        OnNowHeroChanged += UpdateCurrency;
+
         _path = Application.persistentDataPath + "/SaveData.json";
 
         if (LoadGame())

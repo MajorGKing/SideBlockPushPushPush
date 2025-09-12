@@ -163,4 +163,10 @@ namespace WebPacket
         public string Jwt { get; set; } = string.Empty;
         public int TemplateId { get; set; }
     }
+
+    public class HeroLevelUpReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+        public int TemplateId { get; set; } // 현재 선택된 영웅 TemplateId
+    }
 }

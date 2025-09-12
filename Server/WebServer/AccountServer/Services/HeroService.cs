@@ -1,6 +1,7 @@
 ﻿using GameDB;
 using Microsoft.EntityFrameworkCore;
 using Server.Data;
+using static AccountServer.Define;
 
 namespace AccountServer.Services
 {
@@ -8,33 +9,55 @@ namespace AccountServer.Services
     {
         GameDbContext _dbContext;
         JwtTokenService _jwt;
+        CurrencyService _currency;
 
-        public HeroService(GameDbContext context, JwtTokenService jwt)
+        public HeroService(GameDbContext context, JwtTokenService jwt, CurrencyService currency)
         {
             _dbContext = context;
             _jwt = jwt;
+            _currency = currency;
         }
 
-        public async Task<bool> CreateHero(string jwt, int templateId, bool isSelected = false)
+        private async Task<PlayerDb> GetPlayerDbFromAccountDbId(int accountDbId)
         {
-            var token = _jwt.DecipherJwtAccessToken(jwt);
-            var subClaim = token.Claims.FirstOrDefault(c => c.Type == "sub");
-
-            if (subClaim == null)
-            {
-                throw new UnauthorizedAccessException("JWT 토큰에 'sub' 클레임이 존재하지 않습니다.");
-            }
-
-            if (!int.TryParse(subClaim.Value, out int accountDbId))
-            {
-                throw new FormatException("'sub' 클레임 값이 정수로 변환되지 않았습니다.");
-            }
-
-
-            // Player 존재 여부 확인
+            // Player + Heroes 로드
             var player = await _dbContext.Players
                 .Include(p => p.Heroes)
                 .FirstOrDefaultAsync(p => p.PlayerDbId == accountDbId);
+
+            //if (player == null)
+            //{
+            //    throw new InvalidOperationException($"Player {accountDbId} not found.");
+            //}
+
+            return player;
+        }
+
+
+        public async Task<bool> CreateHero(string jwt, int templateId, bool isSelected = false)
+        {
+            var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
+
+            //var token = _jwt.DecipherJwtAccessToken(jwt);
+            //var subClaim = token.Claims.FirstOrDefault(c => c.Type == "sub");
+
+            //if (subClaim == null)
+            //{
+            //    throw new UnauthorizedAccessException("JWT 토큰에 'sub' 클레임이 존재하지 않습니다.");
+            //}
+
+            //if (!int.TryParse(subClaim.Value, out int accountDbId))
+            //{
+            //    throw new FormatException("'sub' 클레임 값이 정수로 변환되지 않았습니다.");
+            //}
+
+
+            // Player 존재 여부 확인
+            var player = await GetPlayerDbFromAccountDbId(accountDbId);
+
+            //var player = await _dbContext.Players
+            //    .Include(p => p.Heroes)
+            //    .FirstOrDefaultAsync(p => p.PlayerDbId == accountDbId);
 
             if (player == null)
             {
@@ -69,24 +92,9 @@ namespace AccountServer.Services
 
         public async Task<HeroListRes> GetHeroListAsync(HeroListReq request)
         {
-            var token = _jwt.DecipherJwtAccessToken(request.Jwt);
-            var subClaim = token.Claims.FirstOrDefault(c => c.Type == "sub");
-
-            if (subClaim == null)
-            {
-                throw new UnauthorizedAccessException("JWT 토큰에 'sub' 클레임이 존재하지 않습니다.");
-            }
-
-            if (!int.TryParse(subClaim.Value, out int accountDbId))
-            {
-                throw new FormatException("'sub' 클레임 값이 정수로 변환되지 않았습니다.");
-            }
-
-            // Player + Heroes 로드
-            var player = await _dbContext.Players
-                .Include(p => p.Heroes)
-                .FirstOrDefaultAsync(p => p.PlayerDbId == accountDbId);
-
+            var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
+            var player = await GetPlayerDbFromAccountDbId(accountDbId);
+            
             if (player == null)
             {
                 return new HeroListRes
@@ -115,19 +123,8 @@ namespace AccountServer.Services
 
         public async Task<HeroListRes> ChangeSelectedHeroAsync(HeroNowChangeReq request)
         {
-            var token = _jwt.DecipherJwtAccessToken(request.Jwt);
-            var subClaim = token.Claims.FirstOrDefault(c => c.Type == "sub");
-
-            if (subClaim == null)
-                throw new UnauthorizedAccessException("JWT 토큰에 'sub' 클레임이 존재하지 않습니다.");
-
-            if (!int.TryParse(subClaim.Value, out int accountDbId))
-                throw new FormatException("'sub' 클레임 값이 정수로 변환되지 않았습니다.");
-
-            // Player + Heroes 로드
-            var player = await _dbContext.Players
-                .Include(p => p.Heroes)
-                .FirstOrDefaultAsync(p => p.PlayerDbId == accountDbId);
+            var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
+            var player = await GetPlayerDbFromAccountDbId(accountDbId);
 
             if (player == null)
             {
@@ -165,6 +162,117 @@ namespace AccountServer.Services
             await _dbContext.SaveChangesAsync();
 
             // 여기서 새로 DTO로 변환하지 않고, 기존 메서드 재사용
+            return await GetHeroListAsync(new HeroListReq { Jwt = request.Jwt });
+        }
+
+        public async Task<HeroListRes> LevelUpHeroAsync(HeroLevelUpReq request)
+        {
+            var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
+            var player = await GetPlayerDbFromAccountDbId(accountDbId);
+
+            if (player == null)
+            {
+                return new HeroListRes
+                {
+                    Success = false,
+                    Message = $"Player {accountDbId} not found."
+                };
+            }
+
+            // 1. Find Hero Data
+            var hero = player.Heroes.FirstOrDefault(h => h.TemplateId == request.TemplateId);
+            if (hero == null)
+            {
+                return new HeroListRes
+                {
+                    Success = false,
+                    Message = "No hero is currently selected."
+                };
+            }
+
+            if (!DataManager.HeroDataDic.TryGetValue(request.TemplateId, out var heroData))
+            {
+                return new HeroListRes
+                {
+                    Success = false,
+                    Message = $"Hero template {request.TemplateId} not found in DataManager."
+                };
+            }
+
+            // 2. Check if next level exists
+            if (heroData.NextLevelId == 0)
+            {
+                return new HeroListRes
+                {
+                    Success = false,
+                    Message = "This hero cannot level up further."
+                };
+            }
+
+            // 3. Check currency availability
+            foreach (var currency in heroData.LevelUpCurrencies)
+            {
+                if (currency.currencyType == Define.ECurrencyType.None)
+                    continue;
+
+                if (currency.count > await _currency.GetCurrency(accountDbId, currency.currencyType).ConfigureAwait(false))
+                {
+                    return new HeroListRes
+                    {
+                        Success = false,
+                        Message = "Not enough currency for level up."
+                    };
+                }
+            }
+
+            // 4. Deduct currency
+            foreach (var currency in heroData.LevelUpCurrencies)
+            {
+                // Define.ECurrencyType은 CurrencyType보다 1 큰 인덱스라고 가정
+                CurrencyType type = (CurrencyType)((int)currency.currencyType - 1);
+
+                await _currency.UpdatePlayerCurrencyAsync(new CurrencyAddReq { jwt = request.Jwt, CurrencyType = type, Amount = -currency.count });
+            }
+
+            // 5. Level up hero
+            hero.TemplateId = heroData.NextLevelId;
+
+            if (!DataManager.HeroDataDic.TryGetValue(hero.TemplateId, out var nextHeroData))
+            {
+                return new HeroListRes
+                {
+                    Success = false,
+                    Message = $"Next hero template {hero.TemplateId} not found."
+                };
+            }
+
+            // Update MaxExp for new level
+            hero.MaxExp = nextHeroData.LevelUpCurrency1Count;
+            hero.NowExp = 0; // reset exp
+
+            // Sync skills
+            var orgSkillIds = hero.SkillTemplateId
+                .Select(id => DataManager.HeroSkillDataDic[id].OriginalLevelId)
+                .ToList();
+
+            // becuse SkillTemplateId is [NotMapped]
+            var skills = hero.SkillTemplateId.ToList();
+
+            foreach (var skillId in nextHeroData.SKillIds)
+            {
+                var originalId = DataManager.HeroSkillDataDic[skillId].OriginalLevelId;
+                if (!orgSkillIds.Contains(originalId))
+                {
+                    skills.Add(skillId);
+                }
+            }
+
+            hero.SkillTemplateId = skills;
+
+            // 6. Save changes
+            await _dbContext.SaveChangesAsync();
+
+            // 7. Return updated hero list
             return await GetHeroListAsync(new HeroListReq { Jwt = request.Jwt });
         }
     }

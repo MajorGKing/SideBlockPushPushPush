@@ -184,6 +184,41 @@ namespace AccountServer.Services
                 currencyData = updatedCurrency
             };
         }
+
+        public async Task<int> GetCurrency(int accountDbId, Define.ECurrencyType currencyType)
+        {
+            var currencyDb = await _dbContext.Currencies.AsNoTracking().FirstOrDefaultAsync(c => c.PlayerDbId == accountDbId);
+
+            if (currencyDb == null)
+            {
+                return 0;
+            }
+
+            // enum에 맞춰서 해당 컬럼 값을 반환
+            switch (currencyType)
+            {
+                case Define.ECurrencyType.None: return 0;
+                case Define.ECurrencyType.Gold: return currencyDb.Gold;
+                case Define.ECurrencyType.Dia: return currencyDb.Dia;
+                case Define.ECurrencyType.BlueGem: return currencyDb.BlueGem;
+                case Define.ECurrencyType.GreenGem: return currencyDb.GreenGem;
+                case Define.ECurrencyType.YellowGem: return currencyDb.YellowGem;
+                case Define.ECurrencyType.StoneArmor: return currencyDb.StoneArmor;
+                case Define.ECurrencyType.StoneBelt: return currencyDb.StoneBelt;
+                case Define.ECurrencyType.StoneBoots: return currencyDb.StoneBoots;
+                case Define.ECurrencyType.StoneGloves: return currencyDb.StoneGloves;
+                case Define.ECurrencyType.StoneRing: return currencyDb.StoneRing;
+                case Define.ECurrencyType.StoneWeapon: return currencyDb.StoneWeapon;
+                case Define.ECurrencyType.Exp: return currencyDb.Exp;
+                case Define.ECurrencyType.ScrollArmor: return currencyDb.ScrollArmor;
+                case Define.ECurrencyType.ScrollBelt: return currencyDb.ScrollBelt;
+                case Define.ECurrencyType.ScrollBoots: return currencyDb.ScrollBoots;
+                case Define.ECurrencyType.ScrollGloves: return currencyDb.ScrollGloves;
+                case Define.ECurrencyType.ScrollRing: return currencyDb.ScrollRing;
+                case Define.ECurrencyType.ScrollWeapon: return currencyDb.ScrollWeapon;
+                default: return 0;
+            }
+        }
     }
 
 }
