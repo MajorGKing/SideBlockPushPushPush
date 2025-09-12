@@ -20,7 +20,7 @@ namespace AccountServer
 			builder.Services.AddControllers();
 			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 			builder.Services.AddEndpointsApiExplorer();
-			builder.Services.AddSwaggerGen();
+			//builder.Services.AddSwaggerGen();
 
             // GameDbContext를 등록합니다.
             var connectionString = builder.Configuration.GetConnectionString("GameDBConnection");
@@ -41,11 +41,11 @@ namespace AccountServer
             var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
-			if (app.Environment.IsDevelopment())
-			{
-				app.UseSwagger();
-				app.UseSwaggerUI();
-			}
+			//if (app.Environment.IsDevelopment())
+			//{
+			//	app.UseSwagger();
+			//	app.UseSwaggerUI();
+			//}
 
 			app.UseHttpsRedirection();
 

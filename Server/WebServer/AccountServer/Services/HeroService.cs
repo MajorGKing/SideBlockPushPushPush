@@ -69,7 +69,7 @@ namespace AccountServer.Services
 
         public async Task<HeroListRes> GetHeroListAsync(HeroListReq request)
         {
-            var token = _jwt.DecipherJwtAccessToken(request.jwt);
+            var token = _jwt.DecipherJwtAccessToken(request.Jwt);
             var subClaim = token.Claims.FirstOrDefault(c => c.Type == "sub");
 
             if (subClaim == null)
@@ -111,6 +111,61 @@ namespace AccountServer.Services
                 Success = true,
                 Heroes = heroes
             };
+        }
+
+        public async Task<HeroListRes> ChangeSelectedHeroAsync(HeroNowChangeReq request)
+        {
+            var token = _jwt.DecipherJwtAccessToken(request.Jwt);
+            var subClaim = token.Claims.FirstOrDefault(c => c.Type == "sub");
+
+            if (subClaim == null)
+                throw new UnauthorizedAccessException("JWT 토큰에 'sub' 클레임이 존재하지 않습니다.");
+
+            if (!int.TryParse(subClaim.Value, out int accountDbId))
+                throw new FormatException("'sub' 클레임 값이 정수로 변환되지 않았습니다.");
+
+            // Player + Heroes 로드
+            var player = await _dbContext.Players
+                .Include(p => p.Heroes)
+                .FirstOrDefaultAsync(p => p.PlayerDbId == accountDbId);
+
+            if (player == null)
+            {
+                return new HeroListRes
+                {
+                    Success = false,
+                    Message = $"Player {accountDbId} not found."
+                };
+            }
+
+            bool found = false;
+            foreach (var hero in player.Heroes)
+            {
+                if (hero.TemplateId == request.TemplateId)
+                {
+                    hero.IsSelected = true;
+                    found = true;
+                    Console.WriteLine($"Hero Selected : {hero.TemplateId}");
+                }
+                else
+                {
+                    hero.IsSelected = false;
+                }
+            }
+
+            if (!found)
+            {
+                return new HeroListRes
+                {
+                    Success = false,
+                    Message = $"Hero with TemplateId {request.TemplateId} not found."
+                };
+            }
+
+            await _dbContext.SaveChangesAsync();
+
+            // 여기서 새로 DTO로 변환하지 않고, 기존 메서드 재사용
+            return await GetHeroListAsync(new HeroListReq { Jwt = request.Jwt });
         }
     }
 }

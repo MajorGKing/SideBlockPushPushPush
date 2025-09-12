@@ -47,5 +47,12 @@ namespace AccountServer.Controllers
         {
             return await _heroService.GetHeroListAsync(req);
         }
+
+        [HttpPost]
+        [Route("hero/nowHeroChange")]
+        public async Task<HeroListRes> HeroSelectedChange([FromBody] HeroNowChangeReq req)
+        {
+            return await _heroService.ChangeSelectedHeroAsync(req);
+        }
     }
 }

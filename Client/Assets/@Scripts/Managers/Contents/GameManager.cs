@@ -11,7 +11,7 @@ using static Define;
 
 public class GameManager
 {
-    #region PlayerData
+    #region WebPlayerData
     private PlayerData _playerData = new PlayerData();
     public PlayerData PlayerData => _playerData;
 
@@ -28,6 +28,9 @@ public class GameManager
         // TODO ILHAK UI정보 갱신하기
     }
 
+    #endregion
+
+    #region WebCurrency
     private int[] _currency = new int[Enum.GetValues(typeof(CurrencyType)).Length];
 
     public int[] Currency => _currency;
@@ -62,7 +65,9 @@ public class GameManager
     {
         return _currency[(int)type];
     }
+    #endregion
 
+    #region WebHero
     private List<HeroDTO> _heroData = new List<HeroDTO>();
     public List<HeroDTO> HeroData => _heroData;
     public void UpdateHeroData(List<HeroDTO> data)
@@ -86,10 +91,28 @@ public class GameManager
             };
 
             _heroData.Add(copy);
+
+            if (copy.IsSelected)
+            {
+                NowHero = copy.TemplateId;
+            }
         }
 
         Debug.Log($"HeroData updated. Total heroes: {_heroData.Count}");
     }
+
+    public HeroDTO GetHeroData(int tempalteId)
+    {
+        foreach (var hero in HeroData)
+        {
+            if (hero.TemplateId == tempalteId)
+                return hero;
+        }
+
+        return null;
+    }
+
+
 
     #endregion
 
@@ -157,17 +180,38 @@ public class GameManager
             if (value == NowHero)
                 return;
 
-            // 기존 선택 영웅 취소
-            if (_gameData.HeroSaves.ContainsKey(NowHero))
+            if (NowHero == 0)
             {
-                _gameData.HeroSaves[NowHero].isSelected = false;
+                _nowHero = value;
+                return;
             }
 
+            // 기존 선택 영웅 취소
+            //if (_gameData.HeroSaves.ContainsKey(NowHero))
+            //{
+            //    _gameData.HeroSaves[NowHero].isSelected = false;
+            //}
+
             // 새로운 영웅 선택으로
-            _nowHero = value;
-            _gameData.HeroSaves[NowHero].isSelected = true;
-            OnNowHeroChanged?.Invoke();
-            SaveGame();
+            // Web통신으로 변경
+            var req = new HeroNowChangeReq { Jwt = Managers.Web.jwt, TemplateId = value };
+            Managers.Web.SendPostRequest<HeroListRes>("api/game/hero/nowHeroChange", req, (res) =>
+            {
+                if (res.Success)
+                {
+                    _nowHero = value;
+                    OnNowHeroChanged?.Invoke();
+                    
+                }
+                else
+                {
+                    Debug.LogError($"error.");
+                }
+            });
+            //_nowHero = value;
+            //_gameData.HeroSaves[NowHero].isSelected = true;
+            //OnNowHeroChanged?.Invoke();
+            //SaveGame();
         }
     }
 

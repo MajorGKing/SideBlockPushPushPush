@@ -82,7 +82,7 @@ public class LoadingScene : BaseScene
     {
         var req = new HeroListReq()
         {
-            jwt = Managers.Web.jwt,
+            Jwt = Managers.Web.jwt,
         };
 
         Managers.Web.SendPostRequest<HeroListRes>("api/game/hero", req, (res) =>

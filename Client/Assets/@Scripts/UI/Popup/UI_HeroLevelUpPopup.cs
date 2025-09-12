@@ -83,7 +83,7 @@ public class UI_HeroLevelUpPopup : UI_Popup
         {
             GetGameObject((int)Objects.HeroContent).DestroyChildren();
 
-            var heroes = Managers.Game.heroes;
+            var heroes = Managers.Game.HeroData;
             foreach( var hero in heroes )
             {
                 if (hero == null) continue;
@@ -115,11 +115,11 @@ public class UI_HeroLevelUpPopup : UI_Popup
             GetText((int)Texts.Text_HeroMagic).text = $"Magic : {nowHeroData.MagicAttack}";
 
             // exp
-            var nowHeroSaveData = Managers.Game.GetHeroSaveData(nowHeroIndex);
+            var nowHeroSaveData = Managers.Game.GetHeroData(nowHeroIndex);
             if (Managers.Data.HeroDataDic[nowHeroSaveData.TemplateId].LevelUpCurrencies.Count != 0)
             {
                 expBar.gameObject.SetActive(true);
-                expBar.SetInfo(nowHeroSaveData.nowExp, nowHeroSaveData.maxExp, true);
+                expBar.SetInfo(nowHeroSaveData.NowExp, nowHeroSaveData.MaxExp, true);
                 GetButton((int)Buttons.Button_HeroLevelUp).interactable = true;
             }
             else
@@ -132,7 +132,7 @@ public class UI_HeroLevelUpPopup : UI_Popup
             // skill
             GetGameObject((int)Objects.HeroSKillContent).DestroyChildren();
 
-            foreach(var templateId in nowHeroSaveData.SkillTemplateId)
+            foreach(var templateId in nowHeroSaveData.SkillTemplateIds)
             {
                 if (templateId == 0) continue;
 

@@ -148,7 +148,7 @@ namespace WebPacket
 
     public class HeroListReq
     {
-        public string jwt { get; set; } = string.Empty;
+        public string Jwt { get; set; } = string.Empty;
     }
 
     public class HeroListRes
@@ -156,5 +156,11 @@ namespace WebPacket
         public bool Success { get; set; }
         public string Message { get; set; } = string.Empty;
         public List<HeroDTO> Heroes { get; set; } = new List<HeroDTO>();
+    }
+
+    public class HeroNowChangeReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+        public int TemplateId { get; set; }
     }
 }
