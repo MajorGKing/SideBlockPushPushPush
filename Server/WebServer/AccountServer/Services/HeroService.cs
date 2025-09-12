@@ -168,7 +168,14 @@ namespace AccountServer.Services
         public async Task<HeroListRes> LevelUpHeroAsync(HeroLevelUpReq request)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
-            var player = await GetPlayerDbFromAccountDbId(accountDbId);
+
+            // Step 0: Begin transaction to ensure atomicity
+            await using var transaction = await _dbContext.Database.BeginTransactionAsync();
+
+            // Step 1: Load player with heroes inside transaction
+            var player = await _dbContext.Players
+                .Include(p => p.Heroes)
+                .FirstOrDefaultAsync(p => p.PlayerDbId == accountDbId);
 
             if (player == null)
             {
@@ -179,7 +186,7 @@ namespace AccountServer.Services
                 };
             }
 
-            // 1. Find Hero Data
+            // Step 2: Find the hero
             var hero = player.Heroes.FirstOrDefault(h => h.TemplateId == request.TemplateId);
             if (hero == null)
             {
@@ -190,6 +197,7 @@ namespace AccountServer.Services
                 };
             }
 
+            // Step 3: Get hero data
             if (!DataManager.HeroDataDic.TryGetValue(request.TemplateId, out var heroData))
             {
                 return new HeroListRes
@@ -199,7 +207,7 @@ namespace AccountServer.Services
                 };
             }
 
-            // 2. Check if next level exists
+            // Step 4: Check if next level exists
             if (heroData.NextLevelId == 0)
             {
                 return new HeroListRes
@@ -209,32 +217,86 @@ namespace AccountServer.Services
                 };
             }
 
-            // 3. Check currency availability
+            // Step 5: Load currency inside transaction
+            var currencyDb = await _dbContext.Currencies.FirstOrDefaultAsync(c => c.PlayerDbId == accountDbId);
+            if (currencyDb == null)
+            {
+                return new HeroListRes
+                {
+                    Success = false,
+                    Message = "Currency data not found."
+                };
+            }
+
+            // Step 6: Check if player has enough currency
             foreach (var currency in heroData.LevelUpCurrencies)
             {
                 if (currency.currencyType == Define.ECurrencyType.None)
                     continue;
 
-                if (currency.count > await _currency.GetCurrency(accountDbId, currency.currencyType).ConfigureAwait(false))
+                int balance = currency.currencyType switch
+                {
+                    Define.ECurrencyType.Gold => currencyDb.Gold,
+                    Define.ECurrencyType.Dia => currencyDb.Dia,
+                    Define.ECurrencyType.BlueGem => currencyDb.BlueGem,
+                    Define.ECurrencyType.GreenGem => currencyDb.GreenGem,
+                    Define.ECurrencyType.YellowGem => currencyDb.YellowGem,
+                    Define.ECurrencyType.StoneArmor => currencyDb.StoneArmor,
+                    Define.ECurrencyType.StoneBelt => currencyDb.StoneBelt,
+                    Define.ECurrencyType.StoneBoots => currencyDb.StoneBoots,
+                    Define.ECurrencyType.StoneGloves => currencyDb.StoneGloves,
+                    Define.ECurrencyType.StoneRing => currencyDb.StoneRing,
+                    Define.ECurrencyType.StoneWeapon => currencyDb.StoneWeapon,
+                    Define.ECurrencyType.Exp => currencyDb.Exp,
+                    Define.ECurrencyType.ScrollArmor => currencyDb.ScrollArmor,
+                    Define.ECurrencyType.ScrollBelt => currencyDb.ScrollBelt,
+                    Define.ECurrencyType.ScrollBoots => currencyDb.ScrollBoots,
+                    Define.ECurrencyType.ScrollGloves => currencyDb.ScrollGloves,
+                    Define.ECurrencyType.ScrollRing => currencyDb.ScrollRing,
+                    Define.ECurrencyType.ScrollWeapon => currencyDb.ScrollWeapon,
+                    _ => 0
+                };
+
+                if (balance < currency.count)
                 {
                     return new HeroListRes
                     {
                         Success = false,
-                        Message = "Not enough currency for level up."
+                        Message = "Not enough currency for hero level up."
                     };
                 }
             }
 
-            // 4. Deduct currency
+            // Step 7: Deduct currency
             foreach (var currency in heroData.LevelUpCurrencies)
             {
-                // Define.ECurrencyType은 CurrencyType보다 1 큰 인덱스라고 가정
-                CurrencyType type = (CurrencyType)((int)currency.currencyType - 1);
+                if (currency.currencyType == Define.ECurrencyType.None)
+                    continue;
 
-                await _currency.UpdatePlayerCurrencyAsync(new CurrencyAddReq { jwt = request.Jwt, CurrencyType = type, Amount = -currency.count });
+                switch (currency.currencyType)
+                {
+                    case Define.ECurrencyType.Gold: currencyDb.Gold -= currency.count; break;
+                    case Define.ECurrencyType.Dia: currencyDb.Dia -= currency.count; break;
+                    case Define.ECurrencyType.BlueGem: currencyDb.BlueGem -= currency.count; break;
+                    case Define.ECurrencyType.GreenGem: currencyDb.GreenGem -= currency.count; break;
+                    case Define.ECurrencyType.YellowGem: currencyDb.YellowGem -= currency.count; break;
+                    case Define.ECurrencyType.StoneArmor: currencyDb.StoneArmor -= currency.count; break;
+                    case Define.ECurrencyType.StoneBelt: currencyDb.StoneBelt -= currency.count; break;
+                    case Define.ECurrencyType.StoneBoots: currencyDb.StoneBoots -= currency.count; break;
+                    case Define.ECurrencyType.StoneGloves: currencyDb.StoneGloves -= currency.count; break;
+                    case Define.ECurrencyType.StoneRing: currencyDb.StoneRing -= currency.count; break;
+                    case Define.ECurrencyType.StoneWeapon: currencyDb.StoneWeapon -= currency.count; break;
+                    case Define.ECurrencyType.Exp: currencyDb.Exp -= currency.count; break;
+                    case Define.ECurrencyType.ScrollArmor: currencyDb.ScrollArmor -= currency.count; break;
+                    case Define.ECurrencyType.ScrollBelt: currencyDb.ScrollBelt -= currency.count; break;
+                    case Define.ECurrencyType.ScrollBoots: currencyDb.ScrollBoots -= currency.count; break;
+                    case Define.ECurrencyType.ScrollGloves: currencyDb.ScrollGloves -= currency.count; break;
+                    case Define.ECurrencyType.ScrollRing: currencyDb.ScrollRing -= currency.count; break;
+                    case Define.ECurrencyType.ScrollWeapon: currencyDb.ScrollWeapon -= currency.count; break;
+                }
             }
 
-            // 5. Level up hero
+            // Step 8: Level up hero
             hero.TemplateId = heroData.NextLevelId;
 
             if (!DataManager.HeroDataDic.TryGetValue(hero.TemplateId, out var nextHeroData))
@@ -246,18 +308,15 @@ namespace AccountServer.Services
                 };
             }
 
-            // Update MaxExp for new level
             hero.MaxExp = nextHeroData.LevelUpCurrency1Count;
-            hero.NowExp = 0; // reset exp
+            hero.NowExp = 0;
 
-            // Sync skills
+            // Step 9: Sync skills
             var orgSkillIds = hero.SkillTemplateId
                 .Select(id => DataManager.HeroSkillDataDic[id].OriginalLevelId)
                 .ToList();
 
-            // becuse SkillTemplateId is [NotMapped]
             var skills = hero.SkillTemplateId.ToList();
-
             foreach (var skillId in nextHeroData.SKillIds)
             {
                 var originalId = DataManager.HeroSkillDataDic[skillId].OriginalLevelId;
@@ -266,22 +325,31 @@ namespace AccountServer.Services
                     skills.Add(skillId);
                 }
             }
-
             hero.SkillTemplateId = skills;
 
-            // 6. Save changes
+            // Step 10: Save changes and commit transaction
             await _dbContext.SaveChangesAsync();
+            await transaction.CommitAsync();
 
-            // 7. Return updated hero list
+            // Step 11: Return updated hero list
             return await GetHeroListAsync(new HeroListReq { Jwt = request.Jwt });
         }
 
+
         public async Task<HeroListRes> HeroSkillUpAsync(HeroSkillLevelUpReq request)
         {
+            // Step 1: Get account ID from JWT
             var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
-            var player = await GetPlayerDbFromAccountDbId(accountDbId);
 
-            if (player == null)
+            // Step 2: Begin a transaction to ensure atomicity
+            await using var transaction = await _dbContext.Database.BeginTransactionAsync();
+
+            // Step 3: Reload player with heroes inside transaction
+            var player = await _dbContext.Players
+                .Include(p => p.Heroes)
+                .FirstOrDefaultAsync(p => p.PlayerDbId == accountDbId);
+
+            if (player == null) // Step 4: Check if player exists
             {
                 return new HeroListRes
                 {
@@ -290,7 +358,7 @@ namespace AccountServer.Services
                 };
             }
 
-            // 1. Find the hero
+            // Step 5: Find the hero
             var hero = player.Heroes.FirstOrDefault(h => h.TemplateId == request.HeroTemplateId);
             if (hero == null)
             {
@@ -301,17 +369,17 @@ namespace AccountServer.Services
                 };
             }
 
-            // 2. Validate skill exists
+            // Step 6: Validate skill exists
             if (!DataManager.HeroSkillDataDic.TryGetValue(request.HeroSkillTemplateId, out var skillData))
             {
                 return new HeroListRes
                 {
                     Success = false,
-                    Message = $"Skill {request.HeroSkillTemplateId} not found in DataManager."
+                    Message = $"Skill {request.HeroSkillTemplateId} not found."
                 };
             }
 
-            // 3. Check if skill can level up
+            // Step 7: Check if skill can level up
             if (skillData.NextLevelId == 0)
             {
                 return new HeroListRes
@@ -321,9 +389,9 @@ namespace AccountServer.Services
                 };
             }
 
+            // Step 8: Prepare skill list
             var skillList = hero.SkillTemplateId.ToList();
             var skillIndex = skillList.IndexOf(request.HeroSkillTemplateId);
-
             if (skillIndex == -1)
             {
                 return new HeroListRes
@@ -333,14 +401,49 @@ namespace AccountServer.Services
                 };
             }
 
-            // 4. Check currency
+            // Step 9: Load currency inside transaction
+            var currencyDb = await _dbContext.Currencies
+                .FirstOrDefaultAsync(c => c.PlayerDbId == accountDbId);
+
+            if (currencyDb == null)
+            {
+                return new HeroListRes
+                {
+                    Success = false,
+                    Message = "Currency data not found."
+                };
+            }
+
+            // Step 10: Check if player has enough currency
             foreach (var currency in skillData.LevelUpCurrencies)
             {
                 if (currency.currencyType == Define.ECurrencyType.None)
                     continue;
 
-                var balance = await _currency.GetCurrency(accountDbId, currency.currencyType);
-                if (currency.count > balance)
+                int balance = currency.currencyType switch
+                {
+                    Define.ECurrencyType.Gold => currencyDb.Gold,
+                    Define.ECurrencyType.Dia => currencyDb.Dia,
+                    Define.ECurrencyType.BlueGem => currencyDb.BlueGem,
+                    Define.ECurrencyType.GreenGem => currencyDb.GreenGem,
+                    Define.ECurrencyType.YellowGem => currencyDb.YellowGem,
+                    Define.ECurrencyType.StoneArmor => currencyDb.StoneArmor,
+                    Define.ECurrencyType.StoneBelt => currencyDb.StoneBelt,
+                    Define.ECurrencyType.StoneBoots => currencyDb.StoneBoots,
+                    Define.ECurrencyType.StoneGloves => currencyDb.StoneGloves,
+                    Define.ECurrencyType.StoneRing => currencyDb.StoneRing,
+                    Define.ECurrencyType.StoneWeapon => currencyDb.StoneWeapon,
+                    Define.ECurrencyType.Exp => currencyDb.Exp,
+                    Define.ECurrencyType.ScrollArmor => currencyDb.ScrollArmor,
+                    Define.ECurrencyType.ScrollBelt => currencyDb.ScrollBelt,
+                    Define.ECurrencyType.ScrollBoots => currencyDb.ScrollBoots,
+                    Define.ECurrencyType.ScrollGloves => currencyDb.ScrollGloves,
+                    Define.ECurrencyType.ScrollRing => currencyDb.ScrollRing,
+                    Define.ECurrencyType.ScrollWeapon => currencyDb.ScrollWeapon,
+                    _ => 0
+                };
+
+                if (balance < currency.count) // Not enough currency
                 {
                     return new HeroListRes
                     {
@@ -350,29 +453,47 @@ namespace AccountServer.Services
                 }
             }
 
-            // 5. Deduct currency
+            // Step 11: Deduct currency
             foreach (var currency in skillData.LevelUpCurrencies)
             {
                 if (currency.currencyType == Define.ECurrencyType.None)
                     continue;
 
-                await _currency.UpdatePlayerCurrencyAsync(new CurrencyAddReq
+                switch (currency.currencyType)
                 {
-                    jwt = request.Jwt,
-                    CurrencyType = (CurrencyType)((int)currency.currencyType - 1),
-                    Amount = -currency.count
-                });
+                    case Define.ECurrencyType.Gold: currencyDb.Gold -= currency.count; break;
+                    case Define.ECurrencyType.Dia: currencyDb.Dia -= currency.count; break;
+                    case Define.ECurrencyType.BlueGem: currencyDb.BlueGem -= currency.count; break;
+                    case Define.ECurrencyType.GreenGem: currencyDb.GreenGem -= currency.count; break;
+                    case Define.ECurrencyType.YellowGem: currencyDb.YellowGem -= currency.count; break;
+                    case Define.ECurrencyType.StoneArmor: currencyDb.StoneArmor -= currency.count; break;
+                    case Define.ECurrencyType.StoneBelt: currencyDb.StoneBelt -= currency.count; break;
+                    case Define.ECurrencyType.StoneBoots: currencyDb.StoneBoots -= currency.count; break;
+                    case Define.ECurrencyType.StoneGloves: currencyDb.StoneGloves -= currency.count; break;
+                    case Define.ECurrencyType.StoneRing: currencyDb.StoneRing -= currency.count; break;
+                    case Define.ECurrencyType.StoneWeapon: currencyDb.StoneWeapon -= currency.count; break;
+                    case Define.ECurrencyType.Exp: currencyDb.Exp -= currency.count; break;
+                    case Define.ECurrencyType.ScrollArmor: currencyDb.ScrollArmor -= currency.count; break;
+                    case Define.ECurrencyType.ScrollBelt: currencyDb.ScrollBelt -= currency.count; break;
+                    case Define.ECurrencyType.ScrollBoots: currencyDb.ScrollBoots -= currency.count; break;
+                    case Define.ECurrencyType.ScrollGloves: currencyDb.ScrollGloves -= currency.count; break;
+                    case Define.ECurrencyType.ScrollRing: currencyDb.ScrollRing -= currency.count; break;
+                    case Define.ECurrencyType.ScrollWeapon: currencyDb.ScrollWeapon -= currency.count; break;
+                }
             }
 
-            // 6. Upgrade skill
+            // Step 12: Upgrade skill
             skillList[skillIndex] = skillData.NextLevelId;
             hero.SkillTemplateId = skillList;
 
-            // 7. Save changes
+            // Step 13: Save changes and commit transaction
             await _dbContext.SaveChangesAsync();
+            await transaction.CommitAsync();
 
-            // 8. Return updated hero list
+            // Step 14: Return updated hero list
             return await GetHeroListAsync(new HeroListReq { Jwt = request.Jwt });
         }
+
+
     }
 }
