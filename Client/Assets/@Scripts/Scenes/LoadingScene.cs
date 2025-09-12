@@ -90,7 +90,7 @@ public class LoadingScene : BaseScene
             // 4. 서버 응답을 처리하는 콜백 함수입니다.
             if (res.Success)
             {
-                Debug.Log($"Hero templatedID 1 : {res.Heroes[0].TemplateId}");
+                Managers.Game.UpdateHeroData(res.Heroes);
 
                 //Managers.Game.UpdateCurrency(res.currencyData);
 

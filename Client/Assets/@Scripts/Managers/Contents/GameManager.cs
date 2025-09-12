@@ -63,7 +63,33 @@ public class GameManager
         return _currency[(int)type];
     }
 
+    private List<HeroDTO> _heroData = new List<HeroDTO>();
+    public List<HeroDTO> HeroData => _heroData;
+    public void UpdateHeroData(List<HeroDTO> data)
+    {
+        if (data == null) return;
 
+        // 기존 리스트를 지우고 새 데이터로 교체
+        _heroData.Clear();
+
+        foreach (var hero in data)
+        {
+            // 깊은 복사를 위해 새로운 객체 생성
+            var copy = new HeroDTO
+            {
+                HeroSaveDataDbId = hero.HeroSaveDataDbId,
+                TemplateId = hero.TemplateId,
+                SkillTemplateIds = new List<int>(hero.SkillTemplateIds),
+                IsSelected = hero.IsSelected,
+                NowExp = hero.NowExp,
+                MaxExp = hero.MaxExp
+            };
+
+            _heroData.Add(copy);
+        }
+
+        Debug.Log($"HeroData updated. Total heroes: {_heroData.Count}");
+    }
 
     #endregion
 
