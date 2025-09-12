@@ -77,6 +77,8 @@ public class UI_HeroSkillUpSubItem : UI_SubItem
         if (templateId == 0)
             return;
 
+        GetButton((int)Buttons.Button_SkillUp).interactable = false;
+
         var skillData = Managers.Data.HeroSkillDataDic[templateId];
 
         // skill image
@@ -122,10 +124,18 @@ public class UI_HeroSkillUpSubItem : UI_SubItem
             heroSkillUpCurrencies[i].gameObject.SetActive(true);
             heroSkillUpCurrencies[i].SetInfo(skillData.LevelUpCurrencies[i].currencyType, skillData.LevelUpCurrencies[i].count, false);
         }
+
+        if(skillData.LevelUpCurrencies.Count > 0)
+        {
+            GetButton((int)Buttons.Button_SkillUp).interactable = true;
+        }
     }
 
     private void OnClickedSkillUpButton(PointerEventData eventData)
     {
+        if (GetButton((int)Buttons.Button_SkillUp).interactable == false)
+            return;
+
         Managers.Game.HeroSkillUp(templateId);
     }
 }

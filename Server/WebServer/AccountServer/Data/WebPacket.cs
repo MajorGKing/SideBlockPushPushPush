@@ -145,3 +145,10 @@ public class HeroLevelUpReq
     public int TemplateId { get; set; } // 현재 선택된 영웅 TemplateId
 }
 
+public class HeroSkillLevelUpReq
+{
+    public string Jwt { get; set; } = string.Empty;
+    public int HeroTemplateId { get; set; } // 현재 선택된 영웅 TemplateId
+    public int HeroSkillTemplateId { get; set; } // 레벨업할 영웅 스킬 TemplateId
+}
+

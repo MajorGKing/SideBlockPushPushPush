@@ -282,7 +282,7 @@ public class GameManager
         Debug.Log("Try Hero Level Up");
         // Web통신으로 변경
         var req = new HeroLevelUpReq { Jwt = Managers.Web.jwt, TemplateId = NowHero };
-        Managers.Web.SendPostRequest<HeroListRes>("api/game/hero/HeroLevelUp", req, (res) =>
+        Managers.Web.SendPostRequest<HeroListRes>("api/game/hero/heroLevelUp", req, (res) =>
         {
             if (res.Success)
             {
@@ -368,74 +368,95 @@ public class GameManager
 
     public void HeroSkillUp(int skillTemplateId)
     {
-        if (skillTemplateId == 0)
-            return;
-
-        // NowHero의 HeroSaveData에 접근 skill의 templateId를 갱신
-
-        HeroSaveData currentData = new HeroSaveData();
-
-        foreach (var hero in heroes)
+        var req = new HeroSkillLevelUpReq
         {
-            if (hero.TemplateId == NowHero)
-            {
-                currentData = hero;
-                break;
-            }
-        }
+            Jwt = Managers.Web.jwt,
+            HeroTemplateId = NowHero,
+            HeroSkillTemplateId = skillTemplateId
+        };
 
-        if (currentData.TemplateId == 0)
-            return;
-
-        var skillData = Managers.Data.HeroSkillDataDic[skillTemplateId];
-
-        if (skillData == null)
-            return;
-
-        // 업그레이드 가능한지 체크
+        Managers.Web.SendPostRequest<HeroListRes>("api/game/hero/skillLevelUp", req, (res) =>
         {
-            // 다음 레벨로 진행 가능한가
-            if (skillData.NextLevelId == 0)
-                return;
-
-            // 자원은 충분한가
-            var currencies = skillData.LevelUpCurrencies;
-
-            foreach (var currency in currencies)
+            if (res.Success)
             {
-                if (currency.currencyType == Define.ECurrencyType.None)
-                    continue;
-
-                if (currency.count > GetCurrency(currency.currencyType))
-                    return;
+                Debug.Log("Skill upgrade success!");
+                UpdateHeroData(res.Heroes);
+                OnNowHeroChanged?.Invoke();
             }
-
-            // 자원가능하면 자원 빼고 저장
-            foreach (var currency in currencies)
+            else
             {
-                if (currency.currencyType == Define.ECurrencyType.None)
-                    continue;
-
-                AddCurrency(currency.currencyType, -currency.count);
+                Debug.LogError(res.Message);
             }
-        }
+        });
+        // TODO ILHAK WebMission HeroSkillUpMission
 
-        // 선택된 스킬 레벨업
-        {
-            // 로컬값 수정
-            var nowSkillIndex = currentData.SkillTemplateId.IndexOf(skillTemplateId);
-            currentData.SkillTemplateId[nowSkillIndex] = skillData.NextLevelId;
+        //if (skillTemplateId == 0)
+        //    return;
 
-            // 세이브 될 값 수정 - 위에서 링크로 수정되었기 때문에 gameData값도 자동 수정됨
-            //var nowSKillIndexSave = _gameData.BuddySaves[NowBuddy].SkillTemplateId.IndexOf(skillTemplateId);
-            //_gameData.BuddySaves[NowBuddy].SkillTemplateId[nowSKillIndexSave] = skillData.NextLevelId;
+        //// NowHero의 HeroSaveData에 접근 skill의 templateId를 갱신
 
-            SaveGame();
-            OnNowHeroChanged?.Invoke();
+        //HeroSaveData currentData = new HeroSaveData();
 
-            Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.HeroSkillUp, 1);
-        }
+        //foreach (var hero in heroes)
+        //{
+        //    if (hero.TemplateId == NowHero)
+        //    {
+        //        currentData = hero;
+        //        break;
+        //    }
+        //}
 
+        //if (currentData.TemplateId == 0)
+        //    return;
+
+        //var skillData = Managers.Data.HeroSkillDataDic[skillTemplateId];
+
+        //if (skillData == null)
+        //    return;
+
+        //// 업그레이드 가능한지 체크
+        //{
+        //    // 다음 레벨로 진행 가능한가
+        //    if (skillData.NextLevelId == 0)
+        //        return;
+
+        //    // 자원은 충분한가
+        //    var currencies = skillData.LevelUpCurrencies;
+
+        //    foreach (var currency in currencies)
+        //    {
+        //        if (currency.currencyType == Define.ECurrencyType.None)
+        //            continue;
+
+        //        if (currency.count > GetCurrency(currency.currencyType))
+        //            return;
+        //    }
+
+        //    // 자원가능하면 자원 빼고 저장
+        //    foreach (var currency in currencies)
+        //    {
+        //        if (currency.currencyType == Define.ECurrencyType.None)
+        //            continue;
+
+        //        AddCurrency(currency.currencyType, -currency.count);
+        //    }
+        //}
+
+        //// 선택된 스킬 레벨업
+        //{
+        //    // 로컬값 수정
+        //    var nowSkillIndex = currentData.SkillTemplateId.IndexOf(skillTemplateId);
+        //    currentData.SkillTemplateId[nowSkillIndex] = skillData.NextLevelId;
+
+        //    // 세이브 될 값 수정 - 위에서 링크로 수정되었기 때문에 gameData값도 자동 수정됨
+        //    //var nowSKillIndexSave = _gameData.BuddySaves[NowBuddy].SkillTemplateId.IndexOf(skillTemplateId);
+        //    //_gameData.BuddySaves[NowBuddy].SkillTemplateId[nowSKillIndexSave] = skillData.NextLevelId;
+
+        //    SaveGame();
+        //    OnNowHeroChanged?.Invoke();
+
+        //    Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.HeroSkillUp, 1);
+        //}
     }
     #endregion
 

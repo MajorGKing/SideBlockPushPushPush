@@ -56,16 +56,22 @@ public class UI_HeroLevelUpPopup : UI_Popup
         Managers.Game.OnNowHeroChanged -= SetInfo;
         Managers.Game.OnNowHeroChanged += SetInfo;
 
+        Managers.Game.OnCurrenciesChagned -= SetInfo;
+        Managers.Game.OnCurrenciesChagned += SetInfo;
+
         RefreshUI();
     }
 
     private void OnDisable()
     {
         Managers.Game.OnNowHeroChanged -= SetInfo;
+
+        Managers.Game.OnCurrenciesChagned -= SetInfo;
     }
 
     public void SetInfo()
     {
+        Debug.Log("UILevelUpRefresh");
         RefreshUI();
     }
 
@@ -128,7 +134,6 @@ public class UI_HeroLevelUpPopup : UI_Popup
                 expBar.gameObject.SetActive(false);
                 GetButton((int)Buttons.Button_HeroLevelUp).interactable = false;
             }
-            
 
             // skill
             GetGameObject((int)Objects.HeroSKillContent).DestroyChildren();

@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.EventSystems;
 using WebPacket;
 using Object = UnityEngine.Object;
@@ -38,19 +38,19 @@ public class UI_TitleScene : UI_Scene
 				case TitleSceneState.None:
 					break;
 				case TitleSceneState.AssetLoading:
-					GetText((int)Texts.StatusText).text = $"TODO ·ÎµùÁß";
+					GetText((int)Texts.StatusText).text = $"TODO ë¡œë”©ì¤‘";
 					break;
 				case TitleSceneState.AssetLoaded:
-					GetText((int)Texts.StatusText).text = "TODO ·Îµù ¿Ï·á";
+					GetText((int)Texts.StatusText).text = "TODO ë¡œë”© ì™„ë£Œ";
 					break;
 				case TitleSceneState.ConnectingToServer:
-					GetText((int)Texts.StatusText).text = "TODO ¼­¹ö Á¢¼ÓÁß";
+					GetText((int)Texts.StatusText).text = "TODO ì„œë²„ ì ‘ì†ì¤‘";
 					break;
 				case TitleSceneState.ConnectedToServer:
-					GetText((int)Texts.StatusText).text = "TODO ¼­¹ö Á¢¼Ó ¼º°ø";
+					GetText((int)Texts.StatusText).text = "TODO ì„œë²„ ì ‘ì† ì„±ê³µ";
 					break;
 				case TitleSceneState.FailedToConnectToServer:
-					GetText((int)Texts.StatusText).text = "TODO ¼­¹ö Á¢¼Ó ½ÇÆĞ";
+					GetText((int)Texts.StatusText).text = "TODO ì„œë²„ ì ‘ì† ì‹¤íŒ¨";
 					break;
 			}
 		}
@@ -74,14 +74,14 @@ public class UI_TitleScene : UI_Scene
 	{
 		base.Start();
 
-		// Load ½ÃÀÛ
+		// Load ì‹œì‘
 		State = TitleSceneState.AssetLoading;
 
 		Managers.Resource.LoadAllAsync<Object>("Preload", (key, count, totalCount) =>
 		{
-			GetText((int)Texts.StatusText).text = $"TODO ·ÎµùÁß : {key} {count}/{totalCount}";
+			GetText((int)Texts.StatusText).text = $"TODO ë¡œë”©ì¤‘ : {key} {count}/{totalCount}";
 
-			Debug.Log($"TODO ·ÎµùÁß : {key} {count}/{totalCount}");
+			Debug.Log($"TODO ë¡œë”©ì¤‘ : {key} {count}/{totalCount}");
 
 			if (count == totalCount)
 			{
@@ -104,24 +104,24 @@ public class UI_TitleScene : UI_Scene
 
         
 
-		// Guest·Î±×ÀÎ ¼öÇà
+		// Guestë¡œê·¸ì¸ ìˆ˜í–‰
 		{
-            // 1. µğ¹ÙÀÌ½ºÀÇ °íÀ¯ ID¸¦ °¡Á®¿É´Ï´Ù.
+            // 1. ë””ë°”ì´ìŠ¤ì˜ ê³ ìœ  IDë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤.
             string uniqueId = SystemInfo.deviceUniqueIdentifier;
             Debug.Log($"Device Unique ID: {uniqueId}");
 
-            // 2. ¿äÃ» ÆĞÅ¶À» ¸¸µì´Ï´Ù.
+            // 2. ìš”ì²­ íŒ¨í‚·ì„ ë§Œë“­ë‹ˆë‹¤.
             var req = new LoginAccountPacketReq
             {
-                userId = "10",
-                token = "" // °Ô½ºÆ® ·Î±×ÀÎÀÌ¹Ç·Î ÅäÅ«Àº ºñ¿öµÓ´Ï´Ù.
+                userId = "19",
+                token = "" // ê²ŒìŠ¤íŠ¸ ë¡œê·¸ì¸ì´ë¯€ë¡œ í† í°ì€ ë¹„ì›Œë‘¡ë‹ˆë‹¤.
             };
 
 
-            // 3. WebManager¸¦ ÅëÇØ POST ¿äÃ»À» º¸³À´Ï´Ù. "api/account/login/guestt"
+            // 3. WebManagerë¥¼ í†µí•´ POST ìš”ì²­ì„ ë³´ëƒ…ë‹ˆë‹¤. "api/account/login/guestt"
             Managers.Web.SendPostRequest<LoginAccountPacketRes>("api/account/login/guest", req, (res) =>
             {
-                // 4. ¼­¹ö ÀÀ´äÀ» Ã³¸®ÇÏ´Â Äİ¹é ÇÔ¼öÀÔ´Ï´Ù.
+                // 4. ì„œë²„ ì‘ë‹µì„ ì²˜ë¦¬í•˜ëŠ” ì½œë°± í•¨ìˆ˜ì…ë‹ˆë‹¤.
                 if (res.success)
                 {
                     Debug.Log($"Guest Login Success! AccountDbId: {res.accountDbId}");

@@ -275,5 +275,104 @@ namespace AccountServer.Services
             // 7. Return updated hero list
             return await GetHeroListAsync(new HeroListReq { Jwt = request.Jwt });
         }
+
+        public async Task<HeroListRes> HeroSkillUpAsync(HeroSkillLevelUpReq request)
+        {
+            var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
+            var player = await GetPlayerDbFromAccountDbId(accountDbId);
+
+            if (player == null)
+            {
+                return new HeroListRes
+                {
+                    Success = false,
+                    Message = $"Player {accountDbId} not found."
+                };
+            }
+
+            // 1. Find the hero
+            var hero = player.Heroes.FirstOrDefault(h => h.TemplateId == request.HeroTemplateId);
+            if (hero == null)
+            {
+                return new HeroListRes
+                {
+                    Success = false,
+                    Message = $"Hero {request.HeroTemplateId} not found."
+                };
+            }
+
+            // 2. Validate skill exists
+            if (!DataManager.HeroSkillDataDic.TryGetValue(request.HeroSkillTemplateId, out var skillData))
+            {
+                return new HeroListRes
+                {
+                    Success = false,
+                    Message = $"Skill {request.HeroSkillTemplateId} not found in DataManager."
+                };
+            }
+
+            // 3. Check if skill can level up
+            if (skillData.NextLevelId == 0)
+            {
+                return new HeroListRes
+                {
+                    Success = false,
+                    Message = "This skill cannot level up further."
+                };
+            }
+
+            var skillList = hero.SkillTemplateId.ToList();
+            var skillIndex = skillList.IndexOf(request.HeroSkillTemplateId);
+
+            if (skillIndex == -1)
+            {
+                return new HeroListRes
+                {
+                    Success = false,
+                    Message = $"Hero does not have skill {request.HeroSkillTemplateId}."
+                };
+            }
+
+            // 4. Check currency
+            foreach (var currency in skillData.LevelUpCurrencies)
+            {
+                if (currency.currencyType == Define.ECurrencyType.None)
+                    continue;
+
+                var balance = await _currency.GetCurrency(accountDbId, currency.currencyType);
+                if (currency.count > balance)
+                {
+                    return new HeroListRes
+                    {
+                        Success = false,
+                        Message = "Not enough currency for skill upgrade."
+                    };
+                }
+            }
+
+            // 5. Deduct currency
+            foreach (var currency in skillData.LevelUpCurrencies)
+            {
+                if (currency.currencyType == Define.ECurrencyType.None)
+                    continue;
+
+                await _currency.UpdatePlayerCurrencyAsync(new CurrencyAddReq
+                {
+                    jwt = request.Jwt,
+                    CurrencyType = (CurrencyType)((int)currency.currencyType - 1),
+                    Amount = -currency.count
+                });
+            }
+
+            // 6. Upgrade skill
+            skillList[skillIndex] = skillData.NextLevelId;
+            hero.SkillTemplateId = skillList;
+
+            // 7. Save changes
+            await _dbContext.SaveChangesAsync();
+
+            // 8. Return updated hero list
+            return await GetHeroListAsync(new HeroListReq { Jwt = request.Jwt });
+        }
     }
 }

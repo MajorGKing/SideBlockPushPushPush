@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -40,7 +40,7 @@ namespace WebPacket
     }
 
     [Serializable]
-    // Player Å×ÀÌºíÀÇ µ¥ÀÌÅÍ¸¦ ´ã´Â DTO(Data Transfer Object)
+    // Player í…Œì´ë¸”ì˜ ë°ì´í„°ë¥¼ ë‹´ëŠ” DTO(Data Transfer Object)
     public class PlayerData
     {
         public int PlayerDbId { get; set; }
@@ -61,13 +61,13 @@ namespace WebPacket
     [Serializable]
     public class PlayerPacketRes
     {
-        // ¿äÃ» ¼º°ø ¿©ºÎ
+        // ìš”ì²­ ì„±ê³µ ì—¬ë¶€
         public bool Success { get; set; }
 
-        // ÀÀ´ä ¸Ş½ÃÁö (¼±ÅÃ »çÇ×)
+        // ì‘ë‹µ ë©”ì‹œì§€ (ì„ íƒ ì‚¬í•­)
         public string Message { get; set; }
 
-        // ÇÃ·¹ÀÌ¾îÀÇ ÇÙ½É µ¥ÀÌÅÍ¸¦ ´ã´Â Å¬·¡½º
+        // í”Œë ˆì´ì–´ì˜ í•µì‹¬ ë°ì´í„°ë¥¼ ë‹´ëŠ” í´ë˜ìŠ¤
         public PlayerData PlayerData { get; set; }
     }
 
@@ -123,7 +123,7 @@ namespace WebPacket
 
     public class CurrencyAllRes
     {
-        // ¿äÃ» ¼º°ø ¿©ºÎ
+        // ìš”ì²­ ì„±ê³µ ì—¬ë¶€
         public bool Success { get; set; }
         [AllowNull]
         public CurrencyData currencyData { get; set; }
@@ -167,6 +167,13 @@ namespace WebPacket
     public class HeroLevelUpReq
     {
         public string Jwt { get; set; } = string.Empty;
-        public int TemplateId { get; set; } // ÇöÀç ¼±ÅÃµÈ ¿µ¿õ TemplateId
+        public int TemplateId { get; set; } // í˜„ì¬ ì„ íƒëœ ì˜ì›… TemplateId
+    }
+
+    public class HeroSkillLevelUpReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+        public int HeroTemplateId { get; set; } // í˜„ì¬ ì„ íƒëœ ì˜ì›… TemplateId
+        public int HeroSkillTemplateId { get; set; } // ë ˆë²¨ì—…í•  ì˜ì›… ìŠ¤í‚¬ TemplateId
     }
 }
