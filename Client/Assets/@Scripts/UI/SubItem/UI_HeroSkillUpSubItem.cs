@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Data;
 using System.Collections.Generic;
 using UnityEngine;
@@ -136,6 +137,6 @@ public class UI_HeroSkillUpSubItem : UI_SubItem
         if (GetButton((int)Buttons.Button_SkillUp).interactable == false)
             return;
 
-        Managers.Game.HeroSkillUp(templateId);
+        Managers.Game.HeroSkillUp(templateId).Forget();
     }
 }

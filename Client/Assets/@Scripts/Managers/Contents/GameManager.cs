@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Data;
 using Newtonsoft.Json;
 using System;
@@ -66,14 +67,14 @@ public class GameManager
         return _currency[(int)type];
     }
 
-    public void UpdateCurrency()
+    public async UniTask UpdateCurrencyAsync()
     {
         var req = new CurrencyAllReq()
         {
             jwt = Managers.Web.jwt,
         };
 
-        Managers.Web.SendPostRequest<CurrencyAllRes>("api/game/currency", req, (res) =>
+        var res = await Managers.Web.SendPostRequestAsync<CurrencyAllRes>("api/game/currency", req);
         {
             // 4. 서버 응답을 처리하는 콜백 함수입니다.
             if (res.Success)
@@ -84,14 +85,14 @@ public class GameManager
             {
                 Debug.LogError($"Get Currency Failed.");
             }
-        });
+        }
     }
     #endregion
 
     #region WebHero
     private List<HeroDTO> _heroData = new List<HeroDTO>();
     public List<HeroDTO> HeroData => _heroData;
-    public void UpdateHeroData(List<HeroDTO> data)
+    public async UniTask UpdateHeroData(List<HeroDTO> data)
     {
         if (data == null) return;
 
@@ -116,7 +117,8 @@ public class GameManager
             if (copy.IsSelected)
             {
                 Debug.Log($"Now Hero Id {copy.TemplateId}");
-                NowHero = copy.TemplateId;
+
+                await NowHeroSetAsync(copy.TemplateId);
             }
         }
 
@@ -197,35 +199,68 @@ public class GameManager
     public int NowHero
     {
         get => _nowHero;
-        set
+        //set
+        //{
+        //    if (value == NowHero)
+        //        return;
+
+        //    if (NowHero == 0)
+        //    {
+        //        _nowHero = value;
+        //        return;
+        //    }
+
+        //    Debug.Log($"Now Hero Changed {_nowHero} to {value}");
+
+        //    // 새로운 영웅 선택으로
+        //    // Web통신으로 변경
+        //    var req = new HeroNowChangeReq { Jwt = Managers.Web.jwt, TemplateId = value };
+        //    Managers.Web.SendPostRequestAsync<HeroListRes>("api/game/hero/nowHeroChange", req).ContinueWith (res =>
+        //    {
+        //        if (res.Success)
+        //        {
+        //            _nowHero = value;
+        //            OnNowHeroChanged?.Invoke();
+        //            Debug.Log($"Now Hero Changed Finish {_nowHero}");
+        //        }
+        //        else
+        //        {
+        //            Debug.LogError($"error.");
+        //        }
+        //    });
+        //}
+    }
+
+    public async UniTask NowHeroSetAsync(int value)
+    {
+        if (value == _nowHero)
         {
-            if (value == NowHero)
-                return;
+            return;
+        }
 
-            if (NowHero == 0)
-            {
-                _nowHero = value;
-                return;
-            }
+        if (_nowHero == 0)
+        {
+            _nowHero = value;
+            return;
+        }
 
-            Debug.Log($"Now Hero Changed {_nowHero} to {value}");
+        //Debug.Log($"Now Hero Changed {_nowHero} to {value}");
 
-            // 새로운 영웅 선택으로
-            // Web통신으로 변경
-            var req = new HeroNowChangeReq { Jwt = Managers.Web.jwt, TemplateId = value };
-            Managers.Web.SendPostRequest<HeroListRes>("api/game/hero/nowHeroChange", req, (res) =>
-            {
-                if (res.Success)
-                {
-                    _nowHero = value;
-                    OnNowHeroChanged?.Invoke();
-                    Debug.Log($"Now Hero Changed Finish {_nowHero}");
-                }
-                else
-                {
-                    Debug.LogError($"error.");
-                }
-            });
+        // 새로운 영웅 선택으로
+        // Web통신으로 변경
+        var req = new HeroNowChangeReq { Jwt = Managers.Web.jwt, TemplateId = value };
+
+        HeroListRes res = await Managers.Web.SendPostRequestAsync<HeroListRes>("api/game/hero/nowHeroChange", req);
+
+        if (res.Success)
+        {
+            _nowHero = value;
+            OnNowHeroChanged?.Invoke();
+            Debug.Log($"Now Hero Changed Finish {_nowHero}");
+        }
+        else
+        {
+            Debug.LogError($"error: {res.Message}");
         }
     }
 
@@ -277,96 +312,28 @@ public class GameManager
     #endregion
 
     #region HeroUp
-    public void HeroLevelUp()
+    public async UniTask HeroLevelUp()
     {
         Debug.Log("Try Hero Level Up");
-        // Web통신으로 변경
         var req = new HeroLevelUpReq { Jwt = Managers.Web.jwt, TemplateId = NowHero };
-        Managers.Web.SendPostRequest<HeroListRes>("api/game/hero/heroLevelUp", req, (res) =>
+        // Await the web request
+        HeroListRes res = await Managers.Web.SendPostRequestAsync<HeroListRes>("api/game/hero/heroLevelUp", req);
+
+        if (res.Success)
         {
-            if (res.Success)
-            {
-                Debug.Log("Success Hero Level Up");
-                UpdateHeroData(res.Heroes);
-            }
-            else
-            {
-                Debug.LogError($"error.");
-            }
-        });
-
-        //var heroData = Managers.Data.HeroDataDic[NowHero];
-        //// 지금 선택된 허어로가 레벨업 가능한지 체크
-        //{
-        //    // 다음 레벨이 있어 레벨업 가능한지 확인
-        //    if (heroData.NextLevelId == 0)
-        //        return;
-
-        //    // 자원 가능한지 체크
-        //    var currencies = heroData.LevelUpCurrencies;
-
-        //    foreach (var currency in currencies)
-        //    {
-        //        if (currency.currencyType == Define.ECurrencyType.None)
-        //            continue;
-
-        //        if (currency.count > GetCurrency(currency.currencyType))
-        //            return;
-        //    }
-
-        //    // 자원가능하면 자원 빼고 저장
-        //    foreach (var currency in currencies)
-        //    {
-        //        if (currency.currencyType == Define.ECurrencyType.None)
-        //            continue;
-
-        //        AddCurrency(currency.currencyType, -currency.count);
-        //    }
-        //}
-
-        //// 선택된 영웅을 레벨업
-        //{
-        //    var heroSavedata = _gameData.HeroSaves[NowHero];
-        //    // 기존 영웅 정보를 삭제
-        //    int removeIndex = RemoveHeroSaveData(NowHero);
-
-        //    // 새로운 영웅 정보를 추가
-        //    {
-        //        heroSavedata.TemplateId = heroData.NextLevelId;
-
-        //        var nextHeroData = Managers.Data.HeroDataDic[heroSavedata.TemplateId];
-
-        //        List<int> orgSkillId = new List<int>();
-
-        //        foreach (int skillId in heroSavedata.SkillTemplateId)
-        //        {
-        //            orgSkillId.Add(Managers.Data.HeroSkillDataDic[skillId].OriginalLevelId);
-        //        }
-
-        //        // 버디의 추가 스킬 정보를 추가
-        //        foreach (var skillId in nextHeroData.SKillIds)
-        //        {
-        //            if (orgSkillId.Contains(Managers.Data.HeroSkillDataDic[skillId].OriginalLevelId) == false)
-        //            {
-        //                heroSavedata.SkillTemplateId.Add(skillId);
-        //            }
-        //        }
-
-        //        AddHeroSaveData(heroSavedata, removeIndex);
-        //    }
-        //}
-
-        //// 레벨업에 따른 정보 갱신
-        //NowHero = heroData.NextLevelId;
-
-        //// 세이브
-        //SaveGame();
+            Debug.Log("Success Hero Level Up");
+            await UpdateHeroData(res.Heroes);
+        }
+        else
+        {
+            Debug.LogError($"error: {res.Message}");
+        }
 
         // TODO ILHAK WebMission
         Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.HeroLevelUp, 1);
     }
 
-    public void HeroSkillUp(int skillTemplateId)
+    public async UniTask HeroSkillUp(int skillTemplateId)
     {
         var req = new HeroSkillLevelUpReq
         {
@@ -375,88 +342,25 @@ public class GameManager
             HeroSkillTemplateId = skillTemplateId
         };
 
-        Managers.Web.SendPostRequest<HeroListRes>("api/game/hero/skillLevelUp", req, (res) =>
+        HeroListRes res = await Managers.Web.SendPostRequestAsync<HeroListRes>("api/game/hero/skillLevelUp", req);
+
+        if (res.Success)
         {
-            if (res.Success)
-            {
-                Debug.Log("Skill upgrade success!");
-                UpdateHeroData(res.Heroes);
-                OnNowHeroChanged?.Invoke();
-            }
-            else
-            {
-                Debug.LogError(res.Message);
-            }
-        });
-        // TODO ILHAK WebMission HeroSkillUpMission
+            Debug.Log("Skill upgrade success!");
 
-        //if (skillTemplateId == 0)
-        //    return;
+            // Update hero data
+            await UpdateHeroData(res.Heroes);
 
-        //// NowHero의 HeroSaveData에 접근 skill의 templateId를 갱신
+            // Trigger hero changed event
+            OnNowHeroChanged?.Invoke();
+        }
+        else
+        {
+            Debug.LogError(res.Message);
+        }
 
-        //HeroSaveData currentData = new HeroSaveData();
-
-        //foreach (var hero in heroes)
-        //{
-        //    if (hero.TemplateId == NowHero)
-        //    {
-        //        currentData = hero;
-        //        break;
-        //    }
-        //}
-
-        //if (currentData.TemplateId == 0)
-        //    return;
-
-        //var skillData = Managers.Data.HeroSkillDataDic[skillTemplateId];
-
-        //if (skillData == null)
-        //    return;
-
-        //// 업그레이드 가능한지 체크
-        //{
-        //    // 다음 레벨로 진행 가능한가
-        //    if (skillData.NextLevelId == 0)
-        //        return;
-
-        //    // 자원은 충분한가
-        //    var currencies = skillData.LevelUpCurrencies;
-
-        //    foreach (var currency in currencies)
-        //    {
-        //        if (currency.currencyType == Define.ECurrencyType.None)
-        //            continue;
-
-        //        if (currency.count > GetCurrency(currency.currencyType))
-        //            return;
-        //    }
-
-        //    // 자원가능하면 자원 빼고 저장
-        //    foreach (var currency in currencies)
-        //    {
-        //        if (currency.currencyType == Define.ECurrencyType.None)
-        //            continue;
-
-        //        AddCurrency(currency.currencyType, -currency.count);
-        //    }
-        //}
-
-        //// 선택된 스킬 레벨업
-        //{
-        //    // 로컬값 수정
-        //    var nowSkillIndex = currentData.SkillTemplateId.IndexOf(skillTemplateId);
-        //    currentData.SkillTemplateId[nowSkillIndex] = skillData.NextLevelId;
-
-        //    // 세이브 될 값 수정 - 위에서 링크로 수정되었기 때문에 gameData값도 자동 수정됨
-        //    //var nowSKillIndexSave = _gameData.BuddySaves[NowBuddy].SkillTemplateId.IndexOf(skillTemplateId);
-        //    //_gameData.BuddySaves[NowBuddy].SkillTemplateId[nowSKillIndexSave] = skillData.NextLevelId;
-
-        //    SaveGame();
-        //    OnNowHeroChanged?.Invoke();
-
-        //    Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.HeroSkillUp, 1);
-        //}
+        // TODO ILHAK Event
+        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.HeroSkillUp, 1);
     }
     #endregion
 
@@ -1336,13 +1240,13 @@ public class GameManager
 
     public void Clear()
     {
-        OnNowHeroChanged -= UpdateCurrency;
+        OnNowHeroChanged -= () => UpdateCurrencyAsync().Forget();
     }
 
     public void Init()
     {
-        OnNowHeroChanged -= UpdateCurrency;
-        OnNowHeroChanged += UpdateCurrency;
+        OnNowHeroChanged -= () => UpdateCurrencyAsync().Forget();
+        OnNowHeroChanged += () => UpdateCurrencyAsync().Forget();
 
         _path = Application.persistentDataPath + "/SaveData.json";
 
@@ -1411,7 +1315,7 @@ public class GameManager
         {
             if (hero.isSelected == true)
             {
-                NowHero = hero.TemplateId;
+                NowHeroSetAsync(hero.TemplateId);
             }
         }
 
@@ -1499,7 +1403,8 @@ public class GameManager
         {
             if (hero.isSelected == true)
             {
-                NowHero = hero.TemplateId;
+                // TODO Wait
+                NowHeroSetAsync(hero.TemplateId).Forget();
             }
         }
 

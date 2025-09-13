@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using NUnit.Framework;
 using Spine.Unity;
 using Unity.VisualScripting;
@@ -153,6 +154,6 @@ public class UI_HeroLevelUpPopup : UI_Popup
         if (GetButton((int)Buttons.Button_HeroLevelUp).interactable == false)
             return;
 
-        Managers.Game.HeroLevelUp();
+        Managers.Game.HeroLevelUp().Forget();
     }
 }

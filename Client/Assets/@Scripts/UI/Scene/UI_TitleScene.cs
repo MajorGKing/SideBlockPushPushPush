@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Cysharp.Threading.Tasks;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using WebPacket;
 using Object = UnityEngine.Object;
@@ -85,12 +86,12 @@ public class UI_TitleScene : UI_Scene
 
 			if (count == totalCount)
 			{
-				OnAssetLoaded();
+				OnAssetLoaded().Forget();
 			}
 		});
 	}
 
-	private void OnAssetLoaded()
+	private async UniTask OnAssetLoaded()
 	{
 		State = TitleSceneState.AssetLoaded;
 		Managers.Data.Init();
@@ -113,30 +114,25 @@ public class UI_TitleScene : UI_Scene
             // 2. 요청 패킷을 만듭니다.
             var req = new LoginAccountPacketReq
             {
-                userId = "20",
+                userId = "21",
                 token = "" // 게스트 로그인이므로 토큰은 비워둡니다.
             };
 
+            LoginAccountPacketRes res = await Managers.Web.SendPostRequestAsync<LoginAccountPacketRes>("api/account/login/guest", req);
 
-            // 3. WebManager를 통해 POST 요청을 보냅니다. "api/account/login/guestt"
-            Managers.Web.SendPostRequest<LoginAccountPacketRes>("api/account/login/guest", req, (res) =>
+            if (res.success)
             {
-                // 4. 서버 응답을 처리하는 콜백 함수입니다.
-                if (res.success)
-                {
-                    Debug.Log($"Guest Login Success! AccountDbId: {res.accountDbId}");
-                    Debug.Log($"Guest Login Success! JWT: {res.jwt}");
+                //Debug.Log($"Guest Login Success! AccountDbId: {res.accountDbId}");
+                //Debug.Log($"Guest Login Success! JWT: {res.jwt}");
 
-					Managers.Web.jwt = res.jwt;
+                Managers.Web.jwt = res.jwt;
 
-					OnConnectionSuccess();
-                }
-                else
-                {
-                    Debug.LogError($"Guest Login Failed.");
-                }
-            });
-
+                OnConnectionSuccess();
+            }
+            else
+            {
+                Debug.LogError("Guest Login Failed.");
+            }
         }
 
 

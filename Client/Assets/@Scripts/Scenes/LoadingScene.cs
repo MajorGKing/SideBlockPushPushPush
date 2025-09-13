@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,106 +22,77 @@ public class LoadingScene : BaseScene
         base.Start();
 
         // Player데이터 가저오기
-        LoadPlayerData();
-
-        
-
-        
+        LoadPlayerData().Forget();
     }
 
-    private void LoadPlayerData()
+    private async UniTask LoadPlayerData()
     {
         var req = new PlayerPacketReq()
         {
             jwt = Managers.Web.jwt,
         };
 
-        Managers.Web.SendPostRequest<PlayerPacketRes>("api/game/player", req, (res) =>
+        PlayerPacketRes res = await Managers.Web.SendPostRequestAsync<PlayerPacketRes>("api/game/player", req);
+
+        if (res.Success)
         {
-            // 4. 서버 응답을 처리하는 콜백 함수입니다.
-            if (res.Success)
-            {
-                Debug.Log($"Player Data : {res.PlayerData.UserName}");
+            Managers.Game.UpdatePlayerData(res.PlayerData);
 
-                Managers.Game.UpdatePlayerData(res.PlayerData);
-
-                LoadCurrencyData();
-            }
-            else
-            {
-                Debug.LogError($"Get Player Failed.");
-            }
-        });
+            LoadCurrencyData().Forget();
+        }
+        else
+        {
+            Debug.LogError("Get Player Failed.");
+        }
     }
 
-    private void LoadCurrencyData()
+    private async UniTask LoadCurrencyData()
     {
         var req = new CurrencyAllReq()
         {
             jwt = Managers.Web.jwt,
         };
 
-        Managers.Web.SendPostRequest<CurrencyAllRes>("api/game/currency", req, (res) =>
+        CurrencyAllRes res = await Managers.Web.SendPostRequestAsync<CurrencyAllRes>("api/game/currency", req);
+
+        if (res.Success)
         {
-            // 4. 서버 응답을 처리하는 콜백 함수입니다.
-            if (res.Success)
-            {
-                Debug.Log($"Currecy Gold : {res.currencyData.Gold}");
+            Debug.Log($"Currency Gold : {res.currencyData.Gold}");
 
-                Managers.Game.UpdateCurrency(res.currencyData);
+            // Update local currency data
+            Managers.Game.UpdateCurrency(res.currencyData);
 
-                LoadHeroData();
-            }
-            else
-            {
-                Debug.LogError($"Get Currency Failed.");
-            }
-        });
+            // Load hero data next
+            LoadHeroData().Forget();
+        }
+        else
+        {
+            Debug.LogError($"Get Currency Failed.");
+        }
     }
 
-    private void LoadHeroData()
+    private async UniTask LoadHeroData()
     {
         var req = new HeroListReq()
         {
             Jwt = Managers.Web.jwt,
         };
 
-        Managers.Web.SendPostRequest<HeroListRes>("api/game/hero", req, (res) =>
+        HeroListRes res = await Managers.Web.SendPostRequestAsync<HeroListRes>("api/game/hero", req);
+
+        if (res.Success)
         {
-            // 4. 서버 응답을 처리하는 콜백 함수입니다.
-            if (res.Success)
-            {
-                Managers.Game.UpdateHeroData(res.Heroes);
+            // 1. Update hero data
+            await Managers.Game.UpdateHeroData(res.Heroes);
 
-                //Managers.Game.UpdateCurrency(res.currencyData);
-
-
-                //var reqa = new CurrencyAddReq()
-                //{
-                //    jwt = Managers.Web.jwt,
-                //    CurrencyType = CurrencyType.Gold,
-                //    Amount = 10,
-                //};
-
-                //Managers.Web.SendPostRequest<CurrencyAllRes>("api/game/currency/add", reqa, (res) =>
-                //{
-                //    if (res.Success)
-                //    {
-                //        Debug.Log($"Currecy Gold : {res.currencyData.Gold}");
-
-                //        _nextSceneType = Managers.Scene.NextSceneType;
-                //        StartCoroutine(LoadNextScene());
-                //    }
-                //});
-
-                _nextSceneType = Managers.Scene.NextSceneType;
-                StartCoroutine(LoadNextScene());
-            }
-            else
-            {
-                Debug.LogError($"Get Currency Failed.");
-            }
-        });
+            // 2. Proceed to next scene
+            _nextSceneType = Managers.Scene.NextSceneType;
+            StartCoroutine(LoadNextScene());
+        }
+        else
+        {
+            Debug.LogError($"Get Currency Failed.");
+        }
     }
 
     public override void Clear()

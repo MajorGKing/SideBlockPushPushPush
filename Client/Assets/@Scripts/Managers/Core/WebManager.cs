@@ -1,7 +1,7 @@
 using System;
-using System.Collections;
 using System.Net;
 using System.Text;
+using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -10,6 +10,7 @@ public class CertificateWhore : CertificateHandler
 {
     protected override bool ValidateCertificate(byte[] certificateData)
     {
+        // Always accept certificate (for dev only!)
         return true;
     }
 }
@@ -21,7 +22,7 @@ public class WebManager
     public string BaseUrl { get; set; }
     public string ip = "127.0.0.1";
     public int port = 7777;
-    
+
     public void Init()
     {
         IPAddress ipv4 = Utils.GetIpv4Address(ip);
@@ -30,30 +31,30 @@ public class WebManager
             Debug.LogError("WebServer IPv4 Failed");
             return;
         }
-	
-        BaseUrl = $"http://{ipv4.ToString()}:{port}";
+
+        BaseUrl = $"http://{ipv4}:{port}";
         Debug.Log($"WebServer BaseUrl : {BaseUrl}");
     }
-    
-    public void SendPostRequest<T>(string url, object obj, Action<T> res)
+
+    // -------- Public API --------
+    public async UniTask<T> SendPostRequestAsync<T>(string url, object obj)
     {
-        Managers.Instance.StartCoroutine(CoSendWebRequest(url, UnityWebRequest.kHttpVerbPOST, obj, res));
+        return await SendWebRequestAsync<T>(url, UnityWebRequest.kHttpVerbPOST, obj);
     }
 
-    public void SendGetRequest<T>(string url, object obj, Action<T> res)
+    public async UniTask<T> SendGetRequestAsync<T>(string url, object obj = null)
     {
-        Managers.Instance.StartCoroutine(CoSendWebRequest(url, UnityWebRequest.kHttpVerbGET, obj, res));
+        return await SendWebRequestAsync<T>(url, UnityWebRequest.kHttpVerbGET, obj);
     }
 
-    IEnumerator CoSendWebRequest<T>(string url, string method, object obj, Action<T> res)
+    // -------- Core WebRequest --------
+    private async UniTask<T> SendWebRequestAsync<T>(string url, string method, object obj)
     {
-        Debug.Log($"Call {url}");
-
         if (string.IsNullOrEmpty(BaseUrl))
             Init();
 
-        // http://127.0.0.1:7777/test/hello
         string sendUrl = $"{BaseUrl}/{url}";
+        Debug.Log($"Call {sendUrl}");
 
         byte[] jsonBytes = null;
         if (obj != null)
@@ -69,16 +70,22 @@ public class WebManager
             uwr.certificateHandler = new CertificateWhore();
             uwr.SetRequestHeader("Content-Type", "application/json");
 
-            yield return uwr.SendWebRequest();
+            try
+            {
+                await uwr.SendWebRequest().ToUniTask();
 
-            if (uwr.result == UnityWebRequest.Result.ConnectionError)
-            {
-                Debug.Log($"CoSendWebRequest Failed : {uwr.error}");
+                if (uwr.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError($"[WebManager] Request Failed: {uwr.error}");
+                    return default;
+                }
+
+                return JsonConvert.DeserializeObject<T>(uwr.downloadHandler.text);
             }
-            else
+            catch (Exception ex)
             {
-                T resObj = JsonConvert.DeserializeObject<T>(uwr.downloadHandler.text);
-                res.Invoke(resObj);
+                Debug.LogError($"[WebManager] Exception: {ex.Message}");
+                return default;
             }
         }
     }

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Spine.Unity;
 using UnityEngine.EventSystems;
 
@@ -139,7 +140,7 @@ public class UI_BuddySlotSubItem : UI_SubItem
         }
         else if(slotType == EBuddySlotTypte.Heroes)
         {
-            Managers.Game.NowHero = heroData.TemplateId;
+            Managers.Game.NowHeroSetAsync(heroData.TemplateId).Forget();
         }
     }
 }
