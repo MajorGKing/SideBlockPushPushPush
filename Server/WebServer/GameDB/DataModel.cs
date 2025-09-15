@@ -215,9 +215,14 @@ namespace GameDB
         public int TemplateId { get; set; }
 
         /// <summary>
+        /// 버디가 가진 스킬 리스트를 직렬화 해서 저장합니다.
+        /// </summary>
+        public string SkillTemplateIdString { get; set; } = string.Empty;
+
+        /// <summary>
         /// 이 버디가 선택되었는지 여부입니다.
         /// </summary>
-        public bool IsSelected { get; set; }
+        public int SelectedNumber { get; set; } = -1;
 
         /// <summary>
         /// 이 버디를 소유한 플레이어의 ID. 외래 키(Foreign Key)입니다.
@@ -228,6 +233,16 @@ namespace GameDB
         /// 이 버디를 소유한 PlayerDb 객체에 접근할 수 있습니다.
         /// </summary>
         public PlayerDb Player { get; set; }
+
+        [NotMapped]
+        public List<int> SkillTemplateId
+        {
+            get => string.IsNullOrEmpty(SkillTemplateIdString)
+                ? new List<int>()
+                : SkillTemplateIdString.Split(',').Select(int.Parse).ToList();
+
+            set => SkillTemplateIdString = string.Join(",", value);
+        }
     }
 
     /// <summary>

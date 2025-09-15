@@ -131,7 +131,7 @@ public class UI_BuddyLevelUpPopup : UI_Popup
         {
             GetGameObject((int)Objects.BuddiesContent).DestroyChildren();
 
-            var buddies = Managers.Game.buddies;
+            var buddies = Managers.Game.BuddyData;
             foreach(var buddy in buddies)
             {
                 if(buddy == null) 

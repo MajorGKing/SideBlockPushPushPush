@@ -126,17 +126,11 @@ public class UI_BuddySlotSubItem : UI_SubItem
     {
         if(slotType == EBuddySlotTypte.BuddySelected)
         {
-            // 셀렉트가 아닌걸로 해준다
-            if(Managers.Game.SelectedBuddyRemove(buddyData.TemplateId) == true)
-            {
-                // 이미지 지우고
-                //skeletonAnimation.gameObject.SetActive(false);
-                //skeletonAnimation.Initialize(true);
-            }
+            Managers.Game.SelectedBuddyRemove(buddyData.TemplateId).Forget();
         }
         else if (slotType == EBuddySlotTypte.Buddies)
         {
-            Managers.Game.SelectedBuddySet(buddyData.TemplateId);
+            Managers.Game.SelectedBuddyAdd(buddyData.TemplateId).Forget();
         }
         else if(slotType == EBuddySlotTypte.Heroes)
         {

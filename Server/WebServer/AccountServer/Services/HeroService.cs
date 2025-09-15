@@ -1,7 +1,6 @@
 ﻿using GameDB;
 using Microsoft.EntityFrameworkCore;
 using Server.Data;
-using static AccountServer.Define;
 
 namespace AccountServer.Services
 {
@@ -9,30 +8,15 @@ namespace AccountServer.Services
     {
         GameDbContext _dbContext;
         JwtTokenService _jwt;
-        CurrencyService _currency;
+        PlayerService _player;
 
-        public HeroService(GameDbContext context, JwtTokenService jwt, CurrencyService currency)
+
+        public HeroService(GameDbContext context, JwtTokenService jwt, PlayerService player)
         {
             _dbContext = context;
             _jwt = jwt;
-            _currency = currency;
+            _player = player;
         }
-
-        private async Task<PlayerDb> GetPlayerDbFromAccountDbId(int accountDbId)
-        {
-            // Player + Heroes 로드
-            var player = await _dbContext.Players
-                .Include(p => p.Heroes)
-                .FirstOrDefaultAsync(p => p.PlayerDbId == accountDbId);
-
-            //if (player == null)
-            //{
-            //    throw new InvalidOperationException($"Player {accountDbId} not found.");
-            //}
-
-            return player;
-        }
-
 
         public async Task<bool> CreateHero(string jwt, int templateId, bool isSelected = false)
         {
@@ -53,7 +37,7 @@ namespace AccountServer.Services
 
 
             // Player 존재 여부 확인
-            var player = await GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
 
             //var player = await _dbContext.Players
             //    .Include(p => p.Heroes)
@@ -93,7 +77,7 @@ namespace AccountServer.Services
         public async Task<HeroListRes> GetHeroListAsync(HeroListReq request)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
-            var player = await GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
             
             if (player == null)
             {
@@ -124,7 +108,7 @@ namespace AccountServer.Services
         public async Task<HeroListRes> ChangeSelectedHeroAsync(HeroNowChangeReq request)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
-            var player = await GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
 
             if (player == null)
             {

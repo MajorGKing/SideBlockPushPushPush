@@ -114,7 +114,7 @@ public class UI_TitleScene : UI_Scene
             // 2. 요청 패킷을 만듭니다.
             var req = new LoginAccountPacketReq
             {
-                userId = "21",
+                userId = "22",
                 token = "" // 게스트 로그인이므로 토큰은 비워둡니다.
             };
 

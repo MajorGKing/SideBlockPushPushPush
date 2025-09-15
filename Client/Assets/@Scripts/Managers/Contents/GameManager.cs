@@ -90,6 +90,45 @@ public class GameManager
     #endregion
 
     #region WebHero
+    private int _nowHero;
+    public int NowHero
+    {
+        get => _nowHero;
+    }
+
+    public async UniTask NowHeroSetAsync(int value)
+    {
+        if (value == _nowHero)
+        {
+            return;
+        }
+
+        if (_nowHero == 0)
+        {
+            _nowHero = value;
+            return;
+        }
+
+        //Debug.Log($"Now Hero Changed {_nowHero} to {value}");
+
+        // 새로운 영웅 선택으로
+        // Web통신으로 변경
+        var req = new HeroNowChangeReq { Jwt = Managers.Web.jwt, TemplateId = value };
+
+        HeroListRes res = await Managers.Web.SendPostRequestAsync<HeroListRes>("api/game/hero/nowHeroChange", req);
+
+        if (res.Success)
+        {
+            _nowHero = value;
+            OnNowHeroChanged?.Invoke();
+            Debug.Log($"Now Hero Changed Finish {_nowHero}");
+        }
+        else
+        {
+            Debug.LogError($"error: {res.Message}");
+        }
+    }
+
     private List<HeroDTO> _heroData = new List<HeroDTO>();
     public List<HeroDTO> HeroData => _heroData;
     public async UniTask UpdateHeroData(List<HeroDTO> data)
@@ -137,6 +176,198 @@ public class GameManager
     }
 
 
+
+    public async UniTask HeroLevelUp()
+    {
+        Debug.Log("Try Hero Level Up");
+        var req = new HeroLevelUpReq { Jwt = Managers.Web.jwt, TemplateId = NowHero };
+        // Await the web request
+        HeroListRes res = await Managers.Web.SendPostRequestAsync<HeroListRes>("api/game/hero/heroLevelUp", req);
+
+        if (res.Success)
+        {
+            Debug.Log("Success Hero Level Up");
+            await UpdateHeroData(res.Heroes);
+        }
+        else
+        {
+            Debug.LogError($"error: {res.Message}");
+        }
+
+        // TODO ILHAK WebMission
+        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.HeroLevelUp, 1);
+    }
+
+    public async UniTask HeroSkillUp(int skillTemplateId)
+    {
+        var req = new HeroSkillLevelUpReq
+        {
+            Jwt = Managers.Web.jwt,
+            HeroTemplateId = NowHero,
+            HeroSkillTemplateId = skillTemplateId
+        };
+
+        HeroListRes res = await Managers.Web.SendPostRequestAsync<HeroListRes>("api/game/hero/skillLevelUp", req);
+
+        if (res.Success)
+        {
+            Debug.Log("Skill upgrade success!");
+
+            // Update hero data
+            await UpdateHeroData(res.Heroes);
+
+            // Trigger hero changed event
+            OnNowHeroChanged?.Invoke();
+        }
+        else
+        {
+            Debug.LogError(res.Message);
+        }
+
+        // TODO ILHAK Event
+        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.HeroSkillUp, 1);
+    }
+    #endregion
+
+    #region WebBuddy
+    private List<BuddyDTO> _BuddyData = new List<BuddyDTO>();
+    public List<BuddyDTO> BuddyData => _BuddyData;
+    private int[] _selectedBuddies = new int[4];
+
+    public int SelectedBuddyGet(int index)
+    {
+        if (index > _selectedBuddies.Length)
+            return 0;
+
+        return _selectedBuddies[index];
+    }
+
+    private int _nowBuddy;
+    public int NowBuddy
+    {
+        get { return _nowBuddy; }
+        set
+        {
+            if (value == NowBuddy)
+                return;
+
+            _nowBuddy = value;
+            OnNowBuddyChanged?.Invoke();
+        }
+    }
+
+    public async UniTask UpdateBuddyData(List<BuddyDTO> data)
+    {
+        if (data == null)
+        {
+            return;
+        }
+
+        // 기존 리스트를 지우고 새 데이터로 교체
+        _BuddyData.Clear();
+
+        // _selectedBuddies 초기화
+        for (int i = 0; i < _selectedBuddies.Length; i++)
+        {
+            _selectedBuddies[i] = 0;
+        }
+
+        foreach (var buddy in data)
+        {
+            // 깊은 복사를 위해 새로운 객체 생성
+            var copy = new BuddyDTO
+            {
+                BuddySaveDataDbId = buddy.BuddySaveDataDbId,
+                TemplateId = buddy.TemplateId,
+                SkillTemplateId = new List<int>(buddy.SkillTemplateId),
+                SelectedNumber = buddy.SelectedNumber
+            };
+
+            _BuddyData.Add(copy);            
+
+            if (copy.SelectedNumber >= 0)
+            {
+                Debug.Log($"Selected Buddy Id {copy.TemplateId}, Slot: {copy.SelectedNumber}");
+                _selectedBuddies[copy.SelectedNumber] = copy.TemplateId;
+            }
+        }
+
+        OnNowBuddyChanged?.Invoke();
+
+        Debug.Log($"BuddyData updated. Total buddies: {_BuddyData.Count}");
+    }
+
+    public async UniTask SelectedBuddyRemove(int templatedId)
+    {
+        var req = new BuddySelectedRemoveReq
+        {
+            Jwt = Managers.Web.jwt,
+            TemplateId = templatedId,
+        };
+
+        var res = await Managers.Web.SendPostRequestAsync<BuddyListRes>("api/game/buddy/selectedRemove", req);
+
+        if (res.Success)
+        {
+            await UpdateBuddyData(res.Buddies);
+        }
+        else
+        {
+            Debug.LogError(res.Message);
+        }
+
+
+        //for (int i = 0; i < _selectedBuddies.Length; i++)
+        //{
+        //    if (_selectedBuddies[i] == templatedId)
+        //    {
+        //        _selectedBuddies[i] = 0;
+        //        SetSelectdBuddy(templatedId, false);
+
+        //        int writeIndex = 0;
+        //        for (int j = 0; j < _selectedBuddies.Length; j++)
+        //        {
+        //            // 0이 아닌 요소만 writeIndex 위치에 복사
+        //            if (_selectedBuddies[j] != 0)
+        //            {
+        //                _selectedBuddies[writeIndex] = _selectedBuddies[j];
+        //                writeIndex++;
+        //            }
+        //        }
+        //        // 남은 공간을 0으로 채움
+        //        for (int k = writeIndex; k < _selectedBuddies.Length; k++)
+        //        {
+        //            _selectedBuddies[k] = 0;
+        //        }
+
+        //        OnSelectedBuddyChanged?.Invoke();
+        //        return true;
+        //    }
+        //}
+        //return false;
+    }
+
+    public async UniTask SelectedBuddyAdd(int templatedId)
+    {
+        NowBuddy = templatedId;
+
+        var req = new BuddySelectedAddReq
+        {
+            Jwt = Managers.Web.jwt,
+            TemplateId = templatedId,
+        };
+
+        var res = await Managers.Web.SendPostRequestAsync<BuddyListRes>("api/game/buddy/selectedAdd", req);
+
+        if (res.Success)
+        {
+            await UpdateBuddyData(res.Buddies);
+        }
+        else
+        {
+            Debug.LogError(res.Message);
+        }
+    }
 
     #endregion
 
@@ -195,74 +426,9 @@ public class GameManager
     #endregion
 
     #region Hero
-    private int _nowHero;
-    public int NowHero
-    {
-        get => _nowHero;
-        //set
-        //{
-        //    if (value == NowHero)
-        //        return;
 
-        //    if (NowHero == 0)
-        //    {
-        //        _nowHero = value;
-        //        return;
-        //    }
 
-        //    Debug.Log($"Now Hero Changed {_nowHero} to {value}");
 
-        //    // 새로운 영웅 선택으로
-        //    // Web통신으로 변경
-        //    var req = new HeroNowChangeReq { Jwt = Managers.Web.jwt, TemplateId = value };
-        //    Managers.Web.SendPostRequestAsync<HeroListRes>("api/game/hero/nowHeroChange", req).ContinueWith (res =>
-        //    {
-        //        if (res.Success)
-        //        {
-        //            _nowHero = value;
-        //            OnNowHeroChanged?.Invoke();
-        //            Debug.Log($"Now Hero Changed Finish {_nowHero}");
-        //        }
-        //        else
-        //        {
-        //            Debug.LogError($"error.");
-        //        }
-        //    });
-        //}
-    }
-
-    public async UniTask NowHeroSetAsync(int value)
-    {
-        if (value == _nowHero)
-        {
-            return;
-        }
-
-        if (_nowHero == 0)
-        {
-            _nowHero = value;
-            return;
-        }
-
-        //Debug.Log($"Now Hero Changed {_nowHero} to {value}");
-
-        // 새로운 영웅 선택으로
-        // Web통신으로 변경
-        var req = new HeroNowChangeReq { Jwt = Managers.Web.jwt, TemplateId = value };
-
-        HeroListRes res = await Managers.Web.SendPostRequestAsync<HeroListRes>("api/game/hero/nowHeroChange", req);
-
-        if (res.Success)
-        {
-            _nowHero = value;
-            OnNowHeroChanged?.Invoke();
-            Debug.Log($"Now Hero Changed Finish {_nowHero}");
-        }
-        else
-        {
-            Debug.LogError($"error: {res.Message}");
-        }
-    }
 
     public List<HeroSaveData> heroes { get; private set; }
     public HeroSaveData GetHeroSaveData(int tempalteId)
@@ -312,75 +478,14 @@ public class GameManager
     #endregion
 
     #region HeroUp
-    public async UniTask HeroLevelUp()
-    {
-        Debug.Log("Try Hero Level Up");
-        var req = new HeroLevelUpReq { Jwt = Managers.Web.jwt, TemplateId = NowHero };
-        // Await the web request
-        HeroListRes res = await Managers.Web.SendPostRequestAsync<HeroListRes>("api/game/hero/heroLevelUp", req);
 
-        if (res.Success)
-        {
-            Debug.Log("Success Hero Level Up");
-            await UpdateHeroData(res.Heroes);
-        }
-        else
-        {
-            Debug.LogError($"error: {res.Message}");
-        }
-
-        // TODO ILHAK WebMission
-        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.HeroLevelUp, 1);
-    }
-
-    public async UniTask HeroSkillUp(int skillTemplateId)
-    {
-        var req = new HeroSkillLevelUpReq
-        {
-            Jwt = Managers.Web.jwt,
-            HeroTemplateId = NowHero,
-            HeroSkillTemplateId = skillTemplateId
-        };
-
-        HeroListRes res = await Managers.Web.SendPostRequestAsync<HeroListRes>("api/game/hero/skillLevelUp", req);
-
-        if (res.Success)
-        {
-            Debug.Log("Skill upgrade success!");
-
-            // Update hero data
-            await UpdateHeroData(res.Heroes);
-
-            // Trigger hero changed event
-            OnNowHeroChanged?.Invoke();
-        }
-        else
-        {
-            Debug.LogError(res.Message);
-        }
-
-        // TODO ILHAK Event
-        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.HeroSkillUp, 1);
-    }
     #endregion
 
     #region Buddy
-    private int _nowBuddy;
-    public int NowBuddy
-    {
-        get { return _nowBuddy; }
-        set
-        {
-            if (value == NowBuddy)
-                return;
 
-            _nowBuddy = value;
-            OnNowBuddyChanged?.Invoke();
-        }
-    }
 
     public List<BuddySaveData> buddies { get; private set; }
-    private int[] _selectedBuddies = new int[4];
+
 
     public BuddySaveData GetBuddySaveData(int templateId)
     {
@@ -442,45 +547,9 @@ public class GameManager
         SaveGame();
     }
 
-    public int SelectedBuddyGet(int index)
-    {
-        if (index > _selectedBuddies.Length)
-            return 0;
 
-        return _selectedBuddies[index];
-    }
 
-    public bool SelectedBuddyRemove(int templatedId)
-    {
-        for (int i = 0; i < _selectedBuddies.Length; i++)
-        {
-            if (_selectedBuddies[i] == templatedId)
-            {
-                _selectedBuddies[i] = 0;
-                SetSelectdBuddy(templatedId, false);
 
-                int writeIndex = 0;
-                for (int j = 0; j < _selectedBuddies.Length; j++)
-                {
-                    // 0이 아닌 요소만 writeIndex 위치에 복사
-                    if (_selectedBuddies[j] != 0)
-                    {
-                        _selectedBuddies[writeIndex] = _selectedBuddies[j];
-                        writeIndex++;
-                    }
-                }
-                // 남은 공간을 0으로 채움
-                for (int k = writeIndex; k < _selectedBuddies.Length; k++)
-                {
-                    _selectedBuddies[k] = 0;
-                }
-
-                OnSelectedBuddyChanged?.Invoke();
-                return true;
-            }
-        }
-        return false;
-    }
 
     public void SelectedBuddySet(int templatedId)
     {
@@ -662,7 +731,7 @@ public class GameManager
     {
         get
         {
-            foreach(var achievement in _AchievementSaveDats)
+            foreach (var achievement in _AchievementSaveDats)
             {
                 achievement.CheckRewardAble();
             }
@@ -686,7 +755,7 @@ public class GameManager
     {
         var missionGoal = Managers.Data.AchievementDataDic[templateId].MissionGoal;
 
-        if(missionGoal == Define.EMissionGoal.MonsterKill)
+        if (missionGoal == Define.EMissionGoal.MonsterKill)
         {
             return EventValues[(int)Define.EBroadcastEventType.KillMonster];
         }
@@ -697,7 +766,7 @@ public class GameManager
         else if (missionGoal == Define.EMissionGoal.StageClear)
         {
             return EventValues[(int)Define.EBroadcastEventType.StageClear];
-        }        
+        }
         else if (missionGoal == Define.EMissionGoal.CurrencyGacha)
         {
             return EventValues[(int)Define.EBroadcastEventType.DoCurrencyGacha];
@@ -724,7 +793,7 @@ public class GameManager
 
             if (IsStageClearedAt(stageIndex) == true)
                 return 1;
-            
+
             return 0;
         }
         else if (missionGoal == Define.EMissionGoal.HeroGacha)
@@ -1281,7 +1350,7 @@ public class GameManager
             .Where(data => data.PreviewAchievementId == 0)
             .ToList();
 
-        foreach(var previewId in previewIdZeroList)
+        foreach (var previewId in previewIdZeroList)
         {
             _gameData.AchievementSaveDatas.Add(new AchievementSaveData(previewId.TemplateId));
         }
@@ -1428,7 +1497,7 @@ public class GameManager
                 .Where(data => AchievementClearList.Contains(data.TemplateId) == false)
                 .ToList();
 
-            foreach( var uncleared in unclearedList)
+            foreach (var uncleared in unclearedList)
             {
                 // 이미 있다면 추가할 필요가 없으니 체크
                 bool alreadyExists = AchievementSaveDats.Any(save => save.TemplateId == uncleared.TemplateId);

@@ -176,4 +176,36 @@ namespace WebPacket
         public int HeroTemplateId { get; set; } // 현재 선택된 영웅 TemplateId
         public int HeroSkillTemplateId { get; set; } // 레벨업할 영웅 스킬 TemplateId
     }
+
+    public class BuddyDTO
+    {
+        public int BuddySaveDataDbId { get; set; }
+        public int TemplateId { get; set; }
+        public List<int> SkillTemplateId { get; set; } = new List<int>();
+        public int SelectedNumber { get; set; }
+    }
+
+    public class BuddyListReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+    }
+
+    public class BuddyListRes
+    {
+        public bool Success { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public List<BuddyDTO> Buddies { get; set; } = new List<BuddyDTO>();
+    }
+
+    public class BuddySelectedRemoveReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+        public int TemplateId { get; set; } // 삭제 buddy TemplateId
+    }
+
+    public class BuddySelectedAddReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+        public int TemplateId { get; set; } // 추가 buddy TemplateId
+    }
 }

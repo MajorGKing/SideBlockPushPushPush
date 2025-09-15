@@ -105,7 +105,7 @@ public class UI_HeroLevelUpPopup : UI_Popup
         // Now Hero
         {
             var nowHeroIndex = Managers.Game.NowHero;
-            Debug.Log($"Hero UI Now Hero {nowHeroIndex}");
+            //Debug.Log($"Hero UI Now Hero {nowHeroIndex}");
 
             if (nowHeroIndex == 0)
                 return;

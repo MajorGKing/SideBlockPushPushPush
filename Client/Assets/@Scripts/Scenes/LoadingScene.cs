@@ -73,26 +73,48 @@ public class LoadingScene : BaseScene
 
     private async UniTask LoadHeroData()
     {
-        var req = new HeroListReq()
         {
-            Jwt = Managers.Web.jwt,
-        };
+            var req = new HeroListReq()
+            {
+                Jwt = Managers.Web.jwt,
+            };
 
-        HeroListRes res = await Managers.Web.SendPostRequestAsync<HeroListRes>("api/game/hero", req);
+            HeroListRes res = await Managers.Web.SendPostRequestAsync<HeroListRes>("api/game/hero", req);
 
-        if (res.Success)
-        {
-            // 1. Update hero data
-            await Managers.Game.UpdateHeroData(res.Heroes);
-
-            // 2. Proceed to next scene
-            _nextSceneType = Managers.Scene.NextSceneType;
-            StartCoroutine(LoadNextScene());
+            if (res.Success)
+            {
+                // 1. Update hero data
+                await Managers.Game.UpdateHeroData(res.Heroes);
+            }
+            else
+            {
+                Debug.LogError($"Get Hero Failed.");
+            }
         }
-        else
+
+
         {
-            Debug.LogError($"Get Currency Failed.");
+            var req = new BuddyListReq()
+            {
+                Jwt = Managers.Web.jwt,
+            };
+
+            BuddyListRes res = await Managers.Web.SendPostRequestAsync<BuddyListRes>("api/game/buddy", req);
+
+            if(res.Success)
+            {
+                Managers.Game.NowBuddy = 0;
+                await Managers.Game.UpdateBuddyData(res.Buddies);
+            }
+            else
+            {
+                Debug.LogError($"Get Buddy Failed.");
+            }
         }
+
+        // 2. Proceed to next scene
+        _nextSceneType = Managers.Scene.NextSceneType;
+        StartCoroutine(LoadNextScene());
     }
 
     public override void Clear()

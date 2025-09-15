@@ -11,13 +11,15 @@ namespace AccountServer.Controllers
     {
         PlayerService _player;
         CurrencyService _currency;
-        HeroService _heroService;
+        HeroService _hero;
+        BuddyService _buddy;
 
-        public GameController(PlayerService player, CurrencyService currency, HeroService heroService)
+        public GameController(PlayerService player, CurrencyService currency, HeroService heroService, BuddyService buddyService)
         {
             _player = player;
             _currency = currency;
-            _heroService = heroService;
+            _hero = heroService;
+            _buddy = buddyService;
         }
 
         [HttpPost]
@@ -45,28 +47,49 @@ namespace AccountServer.Controllers
         [Route("hero")]
         public async Task<HeroListRes> HeroData([FromBody] HeroListReq req)
         {
-            return await _heroService.GetHeroListAsync(req);
+            return await _hero.GetHeroListAsync(req);
         }
 
         [HttpPost]
         [Route("hero/nowHeroChange")]
         public async Task<HeroListRes> HeroSelectedChange([FromBody] HeroNowChangeReq req)
         {
-            return await _heroService.ChangeSelectedHeroAsync(req);
+            return await _hero.ChangeSelectedHeroAsync(req);
         }
 
         [HttpPost]
         [Route("hero/heroLevelUp")]
         public async Task<HeroListRes> HeroLevelUp([FromBody] HeroLevelUpReq req)
         {
-            return await _heroService.LevelUpHeroAsync(req);
+            return await _hero.LevelUpHeroAsync(req);
         }
 
         [HttpPost("hero/skillLevelUp")]
         public async Task<ActionResult<HeroListRes>> HeroSkillUp([FromBody] HeroSkillLevelUpReq req)
         {
-            var result = await _heroService.HeroSkillUpAsync(req);
+            var result = await _hero.HeroSkillUpAsync(req);
             return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("buddy")]
+        public async Task<BuddyListRes> BuddyData([FromBody] BuddyListReq req)
+        {
+            return await _buddy.GetBuddyListAsync(req);
+        }
+
+        [HttpPost]
+        [Route("buddy/selectedRemove")]
+        public async Task<BuddyListRes> BuddySelectedRemove([FromBody] BuddySelectedRemoveReq req)
+        {
+            return await _buddy.RemoveSelectedBuddyListAsync(req);
+        }
+
+        [HttpPost]
+        [Route("buddy/selectedAdd")]
+        public async Task<BuddyListRes> BuddySelectedAdd([FromBody] BuddySelectedAddReq req)
+        {
+            return await _buddy.AddSelectedBuddyListAsync(req);
         }
     }
 }

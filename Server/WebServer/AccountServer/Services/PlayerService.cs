@@ -1,5 +1,6 @@
 ﻿using GameDB;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Server.Data;
 
 namespace AccountServer.Services
@@ -8,13 +9,28 @@ namespace AccountServer.Services
     {
         GameDbContext _dbContext;
         JwtTokenService _jwt;
-        HeroService _heroService;
+        //HeroService _hero;
+        //BuddyService _buddy;
+        IServiceProvider _serviceProvider;
 
-        public PlayerService(GameDbContext context, JwtTokenService jwt, HeroService heroService)
+        public PlayerService(GameDbContext context, JwtTokenService jwt, IServiceProvider serviceProvider)
         {
             _dbContext = context;
             _jwt = jwt;
-            _heroService = heroService;
+            //_hero = heroService;
+            //_buddy = buddyService;
+            _serviceProvider = serviceProvider;
+        }
+
+        public async Task<PlayerDb> GetPlayerDbFromAccountDbId(int accountDbId)
+        {
+            // Player + Heroes 로드
+            var player = await _dbContext.Players
+                .Include(p => p.Heroes)
+                .Include(p => p.Buddies)
+                .FirstOrDefaultAsync(p => p.PlayerDbId == accountDbId);
+
+            return player;
         }
 
         // '로드 또는 생성' 로직을 구현하는 핵심 메서드
@@ -77,9 +93,19 @@ namespace AccountServer.Services
                 _dbContext.Players.Add(playerDb);
                 await _dbContext.SaveChangesAsync(); // 새 PlayerDb를 GameDB에 저장합니다.
 
+                // 지연 주입
+                var heroService = _serviceProvider.GetRequiredService<HeroService>();
+                var buddyService = _serviceProvider.GetRequiredService<BuddyService>();
+
                 // 2. 기본 영웅 두 개 지급 (HeroService 호출)
-                await _heroService.CreateHero(request.jwt, 100, true);   // 첫 번째 영웅
-                await _heroService.CreateHero(request.jwt, 200, false);  // 두 번째 영웅
+                await heroService.CreateHero(request.jwt, 100, true);   // 첫 번째 영웅
+                await heroService.CreateHero(request.jwt, 200, false);  // 두 번째 영웅
+
+                // 3. 기본 버디 네 개 지급
+                await buddyService.CreateBuddy(request.jwt, 300000100, 0);
+                await buddyService.CreateBuddy(request.jwt, 100000100, 1);
+                await buddyService.CreateBuddy(request.jwt, 100000300, 2);
+                await buddyService.CreateBuddy(request.jwt, 100000500, 3);
             }
 
             // 4. PlayerDb 객체를 PlayerData DTO로 변환하여 반환합니다.
