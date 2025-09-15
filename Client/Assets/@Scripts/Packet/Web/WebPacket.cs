@@ -138,7 +138,6 @@ namespace WebPacket
 
     public class HeroDTO
     {
-        public int HeroSaveDataDbId { get; set; }
         public int TemplateId { get; set; }
         public List<int> SkillTemplateIds { get; set; } = new List<int>();
         public bool IsSelected { get; set; }

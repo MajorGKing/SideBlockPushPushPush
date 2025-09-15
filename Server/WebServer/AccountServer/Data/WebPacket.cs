@@ -113,7 +113,6 @@ public class CurrencyAddReq
 
 public class HeroDTO
 {
-    public int HeroSaveDataDbId { get; set; }
     public int TemplateId { get; set; }
     public List<int> SkillTemplateIds { get; set; } = new List<int>();
     public bool IsSelected { get; set; }
@@ -184,5 +183,9 @@ public class BuddySelectedAddReq
     public int TemplateId { get; set; } // 추가 buddy TemplateId
 }
 
-
+public class BuddyLevelUpReq
+{
+    public string Jwt { get; set; } = string.Empty;
+    public int TemplateId { get; set; } // 현재 선택된 동료 TemplateId
+}
 

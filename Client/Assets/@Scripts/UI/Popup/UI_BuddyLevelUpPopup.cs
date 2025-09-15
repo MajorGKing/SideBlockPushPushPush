@@ -155,6 +155,7 @@ public class UI_BuddyLevelUpPopup : UI_Popup
 
         // Now Buddy ฐüทร
         int nowBuddyIndex = Managers.Game.NowBuddy;
+        GetButton((int)Buttons.Button_BuddyLevelUp).interactable = false;
         if (nowBuddyIndex == 0)
         {
             Utils.FindChild<SkeletonGraphic>(GetGameObject((int)Objects.UI_NowBuddySubItem), null, true).enabled = false;
@@ -163,8 +164,6 @@ public class UI_BuddyLevelUpPopup : UI_Popup
             {
                 buddyLevelUpCurrency.gameObject.SetActive(false);
             }
-
-            GetButton((int)Buttons.Button_BuddyLevelUp).interactable = false;
 
             GetGameObject((int)Objects.BuddySKillContent).DestroyChildren();
 
@@ -199,7 +198,11 @@ public class UI_BuddyLevelUpPopup : UI_Popup
                 buddyLevelUpCurrencies[i].SetInfo(nowBuddyData.LevelUpCurrencies[i].currencyType, nowBuddyData.LevelUpCurrencies[i].count, false);
             }
 
-            GetButton((int)Buttons.Button_BuddyLevelUp).interactable = true;
+            if(nowBuddyData.LevelUpCurrencies.Count > 0)
+            {
+                GetButton((int)Buttons.Button_BuddyLevelUp).interactable = true;
+            }
+            
 
             var buddySaveData = Managers.Game.GetBuddySaveData(nowBuddyIndex);
 

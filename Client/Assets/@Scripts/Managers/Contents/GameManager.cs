@@ -143,7 +143,6 @@ public class GameManager
             // 깊은 복사를 위해 새로운 객체 생성
             var copy = new HeroDTO
             {
-                HeroSaveDataDbId = hero.HeroSaveDataDbId,
                 TemplateId = hero.TemplateId,
                 SkillTemplateIds = new List<int>(hero.SkillTemplateIds),
                 IsSelected = hero.IsSelected,
@@ -425,62 +424,6 @@ public class GameManager
     }
     #endregion
 
-    #region Hero
-
-
-
-
-    public List<HeroSaveData> heroes { get; private set; }
-    public HeroSaveData GetHeroSaveData(int tempalteId)
-    {
-        foreach (var hero in heroes)
-        {
-            if (hero.TemplateId == tempalteId)
-                return hero;
-        }
-
-        return null;
-    }
-
-    public int RemoveHeroSaveData(int templatedId)
-    {
-        for (int i = 0; i < heroes.Count; i++)
-        {
-            if (heroes[i].TemplateId == templatedId)
-            {
-                heroes.RemoveAt(i);
-
-                _gameData.HeroSaves.Remove(templatedId);
-                SaveGame();
-                return i;
-            }
-        }
-
-        return -1;
-    }
-
-    public void AddHeroSaveData(HeroSaveData heroSaveData, int insertIndex = -1)
-    {
-        if (insertIndex < 0)
-        {
-            heroes.Add(heroSaveData);
-        }
-        else
-        {
-            heroes.Insert(insertIndex, heroSaveData);
-        }
-
-
-        _gameData.HeroSaves.Add(heroSaveData.TemplateId, heroSaveData);
-
-        SaveGame();
-    }
-    #endregion
-
-    #region HeroUp
-
-    #endregion
-
     #region Buddy
 
 
@@ -546,10 +489,6 @@ public class GameManager
 
         SaveGame();
     }
-
-
-
-
 
     public void SelectedBuddySet(int templatedId)
     {
@@ -1317,14 +1256,13 @@ public class GameManager
         OnNowHeroChanged -= () => UpdateCurrencyAsync().Forget();
         OnNowHeroChanged += () => UpdateCurrencyAsync().Forget();
 
+        
         _path = Application.persistentDataPath + "/SaveData.json";
 
         if (LoadGame())
             return;
 
         // 세이브 파일이 없을 때
-
-
         // Mission
         _gameData.MissionSaves.Clear();
         foreach (var mission in Managers.Data.MissionDataDic)
@@ -1376,15 +1314,6 @@ public class GameManager
             if (buddy.isSelected == true)
             {
                 _selectedBuddies[selectedIndex++] = buddy.TemplateId;
-            }
-        }
-
-        heroes = _gameData.HeroSaves.Values.ToList();
-        foreach (var hero in heroes)
-        {
-            if (hero.isSelected == true)
-            {
-                NowHeroSetAsync(hero.TemplateId);
             }
         }
 
@@ -1463,17 +1392,6 @@ public class GameManager
             if (buddy.isSelected == true)
             {
                 _selectedBuddies[i++] = buddy.TemplateId;
-            }
-        }
-
-        // 영웅 가저오기
-        heroes = _gameData.HeroSaves.Values.ToList();
-        foreach (var hero in heroes)
-        {
-            if (hero.isSelected == true)
-            {
-                // TODO Wait
-                NowHeroSetAsync(hero.TemplateId).Forget();
             }
         }
 

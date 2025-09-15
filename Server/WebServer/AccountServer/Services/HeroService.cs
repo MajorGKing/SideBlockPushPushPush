@@ -90,7 +90,6 @@ namespace AccountServer.Services
 
             var heroes = player.Heroes.Select(h => new HeroDTO
             {
-                HeroSaveDataDbId = h.HeroSaveDataDbId,
                 TemplateId = h.TemplateId,
                 SkillTemplateIds = h.SkillTemplateId, // NotMapped 속성 덕분에 List<int>로 변환됨
                 IsSelected = h.IsSelected,

@@ -4,6 +4,7 @@ using Spine.Unity;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using WebPacket;
 
 public class HeroController : AllyController
 {
@@ -34,11 +35,11 @@ public class HeroController : AllyController
         skillData = new List<HeroSkill>();
     }
 
-    public void SetInfo(HeroSaveData saveData)//, List<SpriteRenderer> blockSet, GameScene game)
+    public void SetInfo(HeroDTO saveData)//, List<SpriteRenderer> blockSet, GameScene game)
     {
         skillData.Clear();
 
-        foreach(var skillIndex in saveData.SkillTemplateId)
+        foreach(var skillIndex in saveData.SkillTemplateIds)
         {
             skillData.Add(new HeroSkill(this, skillIndex));
         }

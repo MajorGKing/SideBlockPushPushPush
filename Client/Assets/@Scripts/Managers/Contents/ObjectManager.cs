@@ -92,7 +92,7 @@ public class ObjectManager
 
     private HeroController SpawnHero(Transform parent, int heroSaveDataIndex)
     {
-        var heroSaveData = Managers.Game.GetHeroSaveData(heroSaveDataIndex);
+        var heroSaveData = Managers.Game.GetHeroData(heroSaveDataIndex);
         HeroController hero = Managers.Resource.Instantiate(HERO_PREFAB_NAME, parent).GetComponent<HeroController>();
         if(hero != null)
         {
