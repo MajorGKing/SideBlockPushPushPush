@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Spine.Unity;
 using System.Collections.Generic;
 using UnityEngine;
@@ -154,9 +155,9 @@ public class UI_BuddyLevelUpPopup : UI_Popup
         }
 
         // Now Buddy ฐüทร
-        int nowBuddyIndex = Managers.Game.NowBuddy;
+        int nowBuddyTemplateId = Managers.Game.NowBuddy;
         GetButton((int)Buttons.Button_BuddyLevelUp).interactable = false;
-        if (nowBuddyIndex == 0)
+        if (nowBuddyTemplateId == 0)
         {
             Utils.FindChild<SkeletonGraphic>(GetGameObject((int)Objects.UI_NowBuddySubItem), null, true).enabled = false;
 
@@ -177,7 +178,7 @@ public class UI_BuddyLevelUpPopup : UI_Popup
         {
             var nowBuddySkeletonGraphic = Utils.FindChild<SkeletonGraphic>(GetGameObject((int)Objects.UI_NowBuddySubItem), null, true);
             nowBuddySkeletonGraphic.enabled = true;
-            var nowBuddyData = Managers.Data.BuddyDataDic[nowBuddyIndex];
+            var nowBuddyData = Managers.Data.BuddyDataDic[nowBuddyTemplateId];
             nowBuddySkeletonGraphic.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>(nowBuddyData.SpineNameKey);
             nowBuddySkeletonGraphic.Initialize(true);
 
@@ -204,7 +205,7 @@ public class UI_BuddyLevelUpPopup : UI_Popup
             }
             
 
-            var buddySaveData = Managers.Game.GetBuddySaveData(nowBuddyIndex);
+            var buddySaveData = Managers.Game.GetBuddyData(nowBuddyTemplateId);
 
             if (buddySaveData == null)
                 return;
@@ -234,7 +235,7 @@ public class UI_BuddyLevelUpPopup : UI_Popup
             //{
             GetGameObject((int)Objects.BuddySkillUpContent).DestroyChildren();
 
-            var saveData = Managers.Game.GetBuddySaveData(nowBuddyIndex);
+            var saveData = Managers.Game.GetBuddyData(nowBuddyTemplateId);
 
             if (saveData == null)
                 return;
@@ -258,7 +259,7 @@ public class UI_BuddyLevelUpPopup : UI_Popup
         if (GetButton((int)Buttons.Button_BuddyLevelUp).interactable == false)
             return;
 
-        Managers.Game.BuddyLevelUp();
+        Managers.Game.BuddyLevelUp().Forget();
 
         Debug.Log("On Button Clicked");
     }

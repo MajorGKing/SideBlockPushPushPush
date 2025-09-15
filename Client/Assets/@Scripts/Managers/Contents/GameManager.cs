@@ -181,7 +181,7 @@ public class GameManager
         Debug.Log("Try Hero Level Up");
         var req = new HeroLevelUpReq { Jwt = Managers.Web.jwt, TemplateId = NowHero };
         // Await the web request
-        HeroListRes res = await Managers.Web.SendPostRequestAsync<HeroListRes>("api/game/hero/heroLevelUp", req);
+        HeroListRes res = await Managers.Web.SendPostRequestAsync<HeroListRes>("api/game/hero/levelUp", req);
 
         if (res.Success)
         {
@@ -230,6 +230,17 @@ public class GameManager
 
     #region WebBuddy
     private List<BuddyDTO> _BuddyData = new List<BuddyDTO>();
+
+    public BuddyDTO GetBuddyData(int templateId)
+    {
+        foreach (var buddy in _BuddyData)
+        {
+            if (buddy.TemplateId == templateId)
+                return buddy;
+        }
+
+        return null;
+    }
     public List<BuddyDTO> BuddyData => _BuddyData;
     private int[] _selectedBuddies = new int[4];
 
@@ -276,7 +287,6 @@ public class GameManager
             // 깊은 복사를 위해 새로운 객체 생성
             var copy = new BuddyDTO
             {
-                BuddySaveDataDbId = buddy.BuddySaveDataDbId,
                 TemplateId = buddy.TemplateId,
                 SkillTemplateId = new List<int>(buddy.SkillTemplateId),
                 SelectedNumber = buddy.SelectedNumber
@@ -368,6 +378,32 @@ public class GameManager
         }
     }
 
+    public async UniTask BuddyLevelUp()
+    {
+        Debug.Log("Try Buddy Level Up");
+        var req = new BuddySelectedAddReq { Jwt = Managers.Web.jwt, TemplateId = NowBuddy };
+
+        // Await the web request
+        BuddyListRes res = await Managers.Web.SendPostRequestAsync<BuddyListRes>("api/game/buddy/levelUp", req);
+
+        if (res.Success)
+        {
+            Debug.Log("Success Buddy Level Up");
+
+            // Now Buddy는 로컬 처리
+            NowBuddy = Managers.Data.BuddyDataDic[NowBuddy].NextLevelId;
+
+            await UpdateBuddyData(res.Buddies);
+        }
+        else
+        {
+            Debug.LogError($"error: {res.Message}");
+        }
+
+        // TODO ILHAK Mission
+        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.BuddyLevelUp, 1);
+    }
+
     #endregion
 
 
@@ -425,8 +461,6 @@ public class GameManager
     #endregion
 
     #region Buddy
-
-
     public List<BuddySaveData> buddies { get; private set; }
 
 
@@ -486,7 +520,6 @@ public class GameManager
             }
         }
 
-
         SaveGame();
     }
 
@@ -517,77 +550,77 @@ public class GameManager
     #endregion
 
     #region BuddyUp
-    public void BuddyLevelUp()
-    {
-        var buddyData = Managers.Data.BuddyDataDic[NowBuddy];
-        // 지금 선택된 버디가 레벨업이 가능한지 체크
-        {
-            // 다음 레벨이 있어 레벨업 가능한지 확인
-            if (buddyData.NextLevelId == 0)
-                return;
+    //public void BuddyLevelUp()
+    //{
+    //    var buddyData = Managers.Data.BuddyDataDic[NowBuddy];
+    //    // 지금 선택된 버디가 레벨업이 가능한지 체크
+    //    {
+    //        // 다음 레벨이 있어 레벨업 가능한지 확인
+    //        if (buddyData.NextLevelId == 0)
+    //            return;
 
-            // 자원 가능한지 체크
-            var currencies = buddyData.LevelUpCurrencies;
+    //        // 자원 가능한지 체크
+    //        var currencies = buddyData.LevelUpCurrencies;
 
-            foreach (var currency in currencies)
-            {
-                if (currency.currencyType == Define.ECurrencyType.None)
-                    continue;
+    //        foreach (var currency in currencies)
+    //        {
+    //            if (currency.currencyType == Define.ECurrencyType.None)
+    //                continue;
 
-                if (currency.count > GetCurrency(currency.currencyType))
-                    return;
-            }
+    //            if (currency.count > GetCurrency(currency.currencyType))
+    //                return;
+    //        }
 
-            // 자원가능하면 자원 빼고 저장
-            foreach (var currency in currencies)
-            {
-                if (currency.currencyType == Define.ECurrencyType.None)
-                    continue;
+    //        // 자원가능하면 자원 빼고 저장
+    //        foreach (var currency in currencies)
+    //        {
+    //            if (currency.currencyType == Define.ECurrencyType.None)
+    //                continue;
 
-                AddCurrency(currency.currencyType, -currency.count);
-            }
-        }
+    //            AddCurrency(currency.currencyType, -currency.count);
+    //        }
+    //    }
 
-        // 선택된 버디를 레벨업
-        {
-            var buddySavedata = _gameData.BuddySaves[NowBuddy];
-            // 기존 버디 정보를 삭제
-            int removeIndex = RemoveBuddySaveData(NowBuddy);
+    //    // 선택된 버디를 레벨업
+    //    {
+    //        var buddySavedata = _gameData.BuddySaves[NowBuddy];
+    //        // 기존 버디 정보를 삭제
+    //        int removeIndex = RemoveBuddySaveData(NowBuddy);
 
-            // 새로운 버디 정보를 추가
-            {
-                buddySavedata.TemplateId = buddyData.NextLevelId;
+    //        // 새로운 버디 정보를 추가
+    //        {
+    //            buddySavedata.TemplateId = buddyData.NextLevelId;
 
-                var nextBuddyData = Managers.Data.BuddyDataDic[buddySavedata.TemplateId];
+    //            var nextBuddyData = Managers.Data.BuddyDataDic[buddySavedata.TemplateId];
 
-                List<int> orgSkillId = new List<int>();
+    //            List<int> orgSkillId = new List<int>();
 
-                foreach (int skillId in buddySavedata.SkillTemplateId)
-                {
-                    orgSkillId.Add(Managers.Data.BuddySkillDataDic[skillId].OriginalLevelId);
-                }
+    //            foreach (int skillId in buddySavedata.SkillTemplateId)
+    //            {
+    //                orgSkillId.Add(Managers.Data.BuddySkillDataDic[skillId].OriginalLevelId);
+    //            }
 
-                // 버디의 추가 스킬 정보를 추가
-                foreach (var skillId in nextBuddyData.SKillIds)
-                {
-                    if (orgSkillId.Contains(Managers.Data.BuddySkillDataDic[skillId].OriginalLevelId) == false)
-                    {
-                        buddySavedata.SkillTemplateId.Add(skillId);
-                    }
-                }
+    //            // 버디의 추가 스킬 정보를 추가
+    //            foreach (var skillId in nextBuddyData.SKillIds)
+    //            {
+    //                if (orgSkillId.Contains(Managers.Data.BuddySkillDataDic[skillId].OriginalLevelId) == false)
+    //                {
+    //                    buddySavedata.SkillTemplateId.Add(skillId);
+    //                }
+    //            }
 
-                AddBuddySaveData(buddySavedata, removeIndex);
-            }
-        }
+    //            AddBuddySaveData(buddySavedata, removeIndex);
+    //        }
+    //    }
 
-        // 레벨업에 따른 정보 갱신
-        NowBuddy = buddyData.NextLevelId;
+    //    // 레벨업에 따른 정보 갱신
+    //    NowBuddy = buddyData.NextLevelId;
 
-        // 세이브
-        SaveGame();
+    //    // 세이브
+    //    SaveGame();
 
-        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.BuddyLevelUp, 1);
-    }
+    //    Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.BuddyLevelUp, 1);
+    //}
 
     public void BuddySkillUp(int skillTemplateId)
     {
@@ -1249,6 +1282,7 @@ public class GameManager
     public void Clear()
     {
         OnNowHeroChanged -= () => UpdateCurrencyAsync().Forget();
+        OnNowBuddyChanged -= () => UpdateCurrencyAsync().Forget();
     }
 
     public void Init()
@@ -1256,7 +1290,10 @@ public class GameManager
         OnNowHeroChanged -= () => UpdateCurrencyAsync().Forget();
         OnNowHeroChanged += () => UpdateCurrencyAsync().Forget();
 
-        
+        OnNowBuddyChanged -= () => UpdateCurrencyAsync().Forget();
+        OnNowBuddyChanged += () => UpdateCurrencyAsync().Forget();
+
+
         _path = Application.persistentDataPath + "/SaveData.json";
 
         if (LoadGame())
@@ -1381,21 +1418,6 @@ public class GameManager
         //IsLoaded = true;
 
         stageTemplateId = _gameData.CurrentStageTemplateId;
-
-        // 영웅, 동료 관련 처리
-
-        // 동료 정보 가저오기
-        buddies = _gameData.BuddySaves.Values.ToList();
-        int i = 0;
-        foreach (var buddy in buddies)
-        {
-            if (buddy.isSelected == true)
-            {
-                _selectedBuddies[i++] = buddy.TemplateId;
-            }
-        }
-
-        OnSelectedBuddyChanged?.Invoke();
 
         // 미션 가져오기
         MissionSaveDatas = _gameData.MissionSaves.Values.ToList();

@@ -178,7 +178,6 @@ namespace WebPacket
 
     public class BuddyDTO
     {
-        public int BuddySaveDataDbId { get; set; }
         public int TemplateId { get; set; }
         public List<int> SkillTemplateId { get; set; } = new List<int>();
         public int SelectedNumber { get; set; }

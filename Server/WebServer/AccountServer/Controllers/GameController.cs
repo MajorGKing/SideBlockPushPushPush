@@ -58,7 +58,7 @@ namespace AccountServer.Controllers
         }
 
         [HttpPost]
-        [Route("hero/heroLevelUp")]
+        [Route("hero/levelUp")]
         public async Task<HeroListRes> HeroLevelUp([FromBody] HeroLevelUpReq req)
         {
             return await _hero.LevelUpHeroAsync(req);
@@ -90,6 +90,13 @@ namespace AccountServer.Controllers
         public async Task<BuddyListRes> BuddySelectedAdd([FromBody] BuddySelectedAddReq req)
         {
             return await _buddy.AddSelectedBuddyListAsync(req);
+        }
+
+        [HttpPost]
+        [Route("buddy/levelUp")]
+        public async Task<BuddyListRes> BuddyLevelUp([FromBody] BuddyLevelUpReq req)
+        {
+            return await _buddy.LevelUpBuddyAsync(req);
         }
     }
 }
