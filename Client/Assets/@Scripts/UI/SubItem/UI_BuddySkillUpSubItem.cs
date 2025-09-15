@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
@@ -56,8 +57,11 @@ public class UI_BuddySkillUpSubItem : UI_SubItem
 
     private void RefreshUI()
     {
+        GetButton((int)Buttons.Button_SkillUp).gameObject.SetActive(false);
         if (templateId == 0)
+        {
             return;
+        }
 
         var data = Managers.Data.BuddySkillDataDic[templateId];
         GetImage((int)Images.Button_SkillUp).sprite = Managers.Resource.Load<Sprite>(data.IconImageKey);
@@ -77,12 +81,18 @@ public class UI_BuddySkillUpSubItem : UI_SubItem
             buddySKillUpCurrencies[i].gameObject.SetActive(true);
             buddySKillUpCurrencies[i].SetInfo(data.LevelUpCurrencies[i].currencyType, data.LevelUpCurrencies[i].count, false);
         }
+
+        if(data.LevelUpCurrencies.Count > 0)
+        {
+            GetButton((int)Buttons.Button_SkillUp).gameObject.SetActive(true);
+        }
     }
 
     private void OnClickedBuddySkillUpButton(PointerEventData eventData)
     {
-        // GameManager에 레벨업 신청
+        if (GetButton((int)Buttons.Button_SkillUp).interactable == false)
+            return;
 
-        Managers.Game.BuddySkillUp(templateId);
+        Managers.Game.BuddySkillUp(templateId).Forget();
     }
 }

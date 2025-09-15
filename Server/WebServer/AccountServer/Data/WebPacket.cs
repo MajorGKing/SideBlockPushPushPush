@@ -188,3 +188,10 @@ public class BuddyLevelUpReq
     public int TemplateId { get; set; } // 현재 선택된 동료 TemplateId
 }
 
+public class BuddySkillLevelUpReq
+{
+    public string Jwt { get; set; } = string.Empty;
+    public int BuddyTemplateId { get; set; } // 현재 선택된 동료 TemplateId
+    public int BuddySkillTemplateId { get; set; } // 레벨업 할 동료 스킬 TemplateId
+}
+

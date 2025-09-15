@@ -99,14 +99,14 @@ namespace AccountServer.Services
                 var buddyService = _serviceProvider.GetRequiredService<BuddyService>();
 
                 // 2. 기본 영웅 두 개 지급 (HeroService 호출)
-                await heroService.CreateHero(request.jwt, 100, true);   // 첫 번째 영웅
-                await heroService.CreateHero(request.jwt, 200, false);  // 두 번째 영웅
+                await heroService.HeroCreate(request.jwt, 100, true);   // 첫 번째 영웅
+                await heroService.HeroCreate(request.jwt, 200, false);  // 두 번째 영웅
 
                 // 3. 기본 버디 네 개 지급
-                await buddyService.CreateBuddy(request.jwt, 300000100, 0);
-                await buddyService.CreateBuddy(request.jwt, 100000100, 1);
-                await buddyService.CreateBuddy(request.jwt, 100000300, 2);
-                await buddyService.CreateBuddy(request.jwt, 100000500, 3);
+                await buddyService.BuddyCreate(request.jwt, 300000100, 0);
+                await buddyService.BuddyCreate(request.jwt, 100000100, 1);
+                await buddyService.BuddyCreate(request.jwt, 100000300, 2);
+                await buddyService.BuddyCreate(request.jwt, 100000500, 3);
             }
 
             // 4. PlayerDb 객체를 PlayerData DTO로 변환하여 반환합니다.

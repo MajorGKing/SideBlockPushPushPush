@@ -18,7 +18,7 @@ namespace AccountServer.Services
             _player = player;
         }
 
-        public async Task<bool> CreateHero(string jwt, int templateId, bool isSelected = false)
+        public async Task<bool> HeroCreate(string jwt, int templateId, bool isSelected = false)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
 
@@ -74,7 +74,7 @@ namespace AccountServer.Services
             return true;
         }
 
-        public async Task<HeroListRes> GetHeroListAsync(HeroListReq request)
+        public async Task<HeroListRes> HeroListGetAsync(HeroListReq request)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
             var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
@@ -104,7 +104,7 @@ namespace AccountServer.Services
             };
         }
 
-        public async Task<HeroListRes> ChangeSelectedHeroAsync(HeroNowChangeReq request)
+        public async Task<HeroListRes> HeroSelectedChangeAsync(HeroNowChangeReq request)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
             var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
@@ -145,10 +145,10 @@ namespace AccountServer.Services
             await _dbContext.SaveChangesAsync();
 
             // 여기서 새로 DTO로 변환하지 않고, 기존 메서드 재사용
-            return await GetHeroListAsync(new HeroListReq { Jwt = request.Jwt });
+            return await HeroListGetAsync(new HeroListReq { Jwt = request.Jwt });
         }
 
-        public async Task<HeroListRes> LevelUpHeroAsync(HeroLevelUpReq request)
+        public async Task<HeroListRes> HeroLevelUpAsync(HeroLevelUpReq request)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
 
@@ -315,7 +315,7 @@ namespace AccountServer.Services
             await transaction.CommitAsync();
 
             // Step 11: Return updated hero list
-            return await GetHeroListAsync(new HeroListReq { Jwt = request.Jwt });
+            return await HeroListGetAsync(new HeroListReq { Jwt = request.Jwt });
         }
 
 
@@ -474,9 +474,7 @@ namespace AccountServer.Services
             await transaction.CommitAsync();
 
             // Step 14: Return updated hero list
-            return await GetHeroListAsync(new HeroListReq { Jwt = request.Jwt });
+            return await HeroListGetAsync(new HeroListReq { Jwt = request.Jwt });
         }
-
-
     }
 }

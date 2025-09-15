@@ -381,7 +381,7 @@ public class GameManager
     public async UniTask BuddyLevelUp()
     {
         Debug.Log("Try Buddy Level Up");
-        var req = new BuddySelectedAddReq { Jwt = Managers.Web.jwt, TemplateId = NowBuddy };
+        var req = new BuddyLevelUpReq { Jwt = Managers.Web.jwt, TemplateId = NowBuddy };
 
         // Await the web request
         BuddyListRes res = await Managers.Web.SendPostRequestAsync<BuddyListRes>("api/game/buddy/levelUp", req);
@@ -401,7 +401,30 @@ public class GameManager
         }
 
         // TODO ILHAK Mission
-        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.BuddyLevelUp, 1);
+        //Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.BuddyLevelUp, 1);
+    }
+
+    public async UniTask BuddySkillUp(int skillTemplateId)
+    {
+        Debug.Log("Try Buddy Skill Level Up");
+
+        var req = new BuddySkillLevelUpReq { Jwt = Managers.Web.jwt, BuddyTemplateId = NowBuddy, BuddySkillTemplateId = skillTemplateId };
+
+        // Await the web request
+        BuddyListRes res = await Managers.Web.SendPostRequestAsync<BuddyListRes>("api/game/buddy/skillUp", req);
+        if (res.Success)
+        {
+            Debug.Log("Success Buddy Skill Level Up");
+
+            await UpdateBuddyData(res.Buddies);
+        }
+        else
+        {
+            Debug.LogError($"error: {res.Message}");
+        }
+
+        // TODO ILHAK Mission
+        //Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.BuddySkillUp, 1);
     }
 
     #endregion
@@ -622,77 +645,77 @@ public class GameManager
     //    Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.BuddyLevelUp, 1);
     //}
 
-    public void BuddySkillUp(int skillTemplateId)
-    {
-        if (skillTemplateId == 0)
-            return;
+    //public void BuddySkillUp(int skillTemplateId)
+    //{
+    //    if (skillTemplateId == 0)
+    //        return;
 
-        // NowBuddy의 BuddySaveData에 접근 skill의 templateId를 갱신
+    //    // NowBuddy의 BuddySaveData에 접근 skill의 templateId를 갱신
 
-        BuddySaveData currentData = new BuddySaveData();
+    //    BuddySaveData currentData = new BuddySaveData();
 
-        foreach (var buddy in buddies)
-        {
-            if (buddy.TemplateId == NowBuddy)
-            {
-                currentData = buddy;
-                break;
-            }
-        }
+    //    foreach (var buddy in buddies)
+    //    {
+    //        if (buddy.TemplateId == NowBuddy)
+    //        {
+    //            currentData = buddy;
+    //            break;
+    //        }
+    //    }
 
-        if (currentData.TemplateId == 0)
-            return;
+    //    if (currentData.TemplateId == 0)
+    //        return;
 
-        var skillData = Managers.Data.BuddySkillDataDic[skillTemplateId];
+    //    var skillData = Managers.Data.BuddySkillDataDic[skillTemplateId];
 
-        if (skillData == null)
-            return;
+    //    if (skillData == null)
+    //        return;
 
-        // 업그레이드 가능한지 체크
-        {
-            // 다음 레벨로 진행 가능한가
-            if (skillData.NextLevelId == 0)
-                return;
+    //    // 업그레이드 가능한지 체크
+    //    {
+    //        // 다음 레벨로 진행 가능한가
+    //        if (skillData.NextLevelId == 0)
+    //            return;
 
-            // 자원은 충분한가
-            var currencies = skillData.LevelUpCurrencies;
+    //        // 자원은 충분한가
+    //        var currencies = skillData.LevelUpCurrencies;
 
-            foreach (var currency in currencies)
-            {
-                if (currency.currencyType == Define.ECurrencyType.None)
-                    continue;
+    //        foreach (var currency in currencies)
+    //        {
+    //            if (currency.currencyType == Define.ECurrencyType.None)
+    //                continue;
 
-                if (currency.count > GetCurrency(currency.currencyType))
-                    return;
-            }
+    //            if (currency.count > GetCurrency(currency.currencyType))
+    //                return;
+    //        }
 
-            // 자원가능하면 자원 빼고 저장
-            foreach (var currency in currencies)
-            {
-                if (currency.currencyType == Define.ECurrencyType.None)
-                    continue;
+    //        // 자원가능하면 자원 빼고 저장
+    //        foreach (var currency in currencies)
+    //        {
+    //            if (currency.currencyType == Define.ECurrencyType.None)
+    //                continue;
 
-                AddCurrency(currency.currencyType, -currency.count);
-            }
-        }
+    //            AddCurrency(currency.currencyType, -currency.count);
+    //        }
+    //    }
 
-        // 선택된 스킬 레벨업
-        {
-            // 로컬값 수정
-            var nowSkillIndex = currentData.SkillTemplateId.IndexOf(skillTemplateId);
-            currentData.SkillTemplateId[nowSkillIndex] = skillData.NextLevelId;
+    //    // 선택된 스킬 레벨업
+    //    {
+    //        // 로컬값 수정
+    //        var nowSkillIndex = currentData.SkillTemplateId.IndexOf(skillTemplateId);
+    //        currentData.SkillTemplateId[nowSkillIndex] = skillData.NextLevelId;
 
-            // 세이브 될 값 수정 - 위에서 링크로 수정되었기 때문에 gameData값도 자동 수정됨
-            //var nowSKillIndexSave = _gameData.BuddySaves[NowBuddy].SkillTemplateId.IndexOf(skillTemplateId);
-            //_gameData.BuddySaves[NowBuddy].SkillTemplateId[nowSKillIndexSave] = skillData.NextLevelId;
+    //        // 세이브 될 값 수정 - 위에서 링크로 수정되었기 때문에 gameData값도 자동 수정됨
+    //        //var nowSKillIndexSave = _gameData.BuddySaves[NowBuddy].SkillTemplateId.IndexOf(skillTemplateId);
+    //        //_gameData.BuddySaves[NowBuddy].SkillTemplateId[nowSKillIndexSave] = skillData.NextLevelId;
 
-            SaveGame();
-            OnNowBuddyChanged?.Invoke();
+    //        SaveGame();
+    //        OnNowBuddyChanged?.Invoke();
 
-            Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.BuddySkillUp, 1);
-        }
+    //        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.BuddySkillUp, 1);
+    //    }
 
-    }
+    //}
     #endregion
 
     #region Achievement
