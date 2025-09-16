@@ -38,6 +38,7 @@ namespace AccountServer
             builder.Services.AddScoped<CurrencyService>();
             builder.Services.AddScoped<HeroService>();
             builder.Services.AddScoped<BuddyService>();
+            builder.Services.AddScoped<ShopService>();
 
             var app = builder.Build();
 

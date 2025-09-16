@@ -195,3 +195,48 @@ public class BuddySkillLevelUpReq
     public int BuddySkillTemplateId { get; set; } // 레벨업 할 동료 스킬 TemplateId
 }
 
+public class HeroGachaReward
+{
+    public CurrencyType Type { get; set; }
+    public int Count { get; set; }
+}
+
+public class ShopHeroGachaReq
+{
+    public string Jwt { get; set; } = string.Empty;
+    public int Count { get; set; }
+}
+
+public class ShopHeroGachaRes
+{
+    public bool Success { get; set; }
+    public string Message { get; set; } = string.Empty;
+    public List<HeroGachaReward> Rewards { get; set; } = new List<HeroGachaReward>();
+}
+
+public class BuddyDuplicateReward
+{
+    public CurrencyType Type { get; set; }
+    public int Count { get; set; }
+}
+
+public class BuddyGachaReward
+{
+    public int TemplateId { get; set; } // 새로 획득한 동료 TemplateId
+    public bool IsDuplicate { get; set; } // 이미 획득한 둥료인가?
+    public BuddyDuplicateReward Reward { get; set; } = new BuddyDuplicateReward();
+}
+
+public class ShopBuddyGachaReq
+{
+    public string Jwt { get; set; } = string.Empty;
+    public int Count { get; set; }
+}
+
+public class ShopBuddyGachaRes
+{
+    public bool Success { get; set; }
+    public string Message { get; set; } = string.Empty;
+    public List<BuddyGachaReward> Rewards { get; set; } = new List<BuddyGachaReward>();
+}
+

@@ -70,8 +70,8 @@ namespace AccountServer.Services
                     // 새로운 플레이어를 만들 때 CurrencyDb도 함께 추가합니다.
                     Currency = new CurrencyDb()
                     {
-                        Gold = 50,
-                        Dia = 50,
+                        Gold = 1000000,
+                        Dia = 1000000,
                         BlueGem = 50,
                         GreenGem = 50,
                         YellowGem = 50,

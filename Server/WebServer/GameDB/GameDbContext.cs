@@ -14,6 +14,7 @@ namespace GameDB
         public DbSet<MissionSaveDataDb> Missions { get; set; }
         public DbSet<AchievementSaveDataDb> Achievements { get; set; }
         public DbSet<AchievementClearListDb> AchievementClearLists { get; set; }
+        public DbSet<HeroGachaLogDb> HeroGachaLog { get; set; }
 
 
         public GameDbContext()

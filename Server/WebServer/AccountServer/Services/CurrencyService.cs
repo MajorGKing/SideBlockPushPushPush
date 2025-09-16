@@ -74,7 +74,7 @@ namespace AccountServer.Services
             };
         }
 
-        public async Task<CurrencyAllRes> UpdatePlayerCurrencyAsync(CurrencyAddReq request)
+        public async Task<CurrencyAllRes> UpdatePlayerCurrencyAsync(CurrencyAddReq request, bool commitChanges = true)
         {
             var token = _jwt.DecipherJwtAccessToken(request.jwt);
             var subClaim = token.Claims.FirstOrDefault(c => c.Type == "sub");
@@ -152,7 +152,11 @@ namespace AccountServer.Services
                     throw new ArgumentOutOfRangeException("지원하지 않는 CurrencyType입니다.");
             }
 
-            await _dbContext.SaveChangesAsync();
+            if(commitChanges == true)
+            {
+                await _dbContext.SaveChangesAsync();
+            }
+            
 
             // 갱신된 데이터를 다시 DTO로 변환
             var updatedCurrency = new CurrencyData

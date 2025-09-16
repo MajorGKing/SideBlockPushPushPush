@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -168,7 +169,7 @@ public class UI_ShopPopup : UI_Popup
 
     private void OnClickHeroGachaCount(int count)
     {
-        Managers.Game.DoHeroGacha(count);
+        Managers.Game.DoHeroGacha(count).Forget();
     }
 
     private void OnClickHeroGachaCount1(PointerEventData data)

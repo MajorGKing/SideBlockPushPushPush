@@ -13,13 +13,15 @@ namespace AccountServer.Controllers
         CurrencyService _currency;
         HeroService _hero;
         BuddyService _buddy;
+        ShopService _shop;
 
-        public GameController(PlayerService player, CurrencyService currency, HeroService heroService, BuddyService buddyService)
+        public GameController(PlayerService player, CurrencyService currency, HeroService heroService, BuddyService buddyService, ShopService shop)
         {
             _player = player;
             _currency = currency;
             _hero = heroService;
             _buddy = buddyService;
+            _shop = shop;
         }
 
         [HttpPost]
@@ -104,6 +106,20 @@ namespace AccountServer.Controllers
         public async Task<BuddyListRes> BuddySkillUp([FromBody] BuddySkillLevelUpReq req)
         {
             return await _buddy.BuddySkillUpAsync(req);
+        }
+
+        [HttpPost]
+        [Route("shop/heroGachaDo")]
+        public async Task<ShopHeroGachaRes> HeroGachaDo([FromBody] ShopHeroGachaReq req)
+        {
+            return await _shop.HeroGachaDoAsync(req);
+        }
+
+        [HttpPost]
+        [Route("shop/buddyGachaDo")]
+        public async Task<ShopBuddyGachaRes> BuddyGachaDo([FromBody] ShopBuddyGachaReq req)
+        {
+            return await _shop.BuddyGachaDoAsync(req);
         }
     }
 }

@@ -220,5 +220,22 @@ namespace WebPacket
         public int BuddySkillTemplateId { get; set; } // 레벨업 할 동료 스킬 TemplateId
     }
 
+    public class HeroGachaReward
+    {
+        public CurrencyType Type { get; set; }
+        public int Count { get; set; }
+    }
 
+    public class ShopHeroGachaReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+        public int Count { get; set; }
+    }
+
+    public class ShopHeroGachaRes
+    {
+        public bool Success { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public List<HeroGachaReward> Rewards { get; set; } = new List<HeroGachaReward>();
+    }
 }

@@ -8,7 +8,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using WebPacket;
-using static Define;
 
 public class GameManager
 {
@@ -429,6 +428,42 @@ public class GameManager
 
     #endregion
 
+    #region WebGacha
+    public async UniTask DoHeroGacha(int count)
+    {
+        Debug.Log("Try Hero Gacha");
+
+        var req = new ShopHeroGachaReq { Jwt = Managers.Web.jwt, Count = count };
+
+        // Await the web request
+        var res = await Managers.Web.SendPostRequestAsync<ShopHeroGachaRes>("api/game/shop/heroGachaDo", req);
+        if (res.Success)
+        {
+            Debug.Log("Success Hero Gacha");
+
+            var clear = Managers.UI.ShowPopupUI<UI_RewardPopup>();
+
+            List<Reward> rewards = new List<Reward>();
+
+            foreach(var reward in res.Rewards)
+            {
+                rewards.Add(new Reward((Define.ECurrencyType)((int)reward.Type + 1), reward.Count));
+            }
+
+            clear.SetInfo(Define.ERewardType.HeroGacha, rewards);
+
+            // TODO ILHAK Mission
+            Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoHeroGacha, count);
+        }
+        else
+        {
+            Debug.LogError($"error: {res.Message}");
+        }
+
+        await UpdateCurrencyAsync();
+    }
+    #endregion
+
 
     string _path;
 
@@ -732,7 +767,7 @@ public class GameManager
             }
 
             return _AchievementSaveDats
-            .OrderByDescending(data => data.MissionState == EMissionState.Rewardable)
+            .OrderByDescending(data => data.MissionState == Define.EMissionState.Rewardable)
             //.ThenBy(data => data.TemplateId) // 필요 시 TemplateId 기준 2차 정렬
             .ToList();
         }
@@ -1059,48 +1094,48 @@ public class GameManager
     #endregion
 
     #region Gacha
-    public void DoHeroGacha(int count)
-    {
-        // TODO ILHAK price data
-        var needDia = 0;
+    //public void DoHeroGacha(int count)
+    //{
+    //    // TODO ILHAK price data
+    //    var needDia = 0;
 
-        if (count == 1)
-        {
-            needDia = 110;
-        }
-        else if (count == 10)
-        {
-            needDia = 1000;
-        }
+    //    if (count == 1)
+    //    {
+    //        needDia = 110;
+    //    }
+    //    else if (count == 10)
+    //    {
+    //        needDia = 1000;
+    //    }
 
-        if (needDia == 0)
-            return;
+    //    if (needDia == 0)
+    //        return;
 
-        List<Reward> rewards = new List<Reward>();
-        System.Random random = new System.Random();
+    //    List<Reward> rewards = new List<Reward>();
+    //    System.Random random = new System.Random();
 
-        for (int i = 0; i < count; i++)
-        {
-            int randomNumber = random.Next(Managers.Data.HeroGachaDataDic.First().Value.Max);
+    //    for (int i = 0; i < count; i++)
+    //    {
+    //        int randomNumber = random.Next(Managers.Data.HeroGachaDataDic.First().Value.Max);
 
-            foreach (var heroGachaData in Managers.Data.HeroGachaDataDic.Values)
-            {
-                if (heroGachaData.Percent > randomNumber)
-                {
-                    Debug.Log($"{heroGachaData.CurrencyType} : {heroGachaData.CurrencyCount}");
-                    rewards.Add(new Reward(heroGachaData.CurrencyType, heroGachaData.CurrencyCount));
-                    AddCurrency(heroGachaData.CurrencyType, heroGachaData.CurrencyCount);
-                    break;
-                }
-            }
+    //        foreach (var heroGachaData in Managers.Data.HeroGachaDataDic.Values)
+    //        {
+    //            if (heroGachaData.Percent > randomNumber)
+    //            {
+    //                Debug.Log($"{heroGachaData.CurrencyType} : {heroGachaData.CurrencyCount}");
+    //                rewards.Add(new Reward(heroGachaData.CurrencyType, heroGachaData.CurrencyCount));
+    //                AddCurrency(heroGachaData.CurrencyType, heroGachaData.CurrencyCount);
+    //                break;
+    //            }
+    //        }
 
-            var clear = Managers.UI.ShowPopupUI<UI_RewardPopup>();
+    //        var clear = Managers.UI.ShowPopupUI<UI_RewardPopup>();
 
-            clear.SetInfo(Define.ERewardType.HeroGacha, rewards);
-        }
+    //        clear.SetInfo(Define.ERewardType.HeroGacha, rewards);
+    //    }
 
-        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoHeroGacha, count);
-    }
+    //    Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoHeroGacha, count);
+    //}
 
     public void DoCurrencyGacha(int count)
     {

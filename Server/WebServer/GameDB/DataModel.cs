@@ -401,4 +401,36 @@ namespace GameDB
         public PlayerDb Player { get; set; }
     }
 
+    /// <summary>
+    /// 영웅 뽑기 저장하는 테이블 입니다.
+    /// </summary>
+    [Table("HeroGachaLog")]
+    public class HeroGachaLogDb
+    {
+        /// <summary>
+        /// 전체 뽑기 카운트
+        /// </summary>
+        [Key]
+        public long HeroGachaLogDbId { get; set; }
+        /// <summary>
+        /// 뽑은 유저 ID
+        /// </summary>
+        public int PlayerDbId { get; set; }
+        /// <summary>
+        /// 몇 번 째 뽑기인가 1/1 or n/10
+        /// </summary>
+        public int Do { get; set; }
+        /// <summary>
+        /// 1연차 or 10연차
+        /// </summary>
+        public int DoMax { get; set; }
+        /// <summary>
+        /// 뽑기 결과
+        /// </summary>
+        public string GachaItemResult { get; set; } = string.Empty;
+        /// <summary>
+        /// 뽑기 시간을 Unix Timed으로 저장
+        /// </summary>
+        public long UnixSeconds { get; set; }
+    }
 }
