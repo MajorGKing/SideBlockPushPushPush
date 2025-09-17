@@ -1,5 +1,9 @@
-﻿using GameDB;
+﻿using AccountServer;
+using AccountServer.Data;
+using GameDB;
 using Microsoft.EntityFrameworkCore;
+using CurrencyType = AccountServer.Data.CurrencyType;
+using DbCurrencyType = GameDB.CurrencyType;
 
 namespace AccountServer.Services
 {

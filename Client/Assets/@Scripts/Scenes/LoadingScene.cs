@@ -94,22 +94,7 @@ public class LoadingScene : BaseScene
 
 
         {
-            var req = new BuddyListReq()
-            {
-                Jwt = Managers.Web.jwt,
-            };
-
-            BuddyListRes res = await Managers.Web.SendPostRequestAsync<BuddyListRes>("api/game/buddy", req);
-
-            if(res.Success)
-            {
-                Managers.Game.NowBuddy = 0;
-                await Managers.Game.UpdateBuddyData(res.Buddies);
-            }
-            else
-            {
-                Debug.LogError($"Get Buddy Failed.");
-            }
+            await Managers.Game.UpdateBuddyData();
         }
 
         // 2. Proceed to next scene

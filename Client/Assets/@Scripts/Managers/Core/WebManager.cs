@@ -88,5 +88,5 @@ public class WebManager
                 return default;
             }
         }
-    }
+    } 
 }

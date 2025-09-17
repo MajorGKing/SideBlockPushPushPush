@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Security.Permissions;
 
 namespace GameDB
 {
@@ -10,6 +9,37 @@ namespace GameDB
         Progress,
         Rewardable,
         Finish,
+    }
+
+    public enum CurrencyType
+    {
+        Gold,
+        Dia,
+        BlueGem,
+        GreenGem,
+        YellowGem,
+        StoneArmor,
+        StoneBelt,
+        StoneBoots,
+        StoneGloves,
+        StoneRing,
+        StoneWeapon,
+        Exp,
+        ScrollArmor,
+        ScrollBelt,
+        ScrollBoots,
+        ScrollGloves,
+        ScrollRing,
+        ScrollWeapon,
+    }
+
+    public enum Rarity
+    {
+        Common,
+        Rare,
+        Epic,
+        Unique,
+        Legend,
     }
 
     /// <summary>
@@ -427,7 +457,64 @@ namespace GameDB
         /// <summary>
         /// 뽑기 결과
         /// </summary>
-        public string GachaItemResult { get; set; } = string.Empty;
+        public CurrencyType GachaItemResult { get; set; }
+        /// <summary>
+        /// 뽑기로 얻은 자원 갯수
+        /// </summary>
+        public int Count {  get; set; }
+        /// <summary>
+        /// 뽑기 시간을 Unix Timed으로 저장
+        /// </summary>
+        public long UnixSeconds { get; set; }
+    }
+
+    /// <summary>
+    /// 동료 뽑기 저장하는 테이블 입니다.
+    /// </summary>
+    [Table("BuddyGachaLog")]
+    public class BuddyGachaLogDb
+    {
+        /// <summary>
+        /// 전체 뽑기 카운트
+        /// </summary>
+        [Key]
+        public long BuddyGachaLogDbId { get; set; }
+        /// <summary>
+        /// 뽑은 유저 ID
+        /// </summary>
+        public int PlayerDbId { get; set; }
+        /// <summary>
+        /// 몇 번 째 뽑기인가 1/1 or n/10
+        /// </summary>
+        public int Do { get; set; }
+        /// <summary>
+        /// 1연차 or 10연차
+        /// </summary>
+        public int DoMax { get; set; }
+        /// <summary>
+        /// 뽑기 결과 얻은 동료
+        /// </summary>
+        public int BuddyTemplateId { get; set; }
+        /// <summary>
+        /// 뽑기 데이터의 Key값 이름
+        /// </summary>
+        public string BuddyGachaName { get; set; } = string.Empty;
+        /// <summary>
+        /// 획득한 동로의 레어도
+        /// </summary>
+        public Rarity Rarity { get; set; }
+        /// <summary>
+        /// 중복 여부
+        /// </summary>
+        public bool IsDuplicate {  get; set; }
+        /// <summary>
+        /// 중복인 경우 얻은 자원 종류
+        /// </summary>
+        public CurrencyType? DuplicateRewardType {  get; set; }
+        /// <summary>
+        /// 중복인 경우 얻은 자원 량
+        /// </summary>
+        public int DuplicateRewardCount {  get; set; }
         /// <summary>
         /// 뽑기 시간을 Unix Timed으로 저장
         /// </summary>

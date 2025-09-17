@@ -1,4 +1,5 @@
-﻿using GameDB;
+﻿using AccountServer.Data;
+using GameDB;
 using Microsoft.EntityFrameworkCore;
 using Server.Data;
 

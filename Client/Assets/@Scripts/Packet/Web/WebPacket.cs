@@ -238,4 +238,23 @@ namespace WebPacket
         public string Message { get; set; } = string.Empty;
         public List<HeroGachaReward> Rewards { get; set; } = new List<HeroGachaReward>();
     }
+
+    public class BuddyGachaReward
+    {
+        public string BuddyName { get; set; } = string.Empty;// 새로 획득한 동료 이름Id
+        public bool IsDuplicate { get; set; } // 이미 획득한 둥료인가?
+    }
+
+    public class ShopBuddyGachaReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+        public int Count { get; set; }
+    }
+
+    public class ShopBuddyGachaRes
+    {
+        public bool Success { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public List<BuddyGachaReward> Rewards { get; set; } = new List<BuddyGachaReward>();
+    }
 }

@@ -204,7 +204,7 @@ public class UI_ShopPopup : UI_Popup
 
     private void OnClickBuddyGachaCount(int count)
     {
-        Managers.Game.DoBuddyGacha(count);
+        Managers.Game.DoBuddyGacha(count).Forget();
     }
 
     private void OnClickBuddyGachaCount10(PointerEventData data)

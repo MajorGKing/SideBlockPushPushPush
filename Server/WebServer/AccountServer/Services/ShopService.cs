@@ -1,7 +1,10 @@
-﻿using GameDB;
+﻿using AccountServer.Data;
+using GameDB;
 using Newtonsoft.Json;
 using Server.Data;
-using static AccountServer.Define;
+using DbCurrencyType = GameDB.CurrencyType;
+using CurrencyType = AccountServer.Data.CurrencyType;
+
 
 namespace AccountServer.Services
 {
@@ -99,14 +102,16 @@ namespace AccountServer.Services
                 // Step 5: Save log (1 entry per gacha session)
                 for (int i = 0; i < request.Count; i++)
                 {
-                    var singleReward = rewards.Skip(i).Take(1).ToList();
+                    //var singleReward = rewards.Skip(i).Take(1).ToList();
+                    var singleReward = rewards.Skip(i).Take(1).ToList(); ;
 
                     var log = new HeroGachaLogDb
                     {
                         PlayerDbId = player.PlayerDbId,
                         Do = i + 1,             // 1 to Count
                         DoMax = request.Count,  // 1 or 10
-                        GachaItemResult = JsonConvert.SerializeObject(singleReward),
+                        GachaItemResult = (DbCurrencyType)singleReward[0].Type,
+                        Count = singleReward[0].Count,
                         UnixSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
                     };
 
@@ -120,6 +125,156 @@ namespace AccountServer.Services
                 // Step 7: Build response
                 response.Success = true;
                 response.Message = "Gacha completed.";
+                response.Rewards = rewards;
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                response.Success = false;
+                response.Message = $"Error: {ex.Message}";
+            }
+
+            return response;
+        }
+
+        public async Task<ShopBuddyGachaRes> BuddyGachaDoAsync(ShopBuddyGachaReq request)
+        {
+            var response = new ShopBuddyGachaRes();
+            await using var transaction = await _dbContext.Database.BeginTransactionAsync();
+
+            try
+            {
+                // Step 1: Validate JWT & load player
+                var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
+                var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+                if (player == null)
+                {
+                    response.Success = false;
+                    response.Message = "Invalid player.";
+                    return response;
+                }
+
+                // Step 2: Validate count
+                if (request.Count != 1 && request.Count != 10)
+                {
+                    response.Success = false;
+                    response.Message = "Invalid gacha count.";
+                    return response;
+                }
+
+                // Step 3: Determine cost
+                int needDia = request.Count == 1 ? 110 : 1000;
+                if (player.Currency.Dia < needDia)
+                {
+                    response.Success = false;
+                    response.Message = "Not enough diamonds.";
+                    return response;
+                }
+
+                // Deduct diamonds
+                await _currency.UpdatePlayerCurrencyAsync(new CurrencyAddReq
+                {
+                    jwt = request.Jwt,
+                    CurrencyType = CurrencyType.Dia,
+                    Amount = -needDia
+                }, false);
+
+                // Step 4: RNG + rewards
+                List<BuddyGachaReward> rewards = new List<BuddyGachaReward>();
+                Random random = new Random();
+
+                for (int i = 0; i < request.Count; i++)
+                {
+                    // Determine rarity
+                    int roll = random.Next(DataManager.BuddyGachaRarityDataDic.First().Value.Max);
+                    Define.ERarityType rarity = Define.ERarityType.None;
+                    foreach (var rarityData in DataManager.BuddyGachaRarityDataDic.Values)
+                    {
+                        if (rarityData.Percent > roll)
+                        {
+                            rarity = rarityData.RarityType;
+                            break;
+                        }
+                    }
+
+                    // Pick a random buddy by rarity
+                    List<string> candidateList = rarity switch
+                    {
+                        Define.ERarityType.Common => DataManager.commonBuddies,
+                        Define.ERarityType.Rare => DataManager.rareBuddies,
+                        Define.ERarityType.Epic => DataManager.epicBuddies,
+                        Define.ERarityType.Unique => DataManager.uniqueBuddies,
+                        Define.ERarityType.Legend => DataManager.legendBuddies,
+                        _ => new List<string>()
+                    };
+
+                    int randomIndex = random.Next(candidateList.Count);
+                    string buddyName = candidateList[randomIndex];
+                    int buddyTemplateId = DataManager.BuddyGachaDataDic[candidateList[randomIndex]].BuddyTemplateId;
+                    var buddyData = DataManager.BuddyDataDic[buddyTemplateId];
+                    var buddyGachaData = DataManager.BuddyGachaDataDic[candidateList[randomIndex]];
+
+                    var gachaReward = new BuddyGachaReward
+                    {
+                        BuddyName = buddyName,
+                    };
+
+                    // Check if player already has this buddy
+                    bool hasBuddy = player.Buddies.Any(b => b.TemplateId == buddyTemplateId);
+
+                    if (!hasBuddy)
+                    {
+                        gachaReward.IsDuplicate = false;
+
+                        // Add buddy to player
+                        var newBuddy = new BuddySaveDataDb
+                        {
+                            TemplateId = buddyTemplateId,
+                            SkillTemplateId = buddyData.SKillIds ?? new List<int>(),
+                            SelectedNumber = -1,
+                            PlayerDbId = accountDbId
+                        };
+                        player.Buddies.Add(newBuddy);
+                    }
+                    else
+                    {
+                        gachaReward.IsDuplicate = true;
+
+                        // Add reward currency
+                        await _currency.UpdatePlayerCurrencyAsync(new CurrencyAddReq
+                        {
+                            jwt = request.Jwt,
+                            CurrencyType = (CurrencyType)((int)buddyGachaData.CurrencyType - 1),
+                            Amount = buddyGachaData.CurrencyCount
+                        }, false);
+                    }
+
+                    rewards.Add(gachaReward);
+
+                    // Step 5: Save log for each gacha
+                    var log = new BuddyGachaLogDb
+                    {
+                        PlayerDbId = player.PlayerDbId,
+                        Do = i + 1,
+                        DoMax = request.Count,
+                        BuddyTemplateId = buddyTemplateId,
+                        BuddyGachaName = buddyGachaData.GachaItem,
+                        Rarity = (Rarity)((int)buddyGachaData.Rarity - 1),
+                        IsDuplicate = gachaReward.IsDuplicate,
+                        DuplicateRewardType = gachaReward.IsDuplicate ? ((DbCurrencyType)(int)buddyGachaData.CurrencyType - 1) : null,
+                        DuplicateRewardCount = gachaReward.IsDuplicate ? buddyGachaData.CurrencyCount : 0,
+                        UnixSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
+                    };
+                    _dbContext.BuddyGachaLog.Add(log);
+                }
+
+                // Step 6: Save changes & commit
+                await _dbContext.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                // Step 7: Build response
+                response.Success = true;
+                response.Message = "Buddy gacha completed.";
                 response.Rewards = rewards;
             }
             catch (Exception ex)

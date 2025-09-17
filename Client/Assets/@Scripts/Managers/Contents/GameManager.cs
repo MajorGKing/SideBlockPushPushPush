@@ -265,6 +265,26 @@ public class GameManager
         }
     }
 
+    public async UniTask UpdateBuddyData(int nowBuddy = 0)
+    {
+        var req = new BuddyListReq()
+        {
+            Jwt = Managers.Web.jwt,
+        };
+
+        BuddyListRes res = await Managers.Web.SendPostRequestAsync<BuddyListRes>("api/game/buddy", req);
+
+        if (res.Success)
+        {
+            Managers.Game.NowBuddy = nowBuddy;
+            await UpdateBuddyData(res.Buddies);
+        }
+        else
+        {
+            Debug.LogError($"Get Buddy Failed.");
+        }
+    }
+
     public async UniTask UpdateBuddyData(List<BuddyDTO> data)
     {
         if (data == null)
@@ -291,11 +311,12 @@ public class GameManager
                 SelectedNumber = buddy.SelectedNumber
             };
 
+            Debug.Log($"Buddy Id {copy.TemplateId}, Slot: {copy.SelectedNumber}");
+
             _BuddyData.Add(copy);            
 
             if (copy.SelectedNumber >= 0)
             {
-                Debug.Log($"Selected Buddy Id {copy.TemplateId}, Slot: {copy.SelectedNumber}");
                 _selectedBuddies[copy.SelectedNumber] = copy.TemplateId;
             }
         }
@@ -323,36 +344,6 @@ public class GameManager
         {
             Debug.LogError(res.Message);
         }
-
-
-        //for (int i = 0; i < _selectedBuddies.Length; i++)
-        //{
-        //    if (_selectedBuddies[i] == templatedId)
-        //    {
-        //        _selectedBuddies[i] = 0;
-        //        SetSelectdBuddy(templatedId, false);
-
-        //        int writeIndex = 0;
-        //        for (int j = 0; j < _selectedBuddies.Length; j++)
-        //        {
-        //            // 0이 아닌 요소만 writeIndex 위치에 복사
-        //            if (_selectedBuddies[j] != 0)
-        //            {
-        //                _selectedBuddies[writeIndex] = _selectedBuddies[j];
-        //                writeIndex++;
-        //            }
-        //        }
-        //        // 남은 공간을 0으로 채움
-        //        for (int k = writeIndex; k < _selectedBuddies.Length; k++)
-        //        {
-        //            _selectedBuddies[k] = 0;
-        //        }
-
-        //        OnSelectedBuddyChanged?.Invoke();
-        //        return true;
-        //    }
-        //}
-        //return false;
     }
 
     public async UniTask SelectedBuddyAdd(int templatedId)
@@ -460,6 +451,41 @@ public class GameManager
             Debug.LogError($"error: {res.Message}");
         }
 
+        await UpdateCurrencyAsync();
+    }
+
+    public async UniTask DoBuddyGacha(int count)
+    {
+        Debug.Log("Start Buddy Gacha");
+
+        var req = new ShopBuddyGachaReq { Jwt = Managers.Web.jwt, Count = count };
+
+        // Await the web request
+        var res = await Managers.Web.SendPostRequestAsync<ShopBuddyGachaRes>("api/game/shop/buddyGachaDo", req);
+        if (res.Success)
+        {
+            Debug.Log("Success Buddy Gacha");
+
+            var popup = Managers.UI.ShowPopupUI<UI_BuddyGachaPopup>();
+
+            List<BuddyGacha> rewards = new List<BuddyGacha>();
+
+            foreach (var reward in res.Rewards)
+            {
+                rewards.Add(new BuddyGacha(reward.BuddyName, reward.IsDuplicate));
+            }
+
+            popup.SetInfo(rewards);
+
+            // TODO ILHAK Mission
+            Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoHeroGacha, count);
+        }
+        else
+        {
+            Debug.LogError($"error: {res.Message}");
+        }
+
+        await UpdateBuddyData();
         await UpdateCurrencyAsync();
     }
     #endregion
@@ -1184,94 +1210,94 @@ public class GameManager
         Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoCurrencyGacha, count);
     }
 
-    public void DoBuddyGacha(int count)
-    {
-        Debug.Log("Start Buddy Gacha");
-        // TODO ILHAK price data
-        var needDia = 0;
+    //public void DoBuddyGacha(int count)
+    //{
+    //    Debug.Log("Start Buddy Gacha");
+    //    // TODO ILHAK price data
+    //    var needDia = 0;
 
-        if (count == 1)
-        {
-            needDia = 110;
-        }
-        else if (count == 10)
-        {
-            needDia = 1000;
-        }
+    //    if (count == 1)
+    //    {
+    //        needDia = 110;
+    //    }
+    //    else if (count == 10)
+    //    {
+    //        needDia = 1000;
+    //    }
 
-        if (needDia == 0)
-            return;
+    //    if (needDia == 0)
+    //        return;
 
-        List<BuddyGacha> gachaResult = new List<BuddyGacha>();
-        List<string> buddyNames = new List<string>();
-        System.Random random = new System.Random();
+    //    List<BuddyGacha> gachaResult = new List<BuddyGacha>();
+    //    List<string> buddyNames = new List<string>();
+    //    System.Random random = new System.Random();
 
-        for (int i = 0; i < count; i++)
-        {
-            int randomNumber = random.Next(Managers.Data.BuddyGachaRarityDataDic.First().Value.Max);
+    //    for (int i = 0; i < count; i++)
+    //    {
+    //        int randomNumber = random.Next(Managers.Data.BuddyGachaRarityDataDic.First().Value.Max);
 
-            Define.ERarityType rarity = Define.ERarityType.None;
+    //        Define.ERarityType rarity = Define.ERarityType.None;
 
-            foreach (var buddyRarity in Managers.Data.BuddyGachaRarityDataDic.Values)
-            {
-                if (buddyRarity.Percent > randomNumber)
-                {
-                    // 레어리티 결정됨
-                    Debug.Log($"{buddyRarity.RarityType} : {buddyRarity.Percent}");
-                    rarity = buddyRarity.RarityType;
-                    break;
-                }
-            }
+    //        foreach (var buddyRarity in Managers.Data.BuddyGachaRarityDataDic.Values)
+    //        {
+    //            if (buddyRarity.Percent > randomNumber)
+    //            {
+    //                // 레어리티 결정됨
+    //                Debug.Log($"{buddyRarity.RarityType} : {buddyRarity.Percent}");
+    //                rarity = buddyRarity.RarityType;
+    //                break;
+    //            }
+    //        }
 
-            // 버디 뽑기
-            if (rarity == Define.ERarityType.Common)
-            {
-                int randomBuddyPercent = random.Next(Managers.Data.commonBuddies.Count);
-                buddyNames.Add(Managers.Data.BuddyGachaDataDic[Managers.Data.commonBuddies[randomBuddyPercent]].GachaItem);
-            }
-            else if (rarity == Define.ERarityType.Rare)
-            {
-                int randomBuddyPercent = random.Next(Managers.Data.rareBuddies.Count);
-                buddyNames.Add(Managers.Data.BuddyGachaDataDic[Managers.Data.rareBuddies[randomBuddyPercent]].GachaItem);
-            }
-            else if (rarity == Define.ERarityType.Epic)
-            {
-                int randomBuddyPercent = random.Next(Managers.Data.epicBuddies.Count);
-                buddyNames.Add(Managers.Data.BuddyGachaDataDic[Managers.Data.epicBuddies[randomBuddyPercent]].GachaItem);
-            }
-            else if (rarity == Define.ERarityType.Unique)
-            {
-                int randomBuddyPercent = random.Next(Managers.Data.uniqueBuddies.Count);
-                buddyNames.Add(Managers.Data.BuddyGachaDataDic[Managers.Data.uniqueBuddies[randomBuddyPercent]].GachaItem);
-            }
-            else if (rarity == Define.ERarityType.Legend)
-            {
-                int randomBuddyPercent = random.Next(Managers.Data.legendBuddies.Count);
-                buddyNames.Add(Managers.Data.BuddyGachaDataDic[Managers.Data.legendBuddies[randomBuddyPercent]].GachaItem);
-            }
-        }
+    //        // 버디 뽑기
+    //        if (rarity == Define.ERarityType.Common)
+    //        {
+    //            int randomBuddyPercent = random.Next(Managers.Data.commonBuddies.Count);
+    //            buddyNames.Add(Managers.Data.BuddyGachaDataDic[Managers.Data.commonBuddies[randomBuddyPercent]].GachaItem);
+    //        }
+    //        else if (rarity == Define.ERarityType.Rare)
+    //        {
+    //            int randomBuddyPercent = random.Next(Managers.Data.rareBuddies.Count);
+    //            buddyNames.Add(Managers.Data.BuddyGachaDataDic[Managers.Data.rareBuddies[randomBuddyPercent]].GachaItem);
+    //        }
+    //        else if (rarity == Define.ERarityType.Epic)
+    //        {
+    //            int randomBuddyPercent = random.Next(Managers.Data.epicBuddies.Count);
+    //            buddyNames.Add(Managers.Data.BuddyGachaDataDic[Managers.Data.epicBuddies[randomBuddyPercent]].GachaItem);
+    //        }
+    //        else if (rarity == Define.ERarityType.Unique)
+    //        {
+    //            int randomBuddyPercent = random.Next(Managers.Data.uniqueBuddies.Count);
+    //            buddyNames.Add(Managers.Data.BuddyGachaDataDic[Managers.Data.uniqueBuddies[randomBuddyPercent]].GachaItem);
+    //        }
+    //        else if (rarity == Define.ERarityType.Legend)
+    //        {
+    //            int randomBuddyPercent = random.Next(Managers.Data.legendBuddies.Count);
+    //            buddyNames.Add(Managers.Data.BuddyGachaDataDic[Managers.Data.legendBuddies[randomBuddyPercent]].GachaItem);
+    //        }
+    //    }
 
-        // 버디 중복 체크
-        foreach (var buddyName in buddyNames)
-        {
-            var buddyData = Managers.Data.BuddyDataDic[Managers.Data.BuddyGachaDataDic[buddyName].BuddyTemplateId];
-            if (GetBuddySaveData(buddyData.TemplateId) == null)
-            {
-                gachaResult.Add(new BuddyGacha(buddyName, false));
-                AddBuddySaveData(new BuddySaveData(buddyData.TemplateId, null, false));
-            }
-            else
-            {
-                gachaResult.Add(new BuddyGacha(buddyName, true));
-                AddCurrency(Managers.Data.BuddyGachaDataDic[buddyName].CurrencyType, Managers.Data.BuddyGachaDataDic[buddyName].CurrencyCount);
-            }
-        }
+    //    // 버디 중복 체크
+    //    foreach (var buddyName in buddyNames)
+    //    {
+    //        var buddyData = Managers.Data.BuddyDataDic[Managers.Data.BuddyGachaDataDic[buddyName].BuddyTemplateId];
+    //        if (GetBuddySaveData(buddyData.TemplateId) == null)
+    //        {
+    //            gachaResult.Add(new BuddyGacha(buddyName, false));
+    //            AddBuddySaveData(new BuddySaveData(buddyData.TemplateId, null, false));
+    //        }
+    //        else
+    //        {
+    //            gachaResult.Add(new BuddyGacha(buddyName, true));
+    //            AddCurrency(Managers.Data.BuddyGachaDataDic[buddyName].CurrencyType, Managers.Data.BuddyGachaDataDic[buddyName].CurrencyCount);
+    //        }
+    //    }
 
-        var result = Managers.UI.ShowPopupUI<UI_BuddyGachaPopup>();
-        result.SetInfo(gachaResult);
+    //    var result = Managers.UI.ShowPopupUI<UI_BuddyGachaPopup>();
+    //    result.SetInfo(gachaResult);
 
-        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoBuddyGacha, count);
-    }
+    //    Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoBuddyGacha, count);
+    //}
 
     #endregion
 
@@ -1392,34 +1418,34 @@ public class GameManager
         AchievementClearList = _gameData.AchievementClearList;
         AchievementSaveDats = _gameData.AchievementSaveDatas;
 
-        // 기본 동료 4개 넣어두기
-        buddies = new List<BuddySaveData>();
-        AddBuddySaveData(new BuddySaveData(100000100, Managers.Data.BuddyDataDic[100000100].SKillIds, true));
-        AddBuddySaveData(new BuddySaveData(300000100, Managers.Data.BuddyDataDic[300000100].SKillIds, true));
-        AddBuddySaveData(new BuddySaveData(100000300, Managers.Data.BuddyDataDic[100000300].SKillIds, true));
-        AddBuddySaveData(new BuddySaveData(100000500, Managers.Data.BuddyDataDic[100000500].SKillIds, true));
+        //// 기본 동료 4개 넣어두기
+        //buddies = new List<BuddySaveData>();
+        //AddBuddySaveData(new BuddySaveData(100000100, Managers.Data.BuddyDataDic[100000100].SKillIds, true));
+        //AddBuddySaveData(new BuddySaveData(300000100, Managers.Data.BuddyDataDic[300000100].SKillIds, true));
+        //AddBuddySaveData(new BuddySaveData(100000300, Managers.Data.BuddyDataDic[100000300].SKillIds, true));
+        //AddBuddySaveData(new BuddySaveData(100000500, Managers.Data.BuddyDataDic[100000500].SKillIds, true));
 
-        _gameData.HeroSaves.Add(100, new HeroSaveData(100, Managers.Data.HeroDataDic[100].SKillIds, true));
-        _gameData.HeroSaves.Add(200, new HeroSaveData(200, Managers.Data.HeroDataDic[200].SKillIds, false));
+        //_gameData.HeroSaves.Add(100, new HeroSaveData(100, Managers.Data.HeroDataDic[100].SKillIds, true));
+        //_gameData.HeroSaves.Add(200, new HeroSaveData(200, Managers.Data.HeroDataDic[200].SKillIds, false));
 
-        //buddies = _gameData.BuddySaves.Values.ToList();
-        int selectedIndex = 0;
-        foreach (var buddy in buddies)
-        {
-            if (buddy.isSelected == true)
-            {
-                _selectedBuddies[selectedIndex++] = buddy.TemplateId;
-            }
-        }
+        ////buddies = _gameData.BuddySaves.Values.ToList();
+        //int selectedIndex = 0;
+        //foreach (var buddy in buddies)
+        //{
+        //    if (buddy.isSelected == true)
+        //    {
+        //        _selectedBuddies[selectedIndex++] = buddy.TemplateId;
+        //    }
+        //}
 
-        OnSelectedBuddyChanged?.Invoke();
+        //OnSelectedBuddyChanged?.Invoke();
 
-        var currencyTypes = Enum.GetValues(typeof(Define.ECurrencyType));
+        //var currencyTypes = Enum.GetValues(typeof(Define.ECurrencyType));
 
-        for (int i = 1; i < currencyTypes.Length; i++)
-        {
-            AddCurrency((Define.ECurrencyType)i, 100);
-        }
+        //for (int i = 1; i < currencyTypes.Length; i++)
+        //{
+        //    AddCurrency((Define.ECurrencyType)i, 100);
+        //}
 
         StageClear stage = new StageClear();
         stage.TemplateId = 1;

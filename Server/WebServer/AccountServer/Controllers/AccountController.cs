@@ -1,4 +1,5 @@
-﻿using AccountServer.Services;
+﻿using AccountServer.Data;
+using AccountServer.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

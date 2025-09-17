@@ -42,6 +42,8 @@ public class DataManager
     public List<string> legendBuddies;
 
 
+
+
     public void Init()
     {
         TextDict = LoadJson<Data.TextDataLoader, string, Data.TextData>("TextData").MakeDict();
