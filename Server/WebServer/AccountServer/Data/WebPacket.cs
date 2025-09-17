@@ -232,4 +232,23 @@
         public string Message { get; set; } = string.Empty;
         public List<BuddyGachaReward> Rewards { get; set; } = new List<BuddyGachaReward>();
     }
+
+    public class CurrencyGachaReward
+    {
+        public CurrencyType Type { get; set; }
+        public int Count { get; set; }
+    }
+
+    public class ShopCurrencyGachaReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+        public int Count { get; set; }
+    }
+
+    public class ShopCurrencyGachaRes
+    {
+        public bool Success { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public List<CurrencyGachaReward> Rewards { get; set; } = new List<CurrencyGachaReward>();
+    }
 }

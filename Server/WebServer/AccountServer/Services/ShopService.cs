@@ -286,5 +286,121 @@ namespace AccountServer.Services
 
             return response;
         }
+
+        public async Task<ShopCurrencyGachaRes> CurrencyGachaDoAsync(ShopCurrencyGachaReq request)
+        {
+            var response = new ShopCurrencyGachaRes();
+
+            // Step 1: Validate player (via JWT)
+            var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            if (player == null)
+            {
+                response.Success = false;
+                response.Message = "Invalid player.";
+                return response;
+            }
+
+            // Step 2: Determine cost (based on count)
+            int needGold = request.Count switch
+            {
+                1 => 100,
+                10 => 1000,
+                100 => 10000,
+                _ => 0
+            };
+
+            if (needGold == 0)
+            {
+                response.Success = false;
+                response.Message = "Invalid gacha count.";
+                return response;
+            }
+
+            // Step 3: Check if player has enough gold
+            if (player.Currency.Gold < needGold)
+            {
+                response.Success = false;
+                response.Message = "Not enough gold.";
+                return response;
+            }
+
+            // Step 4: Start DB transaction
+            var rewards = new List<CurrencyGachaReward>();
+            var random = new Random();
+            using var transaction = await _dbContext.Database.BeginTransactionAsync();
+
+            try
+            {
+                // Step 5: Deduct gold
+                await _currency.UpdatePlayerCurrencyAsync(new CurrencyAddReq
+                {
+                    jwt = request.Jwt,
+                    CurrencyType = CurrencyType.Gold,
+                    Amount = -needGold
+                }, false);
+
+                // Step 6: Perform gacha draws
+                int totalMax = DataManager.CurrencyGachaDataDic.Values.Max(x => x.Max);
+                for (int i = 0; i < request.Count; i++)
+                {
+                    int randomNumber = random.Next(totalMax);
+
+                    foreach (var gachaData in DataManager.CurrencyGachaDataDic.Values)
+                    {
+                        if (gachaData.Percent > randomNumber)
+                        {
+                            // Reward data
+                            var reward = new CurrencyGachaReward
+                            {
+                                Type = (CurrencyType)((int)gachaData.CurrencyType - 1),
+                                Count = gachaData.CurrencyCount,
+                            };
+                            rewards.Add(reward);
+
+                            // Step 7: Apply reward to player
+                            await _currency.UpdatePlayerCurrencyAsync(new CurrencyAddReq
+                            {
+                                jwt = request.Jwt,
+                                CurrencyType = reward.Type,
+                                Amount = reward.Count,
+                            }, false);
+
+                            // Step 8: Save log
+                            var log = new CurrencyGachaLogDb
+                            {
+                                PlayerDbId = player.PlayerDbId,
+                                Do = i + 1,
+                                DoMax = request.Count,
+                                GachaItemResult = (DbCurrencyType)reward.Type,
+                                Count = reward.Count,
+                                UnixSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
+                            };
+                            _dbContext.CurrencyGachaLog.Add(log);
+
+                            break;
+                        }
+                    }
+                }
+
+                // Step 9: Commit DB changes
+                await _dbContext.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                // Step 10: Build response
+                response.Success = true;
+                response.Message = "Currency gacha completed.";
+                response.Rewards = rewards;
+            }
+            catch (Exception ex)
+            {
+                // Step 11: Rollback if error
+                await transaction.RollbackAsync();
+                response.Success = false;
+                response.Message = $"Currency gacha failed: {ex.Message}";
+            }
+
+            return response;
+        }
     }
 }

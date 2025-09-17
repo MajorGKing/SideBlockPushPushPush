@@ -122,5 +122,12 @@ namespace AccountServer.Controllers
         {
             return await _shop.BuddyGachaDoAsync(req);
         }
+
+        [HttpPost]
+        [Route("shop/currencyGachaDo")]
+        public async Task<ShopCurrencyGachaRes> BuddyGachaDo([FromBody] ShopCurrencyGachaReq req)
+        {
+            return await _shop.CurrencyGachaDoAsync(req);
+        }
     }
 }

@@ -432,7 +432,7 @@ public class GameManager
         {
             Debug.Log("Success Hero Gacha");
 
-            var clear = Managers.UI.ShowPopupUI<UI_RewardPopup>();
+            var popup = Managers.UI.ShowPopupUI<UI_RewardPopup>();
 
             List<Reward> rewards = new List<Reward>();
 
@@ -441,7 +441,7 @@ public class GameManager
                 rewards.Add(new Reward((Define.ECurrencyType)((int)reward.Type + 1), reward.Count));
             }
 
-            clear.SetInfo(Define.ERewardType.HeroGacha, rewards);
+            popup.SetInfo(Define.ERewardType.HeroGacha, rewards);
 
             // TODO ILHAK Mission
             Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoHeroGacha, count);
@@ -486,6 +486,38 @@ public class GameManager
         }
 
         await UpdateBuddyData();
+        await UpdateCurrencyAsync();
+    }
+
+    public async UniTask DoCurrencyGacha(int count)
+    {
+        Debug.Log("Start Currency Gacha");
+        
+        var req = new ShopCurrencyGachaReq { Jwt = Managers.Web.jwt, Count = count };
+        var res = await Managers.Web.SendPostRequestAsync<ShopCurrencyGachaRes>("api/game/shop/currencyGachaDo", req);
+
+        if (res.Success)
+        {
+            Debug.Log("Success Currency Gacha");
+
+            List<Reward> rewards = new List<Reward>();
+            var popup = Managers.UI.ShowPopupUI<UI_RewardPopup>();
+
+            foreach(var reward in res.Rewards)
+            {
+                rewards.Add(new Reward((Define.ECurrencyType)((int)reward.Type + 1), reward.Count));
+            }
+
+            popup.SetInfo(Define.ERewardType.CurrencyGacha, rewards);
+
+            // TODO ILHAK Mission
+            Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoCurrencyGacha, count);
+        }
+        else
+        {
+            Debug.LogError($"error: {res.Message}");
+        }
+
         await UpdateCurrencyAsync();
     }
     #endregion
@@ -1163,52 +1195,52 @@ public class GameManager
     //    Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoHeroGacha, count);
     //}
 
-    public void DoCurrencyGacha(int count)
-    {
-        // TODO ILHAK price data
-        var needGold = 0;
+    //public void DoCurrencyGacha(int count)
+    //{
+    //    // TODO ILHAK price data
+    //    var needGold = 0;
 
-        if (count == 1)
-        {
-            needGold = 100;
-        }
-        else if (count == 10)
-        {
-            needGold = 1000;
-        }
-        else if (count == 100)
-        {
-            needGold = 10000;
-        }
+    //    if (count == 1)
+    //    {
+    //        needGold = 100;
+    //    }
+    //    else if (count == 10)
+    //    {
+    //        needGold = 1000;
+    //    }
+    //    else if (count == 100)
+    //    {
+    //        needGold = 10000;
+    //    }
 
-        if (needGold == 0)
-            return;
+    //    if (needGold == 0)
+    //        return;
 
-        List<Reward> rewards = new List<Reward>();
-        System.Random random = new System.Random();
+    //    List<Reward> rewards = new List<Reward>();
+    //    System.Random random = new System.Random();
 
-        for (int i = 0; i < count; i++)
-        {
-            int randomNumber = random.Next(Managers.Data.CurrencyGachaDataDic.First().Value.Max);
+    //    for (int i = 0; i < count; i++)
+    //    {
+    //        int randomNumber = random.Next(Managers.Data.CurrencyGachaDataDic.First().Value.Max);
 
-            foreach (var currencyGachaData in Managers.Data.CurrencyGachaDataDic.Values)
-            {
-                if (currencyGachaData.Percent > randomNumber)
-                {
-                    Debug.Log($"{currencyGachaData.CurrencyType} : {currencyGachaData.CurrencyCount}");
-                    rewards.Add(new Reward(currencyGachaData.CurrencyType, currencyGachaData.CurrencyCount));
-                    AddCurrency(currencyGachaData.CurrencyType, currencyGachaData.CurrencyCount);
-                    break;
-                }
-            }
+    //        foreach (var currencyGachaData in Managers.Data.CurrencyGachaDataDic.Values)
+    //        {
+    //            if (currencyGachaData.Percent > randomNumber)
+    //            {
+    //                Debug.Log($"{currencyGachaData.CurrencyType} : {currencyGachaData.CurrencyCount}");
+    //                rewards.Add(new Reward(currencyGachaData.CurrencyType, currencyGachaData.CurrencyCount));
+    //                AddCurrency(currencyGachaData.CurrencyType, currencyGachaData.CurrencyCount);
+    //                break;
+    //            }
+    //        }
 
-            var clear = Managers.UI.ShowPopupUI<UI_RewardPopup>();
+    //        var clear = Managers.UI.ShowPopupUI<UI_RewardPopup>();
 
-            clear.SetInfo(Define.ERewardType.CurrencyGacha, rewards);
-        }
+    //        clear.SetInfo(Define.ERewardType.CurrencyGacha, rewards);
+    //    }
 
-        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoCurrencyGacha, count);
-    }
+    //    Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoCurrencyGacha, count);
+    //}
 
     //public void DoBuddyGacha(int count)
     //{

@@ -520,4 +520,41 @@ namespace GameDB
         /// </summary>
         public long UnixSeconds { get; set; }
     }
+
+    /// <summary>
+    /// 자원 뽑기 로그 저장 테이블 입니다.
+    /// </summary>
+    [Table("CurrencyGachaLog")]
+    public class CurrencyGachaLogDb
+    {
+        /// <summary>
+        /// 자원 뽑기 키 값
+        /// </summary>
+        [Key]
+        public long CurrencyGachaLogDbId { get; set; }
+        /// <summary>
+        /// 뽑기를 한 유저
+        /// </summary>
+        public int PlayerDbId { get; set; }
+        /// <summary>
+        /// 몇 번째
+        /// </summary>
+        public int Do { get; set; }
+        /// <summary>
+        /// 몇 연차 뽑기를 돌렸나
+        /// </summary>
+        public int DoMax { get; set; }
+        /// <summary>
+        /// 뽑은 자원 종류
+        /// </summary>
+        public CurrencyType GachaItemResult { get; set; }
+        /// <summary>
+        /// 뽑은 자원 수
+        /// </summary>
+        public int Count { get; set; }
+        /// <summary>
+        /// 뽑기 시간을 Unix Timed으로 저장
+        /// </summary>
+        public long UnixSeconds { get; set; }
+    }
 }
