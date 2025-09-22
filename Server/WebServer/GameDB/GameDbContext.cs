@@ -67,7 +67,7 @@ namespace GameDB
 
             // PlayerDb와 StageClearDb의 1:N 관계 설정
             builder.Entity<PlayerDb>()
-                .HasMany(p => p.StageClears)
+                .HasMany(p => p.Stages)
                 .WithOne(s => s.Player)
                 .HasForeignKey(s => s.PlayerDbId);
 

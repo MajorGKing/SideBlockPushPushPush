@@ -115,7 +115,7 @@ public class GameScene : BaseScene
         base.Start();
 
         // 스테이지 데이터 설정
-        _stageData = Managers.Data.StageDataDic[Managers.Game.stageTemplateId];
+        _stageData = Managers.Data.StageDataDic[Managers.Game.nowStageTemplateId];
 
         if(_stageData == null )
         {

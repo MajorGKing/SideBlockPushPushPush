@@ -726,7 +726,7 @@ namespace Data
         public string DescriptionTextId;
         public string IconImage;
         public Define.EEffectType EffectType;
-        public Define.EDurationPolicy EDurationPolicy;
+        public Define.EDurationPolicy DurationPolicy;
         public float Duration;
         public float DamageValue;
         public int StatType;

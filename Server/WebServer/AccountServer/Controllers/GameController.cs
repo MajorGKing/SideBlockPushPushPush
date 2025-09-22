@@ -15,14 +15,16 @@ namespace AccountServer.Controllers
         HeroService _hero;
         BuddyService _buddy;
         ShopService _shop;
+        StageService _stage;
 
-        public GameController(PlayerService player, CurrencyService currency, HeroService heroService, BuddyService buddyService, ShopService shop)
+        public GameController(PlayerService player, CurrencyService currency, HeroService heroService, BuddyService buddyService, ShopService shop, StageService stage)
         {
             _player = player;
             _currency = currency;
             _hero = heroService;
             _buddy = buddyService;
             _shop = shop;
+            _stage = stage;
         }
 
         [HttpPost]
@@ -125,9 +127,44 @@ namespace AccountServer.Controllers
 
         [HttpPost]
         [Route("shop/currencyGachaDo")]
-        public async Task<ShopCurrencyGachaRes> BuddyGachaDo([FromBody] ShopCurrencyGachaReq req)
+        public async Task<ShopCurrencyGachaRes> CurrencyGachaDo([FromBody] ShopCurrencyGachaReq req)
         {
             return await _shop.CurrencyGachaDoAsync(req);
+        }
+
+        [HttpPost]
+        [Route("stage/getClearStageList")]
+        public async Task<StageClearListRes> StageClearListGet([FromBody]  StageClearListReq req)
+        {
+            return await _stage.StageListGetAsync(req);
+        }
+
+        [HttpPost]
+        [Route("stage/setClearStageNext")]
+        public async Task<StageClearListRes> SetStageClearNext([FromBody] StageClearListReq req)
+        {
+            return await _stage.StageListGetAsync(req);
+        }
+
+        [HttpPost]
+        [Route("stage/setClearStageBack")]
+        public async Task<StageClearListRes> SetStageClearBack([FromBody] StageClearListReq req)
+        {
+            return await _stage.StageListGetAsync(req);
+        }
+
+        [HttpPost]
+        [Route("stage/setClearStageHardNormal")]
+        public async Task<StageClearListRes> SetStageClearHardNormal([FromBody] StageClearListReq req)
+        {
+            return await _stage.StageListGetAsync(req);
+        }
+
+        [HttpPost]
+        [Route("stage/getStageData")]
+        public async Task<StageStartDataRes> GetStaveData([FromBody] StageStartDataReq req)
+        {
+            return await _stage.StageDataGetAsync(req);
         }
     }
 }

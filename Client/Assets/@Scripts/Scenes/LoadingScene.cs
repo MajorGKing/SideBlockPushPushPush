@@ -92,18 +92,47 @@ public class LoadingScene : BaseScene
             }
         }
 
-
         {
             await Managers.Game.UpdateBuddyData();
         }
 
+        {
+            await Managers.Game.UpdateStageClearList();
+        }
+
         // 2. Proceed to next scene
         _nextSceneType = Managers.Scene.NextSceneType;
+
+        if(_nextSceneType == Define.EScene.GameScene)
+        {
+            await LoadStageData();
+        }
+
         StartCoroutine(LoadNextScene());
     }
 
     public override void Clear()
     {
+    }
+
+    private async UniTask LoadStageData()
+    {
+        var req = new StageStartDataReq()
+        {
+            Jwt = Managers.Web.jwt,
+        };
+
+        StageStartDataRes res = await Managers.Web.SendPostRequestAsync<StageStartDataRes>("api/game/stage/getStageData", req);
+
+        if (res.Success)
+        {
+            // 1. Update hero data
+            //await Managers.Game.UpdateHeroData(res);
+        }
+        else
+        {
+            Debug.LogError($"Get Hero Failed.");
+        }
     }
 
     IEnumerator LoadNextScene()

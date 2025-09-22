@@ -24,6 +24,7 @@ public class GameManager
         _playerData.BGMOn = newData.BGMOn;
         _playerData.EffectSoundOn = newData.EffectSoundOn;
         _playerData.LastMissionTime = newData.LastMissionTime;
+        _playerData.CurrentStage = newData.CurrentStage;
 
         // TODO ILHAK UI정보 갱신하기
     }
@@ -519,6 +520,149 @@ public class GameManager
         }
 
         await UpdateCurrencyAsync();
+    }
+    #endregion
+
+    #region WebStage
+    private List<StageClearDTO> _stageClears = new List<StageClearDTO>();
+
+    public async UniTask UpdateStageClearList()
+    {
+        {
+            var req = new StageClearListReq { Jwt = Managers.Web.jwt, };
+            StageClearListRes res = await Managers.Web.SendPostRequestAsync<StageClearListRes>("api/game/stage/getClearStageList", req);
+
+            if (res.Success)
+            {
+                UpdateStageClear(res.Stages);
+            }
+            else
+            {
+                Debug.LogError($"error: {res.Message}");
+            }
+        }
+
+        {
+            var req = new PlayerPacketReq()
+            {
+                jwt = Managers.Web.jwt,
+            };
+
+            PlayerPacketRes res = await Managers.Web.SendPostRequestAsync<PlayerPacketRes>("api/game/player", req);
+
+            if (res.Success)
+            {
+                Managers.Game.UpdatePlayerData(res.PlayerData);
+            }
+            else
+            {
+                Debug.LogError("Get Player Failed.");
+            }
+        }
+
+        {
+            await NowStageTemplateIdSet(_playerData.CurrentStage);
+        }
+    }
+    public void UpdateStageClear(List<StageClearDTO> data)
+    {
+        if (data == null) return;
+
+        // 기존 리스트를 지우고 새 데이터로 교체
+        _stageClears.Clear();
+
+        foreach (var stage in data)
+        {
+            // 깊은 복사를 위해 새로운 객체 생성
+            var copy = new StageClearDTO
+            {
+                TemplateId = stage.TemplateId,
+                IsEnable = stage.IsEnable,
+                IsClear = stage.IsClear,
+            };
+
+            _stageClears.Add(copy);
+        }
+
+        Debug.Log($"Stage updated. Total stage: {_stageClears.Count}");
+    }
+
+    private int _nowStageTemplateId;
+    public int nowStageTemplateId { get => _nowStageTemplateId;}
+    public async UniTask NowStageTemplateIdSet(int stageTemplateId)
+    {
+        if (stageTemplateId == 0)
+            return;
+
+        StageClearDTO foundStage = _stageClears.FirstOrDefault(s => s.TemplateId == stageTemplateId);
+        bool enable = (foundStage != null) && (foundStage.IsEnable == true);
+
+        if(enable == false)
+        {
+            if (Managers.Data.StageDataDic[stageTemplateId].PreviewStageId == 0)
+                return;
+
+            var prevStage = Managers.Data.StageDataDic[Managers.Data.StageDataDic[stageTemplateId].PreviewStageId];
+
+            var message = $"Need to Clear {prevStage.DifficultyLevel} {prevStage.WorldNumber} - {prevStage.StageNumber}";
+
+            Managers.UI.ShowToast(message, 1f, Define.EToastColor.Red, Define.EToastPosition.MiddleCenter);
+
+            return;
+        }
+
+        // 웹서버에 현재 스테이지 저장 요청
+        _nowStageTemplateId = stageTemplateId;
+        OnCurrentStageChanged?.Invoke();
+    }
+    //{
+    //    get <= _stageTemplateId;
+    //set
+    //{
+    //    if (value == 0)
+    //        return;
+
+    //    if (_gameData.StageClears.ContainsKey(value) == false || _gameData.StageClears[value].isEnable == false)
+    //    {
+    //        if (Managers.Data.StageDataDic[value].PreviewStageId == 0)
+    //            return;
+
+    //        var prevStage = Managers.Data.StageDataDic[Managers.Data.StageDataDic[value].PreviewStageId];
+
+    //        var message = $"Need to Clear {prevStage.DifficultyLevel} {prevStage.WorldNumber} - {prevStage.StageNumber}";
+
+    //        Managers.UI.ShowToast(message, 1f, Define.EToastColor.Red, Define.EToastPosition.MiddleCenter);
+
+    //        return;
+    //    }
+
+    //    _stageTemplateId = value;
+    //    _gameData.CurrentStageTemplateId = value;
+    //    OnCurrentStageChanged?.Invoke();
+    //    SaveGame();
+    //}
+    //}
+
+
+
+    public async UniTask ChangeStageNext(bool isNext)
+    {
+        var stageData = Managers.Data.StageDataDic[nowStageTemplateId];
+
+        if (isNext == true)
+        {
+            await NowStageTemplateIdSet(stageData.NextaStageId);
+        }
+        else
+        {
+            await NowStageTemplateIdSet(stageData.PreviewStageId);
+        }
+    }
+
+    public async UniTask ChangeStageHard()
+    {
+        var stageData = Managers.Data.StageDataDic[nowStageTemplateId];
+        await NowStageTemplateIdSet(stageData.OtherStageId);
     }
     #endregion
 
@@ -1033,7 +1177,7 @@ public class GameManager
     public List<Reward> GetRewards()
     {
         List<Reward> rewards = new List<Reward>();
-        var stageData = Managers.Data.StageDataDic[stageTemplateId];
+        var stageData = Managers.Data.StageDataDic[nowStageTemplateId];
 
         int enumCount = Enum.GetNames(typeof(Define.ECurrencyType)).Length;
         List<int> currencyCounts = new List<int>(new int[enumCount]);
@@ -1072,7 +1216,7 @@ public class GameManager
             AddCurrency((Define.ECurrencyType)i, currencyCounts[i]);
         }
 
-        if (_gameData.StageClears[stageTemplateId].isClear == false)
+        if (_gameData.StageClears[nowStageTemplateId].isClear == false)
         {
             for (int i = 0; i < stageData.RewardFirstType.Count; i++)
             {
@@ -1087,35 +1231,35 @@ public class GameManager
     #endregion
 
     #region Stage
-    private int _stageTemplateId;
-    public int stageTemplateId
-    {
-        get { return _stageTemplateId; }
-        set
-        {
-            if (value == 0)
-                return;
+    //private int _stageTemplateId;
+    //public int stageTemplateId
+    //{
+    //    get { return _stageTemplateId; }
+    //    set
+    //    {
+    //        if (value == 0)
+    //            return;
 
-            if (_gameData.StageClears.ContainsKey(value) == false || _gameData.StageClears[value].isEnable == false)
-            {
-                if (Managers.Data.StageDataDic[value].PreviewStageId == 0)
-                    return;
+    //        if (_gameData.StageClears.ContainsKey(value) == false || _gameData.StageClears[value].isEnable == false)
+    //        {
+    //            if (Managers.Data.StageDataDic[value].PreviewStageId == 0)
+    //                return;
 
-                var prevStage = Managers.Data.StageDataDic[Managers.Data.StageDataDic[value].PreviewStageId];
+    //            var prevStage = Managers.Data.StageDataDic[Managers.Data.StageDataDic[value].PreviewStageId];
 
-                var message = $"Need to Clear {prevStage.DifficultyLevel} {prevStage.WorldNumber} - {prevStage.StageNumber}";
+    //            var message = $"Need to Clear {prevStage.DifficultyLevel} {prevStage.WorldNumber} - {prevStage.StageNumber}";
 
-                Managers.UI.ShowToast(message, 1f, Define.EToastColor.Red, Define.EToastPosition.MiddleCenter);
+    //            Managers.UI.ShowToast(message, 1f, Define.EToastColor.Red, Define.EToastPosition.MiddleCenter);
 
-                return;
-            }
+    //            return;
+    //        }
 
-            _stageTemplateId = value;
-            _gameData.CurrentStageTemplateId = value;
-            OnCurrentStageChanged?.Invoke();
-            SaveGame();
-        }
-    }
+    //        _stageTemplateId = value;
+    //        _gameData.CurrentStageTemplateId = value;
+    //        OnCurrentStageChanged?.Invoke();
+    //        SaveGame();
+    //    }
+    //}
 
 
     #endregion
@@ -1123,19 +1267,19 @@ public class GameManager
     #region StageClear
     public void ClearStage()
     {
-        _gameData.StageClears[stageTemplateId].isClear = true;
-        if (_gameData.StageClears.ContainsKey(Managers.Data.StageDataDic[stageTemplateId].NextaStageId) == false)
+        _gameData.StageClears[nowStageTemplateId].isClear = true;
+        if (_gameData.StageClears.ContainsKey(Managers.Data.StageDataDic[nowStageTemplateId].NextaStageId) == false)
         {
             var newStage = new StageClear();
-            newStage.TemplateId = Managers.Data.StageDataDic[stageTemplateId].NextaStageId;
+            newStage.TemplateId = Managers.Data.StageDataDic[nowStageTemplateId].NextaStageId;
             newStage.isClear = false;
             newStage.isEnable = true;
 
             _gameData.StageClears.Add(newStage.TemplateId, newStage);
-            stageTemplateId = newStage.TemplateId;
+            //stageTemplateId = newStage.TemplateId;
         }
 
-        _gameData.CurrentStageTemplateId = stageTemplateId;
+        _gameData.CurrentStageTemplateId = nowStageTemplateId;
 
         Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.StageClear, 1);
 
@@ -1489,7 +1633,7 @@ public class GameManager
         PlayerPrefs.SetInt("ISFIRST", 0);
         //PlayerPrefs.Save();
 
-        stageTemplateId = _gameData.CurrentStageTemplateId;
+        //stageTemplateId = _gameData.CurrentStageTemplateId;
     }
 
     public void Update()
@@ -1533,7 +1677,7 @@ public class GameManager
 
         //IsLoaded = true;
 
-        stageTemplateId = _gameData.CurrentStageTemplateId;
+        //stageTemplateId = _gameData.CurrentStageTemplateId;
 
         // 미션 가져오기
         MissionSaveDatas = _gameData.MissionSaves.Values.ToList();

@@ -25,11 +25,12 @@ namespace AccountServer.Services
 
         public async Task<PlayerDb> GetPlayerDbFromAccountDbId(int accountDbId)
         {
-            // Player + Heroes + Buddy + Currency로드
+            // Player + Heroes + Buddy + Currency + Stage로드
             var player = await _dbContext.Players
                 .Include(p => p.Heroes)
                 .Include(p => p.Buddies)
                 .Include(p => p.Currency)
+                .Include(p => p.Stages)
                 .FirstOrDefaultAsync(p => p.PlayerDbId == accountDbId);
 
             return player;
@@ -67,6 +68,7 @@ namespace AccountServer.Services
                     BGMOn = true,
                     EffectSoundOn = true,
                     LastMissionTime = DateTime.Now,
+                    CurrentStage = 1,
 
                     // 새로운 플레이어를 만들 때 CurrencyDb도 함께 추가합니다.
                     Currency = new CurrencyDb()
@@ -98,6 +100,7 @@ namespace AccountServer.Services
                 // 지연 주입
                 var heroService = _serviceProvider.GetRequiredService<HeroService>();
                 var buddyService = _serviceProvider.GetRequiredService<BuddyService>();
+                var stageService = _serviceProvider.GetRequiredService<StageService>();
 
                 // 2. 기본 영웅 두 개 지급 (HeroService 호출)
                 await heroService.HeroCreate(request.jwt, 100, true);   // 첫 번째 영웅
@@ -108,6 +111,10 @@ namespace AccountServer.Services
                 await buddyService.BuddyCreate(request.jwt, 100000100, 1);
                 await buddyService.BuddyCreate(request.jwt, 100000300, 2);
                 await buddyService.BuddyCreate(request.jwt, 100000500, 3);
+
+                // 4. 기본 스테이지 설정
+                await stageService.StageCreate(request.jwt, 1);
+
             }
 
             // 4. PlayerDb 객체를 PlayerData DTO로 변환하여 반환합니다.
@@ -120,6 +127,7 @@ namespace AccountServer.Services
                 BGMOn = playerDb.BGMOn,
                 EffectSoundOn = playerDb.EffectSoundOn,
                 LastMissionTime = playerDb.LastMissionTime,
+                CurrentStage = playerDb.CurrentStage,
             };
 
             PlayerPacketRes res = new PlayerPacketRes()

@@ -84,6 +84,10 @@ namespace GameDB
         /// 마지막으로 미션을 진행한 시간입니다.
         /// </summary>
         public DateTime LastMissionTime { get; set; }
+        /// <summary>
+        /// 배틀팝업에서 보여줘야 할 마지막 진행 스테이지 입니다.
+        /// </summary>
+        public int CurrentStage {  get; set; }
 
         // 네비게이션 프로퍼티 (1:1 관계)
         /// <summary>
@@ -103,9 +107,9 @@ namespace GameDB
         public ICollection<BuddySaveDataDb> Buddies { get; set; } = new List<BuddySaveDataDb>();
 
         /// <summary>
-        /// 플레이어가 클리어한 스테이지 목록의 컬렉션. StageClearDb 테이블과 1:N 관계를 맺습니다.
+        /// 플레이어의 스테이지 목록의 컬렉션. StageClearDb 테이블과 1:N 관계를 맺습니다.
         /// </summary>
-        public ICollection<StageClearDb> StageClears { get; set; } = new List<StageClearDb>();
+        public ICollection<StageClearDb> Stages { get; set; } = new List<StageClearDb>();
 
         /// <summary>
         /// 플레이어가 진행 중인 미션 목록의 컬렉션. MissionSaveDataDb 테이블과 1:N 관계를 맺습니다.

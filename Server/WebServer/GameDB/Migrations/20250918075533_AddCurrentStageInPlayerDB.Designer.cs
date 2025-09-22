@@ -4,6 +4,7 @@ using GameDB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GameDB.Migrations
 {
     [DbContext(typeof(GameDbContext))]
-    partial class GameDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250918075533_AddCurrentStageInPlayerDB")]
+    partial class AddCurrentStageInPlayerDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -463,7 +466,7 @@ namespace GameDB.Migrations
             modelBuilder.Entity("GameDB.StageClearDb", b =>
                 {
                     b.HasOne("GameDB.PlayerDb", "Player")
-                        .WithMany("Stages")
+                        .WithMany("StageClears")
                         .HasForeignKey("PlayerDbId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -486,7 +489,7 @@ namespace GameDB.Migrations
 
                     b.Navigation("Missions");
 
-                    b.Navigation("Stages");
+                    b.Navigation("StageClears");
                 });
 #pragma warning restore 612, 618
         }

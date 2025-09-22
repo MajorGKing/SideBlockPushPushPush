@@ -44,6 +44,7 @@
         public bool BGMOn { get; set; }
         public bool EffectSoundOn { get; set; }
         public DateTime LastMissionTime { get; set; }
+        public int CurrentStage { get; set; }
     }
 
     public enum CurrencyType
@@ -250,5 +251,120 @@
         public bool Success { get; set; }
         public string Message { get; set; } = string.Empty;
         public List<CurrencyGachaReward> Rewards { get; set; } = new List<CurrencyGachaReward>();
+    }
+
+    public class StageClearDTO
+    {
+        public int TemplateId { get; set; }
+        public bool IsEnable { get; set; }
+        public bool IsClear { get; set; }
+    }
+
+    public class StageClearListReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+    }
+
+    public class StageClearListRes
+    {
+        public bool Success { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public List<StageClearDTO> Stages { get; set; } = new List<StageClearDTO>();
+    }
+
+    public class StageClearNowTemplateIdSetReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+        public int TemplatedId { get; set; }
+    }
+
+    public class StageClearNowTemplateIdSetRes
+    {
+        public bool Success { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public int TemplatedId { get; set; }
+    }
+
+    public class StageStartDataReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+    }
+
+    public class StageStartDataRes
+    {
+        //public int StageId { get; set; }
+        //public int WorldNumber { get; set; }
+        //public int StageNumber { get; set; }
+        //public Define.EDifficultyLevel Difficulty { get; set; }
+
+        public bool Success { get; set; }
+        public string Message { get; set; } = string.Empty;
+
+        public List<MonsterSnapshot> FirstWave { get; set; } = new List<MonsterSnapshot>();
+        public List<MonsterSnapshot> SecondWave { get; set; } = new List<MonsterSnapshot>();
+        public List<MonsterSnapshot> BossWave { get; set; } = new List<MonsterSnapshot>();
+        public HeroSnapshot Hero { get; set; } = new HeroSnapshot();
+        public List<BuddySnapshot> Buddies { get; set; } = new List<BuddySnapshot>();
+    }
+
+    public class MonsterSnapshot
+    {
+        public int TemplateId { get; set; }
+        public int Level { get; set; }
+        public int MaxHp { get; set; }
+        public int NormalDefence { get; set; }
+        public int MagicDefence { get; set; }
+    }
+
+    public class HeroSnapshot
+    {
+        public int TemplateId { get; set; }
+        public int Level { get; set; }
+        public int Attack { get; set; }
+        public int MagicAttack { get; set; }
+        public List<SkillSnapshot> Skills { get; set; } = new List<SkillSnapshot>();
+    }
+
+    public class BuddySnapshot
+    {
+        public int TemplateId { get; set; }
+        public int Level { get; set; }
+        public int Attack { get; set; }
+        public int MagicAttack { get; set; }
+        public float Reload { get; set; }
+        public List<SkillSnapshot> Skills { get; set; } = new List<SkillSnapshot>();
+    }
+
+    public class SkillSnapshot
+    {
+        public int TemplateId { get; set; }
+        public int SkillLevel {  get; set; }
+        public Define.ESkillType SkillType { get; set; }
+        public float Cooltime { get; set; } // BuddySkill only
+        public float AnimSpeed { get; set; }
+        public Define.EUseSkillTargetType UseSkillTargetType { get; set; }
+        public int GatherTargetCounts { get; set; }
+        public int GatherTargetType { get; set; }
+        public Define.ETargetFriendType TargetFriendType { get; set; }
+
+        // Icon(s) for UI display
+        public List<string>? IconImageKeys { get; set; } = null; // Hero
+        public string? IconImageKey { get; set; } = null;         // Buddy
+
+        // One effect per skill
+        public EffectSnapshot Effect { get; set; } = new EffectSnapshot();
+    }
+
+    public class EffectSnapshot
+    {
+        public int TemplateId { get; set; }
+        public Define.EEffectType EffectType { get; set; }
+        public Define.EDurationPolicy DurationPolicy { get; set; }
+        public float Duration { get; set; }
+        public float DamageValue { get; set; }
+        public int StatType { get; set; }
+        public float AddValue { get; set; }
+        public int LifeStealValue { get; set; }
+        public int StunValue { get; set; }
     }
 }
