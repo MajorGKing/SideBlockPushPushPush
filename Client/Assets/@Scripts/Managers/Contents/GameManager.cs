@@ -666,6 +666,56 @@ public class GameManager
     }
     #endregion
 
+    #region WebStageBattle
+    public HeroSnapshot stageHero { get; private set; }
+    public List<BuddySnapshot> stageBuddies { get; private set; } = new List<BuddySnapshot>();
+
+    public List<MonsterSnapshot> stageFirstWave { get; private set; } = new List<MonsterSnapshot>();
+    public List<MonsterSnapshot> stageSecondWave { get; private set; } = new List<MonsterSnapshot>();
+    public List<MonsterSnapshot> stageBossWave { get; private set; } = new List<MonsterSnapshot>();
+    public async UniTask SaveStageData(StageStartDataRes data)
+    {
+        // Save hero
+        stageHero = data.Hero;
+
+        // Save buddies
+        stageBuddies = new List<BuddySnapshot>(data.Buddies);
+
+        // Save monster waves
+        stageFirstWave = new List<MonsterSnapshot>(data.FirstWave);
+        stageSecondWave = new List<MonsterSnapshot>(data.SecondWave);
+        stageBossWave = new List<MonsterSnapshot>(data.BossWave);
+    }
+
+    public BuddySnapshot GetBuddySnapshotData(int templateId)
+    {
+        foreach (var buddy in stageBuddies)
+        {
+            if (buddy.TemplateId == templateId)
+                return buddy;
+        }
+
+        return null;
+    }
+
+    public MonsterSnapshot GetMonsterSnapshotData(int templateId, int level)
+    {
+        var monster = stageFirstWave.Find(m => m.TemplateId == templateId && m.Level == level);
+        if (monster != null)
+            return monster;
+
+        monster = stageSecondWave.Find(m => m.TemplateId == templateId && m.Level == level);
+        if (monster != null)
+            return monster;
+
+        monster = stageBossWave.Find(m => m.TemplateId == templateId && m.Level == level);
+        if (monster != null)
+            return monster;
+
+        // Not found
+        return null;
+    }
+    #endregion
 
     string _path;
 

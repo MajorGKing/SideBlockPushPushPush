@@ -2,6 +2,7 @@ using Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using WebPacket;
 
 
 public class GameScene : BaseScene
@@ -42,8 +43,8 @@ public class GameScene : BaseScene
         }
     }
 
-    private StageData _stageData;
-    public StageData stageData => _stageData;
+    //private StageData _stageData;
+    //public StageData stageData => _stageData;
     private int _stageWaveIndex = 0;
     public int StageWaveIndex
     {
@@ -100,11 +101,6 @@ public class GameScene : BaseScene
 
         _monsterControllers = new List<MonsterController>();
 
-        //var monster = Managers.Resource.Instantiate("Monster", monsterPosition[0]);
-        //var monster = Managers.Object.SpawnCreatureObject<MonsterController>(monsterPosition[0], 1, 1);
-        //monster.transform.position = monsterPosition[0].position;
-        //_monsterControllers.Add(monster);
-
         _gameSceneUI = Managers.UI.ShowSceneUI<UI_GameScene>();
         _gameSceneUI.SetInfo(_isAuto, this);
     }
@@ -115,13 +111,13 @@ public class GameScene : BaseScene
         base.Start();
 
         // 스테이지 데이터 설정
-        _stageData = Managers.Data.StageDataDic[Managers.Game.nowStageTemplateId];
+        //_stageData = Managers.Data.StageDataDic[Managers.Game.nowStageTemplateId];
 
-        if(_stageData == null )
-        {
-            Debug.LogError("Stage Data Null");
-            return;
-        }
+        //if(_stageData == null )
+        //{
+        //    Debug.LogError("Stage Data Null");
+        //    return;
+        //}
 
         StageWaveIndex = 0;
 
@@ -144,7 +140,8 @@ public class GameScene : BaseScene
 
         if(lineNumber == Define.HEROLINENUMBHER)
         {
-            _heroController.DoAttack();
+            // Block Touch Attack
+            //_heroController.DoAttack();
         }
         else
         {
@@ -174,7 +171,8 @@ public class GameScene : BaseScene
 
     private void SpawnHero()
     {
-        _heroController = Managers.Object.SpawnCreatureObject<HeroController>(heroPosition, Managers.Game.NowHero);
+        // Change Web Versioin
+        _heroController = Managers.Object.SpawnCreatureObject<HeroController>(heroPosition, Managers.Game.stageHero.TemplateId);
         _heroController.SetBlocks(stockImages);
     }
 
@@ -183,7 +181,7 @@ public class GameScene : BaseScene
         _buddyControllers = new List<BuddyController>();
         for (int i = 0; i < 4; i++)
         {
-            var buddy = Managers.Object.SpawnCreatureObject<BuddyController>(buddyPosition[i], Managers.Game.SelectedBuddyGet(i));
+            var buddy = Managers.Object.SpawnCreatureObject<BuddyController>(buddyPosition[i], Managers.Game.stageBuddies[i].TemplateId);
             _buddyControllers.Add(buddy);
         }
     }
@@ -193,33 +191,33 @@ public class GameScene : BaseScene
         switch (waveIndex)
         {
             case 1:
-                SpawnMonsters(stageData.FirstWaveMonsterList, stageData.FirstWaveMonsterLevelList);
+                SpawnMonsters(Managers.Game.stageFirstWave);
                 break;
             case 2:
-                SpawnMonsters(stageData.SecondWaveMonsterList, stageData.SecondWaveMonsterLevelList);
+                SpawnMonsters(Managers.Game.stageSecondWave);
                 break;
             case 3:
-                SpawnMonsters(stageData.BossWaveMonsterList, stageData.BossWaveMonsterLevelList);
+                SpawnMonsters(Managers.Game.stageBossWave);
                 break;
             default:
                 break;
         }
     }
 
-    protected void SpawnMonsters(List<int> monsterList, List<int> monsterLevel)
+    protected void SpawnMonsters(List<MonsterSnapshot> monsterList)
     {
         int spawnIndex = 0;
         switch (monsterList.Count)
         {
             case 1:
-                Managers.Object.SpawnCreatureObject<MonsterController>(monsterPosition[0], monsterList[0], monsterLevel[0]);
+                Managers.Object.SpawnCreatureObject<MonsterController>(monsterPosition[spawnIndex], monsterList[spawnIndex].TemplateId, monsterList[spawnIndex].Level);
                 break;
             case 2:
             case 3:
             case 4:
-                foreach (int monsterIndex in monsterList)
+                foreach (var monster in monsterList)
                 {
-                    Managers.Object.SpawnCreatureObject<MonsterController>(monsterPosition[spawnIndex + 1], monsterList[spawnIndex], monsterLevel[spawnIndex]);
+                    Managers.Object.SpawnCreatureObject<MonsterController>(monsterPosition[spawnIndex + 1], monsterList[spawnIndex].TemplateId, monsterList[spawnIndex].Level);
                     spawnIndex++;
                 }
                 break;

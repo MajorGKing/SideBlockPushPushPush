@@ -127,11 +127,11 @@ public class LoadingScene : BaseScene
         if (res.Success)
         {
             // 1. Update hero data
-            //await Managers.Game.UpdateHeroData(res);
+            await Managers.Game.SaveStageData(res);
         }
         else
         {
-            Debug.LogError($"Get Hero Failed.");
+            Debug.LogError($"Get Stage data Failed.");
         }
     }
 

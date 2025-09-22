@@ -92,12 +92,13 @@ public class ObjectManager
 
     private HeroController SpawnHero(Transform parent, int heroSaveDataIndex)
     {
-        var heroSaveData = Managers.Game.GetHeroData(heroSaveDataIndex);
+        // Change Web Version
+        //var heroSaveData = Managers.Game.GetHeroData(heroSaveDataIndex);
         HeroController hero = Managers.Resource.Instantiate(HERO_PREFAB_NAME, parent).GetComponent<HeroController>();
         if(hero != null)
         {
             Hero = hero;
-            hero.SetInfo(heroSaveData);
+            hero.SetInfo(Managers.Game.stageHero);
             return hero;
         }
         return null;
@@ -105,7 +106,7 @@ public class ObjectManager
 
     private BuddyController SpawnBuddy(Transform parent, int buddySaveDataIndex)
     {
-        var buddySaveData = Managers.Game.GetBuddySaveData(buddySaveDataIndex);
+        var buddySaveData = Managers.Game.GetBuddySnapshotData(buddySaveDataIndex);
         
         BuddyController buddy = Managers.Resource.Instantiate(BUDDY_PREFAB_NAME, parent).GetComponent<BuddyController>();
         if (buddy != null)

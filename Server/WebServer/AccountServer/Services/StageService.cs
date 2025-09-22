@@ -156,7 +156,7 @@ namespace AccountServer.Services
 
             await Task.WhenAll(buddiesTask, stageDataTask);
 
-            var buddiesDb = buddiesTask.Result;
+            var buddiesDb = (await buddiesTask).OrderBy(b => b.SelectedNumber).ToList();
             var stageData = stageDataTask.Result;
 
             // Build buddy snapshots

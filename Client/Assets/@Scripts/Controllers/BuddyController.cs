@@ -3,6 +3,7 @@ using Spine;
 using Spine.Unity;
 using System.Collections.Generic;
 using UnityEngine;
+using WebPacket;
 
 public class BuddyController : AllyController
 {
@@ -101,7 +102,7 @@ public class BuddyController : AllyController
 
     // TODO 이름 변경 필요
     // TODO 이후 번호 받아 갱신하는거 필요
-    public void SetInfo(BuddySaveData saveData)//, List<SpriteRenderer> blockSet)//, GameScene game)
+    public void SetInfo(BuddySnapshot saveData)//, List<SpriteRenderer> blockSet)//, GameScene game)
     {
         if (saveData.TemplateId == 0)
             return;
@@ -116,56 +117,10 @@ public class BuddyController : AllyController
         AnimationBindEventInit();
 
         // 스킬 세팅
-        foreach(var skillIndex in saveData.SkillTemplateId)
+        foreach(var skill in saveData.Skills)
         {
-            _skillData.Add(new BuddySkill(this, skillIndex));
+            _skillData.Add(new BuddySkill(this, skill));
         }
-
-        // TODO 데이터 불러와서 스프라이트 세트 가저오기
-        // TODO Buddy Data 만들기
-        //if (templateId == 0)
-        //{
-        //    skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>("spi_buddy_tom_SkeletonData");
-        //    skeletonAnimation.Initialize(true);
-
-        //    _skillData.Add(new BuddySkill(this, 5));
-        //    _skillData.Add(new BuddySkill(this, 5));
-        //    _skillData.Add(new BuddySkill(this, 6));
-
-        //    AnimationBindEventInit();
-        //}
-        //else if (templateId == 1)
-        //{
-        //    skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>("spi_buddy_mari_SkeletonData");
-        //    skeletonAnimation.Initialize(true);
-
-        //    _skillData.Add(new BuddySkill(this, 7));
-
-        //    AnimationBindEventInit();
-        //}
-        //else if (templateId == 2)
-        //{
-        //    skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>("spi_buddy_ellie_SkeletonData");
-        //    skeletonAnimation.Initialize(true);
-
-        //    _skillData.Add(new BuddySkill(this, 3));
-        //    _skillData.Add(new BuddySkill(this, 3));
-        //    _skillData.Add(new BuddySkill(this, 3));
-        //    _skillData.Add(new BuddySkill(this, 3));
-        //    _skillData.Add(new BuddySkill(this, 4));
-
-        //    AnimationBindEventInit();
-        //}
-        //else if (templateId == 3)
-        //{
-        //    skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>("spi_buddy_duck_SkeletonData");
-        //    skeletonAnimation.Initialize(true);
-
-        //    _skillData.Add(new BuddySkill(this, 1));
-        //    _skillData.Add(new BuddySkill(this, 2));
-
-        //    AnimationBindEventInit();
-        //}
     }
 
     public override void SetStartAI(bool start)

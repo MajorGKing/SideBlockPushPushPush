@@ -73,13 +73,17 @@ public class MonsterController : CreatureController
     public void SetInfo(int templateID, int level)
     {
         MonsterData data = Managers.Data.MonsterDataDic[templateID];
-        ProgressionTypeData type = Managers.Data.ProgressionTypeDataDic[data.ProgressionTypeId];
+        //ProgressionTypeData type = Managers.Data.ProgressionTypeDataDic[data.ProgressionTypeId];
+        var monsterSnapshot = Managers.Game.GetMonsterSnapshotData(templateID, level);
 
         _monsterData = data;
+        {
+            _monsterData.TemplateId = monsterSnapshot.TemplateId;
+            _monsterData.MaxHp = monsterSnapshot.MaxHp;
+            _monsterData.NormalDefence = monsterSnapshot.NormalDefence;
+            _monsterData.MagicDefence = monsterSnapshot.MagicDefence;
+        }
 
-        _monsterData.MaxHp = data.MaxHp + (type.MaxHp * (level - 1));
-        _monsterData.NormalDefence = data.NormalDefence + (type.NormalDefence * (level - 1));
-        _monsterData.MagicDefence = data.MagicDefence + (type.MagicDefence * (level - 1));
 
         _currentMonsterData = new CurrentMonsterData(_monsterData);
 

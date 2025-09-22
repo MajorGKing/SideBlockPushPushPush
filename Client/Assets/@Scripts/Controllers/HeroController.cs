@@ -35,13 +35,13 @@ public class HeroController : AllyController
         skillData = new List<HeroSkill>();
     }
 
-    public void SetInfo(HeroDTO saveData)//, List<SpriteRenderer> blockSet, GameScene game)
+    public void SetInfo(HeroSnapshot saveData)//, List<SpriteRenderer> blockSet, GameScene game)
     {
         skillData.Clear();
 
-        foreach(var skillIndex in saveData.SkillTemplateIds)
+        foreach(var skill in saveData.Skills)
         {
-            skillData.Add(new HeroSkill(this, skillIndex));
+            skillData.Add(new HeroSkill(this, skill));
         }
 
         skeletonAnimation.skeletonDataAsset = Managers.Resource.Load<SkeletonDataAsset>(Managers.Data.HeroDataDic[saveData.TemplateId].SpineNameKey);
@@ -160,7 +160,6 @@ public class HeroController : AllyController
         }
     }
 
-    // TODO 불럭 숫자에 따른 차이 필요
     private void Attack()
     {
         // 1. 블록의 스프라이트 이름 저장하기
