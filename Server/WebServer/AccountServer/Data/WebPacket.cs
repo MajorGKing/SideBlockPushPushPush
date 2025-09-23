@@ -387,4 +387,42 @@
         public List<RewardDTO> Rewards { get; set; } = new List<RewardDTO>();
     }
 
+    public class SetNextStageReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+    }
+
+    public class SetNextStageRes
+    {
+        public bool Success { get; set; }
+        public bool CanChange { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public int StageTemplateId { get; set; }
+    }
+
+    public class SetBackStageReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+    }
+
+    public class SetBackStageRes
+    {
+        public bool Success { get; set; }
+        public bool CanChange { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public int StageTemplateId { get; set; }
+    }
+
+    public class SetHardNormalStageReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+    }
+
+    public class SetHardNormalStageRes
+    {
+        public bool Success { get; set; }
+        public bool CanChange { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public int StageTemplateId { get; set; }
+    }
 }

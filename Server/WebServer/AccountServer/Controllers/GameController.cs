@@ -141,23 +141,23 @@ namespace AccountServer.Controllers
 
         [HttpPost]
         [Route("stage/setClearStageNext")]
-        public async Task<StageClearListRes> SetStageClearNext([FromBody] StageClearListReq req)
+        public async Task<SetNextStageRes> SetStageClearNext([FromBody] SetNextStageReq req)
         {
-            return await _stage.StageListGetAsync(req);
+            return await _stage.SetNextStageAsync(req);
         }
 
         [HttpPost]
         [Route("stage/setClearStageBack")]
-        public async Task<StageClearListRes> SetStageClearBack([FromBody] StageClearListReq req)
+        public async Task<SetBackStageRes> SetStageClearBack([FromBody] SetBackStageReq req)
         {
-            return await _stage.StageListGetAsync(req);
+            return await _stage.SetBackStageAsync(req);
         }
 
         [HttpPost]
         [Route("stage/setClearStageHardNormal")]
-        public async Task<StageClearListRes> SetStageClearHardNormal([FromBody] StageClearListReq req)
+        public async Task<SetHardNormalStageRes> SetStageClearHardNormal([FromBody] SetHardNormalStageReq req)
         {
-            return await _stage.StageListGetAsync(req);
+            return await _stage.SetHardNormalStageAsync(req);
         }
 
         [HttpPost]

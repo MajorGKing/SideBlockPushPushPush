@@ -353,9 +353,6 @@ public class GameScene : BaseScene
 
         clear.SetInfo(Define.ERewardType.StageClear, rewards);
 
-        // 게임 클리어 세팅
-        Managers.Game.ClearStage();
-
         yield return null;
     }
 

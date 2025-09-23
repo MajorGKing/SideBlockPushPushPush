@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using WebPacket;
@@ -588,7 +589,18 @@ public class GameManager
     }
 
     private int _nowStageTemplateId;
-    public int nowStageTemplateId { get => _nowStageTemplateId;}
+    public int nowStageTemplateId
+    { 
+        get => _nowStageTemplateId;
+        private set
+        {
+            if( _nowStageTemplateId != value )
+            {
+                _nowStageTemplateId = value;
+                OnCurrentStageChanged?.Invoke();
+            }
+        }
+    }
     public async UniTask NowStageTemplateIdSet(int stageTemplateId)
     {
         if (stageTemplateId == 0)
@@ -615,54 +627,79 @@ public class GameManager
         _nowStageTemplateId = stageTemplateId;
         OnCurrentStageChanged?.Invoke();
     }
-    //{
-    //    get <= _stageTemplateId;
-    //set
-    //{
-    //    if (value == 0)
-    //        return;
-
-    //    if (_gameData.StageClears.ContainsKey(value) == false || _gameData.StageClears[value].isEnable == false)
-    //    {
-    //        if (Managers.Data.StageDataDic[value].PreviewStageId == 0)
-    //            return;
-
-    //        var prevStage = Managers.Data.StageDataDic[Managers.Data.StageDataDic[value].PreviewStageId];
-
-    //        var message = $"Need to Clear {prevStage.DifficultyLevel} {prevStage.WorldNumber} - {prevStage.StageNumber}";
-
-    //        Managers.UI.ShowToast(message, 1f, Define.EToastColor.Red, Define.EToastPosition.MiddleCenter);
-
-    //        return;
-    //    }
-
-    //    _stageTemplateId = value;
-    //    _gameData.CurrentStageTemplateId = value;
-    //    OnCurrentStageChanged?.Invoke();
-    //    SaveGame();
-    //}
-    //}
-
-
 
     public async UniTask ChangeStageNext(bool isNext)
     {
-        var stageData = Managers.Data.StageDataDic[nowStageTemplateId];
-
         if (isNext == true)
         {
-            await NowStageTemplateIdSet(stageData.NextStageId);
+            var req = new SetNextStageReq()
+            {
+                Jwt = Managers.Web.jwt,
+            };
+
+            SetNextStageRes res = await Managers.Web.SendPostRequestAsync<SetNextStageRes>("api/game/stage/setClearStageNext", req);
+
+            if(res.Success == true)
+            {
+                nowStageTemplateId = res.StageTemplateId;
+            }
+            else
+            {
+                Debug.LogError(res.Message);
+            }
+
+            if(res.CanChange == false)
+            {
+                Managers.UI.ShowToast(res.Message, 1f, Define.EToastColor.Red, Define.EToastPosition.MiddleCenter);
+            }
         }
         else
         {
-            await NowStageTemplateIdSet(stageData.PreviewStageId);
+            var req = new SetBackStageReq()
+            {
+                Jwt = Managers.Web.jwt,
+            };
+
+            SetBackStageRes res = await Managers.Web.SendPostRequestAsync<SetBackStageRes>("api/game/stage/setClearStageBack", req);
+
+            if (res.Success == true)
+            {
+                nowStageTemplateId = res.StageTemplateId;
+            }
+            else
+            {
+                Debug.LogError(res.Message);
+            }
+
+            if (res.CanChange == false)
+            {
+                Managers.UI.ShowToast(res.Message, 1f, Define.EToastColor.Red, Define.EToastPosition.MiddleCenter);
+            }
         }
     }
 
     public async UniTask ChangeStageHard()
     {
-        var stageData = Managers.Data.StageDataDic[nowStageTemplateId];
-        await NowStageTemplateIdSet(stageData.OtherStageId);
+        var req = new SetHardNormalStageReq()
+        {
+            Jwt = Managers.Web.jwt,
+        };
+
+        SetHardNormalStageRes res = await Managers.Web.SendPostRequestAsync<SetHardNormalStageRes>("api/game/stage/setClearStageHardNormal", req);
+
+        if (res.Success == true)
+        {
+            nowStageTemplateId = res.StageTemplateId;
+        }
+        else
+        {
+            Debug.LogError(res.Message);
+        }
+
+        if (res.CanChange == false)
+        {
+            Managers.UI.ShowToast(res.Message, 1f, Define.EToastColor.Red, Define.EToastPosition.MiddleCenter);
+        }
     }
     #endregion
 
@@ -1248,63 +1285,6 @@ public class GameManager
     }
     #endregion
 
-    #region Reward
-    public List<Reward> GetRewards()
-    {
-        List<Reward> rewards = new List<Reward>();
-        var stageData = Managers.Data.StageDataDic[nowStageTemplateId];
-
-        int enumCount = Enum.GetNames(typeof(Define.ECurrencyType)).Length;
-        List<int> currencyCounts = new List<int>(new int[enumCount]);
-
-        System.Random _random = new System.Random();
-
-        for (int i = 0; i < stageData.RewardTimes; i++)
-        {
-            int totalWeight = 0;
-            foreach (int weight in stageData.RewardPercent)
-                totalWeight += weight;
-
-            int rand = _random.Next(0, totalWeight);
-            int cumulative = 0;
-
-            for (int j = 0; j < stageData.RewardPercent.Count; j++)
-            {
-                cumulative += stageData.RewardPercent[j];
-                if (rand < cumulative)
-                {
-                    Define.ECurrencyType currencyType = stageData.RewardType[j];
-                    int rewardCount = stageData.RewardCount[j];
-                    currencyCounts[(int)currencyType] += rewardCount;
-                    break;
-                }
-            }
-        }
-
-        for (int i = 0; i < currencyCounts.Count; i++)
-        {
-            if (currencyCounts[i] == 0)
-                continue;
-
-            rewards.Add(new Reward((Define.ECurrencyType)i, currencyCounts[i]));
-            // 여기서 하는게 맞나?
-            AddCurrency((Define.ECurrencyType)i, currencyCounts[i]);
-        }
-
-        if (_gameData.StageClears[nowStageTemplateId].isClear == false)
-        {
-            for (int i = 0; i < stageData.RewardFirstType.Count; i++)
-            {
-                rewards.Add(new Reward(stageData.RewardFirstType[i], stageData.RewardFirstCount[i], true));
-                // 여기서 하는게 맞나?
-                AddCurrency(stageData.RewardFirstType[i], stageData.RewardFirstCount[i]);
-            }
-        }
-
-        return rewards;
-    }
-    #endregion
-
     #region Stage
     //private int _stageTemplateId;
     //public int stageTemplateId
@@ -1340,27 +1320,6 @@ public class GameManager
     #endregion
 
     #region StageClear
-    public void ClearStage()
-    {
-        _gameData.StageClears[nowStageTemplateId].isClear = true;
-        if (_gameData.StageClears.ContainsKey(Managers.Data.StageDataDic[nowStageTemplateId].NextStageId) == false)
-        {
-            var newStage = new StageClear();
-            newStage.TemplateId = Managers.Data.StageDataDic[nowStageTemplateId].NextStageId;
-            newStage.isClear = false;
-            newStage.isEnable = true;
-
-            _gameData.StageClears.Add(newStage.TemplateId, newStage);
-            //stageTemplateId = newStage.TemplateId;
-        }
-
-        _gameData.CurrentStageTemplateId = nowStageTemplateId;
-
-        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.StageClear, 1);
-
-        SaveGame();
-    }
-
     public bool IsStageClearedAt(int templateId)
     {
         if (_gameData.StageClears.ContainsKey(templateId) == false)
@@ -1669,40 +1628,7 @@ public class GameManager
         AchievementClearList = _gameData.AchievementClearList;
         AchievementSaveDats = _gameData.AchievementSaveDatas;
 
-        //// 기본 동료 4개 넣어두기
-        //buddies = new List<BuddySaveData>();
-        //AddBuddySaveData(new BuddySaveData(100000100, Managers.Data.BuddyDataDic[100000100].SKillIds, true));
-        //AddBuddySaveData(new BuddySaveData(300000100, Managers.Data.BuddyDataDic[300000100].SKillIds, true));
-        //AddBuddySaveData(new BuddySaveData(100000300, Managers.Data.BuddyDataDic[100000300].SKillIds, true));
-        //AddBuddySaveData(new BuddySaveData(100000500, Managers.Data.BuddyDataDic[100000500].SKillIds, true));
-
-        //_gameData.HeroSaves.Add(100, new HeroSaveData(100, Managers.Data.HeroDataDic[100].SKillIds, true));
-        //_gameData.HeroSaves.Add(200, new HeroSaveData(200, Managers.Data.HeroDataDic[200].SKillIds, false));
-
-        ////buddies = _gameData.BuddySaves.Values.ToList();
-        //int selectedIndex = 0;
-        //foreach (var buddy in buddies)
-        //{
-        //    if (buddy.isSelected == true)
-        //    {
-        //        _selectedBuddies[selectedIndex++] = buddy.TemplateId;
-        //    }
-        //}
-
-        //OnSelectedBuddyChanged?.Invoke();
-
-        //var currencyTypes = Enum.GetValues(typeof(Define.ECurrencyType));
-
-        //for (int i = 1; i < currencyTypes.Length; i++)
-        //{
-        //    AddCurrency((Define.ECurrencyType)i, 100);
-        //}
-
-        StageClear stage = new StageClear();
-        stage.TemplateId = 1;
-        stage.isEnable = true;
-        stage.isClear = false;
-        _gameData.StageClears.Add(1, stage);
+        
 
 
         PlayerPrefs.SetInt("ISFIRST", 0);

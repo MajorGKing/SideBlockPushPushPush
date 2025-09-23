@@ -372,5 +372,269 @@ namespace AccountServer.Services
 
             return response;
         }
+
+        //public async Task<SetNextStageRes> SetNextStageAsync(SetNextStageReq request)
+        //{
+        //    var response = new SetNextStageRes();
+
+        //    // Step 1: Validate player
+        //    var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
+        //    var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+        //    if (player == null)
+        //    {
+        //        response.Success = false;
+        //        response.CanChange = false;
+        //        response.StageTemplateId = 0;
+        //        return response;
+        //    }
+
+        //    // Step 2: Load current stage
+        //    if (!DataManager.StageDataDic.TryGetValue(player.CurrentStage, out var stageData))
+        //    {
+        //        response.Success = false;
+        //        response.CanChange = false;
+        //        response.StageTemplateId = 0;
+        //        return response;
+        //    }
+
+        //    // Step 3: Get next stage
+        //    if (!DataManager.StageDataDic.TryGetValue(stageData.NextStageId, out var nextStageData))
+        //    {
+        //        response.Success = true;
+        //        response.CanChange = false;
+        //        response.StageTemplateId = player.CurrentStage;
+        //        response.Message = "Wait Update. There is no next stage";
+        //        return response;
+        //    }
+
+        //    // Step 4: Check if player can move to next stage
+        //    var nextStageDb = player.Stages.FirstOrDefault(s => s.TemplateId == nextStageData.TemplateId);
+        //    if (nextStageDb == null || nextStageDb.isEnable == false)
+        //    {
+        //        var prevStage = DataManager.StageDataDic[nextStageData.PreviewStageId];
+
+        //        response.Success = true;
+        //        response.CanChange = false;
+        //        response.StageTemplateId = player.CurrentStage;
+        //        response.Message = $"Need to Clear {prevStage.DifficultyLevel} {prevStage.WorldNumber} - {prevStage.StageNumber}";
+
+        //        return response;
+        //    }
+
+        //    // Step 5: Change current stage
+        //    player.CurrentStage = nextStageData.TemplateId;
+        //    await _dbContext.SaveChangesAsync();
+
+        //    response.Success = true;
+        //    response.CanChange = true;
+        //    response.StageTemplateId = nextStageData.TemplateId;
+
+        //    return response;
+        //}
+
+        //public async Task<SetBackStageRes> SetBackStageAsync(SetBackStageReq request)
+        //{
+        //    var response = new SetBackStageRes();
+
+        //    // Step 1: Validate player
+        //    var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
+        //    var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+        //    if (player == null)
+        //    {
+        //        response.Success = false;
+        //        response.CanChange = false;
+        //        response.StageTemplateId = 0;
+        //        return response;
+        //    }
+
+        //    // Step 2: Load current stage
+        //    if (!DataManager.StageDataDic.TryGetValue(player.CurrentStage, out var stageData))
+        //    {
+        //        response.Success = false;
+        //        response.CanChange = false;
+        //        response.StageTemplateId = 0;
+        //        return response;
+        //    }
+
+        //    // Step 3: Get preview stage
+        //    if (!DataManager.StageDataDic.TryGetValue(stageData.PreviewStageId, out var previewStageData))
+        //    {
+        //        response.Success = true;
+        //        response.CanChange = false;
+        //        response.StageTemplateId = player.CurrentStage;
+        //        response.Message = "There is no previous stage.";
+        //        return response;
+        //    }
+
+        //    // Step 4: Check if player can move back
+        //    var previewStageDb = player.Stages.FirstOrDefault(s => s.TemplateId == previewStageData.TemplateId);
+        //    if (previewStageDb == null || previewStageDb.isEnable == false)
+        //    {
+        //        response.Success = true;
+        //        response.CanChange = false;
+        //        response.StageTemplateId = player.CurrentStage;
+        //        response.Message = $"Stage {previewStageData.DifficultyLevel} {previewStageData.WorldNumber} - {previewStageData.StageNumber} is locked.";
+        //        return response;
+        //    }
+
+        //    // Step 5: Change current stage to preview
+        //    player.CurrentStage = previewStageData.TemplateId;
+        //    await _dbContext.SaveChangesAsync();
+
+        //    response.Success = true;
+        //    response.CanChange = true;
+        //    response.StageTemplateId = previewStageData.TemplateId;
+
+        //    return response;
+        //}
+
+        //public async Task<SetHardNormalStageRes> SetHardNormalStageAsync(SetHardNormalStageReq request)
+        //{
+        //    var response = new SetHardNormalStageRes();
+
+        //    // Step 1: Validate player
+        //    var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
+        //    var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+        //    if (player == null)
+        //    {
+        //        response.Success = false;
+        //        response.CanChange = false;
+        //        response.StageTemplateId = 0;
+        //        return response;
+        //    }
+
+        //    // Step 2: Load current stage
+        //    if (!DataManager.StageDataDic.TryGetValue(player.CurrentStage, out var stageData))
+        //    {
+        //        response.Success = false;
+        //        response.CanChange = false;
+        //        response.StageTemplateId = 0;
+        //        return response;
+        //    }
+
+        //    // Step 3: Get other stage (hard <-> normal)
+        //    if (!DataManager.StageDataDic.TryGetValue(stageData.OtherStageId, out var otherStageData))
+        //    {
+        //        response.Success = true;
+        //        response.CanChange = false;
+        //        response.StageTemplateId = player.CurrentStage;
+        //        response.Message = "No other difficulty available for this stage.";
+        //        return response;
+        //    }
+
+        //    // Step 4: Check if player can access the other stage
+        //    var otherStageDb = player.Stages.FirstOrDefault(s => s.TemplateId == otherStageData.TemplateId);
+        //    if (otherStageDb == null || otherStageDb.isEnable == false)
+        //    {
+        //        // Find preview stage info (the stage that must be cleared first)
+        //        if (DataManager.StageDataDic.TryGetValue(otherStageData.PreviewStageId, out var prevStage))
+        //        {
+        //            response.Message = $"Need to Clear {prevStage.DifficultyLevel} {prevStage.WorldNumber}-{prevStage.StageNumber}";
+        //        }
+        //        else
+        //        {
+        //            response.Message = "This stage is locked.";
+        //        }
+
+        //        response.Success = true;
+        //        response.CanChange = false;
+        //        response.StageTemplateId = player.CurrentStage;
+        //        return response;
+        //    }
+
+        //    // Step 5: Switch to other difficulty
+        //    player.CurrentStage = otherStageData.TemplateId;
+        //    await _dbContext.SaveChangesAsync();
+
+        //    response.Success = true;
+        //    response.CanChange = true;
+        //    response.StageTemplateId = otherStageData.TemplateId;
+
+        //    return response;
+
+        //}
+
+        private async Task<TResponse> ChangeStageAsync<TResponse>(
+        string jwt,
+        Func<StageData, int> targetStageSelector,
+        Func<StageData, string> noStageMessage,
+        string lockedFallbackMessage = "This stage is locked.")
+        where TResponse : new()
+        {
+            var response = new TResponse();
+
+            // Step 1: Validate player
+            var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            if (player == null)
+                return SetResponse(response, false, false, 0, "Invalid player.");
+
+            // Step 2: Load current stage
+            if (!DataManager.StageDataDic.TryGetValue(player.CurrentStage, out var stageData))
+                return SetResponse(response, false, false, 0, $"Stage {player.CurrentStage} not found.");
+
+            // Step 3: Select target stage id
+            int targetStageId = targetStageSelector(stageData);
+            if (!DataManager.StageDataDic.TryGetValue(targetStageId, out var targetStageData))
+                return SetResponse(response, true, false, player.CurrentStage, noStageMessage(stageData));
+
+            // Step 4: Check if player can move
+            var targetStageDb = player.Stages.FirstOrDefault(s => s.TemplateId == targetStageData.TemplateId);
+            if (targetStageDb == null || targetStageDb.isEnable == false)
+            {
+                string message = lockedFallbackMessage;
+                if (DataManager.StageDataDic.TryGetValue(targetStageData.PreviewStageId, out var prevStage))
+                    message = $"Need to Clear {prevStage.DifficultyLevel} {prevStage.WorldNumber}-{prevStage.StageNumber}";
+
+                return SetResponse(response, true, false, player.CurrentStage, message);
+            }
+
+            // Step 5: Update current stage
+            player.CurrentStage = targetStageData.TemplateId;
+            await _dbContext.SaveChangesAsync();
+
+            return SetResponse(response, true, true, targetStageData.TemplateId, "Stage changed.");
+        }
+
+        private TResponse SetResponse<TResponse>(TResponse response, bool success, bool canChange, int stageTemplateId, string message)
+        {
+            dynamic r = response!;
+            r.Success = success;
+            r.CanChange = canChange;
+            r.StageTemplateId = stageTemplateId;
+            r.Message = message;
+            return response;
+        }
+
+        // -------------------------------
+        // Public wrappers
+        // -------------------------------
+
+        public Task<SetNextStageRes> SetNextStageAsync(SetNextStageReq request)
+        {
+            return ChangeStageAsync<SetNextStageRes>(
+                request.Jwt,
+                stage => stage.NextStageId,
+                _ => "Wait Update. There is no next stage"
+            );
+        }
+
+        public Task<SetBackStageRes> SetBackStageAsync(SetBackStageReq request)
+        {
+            return ChangeStageAsync<SetBackStageRes>(
+                request.Jwt,
+                stage => stage.PreviewStageId,
+                _ => "There is no previous stage."
+            );
+        }
+
+        public Task<SetHardNormalStageRes> SetHardNormalStageAsync(SetHardNormalStageReq request)
+        {
+            return ChangeStageAsync<SetHardNormalStageRes>(
+                request.Jwt,
+                stage => stage.OtherStageId,
+                _ => "No other difficulty available for this stage."
+            );
+        }
     }
 }

@@ -68,36 +68,17 @@ public class UI_BattlePopup : UI_Popup
     {
         Managers.Sound.PlayButtonClick();
         Managers.Game.ChangeStageNext(true).Forget();
-
-        //var templateId = Managers.Game.stageTemplateId;
-
-        //var stageData = Managers.Data.StageDataDic[templateId];
-
-        //Debug.Log(stageData.NextaStageId);
-
-        //Managers.Game.stageTemplateId = stageData.NextaStageId;
     }
     private void OnClickPreviewButton(PointerEventData evt)
     {
         Managers.Sound.PlayButtonClick();
         Managers.Game.ChangeStageNext(false).Forget();
-
-        //var templateId = Managers.Game.stageTemplateId;
-
-        //var stageData = Managers.Data.StageDataDic[templateId];
-
-        //Managers.Game.stageTemplateId = stageData.PreviewStageId;
     }
 
     private void OnClickStageHardButton(PointerEventData evt)
     {
         Managers.Sound.PlayButtonClick();
         Managers.Game.ChangeStageHard().Forget();
-        //var templateId = Managers.Game.stageTemplateId;
-
-        //var stageData = Managers.Data.StageDataDic[templateId];
-
-        //Managers.Game.stageTemplateId = stageData.OtherStageId;
     }
 
     private void OnClickMissionButton(PointerEventData evt)
