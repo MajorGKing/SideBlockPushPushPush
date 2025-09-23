@@ -113,7 +113,7 @@ namespace AccountServer.Services
                 await buddyService.BuddyCreate(request.jwt, 100000500, 3);
 
                 // 4. 기본 스테이지 설정
-                await stageService.StageCreate(request.jwt, 1);
+                await stageService.StageCreateAsync(request.jwt, 1);
 
             }
 

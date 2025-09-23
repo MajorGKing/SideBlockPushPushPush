@@ -367,4 +367,24 @@
         public int LifeStealValue { get; set; }
         public int StunValue { get; set; }
     }
+
+    public class RewardDTO
+    {
+        public Define.ECurrencyType RewardType { get; set; }
+        public int RewardAmount { get; set; }
+        public bool IsFirst;
+    }
+
+    public class StageRewardReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+    }
+
+    public class StageRewardRes
+    {
+        public bool Success { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public List<RewardDTO> Rewards { get; set; } = new List<RewardDTO>();
+    }
+
 }

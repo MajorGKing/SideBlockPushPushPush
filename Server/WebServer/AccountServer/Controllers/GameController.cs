@@ -162,9 +162,16 @@ namespace AccountServer.Controllers
 
         [HttpPost]
         [Route("stage/getStageData")]
-        public async Task<StageStartDataRes> GetStaveData([FromBody] StageStartDataReq req)
+        public async Task<StageStartDataRes> GetStageData([FromBody] StageStartDataReq req)
         {
             return await _stage.StageDataGetAsync(req);
+        }
+
+        [HttpPost]
+        [Route("stage/getStageReward")]
+        public async Task<StageRewardRes> GetStageReward([FromBody] StageRewardReq req)
+        {
+            return await _stage.StageRewardGetAsync(req);
         }
     }
 }

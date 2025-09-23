@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Data;
 using System.Collections;
 using System.Collections.Generic;
@@ -345,11 +346,12 @@ public class GameScene : BaseScene
     // 게임 클리어
     protected virtual IEnumerator CoClearState()
     {
+        List<Reward> rewards = null;
+        yield return Managers.Game.GetStageRewardAsync().ToCoroutine(r => rewards = r);
+
         var clear = Managers.UI.ShowPopupUI<UI_RewardPopup>();
 
-        // TODO 추후 웹서버를 통해 받는다
-        // TODO 추후 개인 => 웹서버에 리워드를 저장한다
-        clear.SetInfo(Define.ERewardType.StageClear, Managers.Game.GetRewards());
+        clear.SetInfo(Define.ERewardType.StageClear, rewards);
 
         // 게임 클리어 세팅
         Managers.Game.ClearStage();

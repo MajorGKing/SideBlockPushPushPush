@@ -102,7 +102,7 @@ namespace Data
         public List<Define.ECurrencyType> RewardFirstType;
         public List<int> RewardFirstCount;
         public int PreviewStageId;
-        public int NextaStageId;
+        public int NextStageId;
         public int OtherStageId;
     }
 

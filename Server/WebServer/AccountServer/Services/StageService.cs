@@ -2,6 +2,8 @@
 using GameDB;
 using Microsoft.EntityFrameworkCore;
 using Server.Data;
+using DbCurrencyType = GameDB.CurrencyType;
+using CurrencyType = AccountServer.Data.CurrencyType;
 
 namespace AccountServer.Services
 {
@@ -10,16 +12,18 @@ namespace AccountServer.Services
         GameDbContext _dbContext;
         JwtTokenService _jwt;
         PlayerService _player;
+        CurrencyService _currency;
 
 
-        public StageService(GameDbContext context, JwtTokenService jwt, PlayerService player)
+        public StageService(GameDbContext context, JwtTokenService jwt, PlayerService player, CurrencyService currency)
         {
             _dbContext = context;
             _jwt = jwt;
             _player = player;
+            _currency = currency;
         }
 
-        public async Task<bool> StageCreate(string jwt, int templateId)
+        public async Task<bool> StageCreateAsync(string jwt, int templateId, bool commitChanges = true)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
             var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
@@ -48,7 +52,11 @@ namespace AccountServer.Services
             };
 
             player.Stages.Add(stage);
-            await _dbContext.SaveChangesAsync();
+            if(commitChanges == true)
+            {
+                await _dbContext.SaveChangesAsync();
+            }
+            
 
             return true;
         }
@@ -242,6 +250,127 @@ namespace AccountServer.Services
                 });
             }
             return list;
+        }
+
+        public async Task<StageRewardRes> StageRewardGetAsync(StageRewardReq request)
+        {
+            var response = new StageRewardRes();
+
+            // Step 1: Validate player
+            var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            if (player == null)
+            {
+                response.Success = false;
+                response.Message = "Invalid player.";
+                return response;
+            }
+
+            // Step 2: Load stage data
+            if (!DataManager.StageDataDic.TryGetValue(player.CurrentStage, out var stageData))
+            {
+                response.Success = false;
+                response.Message = $"Stage {player.CurrentStage} not found.";
+                return response;
+            }
+
+            // Step 3: Start transaction
+            await using var transaction = await _dbContext.Database.BeginTransactionAsync();
+
+            try
+            {
+                int enumCount = Enum.GetNames(typeof(Define.ECurrencyType)).Length;
+                List<int> currencyCounts = new(new int[enumCount]);
+                Random random = new();
+
+                // Normal rewards
+                for (int i = 0; i < stageData.RewardTimes; i++)
+                {
+                    int totalWeight = stageData.RewardPercent.Sum();
+                    int rand = random.Next(0, totalWeight);
+                    int cumulative = 0;
+
+                    for (int j = 0; j < stageData.RewardPercent.Count; j++)
+                    {
+                        cumulative += stageData.RewardPercent[j];
+                        if (rand < cumulative)
+                        {
+                            Define.ECurrencyType currencyType = stageData.RewardType[j];
+                            int rewardCount = stageData.RewardCount[j];
+                            currencyCounts[(int)currencyType] += rewardCount;
+                            break;
+                        }
+                    }
+                }
+
+                // Add rolled rewards
+                for (int i = 0; i < currencyCounts.Count; i++)
+                {
+                    if (currencyCounts[i] == 0) continue;
+
+                    response.Rewards.Add(new RewardDTO
+                    {
+                        RewardType = (Define.ECurrencyType)i,
+                        RewardAmount = currencyCounts[i],
+                        IsFirst = false
+                    });
+
+                    await _currency.UpdatePlayerCurrencyAsync(new CurrencyAddReq
+                    {
+                        jwt = request.Jwt,
+                        CurrencyType = (CurrencyType)(i - 1), // CurrencyType not has none
+                        Amount = currencyCounts[i],
+                    }, false);
+                }
+
+                // First-clear rewards
+                var playerCurrentStageDb = player.Stages.FirstOrDefault(s => s.TemplateId == player.CurrentStage);
+
+                // First-Clear
+                if (playerCurrentStageDb.isClear == false)
+                {
+                    for (int i = 0; i < stageData.RewardFirstType.Count; i++)
+                    {
+                        response.Rewards.Add(new RewardDTO
+                        {
+                            RewardType = stageData.RewardFirstType[i],
+                            RewardAmount = stageData.RewardFirstCount[i],
+                            IsFirst = true
+                        });
+
+                        await _currency.UpdatePlayerCurrencyAsync(new CurrencyAddReq
+                        {
+                            jwt = request.Jwt,
+                            CurrencyType = (CurrencyType)((int)stageData.RewardFirstType[i] - 1), // CurrencyType not has none
+                            Amount = stageData.RewardFirstCount[i],
+                        }, false);
+                    }
+
+                    // Game has next stage
+                    if (stageData.NextStageId != 0)
+                    {
+                        await StageCreateAsync(request.Jwt, stageData.NextStageId);
+                        player.CurrentStage = stageData.NextStageId;
+                    }
+
+                    playerCurrentStageDb.isClear = true;
+                }
+
+                // Save and commit
+                await _dbContext.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                response.Success = true;
+                response.Message = "Rewards granted.";
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                response.Success = false;
+                response.Message = $"Error granting rewards: {ex.Message}";
+            }
+
+            return response;
         }
     }
 }

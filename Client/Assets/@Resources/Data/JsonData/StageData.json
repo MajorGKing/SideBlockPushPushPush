@@ -47,7 +47,7 @@
         100
       ],
       "PreviewStageId": 0,
-      "NextaStageId": 2,
+      "NextStageId": 2,
       "OtherStageId": 11
     },
     {
@@ -93,7 +93,7 @@
       "RewardFirstType": [],
       "RewardFirstCount": [],
       "PreviewStageId": 1,
-      "NextaStageId": 3,
+      "NextStageId": 3,
       "OtherStageId": 12
     },
     {
@@ -146,7 +146,7 @@
       "RewardFirstType": [],
       "RewardFirstCount": [],
       "PreviewStageId": 2,
-      "NextaStageId": 11,
+      "NextStageId": 11,
       "OtherStageId": 13
     },
     {
@@ -189,7 +189,7 @@
         200
       ],
       "PreviewStageId": 3,
-      "NextaStageId": 12,
+      "NextStageId": 12,
       "OtherStageId": 1
     },
     {
@@ -232,7 +232,7 @@
         200
       ],
       "PreviewStageId": 11,
-      "NextaStageId": 13,
+      "NextStageId": 13,
       "OtherStageId": 2
     },
     {
@@ -275,7 +275,7 @@
         200
       ],
       "PreviewStageId": 12,
-      "NextaStageId": 0,
+      "NextStageId": 0,
       "OtherStageId": 3
     }
   ]

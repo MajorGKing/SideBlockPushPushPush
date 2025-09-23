@@ -651,7 +651,7 @@ public class GameManager
 
         if (isNext == true)
         {
-            await NowStageTemplateIdSet(stageData.NextaStageId);
+            await NowStageTemplateIdSet(stageData.NextStageId);
         }
         else
         {
@@ -713,6 +713,31 @@ public class GameManager
             return monster;
 
         // Not found
+        return null;
+    }
+
+    public async UniTask<List<Reward>> GetStageRewardAsync()
+    {
+        {
+            var req = new StageRewardReq { Jwt = Managers.Web.jwt, };
+            StageRewardRes res = await Managers.Web.SendPostRequestAsync<StageRewardRes>("api/game/stage/getStageReward", req);
+
+            if (res.Success)
+            {
+                List<Reward> rewards = new List<Reward>();
+                foreach(var reward in res.Rewards)
+                {
+                    rewards.Add(new Reward(reward.RewardType, reward.RewardAmount, reward.IsFirst));
+                }
+
+                return rewards;
+            }
+            else
+            {
+                Debug.LogError($"error: {res.Message}");
+            }
+        }
+
         return null;
     }
     #endregion
@@ -1318,10 +1343,10 @@ public class GameManager
     public void ClearStage()
     {
         _gameData.StageClears[nowStageTemplateId].isClear = true;
-        if (_gameData.StageClears.ContainsKey(Managers.Data.StageDataDic[nowStageTemplateId].NextaStageId) == false)
+        if (_gameData.StageClears.ContainsKey(Managers.Data.StageDataDic[nowStageTemplateId].NextStageId) == false)
         {
             var newStage = new StageClear();
-            newStage.TemplateId = Managers.Data.StageDataDic[nowStageTemplateId].NextaStageId;
+            newStage.TemplateId = Managers.Data.StageDataDic[nowStageTemplateId].NextStageId;
             newStage.isClear = false;
             newStage.isEnable = true;
 
