@@ -392,7 +392,7 @@ namespace WebPacket
     {
         public Define.ECurrencyType RewardType { get; set; }
         public int RewardAmount { get; set; }
-        public bool IsFirst;
+        public bool IsFirst { get; set; }
     }
 
     public class StageRewardReq
