@@ -2,6 +2,7 @@
 using GameDB;
 using Microsoft.EntityFrameworkCore;
 using Server.Data;
+using Server.Quest;
 
 namespace AccountServer.Services
 {
@@ -311,11 +312,14 @@ namespace AccountServer.Services
             }
             hero.SkillTemplateId = skills;
 
-            // Step 10: Save changes and commit transaction
+            // Step 10 : EventCall
+            EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.HeroLevelUp, 1, false);
+
+            // Step 11: Save changes and commit transaction
             await _dbContext.SaveChangesAsync();
             await transaction.CommitAsync();
 
-            // Step 11: Return updated hero list
+            // Step 12: Return updated hero list
             return await HeroListGetAsync(new HeroListReq { Jwt = request.Jwt });
         }
 
@@ -470,11 +474,14 @@ namespace AccountServer.Services
             skillList[skillIndex] = skillData.NextLevelId;
             hero.SkillTemplateId = skillList;
 
-            // Step 13: Save changes and commit transaction
+            // Step 13 : EventCall
+            EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.HeroSkillUp, 1, false);
+
+            // Step 14: Save changes and commit transaction
             await _dbContext.SaveChangesAsync();
             await transaction.CommitAsync();
 
-            // Step 14: Return updated hero list
+            // Step 15: Return updated hero list
             return await HeroListGetAsync(new HeroListReq { Jwt = request.Jwt });
         }
     }

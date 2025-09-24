@@ -3,6 +3,7 @@ using AccountServer.Services;
 using Microsoft.EntityFrameworkCore;
 using GameDB;
 using Server.Data;
+using Server.Quest;
 
 namespace AccountServer
 {
@@ -40,20 +41,27 @@ namespace AccountServer
             builder.Services.AddScoped<BuddyService>();
             builder.Services.AddScoped<ShopService>();
             builder.Services.AddScoped<StageService>();
+            builder.Services.AddScoped<QuestService>();
 
             var app = builder.Build();
 
-			// Configure the HTTP request pipeline.
-			//if (app.Environment.IsDevelopment())
-			//{
-			//	app.UseSwagger();
-			//	app.UseSwaggerUI();
-			//}
+            // resolve QuestService from DI
+            using (var scope = app.Services.CreateScope())
+            {
+                var questService = scope.ServiceProvider.GetRequiredService<QuestService>();
+                EventManager.Init(questService);
+            }
 
-			app.UseHttpsRedirection();
+            // Configure the HTTP request pipeline.
+            //if (app.Environment.IsDevelopment())
+            //{
+            //	app.UseSwagger();
+            //	app.UseSwaggerUI();
+            //}
+
+            app.UseHttpsRedirection();
 
 			app.UseAuthorization();
-
 
 			app.MapControllers();
 

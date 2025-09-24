@@ -31,6 +31,7 @@ namespace AccountServer.Services
                 .Include(p => p.Buddies)
                 .Include(p => p.Currency)
                 .Include(p => p.Stages)
+                .Include(p => p.Missions)
                 .FirstOrDefaultAsync(p => p.PlayerDbId == accountDbId);
 
             return player;
@@ -101,6 +102,7 @@ namespace AccountServer.Services
                 var heroService = _serviceProvider.GetRequiredService<HeroService>();
                 var buddyService = _serviceProvider.GetRequiredService<BuddyService>();
                 var stageService = _serviceProvider.GetRequiredService<StageService>();
+                var questService = _serviceProvider.GetRequiredService<QuestService>();
 
                 // 2. 기본 영웅 두 개 지급 (HeroService 호출)
                 await heroService.HeroCreate(request.jwt, 100, true);   // 첫 번째 영웅
@@ -115,6 +117,11 @@ namespace AccountServer.Services
                 // 4. 기본 스테이지 설정
                 await stageService.StageCreateAsync(request.jwt, 1);
 
+                // 5. 기본 미션 설정
+                foreach(var mission in DataManager.MissionDataDic.Values)
+                {
+                    await questService.MissionCreateAsync(request.jwt, mission.TemplateId);
+                }
             }
 
             // 4. PlayerDb 객체를 PlayerData DTO로 변환하여 반환합니다.

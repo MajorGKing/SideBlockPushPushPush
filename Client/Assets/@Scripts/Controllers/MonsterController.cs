@@ -138,7 +138,7 @@ public class MonsterController : CreatureController
     {
         currentState = EMonsterState.Dead;
         PlayAnimation(0, ANIMATION_DIE, false);
-        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.KillMonster, 1);
+        //Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.KillMonster, 1);
     }
 
     protected void UpdateHpText()

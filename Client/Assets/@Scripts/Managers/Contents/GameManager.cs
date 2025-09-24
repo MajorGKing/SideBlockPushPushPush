@@ -195,7 +195,7 @@ public class GameManager
         }
 
         // TODO ILHAK WebMission
-        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.HeroLevelUp, 1);
+        //Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.HeroLevelUp, 1);
     }
 
     public async UniTask HeroSkillUp(int skillTemplateId)
@@ -225,7 +225,7 @@ public class GameManager
         }
 
         // TODO ILHAK Event
-        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.HeroSkillUp, 1);
+        //Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.HeroSkillUp, 1);
     }
     #endregion
 
@@ -446,7 +446,7 @@ public class GameManager
             popup.SetInfo(Define.ERewardType.HeroGacha, rewards);
 
             // TODO ILHAK Mission
-            Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoHeroGacha, count);
+            //Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoHeroGacha, count);
         }
         else
         {
@@ -480,7 +480,7 @@ public class GameManager
             popup.SetInfo(rewards);
 
             // TODO ILHAK Mission
-            Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoHeroGacha, count);
+            //Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoHeroGacha, count);
         }
         else
         {
@@ -513,7 +513,7 @@ public class GameManager
             popup.SetInfo(Define.ERewardType.CurrencyGacha, rewards);
 
             // TODO ILHAK Mission
-            Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoCurrencyGacha, count);
+            //Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoCurrencyGacha, count);
         }
         else
         {
@@ -810,13 +810,13 @@ public class GameManager
 
         if (currencyType == Define.ECurrencyType.Gold && value < 0)
         {
-            Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.UseGold, value);
-            Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.ChangeGold, value);
+            //Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.UseGold, value);
+            //Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.ChangeGold, value);
         }
         else if (currencyType == Define.ECurrencyType.Gold && value > 0)
         {
-            Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.GetGold, value);
-            Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.ChangeGold, value);
+            //Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.GetGold, value);
+            //Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.ChangeGold, value);
         }
     }
 

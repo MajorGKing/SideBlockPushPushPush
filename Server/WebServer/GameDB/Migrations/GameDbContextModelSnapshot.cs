@@ -316,7 +316,16 @@ namespace GameDB.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MissionSaveDataDbId"));
 
+                    b.Property<int>("MaxPoint")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MissionGoal")
+                        .HasColumnType("int");
+
                     b.Property<int>("MissionState")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MissionType")
                         .HasColumnType("int");
 
                     b.Property<int>("PlayerDbId")

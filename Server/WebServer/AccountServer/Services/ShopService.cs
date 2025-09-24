@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Server.Data;
 using DbCurrencyType = GameDB.CurrencyType;
 using CurrencyType = AccountServer.Data.CurrencyType;
+using Server.Quest;
 
 
 namespace AccountServer.Services
@@ -118,11 +119,14 @@ namespace AccountServer.Services
                     _dbContext.HeroGachaLog.Add(log);
                 }
 
-                // Step 6: Save changes & commit
+                // Step 6 : EventCall
+                EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.DoHeroGacha, request.Count, false);
+
+                // Step 7: Save changes & commit
                 await _dbContext.SaveChangesAsync();
                 await transaction.CommitAsync();
 
-                // Step 7: Build response
+                // Step 8: Build response
                 response.Success = true;
                 response.Message = "Gacha completed.";
                 response.Rewards = rewards;
@@ -268,11 +272,14 @@ namespace AccountServer.Services
                     _dbContext.BuddyGachaLog.Add(log);
                 }
 
-                // Step 6: Save changes & commit
+                // Step 6: EventCall
+                EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.DoBuddyGacha, request.Count, false);
+
+                // Step 7: Save changes & commit
                 await _dbContext.SaveChangesAsync();
                 await transaction.CommitAsync();
 
-                // Step 7: Build response
+                // Step 8: Build response
                 response.Success = true;
                 response.Message = "Buddy gacha completed.";
                 response.Rewards = rewards;
@@ -383,11 +390,14 @@ namespace AccountServer.Services
                     }
                 }
 
-                // Step 9: Commit DB changes
+                // Step 9: EventCall
+                EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.DoCurrencyGacha, request.Count, false);
+
+                // Step 10: Commit DB changes
                 await _dbContext.SaveChangesAsync();
                 await transaction.CommitAsync();
 
-                // Step 10: Build response
+                // Step 11: Build response
                 response.Success = true;
                 response.Message = "Currency gacha completed.";
                 response.Rewards = rewards;

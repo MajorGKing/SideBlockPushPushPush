@@ -2,6 +2,9 @@
 using AccountServer.Data;
 using GameDB;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
+using Server.Quest;
+using static AccountServer.Define;
 using CurrencyType = AccountServer.Data.CurrencyType;
 using DbCurrencyType = GameDB.CurrencyType;
 
@@ -100,6 +103,16 @@ namespace AccountServer.Services
             {
                 case CurrencyType.Gold:
                     currencyDb.Gold += request.Amount;
+                    if (request.Amount < 0)
+                    {
+                        EventManager.BroadcastMissionEvent(request.jwt, Define.EBroadcastEventType.UseGold, request.Amount, commitChanges);
+                        EventManager.BroadcastMissionEvent(request.jwt, Define.EBroadcastEventType.ChangeGold, request.Amount, commitChanges);
+                    }
+                    else if (request.Amount > 0)
+                    {
+                        EventManager.BroadcastMissionEvent(request.jwt, Define.EBroadcastEventType.GetGold, request.Amount, commitChanges);
+                        EventManager.BroadcastMissionEvent(request.jwt, Define.EBroadcastEventType.ChangeGold, request.Amount, commitChanges);
+                    }
                     break;
                 case CurrencyType.Dia:
                     currencyDb.Dia += request.Amount;
