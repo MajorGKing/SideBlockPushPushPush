@@ -1,6 +1,7 @@
 ﻿namespace AccountServer.Data
 {
     using AccountDB;
+    using GameDB;
     using System.Diagnostics.CodeAnalysis;
 
     public class LoginAccountPacketReq
@@ -424,5 +425,24 @@
         public bool CanChange { get; set; }
         public string Message { get; set; } = string.Empty;
         public int StageTemplateId { get; set; }
+    }
+
+    public class MissionDTO
+    {
+        public int TemplateId { get; set; }
+        public int StackedPoint { get; set; }
+        public EMissionState MissionState { get; set; }
+    }
+
+    public class GetMissionListReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+    }
+
+    public class GetMissionListRes
+    {
+        public bool Success { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public List<MissionDTO> Missions { get; set; } = new List<MissionDTO>();
     }
 }

@@ -81,7 +81,7 @@ public class UI_UserInfoItem : UI_SubItem
 
     void RefreshUI()
     {
-        GetText((int)Texts.StaminaValueText).text = Managers.Game.Stamina.ToString();
+        GetText((int)Texts.StaminaValueText).text = Managers.Game.PlayerData.Stamina.ToString();
         GetText((int)Texts.DiaValueText).text = Managers.Game.GetCurrency(Define.ECurrencyType.Dia).ToString();
         GetText((int)Texts.GoldValueText).text = Managers.Game.GetCurrency(Define.ECurrencyType.Gold).ToString();
     }

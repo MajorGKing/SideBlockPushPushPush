@@ -1,4 +1,5 @@
-﻿using GameDB;
+﻿using AccountServer.Data;
+using GameDB;
 using Microsoft.EntityFrameworkCore;
 using Server.Data;
 
@@ -10,7 +11,7 @@ namespace AccountServer.Services
         JwtTokenService _jwt;
         PlayerService _player;
 
-        public QuestService(GameDbContext context, JwtTokenService jwt, PlayerService player) 
+        public QuestService(GameDbContext context, JwtTokenService jwt, PlayerService player)
         {
             _dbContext = context;
             _jwt = jwt;
@@ -23,9 +24,9 @@ namespace AccountServer.Services
             var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
             if (player == null) return false;
 
-            if(player.Missions.Any(m => m.TemplateId == templateId)) return false;
+            if (player.Missions.Any(m => m.TemplateId == templateId)) return false;
 
-            if(!DataManager.MissionDataDic.TryGetValue(templateId, out var missionData)) return false;
+            if (!DataManager.MissionDataDic.TryGetValue(templateId, out var missionData)) return false;
 
             var mission = new MissionSaveDataDb
             {
@@ -78,6 +79,31 @@ namespace AccountServer.Services
 
             if (commitChanges == true && saveNeeded == true)
                 await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<GetMissionListRes> MissionListGetAsync(GetMissionListReq request)
+        {
+            var response = new GetMissionListRes();
+
+            var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            if (player == null)
+            {
+                response.Success = false;
+                response.Message = "Invalid player.";
+                return response;
+            }
+
+            response.Missions = player.Missions.Select(m => new MissionDTO
+            {
+                TemplateId = m.TemplateId,
+                StackedPoint = m.StackedPoint,
+                MissionState = m.MissionState
+            }).ToList();
+
+            response.Success = true;
+            response.Message = "Mission list retrieved.";
+            return response;
         }
 
         // Map mission goals → supported event types

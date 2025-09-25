@@ -779,6 +779,45 @@ public class GameManager
     }
     #endregion
 
+    #region WebMission
+    public List<MissionDTO> Missions { get; private set; }
+    public List<MissionDTO> NormalMissions { get; private set; }
+    public List<MissionDTO> DayMissions { get; private set; }
+    public List<MissionDTO> WeekMissions { get; private set; }
+
+    public async UniTask UpdateMission()
+    {
+        var req = new GetMissionListReq() { Jwt = Managers.Web.jwt, };
+
+        GetMissionListRes res = await Managers.Web.SendPostRequestAsync<GetMissionListRes>("api/game/mission/getMissionList", req);
+
+        if (res.Success == false)
+        {
+            Debug.LogError(res.Message);
+            return;
+        }
+
+        // Convert to DTOs in one shot
+        Missions = res.Missions
+            .Select(m => new MissionDTO
+            {
+                TemplateId = m.TemplateId,
+                StackedPoint = m.StackedPoint,
+                MissionState = m.MissionState
+            })
+            .ToList();
+
+        // Group by mission type
+        var grouped = Missions
+            .GroupBy(m => Managers.Data.MissionDataDic[m.TemplateId].MissionType)
+            .ToDictionary(g => g.Key, g => g.ToList());
+
+        NormalMissions = grouped.GetValueOrDefault(Define.EMissionType.Normal, new List<MissionDTO>());
+        DayMissions = grouped.GetValueOrDefault(Define.EMissionType.Day, new List<MissionDTO>());
+        WeekMissions = grouped.GetValueOrDefault(Define.EMissionType.Week, new List<MissionDTO>());
+    }
+    #endregion
+
     string _path;
 
     #region GameData
@@ -794,277 +833,6 @@ public class GameManager
         CurrencyType type = (CurrencyType)((int)currencyType - 1);
         return GetCurrency(type);
     }
-
-    public void SetCurrency(Define.ECurrencyType currencyType, int value)
-    {
-        _gameData.Currencies[(int)currencyType] = value;
-        SaveGame();
-        OnCurrenciesChagned?.Invoke();
-    }
-
-    public void AddCurrency(Define.ECurrencyType currencyType, int value)
-    {
-        _gameData.Currencies[(int)currencyType] += value;
-        SaveGame();
-        OnCurrenciesChagned?.Invoke();
-
-        if (currencyType == Define.ECurrencyType.Gold && value < 0)
-        {
-            //Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.UseGold, value);
-            //Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.ChangeGold, value);
-        }
-        else if (currencyType == Define.ECurrencyType.Gold && value > 0)
-        {
-            //Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.GetGold, value);
-            //Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.ChangeGold, value);
-        }
-    }
-
-    public int Stamina
-    {
-        get { return _gameData.Stamina; }
-        set
-        {
-            _gameData.Stamina = value;
-            SaveGame();
-            OnCurrenciesChagned?.Invoke();
-        }
-    }
-    #endregion
-
-    #region Buddy
-    public List<BuddySaveData> buddies { get; private set; }
-
-
-    public BuddySaveData GetBuddySaveData(int templateId)
-    {
-        foreach (var buddy in buddies)
-        {
-            if (buddy.TemplateId == templateId)
-                return buddy;
-        }
-
-        return null;
-    }
-
-    public int RemoveBuddySaveData(int templatedId)
-    {
-        for (int i = 0; i < buddies.Count; i++)
-        {
-            if (buddies[i].TemplateId == templatedId)
-            {
-                buddies.RemoveAt(i);
-
-                _gameData.BuddySaves.Remove(templatedId);
-                SaveGame();
-                return i;
-            }
-        }
-
-        return -1;
-    }
-
-    public void AddBuddySaveData(BuddySaveData buddySaveData, int insertIndex = -1)
-    {
-        if (insertIndex < 0)
-        {
-            buddies.Add(buddySaveData);
-        }
-        else
-        {
-            buddies.Insert(insertIndex, buddySaveData);
-        }
-
-
-        _gameData.BuddySaves.Add(buddySaveData.TemplateId, buddySaveData);
-
-        // 만약 셀렉트된 버디(전 레벨)가 있다면 최신 버디로 갱신 해준다
-        {
-            var previewIndex = Managers.Data.BuddyDataDic[buddySaveData.TemplateId].PreviewLevelId;
-
-            var selectedIndex = Array.IndexOf(_selectedBuddies, previewIndex);
-
-            // 만약 해당하는 내용이 있다면 갱신해준다
-            if (selectedIndex >= 0)
-            {
-                _selectedBuddies[selectedIndex] = buddySaveData.TemplateId;
-                OnSelectedBuddyChanged?.Invoke();
-            }
-        }
-
-        SaveGame();
-    }
-
-    public void SelectedBuddySet(int templatedId)
-    {
-        NowBuddy = templatedId;
-
-        if (_selectedBuddies.Contains(templatedId))
-            return;
-
-        for (int i = 0; i < _selectedBuddies.Length; i++)
-        {
-            if (_selectedBuddies[i] == 0)
-            {
-                _selectedBuddies[i] = templatedId;
-                SetSelectdBuddy(templatedId, true);
-                return;
-            }
-        }
-    }
-
-    private void SetSelectdBuddy(int templatedId, bool selected)
-    {
-        _gameData.BuddySaves[templatedId].isSelected = selected;
-        OnSelectedBuddyChanged?.Invoke();
-        SaveGame();
-    }
-    #endregion
-
-    #region BuddyUp
-    //public void BuddyLevelUp()
-    //{
-    //    var buddyData = Managers.Data.BuddyDataDic[NowBuddy];
-    //    // 지금 선택된 버디가 레벨업이 가능한지 체크
-    //    {
-    //        // 다음 레벨이 있어 레벨업 가능한지 확인
-    //        if (buddyData.NextLevelId == 0)
-    //            return;
-
-    //        // 자원 가능한지 체크
-    //        var currencies = buddyData.LevelUpCurrencies;
-
-    //        foreach (var currency in currencies)
-    //        {
-    //            if (currency.currencyType == Define.ECurrencyType.None)
-    //                continue;
-
-    //            if (currency.count > GetCurrency(currency.currencyType))
-    //                return;
-    //        }
-
-    //        // 자원가능하면 자원 빼고 저장
-    //        foreach (var currency in currencies)
-    //        {
-    //            if (currency.currencyType == Define.ECurrencyType.None)
-    //                continue;
-
-    //            AddCurrency(currency.currencyType, -currency.count);
-    //        }
-    //    }
-
-    //    // 선택된 버디를 레벨업
-    //    {
-    //        var buddySavedata = _gameData.BuddySaves[NowBuddy];
-    //        // 기존 버디 정보를 삭제
-    //        int removeIndex = RemoveBuddySaveData(NowBuddy);
-
-    //        // 새로운 버디 정보를 추가
-    //        {
-    //            buddySavedata.TemplateId = buddyData.NextLevelId;
-
-    //            var nextBuddyData = Managers.Data.BuddyDataDic[buddySavedata.TemplateId];
-
-    //            List<int> orgSkillId = new List<int>();
-
-    //            foreach (int skillId in buddySavedata.SkillTemplateId)
-    //            {
-    //                orgSkillId.Add(Managers.Data.BuddySkillDataDic[skillId].OriginalLevelId);
-    //            }
-
-    //            // 버디의 추가 스킬 정보를 추가
-    //            foreach (var skillId in nextBuddyData.SKillIds)
-    //            {
-    //                if (orgSkillId.Contains(Managers.Data.BuddySkillDataDic[skillId].OriginalLevelId) == false)
-    //                {
-    //                    buddySavedata.SkillTemplateId.Add(skillId);
-    //                }
-    //            }
-
-    //            AddBuddySaveData(buddySavedata, removeIndex);
-    //        }
-    //    }
-
-    //    // 레벨업에 따른 정보 갱신
-    //    NowBuddy = buddyData.NextLevelId;
-
-    //    // 세이브
-    //    SaveGame();
-
-    //    Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.BuddyLevelUp, 1);
-    //}
-
-    //public void BuddySkillUp(int skillTemplateId)
-    //{
-    //    if (skillTemplateId == 0)
-    //        return;
-
-    //    // NowBuddy의 BuddySaveData에 접근 skill의 templateId를 갱신
-
-    //    BuddySaveData currentData = new BuddySaveData();
-
-    //    foreach (var buddy in buddies)
-    //    {
-    //        if (buddy.TemplateId == NowBuddy)
-    //        {
-    //            currentData = buddy;
-    //            break;
-    //        }
-    //    }
-
-    //    if (currentData.TemplateId == 0)
-    //        return;
-
-    //    var skillData = Managers.Data.BuddySkillDataDic[skillTemplateId];
-
-    //    if (skillData == null)
-    //        return;
-
-    //    // 업그레이드 가능한지 체크
-    //    {
-    //        // 다음 레벨로 진행 가능한가
-    //        if (skillData.NextLevelId == 0)
-    //            return;
-
-    //        // 자원은 충분한가
-    //        var currencies = skillData.LevelUpCurrencies;
-
-    //        foreach (var currency in currencies)
-    //        {
-    //            if (currency.currencyType == Define.ECurrencyType.None)
-    //                continue;
-
-    //            if (currency.count > GetCurrency(currency.currencyType))
-    //                return;
-    //        }
-
-    //        // 자원가능하면 자원 빼고 저장
-    //        foreach (var currency in currencies)
-    //        {
-    //            if (currency.currencyType == Define.ECurrencyType.None)
-    //                continue;
-
-    //            AddCurrency(currency.currencyType, -currency.count);
-    //        }
-    //    }
-
-    //    // 선택된 스킬 레벨업
-    //    {
-    //        // 로컬값 수정
-    //        var nowSkillIndex = currentData.SkillTemplateId.IndexOf(skillTemplateId);
-    //        currentData.SkillTemplateId[nowSkillIndex] = skillData.NextLevelId;
-
-    //        // 세이브 될 값 수정 - 위에서 링크로 수정되었기 때문에 gameData값도 자동 수정됨
-    //        //var nowSKillIndexSave = _gameData.BuddySaves[NowBuddy].SkillTemplateId.IndexOf(skillTemplateId);
-    //        //_gameData.BuddySaves[NowBuddy].SkillTemplateId[nowSKillIndexSave] = skillData.NextLevelId;
-
-    //        SaveGame();
-    //        OnNowBuddyChanged?.Invoke();
-
-    //        Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.BuddySkillUp, 1);
-    //    }
-
-    //}
     #endregion
 
     #region Achievement

@@ -45,13 +45,7 @@ namespace AccountServer
 
             var app = builder.Build();
 
-            // resolve QuestService from DI
-            using (var scope = app.Services.CreateScope())
-            {
-                var questService = scope.ServiceProvider.GetRequiredService<QuestService>();
-                EventManager.Init(questService);
-            }
-
+            EventManager.Init(app.Services);
             // Configure the HTTP request pipeline.
             //if (app.Environment.IsDevelopment())
             //{

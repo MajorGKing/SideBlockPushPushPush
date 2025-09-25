@@ -8,7 +8,7 @@ namespace Server.Quest
 		private static Dictionary<Define.EEventType, Action> _events = new Dictionary<Define.EEventType, Action>();
 		public static event Action<string, Define.EBroadcastEventType, int, bool> OnBroadcastMissionEvent;
 
-        private static QuestService _questService;
+        private static IServiceProvider _serviceProvider;
 
         public static void AddEvent(Define.EEventType eventType, Action listener)
 		{
@@ -30,9 +30,9 @@ namespace Server.Quest
 				_events[eventType].Invoke();
 		}
 
-		public static void Init(QuestService questService)
+		public static void Init(IServiceProvider serviceProvider)
 		{
-            _questService = questService;
+            _serviceProvider = serviceProvider;
 
             OnBroadcastMissionEvent -= OnHandleBroadcastMissionEvent;
 			OnBroadcastMissionEvent += OnHandleBroadcastMissionEvent;
@@ -52,7 +52,10 @@ namespace Server.Quest
 		private static void OnHandleBroadcastMissionEvent(string Jwt, Define.EBroadcastEventType eventType, int value, bool commitChanges = true)
 		{
             // Check Achievement
-            _questService?.OnHandleBroadcastMissionEvent(Jwt, eventType, value, commitChanges);
+            using var scope = _serviceProvider.CreateScope();
+            var questService = scope.ServiceProvider.GetRequiredService<QuestService>();
+
+            questService.OnHandleBroadcastMissionEvent(Jwt, eventType, value, commitChanges);
 
             //Managers.Game.OnHandleBroadcastEventValue(eventType, value);
         }

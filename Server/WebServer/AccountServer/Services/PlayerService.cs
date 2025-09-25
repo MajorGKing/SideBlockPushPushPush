@@ -25,7 +25,7 @@ namespace AccountServer.Services
 
         public async Task<PlayerDb> GetPlayerDbFromAccountDbId(int accountDbId)
         {
-            // Player + Heroes + Buddy + Currency + Stage로드
+            // Player + Heroes + Buddy + Currency + Stage + Mission로드
             var player = await _dbContext.Players
                 .Include(p => p.Heroes)
                 .Include(p => p.Buddies)

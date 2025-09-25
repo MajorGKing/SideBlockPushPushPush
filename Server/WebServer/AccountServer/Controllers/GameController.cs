@@ -16,8 +16,9 @@ namespace AccountServer.Controllers
         BuddyService _buddy;
         ShopService _shop;
         StageService _stage;
+        QuestService _quest;
 
-        public GameController(PlayerService player, CurrencyService currency, HeroService heroService, BuddyService buddyService, ShopService shop, StageService stage)
+        public GameController(PlayerService player, CurrencyService currency, HeroService heroService, BuddyService buddyService, ShopService shop, StageService stage, QuestService quest)
         {
             _player = player;
             _currency = currency;
@@ -25,6 +26,7 @@ namespace AccountServer.Controllers
             _buddy = buddyService;
             _shop = shop;
             _stage = stage;
+            _quest = quest;
         }
 
         [HttpPost]
@@ -172,6 +174,13 @@ namespace AccountServer.Controllers
         public async Task<StageRewardRes> GetStageReward([FromBody] StageRewardReq req)
         {
             return await _stage.StageRewardGetAsync(req);
+        }
+
+        [HttpPost]
+        [Route("mission/getMissionList")]
+        public async Task<GetMissionListRes> GetMissionList([FromBody] GetMissionListReq req)
+        {
+            return await _quest.MissionListGetAsync(req);
         }
     }
 }
