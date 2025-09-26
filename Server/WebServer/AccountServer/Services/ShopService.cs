@@ -3,7 +3,6 @@ using GameDB;
 using Server.Data;
 using DbCurrencyType = GameDB.CurrencyType;
 using CurrencyType = AccountServer.Data.CurrencyType;
-using Server.Quest;
 
 
 namespace AccountServer.Services
@@ -14,15 +13,16 @@ namespace AccountServer.Services
         JwtTokenService _jwt;
         PlayerService _player;
         CurrencyService _currency;
-        private readonly IServiceProvider _serviceProvider;
+        QuestService _quest;
+        
 
-        public ShopService(GameDbContext context, JwtTokenService jwt, PlayerService player, CurrencyService currency, IServiceProvider serviceProvider)
+        public ShopService(GameDbContext context, JwtTokenService jwt, PlayerService player, CurrencyService currency, QuestService quest)
         {
             _dbContext = context;
             _jwt = jwt;
             _player = player;
             _currency = currency;
-            _serviceProvider = serviceProvider;
+            _quest = quest;
         }
 
         public async Task<ShopHeroGachaRes> HeroGachaDoAsync(ShopHeroGachaReq request)
@@ -30,7 +30,6 @@ namespace AccountServer.Services
             var response = new ShopHeroGachaRes();
 
             await using var transaction = await _dbContext.Database.BeginTransactionAsync();
-            using var scope = _serviceProvider.CreateScope();
 
             try
             {
@@ -122,7 +121,7 @@ namespace AccountServer.Services
                 }
 
                 // Step 6 : EventCall
-                await EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.DoHeroGacha, request.Count, commitChanges: false, existingScope: scope);
+                await _quest.MissionEventAsncHandle(request.Jwt, Define.EBroadcastEventType.DoHeroGacha, request.Count, false);
 
                 // Step 7: Save changes & commit
                 await _dbContext.SaveChangesAsync();
@@ -148,7 +147,6 @@ namespace AccountServer.Services
             var response = new ShopBuddyGachaRes();
             
             await using var transaction = await _dbContext.Database.BeginTransactionAsync();
-            using var scope = _serviceProvider.CreateScope();
 
             try
             {
@@ -277,7 +275,7 @@ namespace AccountServer.Services
                 }
 
                 // Step 6: EventCall
-                await EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.DoBuddyGacha, request.Count, commitChanges: false, existingScope: scope);
+                await _quest.MissionEventAsncHandle(request.Jwt, Define.EBroadcastEventType.DoBuddyGacha, request.Count, false);
 
                 // Step 7: Save changes & commit
                 await _dbContext.SaveChangesAsync();
@@ -341,7 +339,6 @@ namespace AccountServer.Services
             var random = new Random();
 
             await using var transaction = await _dbContext.Database.BeginTransactionAsync();
-            using var scope = _serviceProvider.CreateScope();
 
             try
             {
@@ -351,7 +348,7 @@ namespace AccountServer.Services
                     jwt = request.Jwt,
                     CurrencyType = CurrencyType.Gold,
                     Amount = -needGold
-                }, false, scope);
+                }, false);
 
                 // Step 6: Perform gacha draws
                 int totalMax = DataManager.CurrencyGachaDataDic.Values.Max(x => x.Max);
@@ -397,7 +394,7 @@ namespace AccountServer.Services
                 }
 
                 // Step 9: EventCall
-                await EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.DoCurrencyGacha, request.Count, commitChanges: false, existingScope: scope);
+                await _quest.MissionEventAsncHandle(request.Jwt, Define.EBroadcastEventType.DoCurrencyGacha, request.Count, false);
 
                 // Step 10: Commit DB changes
                 await _dbContext.SaveChangesAsync();

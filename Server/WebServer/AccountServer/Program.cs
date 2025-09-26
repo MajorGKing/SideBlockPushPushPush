@@ -3,7 +3,6 @@ using AccountServer.Services;
 using Microsoft.EntityFrameworkCore;
 using GameDB;
 using Server.Data;
-using Server.Quest;
 
 namespace AccountServer
 {
@@ -45,7 +44,6 @@ namespace AccountServer
 
             var app = builder.Build();
 
-            EventManager.Init(app.Services);
             // Configure the HTTP request pipeline.
             //if (app.Environment.IsDevelopment())
             //{

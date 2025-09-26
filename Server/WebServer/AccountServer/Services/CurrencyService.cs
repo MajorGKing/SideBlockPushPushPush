@@ -1,9 +1,6 @@
-﻿using AccountServer;
-using AccountServer.Data;
+﻿using AccountServer.Data;
 using GameDB;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json.Linq;
-using Server.Quest;
 using static AccountServer.Define;
 using CurrencyType = AccountServer.Data.CurrencyType;
 using DbCurrencyType = GameDB.CurrencyType;
@@ -15,11 +12,13 @@ namespace AccountServer.Services
 
         GameDbContext _dbContext;
         JwtTokenService _jwt;
+        QuestService _quest;
 
-        public CurrencyService(GameDbContext context, JwtTokenService jwt)
+        public CurrencyService(GameDbContext context, JwtTokenService jwt, QuestService quest)
         {
             _dbContext = context;
             _jwt = jwt;
+            _quest = quest;
         }
 
         /// <summary>
@@ -81,7 +80,7 @@ namespace AccountServer.Services
             };
         }
 
-        public async Task<CurrencyAllRes> UpdatePlayerCurrencyAsync(CurrencyAddReq request, bool commitChanges = true, IServiceScope? existingScope = null)
+        public async Task<CurrencyAllRes> UpdatePlayerCurrencyAsync(CurrencyAddReq request, bool commitChanges = true)
         {
             var token = _jwt.DecipherJwtAccessToken(request.jwt);
             var subClaim = token.Claims.FirstOrDefault(c => c.Type == "sub");
@@ -105,13 +104,13 @@ namespace AccountServer.Services
                     currencyDb.Gold += request.Amount;
                     if (request.Amount < 0)
                     {
-                        await EventManager.BroadcastMissionEvent(request.jwt, EBroadcastEventType.UseGold, request.Amount, commitChanges:commitChanges, existingScope:existingScope);
-                        await EventManager.BroadcastMissionEvent(request.jwt, EBroadcastEventType.ChangeGold, request.Amount, commitChanges: commitChanges, existingScope: existingScope);
+                        await _quest.MissionEventAsncHandle(request.jwt, EBroadcastEventType.UseGold, -request.Amount, commitChanges);
+                        await _quest.MissionEventAsncHandle(request.jwt, EBroadcastEventType.ChangeGold, -request.Amount, commitChanges);
                     }
                     else if (request.Amount > 0)
                     {
-                        await EventManager.BroadcastMissionEvent(request.jwt, EBroadcastEventType.GetGold, request.Amount, commitChanges: commitChanges, existingScope: existingScope);
-                        await EventManager.BroadcastMissionEvent(request.jwt, EBroadcastEventType.ChangeGold, request.Amount, commitChanges: commitChanges, existingScope: existingScope);
+                        await _quest.MissionEventAsncHandle(request.jwt, EBroadcastEventType.GetGold, request.Amount, commitChanges);
+                        await _quest.MissionEventAsncHandle(request.jwt, EBroadcastEventType.ChangeGold, request.Amount, commitChanges);
                     }
                     break;
                 case CurrencyType.Dia:

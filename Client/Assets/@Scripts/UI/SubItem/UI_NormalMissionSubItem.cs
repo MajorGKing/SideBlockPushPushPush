@@ -1,6 +1,8 @@
 using Data;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using WebPacket;
+using static GameManager;
 
 public class UI_NormalMissionSubItem : UI_SubItem
 {
@@ -21,8 +23,8 @@ public class UI_NormalMissionSubItem : UI_SubItem
         Slider_NormalMission,
     }
 
-    private MissionSaveData missionSaveData;
-    private MissionData missionData;
+    private MissionSavedData _missionSaveData;
+    private MissionData _missionData;
 
     protected override void Awake()
     {
@@ -37,39 +39,39 @@ public class UI_NormalMissionSubItem : UI_SubItem
         RefreshUI();
     }
 
-    public void SetInfo(int templateId)
+    public void SetInfo(MissionSavedData saveData)
     {
         // 미션 데이터를 받는다
-        missionData = Managers.Data.MissionDataDic[templateId];
+        _missionData = Managers.Data.MissionDataDic[saveData.TemplateId];
 
         // 미션 진행 데이터를 받는다
-        missionSaveData = Managers.Game.GetMissionSaveData(templateId);
+        _missionSaveData = saveData;
 
         RefreshUI();
     }
 
     private void RefreshUI()
     {
-        if (missionData == null)
+        if (_missionData == null)
             return;
 
-        if (missionSaveData == null)
+        if (_missionSaveData == null)
             return;
 
-        GetText((int)Texts.Text_NormalMissionListIcon).text = $"+{missionData.Point:N0}";
-        GetText((int)Texts.Text_MissonTitle).text = $"{Managers.GetText(missionData.NameTextId)}";
-        GetText((int)Texts.Text_NormalMissionCount).text = $"{missionSaveData.StackedPoint:N0}/{missionData.MissionCount:N0}";
+        GetText((int)Texts.Text_NormalMissionListIcon).text = $"+{_missionData.Point:N0}";
+        GetText((int)Texts.Text_MissonTitle).text = $"{Managers.GetText(_missionData.NameTextId)}";
+        GetText((int)Texts.Text_NormalMissionCount).text = $"{_missionSaveData.StackedPoint:N0}/{_missionData.MissionCount:N0}";
 
-        GetButton((int)Buttons.Button_Take).interactable = missionSaveData.MissionState == Define.EMissionState.Rewardable && missionSaveData.StackedPoint >= missionData.MissionCount;
+        GetButton((int)Buttons.Button_Take).interactable = _missionSaveData.MissionState == Define.EMissionState.Rewardable && _missionSaveData.StackedPoint >= _missionData.MissionCount;
 
-        GetSlider((int)Sliders.Slider_NormalMission).value = (float)missionSaveData.StackedPoint / missionData.MissionCount;
+        GetSlider((int)Sliders.Slider_NormalMission).value = (float)_missionSaveData.StackedPoint / _missionData.MissionCount;
     }
 
     private void OnTakeButtonClick(PointerEventData data)
     {
         if (GetButton((int)Buttons.Button_Take).interactable)
         {
-            Managers.Game.GetMissionSubItemReward(missionData.TemplateId);
+            Managers.Game.GetMissionSubItemReward(_missionData.TemplateId);
         }
     }
 }

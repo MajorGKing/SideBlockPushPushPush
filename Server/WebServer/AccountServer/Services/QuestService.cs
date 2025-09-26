@@ -7,9 +7,9 @@ namespace AccountServer.Services
 {
     public class QuestService
     {
-        GameDbContext _dbContext;
-        JwtTokenService _jwt;
-        PlayerService _player;
+        private readonly GameDbContext _dbContext;
+        private readonly JwtTokenService _jwt;
+        private readonly PlayerService _player;
 
         public QuestService(GameDbContext context, JwtTokenService jwt, PlayerService player)
         {
@@ -21,11 +21,11 @@ namespace AccountServer.Services
         public async Task<bool> MissionCreateAsync(string jwt, int templateId)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
+            // Pass _dbContext to ensure same context
             var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
             if (player == null) return false;
 
             if (player.Missions.Any(m => m.TemplateId == templateId)) return false;
-
             if (!DataManager.MissionDataDic.TryGetValue(templateId, out var missionData)) return false;
 
             var mission = new MissionSaveDataDb
@@ -43,31 +43,27 @@ namespace AccountServer.Services
             return true;
         }
 
-        public async Task OnHandleBroadcastMissionEvent(string jwt, Define.EBroadcastEventType eventType, int value, bool commitChanges = true)
+        public async Task MissionEventAsncHandle(string jwt, Define.EBroadcastEventType eventType, int value, bool commitChanges = true)
         {
-            // 1. Get player
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
+            // Pass _dbContext so the loaded player is tracked by the same context
             var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
             if (player == null) return;
 
             bool saveNeeded = false;
 
-            // 2. Process each mission
             foreach (var mission in player.Missions)
             {
                 if (mission.MissionState != EMissionState.Progress)
                     continue;
 
-                // Get mission template data
                 if (!DataManager.MissionDataDic.TryGetValue(mission.TemplateId, out var missionData))
                     continue;
 
-                // Check if this event is relevant to the mission goal
                 if (MissionGoalEventMap.TryGetValue(missionData.MissionGoal, out var allowedEvents) && allowedEvents.Contains(eventType))
                 {
                     mission.StackedPoint += value;
 
-                    // Clamp to max
                     if (mission.StackedPoint >= missionData.MissionCount)
                     {
                         mission.StackedPoint = missionData.MissionCount;
@@ -75,19 +71,24 @@ namespace AccountServer.Services
                     }
 
                     saveNeeded = true;
+
+                    _dbContext.Entry(mission).State = EntityState.Modified;
                 }
             }
 
-            if (commitChanges == true && saveNeeded == true)
+            // Save only if needed and if commitChanges is true
+            if (commitChanges && saveNeeded)
                 await _dbContext.SaveChangesAsync();
+
         }
 
         public async Task<GetMissionListRes> MissionListGetAsync(GetMissionListReq request)
         {
             var response = new GetMissionListRes();
-
             var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
+            // Pass _dbContext so the loaded player is tracked
             var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+
             if (player == null)
             {
                 response.Success = false;
@@ -108,20 +109,19 @@ namespace AccountServer.Services
             return response;
         }
 
-        // Map mission goals → supported event types
         private static readonly Dictionary<Define.EMissionGoal, HashSet<Define.EBroadcastEventType>> MissionGoalEventMap =
             new()
             {
-            { Define.EMissionGoal.MonsterKill, new() { Define.EBroadcastEventType.KillMonster } },
-            { Define.EMissionGoal.ConsumGold, new() { Define.EBroadcastEventType.UseGold, Define.EBroadcastEventType.ChangeGold } },
-            { Define.EMissionGoal.StageClear, new() { Define.EBroadcastEventType.StageClear } },
-            { Define.EMissionGoal.CurrencyGacha, new() { Define.EBroadcastEventType.DoCurrencyGacha } },
-            { Define.EMissionGoal.HeroGacha, new() { Define.EBroadcastEventType.DoHeroGacha } },
-            { Define.EMissionGoal.BuddyGacha, new() { Define.EBroadcastEventType.DoBuddyGacha } },
-            { Define.EMissionGoal.BuddySkillUp, new() { Define.EBroadcastEventType.BuddySkillUp } },
-            { Define.EMissionGoal.BuddyLevelUp, new() { Define.EBroadcastEventType.BuddyLevelUp } },
-            { Define.EMissionGoal.HeroSkillUp, new() { Define.EBroadcastEventType.HeroSkillUp } },
-            { Define.EMissionGoal.HeroLevelUp, new() { Define.EBroadcastEventType.HeroLevelUp } },
+                { Define.EMissionGoal.MonsterKill, new() { Define.EBroadcastEventType.KillMonster } },
+                { Define.EMissionGoal.ConsumGold, new() { Define.EBroadcastEventType.UseGold, Define.EBroadcastEventType.ChangeGold } },
+                { Define.EMissionGoal.StageClear, new() { Define.EBroadcastEventType.StageClear } },
+                { Define.EMissionGoal.CurrencyGacha, new() { Define.EBroadcastEventType.DoCurrencyGacha } },
+                { Define.EMissionGoal.HeroGacha, new() { Define.EBroadcastEventType.DoHeroGacha } },
+                { Define.EMissionGoal.BuddyGacha, new() { Define.EBroadcastEventType.DoBuddyGacha } },
+                { Define.EMissionGoal.BuddySkillUp, new() { Define.EBroadcastEventType.BuddySkillUp } },
+                { Define.EMissionGoal.BuddyLevelUp, new() { Define.EBroadcastEventType.BuddyLevelUp } },
+                { Define.EMissionGoal.HeroSkillUp, new() { Define.EBroadcastEventType.HeroSkillUp } },
+                { Define.EMissionGoal.HeroLevelUp, new() { Define.EBroadcastEventType.HeroLevelUp } },
             };
     }
 }

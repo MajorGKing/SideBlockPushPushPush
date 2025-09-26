@@ -452,6 +452,7 @@ namespace WebPacket
         public int TemplateId { get; set; }
         public int StackedPoint { get; set; }
         public EMissionState MissionState { get; set; }
+        public int GetRewardCount { get; set; }
     }
 
     public class GetMissionListReq

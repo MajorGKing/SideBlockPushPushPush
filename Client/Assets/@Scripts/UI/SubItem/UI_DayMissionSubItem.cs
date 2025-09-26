@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static GameManager;
 
 public class UI_DayMissionSubItem : UI_SubItem
 {
@@ -33,8 +34,8 @@ public class UI_DayMissionSubItem : UI_SubItem
     private List<TMP_Text> _dayMissionCountTextList = new List<TMP_Text>();
     private List<UI_RewardsSubItem> _missionRewardSubItemList = new List<UI_RewardsSubItem>();
 
-    private MissionSaveData missionSaveData;
-    private MissionData missionData;
+    private MissionSavedData _missionSaveData;
+    private MissionData _missionData;
 
     protected override void Awake()
     {
@@ -65,39 +66,39 @@ public class UI_DayMissionSubItem : UI_SubItem
         GetButton((int)Buttons.Button_AllTake).gameObject.BindEvent(OnAllTakeButtonClick);
     }
 
-    public void SetInfo(int templateId)
+    public void SetInfo(MissionSavedData saveData)
     {
         // 미션 데이터를 받는다
-        missionData = Managers.Data.MissionDataDic[templateId];
+        _missionData = Managers.Data.MissionDataDic[saveData.TemplateId];
 
         // 미션 진행 데이터를 받는다
-        missionSaveData = Managers.Game.GetMissionSaveData(templateId);
+        _missionSaveData = saveData;
 
         RefreshUI();
     }
 
     private void RefreshUI()
     {
-        for (int index = 0; index < missionData.PointStep.Count; index++)
+        for (int index = 0; index < _missionData.PointStep.Count; index++)
         {
-            _dayMissionCountTextList[index].text = $"{missionData.PointStep[index]:N0}";
+            _dayMissionCountTextList[index].text = $"{_missionData.PointStep[index]:N0}";
         }
 
         int rewardCount = 0;
         for (int index = 0; index < _missionRewardSubItemList.Count; index++)
         {
-            _missionRewardSubItemList[index].SetInfo(missionData.RewardCurrencies[index].currencyType, missionData.RewardCurrencies[index].count, false);
+            _missionRewardSubItemList[index].SetInfo(_missionData.RewardCurrencies[index].currencyType, _missionData.RewardCurrencies[index].count, false);
 
             bool isActive = true;
-            if (missionSaveData.StackedPoint < missionData.PointStep[index])
+            if (_missionSaveData.StackedPoint < _missionData.PointStep[index])
             {
                 isActive = false;
             }
 
-            if (missionSaveData.PointStepMissionState[index] == Define.EMissionState.Finish)
+            if (_missionSaveData.PointStepMissionState[index] == Define.EMissionState.Finish)
             {
                 isActive = false;
-                _missionRewardSubItemList[index].SetInfo(missionData.RewardCurrencies[index].currencyType, missionData.RewardCurrencies[index].count, false, false);
+                _missionRewardSubItemList[index].SetInfo(_missionData.RewardCurrencies[index].currencyType, _missionData.RewardCurrencies[index].count, false, false);
             }
 
             if (isActive)
@@ -106,16 +107,16 @@ public class UI_DayMissionSubItem : UI_SubItem
             }
         }
 
-        GetButton((int)Buttons.Button_AllTake).interactable = missionSaveData.MissionState == Define.EMissionState.Rewardable && rewardCount > 0;
+        GetButton((int)Buttons.Button_AllTake).interactable = _missionSaveData.MissionState == Define.EMissionState.Rewardable && rewardCount > 0;
 
-        GetSlider((int)Sliders.Slider_DayMissionExp).value = (float)missionSaveData.StackedPoint / missionData.MaxPoint;
+        GetSlider((int)Sliders.Slider_DayMissionExp).value = (float)_missionSaveData.StackedPoint / _missionData.MaxPoint;
     }
 
     private void OnAllTakeButtonClick(PointerEventData data)
     {
         if (GetButton((int)Buttons.Button_AllTake).interactable)
         {
-            Managers.Game.GetMissionReward(missionData.TemplateId);
+            Managers.Game.GetMissionReward(_missionData.TemplateId);
         }
     }
 }

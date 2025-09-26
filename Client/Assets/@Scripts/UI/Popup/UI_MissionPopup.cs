@@ -26,7 +26,7 @@ public class UI_MissionPopup : UI_Popup
 
         _normalMissionSlotUIList.Clear();
         GetGameObject((int)GameObjects.NormalMissonListArea).transform.DestroyChildren();
-        for (int index = 0; index < Managers.Game.NormalMissionList.Count; index++)
+        for (int index = 0; index < Managers.Game.NormalMissions.Count; index++)
         {
             UI_NormalMissionSubItem slotUI = Managers.UI.MakeSubItem<UI_NormalMissionSubItem>(GetGameObject((int)GameObjects.NormalMissonListArea).transform);
             _normalMissionSlotUIList.Add(slotUI);
@@ -56,14 +56,14 @@ public class UI_MissionPopup : UI_Popup
     private void RefreshUI()
     {
         int index = 0;
-        foreach (var normallMission in Managers.Game.NormalMissionList)
+        foreach (var normallMission in Managers.Game.NormalMissions)
         {
-            _normalMissionSlotUIList[index].SetInfo(normallMission.TemplateId);
+            _normalMissionSlotUIList[index].SetInfo(normallMission);
             index++;
         }
 
-        _dayMissionSlotUI.SetInfo(Managers.Game.DayMissionList[0].TemplateId);
-        _weekMissionSlotUI.SetInfo(Managers.Game.WeekMissionList[0].TemplateId);
+        _dayMissionSlotUI.SetInfo(Managers.Game.DayMissions[0]);
+        _weekMissionSlotUI.SetInfo(Managers.Game.WeekMissions[0]);
     }
 
 
