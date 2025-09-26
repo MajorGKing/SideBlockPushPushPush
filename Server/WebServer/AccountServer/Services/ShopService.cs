@@ -120,7 +120,7 @@ namespace AccountServer.Services
                 }
 
                 // Step 6 : EventCall
-                EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.DoHeroGacha, request.Count, false);
+                await EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.DoHeroGacha, request.Count, false);
 
                 // Step 7: Save changes & commit
                 await _dbContext.SaveChangesAsync();
@@ -273,7 +273,7 @@ namespace AccountServer.Services
                 }
 
                 // Step 6: EventCall
-                EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.DoBuddyGacha, request.Count, false);
+                await EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.DoBuddyGacha, request.Count, false);
 
                 // Step 7: Save changes & commit
                 await _dbContext.SaveChangesAsync();
@@ -391,7 +391,7 @@ namespace AccountServer.Services
                 }
 
                 // Step 9: EventCall
-                EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.DoCurrencyGacha, request.Count, false);
+                await EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.DoCurrencyGacha, request.Count, false);
 
                 // Step 10: Commit DB changes
                 await _dbContext.SaveChangesAsync();

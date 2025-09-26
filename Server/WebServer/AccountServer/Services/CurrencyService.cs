@@ -105,13 +105,13 @@ namespace AccountServer.Services
                     currencyDb.Gold += request.Amount;
                     if (request.Amount < 0)
                     {
-                        EventManager.BroadcastMissionEvent(request.jwt, EBroadcastEventType.UseGold, request.Amount, commitChanges);
-                        EventManager.BroadcastMissionEvent(request.jwt, EBroadcastEventType.ChangeGold, request.Amount, commitChanges);
+                        await EventManager.BroadcastMissionEvent(request.jwt, EBroadcastEventType.UseGold, request.Amount, commitChanges);
+                        await EventManager.BroadcastMissionEvent(request.jwt, EBroadcastEventType.ChangeGold, request.Amount, commitChanges);
                     }
                     else if (request.Amount > 0)
                     {
-                        EventManager.BroadcastMissionEvent(request.jwt, EBroadcastEventType.GetGold, request.Amount, commitChanges);
-                        EventManager.BroadcastMissionEvent(request.jwt, EBroadcastEventType.ChangeGold, request.Amount, commitChanges);
+                        await EventManager.BroadcastMissionEvent(request.jwt, EBroadcastEventType.GetGold, request.Amount, commitChanges);
+                        await EventManager.BroadcastMissionEvent(request.jwt, EBroadcastEventType.ChangeGold, request.Amount, commitChanges);
                     }
                     break;
                 case CurrencyType.Dia:

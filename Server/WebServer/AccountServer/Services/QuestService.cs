@@ -42,7 +42,7 @@ namespace AccountServer.Services
             return true;
         }
 
-        public async void OnHandleBroadcastMissionEvent(string jwt, Define.EBroadcastEventType eventType, int value, bool commitChanges = true)
+        public async Task OnHandleBroadcastMissionEvent(string jwt, Define.EBroadcastEventType eventType, int value, bool commitChanges = true)
         {
             // 1. Get player
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);

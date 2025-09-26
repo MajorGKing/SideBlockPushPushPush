@@ -282,7 +282,7 @@ namespace AccountServer.Services
             {
                 // EventCall
                 var totalKillMonsters = stageData.FirstWaveMonsterList.Count + stageData.SecondWaveMonsterList.Count + stageData.BossWaveMonsterList.Count;
-                EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.KillMonster, totalKillMonsters, false);
+                await EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.KillMonster, totalKillMonsters, false);
 
                 int enumCount = Enum.GetNames(typeof(Define.ECurrencyType)).Length;
                 List<int> currencyCounts = new(new int[enumCount]);

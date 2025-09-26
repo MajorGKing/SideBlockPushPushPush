@@ -313,7 +313,7 @@ namespace AccountServer.Services
             hero.SkillTemplateId = skills;
 
             // Step 10 : EventCall
-            EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.HeroLevelUp, 1, false);
+            await EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.HeroLevelUp, 1, false);
 
             // Step 11: Save changes and commit transaction
             await _dbContext.SaveChangesAsync();
@@ -475,7 +475,7 @@ namespace AccountServer.Services
             hero.SkillTemplateId = skillList;
 
             // Step 13 : EventCall
-            EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.HeroSkillUp, 1, false);
+            await EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.HeroSkillUp, 1, false);
 
             // Step 14: Save changes and commit transaction
             await _dbContext.SaveChangesAsync();
