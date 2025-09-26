@@ -1,6 +1,5 @@
 ﻿using AccountServer.Data;
 using GameDB;
-using Newtonsoft.Json;
 using Server.Data;
 using DbCurrencyType = GameDB.CurrencyType;
 using CurrencyType = AccountServer.Data.CurrencyType;
@@ -15,13 +14,15 @@ namespace AccountServer.Services
         JwtTokenService _jwt;
         PlayerService _player;
         CurrencyService _currency;
+        private readonly IServiceProvider _serviceProvider;
 
-        public ShopService(GameDbContext context, JwtTokenService jwt, PlayerService player, CurrencyService currency)
+        public ShopService(GameDbContext context, JwtTokenService jwt, PlayerService player, CurrencyService currency, IServiceProvider serviceProvider)
         {
             _dbContext = context;
             _jwt = jwt;
             _player = player;
             _currency = currency;
+            _serviceProvider = serviceProvider;
         }
 
         public async Task<ShopHeroGachaRes> HeroGachaDoAsync(ShopHeroGachaReq request)
@@ -29,6 +30,7 @@ namespace AccountServer.Services
             var response = new ShopHeroGachaRes();
 
             await using var transaction = await _dbContext.Database.BeginTransactionAsync();
+            using var scope = _serviceProvider.CreateScope();
 
             try
             {
@@ -120,7 +122,7 @@ namespace AccountServer.Services
                 }
 
                 // Step 6 : EventCall
-                await EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.DoHeroGacha, request.Count, false);
+                await EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.DoHeroGacha, request.Count, commitChanges: false, existingScope: scope);
 
                 // Step 7: Save changes & commit
                 await _dbContext.SaveChangesAsync();
@@ -144,7 +146,9 @@ namespace AccountServer.Services
         public async Task<ShopBuddyGachaRes> BuddyGachaDoAsync(ShopBuddyGachaReq request)
         {
             var response = new ShopBuddyGachaRes();
+            
             await using var transaction = await _dbContext.Database.BeginTransactionAsync();
+            using var scope = _serviceProvider.CreateScope();
 
             try
             {
@@ -273,7 +277,7 @@ namespace AccountServer.Services
                 }
 
                 // Step 6: EventCall
-                await EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.DoBuddyGacha, request.Count, false);
+                await EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.DoBuddyGacha, request.Count, commitChanges: false, existingScope: scope);
 
                 // Step 7: Save changes & commit
                 await _dbContext.SaveChangesAsync();
@@ -335,7 +339,9 @@ namespace AccountServer.Services
             // Step 4: Start DB transaction
             var rewards = new List<CurrencyGachaReward>();
             var random = new Random();
-            using var transaction = await _dbContext.Database.BeginTransactionAsync();
+
+            await using var transaction = await _dbContext.Database.BeginTransactionAsync();
+            using var scope = _serviceProvider.CreateScope();
 
             try
             {
@@ -345,7 +351,7 @@ namespace AccountServer.Services
                     jwt = request.Jwt,
                     CurrencyType = CurrencyType.Gold,
                     Amount = -needGold
-                }, false);
+                }, false, scope);
 
                 // Step 6: Perform gacha draws
                 int totalMax = DataManager.CurrencyGachaDataDic.Values.Max(x => x.Max);
@@ -391,7 +397,7 @@ namespace AccountServer.Services
                 }
 
                 // Step 9: EventCall
-                await EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.DoCurrencyGacha, request.Count, false);
+                await EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.DoCurrencyGacha, request.Count, commitChanges: false, existingScope: scope);
 
                 // Step 10: Commit DB changes
                 await _dbContext.SaveChangesAsync();

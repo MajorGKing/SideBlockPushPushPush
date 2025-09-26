@@ -11,39 +11,23 @@ namespace AccountServer.Services
         GameDbContext _dbContext;
         JwtTokenService _jwt;
         PlayerService _player;
+        private readonly IServiceProvider _serviceProvider;
 
 
-        public HeroService(GameDbContext context, JwtTokenService jwt, PlayerService player)
+        public HeroService(GameDbContext context, JwtTokenService jwt, PlayerService player, IServiceProvider serviceProvider)
         {
             _dbContext = context;
             _jwt = jwt;
             _player = player;
+            _serviceProvider = serviceProvider;
         }
 
         public async Task<bool> HeroCreate(string jwt, int templateId, bool isSelected = false)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
 
-            //var token = _jwt.DecipherJwtAccessToken(jwt);
-            //var subClaim = token.Claims.FirstOrDefault(c => c.Type == "sub");
-
-            //if (subClaim == null)
-            //{
-            //    throw new UnauthorizedAccessException("JWT 토큰에 'sub' 클레임이 존재하지 않습니다.");
-            //}
-
-            //if (!int.TryParse(subClaim.Value, out int accountDbId))
-            //{
-            //    throw new FormatException("'sub' 클레임 값이 정수로 변환되지 않았습니다.");
-            //}
-
-
             // Player 존재 여부 확인
             var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
-
-            //var player = await _dbContext.Players
-            //    .Include(p => p.Heroes)
-            //    .FirstOrDefaultAsync(p => p.PlayerDbId == accountDbId);
 
             if (player == null)
             {
@@ -156,6 +140,7 @@ namespace AccountServer.Services
 
             // Step 0: Begin transaction to ensure atomicity
             await using var transaction = await _dbContext.Database.BeginTransactionAsync();
+            using var scope = _serviceProvider.CreateScope();
 
             // Step 1: Load player with heroes inside transaction
             var player = await _dbContext.Players
@@ -313,7 +298,7 @@ namespace AccountServer.Services
             hero.SkillTemplateId = skills;
 
             // Step 10 : EventCall
-            await EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.HeroLevelUp, 1, false);
+            await EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.HeroLevelUp, 1, false, scope);
 
             // Step 11: Save changes and commit transaction
             await _dbContext.SaveChangesAsync();
@@ -331,6 +316,7 @@ namespace AccountServer.Services
 
             // Step 2: Begin a transaction to ensure atomicity
             await using var transaction = await _dbContext.Database.BeginTransactionAsync();
+            using var scope = _serviceProvider.CreateScope();
 
             // Step 3: Reload player with heroes inside transaction
             var player = await _dbContext.Players
@@ -475,7 +461,7 @@ namespace AccountServer.Services
             hero.SkillTemplateId = skillList;
 
             // Step 13 : EventCall
-            await EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.HeroSkillUp, 1, false);
+            await EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.HeroSkillUp, 1, false, scope);
 
             // Step 14: Save changes and commit transaction
             await _dbContext.SaveChangesAsync();

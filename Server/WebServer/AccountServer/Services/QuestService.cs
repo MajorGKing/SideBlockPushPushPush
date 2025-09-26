@@ -32,6 +32,7 @@ namespace AccountServer.Services
             {
                 TemplateId = templateId,
                 StackedPoint = 0,
+                GetRewardCount = 0,
                 MissionState = EMissionState.Progress,
                 PlayerDbId = player.PlayerDbId,
             };
@@ -98,7 +99,8 @@ namespace AccountServer.Services
             {
                 TemplateId = m.TemplateId,
                 StackedPoint = m.StackedPoint,
-                MissionState = m.MissionState
+                MissionState = m.MissionState,
+                GetRewardCount = m.GetRewardCount,
             }).ToList();
 
             response.Success = true;

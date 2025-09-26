@@ -4,6 +4,7 @@ using GameDB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GameDB.Migrations
 {
     [DbContext(typeof(GameDbContext))]
-    partial class GameDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250926040955_MissionSaveDataAddGetRewardCount")]
+    partial class MissionSaveDataAddGetRewardCount
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,7 +43,7 @@ namespace GameDB.Migrations
 
                     b.HasIndex("PlayerDbId");
 
-                    b.ToTable("AchievementClearList", (string)null);
+                    b.ToTable("AchievementClearList");
                 });
 
             modelBuilder.Entity("GameDB.AchievementSaveDataDb", b =>
@@ -73,7 +76,7 @@ namespace GameDB.Migrations
 
                     b.HasIndex("PlayerDbId");
 
-                    b.ToTable("AchievementSaveData", (string)null);
+                    b.ToTable("AchievementSaveData");
                 });
 
             modelBuilder.Entity("GameDB.BuddyGachaLogDb", b =>
@@ -117,7 +120,7 @@ namespace GameDB.Migrations
 
                     b.HasKey("BuddyGachaLogDbId");
 
-                    b.ToTable("BuddyGachaLog", (string)null);
+                    b.ToTable("BuddyGachaLog");
                 });
 
             modelBuilder.Entity("GameDB.BuddySaveDataDb", b =>
@@ -145,7 +148,7 @@ namespace GameDB.Migrations
 
                     b.HasIndex("PlayerDbId");
 
-                    b.ToTable("BuddySaveData", (string)null);
+                    b.ToTable("BuddySaveData");
                 });
 
             modelBuilder.Entity("GameDB.CurrencyDb", b =>
@@ -209,7 +212,7 @@ namespace GameDB.Migrations
 
                     b.HasKey("PlayerDbId");
 
-                    b.ToTable("Currency", (string)null);
+                    b.ToTable("Currency");
                 });
 
             modelBuilder.Entity("GameDB.CurrencyGachaLogDb", b =>
@@ -240,7 +243,7 @@ namespace GameDB.Migrations
 
                     b.HasKey("CurrencyGachaLogDbId");
 
-                    b.ToTable("CurrencyGachaLog", (string)null);
+                    b.ToTable("CurrencyGachaLog");
                 });
 
             modelBuilder.Entity("GameDB.HeroGachaLogDb", b =>
@@ -271,7 +274,7 @@ namespace GameDB.Migrations
 
                     b.HasKey("HeroGachaLogDbId");
 
-                    b.ToTable("HeroGachaLog", (string)null);
+                    b.ToTable("HeroGachaLog");
                 });
 
             modelBuilder.Entity("GameDB.HeroSaveDataDb", b =>
@@ -305,7 +308,7 @@ namespace GameDB.Migrations
 
                     b.HasIndex("PlayerDbId");
 
-                    b.ToTable("HeroSaveData", (string)null);
+                    b.ToTable("HeroSaveData");
                 });
 
             modelBuilder.Entity("GameDB.MissionSaveDataDb", b =>
@@ -335,7 +338,7 @@ namespace GameDB.Migrations
 
                     b.HasIndex("PlayerDbId");
 
-                    b.ToTable("MissionSaveData", (string)null);
+                    b.ToTable("MissionSaveData");
                 });
 
             modelBuilder.Entity("GameDB.PlayerDb", b =>
@@ -367,7 +370,7 @@ namespace GameDB.Migrations
 
                     b.HasKey("PlayerDbId");
 
-                    b.ToTable("Player", (string)null);
+                    b.ToTable("Player");
                 });
 
             modelBuilder.Entity("GameDB.StageClearDb", b =>
@@ -394,7 +397,7 @@ namespace GameDB.Migrations
 
                     b.HasIndex("PlayerDbId");
 
-                    b.ToTable("StageClear", (string)null);
+                    b.ToTable("StageClear");
                 });
 
             modelBuilder.Entity("GameDB.AchievementClearListDb", b =>

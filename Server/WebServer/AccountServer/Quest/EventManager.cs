@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using AccountServer;
 using AccountServer.Services;
+using AccountServer;
 
 namespace Server.Quest
 {
@@ -13,7 +8,7 @@ namespace Server.Quest
         private static readonly Dictionary<Define.EEventType, Action> _events = new();
 
         // 비동기 이벤트
-        public static event Func<string, Define.EBroadcastEventType, int, bool, Task> OnBroadcastMissionEvent;
+        public static event Func<IServiceScope?, string, Define.EBroadcastEventType, int, bool, Task>? OnBroadcastMissionEvent;
 
         // 정적 서비스 제공자
         private static IServiceProvider? _serviceProvider;
@@ -71,24 +66,23 @@ namespace Server.Quest
         /// <summary>
         /// 비동기 브로드캐스트 이벤트 트리거
         /// </summary>
-        public static async Task BroadcastMissionEvent(string jwt, Define.EBroadcastEventType eventType, int value, bool commitChanges = true)
+        public static async Task BroadcastMissionEvent(string jwt, Define.EBroadcastEventType eventType, int value, bool commitChanges = true, IServiceScope? existingScope = null)
         {
             if (OnBroadcastMissionEvent == null)
                 return;
 
             var handlers = OnBroadcastMissionEvent.GetInvocationList();
             var tasks = handlers
-                .Cast<Func<string, Define.EBroadcastEventType, int, bool, Task>>()
+                .Cast<Func<IServiceScope?, string, Define.EBroadcastEventType, int, bool, Task>>()
                 .Select(async handler =>
                 {
                     try
                     {
-                        await handler.Invoke(jwt, eventType, value, commitChanges);
+                        await handler.Invoke(existingScope, jwt, eventType, value, commitChanges);
                     }
                     catch (Exception ex)
                     {
                         Console.Error.WriteLine($"[EventManager] Broadcast handler error: {ex.Message}");
-                        // 필요 시 로깅 시스템에 전달
                     }
                 });
 
@@ -98,7 +92,7 @@ namespace Server.Quest
         /// <summary>
         /// 기본 브로드캐스트 미션 이벤트 핸들러
         /// </summary>
-        private static async Task OnHandleBroadcastMissionEvent(string jwt, Define.EBroadcastEventType eventType, int value, bool commitChanges = true)
+        private static async Task OnHandleBroadcastMissionEvent(IServiceScope? existingScope, string jwt, Define.EBroadcastEventType eventType, int value, bool commitChanges = true)
         {
             if (_serviceProvider == null)
             {
@@ -106,10 +100,20 @@ namespace Server.Quest
                 return;
             }
 
-            using var scope = _serviceProvider.CreateScope();
-            var questService = scope.ServiceProvider.GetRequiredService<QuestService>();
+            // 이미 scope가 있다면 그것을 사용 (같은 DbContext 보장)
+            var scope = existingScope ?? _serviceProvider.CreateScope();
 
-            await questService.OnHandleBroadcastMissionEvent(jwt, eventType, value, commitChanges);
+            try
+            {
+                var questService = scope.ServiceProvider.GetRequiredService<QuestService>();
+                await questService.OnHandleBroadcastMissionEvent(jwt, eventType, value, commitChanges);
+            }
+            finally
+            {
+                // 외부에서 넘겨준 scope는 EventManager가 dispose 하지 않음
+                if (existingScope == null)
+                    scope.Dispose();
+            }
         }
     }
 }

@@ -81,7 +81,7 @@ namespace AccountServer.Services
             };
         }
 
-        public async Task<CurrencyAllRes> UpdatePlayerCurrencyAsync(CurrencyAddReq request, bool commitChanges = true)
+        public async Task<CurrencyAllRes> UpdatePlayerCurrencyAsync(CurrencyAddReq request, bool commitChanges = true, IServiceScope? existingScope = null)
         {
             var token = _jwt.DecipherJwtAccessToken(request.jwt);
             var subClaim = token.Claims.FirstOrDefault(c => c.Type == "sub");
@@ -105,13 +105,13 @@ namespace AccountServer.Services
                     currencyDb.Gold += request.Amount;
                     if (request.Amount < 0)
                     {
-                        await EventManager.BroadcastMissionEvent(request.jwt, EBroadcastEventType.UseGold, request.Amount, commitChanges);
-                        await EventManager.BroadcastMissionEvent(request.jwt, EBroadcastEventType.ChangeGold, request.Amount, commitChanges);
+                        await EventManager.BroadcastMissionEvent(request.jwt, EBroadcastEventType.UseGold, request.Amount, commitChanges:commitChanges, existingScope:existingScope);
+                        await EventManager.BroadcastMissionEvent(request.jwt, EBroadcastEventType.ChangeGold, request.Amount, commitChanges: commitChanges, existingScope: existingScope);
                     }
                     else if (request.Amount > 0)
                     {
-                        await EventManager.BroadcastMissionEvent(request.jwt, EBroadcastEventType.GetGold, request.Amount, commitChanges);
-                        await EventManager.BroadcastMissionEvent(request.jwt, EBroadcastEventType.ChangeGold, request.Amount, commitChanges);
+                        await EventManager.BroadcastMissionEvent(request.jwt, EBroadcastEventType.GetGold, request.Amount, commitChanges: commitChanges, existingScope: existingScope);
+                        await EventManager.BroadcastMissionEvent(request.jwt, EBroadcastEventType.ChangeGold, request.Amount, commitChanges: commitChanges, existingScope: existingScope);
                     }
                     break;
                 case CurrencyType.Dia:

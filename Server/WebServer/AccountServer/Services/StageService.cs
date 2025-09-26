@@ -14,14 +14,15 @@ namespace AccountServer.Services
         JwtTokenService _jwt;
         PlayerService _player;
         CurrencyService _currency;
+        private readonly IServiceProvider _serviceProvider;
 
-
-        public StageService(GameDbContext context, JwtTokenService jwt, PlayerService player, CurrencyService currency)
+        public StageService(GameDbContext context, JwtTokenService jwt, PlayerService player, CurrencyService currency, IServiceProvider serviceProvider)
         {
             _dbContext = context;
             _jwt = jwt;
             _player = player;
             _currency = currency;
+            _serviceProvider = serviceProvider;
         }
 
         public async Task<bool> StageCreateAsync(string jwt, int templateId, bool commitChanges = true)
@@ -277,12 +278,13 @@ namespace AccountServer.Services
 
             // Step 3: Start transaction
             await using var transaction = await _dbContext.Database.BeginTransactionAsync();
+            using var scope = _serviceProvider.CreateScope();
 
             try
             {
                 // EventCall
                 var totalKillMonsters = stageData.FirstWaveMonsterList.Count + stageData.SecondWaveMonsterList.Count + stageData.BossWaveMonsterList.Count;
-                await EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.KillMonster, totalKillMonsters, false);
+                await EventManager.BroadcastMissionEvent(request.Jwt, Define.EBroadcastEventType.KillMonster, totalKillMonsters, false, scope);
 
                 int enumCount = Enum.GetNames(typeof(Define.ECurrencyType)).Length;
                 List<int> currencyCounts = new(new int[enumCount]);

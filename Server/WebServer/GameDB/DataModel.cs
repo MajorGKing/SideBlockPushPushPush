@@ -345,6 +345,10 @@ namespace GameDB
         /// 미션의 현재 상태입니다 (진행 중, 보상 가능 등).
         /// </summary>
         public EMissionState MissionState { get; set; }
+        /// <summary>
+        /// Day, Week만 사용. 보상을 몇개 까지 받았는지 카운트 합니다.
+        /// </summary>
+        public int GetRewardCount {  get; set; }
 
         /// <summary>
         /// 이 미션을 소유한 플레이어의 ID. 외래 키(Foreign Key)입니다.
