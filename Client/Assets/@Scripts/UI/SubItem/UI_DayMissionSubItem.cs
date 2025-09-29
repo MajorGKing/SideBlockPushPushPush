@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Data;
 using System.Collections.Generic;
 using TMPro;
@@ -107,7 +108,8 @@ public class UI_DayMissionSubItem : UI_SubItem
             }
         }
 
-        GetButton((int)Buttons.Button_AllTake).interactable = _missionSaveData.MissionState == Define.EMissionState.Rewardable && rewardCount > 0;
+        //GetButton((int)Buttons.Button_AllTake).interactable = _missionSaveData.MissionState == Define.EMissionState.Rewardable && rewardCount > 0;
+        GetButton((int)Buttons.Button_AllTake).interactable = rewardCount > 0;
 
         GetSlider((int)Sliders.Slider_DayMissionExp).value = (float)_missionSaveData.StackedPoint / _missionData.MaxPoint;
     }
@@ -116,7 +118,8 @@ public class UI_DayMissionSubItem : UI_SubItem
     {
         if (GetButton((int)Buttons.Button_AllTake).interactable)
         {
-            Managers.Game.GetMissionReward(_missionData.TemplateId);
+            Managers.Game.GetMissionReward(_missionData.TemplateId).Forget();
+            GetButton((int)Buttons.Button_AllTake).interactable = false;
         }
     }
 }

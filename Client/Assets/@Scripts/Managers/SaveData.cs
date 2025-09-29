@@ -159,7 +159,7 @@ public class MissionSaveData
                 if (eventType == Define.EBroadcastEventType.KillMonster)
                 {
                     StackedPoint += value;
-                    Managers.Game.SaveMission(TemplateId);
+                    //Managers.Game.SaveMission(TemplateId);
                 }
                 break;
             case Define.EMissionGoal.ConsumGold:

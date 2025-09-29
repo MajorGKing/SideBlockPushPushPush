@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Data;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -71,7 +72,8 @@ public class UI_NormalMissionSubItem : UI_SubItem
     {
         if (GetButton((int)Buttons.Button_Take).interactable)
         {
-            Managers.Game.GetMissionSubItemReward(_missionData.TemplateId);
+            GetButton((int)Buttons.Button_Take).interactable = false;
+            Managers.Game.GetMissionSubItemReward(_missionSaveData.TemplateId).Forget();
         }
     }
 }

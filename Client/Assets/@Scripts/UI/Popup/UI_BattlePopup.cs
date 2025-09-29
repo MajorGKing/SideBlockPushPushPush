@@ -84,9 +84,8 @@ public class UI_BattlePopup : UI_Popup
     private void OnClickMissionButton(PointerEventData evt)
     {
         Managers.Sound.PlayButtonClick();
-
-        var mission = Managers.UI.ShowPopupUI<UI_MissionPopup>();
-        mission.SetInfo();
+        Managers.Game.ShowMissionPopup().Forget();
+        
     }
 
     private void OnClickAchievementButton(PointerEventData evt)

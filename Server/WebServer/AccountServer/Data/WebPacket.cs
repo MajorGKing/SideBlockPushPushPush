@@ -446,4 +446,23 @@
         public string Message { get; set; } = string.Empty;
         public List<MissionDTO> Missions { get; set; } = new List<MissionDTO>();
     }
+
+    public class GetNormalMissionRewardReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+        public int TemplatedId { get; set; }
+    }
+
+    public class GetMissionRewardReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+        public int TemplatedId { get; set; }
+    }
+
+    public class GetMissionRewardRes
+    {
+        public bool Success { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public List<RewardDTO> Rewards { get; set; } = new List<RewardDTO>();
+    }
 }

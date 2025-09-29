@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using WebPacket;
@@ -808,9 +807,20 @@ public class GameManager
             for (int i = 0; i < Managers.Data.MissionDataDic[mission.TemplateId].RewardCurrencies.Count; i++)
             {
                 if (i < mission.GetRewardCount)
+                {
                     PointStepMissionState.Add(Define.EMissionState.Finish);
-                else
+                    continue;
+                }
+                
+                if(StackedPoint < Managers.Data.MissionDataDic[mission.TemplateId].RewardCurrencies[i].point)
+                {
                     PointStepMissionState.Add(Define.EMissionState.Progress);
+                }
+                else
+                {
+                    PointStepMissionState.Add(Define.EMissionState.Rewardable);
+                }
+                    
             }
         }
 
@@ -832,8 +842,13 @@ public class GameManager
             return;
         }
 
+        UpdateMission(res.Missions);
+    }
+
+    public void UpdateMission(List<MissionDTO> missions)
+    {
         // Convert to DTOs in one shot
-        Missions = res.Missions
+        Missions = missions
             .Select(m => new MissionSavedData(m))
             .ToList();
 
@@ -845,48 +860,114 @@ public class GameManager
         NormalMissions = grouped.GetValueOrDefault(Define.EMissionType.Normal, new List<MissionSavedData>());
         DayMissions = grouped.GetValueOrDefault(Define.EMissionType.Day, new List<MissionSavedData>());
         WeekMissions = grouped.GetValueOrDefault(Define.EMissionType.Week, new List<MissionSavedData>());
+
+        Managers.Event.TriggerEvent(Define.EEventType.OnMissionChanged);
     }
 
-    public MissionSavedData GetMissionDTO(int templateId)
+    public async UniTask ShowMissionPopup()
+    {
+        await UpdateMission();
+
+        var mission = Managers.UI.ShowPopupUI<UI_MissionPopup>();
+        mission.SetInfo();
+    }
+
+    public MissionSavedData GetMissionData(int templateId)
     {
         return Missions.FirstOrDefault(m => m.TemplateId == templateId);
     }
 
-    public void GetMissionSubItemReward(int templateId)
+    public async UniTask GetMissionSubItemReward(int templateId)
     {
-        var missionSavewData = GetMissionDTO(templateId);
+        var req = new GetNormalMissionRewardReq() { Jwt = Managers.Web.jwt, TemplatedId = templateId };
 
-        if (missionSavewData == null)
-            return;
+        GetMissionListRes res = await Managers.Web.SendPostRequestAsync<GetMissionListRes>("api/game/mission/getNormalMissionReward", req);
 
-        if (missionSavewData.MissionState != Define.EMissionState.Rewardable)
-            return;
-
-        int point = Managers.Data.MissionDataDic[templateId].Point;
-
-        int dayIndex = Managers.Data.MissionDataDic.Values.FirstOrDefault(m => m.MissionType == Define.EMissionType.Day).TemplateId;
-        var dayMissionSaveData = GetMissionDTO(dayIndex);
-        dayMissionSaveData.StackedPoint += point;
-
-        if (dayMissionSaveData.StackedPoint > Managers.Data.MissionDataDic[dayIndex].MaxPoint)
+        if(res.Success)
         {
-            dayMissionSaveData.StackedPoint = Managers.Data.MissionDataDic[dayIndex].MaxPoint;
+            UpdateMission(res.Missions);
         }
 
-        int weekIndex = Managers.Data.MissionDataDic.Values.FirstOrDefault(m => m.MissionType == Define.EMissionType.Week).TemplateId;
-        var weekMissionSaveData = GetMissionDTO(weekIndex);
-        weekMissionSaveData.StackedPoint += point;
+        //var missionSavewData = GetMissionData(templateId);
 
-        if (weekMissionSaveData.StackedPoint > Managers.Data.MissionDataDic[weekIndex].MaxPoint)
+        //if (missionSavewData == null)
+        //    return;
+
+        //if (missionSavewData.MissionState != Define.EMissionState.Rewardable)
+        //    return;
+
+        //int point = Managers.Data.MissionDataDic[templateId].Point;
+
+        //int dayIndex = Managers.Data.MissionDataDic.Values.FirstOrDefault(m => m.MissionType == Define.EMissionType.Day).TemplateId;
+        //var dayMissionSaveData = GetMissionData(dayIndex);
+        //dayMissionSaveData.StackedPoint += point;
+
+        //if (dayMissionSaveData.StackedPoint > Managers.Data.MissionDataDic[dayIndex].MaxPoint)
+        //{
+        //    dayMissionSaveData.StackedPoint = Managers.Data.MissionDataDic[dayIndex].MaxPoint;
+        //}
+
+        //int weekIndex = Managers.Data.MissionDataDic.Values.FirstOrDefault(m => m.MissionType == Define.EMissionType.Week).TemplateId;
+        //var weekMissionSaveData = GetMissionData(weekIndex);
+        //weekMissionSaveData.StackedPoint += point;
+
+        //if (weekMissionSaveData.StackedPoint > Managers.Data.MissionDataDic[weekIndex].MaxPoint)
+        //{
+        //    weekMissionSaveData.StackedPoint = Managers.Data.MissionDataDic[weekIndex].MaxPoint;
+        //}
+
+        //missionSavewData.MissionState = Define.EMissionState.Finish;
+
+        //Managers.Event.TriggerEvent(Define.EEventType.OnMissionChanged);
+
+        //SaveGame();
+    }
+
+    public async UniTask GetMissionReward(int templateId)
+    {
+        var req = new GetMissionRewardReq() { Jwt = Managers.Web.jwt, TemplatedId = templateId };
+
+        GetMissionRewardRes res = await Managers.Web.SendPostRequestAsync<GetMissionRewardRes>("api/game/mission/getlMissionReward", req);
+
+        if (res.Success)
         {
-            weekMissionSaveData.StackedPoint = Managers.Data.MissionDataDic[weekIndex].MaxPoint;
+            UI_RewardPopup rewardPopup = Managers.UI.ShowPopupUI<UI_RewardPopup>();
+
+            List<Reward> rewards = new List<Reward>();
+            foreach (var reward in res.Rewards)
+            {
+                rewards.Add(new Reward(reward.RewardType, reward.RewardAmount, reward.IsFirst));
+            }
+
+            rewardPopup.SetInfo(Define.ERewardType.Mission, rewards);
+            
+            await UniTask.WhenAll(UpdateMission(), UpdateCurrencyAsync());
         }
 
-        missionSavewData.MissionState = Define.EMissionState.Finish;
+        //var missionSavewData = GetMissionData(templateId);
+        //var missionData = Managers.Data.MissionDataDic[templateId];
 
-        Managers.Event.TriggerEvent(Define.EEventType.OnMissionChanged);
+        //if (missionSavewData == null)
+        //    return;
 
-        SaveGame();
+        //List<Reward> rewardList = new List<Reward>();
+        //for (int index = 0; index < missionSavewData.PointStepMissionState.Count; index++)
+        //{
+        //    if (missionSavewData.StackedPoint >= missionData.RewardCurrencies[index].point && missionSavewData.PointStepMissionState[index] == Define.EMissionState.Progress)
+        //    {
+        //        missionSavewData.PointStepMissionState[index] = Define.EMissionState.Finish;
+        //        rewardList.Add(new Reward(missionData.RewardCurrencies[index].currencyType, missionData.RewardCurrencies[index].count));
+        //    }
+        //}
+
+        //if (rewardList.Count == 0)
+        //    return;
+
+        //UI_RewardPopup rewardPopup = Managers.UI.ShowPopupUI<UI_RewardPopup>();
+        //rewardPopup.SetInfo(Define.ERewardType.Mission, rewardList);
+
+        //SaveGame();
+        //Managers.Event.TriggerEvent(Define.EEventType.OnMissionChanged);
     }
 
 
@@ -1031,39 +1112,6 @@ public class GameManager
     public List<MissionData> NormalMissionList => Managers.Data.MissionDataDic.Where(mission => mission.Value.MissionType == Define.EMissionType.Normal).Select(mission => mission.Value).ToList();
     public List<MissionData> DayMissionList => Managers.Data.MissionDataDic.Where(mission => mission.Value.MissionType == Define.EMissionType.Day).Select(mission => mission.Value).ToList();
     public List<MissionData> WeekMissionList => Managers.Data.MissionDataDic.Where(mission => mission.Value.MissionType == Define.EMissionType.Week).Select(mission => mission.Value).ToList();
-
-
-
-
-
-
-    public void GetMissionReward(int templateId)
-    {
-        var missionSavewData = GetMissionDTO(templateId);
-        var missionData = Managers.Data.MissionDataDic[templateId];
-
-        if (missionSavewData == null)
-            return;
-
-        List<Reward> rewardList = new List<Reward>();
-        for (int index = 0; index < missionSavewData.PointStepMissionState.Count; index++)
-        {
-            if (missionSavewData.StackedPoint >= missionData.RewardCurrencies[index].point && missionSavewData.PointStepMissionState[index] == Define.EMissionState.Progress)
-            {
-                missionSavewData.PointStepMissionState[index] = Define.EMissionState.Finish;
-                rewardList.Add(new Reward(missionData.RewardCurrencies[index].currencyType, missionData.RewardCurrencies[index].count));
-            }
-        }
-
-        if (rewardList.Count == 0)
-            return;
-
-        UI_RewardPopup rewardPopup = Managers.UI.ShowPopupUI<UI_RewardPopup>();
-        rewardPopup.SetInfo(Define.ERewardType.Mission, rewardList);
-
-        SaveGame();
-        Managers.Event.TriggerEvent(Define.EEventType.OnMissionChanged);
-    }
 
     public void SaveMission(int templateId)
     {

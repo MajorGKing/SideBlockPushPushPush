@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Data;
 using System.Collections.Generic;
 using TMPro;
@@ -77,12 +78,14 @@ public class UI_WeekMissionSubItem : UI_SubItem
     {
         for (int index = 0; index < _missionData.PointStep.Count; index++)
         {
-            _weekMissionCountTextList[index].text = _missionData.PointStep[index].ToString();
+            _weekMissionCountTextList[index].text = $"{_missionData.PointStep[index]:N0}";
         }
 
         int rewardCount = 0;
         for (int index = 0; index < _missionRewardSubItemList.Count; index++)
         {
+            _missionRewardSubItemList[index].SetInfo(_missionData.RewardCurrencies[index].currencyType, _missionData.RewardCurrencies[index].count, false);
+
             bool isActive = true;
             if (_missionSaveData.StackedPoint < _missionData.PointStep[index])
             {
@@ -92,17 +95,17 @@ public class UI_WeekMissionSubItem : UI_SubItem
             if (_missionSaveData.PointStepMissionState[index] == Define.EMissionState.Finish)
             {
                 isActive = false;
+                _missionRewardSubItemList[index].SetInfo(_missionData.RewardCurrencies[index].currencyType, _missionData.RewardCurrencies[index].count, false, false);
             }
 
             if (isActive)
             {
                 rewardCount++;
             }
-
-            _missionRewardSubItemList[index].SetInfo(_missionData.RewardCurrencies[index].currencyType, _missionData.RewardCurrencies[index].count, false);
         }
 
-        GetButton((int)Buttons.Button_AllTake).interactable = _missionSaveData.MissionState == Define.EMissionState.Rewardable && rewardCount > 0;
+        //GetButton((int)Buttons.Button_AllTake).interactable = _missionSaveData.MissionState == Define.EMissionState.Rewardable && rewardCount > 0;
+        GetButton((int)Buttons.Button_AllTake).interactable = rewardCount > 0;
 
         GetSlider((int)Sliders.Slider_WeekMissionExp).value = (float)_missionSaveData.StackedPoint / _missionData.MaxPoint;
     }
@@ -111,7 +114,8 @@ public class UI_WeekMissionSubItem : UI_SubItem
     {
         if (GetButton((int)Buttons.Button_AllTake).interactable)
         {
-            Managers.Game.GetMissionReward(_missionData.TemplateId);
+            Managers.Game.GetMissionReward(_missionData.TemplateId).Forget();
+            GetButton((int)Buttons.Button_AllTake).interactable = false;
         }
     }
 

@@ -13,8 +13,8 @@ public class TimeManager
         set
         {
             Debug.Log("Tiee : " + value);
-            CheckDailyReset(lastMissionTime);
-            CheckWeeklyReset(lastMissionTime);
+            //CheckDailyReset(lastMissionTime);
+            //CheckWeeklyReset(lastMissionTime);
 
             bool isFIrst = false;
 
@@ -134,7 +134,7 @@ public class TimeManager
 
             foreach (var normalMission in normalMissions)
             {
-                var missionSave = Managers.Game.GetMissionDTO(normalMission.TemplateId);
+                var missionSave = Managers.Game.GetMissionData(normalMission.TemplateId);
                 missionSave.StackedPoint = 0;
                 missionSave.MissionState = Define.EMissionState.Progress;
             }
@@ -142,7 +142,7 @@ public class TimeManager
 
         {
             var dayMission = Managers.Data.MissionDataDic.Where(x => x.Value.MissionType == Define.EMissionType.Day).Select(m => m.Value).First();
-            var dayMissionSave = Managers.Game.GetMissionDTO(dayMission.TemplateId);
+            var dayMissionSave = Managers.Game.GetMissionData(dayMission.TemplateId);
             dayMissionSave.StackedPoint = 0;
             dayMissionSave.MissionState = Define.EMissionState.Progress;
             //for (int i = 0; i < dayMissionSave.PointStepMissionState.Count; i++)
@@ -162,7 +162,7 @@ public class TimeManager
 
             foreach (var normalMission in normalMissions)
             {
-                var missionSave = Managers.Game.GetMissionDTO(normalMission.TemplateId);
+                var missionSave = Managers.Game.GetMissionData(normalMission.TemplateId);
                 missionSave.StackedPoint = 0;
                 missionSave.MissionState = Define.EMissionState.Progress;
             }
@@ -170,7 +170,7 @@ public class TimeManager
 
         {
             var weekMission = Managers.Data.MissionDataDic.Where(x => x.Value.MissionType == Define.EMissionType.Week).Select(m => m.Value).First();
-            var weekMissionSave = Managers.Game.GetMissionDTO(weekMission.TemplateId);
+            var weekMissionSave = Managers.Game.GetMissionData(weekMission.TemplateId);
             weekMissionSave.StackedPoint = 0;
             weekMissionSave.MissionState = Define.EMissionState.Progress;
             //for (int i = 0; i < weekMissionSave.PointStepMissionState.Count; i++)

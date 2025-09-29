@@ -182,5 +182,18 @@ namespace AccountServer.Controllers
         {
             return await _quest.MissionListGetAsync(req);
         }
+
+        [HttpPost]
+        [Route("mission/getNormalMissionReward")]
+        public async Task<GetMissionListRes> GetNormalMissionReward([FromBody] GetNormalMissionRewardReq req)        {
+            return await _quest.GetNormalMissionReward(req);
+        }
+
+        [HttpPost]
+        [Route("mission/getlMissionReward")]
+        public async Task<GetMissionRewardRes> GetMissionReward([FromBody] GetMissionRewardReq req)
+        {
+            return await _quest.GetMissionReward(req);
+        }
     }
 }
