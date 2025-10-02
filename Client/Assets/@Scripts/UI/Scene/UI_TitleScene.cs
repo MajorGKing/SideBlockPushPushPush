@@ -174,6 +174,7 @@ public class UI_TitleScene : UI_Scene
 
 	private void OnClickNextButton(PointerEventData evt)
 	{
+        Managers.Time.Init();
         Managers.Scene.LoadScene(Define.EScene.LobbyScene);
     }
 }

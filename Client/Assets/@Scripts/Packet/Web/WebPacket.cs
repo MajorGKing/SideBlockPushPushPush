@@ -51,6 +51,7 @@ namespace WebPacket
         public bool BGMOn { get; set; }
         public bool EffectSoundOn { get; set; }
         public DateTime LastMissionTime { get; set; }
+        public DateTime LastStaminaUpdateTime { get; set; }
         public int CurrentStage { get; set; }
     }
 
@@ -484,5 +485,18 @@ namespace WebPacket
         public bool Success { get; set; }
         public string Message { get; set; } = string.Empty;
         public List<RewardDTO> Rewards { get; set; } = new List<RewardDTO>();
+    }
+
+    public class PlayerTimeCheckReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+    }
+
+    public class PlayerTimeCheckRes
+    {
+        public bool Success { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public GetMissionListRes? MissionList { get; set; }
+        public PlayerPacketRes? PlayerInfo { get; set; }
     }
 }

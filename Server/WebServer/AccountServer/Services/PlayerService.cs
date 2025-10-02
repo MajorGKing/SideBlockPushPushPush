@@ -1,7 +1,6 @@
 ﻿using AccountServer.Data;
 using GameDB;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Server.Data;
 
 namespace AccountServer.Services
@@ -134,6 +133,7 @@ namespace AccountServer.Services
                 BGMOn = playerDb.BGMOn,
                 EffectSoundOn = playerDb.EffectSoundOn,
                 LastMissionTime = playerDb.LastMissionTime,
+                LastStaminaUpdateTime = playerDb.LastStaminaUpdateTime,
                 CurrentStage = playerDb.CurrentStage,
             };
 
@@ -146,5 +146,166 @@ namespace AccountServer.Services
 
             return res;
         }
+
+        public async Task<PlayerTimeCheckRes> PlayerTimeCheck(PlayerTimeCheckReq request)
+        {
+            var response = new PlayerTimeCheckRes();
+            bool missionChanged = false;
+            bool staminaChanged = false;
+
+            await using var transaction = await _dbContext.Database.BeginTransactionAsync();
+
+            try
+            {
+                // step1. JWT에서 accountDbId 추출
+                var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
+                var player = await GetPlayerDbFromAccountDbId(accountDbId);
+
+                if (player == null)
+                {
+                    response.Success = false;
+                    response.Message = "Invalid player.";
+                    return response;
+                }
+
+                DateTime now = DateTime.Now;
+                DateTime today9AM = now.Date.AddHours(9);
+                DateTime thisMonday9AM = GetThisMondayAt9AM(now);
+
+                // step2. 미션 리셋 체크 (Day/Week)
+                bool dayResetNeeded = false;
+                bool weekResetNeeded = false;
+
+                // Day Reset
+                if ((player.LastMissionTime.Date != now.Date && now >= today9AM) ||
+                    (player.LastMissionTime.Date == now.Date && player.LastMissionTime < today9AM && now >= today9AM))
+                {
+                    dayResetNeeded = true;
+                }
+
+                // Week Reset
+                if (player.LastMissionTime < thisMonday9AM && now >= thisMonday9AM)
+                {
+                    weekResetNeeded = true;
+                }
+
+                if (dayResetNeeded || weekResetNeeded)
+                {
+                    if (dayResetNeeded)
+                    {
+                        ResetNormalMissions(player);  // Normal Mission 초기화
+                        ResetDayMissions(player);     // Day Mission 초기화
+                    }
+
+                    if (weekResetNeeded)
+                        ResetWeekMissions(player);
+
+                    player.LastMissionTime = now;
+                    missionChanged = true;
+                }
+
+                // step3. 스태미너 회복 체크 (3분 단위)
+                if (player.Stamina < Define.MAX_STAMINA)
+                {
+                    int minutesPassed = (int)(now - player.LastStaminaUpdateTime).TotalMinutes;
+                    if (minutesPassed >= 3)
+                    {
+                        int recoverAmount = minutesPassed / 3;
+                        player.Stamina = Math.Min(Define.MAX_STAMINA, player.Stamina + recoverAmount);
+
+                        // 마지막 회복 시점 갱신
+                        if (player.Stamina >= Define.MAX_STAMINA)
+                            player.LastStaminaUpdateTime = now;
+                        else
+                            player.LastStaminaUpdateTime = player.LastStaminaUpdateTime.AddMinutes(recoverAmount * 3);
+
+                        staminaChanged = true;
+                    }
+                }
+
+                // step4. DB 저장
+                if (missionChanged || staminaChanged)
+                    await _dbContext.SaveChangesAsync();
+
+                await transaction.CommitAsync();
+
+                response.Success = true;
+
+                // step5. MissionList / PlayerInfo는 변경된 경우만 반환
+                if (missionChanged)
+                {
+                    var questService = _serviceProvider.GetRequiredService<QuestService>();
+                    response.MissionList = await questService.MissionListGetAsync(new GetMissionListReq { Jwt = request.Jwt });
+                }
+
+                if (staminaChanged)
+                {
+                    response.PlayerInfo = await LoadOrCreatePlayerAsync(new PlayerPacketReq { jwt = request.Jwt });
+                }
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                response.Success = false;
+                response.Message = $"Error: {ex.Message}";
+                return response;
+            }
+        }
+
+        #region Helper
+        // 이번 주 월요일 9시 계산
+        private DateTime GetThisMondayAt9AM(DateTime currentTime)
+        {
+            int daysSinceMonday = (int)currentTime.DayOfWeek - (int)DayOfWeek.Monday;
+            if (daysSinceMonday < 0) daysSinceMonday += 7;
+            DateTime thisMonday = currentTime.Date.AddDays(-daysSinceMonday);
+            return thisMonday.AddHours(9);
+        }
+
+        // Normal Mission 초기화
+        private void ResetNormalMissions(PlayerDb player)
+        {
+            var normalMissions = player.Missions
+                .Where(m => DataManager.MissionDataDic[m.TemplateId].MissionType == Define.EMissionType.Normal);
+
+            foreach (var m in normalMissions)
+            {
+                m.StackedPoint = 0;
+                m.MissionState = EMissionState.Progress;
+                m.GetRewardCount = 0;
+            }
+        }
+
+        // Day 미션 초기화
+        private void ResetDayMissions(PlayerDb player)
+        {
+            var dayMissions = player.Missions
+                .Where(m => DataManager.MissionDataDic[m.TemplateId].MissionType == Define.EMissionType.Day);
+
+            foreach (var m in dayMissions)
+            {
+                m.StackedPoint = 0;
+                m.MissionState = EMissionState.Progress;
+                m.GetRewardCount = 0;
+            }
+        }
+
+        // Week 미션 초기화
+        private void ResetWeekMissions(PlayerDb player)
+        {
+            var weekMissions = player.Missions
+                .Where(m => DataManager.MissionDataDic[m.TemplateId].MissionType == Define.EMissionType.Week);
+
+            foreach (var m in weekMissions)
+            {
+                m.StackedPoint = 0;
+                m.MissionState = EMissionState.Progress;
+                m.GetRewardCount = 0;
+            }
+        }
+        #endregion
+
     }
 }

@@ -85,6 +85,10 @@ namespace GameDB
         /// </summary>
         public DateTime LastMissionTime { get; set; }
         /// <summary>
+        /// 마지막 스태미너를 업데이트 한 시간입니다.
+        /// </summary>
+        public DateTime LastStaminaUpdateTime { get; set; }
+        /// <summary>
         /// 배틀팝업에서 보여줘야 할 마지막 진행 스테이지 입니다.
         /// </summary>
         public int CurrentStage {  get; set; }

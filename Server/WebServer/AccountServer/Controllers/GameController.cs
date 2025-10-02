@@ -37,6 +37,13 @@ namespace AccountServer.Controllers
         }
 
         [HttpPost]
+        [Route("player/timecheck")]
+        public async Task<PlayerTimeCheckRes> PlayerTimeCheck([FromBody] PlayerTimeCheckReq req)
+        {
+            return await _player.PlayerTimeCheck(req);
+        }
+
+        [HttpPost]
         [Route("currency")]
         public async Task<CurrencyAllRes> CurrencyData([FromBody] CurrencyAllReq req)
         {

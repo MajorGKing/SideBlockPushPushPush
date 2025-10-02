@@ -24,9 +24,11 @@ public class GameManager
         _playerData.BGMOn = newData.BGMOn;
         _playerData.EffectSoundOn = newData.EffectSoundOn;
         _playerData.LastMissionTime = newData.LastMissionTime;
+        _playerData.LastStaminaUpdateTime = newData.LastStaminaUpdateTime;
         _playerData.CurrentStage = newData.CurrentStage;
 
         // TODO ILHAK UI정보 갱신하기
+        OnCurrentStageChanged?.Invoke();
     }
 
     #endregion
@@ -973,6 +975,27 @@ public class GameManager
 
     #endregion
 
+    #region WebTime
+    public async UniTask PlayerTimeCheck()
+    {
+        var req = new PlayerTimeCheckReq() { Jwt = Managers.Web.jwt };
+        PlayerTimeCheckRes res = await Managers.Web.SendPostRequestAsync<PlayerTimeCheckRes>("api/game/player/timecheck", req);
+        await UniTask.SwitchToMainThread();
+        if (res.Success)
+        {
+            if(res.PlayerInfo != null)
+            {
+                UpdatePlayerData(res.PlayerInfo.PlayerData);
+            }
+
+            if(res.MissionList != null)
+            {
+                UpdateMission(res.MissionList.Missions);
+            }
+        }
+    }
+    #endregion
+
     string _path;
 
     #region GameData
@@ -1438,16 +1461,16 @@ public class GameManager
 
         // 세이브 파일이 없을 때
         // Mission
-        _gameData.MissionSaves.Clear();
-        foreach (var mission in Managers.Data.MissionDataDic)
-        {
-            _gameData.MissionSaves.Add(mission.Value.TemplateId, new MissionSaveData(mission.Value.TemplateId));
-        }
+        //_gameData.MissionSaves.Clear();
+        //foreach (var mission in Managers.Data.MissionDataDic)
+        //{
+        //    _gameData.MissionSaves.Add(mission.Value.TemplateId, new MissionSaveData(mission.Value.TemplateId));
+        //}
 
-        MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
+        //MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
 
-        _gameData.LastMissionTime = DateTime.Now;
-        Managers.Time.lastMissionTime = _gameData.LastMissionTime;
+        //_gameData.LastMissionTime = DateTime.Now;
+        //Managers.Time.lastMissionTime = _gameData.LastMissionTime;
 
         // Achievement
         _gameData.EventValues = Enumerable.Repeat(0, Enum.GetValues(typeof(Define.EBroadcastEventType)).Length).ToList();
@@ -1524,7 +1547,7 @@ public class GameManager
         //stageTemplateId = _gameData.CurrentStageTemplateId;
 
         // 미션 가져오기
-        MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
+        //MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
 
         // 업적 가져오기
         EventValues = _gameData.EventValues;
@@ -1555,7 +1578,7 @@ public class GameManager
         }
 
 
-        Managers.Time.lastMissionTime = _gameData.LastMissionTime;
+        //Managers.Time.lastMissionTime = _gameData.LastMissionTime;
 
         Debug.Log("Loading Sucess");
         return true;

@@ -96,7 +96,7 @@ public class Managers : MonoBehaviour
             s_instance._sound.Init();
             //s_instance._game.Init();
             s_instance._event.Init();
-            s_instance._time.Init();
+            //s_instance._time.Init();
         }		
 	}
 

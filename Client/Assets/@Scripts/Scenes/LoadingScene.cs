@@ -101,6 +101,10 @@ public class LoadingScene : BaseScene
         }
 
         {
+            await Managers.Game.PlayerTimeCheck();
+        }
+
+        {
             await Managers.Game.UpdateMission();
         }
 
