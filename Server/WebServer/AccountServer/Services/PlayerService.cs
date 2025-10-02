@@ -153,7 +153,7 @@ namespace AccountServer.Services
             bool missionChanged = false;
             bool staminaChanged = false;
 
-            await using var transaction = await _dbContext.Database.BeginTransactionAsync();
+            await using var transaction = await _dbContext.Database.BeginTransactionAsync(System.Data.IsolationLevel.Serializable);
 
             try
             {
@@ -199,33 +199,41 @@ namespace AccountServer.Services
 
                     if (weekResetNeeded)
                         ResetWeekMissions(player);
-
-                    player.LastMissionTime = now;
+                    
                     missionChanged = true;
                 }
+                
 
                 // step3. 스태미너 회복 체크 (3분 단위)
-                if (player.Stamina < Define.MAX_STAMINA)
                 {
-                    int minutesPassed = (int)(now - player.LastStaminaUpdateTime).TotalMinutes;
-                    if (minutesPassed >= 3)
+                    if (player.Stamina == Define.MAX_STAMINA)
                     {
-                        int recoverAmount = minutesPassed / 3;
-                        player.Stamina = Math.Min(Define.MAX_STAMINA, player.Stamina + recoverAmount);
+                        player.LastStaminaUpdateTime = now;
+                    }
+                    else
+                    {
+                        int minutesPassed = (int)(now - player.LastStaminaUpdateTime).TotalMinutes;
+                        if (minutesPassed >= 3)
+                        {
+                            int recoverAmount = minutesPassed / 3;
+                            player.Stamina = Math.Min(Define.MAX_STAMINA, player.Stamina + recoverAmount);
 
-                        // 마지막 회복 시점 갱신
-                        if (player.Stamina >= Define.MAX_STAMINA)
-                            player.LastStaminaUpdateTime = now;
-                        else
-                            player.LastStaminaUpdateTime = player.LastStaminaUpdateTime.AddMinutes(recoverAmount * 3);
+                            // 마지막 회복 시점 갱신
+                            if (player.Stamina < Define.MAX_STAMINA)
+                                player.LastStaminaUpdateTime = player.LastStaminaUpdateTime.AddMinutes(recoverAmount * 3);
 
-                        staminaChanged = true;
+                            staminaChanged = true;
+                        }
                     }
                 }
 
+
+
                 // step4. DB 저장
-                if (missionChanged || staminaChanged)
-                    await _dbContext.SaveChangesAsync();
+                //if (missionChanged || staminaChanged)
+                player.LastMissionTime = now;
+
+                await _dbContext.SaveChangesAsync();
 
                 await transaction.CommitAsync();
 
