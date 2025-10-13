@@ -108,6 +108,9 @@ namespace AccountServer.Services
                 }
             }
 
+            if (await AchievementEventAsyncHandle(jwt, eventType, value, commitChanges))
+                saveNeeded = true;
+
             // Save only if needed and if commitChanges is true
             if (commitChanges && saveNeeded)
                 await _dbContext.SaveChangesAsync();
@@ -357,7 +360,7 @@ namespace AccountServer.Services
             return true;
         }
 
-        public async Task<bool> AchievementCreateAsync(string jwt, int templateId)
+        public async Task<bool> AchievementCreateAsync(string jwt, int templateId, bool commitChanges = true)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
             var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
@@ -375,7 +378,9 @@ namespace AccountServer.Services
             };
 
             player.Achievements.Add(achievement);
-            await _dbContext.SaveChangesAsync();
+            
+            if(commitChanges)
+                await _dbContext.SaveChangesAsync();
 
             return true;
         }
@@ -463,11 +468,11 @@ namespace AccountServer.Services
             }
         }
 
-        public async Task AchievementEventAsyncHandle(string jwt, Define.EBroadcastEventType eventType, int value, bool commitChanges = true)
+        public async Task<bool> AchievementEventAsyncHandle(string jwt, Define.EBroadcastEventType eventType, int value, bool commitChanges = true)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
             var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
-            if (player == null) return;
+            if (player == null) return false;
 
             // Step 0: Get or create AchievementValue row from included navigation property
             var achievementValue = player.AchievementValues;
@@ -475,7 +480,7 @@ namespace AccountServer.Services
             if (achievementValue == null)
             {
                 _logger.LogWarning($"AchievementValue missing for player {player.PlayerDbId}");
-                return;
+                return false;
             }
 
             bool hasProgress = false;
@@ -533,7 +538,7 @@ namespace AccountServer.Services
             if (player.Achievements == null)
             {
                 _logger.LogWarning($"Player {player.PlayerDbId} has no Achievements loaded.");
-                return;
+                return false;
             }
 
             var inProgress = player.Achievements.Where(a => a.MissionState == DbMissionState.Progress).ToList();
@@ -558,6 +563,8 @@ namespace AccountServer.Services
             // Commit changes if requested
             if (hasProgress && commitChanges)
                 await _dbContext.SaveChangesAsync();
+
+            return hasProgress;
         }
 
         public async Task<GetAchievementRewardRes> GetAchievementReward(GetAchievementRewardReq req)
@@ -641,6 +648,10 @@ namespace AccountServer.Services
                 // Step 6. Move achievement to clear list
                 await AchievementRemoveAsync(req.Jwt, req.TemplatedId, false);
                 await AchievementClearCreateAsync(req.Jwt, req.TemplatedId, false);
+
+                // If there is next achievement, add it.
+                if (achievementData.NextAchievementId != 0)
+                    await AchievementCreateAsync(req.Jwt, achievementData.NextAchievementId, false);
 
                 // Step 7. Save and commit
                 await _dbContext.SaveChangesAsync();
