@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Server.Data;
 using DbCurrencyType = GameDB.CurrencyType;
 using CurrencyType = AccountServer.Data.CurrencyType;
+using DbMissionState = GameDB.EMissionState;
+
 
 namespace AccountServer.Services
 {
@@ -13,13 +15,15 @@ namespace AccountServer.Services
         private readonly JwtTokenService _jwt;
         private readonly PlayerService _player;
         IServiceProvider _serviceProvider;
+        private readonly ILogger<QuestService> _logger;
 
-        public QuestService(GameDbContext context, JwtTokenService jwt, PlayerService player, IServiceProvider serviceProvider)
+        public QuestService(GameDbContext context, JwtTokenService jwt, PlayerService player, IServiceProvider serviceProvider, ILogger<QuestService> logger)
         {
             _dbContext = context;
             _jwt = jwt;
             _player = player;
             _serviceProvider = serviceProvider;
+            _logger = logger;
         }
 
         public async Task<bool> MissionCreateAsync(string jwt, int templateId)
@@ -82,7 +86,7 @@ namespace AccountServer.Services
 
             foreach (var mission in player.Missions)
             {
-                if (mission.MissionState != EMissionState.Progress)
+                if (mission.MissionState != DbMissionState.Progress)
                     continue;
 
                 if (!DataManager.MissionDataDic.TryGetValue(mission.TemplateId, out var missionData))
@@ -95,7 +99,7 @@ namespace AccountServer.Services
                     if (mission.StackedPoint >= missionData.MissionCount)
                     {
                         mission.StackedPoint = missionData.MissionCount;
-                        mission.MissionState = EMissionState.Rewardable;
+                        mission.MissionState = DbMissionState.Rewardable;
                     }
 
                     saveNeeded = true;
@@ -300,7 +304,58 @@ namespace AccountServer.Services
                 { Define.EMissionGoal.HeroLevelUp, new() { Define.EBroadcastEventType.HeroLevelUp } },
             };
 
+        private int GetValueByMissionGoal(AchievementValueDb v, Define.EMissionGoal goal)
+        {
+            return goal switch
+            {
+                Define.EMissionGoal.MonsterKill => v.MonsterKill,
+                Define.EMissionGoal.ConsumGold => v.ConsumGold,
+                Define.EMissionGoal.StageClear => v.StageClear,
+                Define.EMissionGoal.CurrencyGacha => v.CurrencyGacha,
+                Define.EMissionGoal.BuddySkillUp => v.BuddySkillUp,
+                Define.EMissionGoal.BuddyLevelUp => v.BuddyLevelUp,
+                Define.EMissionGoal.HeroSkillUp => v.HeroSkillUp,
+                Define.EMissionGoal.HeroLevelUp => v.HeroLevelUp,
+                Define.EMissionGoal.HeroGacha => v.HeroGacha,
+                Define.EMissionGoal.BuddyGacha => v.BuddyGacha,
+                _ => 0,
+            };
+        }
+
+
+
         #endregion
+
+        public async Task<bool> AddNewAchievementsAsync(string jwt)
+        {
+            var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            if (player == null) return false;
+
+            // Step 1. Get all root achievements (TemplateId == OriginalAchievementId)
+            var rootAchievements = DataManager.AchievementDataDic.Values
+                .Where(a => a.TemplateId == a.OriginalAchievementId)
+                .ToList();
+
+            // Step 2. Filter out ones the player already has (either in progress or cleared)
+            var playerSaveIds = player.Achievements.Select(a => a.TemplateId).ToHashSet();
+            var playerClearIds = player.AchievementClearList.Select(c => c.TemplateId).ToHashSet();
+
+            var missing = rootAchievements
+                .Where(a => !playerSaveIds.Contains(a.TemplateId) && !playerClearIds.Contains(a.TemplateId))
+                .ToList();
+
+            // Step 3. Add missing ones
+            if (missing.Count == 0)
+                return true;
+
+            foreach (var data in missing)
+            {
+                await AchievementCreateAsync(jwt, data.TemplateId);    
+            }
+
+            return true;
+        }
 
         public async Task<bool> AchievementCreateAsync(string jwt, int templateId)
         {
@@ -315,8 +370,7 @@ namespace AccountServer.Services
             {
                 TemplateId = templateId,
                 StackedPoint = 0,
-                MissionState = EMissionState.Progress,
-                IsCleared = false,
+                MissionState = DbMissionState.Progress,
                 PlayerDbId = player.PlayerDbId,
             };
 
@@ -326,7 +380,27 @@ namespace AccountServer.Services
             return true;
         }
 
-        public async Task<bool> AchievementClearCreateAsync(string jwt, int templateId)
+        public async Task<bool> AchievementRemoveAsync(string jwt, int templateId, bool commitChanges = true)
+        {
+            var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            if (player == null) return false;
+
+            // Find the achievement in progress
+            var achievement = player.Achievements.FirstOrDefault(a => a.TemplateId == templateId);
+            if (achievement == null) return false;
+
+            // Remove it
+            player.Achievements.Remove(achievement);
+
+            // Save changes
+            if(commitChanges)
+                await _dbContext.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> AchievementClearCreateAsync(string jwt, int templateId, bool commitChanges = true)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
             var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
@@ -341,7 +415,10 @@ namespace AccountServer.Services
             };
 
             player.AchievementClearList.Add(achievementClear);
-            await _dbContext.SaveChangesAsync();
+
+            // Save changes
+            if (commitChanges)
+                await _dbContext.SaveChangesAsync();
 
             return true;
         }
@@ -370,7 +447,6 @@ namespace AccountServer.Services
                         TemplateId = a.TemplateId,
                         StackedPoint = a.StackedPoint,
                         MissionState = a.MissionState,
-                        IsCleared = a.IsCleared
                     })
                     .ToList();
 
@@ -381,6 +457,203 @@ namespace AccountServer.Services
             }
             catch (Exception ex)
             {
+                response.Success = false;
+                response.Message = $"Error: {ex.Message}";
+                return response;
+            }
+        }
+
+        public async Task AchievementEventAsyncHandle(string jwt, Define.EBroadcastEventType eventType, int value, bool commitChanges = true)
+        {
+            var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            if (player == null) return;
+
+            // Step 0: Get or create AchievementValue row from included navigation property
+            var achievementValue = player.AchievementValues;
+
+            if (achievementValue == null)
+            {
+                _logger.LogWarning($"AchievementValue missing for player {player.PlayerDbId}");
+                return;
+            }
+
+            bool hasProgress = false;
+
+
+            // Step 1: Update the value based on event type
+            switch (eventType)
+            {
+                case Define.EBroadcastEventType.KillMonster:
+                    achievementValue.MonsterKill += value;
+                    hasProgress = true;
+                    break;
+                case Define.EBroadcastEventType.UseGold:
+                //case Define.EBroadcastEventType.ChangeGold:
+                    achievementValue.ConsumGold += value;
+                    hasProgress = true;
+                    break;
+                case Define.EBroadcastEventType.StageClear:
+                    achievementValue.StageClear += value; // optional, if needed
+                    hasProgress = true;
+                    break;
+                case Define.EBroadcastEventType.DoCurrencyGacha:
+                    achievementValue.CurrencyGacha += value;
+                    hasProgress = true;
+                    break;
+                case Define.EBroadcastEventType.BuddySkillUp:
+                    achievementValue.BuddySkillUp += value;
+                    hasProgress = true;
+                    break;
+                case Define.EBroadcastEventType.BuddyLevelUp:
+                    achievementValue.BuddyLevelUp += value;
+                    hasProgress = true;
+                    break;
+                case Define.EBroadcastEventType.HeroSkillUp:
+                    achievementValue.HeroSkillUp += value;
+                    hasProgress = true;
+                    break;
+                case Define.EBroadcastEventType.HeroLevelUp:
+                    achievementValue.HeroLevelUp += value;
+                    hasProgress = true;
+                    break;
+                case Define.EBroadcastEventType.DoHeroGacha:
+                    achievementValue.HeroGacha += value;
+                    hasProgress = true;
+                    break;
+                case Define.EBroadcastEventType.DoBuddyGacha:
+                    achievementValue.BuddyGacha += value;
+                    hasProgress = true;
+                    break;
+                default:
+                    break; // do nothing for None or unhandled events
+            }
+
+            // step2 change stage of Achievement
+            if (player.Achievements == null)
+            {
+                _logger.LogWarning($"Player {player.PlayerDbId} has no Achievements loaded.");
+                return;
+            }
+
+            var inProgress = player.Achievements.Where(a => a.MissionState == DbMissionState.Progress).ToList();
+
+            foreach (var save in inProgress)
+            {
+                if (!DataManager.AchievementDataDic.TryGetValue(save.TemplateId, out var data))
+                    continue;
+
+                if (data.AchievementType == Define.EAchievementType.Normal)
+                {
+                    int current = GetValueByMissionGoal(achievementValue, data.MissionGoal);
+
+                    if (current >= data.MissionCount)
+                    {
+                        save.MissionState = DbMissionState.Rewardable;
+                        hasProgress = true;
+                    }
+                }
+            }
+
+            // Commit changes if requested
+            if (hasProgress && commitChanges)
+                await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<GetAchievementRewardRes> GetAchievementReward(GetAchievementRewardReq req)
+        {
+            var response = new GetAchievementRewardRes();
+
+            // Step 0. Start transaction for safety
+            await using var transaction = await _dbContext.Database.BeginTransactionAsync();
+
+            try
+            {
+                // Step 1. Get player info from JWT
+                var accountDbId = _jwt.GetAccountDbIdInJwt(req.Jwt);
+                var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+
+                if (player == null)
+                {
+                    response.Success = false;
+                    response.Message = "Invalid player.";
+                    return response;
+                }
+
+                // Step 2. Find the achievement
+                var achievement = player.Achievements
+                    .FirstOrDefault(a => a.TemplateId == req.TemplatedId);
+
+                if (achievement == null)
+                {
+                    response.Success = false;
+                    response.Message = "Achievement not found.";
+                    return response;
+                }
+
+                // Step 3. Check state
+                if (achievement.MissionState != DbMissionState.Rewardable)
+                {
+                    response.Success = false;
+                    response.Message = "Achievement is not rewardable.";
+                    return response;
+                }
+
+                // Step 4. Get reward data from DataManager
+                if (!DataManager.AchievementDataDic.TryGetValue(req.TemplatedId, out var achievementData))
+                {
+                    response.Success = false;
+                    response.Message = "Achievement data not found.";
+                    return response;
+                }
+
+                var rewards = new List<RewardDTO>();
+
+                rewards.Add(new RewardDTO
+                {
+                    RewardType = achievementData.RewardType,
+                    RewardAmount = achievementData.RewardCount,
+                    IsFirst = false
+                });
+
+                if (rewards.Count == 0)
+                {
+                    response.Success = false;
+                    response.Message = "No rewards configured.";
+                    return response;
+                }
+
+                // Step 5. Give rewards using CurrencyService
+                var currencyService = _serviceProvider.GetRequiredService<CurrencyService>();
+
+                foreach (var reward in rewards)
+                {
+                    await currencyService.UpdatePlayerCurrencyAsync(
+                        new CurrencyAddReq
+                        {
+                            jwt = req.Jwt,
+                            CurrencyType = (CurrencyType)((int)reward.RewardType - 1),
+                            Amount = reward.RewardAmount
+                        },
+                        false);
+                }
+
+                // Step 6. Move achievement to clear list
+                await AchievementRemoveAsync(req.Jwt, req.TemplatedId, false);
+                await AchievementClearCreateAsync(req.Jwt, req.TemplatedId, false);
+
+                // Step 7. Save and commit
+                await _dbContext.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                response.Success = true;
+                response.Rewards = rewards;
+                response.Message = "Achievement reward granted.";
+                return response;
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
                 response.Success = false;
                 response.Message = $"Error: {ex.Message}";
                 return response;

@@ -499,4 +499,17 @@
         public string Message { get; set; } = string.Empty;
         public List<AchievementDTO> Achievements { get; set; } = new List<AchievementDTO>();
     }
+
+    public class GetAchievementRewardReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+        public int TemplatedId { get; set; }
+    }
+
+    public class GetAchievementRewardRes
+    {
+        public bool Success { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public List<RewardDTO> Rewards { get; set; } = new List<RewardDTO>();
+    }
 }

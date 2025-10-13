@@ -33,6 +33,7 @@ namespace AccountServer.Services
                 .Include(p => p.Missions)
                 .Include(p => p.Achievements)
                 .Include(p => p.AchievementClearList)
+                .Include(p => p.AchievementValues)
                 .FirstOrDefaultAsync(p => p.PlayerDbId == accountDbId);
 
             return player;
@@ -93,7 +94,9 @@ namespace AccountServer.Services
                         ScrollGloves = 50,
                         ScrollRing = 50,
                         ScrollWeapon = 50,
-                    }
+                    },
+
+                    AchievementValues = new AchievementValueDb()
                 };
 
                 _dbContext.Players.Add(playerDb);
@@ -125,13 +128,13 @@ namespace AccountServer.Services
                 }
 
                 // 6. 기본 업적 설정
-                foreach (var achievement in DataManager.AchievementDataDic.Values)
-                {
-                    if (achievement.PreviewAchievementId == 0)
-                    {
-                        await questService.AchievementCreateAsync(request.jwt, achievement.TemplateId);
-                    }
-                }
+                await questService.AddNewAchievementsAsync(request.jwt);
+            }
+
+            // 3. PlayerDb에 신규 업적 추가
+            {
+                var questService = _serviceProvider.GetRequiredService<QuestService>();
+                await questService.AddNewAchievementsAsync(request.jwt);
             }
 
             // 4. PlayerDb 객체를 PlayerData DTO로 변환하여 반환합니다.

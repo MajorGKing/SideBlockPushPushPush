@@ -398,12 +398,6 @@ namespace GameDB
         /// </summary>
         public EMissionState MissionState { get; set; }
 
-
-        /// <summary>
-        /// 이 업적이 클리어되었는지 여부입니다.
-        /// </summary>
-        public bool IsCleared { get; set; }
-
         /// <summary>
         /// 이 업적을 소유한 플레이어의 ID. 외래 키(Foreign Key)입니다.
         /// </summary>
