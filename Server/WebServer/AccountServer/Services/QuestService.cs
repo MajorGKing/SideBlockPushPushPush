@@ -25,7 +25,6 @@ namespace AccountServer.Services
         public async Task<bool> MissionCreateAsync(string jwt, int templateId)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
-            // Pass _dbContext to ensure same context
             var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
             if (player == null) return false;
 
@@ -51,7 +50,6 @@ namespace AccountServer.Services
         {
             var response = new GetMissionListRes();
             var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
-            // Pass _dbContext so the loaded player is tracked
             var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
 
             if (player == null)
@@ -77,7 +75,6 @@ namespace AccountServer.Services
         public async Task MissionEventAsncHandle(string jwt, Define.EBroadcastEventType eventType, int value, bool commitChanges = true)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
-            // Pass _dbContext so the loaded player is tracked by the same context
             var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
             if (player == null) return;
 
@@ -287,7 +284,7 @@ namespace AccountServer.Services
             }
         }
 
-
+        #region Helper
         private static readonly Dictionary<Define.EMissionGoal, HashSet<Define.EBroadcastEventType>> MissionGoalEventMap =
             new()
             {
@@ -302,5 +299,92 @@ namespace AccountServer.Services
                 { Define.EMissionGoal.HeroSkillUp, new() { Define.EBroadcastEventType.HeroSkillUp } },
                 { Define.EMissionGoal.HeroLevelUp, new() { Define.EBroadcastEventType.HeroLevelUp } },
             };
+
+        #endregion
+
+        public async Task<bool> AchievementCreateAsync(string jwt, int templateId)
+        {
+            var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            if (player == null) return false;
+
+            if (player.Achievements.Any(m => m.TemplateId == templateId)) return false;
+            if (!DataManager.AchievementDataDic.TryGetValue(templateId, out var missionData)) return false;
+
+            var achievement = new AchievementSaveDataDb
+            {
+                TemplateId = templateId,
+                StackedPoint = 0,
+                MissionState = EMissionState.Progress,
+                IsCleared = false,
+                PlayerDbId = player.PlayerDbId,
+            };
+
+            player.Achievements.Add(achievement);
+            await _dbContext.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> AchievementClearCreateAsync(string jwt, int templateId)
+        {
+            var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            if (player == null) return false;
+
+            if (player.AchievementClearList.Any(m => m.TemplateId == templateId)) return false;
+
+            var achievementClear = new AchievementClearListDb
+            {
+                TemplateId = templateId,
+                PlayerDbId = player.PlayerDbId,
+            };
+
+            player.AchievementClearList.Add(achievementClear);
+            await _dbContext.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<AchievementListRes> AchievementListGetAsync(AchievementListReq request)
+        {
+            var response = new AchievementListRes();
+            try
+            {
+                // 1. accountDbId 추출
+                var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
+
+                // 2. Player 가져오기
+                var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+                if (player == null)
+                {
+                    response.Success = false;
+                    response.Message = "Invalid player.";
+                    return response;
+                }
+
+                // 3. 업적 매핑
+                var achievementList = player.Achievements
+                    .Select(a => new AchievementDTO
+                    {
+                        TemplateId = a.TemplateId,
+                        StackedPoint = a.StackedPoint,
+                        MissionState = a.MissionState,
+                        IsCleared = a.IsCleared
+                    })
+                    .ToList();
+
+                // 4. 응답 구성
+                response.Success = true;
+                response.Achievements = achievementList;
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = $"Error: {ex.Message}";
+                return response;
+            }
+        }
     }
 }

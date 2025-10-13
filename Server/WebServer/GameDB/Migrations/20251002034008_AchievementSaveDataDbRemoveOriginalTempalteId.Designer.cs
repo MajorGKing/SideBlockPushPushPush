@@ -4,6 +4,7 @@ using GameDB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GameDB.Migrations
 {
     [DbContext(typeof(GameDbContext))]
-    partial class GameDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251002034008_AchievementSaveDataDbRemoveOriginalTempalteId")]
+    partial class AchievementSaveDataDbRemoveOriginalTempalteId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,46 +74,6 @@ namespace GameDB.Migrations
                     b.HasIndex("PlayerDbId");
 
                     b.ToTable("AchievementSaveData");
-                });
-
-            modelBuilder.Entity("GameDB.AchievementValueDb", b =>
-                {
-                    b.Property<int>("PlayerDbId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BuddyGacha")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BuddyLevelUp")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BuddySkillUp")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ConsumGold")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CurrencyGacha")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HeroGacha")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HeroLevelUp")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HeroSkillUp")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MonsterKill")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StageClear")
-                        .HasColumnType("int");
-
-                    b.HasKey("PlayerDbId");
-
-                    b.ToTable("AchievementValue");
                 });
 
             modelBuilder.Entity("GameDB.BuddyGachaLogDb", b =>
@@ -459,17 +422,6 @@ namespace GameDB.Migrations
                     b.Navigation("Player");
                 });
 
-            modelBuilder.Entity("GameDB.AchievementValueDb", b =>
-                {
-                    b.HasOne("GameDB.PlayerDb", "Player")
-                        .WithOne("AchievementValues")
-                        .HasForeignKey("GameDB.AchievementValueDb", "PlayerDbId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Player");
-                });
-
             modelBuilder.Entity("GameDB.BuddySaveDataDb", b =>
                 {
                     b.HasOne("GameDB.PlayerDb", "Player")
@@ -528,9 +480,6 @@ namespace GameDB.Migrations
             modelBuilder.Entity("GameDB.PlayerDb", b =>
                 {
                     b.Navigation("AchievementClearList");
-
-                    b.Navigation("AchievementValues")
-                        .IsRequired();
 
                     b.Navigation("Achievements");
 

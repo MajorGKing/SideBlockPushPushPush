@@ -1032,7 +1032,7 @@ public class GameManager
         return AchievementSaveDats.FirstOrDefault(m => m.TemplateId == templateId);
     }
 
-    public int GetAcievemntValue(int templateId)
+    public int GetAcievementValue(int templateId)
     {
         var missionGoal = Managers.Data.AchievementDataDic[templateId].MissionGoal;
 

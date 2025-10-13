@@ -65,7 +65,7 @@ public class UI_NormalArchievementSubItem : UI_SubItem
 
         rewardsSubItem.SetInfo(achievementData.RewardType, achievementData.RewardCount);
 
-        int stackPoint = Managers.Game.GetAcievemntValue(achievmentSaveData.TemplateId);
+        int stackPoint = Managers.Game.GetAcievementValue(achievmentSaveData.TemplateId);
 
         GetText((int)Texts.Text_MissonTitle).text = $"{Managers.GetText(achievementData.NameTextId)}";
         GetText((int)Texts.Text_NormalMissionCount).text = $"{stackPoint:N0}/{achievementData.MissionCount:N0}";

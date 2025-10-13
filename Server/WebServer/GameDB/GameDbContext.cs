@@ -17,6 +17,7 @@ namespace GameDB
         public DbSet<HeroGachaLogDb> HeroGachaLog { get; set; }
         public DbSet<BuddyGachaLogDb> BuddyGachaLog { get; set; }
         public DbSet<CurrencyGachaLogDb> CurrencyGachaLog { get; set; }
+        public DbSet<AchievementValueDb> AchievementValue { get; set; }
 
 
         public GameDbContext()
@@ -88,6 +89,12 @@ namespace GameDB
                 .HasMany(p => p.AchievementClearList)
                 .WithOne(ac => ac.Player)
                 .HasForeignKey(ac => ac.PlayerDbId);
+
+            // PlayerDb와 AchievementValueDb의 1:1 관계 설정
+            builder.Entity<PlayerDb>()
+                .HasOne(p => p.AchievementValues)
+                .WithOne(a => a.Player)
+                .HasForeignKey<AchievementValueDb>(a => a.PlayerDbId);
         }
     }
 }

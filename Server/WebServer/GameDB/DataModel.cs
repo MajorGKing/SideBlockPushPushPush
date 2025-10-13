@@ -129,6 +129,11 @@ namespace GameDB
         /// 플레이어가 이미 클리어한 업적 목록의 컬렉션. AchievementClearListDb 테이블과 1:N 관계를 맺습니다.
         /// </summary>
         public ICollection<AchievementClearListDb> AchievementClearList { get; set; } = new List<AchievementClearListDb>();
+
+        /// <summary>
+        /// 업적 확인을 위한 값 입니다.
+        /// </summary>
+        public AchievementValueDb AchievementValues { get; set; }
     }
 
     /// <summary>
@@ -393,10 +398,6 @@ namespace GameDB
         /// </summary>
         public EMissionState MissionState { get; set; }
 
-        /// <summary>
-        /// 원본 업적의 ID입니다. 연관된 업적이 있을 경우 사용됩니다.
-        /// </summary>
-        public int OriginalTemplateId { get; set; }
 
         /// <summary>
         /// 이 업적이 클리어되었는지 여부입니다.
@@ -569,4 +570,45 @@ namespace GameDB
         /// </summary>
         public long UnixSeconds { get; set; }
     }
+
+    /// <summary>
+    /// 플레이어가 달성한 모든 업적의 진행 값을 한 행에 저장하는 테이블입니다.
+    /// PlayerDb 테이블과 1:1 관계를 맺습니다.
+    /// StageClearAt는 PlayerDb.Stages 컬렉션을 기반으로 조회/계산합니다.
+    /// </summary>
+    [Table("AchievementValue")]
+    public class AchievementValueDb
+    {
+        /// <summary>
+        /// 기본 키이자 PlayerDb의 외래 키(Foreign Key)
+        /// </summary>
+        [Key]
+        [ForeignKey("Player")]
+        public int PlayerDbId { get; set; }
+
+        // MissionGoal 별 컬럼 (StageClearAt 제외)
+        public int MonsterKill { get; set; }
+        public int ConsumGold { get; set; }
+        public int StageClear { get; set; }
+        public int CurrencyGacha { get; set; }
+        public int BuddySkillUp { get; set; }
+        public int BuddyLevelUp { get; set; }
+        public int HeroSkillUp { get; set; }
+        public int HeroLevelUp { get; set; }
+        public int HeroGacha { get; set; }
+        public int BuddyGacha { get; set; }
+
+        /// <summary>
+        /// 이 값을 소유한 플레이어 객체
+        /// </summary>
+        public PlayerDb Player { get; set; }
+
+        /// <summary>
+        /// StageClearAt는 PlayerDb.Stages 컬렉션을 사용해서 계산/조회합니다.
+        /// DB에는 저장하지 않습니다.
+        /// </summary>
+        [NotMapped]
+        public IReadOnlyCollection<StageClearDb> StageClears => Player?.Stages.ToList().AsReadOnly();
+    }
+
 }

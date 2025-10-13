@@ -112,7 +112,7 @@ public class AchievementSaveData
         if (MissionState == Define.EMissionState.Finish)
             return false;
 
-        int stackPoint = Managers.Game.GetAcievemntValue(TemplateId);
+        int stackPoint = Managers.Game.GetAcievementValue(TemplateId);
 
         var achievementData = Managers.Data.AchievementDataDic[TemplateId];
 

@@ -24,13 +24,15 @@ namespace AccountServer.Services
 
         public async Task<PlayerDb> GetPlayerDbFromAccountDbId(int accountDbId)
         {
-            // Player + Heroes + Buddy + Currency + Stage + Mission로드
+            // Player + Heroes + Buddy + Currency + Stage + Mission + Achievement로드
             var player = await _dbContext.Players
                 .Include(p => p.Heroes)
                 .Include(p => p.Buddies)
                 .Include(p => p.Currency)
                 .Include(p => p.Stages)
                 .Include(p => p.Missions)
+                .Include(p => p.Achievements)
+                .Include(p => p.AchievementClearList)
                 .FirstOrDefaultAsync(p => p.PlayerDbId == accountDbId);
 
             return player;
@@ -120,6 +122,15 @@ namespace AccountServer.Services
                 foreach(var mission in DataManager.MissionDataDic.Values)
                 {
                     await questService.MissionCreateAsync(request.jwt, mission.TemplateId);
+                }
+
+                // 6. 기본 업적 설정
+                foreach (var achievement in DataManager.AchievementDataDic.Values)
+                {
+                    if (achievement.PreviewAchievementId == 0)
+                    {
+                        await questService.AchievementCreateAsync(request.jwt, achievement.TemplateId);
+                    }
                 }
             }
 

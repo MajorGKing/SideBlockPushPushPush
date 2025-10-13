@@ -202,5 +202,12 @@ namespace AccountServer.Controllers
         {
             return await _quest.GetMissionReward(req);
         }
+
+        [HttpPost]
+        [Route("achievement/getAchievemntList")]
+        public async Task<AchievementListRes> GetAchievementList([FromBody] AchievementListReq req)
+        {
+            return await _quest.AchievementListGetAsync(req);
+        }
     }
 }

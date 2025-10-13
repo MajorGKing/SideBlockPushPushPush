@@ -479,4 +479,24 @@
         public GetMissionListRes? MissionList { get; set; }
         public PlayerPacketRes? PlayerInfo { get; set; }
     }
+
+    public class AchievementDTO
+    {
+        public int TemplateId { get; set; }
+        public int StackedPoint { get; set; }
+        public EMissionState MissionState { get; set; }
+        public bool IsCleared { get; set; }
+    }
+
+    public class AchievementListReq
+    {
+        public string Jwt { get; set; } = string.Empty;
+    }
+
+    public class AchievementListRes
+    {
+        public bool Success { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public List<AchievementDTO> Achievements { get; set; } = new List<AchievementDTO>();
+    }
 }
