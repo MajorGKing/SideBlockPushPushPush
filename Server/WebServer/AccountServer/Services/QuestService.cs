@@ -5,6 +5,7 @@ using Server.Data;
 using DbCurrencyType = GameDB.CurrencyType;
 using CurrencyType = AccountServer.Data.CurrencyType;
 using DbMissionState = GameDB.EMissionState;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace AccountServer.Services
@@ -392,14 +393,14 @@ namespace AccountServer.Services
             return true;
         }
 
-        public async Task<bool> AchievementCreateAsync(string jwt, int templateId, bool commitChanges = true)
+        public async Task<bool> AchievementCreateAsync(string jwt, int templateId, bool commitChanges = true, bool autoInitializeProgress = false)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
             var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
             if (player == null) return false;
 
             if (player.Achievements.Any(m => m.TemplateId == templateId)) return false;
-            if (!DataManager.AchievementDataDic.TryGetValue(templateId, out var missionData)) return false;
+            if (!DataManager.AchievementDataDic.TryGetValue(templateId, out var data)) return false;
 
             var achievement = new AchievementSaveDataDb
             {
@@ -408,10 +409,22 @@ namespace AccountServer.Services
                 MissionState = DbMissionState.Progress,
                 PlayerDbId = player.PlayerDbId,
             };
-
             player.Achievements.Add(achievement);
-            
-            if(commitChanges)
+
+            if (autoInitializeProgress && data.AchievementType == Define.EAchievementType.Normal)
+            {
+                var achievementValue = player.AchievementValues;
+                int current = data.MissionGoal == Define.EMissionGoal.StageClearAt
+                    ? GetValueByMissionGoalStageClearAt(player.Stages.ToList(), data.MissionCount)
+                    : GetValueByMissionGoal(achievementValue, data.MissionGoal);
+
+                achievement.StackedPoint = current;
+
+                if (current >= data.MissionCount)
+                    achievement.MissionState = DbMissionState.Rewardable;
+            }
+
+            if (commitChanges)
                 await _dbContext.SaveChangesAsync();
 
             return true;
@@ -690,7 +703,9 @@ namespace AccountServer.Services
 
                 // If there is next achievement, add it.
                 if (achievementData.NextAchievementId != 0)
-                    await AchievementCreateAsync(req.Jwt, achievementData.NextAchievementId, false);
+                {
+                    await AchievementCreateAsync(req.Jwt, achievementData.NextAchievementId, false, true);
+                }
 
                 // Step 7. Save and commit
                 await _dbContext.SaveChangesAsync();

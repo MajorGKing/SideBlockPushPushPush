@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine.EventSystems;
 
 public class UI_NormalArchievementSubItem : UI_SubItem
@@ -77,7 +78,8 @@ public class UI_NormalArchievementSubItem : UI_SubItem
     {
         if (GetButton((int)Buttons.Button_Take).interactable)
         {
-            Managers.Game.GetAchievmentReward(achievementData.TemplateId);
+            Managers.Game.GetAchievementReward(achievementData.TemplateId).Forget();
+            GetButton((int)Buttons.Button_Take).interactable = false;
         }
     }
 }

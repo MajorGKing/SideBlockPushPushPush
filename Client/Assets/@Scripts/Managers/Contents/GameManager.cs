@@ -1,9 +1,6 @@
 using Cysharp.Threading.Tasks;
-using Data;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -954,6 +951,8 @@ public class GameManager
                 MissionState = achievement.MissionState,
             });
         }
+
+        Managers.Event.TriggerEvent(Define.EEventType.OnMissionChanged);
     }
 
     public async UniTask ShowAchievementPopup()
@@ -963,6 +962,29 @@ public class GameManager
         var achievment = Managers.UI.ShowPopupUI<UI_AchievementPopup>();
         achievment.SetInfo();
     }
+
+    public async UniTask GetAchievementReward(int templateId)
+    {
+        var req = new GetAchievementRewardReq() { Jwt = Managers.Web.jwt, TemplatedId = templateId };
+
+        GetAchievementRewardRes res = await Managers.Web.SendPostRequestAsync<GetAchievementRewardRes>("api/game/achievement/getAchievementReward", req);
+
+        if (res.Success)
+        {
+            UI_RewardPopup rewardPopup = Managers.UI.ShowPopupUI<UI_RewardPopup>();
+
+            List<Reward> rewards = new List<Reward>();
+            foreach (var reward in res.Rewards)
+            {
+                rewards.Add(new Reward(reward.RewardType, reward.RewardAmount, reward.IsFirst));
+            }
+
+            rewardPopup.SetInfo(Define.ERewardType.Mission, rewards);
+            
+            await UniTask.WhenAll(UpdateAchievement(), UpdateCurrencyAsync());
+        }
+    }
+
     #endregion
 
     #region WebTime
@@ -987,12 +1009,6 @@ public class GameManager
     #endregion
 
     string _path;
-
-    #region GameData
-    private GameData _gameData = new GameData();
-
-
-    #endregion
 
     #region Achievement
     List<int> EventValues;
@@ -1022,62 +1038,62 @@ public class GameManager
     //    return AchievementSaveDats.FirstOrDefault(m => m.TemplateId == templateId);
     //}
 
-    public int GetAcievementValue(int templateId)
-    {
-        var missionGoal = Managers.Data.AchievementDataDic[templateId].MissionGoal;
+    //public int GetAcievementValue(int templateId)
+    //{
+    //    var missionGoal = Managers.Data.AchievementDataDic[templateId].MissionGoal;
 
-        if (missionGoal == Define.EMissionGoal.MonsterKill)
-        {
-            return EventValues[(int)Define.EBroadcastEventType.KillMonster];
-        }
-        else if (missionGoal == Define.EMissionGoal.ConsumGold)
-        {
-            return EventValues[(int)Define.EBroadcastEventType.UseGold];
-        }
-        else if (missionGoal == Define.EMissionGoal.StageClear)
-        {
-            return EventValues[(int)Define.EBroadcastEventType.StageClear];
-        }
-        else if (missionGoal == Define.EMissionGoal.CurrencyGacha)
-        {
-            return EventValues[(int)Define.EBroadcastEventType.DoCurrencyGacha];
-        }
-        else if (missionGoal == Define.EMissionGoal.BuddySkillUp)
-        {
-            return EventValues[(int)Define.EBroadcastEventType.BuddySkillUp];
-        }
-        else if (missionGoal == Define.EMissionGoal.BuddyLevelUp)
-        {
-            return EventValues[(int)Define.EBroadcastEventType.BuddyLevelUp];
-        }
-        else if (missionGoal == Define.EMissionGoal.HeroSkillUp)
-        {
-            return EventValues[(int)Define.EBroadcastEventType.HeroSkillUp];
-        }
-        else if (missionGoal == Define.EMissionGoal.HeroLevelUp)
-        {
-            return EventValues[(int)Define.EBroadcastEventType.HeroLevelUp];
-        }
-        else if (missionGoal == Define.EMissionGoal.StageClearAt)
-        {
-            var stageIndex = Managers.Data.AchievementDataDic[templateId].MissionCount;
+    //    if (missionGoal == Define.EMissionGoal.MonsterKill)
+    //    {
+    //        return EventValues[(int)Define.EBroadcastEventType.KillMonster];
+    //    }
+    //    else if (missionGoal == Define.EMissionGoal.ConsumGold)
+    //    {
+    //        return EventValues[(int)Define.EBroadcastEventType.UseGold];
+    //    }
+    //    else if (missionGoal == Define.EMissionGoal.StageClear)
+    //    {
+    //        return EventValues[(int)Define.EBroadcastEventType.StageClear];
+    //    }
+    //    else if (missionGoal == Define.EMissionGoal.CurrencyGacha)
+    //    {
+    //        return EventValues[(int)Define.EBroadcastEventType.DoCurrencyGacha];
+    //    }
+    //    else if (missionGoal == Define.EMissionGoal.BuddySkillUp)
+    //    {
+    //        return EventValues[(int)Define.EBroadcastEventType.BuddySkillUp];
+    //    }
+    //    else if (missionGoal == Define.EMissionGoal.BuddyLevelUp)
+    //    {
+    //        return EventValues[(int)Define.EBroadcastEventType.BuddyLevelUp];
+    //    }
+    //    else if (missionGoal == Define.EMissionGoal.HeroSkillUp)
+    //    {
+    //        return EventValues[(int)Define.EBroadcastEventType.HeroSkillUp];
+    //    }
+    //    else if (missionGoal == Define.EMissionGoal.HeroLevelUp)
+    //    {
+    //        return EventValues[(int)Define.EBroadcastEventType.HeroLevelUp];
+    //    }
+    //    else if (missionGoal == Define.EMissionGoal.StageClearAt)
+    //    {
+    //        var stageIndex = Managers.Data.AchievementDataDic[templateId].MissionCount;
 
-            if (IsStageClearedAt(stageIndex) == true)
-                return 1;
+    //        if (IsStageClearedAt(stageIndex) == true)
+    //            return 1;
 
-            return 0;
-        }
-        else if (missionGoal == Define.EMissionGoal.HeroGacha)
-        {
-            return EventValues[(int)Define.EBroadcastEventType.DoHeroGacha];
-        }
-        else if (missionGoal == Define.EMissionGoal.BuddyGacha)
-        {
-            return EventValues[(int)Define.EBroadcastEventType.DoBuddyGacha];
-        }
+    //        return 0;
+    //    }
+    //    else if (missionGoal == Define.EMissionGoal.HeroGacha)
+    //    {
+    //        return EventValues[(int)Define.EBroadcastEventType.DoHeroGacha];
+    //    }
+    //    else if (missionGoal == Define.EMissionGoal.BuddyGacha)
+    //    {
+    //        return EventValues[(int)Define.EBroadcastEventType.DoBuddyGacha];
+    //    }
 
-        return 0;
-    }
+    //    return 0;
+    //}
 
     public void OnHandleBroadcastEventValue(Define.EBroadcastEventType eventType, int value)
     {
@@ -1113,258 +1129,9 @@ public class GameManager
         // 업적 다음단계로
         //achievmentSaveData.SetNextAchievment();
 
-        SaveGame();
+        //SaveGame();
         Managers.Event.TriggerEvent(Define.EEventType.OnMissionChanged);
     }
-
-
-    #endregion
-
-    #region Mission
-    public List<MissionSaveData> MissionSaveDatas { get; private set; }
-    public List<MissionData> NormalMissionList => Managers.Data.MissionDataDic.Where(mission => mission.Value.MissionType == Define.EMissionType.Normal).Select(mission => mission.Value).ToList();
-    public List<MissionData> DayMissionList => Managers.Data.MissionDataDic.Where(mission => mission.Value.MissionType == Define.EMissionType.Day).Select(mission => mission.Value).ToList();
-    public List<MissionData> WeekMissionList => Managers.Data.MissionDataDic.Where(mission => mission.Value.MissionType == Define.EMissionType.Week).Select(mission => mission.Value).ToList();
-
-    public void SaveMission(int templateId)
-    {
-        SaveGame();
-    }
-
-    #endregion
-
-    #region Time
-    public void SaveMissionTime(DateTime time)
-    {
-        _gameData.LastMissionTime = time;
-        SaveGame();
-    }
-    #endregion
-
-    #region Stage
-    //private int _stageTemplateId;
-    //public int stageTemplateId
-    //{
-    //    get { return _stageTemplateId; }
-    //    set
-    //    {
-    //        if (value == 0)
-    //            return;
-
-    //        if (_gameData.StageClears.ContainsKey(value) == false || _gameData.StageClears[value].isEnable == false)
-    //        {
-    //            if (Managers.Data.StageDataDic[value].PreviewStageId == 0)
-    //                return;
-
-    //            var prevStage = Managers.Data.StageDataDic[Managers.Data.StageDataDic[value].PreviewStageId];
-
-    //            var message = $"Need to Clear {prevStage.DifficultyLevel} {prevStage.WorldNumber} - {prevStage.StageNumber}";
-
-    //            Managers.UI.ShowToast(message, 1f, Define.EToastColor.Red, Define.EToastPosition.MiddleCenter);
-
-    //            return;
-    //        }
-
-    //        _stageTemplateId = value;
-    //        _gameData.CurrentStageTemplateId = value;
-    //        OnCurrentStageChanged?.Invoke();
-    //        SaveGame();
-    //    }
-    //}
-
-
-    #endregion
-
-    #region StageClear
-    public bool IsStageClearedAt(int templateId)
-    {
-        if (_gameData.StageClears.ContainsKey(templateId) == false)
-            return false;
-
-        return _gameData.StageClears[templateId].isClear;
-    }
-    #endregion
-
-    #region Gacha
-    //public void DoHeroGacha(int count)
-    //{
-    //    // TODO ILHAK price data
-    //    var needDia = 0;
-
-    //    if (count == 1)
-    //    {
-    //        needDia = 110;
-    //    }
-    //    else if (count == 10)
-    //    {
-    //        needDia = 1000;
-    //    }
-
-    //    if (needDia == 0)
-    //        return;
-
-    //    List<Reward> rewards = new List<Reward>();
-    //    System.Random random = new System.Random();
-
-    //    for (int i = 0; i < count; i++)
-    //    {
-    //        int randomNumber = random.Next(Managers.Data.HeroGachaDataDic.First().Value.Max);
-
-    //        foreach (var heroGachaData in Managers.Data.HeroGachaDataDic.Values)
-    //        {
-    //            if (heroGachaData.Percent > randomNumber)
-    //            {
-    //                Debug.Log($"{heroGachaData.CurrencyType} : {heroGachaData.CurrencyCount}");
-    //                rewards.Add(new Reward(heroGachaData.CurrencyType, heroGachaData.CurrencyCount));
-    //                AddCurrency(heroGachaData.CurrencyType, heroGachaData.CurrencyCount);
-    //                break;
-    //            }
-    //        }
-
-    //        var clear = Managers.UI.ShowPopupUI<UI_RewardPopup>();
-
-    //        clear.SetInfo(Define.ERewardType.HeroGacha, rewards);
-    //    }
-
-    //    Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoHeroGacha, count);
-    //}
-
-    //public void DoCurrencyGacha(int count)
-    //{
-    //    // TODO ILHAK price data
-    //    var needGold = 0;
-
-    //    if (count == 1)
-    //    {
-    //        needGold = 100;
-    //    }
-    //    else if (count == 10)
-    //    {
-    //        needGold = 1000;
-    //    }
-    //    else if (count == 100)
-    //    {
-    //        needGold = 10000;
-    //    }
-
-    //    if (needGold == 0)
-    //        return;
-
-    //    List<Reward> rewards = new List<Reward>();
-    //    System.Random random = new System.Random();
-
-    //    for (int i = 0; i < count; i++)
-    //    {
-    //        int randomNumber = random.Next(Managers.Data.CurrencyGachaDataDic.First().Value.Max);
-
-    //        foreach (var currencyGachaData in Managers.Data.CurrencyGachaDataDic.Values)
-    //        {
-    //            if (currencyGachaData.Percent > randomNumber)
-    //            {
-    //                Debug.Log($"{currencyGachaData.CurrencyType} : {currencyGachaData.CurrencyCount}");
-    //                rewards.Add(new Reward(currencyGachaData.CurrencyType, currencyGachaData.CurrencyCount));
-    //                AddCurrency(currencyGachaData.CurrencyType, currencyGachaData.CurrencyCount);
-    //                break;
-    //            }
-    //        }
-
-    //        var clear = Managers.UI.ShowPopupUI<UI_RewardPopup>();
-
-    //        clear.SetInfo(Define.ERewardType.CurrencyGacha, rewards);
-    //    }
-
-    //    Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoCurrencyGacha, count);
-    //}
-
-    //public void DoBuddyGacha(int count)
-    //{
-    //    Debug.Log("Start Buddy Gacha");
-    //    // TODO ILHAK price data
-    //    var needDia = 0;
-
-    //    if (count == 1)
-    //    {
-    //        needDia = 110;
-    //    }
-    //    else if (count == 10)
-    //    {
-    //        needDia = 1000;
-    //    }
-
-    //    if (needDia == 0)
-    //        return;
-
-    //    List<BuddyGacha> gachaResult = new List<BuddyGacha>();
-    //    List<string> buddyNames = new List<string>();
-    //    System.Random random = new System.Random();
-
-    //    for (int i = 0; i < count; i++)
-    //    {
-    //        int randomNumber = random.Next(Managers.Data.BuddyGachaRarityDataDic.First().Value.Max);
-
-    //        Define.ERarityType rarity = Define.ERarityType.None;
-
-    //        foreach (var buddyRarity in Managers.Data.BuddyGachaRarityDataDic.Values)
-    //        {
-    //            if (buddyRarity.Percent > randomNumber)
-    //            {
-    //                // 레어리티 결정됨
-    //                Debug.Log($"{buddyRarity.RarityType} : {buddyRarity.Percent}");
-    //                rarity = buddyRarity.RarityType;
-    //                break;
-    //            }
-    //        }
-
-    //        // 버디 뽑기
-    //        if (rarity == Define.ERarityType.Common)
-    //        {
-    //            int randomBuddyPercent = random.Next(Managers.Data.commonBuddies.Count);
-    //            buddyNames.Add(Managers.Data.BuddyGachaDataDic[Managers.Data.commonBuddies[randomBuddyPercent]].GachaItem);
-    //        }
-    //        else if (rarity == Define.ERarityType.Rare)
-    //        {
-    //            int randomBuddyPercent = random.Next(Managers.Data.rareBuddies.Count);
-    //            buddyNames.Add(Managers.Data.BuddyGachaDataDic[Managers.Data.rareBuddies[randomBuddyPercent]].GachaItem);
-    //        }
-    //        else if (rarity == Define.ERarityType.Epic)
-    //        {
-    //            int randomBuddyPercent = random.Next(Managers.Data.epicBuddies.Count);
-    //            buddyNames.Add(Managers.Data.BuddyGachaDataDic[Managers.Data.epicBuddies[randomBuddyPercent]].GachaItem);
-    //        }
-    //        else if (rarity == Define.ERarityType.Unique)
-    //        {
-    //            int randomBuddyPercent = random.Next(Managers.Data.uniqueBuddies.Count);
-    //            buddyNames.Add(Managers.Data.BuddyGachaDataDic[Managers.Data.uniqueBuddies[randomBuddyPercent]].GachaItem);
-    //        }
-    //        else if (rarity == Define.ERarityType.Legend)
-    //        {
-    //            int randomBuddyPercent = random.Next(Managers.Data.legendBuddies.Count);
-    //            buddyNames.Add(Managers.Data.BuddyGachaDataDic[Managers.Data.legendBuddies[randomBuddyPercent]].GachaItem);
-    //        }
-    //    }
-
-    //    // 버디 중복 체크
-    //    foreach (var buddyName in buddyNames)
-    //    {
-    //        var buddyData = Managers.Data.BuddyDataDic[Managers.Data.BuddyGachaDataDic[buddyName].BuddyTemplateId];
-    //        if (GetBuddySaveData(buddyData.TemplateId) == null)
-    //        {
-    //            gachaResult.Add(new BuddyGacha(buddyName, false));
-    //            AddBuddySaveData(new BuddySaveData(buddyData.TemplateId, null, false));
-    //        }
-    //        else
-    //        {
-    //            gachaResult.Add(new BuddyGacha(buddyName, true));
-    //            AddCurrency(Managers.Data.BuddyGachaDataDic[buddyName].CurrencyType, Managers.Data.BuddyGachaDataDic[buddyName].CurrencyCount);
-    //        }
-    //    }
-
-    //    var result = Managers.UI.ShowPopupUI<UI_BuddyGachaPopup>();
-    //    result.SetInfo(gachaResult);
-
-    //    Managers.Event.BroadcastMissionEvent(Define.EBroadcastEventType.DoBuddyGacha, count);
-    //}
-
     #endregion
 
     #region Action
@@ -1442,55 +1209,6 @@ public class GameManager
 
         OnNowBuddyChanged -= () => UpdateCurrencyAsync().Forget();
         OnNowBuddyChanged += () => UpdateCurrencyAsync().Forget();
-
-
-        //_path = Application.persistentDataPath + "/SaveData.json";
-
-        //if (LoadGame())
-        //    return;
-
-        //// 세이브 파일이 없을 때
-        //// Mission
-        ////_gameData.MissionSaves.Clear();
-        ////foreach (var mission in Managers.Data.MissionDataDic)
-        ////{
-        ////    _gameData.MissionSaves.Add(mission.Value.TemplateId, new MissionSaveData(mission.Value.TemplateId));
-        ////}
-
-        ////MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
-
-        ////_gameData.LastMissionTime = DateTime.Now;
-        ////Managers.Time.lastMissionTime = _gameData.LastMissionTime;
-
-        //// Achievement
-        //_gameData.EventValues = Enumerable.Repeat(0, Enum.GetValues(typeof(Define.EBroadcastEventType)).Length).ToList();
-        //_gameData.AchievementClearList = new HashSet<int>();
-        //_gameData.AchievementSaveDatas = new List<AchievementSaveData>();
-
-        //var sameOriginalAndTemplateIdList = Managers.Data.AchievementDataDic.Values
-        //    .Where(data => data.OriginalAchievementId == data.TemplateId)
-        //    .ToList();
-
-        //var previewIdZeroList = sameOriginalAndTemplateIdList
-        //    .Where(data => data.PreviewAchievementId == 0)
-        //    .ToList();
-
-        //foreach (var previewId in previewIdZeroList)
-        //{
-        //    _gameData.AchievementSaveDatas.Add(new AchievementSaveData(previewId.TemplateId));
-        //}
-
-        //EventValues = _gameData.EventValues;
-        //AchievementClearList = _gameData.AchievementClearList;
-        ////AchievementSaveDats = _gameData.AchievementSaveDatas;
-
-        
-
-
-        //PlayerPrefs.SetInt("ISFIRST", 0);
-        //PlayerPrefs.Save();
-
-        //stageTemplateId = _gameData.CurrentStageTemplateId;
     }
 
     public void Update()
@@ -1504,74 +1222,4 @@ public class GameManager
         // 입력 처리
         UpdateInput();
     }
-
-    #region SaveLoad
-    public void SaveGame()
-    {
-        string jsonStr = JsonConvert.SerializeObject(_gameData);
-        File.WriteAllText(_path, jsonStr);
-
-        Debug.Log("Save Sucess");
-    }
-
-    public bool LoadGame()
-    {
-        //if (PlayerPrefs.GetInt("ISFIRST", 1) == 1)
-        //{
-        //    string path = Application.persistentDataPath + "/SaveData.json";
-        //    if (File.Exists(path))
-        //        File.Delete(path);
-        //    return false;
-        //}
-
-        //if (File.Exists(_path) == false)
-        //    return false;
-
-        //string fileStr = File.ReadAllText(_path);
-        //GameData data = JsonConvert.DeserializeObject<GameData>(fileStr);
-        //if (data != null)
-        //    _gameData = data;
-
-        //IsLoaded = true;
-
-        //stageTemplateId = _gameData.CurrentStageTemplateId;
-
-        // 미션 가져오기
-        //MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
-
-        //// 업적 가져오기
-        //EventValues = _gameData.EventValues;
-        //AchievementClearList = _gameData.AchievementClearList;
-        ////AchievementSaveDats = _gameData.AchievementSaveDatas;
-
-        //// 신규 업적 추가
-        //{
-        //    var filteredList = Managers.Data.AchievementDataDic.Values
-        //        .Where(data => data.OriginalAchievementId == data.TemplateId && data.PreviewAchievementId == 0)
-        //        .ToList();
-
-        //    var unclearedList = filteredList
-        //        .Where(data => AchievementClearList.Contains(data.TemplateId) == false)
-        //        .ToList();
-
-        //    foreach (var uncleared in unclearedList)
-        //    {
-        //        // 이미 있다면 추가할 필요가 없으니 체크
-        //        bool alreadyExists = AchievementSaveDats.Any(save => save.TemplateId == uncleared.TemplateId);
-        //        if (alreadyExists == false)
-        //        {
-        //            //AchievementSaveDats.Add(new AchievementSaveData(uncleared.TemplateId));
-        //        }
-        //    }
-
-        //    SaveGame();
-        //}
-
-
-        //Managers.Time.lastMissionTime = _gameData.LastMissionTime;
-
-        Debug.Log("Loading Sucess");
-        return true;
-    }
-    #endregion
 }

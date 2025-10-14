@@ -28,14 +28,11 @@ public class EventManager
 
 	public void Init()
 	{
-		OnBroadcastMissionEvent -= OnHandleBroadcastMissionEvent;
-		OnBroadcastMissionEvent += OnHandleBroadcastMissionEvent;
     }
 
 	public void Clear()
 	{
 		_events.Clear();
-        OnBroadcastMissionEvent -= OnHandleBroadcastMissionEvent;
     }
 
 	public void BroadcastMissionEvent(Define.EBroadcastEventType eventType, int value)
@@ -43,16 +40,4 @@ public class EventManager
 		UnityEngine.Debug.Log($"{eventType} : {value}");
         OnBroadcastMissionEvent?.Invoke(eventType, value);
     }
-
-    void OnHandleBroadcastMissionEvent(Define.EBroadcastEventType eventType, int value)
-    {
-        foreach (var mission in Managers.Game.MissionSaveDatas)
-        {
-            if (mission.MissionState == Define.EMissionState.Progress)
-                mission.OnHandleBroadcastMissionEvent(eventType, value);
-        }
-
-		Managers.Game.OnHandleBroadcastEventValue(eventType, value);
-    }
-
 }
