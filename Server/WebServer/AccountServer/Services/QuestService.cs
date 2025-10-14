@@ -325,6 +325,38 @@ namespace AccountServer.Services
             };
         }
 
+        private bool CompareEventTypeAndMissionGoal(Define.EBroadcastEventType eventType, Define.EMissionGoal goal)
+        {
+            return (eventType, goal) switch
+            {
+                (Define.EBroadcastEventType.ChangeGold, Define.EMissionGoal.ConsumGold) => true,
+                (Define.EBroadcastEventType.UseGold, Define.EMissionGoal.ConsumGold) => true,
+                (Define.EBroadcastEventType.KillMonster, Define.EMissionGoal.MonsterKill) => true,
+                (Define.EBroadcastEventType.StageClear, Define.EMissionGoal.StageClear) => true,
+                (Define.EBroadcastEventType.StageClear, Define.EMissionGoal.StageClearAt) => true,
+                (Define.EBroadcastEventType.BuddySkillUp, Define.EMissionGoal.BuddySkillUp) => true,
+                (Define.EBroadcastEventType.BuddyLevelUp, Define.EMissionGoal.BuddyLevelUp) => true,
+                (Define.EBroadcastEventType.HeroSkillUp, Define.EMissionGoal.HeroSkillUp) => true,
+                (Define.EBroadcastEventType.HeroLevelUp, Define.EMissionGoal.HeroLevelUp) => true,
+                (Define.EBroadcastEventType.DoCurrencyGacha, Define.EMissionGoal.CurrencyGacha) => true,
+                (Define.EBroadcastEventType.DoHeroGacha, Define.EMissionGoal.HeroGacha) => true,
+                (Define.EBroadcastEventType.DoBuddyGacha, Define.EMissionGoal.BuddyGacha) => true,
+                _ => false
+            };
+        }
+
+        private int GetValueByMissionGoalStageClearAt(List<StageClearDb> stages, int templateId)
+        {
+            if (stages == null || stages.Count == 0)
+                return 0;
+
+            var stage = stages.FirstOrDefault(s => s.TemplateId == templateId);
+            if (stage != null && stage.isClear)
+                return 1;
+
+            return 0;
+        }
+
 
 
         #endregion
@@ -499,7 +531,7 @@ namespace AccountServer.Services
                     hasProgress = true;
                     break;
                 case Define.EBroadcastEventType.StageClear:
-                    achievementValue.StageClear += value; // optional, if needed
+                    achievementValue.StageClear += value;
                     hasProgress = true;
                     break;
                 case Define.EBroadcastEventType.DoCurrencyGacha:
@@ -541,21 +573,28 @@ namespace AccountServer.Services
                 return false;
             }
 
-            var inProgress = player.Achievements.Where(a => a.MissionState == DbMissionState.Progress).ToList();
-
-            foreach (var save in inProgress)
+            foreach (var save in player.Achievements)
             {
                 if (!DataManager.AchievementDataDic.TryGetValue(save.TemplateId, out var data))
                     continue;
 
+                // Only update if the event matches the mission goal
+                if (CompareEventTypeAndMissionGoal(eventType, data.MissionGoal) == false)
+                    continue;
+
+                hasProgress = true;
+
                 if (data.AchievementType == Define.EAchievementType.Normal)
                 {
-                    int current = GetValueByMissionGoal(achievementValue, data.MissionGoal);
+                    int current = data.MissionGoal == Define.EMissionGoal.StageClearAt
+                        ? GetValueByMissionGoalStageClearAt(player.Stages.ToList(), data.MissionCount)
+                        : GetValueByMissionGoal(achievementValue, data.MissionGoal);
 
-                    if (current >= data.MissionCount)
+                    save.StackedPoint = current;
+
+                    if (save.MissionState == DbMissionState.Progress && current >= data.MissionCount)
                     {
                         save.MissionState = DbMissionState.Rewardable;
-                        hasProgress = true;
                     }
                 }
             }

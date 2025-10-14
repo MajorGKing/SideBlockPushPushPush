@@ -22,7 +22,7 @@ public class UI_NormalArchievementSubItem : UI_SubItem
         Slider_NormalMission,
     }
 
-    private AchievementSaveData achievmentSaveData;
+    private WebPacket.AchievementDTO achievmentSaveData;
     private Data.AchievementData achievementData;
 
     private UI_RewardsSubItem rewardsSubItem;
@@ -65,19 +65,12 @@ public class UI_NormalArchievementSubItem : UI_SubItem
 
         rewardsSubItem.SetInfo(achievementData.RewardType, achievementData.RewardCount);
 
-        int stackPoint = Managers.Game.GetAcievementValue(achievmentSaveData.TemplateId);
+        int stackPoint = achievmentSaveData.StackedPoint;
 
         GetText((int)Texts.Text_MissonTitle).text = $"{Managers.GetText(achievementData.NameTextId)}";
         GetText((int)Texts.Text_NormalMissionCount).text = $"{stackPoint:N0}/{achievementData.MissionCount:N0}";
         GetSlider((int)Sliders.Slider_NormalMission).value = (float)stackPoint / achievementData.MissionCount;
-        GetButton((int)Buttons.Button_Take).interactable = achievmentSaveData.CheckRewardAble();
-
-        if (achievementData.MissionGoal == Define.EMissionGoal.StageClearAt)
-        {
-            GetText((int)Texts.Text_NormalMissionCount).text = $"{stackPoint:N0}/{1:N0}";
-            GetSlider((int)Sliders.Slider_NormalMission).value = (float)stackPoint / 1;
-            GetButton((int)Buttons.Button_Take).interactable = achievmentSaveData.CheckRewardAble();
-        }
+        GetButton((int)Buttons.Button_Take).interactable = achievmentSaveData.MissionState == Define.EMissionState.Rewardable;
     }
 
     private void OnTakeButtonClick(PointerEventData data)

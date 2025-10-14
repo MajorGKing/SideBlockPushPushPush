@@ -108,6 +108,10 @@ public class LoadingScene : BaseScene
             await Managers.Game.UpdateMission();
         }
 
+        {
+            await Managers.Game.UpdateAchievement();
+        }
+
         // 2. Proceed to next scene
         _nextSceneType = Managers.Scene.NextSceneType;
 

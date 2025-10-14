@@ -91,9 +91,7 @@ public class UI_BattlePopup : UI_Popup
     private void OnClickAchievementButton(PointerEventData evt)
     {
         Managers.Sound.PlayButtonClick();
-
-        var achievment = Managers.UI.ShowPopupUI<UI_AchievementPopup>();
-        achievment.SetInfo();
+        Managers.Game.ShowAchievementPopup().Forget();
     }
 
     private void RefreshUI()

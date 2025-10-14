@@ -204,17 +204,17 @@ namespace AccountServer.Controllers
         }
 
         [HttpPost]
-        [Route("achievement/getAchievemntList")]
+        [Route("achievement/getAchievementList")]
         public async Task<AchievementListRes> GetAchievementList([FromBody] AchievementListReq req)
         {
             return await _quest.AchievementListGetAsync(req);
         }
 
         [HttpPost]
-        [Route("achievement/getAchievemntReward")]
-        public async Task<GetAchievementRewardRes> GetAchievementList([FromBody] GetAchievementRewardReq req)
+        [Route("achievement/getAchievementReward")]
+        public async Task<GetAchievementRewardRes> GetAchievementReward([FromBody] GetAchievementRewardReq req)
         {
-            return await _quest.AchievementListGetAsync(req);
+            return await _quest.GetAchievementReward(req);
         }
     }
 }

@@ -889,40 +889,6 @@ public class GameManager
         {
             UpdateMission(res.Missions);
         }
-
-        //var missionSavewData = GetMissionData(templateId);
-
-        //if (missionSavewData == null)
-        //    return;
-
-        //if (missionSavewData.MissionState != Define.EMissionState.Rewardable)
-        //    return;
-
-        //int point = Managers.Data.MissionDataDic[templateId].Point;
-
-        //int dayIndex = Managers.Data.MissionDataDic.Values.FirstOrDefault(m => m.MissionType == Define.EMissionType.Day).TemplateId;
-        //var dayMissionSaveData = GetMissionData(dayIndex);
-        //dayMissionSaveData.StackedPoint += point;
-
-        //if (dayMissionSaveData.StackedPoint > Managers.Data.MissionDataDic[dayIndex].MaxPoint)
-        //{
-        //    dayMissionSaveData.StackedPoint = Managers.Data.MissionDataDic[dayIndex].MaxPoint;
-        //}
-
-        //int weekIndex = Managers.Data.MissionDataDic.Values.FirstOrDefault(m => m.MissionType == Define.EMissionType.Week).TemplateId;
-        //var weekMissionSaveData = GetMissionData(weekIndex);
-        //weekMissionSaveData.StackedPoint += point;
-
-        //if (weekMissionSaveData.StackedPoint > Managers.Data.MissionDataDic[weekIndex].MaxPoint)
-        //{
-        //    weekMissionSaveData.StackedPoint = Managers.Data.MissionDataDic[weekIndex].MaxPoint;
-        //}
-
-        //missionSavewData.MissionState = Define.EMissionState.Finish;
-
-        //Managers.Event.TriggerEvent(Define.EEventType.OnMissionChanged);
-
-        //SaveGame();
     }
 
     public async UniTask GetMissionReward(int templateId)
@@ -946,33 +912,57 @@ public class GameManager
             await UniTask.WhenAll(UpdateMission(), UpdateCurrencyAsync());
         }
 
-        //var missionSavewData = GetMissionData(templateId);
-        //var missionData = Managers.Data.MissionDataDic[templateId];
+    }
+    #endregion
 
-        //if (missionSavewData == null)
-        //    return;
-
-        //List<Reward> rewardList = new List<Reward>();
-        //for (int index = 0; index < missionSavewData.PointStepMissionState.Count; index++)
-        //{
-        //    if (missionSavewData.StackedPoint >= missionData.RewardCurrencies[index].point && missionSavewData.PointStepMissionState[index] == Define.EMissionState.Progress)
-        //    {
-        //        missionSavewData.PointStepMissionState[index] = Define.EMissionState.Finish;
-        //        rewardList.Add(new Reward(missionData.RewardCurrencies[index].currencyType, missionData.RewardCurrencies[index].count));
-        //    }
-        //}
-
-        //if (rewardList.Count == 0)
-        //    return;
-
-        //UI_RewardPopup rewardPopup = Managers.UI.ShowPopupUI<UI_RewardPopup>();
-        //rewardPopup.SetInfo(Define.ERewardType.Mission, rewardList);
-
-        //SaveGame();
-        //Managers.Event.TriggerEvent(Define.EEventType.OnMissionChanged);
+    #region WebAchievement
+    private List<AchievementDTO> _AchievementSaveDats = new List<AchievementDTO>();
+    public List<AchievementDTO> AchievementSaveDats
+    {
+        get
+        {
+            return _AchievementSaveDats
+            .OrderByDescending(data => data.MissionState == Define.EMissionState.Rewardable)
+            //.ThenBy(data => data.TemplateId) // 필요 시 TemplateId 기준 2차 정렬
+            .ToList();
+        }
+    }
+    public AchievementDTO GetAchievmentSaveData(int templateId)
+    {
+        return AchievementSaveDats.FirstOrDefault(m => m.TemplateId == templateId);
     }
 
+    public async UniTask UpdateAchievement()
+    {
+        var req = new AchievementListReq() { Jwt = Managers.Web.jwt };
 
+        AchievementListRes res = await Managers.Web.SendPostRequestAsync<AchievementListRes>("api/game/achievement/getAchievementList", req);
+
+        if(res.Success == false)
+        {
+            Debug.LogError(res.Message);
+            return;
+        }
+
+        _AchievementSaveDats.Clear();
+        foreach(var achievement in res.Achievements)
+        {
+            _AchievementSaveDats.Add(new AchievementDTO
+            {
+                TemplateId = achievement.TemplateId,
+                StackedPoint = achievement.StackedPoint,
+                MissionState = achievement.MissionState,
+            });
+        }
+    }
+
+    public async UniTask ShowAchievementPopup()
+    {
+        await UpdateAchievement();
+
+        var achievment = Managers.UI.ShowPopupUI<UI_AchievementPopup>();
+        achievment.SetInfo();
+    }
     #endregion
 
     #region WebTime
@@ -1007,30 +997,30 @@ public class GameManager
     #region Achievement
     List<int> EventValues;
     public HashSet<int> AchievementClearList;
-    private List<AchievementSaveData> _AchievementSaveDats;
-    public List<AchievementSaveData> AchievementSaveDats
-    {
-        get
-        {
-            foreach (var achievement in _AchievementSaveDats)
-            {
-                achievement.CheckRewardAble();
-            }
+    //private List<AchievementSaveData> _AchievementSaveDats;
+    //public List<AchievementSaveData> AchievementSaveDats
+    //{
+    //    get
+    //    {
+    //        foreach (var achievement in _AchievementSaveDats)
+    //        {
+    //            achievement.CheckRewardAble();
+    //        }
 
-            return _AchievementSaveDats
-            .OrderByDescending(data => data.MissionState == Define.EMissionState.Rewardable)
-            //.ThenBy(data => data.TemplateId) // 필요 시 TemplateId 기준 2차 정렬
-            .ToList();
-        }
-        set
-        {
-            _AchievementSaveDats = value;
-        }
-    }
-    public AchievementSaveData GetAchievmentSaveData(int templateId)
-    {
-        return AchievementSaveDats.FirstOrDefault(m => m.TemplateId == templateId);
-    }
+    //        return _AchievementSaveDats
+    //        .OrderByDescending(data => data.MissionState == Define.EMissionState.Rewardable)
+    //        //.ThenBy(data => data.TemplateId) // 필요 시 TemplateId 기준 2차 정렬
+    //        .ToList();
+    //    }
+    //    set
+    //    {
+    //        _AchievementSaveDats = value;
+    //    }
+    //}
+    //public AchievementSaveData GetAchievmentSaveData(int templateId)
+    //{
+    //    return AchievementSaveDats.FirstOrDefault(m => m.TemplateId == templateId);
+    //}
 
     public int GetAcievementValue(int templateId)
     {
@@ -1121,7 +1111,7 @@ public class GameManager
         AchievementClearList.Add(templateId);
 
         // 업적 다음단계로
-        achievmentSaveData.SetNextAchievment();
+        //achievmentSaveData.SetNextAchievment();
 
         SaveGame();
         Managers.Event.TriggerEvent(Define.EEventType.OnMissionChanged);
@@ -1454,50 +1444,50 @@ public class GameManager
         OnNowBuddyChanged += () => UpdateCurrencyAsync().Forget();
 
 
-        _path = Application.persistentDataPath + "/SaveData.json";
+        //_path = Application.persistentDataPath + "/SaveData.json";
 
-        if (LoadGame())
-            return;
+        //if (LoadGame())
+        //    return;
 
-        // 세이브 파일이 없을 때
-        // Mission
-        //_gameData.MissionSaves.Clear();
-        //foreach (var mission in Managers.Data.MissionDataDic)
+        //// 세이브 파일이 없을 때
+        //// Mission
+        ////_gameData.MissionSaves.Clear();
+        ////foreach (var mission in Managers.Data.MissionDataDic)
+        ////{
+        ////    _gameData.MissionSaves.Add(mission.Value.TemplateId, new MissionSaveData(mission.Value.TemplateId));
+        ////}
+
+        ////MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
+
+        ////_gameData.LastMissionTime = DateTime.Now;
+        ////Managers.Time.lastMissionTime = _gameData.LastMissionTime;
+
+        //// Achievement
+        //_gameData.EventValues = Enumerable.Repeat(0, Enum.GetValues(typeof(Define.EBroadcastEventType)).Length).ToList();
+        //_gameData.AchievementClearList = new HashSet<int>();
+        //_gameData.AchievementSaveDatas = new List<AchievementSaveData>();
+
+        //var sameOriginalAndTemplateIdList = Managers.Data.AchievementDataDic.Values
+        //    .Where(data => data.OriginalAchievementId == data.TemplateId)
+        //    .ToList();
+
+        //var previewIdZeroList = sameOriginalAndTemplateIdList
+        //    .Where(data => data.PreviewAchievementId == 0)
+        //    .ToList();
+
+        //foreach (var previewId in previewIdZeroList)
         //{
-        //    _gameData.MissionSaves.Add(mission.Value.TemplateId, new MissionSaveData(mission.Value.TemplateId));
+        //    _gameData.AchievementSaveDatas.Add(new AchievementSaveData(previewId.TemplateId));
         //}
 
-        //MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
-
-        //_gameData.LastMissionTime = DateTime.Now;
-        //Managers.Time.lastMissionTime = _gameData.LastMissionTime;
-
-        // Achievement
-        _gameData.EventValues = Enumerable.Repeat(0, Enum.GetValues(typeof(Define.EBroadcastEventType)).Length).ToList();
-        _gameData.AchievementClearList = new HashSet<int>();
-        _gameData.AchievementSaveDatas = new List<AchievementSaveData>();
-
-        var sameOriginalAndTemplateIdList = Managers.Data.AchievementDataDic.Values
-            .Where(data => data.OriginalAchievementId == data.TemplateId)
-            .ToList();
-
-        var previewIdZeroList = sameOriginalAndTemplateIdList
-            .Where(data => data.PreviewAchievementId == 0)
-            .ToList();
-
-        foreach (var previewId in previewIdZeroList)
-        {
-            _gameData.AchievementSaveDatas.Add(new AchievementSaveData(previewId.TemplateId));
-        }
-
-        EventValues = _gameData.EventValues;
-        AchievementClearList = _gameData.AchievementClearList;
-        AchievementSaveDats = _gameData.AchievementSaveDatas;
+        //EventValues = _gameData.EventValues;
+        //AchievementClearList = _gameData.AchievementClearList;
+        ////AchievementSaveDats = _gameData.AchievementSaveDatas;
 
         
 
 
-        PlayerPrefs.SetInt("ISFIRST", 0);
+        //PlayerPrefs.SetInt("ISFIRST", 0);
         //PlayerPrefs.Save();
 
         //stageTemplateId = _gameData.CurrentStageTemplateId;
@@ -1526,21 +1516,21 @@ public class GameManager
 
     public bool LoadGame()
     {
-        if (PlayerPrefs.GetInt("ISFIRST", 1) == 1)
-        {
-            string path = Application.persistentDataPath + "/SaveData.json";
-            if (File.Exists(path))
-                File.Delete(path);
-            return false;
-        }
+        //if (PlayerPrefs.GetInt("ISFIRST", 1) == 1)
+        //{
+        //    string path = Application.persistentDataPath + "/SaveData.json";
+        //    if (File.Exists(path))
+        //        File.Delete(path);
+        //    return false;
+        //}
 
-        if (File.Exists(_path) == false)
-            return false;
+        //if (File.Exists(_path) == false)
+        //    return false;
 
-        string fileStr = File.ReadAllText(_path);
-        GameData data = JsonConvert.DeserializeObject<GameData>(fileStr);
-        if (data != null)
-            _gameData = data;
+        //string fileStr = File.ReadAllText(_path);
+        //GameData data = JsonConvert.DeserializeObject<GameData>(fileStr);
+        //if (data != null)
+        //    _gameData = data;
 
         //IsLoaded = true;
 
@@ -1549,33 +1539,33 @@ public class GameManager
         // 미션 가져오기
         //MissionSaveDatas = _gameData.MissionSaves.Values.ToList();
 
-        // 업적 가져오기
-        EventValues = _gameData.EventValues;
-        AchievementClearList = _gameData.AchievementClearList;
-        AchievementSaveDats = _gameData.AchievementSaveDatas;
+        //// 업적 가져오기
+        //EventValues = _gameData.EventValues;
+        //AchievementClearList = _gameData.AchievementClearList;
+        ////AchievementSaveDats = _gameData.AchievementSaveDatas;
 
-        // 신규 업적 추가
-        {
-            var filteredList = Managers.Data.AchievementDataDic.Values
-                .Where(data => data.OriginalAchievementId == data.TemplateId && data.PreviewAchievementId == 0)
-                .ToList();
+        //// 신규 업적 추가
+        //{
+        //    var filteredList = Managers.Data.AchievementDataDic.Values
+        //        .Where(data => data.OriginalAchievementId == data.TemplateId && data.PreviewAchievementId == 0)
+        //        .ToList();
 
-            var unclearedList = filteredList
-                .Where(data => AchievementClearList.Contains(data.TemplateId) == false)
-                .ToList();
+        //    var unclearedList = filteredList
+        //        .Where(data => AchievementClearList.Contains(data.TemplateId) == false)
+        //        .ToList();
 
-            foreach (var uncleared in unclearedList)
-            {
-                // 이미 있다면 추가할 필요가 없으니 체크
-                bool alreadyExists = AchievementSaveDats.Any(save => save.TemplateId == uncleared.TemplateId);
-                if (alreadyExists == false)
-                {
-                    AchievementSaveDats.Add(new AchievementSaveData(uncleared.TemplateId));
-                }
-            }
+        //    foreach (var uncleared in unclearedList)
+        //    {
+        //        // 이미 있다면 추가할 필요가 없으니 체크
+        //        bool alreadyExists = AchievementSaveDats.Any(save => save.TemplateId == uncleared.TemplateId);
+        //        if (alreadyExists == false)
+        //        {
+        //            //AchievementSaveDats.Add(new AchievementSaveData(uncleared.TemplateId));
+        //        }
+        //    }
 
-            SaveGame();
-        }
+        //    SaveGame();
+        //}
 
 
         //Managers.Time.lastMissionTime = _gameData.LastMissionTime;

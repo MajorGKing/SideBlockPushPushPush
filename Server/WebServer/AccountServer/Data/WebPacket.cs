@@ -485,7 +485,6 @@
         public int TemplateId { get; set; }
         public int StackedPoint { get; set; }
         public EMissionState MissionState { get; set; }
-        public bool IsCleared { get; set; }
     }
 
     public class AchievementListReq
