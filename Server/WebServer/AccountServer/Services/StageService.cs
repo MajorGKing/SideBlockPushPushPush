@@ -27,7 +27,7 @@ namespace AccountServer.Services
         public async Task<bool> StageCreateAsync(string jwt, int templateId, bool commitChanges = true)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Stages);
 
             if (player == null)
             {
@@ -65,7 +65,7 @@ namespace AccountServer.Services
         public async Task<StageClearListRes> StageListGetAsync(StageClearListReq request)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Stages, true);
 
             if (player == null)
             {
@@ -96,7 +96,7 @@ namespace AccountServer.Services
 
             // Step 1: Validate player
             var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.None, true);
             if (player == null)
             {
                 response.Success = false;
@@ -259,7 +259,7 @@ namespace AccountServer.Services
 
             // Step 1: Validate player
             var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.None);
             if (player == null)
             {
                 response.Success = false;

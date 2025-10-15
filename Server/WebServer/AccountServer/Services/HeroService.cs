@@ -26,7 +26,7 @@ namespace AccountServer.Services
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
 
             // Player 존재 여부 확인
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Heroes);
 
             if (player == null)
             {
@@ -62,7 +62,7 @@ namespace AccountServer.Services
         public async Task<HeroListRes> HeroListGetAsync(HeroListReq request)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Heroes, true);
             
             if (player == null)
             {
@@ -92,7 +92,7 @@ namespace AccountServer.Services
         public async Task<HeroListRes> HeroSelectedChangeAsync(HeroNowChangeReq request)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Heroes);
 
             if (player == null)
             {
@@ -110,7 +110,6 @@ namespace AccountServer.Services
                 {
                     hero.IsSelected = true;
                     found = true;
-                    Console.WriteLine($"Hero Selected : {hero.TemplateId}");
                 }
                 else
                 {

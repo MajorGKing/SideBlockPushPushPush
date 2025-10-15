@@ -21,7 +21,7 @@ namespace AccountServer.Services
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
 
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Buddies);
 
             if (player == null)
             {
@@ -62,7 +62,7 @@ namespace AccountServer.Services
             var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
 
             // Load player with buddies
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Buddies, true);
 
             if (player == null)
             {
@@ -94,7 +94,7 @@ namespace AccountServer.Services
         public async Task<BuddyListRes> BuddySelectedListRemoveAsync(BuddySelectedRemoveReq request)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Buddies);
 
             if (player == null)
                 return new BuddyListRes { Success = false, Message = $"Player {accountDbId} not found." };
@@ -126,7 +126,7 @@ namespace AccountServer.Services
         public async Task<BuddyListRes> BuddySelectedListAddAsync(BuddySelectedAddReq request)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Buddies);
 
             if (player == null)
                 return new BuddyListRes { Success = false, Message = $"Player {accountDbId} not found." };
@@ -167,7 +167,7 @@ namespace AccountServer.Services
             await using var transaction = await _dbContext.Database.BeginTransactionAsync();
 
             // Step 1: Load player (Heroes, Buddies, Currency are included by service)
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Buddies | PlayerIncludeType.Currency);
             if (player == null)
             {
                 return new BuddyListRes
@@ -320,7 +320,7 @@ namespace AccountServer.Services
             await using var transaction = await _dbContext.Database.BeginTransactionAsync();
 
             // Step 1: Load player (Buddies + Currency)
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Buddies | PlayerIncludeType.Currency);
             if (player == null)
             {
                 return new BuddyListRes

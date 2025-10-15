@@ -5,7 +5,6 @@ using Server.Data;
 using DbCurrencyType = GameDB.CurrencyType;
 using CurrencyType = AccountServer.Data.CurrencyType;
 using DbMissionState = GameDB.EMissionState;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace AccountServer.Services
@@ -30,7 +29,7 @@ namespace AccountServer.Services
         public async Task<bool> MissionCreateAsync(string jwt, int templateId)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Missions);
             if (player == null) return false;
 
             if (player.Missions.Any(m => m.TemplateId == templateId)) return false;
@@ -55,7 +54,7 @@ namespace AccountServer.Services
         {
             var response = new GetMissionListRes();
             var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Missions, true);
 
             if (player == null)
             {
@@ -80,7 +79,7 @@ namespace AccountServer.Services
         public async Task MissionEventAsncHandle(string jwt, Define.EBroadcastEventType eventType, int value, bool commitChanges = true)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Missions);
             if (player == null) return;
 
             bool saveNeeded = false;
@@ -115,7 +114,6 @@ namespace AccountServer.Services
             // Save only if needed and if commitChanges is true
             if (commitChanges && saveNeeded)
                 await _dbContext.SaveChangesAsync();
-
         }
 
         public async Task<GetMissionListRes> GetNormalMissionReward(GetNormalMissionRewardReq request)
@@ -129,7 +127,7 @@ namespace AccountServer.Services
             {
                 // step1. Extract accountDbId from JWT
                 var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
-                var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+                var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Missions);
 
                 // step2. Validate player
                 if (player == null)
@@ -149,7 +147,7 @@ namespace AccountServer.Services
                 }
 
                 // step4. Check mission state
-                if (mission.MissionState != EMissionState.Rewardable)
+                if (mission.MissionState != DbMissionState.Rewardable)
                 {
                     response.Success = false;
                     response.Message = "Mission not rewardable.";
@@ -184,7 +182,7 @@ namespace AccountServer.Services
                 }
 
                 // step8. Update mission state to Finished
-                mission.MissionState = EMissionState.Finish;
+                mission.MissionState = DbMissionState.Finish;
 
                 // step9. Save changes
                 await _dbContext.SaveChangesAsync();
@@ -217,7 +215,7 @@ namespace AccountServer.Services
             {
                 // step1. JWT에서 accountDbId 추출
                 var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
-                var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+                var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Missions);
 
                 if (player == null)
                 {
@@ -365,7 +363,7 @@ namespace AccountServer.Services
         public async Task<bool> AddNewAchievementsAsync(string jwt)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Achievements|PlayerIncludeType.AchievementClearList, true);
             if (player == null) return false;
 
             // Step 1. Get all root achievements (TemplateId == OriginalAchievementId)
@@ -396,7 +394,7 @@ namespace AccountServer.Services
         public async Task<bool> AchievementCreateAsync(string jwt, int templateId, bool commitChanges = true, bool autoInitializeProgress = false)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Achievements);
             if (player == null) return false;
 
             if (player.Achievements.Any(m => m.TemplateId == templateId)) return false;
@@ -433,7 +431,7 @@ namespace AccountServer.Services
         public async Task<bool> AchievementRemoveAsync(string jwt, int templateId, bool commitChanges = true)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Achievements);
             if (player == null) return false;
 
             // Find the achievement in progress
@@ -453,7 +451,7 @@ namespace AccountServer.Services
         public async Task<bool> AchievementClearCreateAsync(string jwt, int templateId, bool commitChanges = true)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.AchievementClearList);
             if (player == null) return false;
 
             if (player.AchievementClearList.Any(m => m.TemplateId == templateId)) return false;
@@ -482,7 +480,7 @@ namespace AccountServer.Services
                 var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
 
                 // 2. Player 가져오기
-                var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+                var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Achievements, true);
                 if (player == null)
                 {
                     response.Success = false;
@@ -516,7 +514,7 @@ namespace AccountServer.Services
         public async Task<bool> AchievementEventAsyncHandle(string jwt, Define.EBroadcastEventType eventType, int value, bool commitChanges = true)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Achievements|PlayerIncludeType.AchievementValues|PlayerIncludeType.Stages);
             if (player == null) return false;
 
             // Step 0: Get or create AchievementValue row from included navigation property
@@ -630,7 +628,7 @@ namespace AccountServer.Services
             {
                 // Step 1. Get player info from JWT
                 var accountDbId = _jwt.GetAccountDbIdInJwt(req.Jwt);
-                var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+                var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Achievements);
 
                 if (player == null)
                 {

@@ -5,6 +5,21 @@ using Server.Data;
 
 namespace AccountServer.Services
 {
+    [Flags]
+    public enum PlayerIncludeType
+    {
+        None = 0,
+        Heroes = 1 << 0,
+        Buddies = 1 << 1,
+        Currency = 1 << 2,
+        Stages = 1 << 3,
+        Missions = 1 << 4,
+        Achievements = 1 << 5,
+        AchievementClearList = 1 << 6,
+        AchievementValues = 1 << 7,
+        All = Heroes | Buddies | Currency | Stages | Missions | Achievements | AchievementClearList | AchievementValues
+    }
+
     public class PlayerService
     {
         GameDbContext _dbContext;
@@ -22,21 +37,31 @@ namespace AccountServer.Services
             _serviceProvider = serviceProvider;
         }
 
-        public async Task<PlayerDb> GetPlayerDbFromAccountDbId(int accountDbId)
+        public async Task<PlayerDb?> GetPlayerDbFromAccountDbId(int accountDbId, PlayerIncludeType includes = PlayerIncludeType.All, bool asReadOnly = false)
         {
-            // Player + Heroes + Buddy + Currency + Stage + Mission + Achievement로드
-            var player = await _dbContext.Players
-                .Include(p => p.Heroes)
-                .Include(p => p.Buddies)
-                .Include(p => p.Currency)
-                .Include(p => p.Stages)
-                .Include(p => p.Missions)
-                .Include(p => p.Achievements)
-                .Include(p => p.AchievementClearList)
-                .Include(p => p.AchievementValues)
-                .FirstOrDefaultAsync(p => p.PlayerDbId == accountDbId);
+            IQueryable<PlayerDb> query = _dbContext.Players;
 
-            return player;
+            if (includes.HasFlag(PlayerIncludeType.Heroes))
+                query = query.Include(p => p.Heroes);
+            if (includes.HasFlag(PlayerIncludeType.Buddies))
+                query = query.Include(p => p.Buddies);
+            if (includes.HasFlag(PlayerIncludeType.Currency))
+                query = query.Include(p => p.Currency);
+            if (includes.HasFlag(PlayerIncludeType.Stages))
+                query = query.Include(p => p.Stages);
+            if (includes.HasFlag(PlayerIncludeType.Missions))
+                query = query.Include(p => p.Missions);
+            if (includes.HasFlag(PlayerIncludeType.Achievements))
+                query = query.Include(p => p.Achievements);
+            if (includes.HasFlag(PlayerIncludeType.AchievementClearList))
+                query = query.Include(p => p.AchievementClearList);
+            if (includes.HasFlag(PlayerIncludeType.AchievementValues))
+                query = query.Include(p => p.AchievementValues);
+
+            if (asReadOnly)
+                query = query.AsNoTracking();
+
+            return await query.FirstOrDefaultAsync(p => p.PlayerDbId == accountDbId);
         }
 
         // '로드 또는 생성' 로직을 구현하는 핵심 메서드
@@ -173,7 +198,7 @@ namespace AccountServer.Services
             {
                 // step1. JWT에서 accountDbId 추출
                 var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
-                var player = await GetPlayerDbFromAccountDbId(accountDbId);
+                var player = await GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.None);
 
                 if (player == null)
                 {

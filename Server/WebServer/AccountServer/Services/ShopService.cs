@@ -35,7 +35,7 @@ namespace AccountServer.Services
             {
                 // Step 1: Validate JWT & load player
                 var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
-                var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+                var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Currency, true);
                 if (player == null)
                 {
                     response.Success = false;
@@ -152,7 +152,7 @@ namespace AccountServer.Services
             {
                 // Step 1: Validate JWT & load player
                 var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
-                var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+                var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Currency|PlayerIncludeType.Buddies);
                 if (player == null)
                 {
                     response.Success = false;
@@ -302,7 +302,7 @@ namespace AccountServer.Services
 
             // Step 1: Validate player (via JWT)
             var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Currency);
             if (player == null)
             {
                 response.Success = false;
