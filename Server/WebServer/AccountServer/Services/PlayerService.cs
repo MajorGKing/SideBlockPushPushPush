@@ -198,7 +198,7 @@ namespace AccountServer.Services
             {
                 // step1. JWT에서 accountDbId 추출
                 var accountDbId = _jwt.GetAccountDbIdInJwt(request.Jwt);
-                var player = await GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.None);
+                var player = await GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Missions);
 
                 if (player == null)
                 {

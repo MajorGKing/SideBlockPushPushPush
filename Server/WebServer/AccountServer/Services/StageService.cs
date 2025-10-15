@@ -391,7 +391,7 @@ namespace AccountServer.Services
 
             // Step 1: Validate player
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Stages);
             if (player == null)
                 return SetResponse(response, false, false, 0, "Invalid player.");
 

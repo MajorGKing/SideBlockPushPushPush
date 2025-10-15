@@ -394,7 +394,7 @@ namespace AccountServer.Services
         public async Task<bool> AchievementCreateAsync(string jwt, int templateId, bool commitChanges = true, bool autoInitializeProgress = false)
         {
             var accountDbId = _jwt.GetAccountDbIdInJwt(jwt);
-            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.Achievements);
+            var player = await _player.GetPlayerDbFromAccountDbId(accountDbId, PlayerIncludeType.AchievementValues);
             if (player == null) return false;
 
             if (player.Achievements.Any(m => m.TemplateId == templateId)) return false;
