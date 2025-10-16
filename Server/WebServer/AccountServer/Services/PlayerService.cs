@@ -207,17 +207,26 @@ namespace AccountServer.Services
                     return response;
                 }
 
-                DateTime now = DateTime.Now;
+                // UTC 기준 현재 시간
+                DateTime now = DateTime.UtcNow;
+                // KST로 변환
+                TimeZoneInfo kst = TimeZoneInfo.FindSystemTimeZoneById("Korea Standard Time");
+                //DateTime nowKST = TimeZoneInfo.ConvertTimeFromUtc(now, kst);
+                now = TimeZoneInfo.ConvertTimeFromUtc(now, kst);
+
+                // 오늘 한국 시간 9시
                 DateTime today9AM = now.Date.AddHours(9);
+
+                // 이번 주 월요일 한국 시간 9시
                 DateTime thisMonday9AM = GetThisMondayAt9AM(now);
+
 
                 // step2. 미션 리셋 체크 (Day/Week)
                 bool dayResetNeeded = false;
                 bool weekResetNeeded = false;
 
                 // Day Reset
-                if ((player.LastMissionTime.Date != now.Date && now >= today9AM) ||
-                    (player.LastMissionTime.Date == now.Date && player.LastMissionTime < today9AM && now >= today9AM))
+                if (player.LastMissionTime < today9AM && now >= today9AM)
                 {
                     dayResetNeeded = true;
                 }
@@ -252,6 +261,13 @@ namespace AccountServer.Services
                     else
                     {
                         int minutesPassed = (int)(now - player.LastStaminaUpdateTime).TotalMinutes;
+
+                        if (minutesPassed < 0)
+                        {
+                            // 예외 상황 방어 — 시각 꼬임 방지
+                            minutesPassed = 0;
+                        }
+
                         if (minutesPassed >= 3)
                         {
                             int recoverAmount = minutesPassed / 3;
@@ -260,6 +276,8 @@ namespace AccountServer.Services
                             // 마지막 회복 시점 갱신
                             if (player.Stamina < Define.MAX_STAMINA)
                                 player.LastStaminaUpdateTime = player.LastStaminaUpdateTime.AddMinutes(recoverAmount * 3);
+                            else
+                                player.LastStaminaUpdateTime = now;
 
                             staminaChanged = true;
                         }
